@@ -1,0 +1,18 @@
+# Tiny smoke config: designed to complete `make smoke` (native RQ1/3/4/5 +
+# one real ZK proof) in well under 3 minutes.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+  n_reps_proof: 1
+  n_warmup_proof: 0
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 12, d: 8, k: 2, gamma: 3.0, imbalance: 1.0}}
+  variant: [sparse]
+  projection: [sparse_jl]
+  m: [8]
+  q: [1]
+  k: [2]
+  seed: [0]

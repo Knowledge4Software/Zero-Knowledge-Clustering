@@ -1,0 +1,21 @@
+# Core proof grid -- Table zkperf-a / ordering-a / ablation-a: smallest
+# fidelity-eligible m*, small n/d/k so real gnark proving is tractable.
+# Selection of m* is done by rq1_fidelity.py against prereg.yaml's
+# tau_ARI/tau_Phi; this file's `m` list is a superset scanned to find m*.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+  n_reps_proof: 10
+  n_warmup_proof: 1
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 500, d: 256, k: 5, gamma: 3.0, imbalance: 1.0}}
+    - {loader: gaussian_mixture, kwargs: {n: 1000, d: 1024, k: 10, gamma: 2.5, imbalance: 1.0}}
+    - {loader: mnist, kwargs: {n_max: 500}}
+  variant: [sparse, dense, coord, pca-public, prepublished]
+  m: [16, 32, 64]
+  q: [1, 4]
+  k: [5, 10]
+  seed: [0, 1, 2]

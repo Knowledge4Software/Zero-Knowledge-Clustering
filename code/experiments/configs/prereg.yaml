@@ -1,0 +1,16 @@
+# Preregistered analysis parameters (fixed before RQ2 per plan P4).
+# eps: JL distortion tolerance used by certificates.py / metrics distortion checks.
+eps: 0.15
+# tau_Phi: acceptable relative cost-ratio deviation (fixed-center cost lemma slack beyond eps).
+tau_Phi: 0.10
+# tau_ARI: minimum acceptable ARI(projected, full) to call fidelity "preserved".
+tau_ARI: 0.80
+# preregistered pair-set size for delta_uv sampling (metrics.sample_pair_set).
+pair_set_size: 2000
+# core-grid selection rule: smallest fidelity-eligible m (native ARI/r_Phi within tau) chosen
+# per (dataset, k) before any proof is generated; ties broken by smallest m then smallest q.
+core_selection_rule: "smallest_m_meeting_tau_ARI_and_tau_Phi"
+seed: 12345
+n_reps_native: 10
+n_reps_proof: 10
+n_warmup_proof: 1
