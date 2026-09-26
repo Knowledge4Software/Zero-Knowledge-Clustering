@@ -1,0 +1,32 @@
+# Light grid for RQ3 (per-stage protocol overhead / ordering).
+#
+# rq3_overhead.py's commit_X stage cost is O(n*d) pure-Python MiMC-BN254
+# hashing over n*d leaves (see commitjl/commit.py::commit_matrix +
+# commitjl/hashing.py::mimc_hash / _mimc_encrypt) -- ~230M scalar modpow
+# calls at n=2000,d=256 (measured: ~313s wall for that ONE row, ~279s of
+# which is inside Python's builtin pow(x, 5, p)). This is the real,
+# intentional cost the manuscript's "Commitment authentication ... nd
+# leaves" row measures (P3/gnark proving is explicitly out of scope here),
+# not a bug -- it does not depend on projection/m/q/k/seed at all (commit_X
+# only depends on the dataset), so it is paid identically, and expensively,
+# for every one of native_light.yaml's 768 rows x 3 seed sources.
+#
+# RQ3 only needs the *relative* per-stage timing breakdown (commit_X vs
+# record_theta vs issue_nonce vs expand_sparse vs project_and_cluster), not
+# fidelity, so a much smaller n*d is sufficient and keeps total wall-clock
+# tractable on an 8GB/8-core laptop.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 50, d: 32, k: 5, gamma: 3.0, imbalance: 1.0}}
+    - {loader: gaussian_mixture, kwargs: {n: 100, d: 64, k: 8, gamma: 2.0, imbalance: 1.0}}
+    - {loader: dbscan_margin, kwargs: {n: 50, d: 32, rho: 1.0, eps: 0.15}}
+  projection: [identity, gaussian, rademacher, achlioptas, sparse_jl, coordinate, pca, pisot]
+  m: [16, 32, 64]
+  q: [1, 2, 4]
+  k: [5, 10]
+  seed: [0]

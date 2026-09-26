@@ -1,6 +1,6 @@
 {
   "env": {
-    "git_hash": "unknown",
+    "git_hash": "8710198b674abb31ed764279770bcfc664c98d8a",
     "packages": {
       "numpy": "2.5.3",
       "scipy": "1.18.1",
@@ -22,10 +22,10 @@
     }
   },
   "rq1_fidelity": {
-    "n_rows": 1,
-    "median_ari": 1.0,
-    "median_r_phi": 1.0000000000000002,
-    "fraction_fidelity_ok": 1.0
+    "n_rows": 769,
+    "median_ari": 0.7334398992446706,
+    "median_r_phi": 1.0000843918391342,
+    "fraction_fidelity_ok": 0.46423927178153446
   },
   "rq2_proof_cost": {
     "n_rows": 1,
@@ -42,13 +42,13 @@
     "fraction_bound_holds": 1.0
   },
   "rq4_certificates": {
-    "n_rows": 2,
-    "median_coverage": 0.9772727272727273,
+    "n_rows": 412,
+    "median_coverage": 0.9994994994994995,
     "median_violation_rate": 0.0,
-    "n_certified_violations": 0
+    "n_certified_violations": 124
   },
   "rq5_scaling": {
-    "n_rows": 1
+    "n_rows": 769
   },
   "ablation": {
     "n_rows": 14

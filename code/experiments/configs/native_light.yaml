@@ -1,0 +1,18 @@
+# Time-boxed light native grid for a real-but-cheap experiment campaign.
+# 4 datasets x 8 projections x 4 m x 3 q x 2 k x 1 seed = 768 rows.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 2000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0}}
+    - {loader: gaussian_mixture, kwargs: {n: 1000, d: 512, k: 8, gamma: 2.0, imbalance: 1.0}}
+    - {loader: dbscan_margin, kwargs: {n: 1000, d: 128, rho: 1.0, eps: 0.15}}
+    - {loader: mnist, kwargs: {n_max: 2000}}
+  projection: [identity, gaussian, rademacher, achlioptas, sparse_jl, coordinate, pca, pisot]
+  m: [16, 32, 64, 128]
+  q: [1, 2, 4]
+  k: [5, 10]
+  seed: [0]

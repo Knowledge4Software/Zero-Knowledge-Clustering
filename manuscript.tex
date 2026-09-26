@@ -28,6 +28,7 @@
 \newcommand{\resultplaceholder}[1]{\textcolor{red!75!black}{[RESULT: #1]}}
 \newcommand{\citeplaceholder}[1]{\textcolor{purple!80!black}{[CITATION NEEDED: #1]}}
 \newcommand{\decisionplaceholder}[1]{\textcolor{orange!80!black}{[DECISION: #1]}}
+\newcommand{\newtext}[1]{\textcolor{red}{#1}}
 % Drafting notes remain in the source but are suppressed in the rendered paper.
 \newcommand{\tpexplain}[1]{}
 \newcommand{\figureplaceholder}[2]{%
@@ -113,7 +114,12 @@ This paper makes four contributions:
 \tpexplain{Paragraph 6 --- roadmap. Keep this short and aligned exactly with the final section order.}
 The remainder of the paper reviews the closest work, defines the protocol and its guarantees, and then evaluates proof cost and clustering fidelity before discussing limitations.
 
-\widefigureplaceholder{Motivation and cost bottleneck}{A two-panel figure. Left: full-dimensional private clustering circuit with width proportional to $d$ and highlighted distance gadgets. Right: commit-then-sample sparse projection followed by an $m$-dimensional circuit. Annotate public values, private values, proof output, and the expected cost reduction; do not claim measured numbers until available.}
+\newtext{\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.91\textwidth]{figures/motivation.pdf}
+\caption{Motivation and cost bottleneck.}
+\label{fig:Motivation and cost bottleneck}
+\end{figure*}}
 
 \subsection{Background, model, and problem statement}\label{sec:background}
 
@@ -188,7 +194,12 @@ Approximation changes clustering & geometric assumptions are separate from proof
 \end{adjustbox}
 \end{table*}
 
-\widefigureplaceholder{Security game for adaptive projection attacks}{A three-lane timeline comparing: (a) unsafe public $A$ followed by adaptive data/centers; (b) logged $(C_X,C_\theta)$, unpredictable challenge, derived $A$, proof; and (c) deterministic pre-published transform. Mark the task budget $Q$, when each value becomes known, and the winning condition.}
+\newtext{\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.91\textwidth]{figures/security_game.pdf}
+\caption{Security game for adaptive projection attacks.}
+\label{fig:Security game for adaptive projection attacks}
+\end{figure*}}
 
 \subsubsection{Clustering objectives}
 \tpexplain{Paragraph 1 --- define the primary algorithm. Prefer nearest-centroid or assignment/cost verification for the first prototype; full Lloyd iteration is an explicit scope decision.}
@@ -246,7 +257,12 @@ Projection has appeared in cryptographic norm-compression settings, but those ob
 \tpexplain{Walk through Figure~\ref{fig:Protocol overview} in message order. Specify which computations occur inside versus outside the circuit.}
 The protocol has six stages: binding the data and public parameters; sampling the challenge; deterministic sparse-matrix expansion by the verifier; authentication of the sparse matrix inside the circuit; checked projection and clustering; and proof generation. The primary construction authenticates a verifier-derived sparse list through $C_A$. This keeps variable-length rejection sampling outside the fixed circuit while still preventing the prover from substituting another matrix. In-circuit regeneration is an optional variant and requires a separate bounded, circuit-compatible generator.
 
-\widefigureplaceholder{Protocol overview}{Sequence/architecture diagram with Prover, Randomness Source, Circuit, and Verifier. Messages: bind $X$ and public parameters; publish $(C_X,C_\theta)$; obtain nonce/beacon $\rho$; derive $s$ and sparse $A$; publish $C_A$; authenticate $A$ and prove the projected clustering result; verify $\pi$. Use solid arrows for messages, dashed arrows for local computation, and a shaded region for private witness values.}
+\newtext{\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.91\textwidth]{figures/protocol.pdf}
+\caption{Protocol overview.}
+\label{fig:Protocol overview}
+\end{figure*}}
 
 \begin{figure}[!htbp]
 \centering
@@ -298,13 +314,18 @@ Achlioptas & $\{-1,0,+1\}$ & distribution-dependent & sparse signed additions & 
 Sparse JL & hashed signs/buckets & $qd$ & $qd$ additions & primary candidate \\
 Coordinate sampling & $\{0,1\}$ & $m$ & copies/selects & cheap naive baseline \\
 PCA & quantized dense & $md$ & multiply--accumulate plus PCA proof if learned & data-dependent baseline \\
-Pisot-$\beta$ & deterministic orbit-derived coefficients & inspect implementation & \placeholder{measure from reproduced artifact} & conditional preprint baseline; not assumed equivalent to sparse signed additions \\
+Pisot-$\beta$ & deterministic orbit-derived coefficients & inspect implementation & \newtext{dense quantized integer coefficients (fractional parts of powers of the plastic number, a seed-permuted public constant matrix); multiply--accumulate, same as PCA} & conditional preprint baseline; not assumed equivalent to sparse signed additions \\
 \bottomrule
 \end{tabularx}
 \end{adjustbox}
 \end{table*}
 
-\figureplaceholder{Sparse projection generator}{Show a seed-expansion tree feeding per-coordinate bucket indices and sign bits. Beside it, depict an $m\times d$ matrix with exactly $q$ colored nonzeros per column. Annotate modulo-bias handling, domain separation, verifier-side expansion, and the sparse-list digest checked inside the circuit.}
+\newtext{\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.90\columnwidth]{figures/generator.pdf}
+\caption{Sparse projection generator.}
+\label{fig:Sparse projection generator}
+\end{figure}}
 
 \subsection{Circuit realization and checked arithmetic}
 \tpexplain{Describe exact gadgets and state which operations are constraints versus witness-generation work. Include range checks even if they are costly.}
@@ -330,7 +351,12 @@ Full-dimensional baseline & $nkd$ coordinates & $nkd$ squarings and $nk(d-1)$ ad
 \end{adjustbox}
 \end{table*}
 
-\widefigureplaceholder{Circuit dataflow and constraint hotspots}{A DAG from commitment opening and matrix authentication to projection accumulators, squared-distance blocks, argmin tournament, and public cost. Label each block with symbolic constraints and measured percentage of proving time; distinguish linear, nonlinear, hash, and comparison gates.}
+\newtext{\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.91\textwidth]{figures/dataflow.pdf}
+\caption{Circuit dataflow and constraint hotspots.}
+\label{fig:Circuit dataflow and constraint hotspots}
+\end{figure*}}
 
 \subsection{Randomness instantiations}
 \tpexplain{Give deployable alternatives and state the trust/freshness assumption for each. Select one primary instantiation for experiments.}
@@ -423,12 +449,19 @@ Integer equivalence & range checks; quantization error bound & no wraparound; bo
 \subsection{Implementation}\label{sec:implementation}
 
 \tpexplain{Paragraph 1 --- name versions, curves/fields, commitment hash, proof backend, language, and hardware-neutral design choices. Do not postpone key reproducibility facts to a repository.}
-We implement CommitJL in \placeholder{selected ZK backend}, using the \placeholder{field and curve}, \placeholder{commitment hash}, and \placeholder{range and comparison gadgets}. The host implementation is written in \placeholder{implementation language}, while experiment orchestration and clustering metrics use \placeholder{Python package and version}. All arithmetic parameters and transcript encodings are fixed in a versioned manifest.
+We implement CommitJL in \newtext{gnark v0.16.3 (gnark-crypto v0.21.0), supporting both Groth16 and PLONK backends}, using the \newtext{BN254 scalar field and curve}, \newtext{a MiMC-BN254 (Miyaguchi--Preneel) Merkle-tree/sponge commitment hash}, and \newtext{gnark's \texttt{std/rangecheck} batched-lookup gadget (with a manual bit-decomposition fallback) and \texttt{std/math/cmp} for comparisons}. The host implementation is written in \newtext{Go (go1.27.1) for the circuit and prover/verifier CLI, with the surrounding protocol logic in Python}, while experiment orchestration and clustering metrics use \newtext{Python 3.14.6 with NumPy 2.5.3, SciPy 1.18.1, scikit-learn 1.9.1, and pandas 3.0.6 (exact versions captured per run by \texttt{env\_capture.py} into \texttt{results/headline.json})}. All arithmetic parameters and transcript encodings are fixed in a versioned manifest.
+
+\newtext{The PLONK backend is instantiated with an unsafe, test-only KZG SRS (gnark's \texttt{test/unsafekzg}) suitable only for benchmarking circuit cost, not for a trusted deployment. Of the circuit variants enumerated in \texttt{zk/circuit/circuit.go} (full, sparse, dense, coord, pca-public, pisot, prepublished, incircuit-gen), the sparse, full, prepublished, pca-public, and pisot variants are implemented and exercised by the test suite; the dense and coord variants are implemented but untested; and the incircuit-gen variant, which would rebuild the sparse generator and MiMC XOF inside the circuit, is not yet implemented (it is a stub). In-circuit, the public commitments $C_\theta$ and $C_A$ are checked against a field-native MiMC digest of the centroids/sparse list (\texttt{zk\_bridge.py}'s \texttt{field\_hash\_theta}/\texttt{field\_hash\_sparse\_list}), which differs from \texttt{commit.py}'s host-side byte-packed encoding of the same values; the two are intentionally not required to match.}
 
 \tpexplain{Paragraph 2 --- describe optimizations and make every one independently disableable for ablation.}
 The implementation batches signed accumulation, reuses projected centroids where allowed, applies an argmin tournament, and separates matrix generation from projection constraints. Compile-time and run-time switches independently disable sparsity, post-commitment generation, range-check batching, and shared subexpressions, enabling the ablation in Table~\ref{tab:ablation-a}.
 
-\figureplaceholder{Implementation architecture}{Modules: dataset encoder, commitment builder, randomness adapter, sparse-matrix generator, native reference implementation, circuit builder, prover/verifier, and metrics collector. Show artifact hashes and the boundary between trusted preprocessing and constrained computation.}
+\newtext{\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.90\columnwidth]{figures/architecture.pdf}
+\caption{Implementation architecture.}
+\label{fig:Implementation architecture}
+\end{figure}}
 
 \section{Experimental analysis}\label{sec:method}
 
@@ -452,12 +485,12 @@ The implementation batches signed accumulation, reuses projected centroids where
 Dataset/family & $n$ & $d$ & classes/$k$ & Preprocessing & Why included \\
 \midrule
 Gaussian mixtures & $10^2$--$10^5$ & 128--8192 & 2--100 & controlled separation, variance, imbalance & known latent labels and tunable margin \\
-DBSCAN margin generator & \placeholder{range} & \placeholder{range} & variable & construct pair distances around $\rho$ & direct test of ambiguity-band theorem \\
+DBSCAN margin generator & \newtext{300--1{,}000 (config-dependent)} & \newtext{64--128 (config-dependent)} & variable & construct pair distances around $\rho$ & direct test of ambiguity-band theorem \\
 MNIST & 70,000 & 784 & 10 & scale pixels; fixed split/subsample & standard dense benchmark \\
 Fashion-MNIST & 70,000 & 784 & 10 & same protocol as MNIST & harder same-shape benchmark \\
 Gisette & 7,000 & 5,000 & 2 & standard train/validation merge policy & high-dimensional dense features \\
 Arcene & 900 & 10,000 & 2 & missing-value/scale policy & very high dimension, low sample count \\
-20 Newsgroups & \placeholder{exact} & \placeholder{vocabulary} & 20 & TF--IDF; sparse input & sparse high-dimensional text \\
+20 Newsgroups & \newtext{11,314 (train split)} & \newtext{2,000 (TF--IDF \texttt{max\_features})} & 20 & TF--IDF; sparse input & sparse high-dimensional text \\
 Embedding corpus & \placeholder{name/$n$} & 768--4096 & \placeholder{k} & normalize or not, stated explicitly & modern representation workload \\
 \bottomrule
 \end{tabularx}
@@ -550,7 +583,12 @@ Reliability & timeout/OOM/failure rate & failures divided by all attempted runs 
 \tpexplain{Statistics paragraph --- predeclare repetitions, confidence intervals, tests, outlier policy, timeouts, and paired comparisons.}
 Each native experiment uses 30 projection seeds and 10 paired clustering initializations. Each proof configuration receives one unreported warm-up and 10 measured repetitions. The dataset is the unit of external generalization, the projection seed is the unit for geometric uncertainty, and the repeated run is the unit for machine noise; the hierarchical bootstrap resamples at those levels rather than treating all observations as independent. We report medians, interquartile ranges, 95\% confidence intervals, absolute paired differences, and paired ratios. Holm correction is applied within each research question, while effect sizes and intervals remain the basis for interpretation. Timeouts, compilation failures, rejected range checks, invalid proofs, and out-of-memory events remain in the denominator and are reported rather than removed \cite{kalibera2013effect}.
 
-\widefigureplaceholder{End-to-end evaluation workflow}{Flowchart from raw datasets through canonical preprocessing, full-dimensional reference clustering, candidate projections, projected clustering, circuit compilation, proof runs, and analysis. Show shared seeds/splits for paired comparisons and identify which artifacts are archived.}
+\newtext{\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.91\textwidth]{figures/workflow.pdf}
+\caption{End-to-end evaluation workflow.}
+\label{fig:End-to-end evaluation workflow}
+\end{figure*}}
 
 \clearpage
 \subsection{Results}\label{sec:results}
@@ -720,7 +758,7 @@ JL theorem mismatches generator & distribution audit; theorem-specific tests; co
 
 \subsubsection{Reproducibility and artifact plan}
 \tpexplain{List the exact artifacts required to reproduce every table and figure.}
-The artifact will contain circuit source, native reference code, dataset manifests, generator test vectors, environment lockfiles, hardware metadata, raw run logs, analysis scripts, and one command per paper table/figure. Random seeds and failed runs will be archived. \placeholder{Repository DOI and anonymous-review URL.}
+The artifact will contain circuit source, native reference code, dataset manifests, generator test vectors, environment lockfiles, hardware metadata, raw run logs, analysis scripts, and one command per paper table/figure. Random seeds and failed runs will be archived. \newtext{Concretely, the code repository is laid out as \texttt{commitjl/} (core Python package: encoding, hashing, commit, sparse\_gen, randomness, quantize, protocol, projections, clustering, certificates, metrics, stats, cost\_model, zk\_bridge), \texttt{zk/} (Go/gnark circuit in \texttt{zk/circuit} and CLI \texttt{zk/cmd/commitjl-prove}), \texttt{data/loaders.py} (dataset loaders and SHA256 manifest), \texttt{experiments/} (config-driven grid runners \texttt{rq1\_fidelity.py}--\texttt{rq5\_scaling.py} and \texttt{ablation.py}, plus \texttt{make\_tables.py} and \texttt{make\_figures.py}), \texttt{figures/schematics.py} (conceptual diagrams), and \texttt{results/\{tables,figures\}} (generated outputs) with \texttt{results/*.parquet} raw per-row data and \texttt{results/headline.json} an abstract-ready summary annotated by \texttt{env\_capture.py}. Grids are driven by three config files, \texttt{experiments/configs/\{smoke,native,core\}.yaml}, plus the preregistered analysis parameters in \texttt{experiments/configs/prereg.yaml} ($\epsilon=0.15$, $\tau_\Phi=0.10$, $\tau_{\rm ARI}=0.80$, pair-set size 2000, core-grid selection rule ``smallest $m$ meeting $\tau_{\rm ARI}$ and $\tau_\Phi$'', seed 12345, 10 native repetitions, 10 proof repetitions with 1 warm-up). Each table/figure is reproduced with \texttt{make native}, \texttt{make core}, and then \texttt{make tables figures}, or individually via \texttt{python -m experiments.make\_tables --table <label>} (labels: fidelity-a, zkperf-a, ordering-a, cert-a, sensitivity-a, ablation-a, datasets-a, circuit-cost, validity-a) and \texttt{python -m experiments.make\_figures --fig <label>} (labels: fidelity-vs-m, pareto, cost-breakdown, phase-diagram, plus the scaling/sensitivity dashboard); \texttt{python -m figures.schematics --diagram <label>} independently regenerates the seven hand-drawn conceptual figures (protocol, security\_game, generator, dataflow, architecture, workflow, motivation). Every dataset loaded by \texttt{data/loaders.py} is recorded in a SHA256 manifest entry (array hash plus name/$n$/$d$/$k$/source) so each reported row is traceable to a fixed data hash; the manifest is regenerated automatically on first load into \texttt{COMMITJL\_DATA} and is not a fixed value we can quote until the datasets in Table~\ref{tab:datasets-a} are finalized.} \placeholder{Repository DOI and anonymous-review URL.}
 
 \figureplaceholder{Decision guide for practitioners}{A compact decision tree: Is $d$ large? Is approximate clustering acceptable? Is there post-commit public entropy? Are margins sufficient? Is the projection reused? Leaves recommend full dimension, PCA, CommitJL, or further validation. Base thresholds on measured crossover points.}
 
@@ -806,7 +844,7 @@ Taking absolute values, applying Cauchy--Schwarz, and substituting the bound on 
 
 \section{Complete experimental configurations}
 \tpexplain{Provide every hyperparameter, dataset checksum, preprocessing choice, command, hardware/software version, and excluded/failed run.}
-The preregistered native grid uses 30 projection seeds, 10 paired clustering initializations, $q\in\{1,2,4,8\}$, and every valid $m\in\{16,32,64,128,256,512,1024\}$ below $d$. The core proof grid selects, without consulting proof timings, the smallest $m$ meeting the fidelity threshold, the adjacent smaller and larger dimensions, $q\in\{1,4\}$, and the full-dimensional control. Each configuration receives one warm-up and 10 measured runs. A run manifest records dataset checksum and license, preprocessing parameters, split indices, all seeds, compiler and dependency versions, circuit hash, hardware and OS identifiers, start/end timestamps, exit status, timeout/OOM reason, raw counters, proof hash, and verification result. Hardware, backend, repository, and dataset checksums remain placeholders until the implementation and artifacts exist.
+The preregistered native grid uses 30 projection seeds, 10 paired clustering initializations, $q\in\{1,2,4,8\}$, and every valid $m\in\{16,32,64,128,256,512,1024\}$ below $d$. The core proof grid selects, without consulting proof timings, the smallest $m$ meeting the fidelity threshold, the adjacent smaller and larger dimensions, $q\in\{1,4\}$, and the full-dimensional control. Each configuration receives one warm-up and 10 measured runs. \newtext{These per-condition repetition counts (\texttt{n\_reps\_native: 10}, \texttt{n\_reps\_proof: 10}, \texttt{n\_warmup\_proof: 1}) and the fidelity thresholds ($\tau_\Phi=0.10$, $\tau_{\rm ARI}=0.80$, JL-distortion tolerance $\epsilon=0.15$, preregistered pair-set size 2000, master seed 12345) are fixed in \texttt{experiments/configs/prereg.yaml} and are read, not re-chosen, by \texttt{experiments/rq2\_proof\_cost.py}'s core-grid selection.} A run manifest records dataset checksum and license, preprocessing parameters, split indices, all seeds, compiler and dependency versions, circuit hash, hardware and OS identifiers, start/end timestamps, exit status, timeout/OOM reason, raw counters, proof hash, and verification result. \newtext{Each \texttt{experiments/rq*.py} script is resumable (it skips rows already present in its output parquet, keyed by a config hash) and shardable, e.g.\ \texttt{python -m experiments.rq2\_proof\_cost --config experiments/configs/core.yaml --shard 1/4}; environment/version capture (\texttt{env\_capture.py}) and dataset hashing (\texttt{data/loaders.py}) are wired into every run rather than recorded by hand.} Hardware, backend, repository, and dataset checksums remain placeholders until the implementation and artifacts exist.
 
 Before submission, every RQ must have its primary endpoint, denominator, absolute baseline value, paired effect, uncertainty interval, attempted-run count, and failure count. Every reported operating point must identify $(m,q)$, precision, clustering parameters, backend, hardware, and seed set. The abstract and conclusion must use the same fidelity-matched configuration as the main tables; a faster but fidelity-ineligible configuration may be reported only as a trade-off point, not as the headline result.
 \end{appendices}

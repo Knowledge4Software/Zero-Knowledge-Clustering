@@ -49,6 +49,53 @@ def test_dbscan_ambiguity_band_flags_close_pairs():
     assert pair_certified[(4, 5)] is False
 
 
+def test_dbscan_pair_certificate_chunked_matches_exact_small_case():
+    """Regression test for the O(n^2*d) memory blowup: chunking the pair
+    computation into small blocks must give bit-for-bit the same result as
+    a single dense pass on a small case."""
+    rng = np.random.default_rng(0)
+    X = rng.normal(size=(40, 5))
+    rho, eps = 2.0, 0.2
+    exact = dbscan_pair_certificate(X, rho, eps, chunk_size=10_000)
+    chunked = dbscan_pair_certificate(X, rho, eps, chunk_size=3)
+    assert np.array_equal(exact["i"], chunked["i"])
+    assert np.array_equal(exact["j"], chunked["j"])
+    np.testing.assert_allclose(exact["orig_sqdist"], chunked["orig_sqdist"])
+    assert np.array_equal(exact["certified"], chunked["certified"])
+    assert chunked["subsampled"] is False
+    assert chunked["pairs_evaluated"] == chunked["pairs_total"] == 40 * 39 // 2
+
+
+def test_dbscan_pair_certificate_default_unchanged_for_small_n():
+    """Default behaviour (no max_pairs) must not silently subsample small
+    inputs -- exact result, all pairs evaluated."""
+    rng = np.random.default_rng(1)
+    X = rng.normal(size=(20, 3))
+    res = dbscan_pair_certificate(X, rho=1.0, eps=0.1)
+    n_pairs = 20 * 19 // 2
+    assert res["pairs_evaluated"] == n_pairs
+    assert res["pairs_total"] == n_pairs
+    assert res["subsampled"] is False
+
+
+def test_dbscan_pair_certificate_subsamples_when_over_cap():
+    """When n_choose_2 exceeds max_pairs, the memory-safe subsampling path
+    is taken, and the returned metadata honestly reports it."""
+    rng = np.random.default_rng(2)
+    n, d = 200, 4  # n_choose_2 = 19900
+    X = rng.normal(size=(n, d))
+    max_pairs = 500
+    res = dbscan_pair_certificate(X, rho=1.0, eps=0.1, max_pairs=max_pairs, seed=42)
+    assert res["subsampled"] is True
+    assert res["pairs_evaluated"] == max_pairs
+    assert res["pairs_total"] == n * (n - 1) // 2
+    assert res["i"].shape[0] == max_pairs
+    assert res["j"].shape[0] == max_pairs
+    # sampled pairs are still valid upper-triangle indices
+    assert np.all(res["i"] < res["j"])
+    assert np.all(res["j"] < n)
+
+
 def test_cost_bounds_holds():
     res = cost_bounds(Phi_X_C=100.0, Phi_AX_AC_over_q=105.0, eps=0.1)
     assert res["holds"]

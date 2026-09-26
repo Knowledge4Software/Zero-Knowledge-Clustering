@@ -1,0 +1,19 @@
+# Time-boxed light core (real-proof) grid.
+# 2 datasets x 3 variants x 2 m x 2 q x 1 seed = 24 rows.
+# Only variant=sparse is wired to real gnark proving (8 rows); full/prepublished
+# fall back to symbolic_only rows automatically (rq2_proof_cost.py).
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+  n_reps_proof: 3
+  n_warmup_proof: 1
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 50, d: 128, k: 3, gamma: 3.0, imbalance: 1.0}}
+    - {loader: gaussian_mixture, kwargs: {n: 100, d: 128, k: 3, gamma: 3.0, imbalance: 1.0}}
+  variant: [sparse, full, prepublished]
+  m: [16, 32]
+  q: [1, 4]
+  seed: [0]

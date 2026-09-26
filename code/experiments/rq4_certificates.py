@@ -69,7 +69,13 @@ def run_dbscan_cert(row, prereg):
     rho = float(row.get("rho", 1.0))
     m, q, seed = int(row.get("m", 16)), int(row.get("q", 1)), int(row.get("seed", 0))
 
-    pc = dbscan_pair_certificate(X, rho, eps)
+    # Cap the number of pairs evaluated to keep peak memory bounded on large
+    # n (dbscan_pair_certificate additionally chunks the computation so it
+    # never materializes the full (n_choose_2, d) array at once). 2,000,000
+    # pairs at d~1000 is already only tens of MB per chunk; the cap mainly
+    # guards against very large n where n_choose_2 itself is huge.
+    pc = dbscan_pair_certificate(X, rho, eps, max_pairs=2_000_000,
+                                  seed=int(row.get("seed", 0)))
     S = scale_for_precision(int(row.get("precision_bits", 16)))
     P = build_projection(row.get("projection", "sparse_jl"), X, m, q, seed, S)
     Z = X @ P["real"].T
@@ -84,7 +90,9 @@ def run_dbscan_cert(row, prereg):
     out.update({"cert_type": "dbscan_band", "eps": eps, "rho": rho,
                 "coverage": cov.coverage, "violation_rate": cov.violation_rate,
                 "uncertified_stability": cov.uncertified_stability,
-                "n_certified": cov.n_certified, "n_total": cov.n_total})
+                "n_certified": cov.n_certified, "n_total": cov.n_total,
+                "pairs_evaluated": pc["pairs_evaluated"], "pairs_total": pc["pairs_total"],
+                "pairs_subsampled": pc["subsampled"]})
     return out
 
 

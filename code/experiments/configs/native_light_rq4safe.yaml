@@ -1,0 +1,19 @@
+# RQ4-safe subset of native_light.yaml: restricted to dbscan_margin dataset only.
+# rq4_certificates.py's dbscan certificate branch computes ALL pairs (n choose 2)
+# with a dense (n_pairs, d) float64 array. For native_light's gaussian_mixture
+# (n=2000,d=256 and n=1000,d=512) and mnist (n=2000,d=784) rows this allocates
+# 4-12+ GB and reliably OOMs an 8GB machine (confirmed: --limit 2 hit ~8GB RSS
+# and had to be killed). dbscan_margin (n=1000,d=128) keeps this under ~0.5GB.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+
+grid:
+  dataset:
+    - {loader: dbscan_margin, kwargs: {n: 1000, d: 128, rho: 1.0, eps: 0.15}}
+  projection: [identity, gaussian, rademacher, achlioptas, sparse_jl, coordinate, pca, pisot]
+  m: [16, 32, 64, 128]
+  q: [1, 2, 4]
+  k: [5, 10]
+  seed: [0]

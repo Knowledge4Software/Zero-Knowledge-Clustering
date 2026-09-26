@@ -96,6 +96,33 @@ def pca_projection(X: np.ndarray, m: int, S: int, B: Optional[int] = None) -> Di
     return {"real": real, "int": integer, "nnz": _nnz_report(real)}
 
 
+def _pisot_orbit_fractions(beta: float, n: int) -> np.ndarray:
+    """Fractional parts of the beta-multiplicative (Weyl-style) orbit
+
+        x_0 = frac(beta),   x_{k+1} = frac(beta * x_k),
+
+    for k = 0..n-1, returned as x_1..x_n (length n).
+
+    This avoids computing beta**k directly: for k on the order of a few
+    thousand, beta**k already overflows float64 (beta > 1 => beta**k grows
+    unboundedly), turning the "fractional part" computation into inf/NaN
+    garbage. The multiplicative recurrence above only ever multiplies
+    numbers in [0, 1) by beta and re-reduces mod 1, so every intermediate
+    value stays bounded in [0, beta) regardless of how large n is. It is
+    still fully deterministic and reproducible from `beta` alone (no
+    randomness besides the row/column permutation applied by the caller).
+    """
+    if n <= 0:
+        return np.zeros(0, dtype=np.float64)
+    out = np.empty(n, dtype=np.float64)
+    x = beta - np.floor(beta)
+    for k in range(n):
+        x = beta * x
+        x -= np.floor(x)
+        out[k] = x
+    return out
+
+
 def pisot_beta_projection(m: int, d: int, seed: int, S: int, B: Optional[int] = None,
                             beta: Optional[float] = None) -> Dict:
     """Deterministic Pisot-number-based projection.
@@ -108,21 +135,20 @@ def pisot_beta_projection(m: int, d: int, seed: int, S: int, B: Optional[int] = 
     says "inspect implementation" / "measure from reproduced artifact").
     This function is therefore OUR OWN reproduction/assumption of a
     plausible Pisot-beta construction, not a verified match to the cited
-    paper: coefficients are generated from powers of a Pisot number beta
-    (default: the plastic number, the smallest Pisot number, root of
-    x^3 = x + 1) reduced into a bounded coefficient range, i.e. row r,
-    column t entry is derived from the fractional part of beta^(r*d+t) via a
-    deterministic seed-independent expansion (seed only selects a
-    pseudo-random row/column permutation, keeping the coefficient sequence
-    itself public/reproducible as the manuscript requires).
+    paper: coefficients are generated from a Pisot number beta (default: the
+    plastic number, the smallest Pisot number, root of x^3 = x + 1) via the
+    deterministic multiplicative orbit x_{k+1} = frac(beta * x_k), i.e. row
+    r, column t entry is derived from the fractional part of the orbit at
+    index r*d+t (computed via the bounded recurrence in
+    `_pisot_orbit_fractions`, NOT via beta**(r*d+t), which overflows for
+    even moderate m*d). Seed only selects a pseudo-random row/column
+    permutation, keeping the coefficient sequence itself public/reproducible
+    as the manuscript requires.
     """
     if beta is None:
         # plastic number (minimal Pisot number), root of x^3 - x - 1 = 0
         beta = 1.3247179572447460259609088544780973407344040569017333645340154
-    idx = np.arange(m * d, dtype=np.float64).reshape(m, d)
-    # deterministic orbit: fractional parts of beta^(k+1) for k = row-major index
-    powers = beta ** (idx + 1.0)
-    frac = powers - np.floor(powers)
+    frac = _pisot_orbit_fractions(beta, m * d).reshape(m, d)
     real = 2.0 * frac - 1.0  # map [0,1) -> [-1,1)
     rng = np.random.default_rng(seed)
     perm = rng.permutation(d)
