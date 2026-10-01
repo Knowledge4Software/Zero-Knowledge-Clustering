@@ -18,22 +18,37 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
 import pandas as pd
 
-from experiments.common import RESULTS_DIR
+from experiments.common import RESULTS_DIR, source_fingerprint
+from experiments.statistics import mean_std_ci95
 
 TABLES_DIR = RESULTS_DIR / "tables"
 
 LABELS = ["fidelity-a", "zkperf-a", "ordering-a", "cert-a", "sensitivity-a",
-          "ablation-a", "datasets-a", "circuit-cost"]
+          "precision-a", "ablation-a", "datasets-a", "circuit-cost"]
 
 
 def _read(name: str) -> pd.DataFrame:
     path = RESULTS_DIR / f"{name}.parquet"
     if not path.exists():
         return pd.DataFrame()
-    try:
-        return pd.read_parquet(path)
-    except Exception:
-        return pd.DataFrame()
+    df = pd.read_parquet(path)
+    if "_source_sha256" not in df or not df["_source_sha256"].eq(source_fingerprint()).all():
+        raise ValueError(f"{path}: stale or unversioned results; rerun before generating tables")
+    return df
+
+
+def configuration_groups(df, extra=()):
+    """Aggregate repetitions/seeds, never mix different experimental shapes."""
+    import json
+    df = df.copy()
+    if "dataset" in df:
+        df["dataset_config"] = df["dataset"].map(lambda v: json.dumps(v, sort_keys=True, default=str))
+    keys = [c for c in dict.fromkeys((*extra, "dataset_config", "n", "d", "k", "m", "q",
+                                   "precision_bits", "B", "backend", "no_range_batch")) if c in df]
+    for _, group in df.groupby(keys, dropna=False):
+        first = group.iloc[0]
+        label = "; ".join(f"{key}={first[key]}" for key in keys)
+        yield label, group
 
 
 def _tex_escape(s: str) -> str:
@@ -51,28 +66,38 @@ def _empty_note(label: str) -> str:
     return f"% table {label}: no data available (run experiments/rq*.py first)\n"
 
 
+def _mean_ci_text(values, digits=3):
+    stats = mean_std_ci95(values)
+    if not np.isfinite(stats["mean"]):
+        return "--"
+    if not np.isfinite(stats["ci95_low"]):
+        return f"{stats['mean']:.{digits}f}"
+    return f"{stats['mean']:.{digits}f} [{stats['ci95_low']:.{digits}f}, {stats['ci95_high']:.{digits}f}]"
+
+
 def table_fidelity_a():
     df = _read("rq1_fidelity")
     lines = [
         "\\begin{tabular}{lcccccc}",
         "\\toprule",
-        "Dataset & Projection $(m,q)$ & $r_\\Phi$ & ARI vs. full & $Q_{0.95}(|\\delta|)$ & "
-        "$\\Pr(|\\delta|>\\epsilon)$ & certified coverage \\\\",
+        "Dataset & Projection $(m,q)$ & $r_\\Phi$ mean [95\\% CI] & ARI mean [95\\% CI] & "
+        "$Q_{0.95}(|\\delta|)$ mean [95\\% CI] & "
+        "$\\Pr(|\\delta|>\\epsilon)$ & fidelity pass rate \\\\",
         "\\midrule",
     ]
     if len(df):
         ok = df[df.get("_status", "ok") == "ok"] if "_status" in df else df
-        grp_cols = [c for c in ("dataset_name", "projection", "m", "q") if c in ok.columns]
+        grp_cols = [c for c in ("dataset_name", "projection", "n", "d", "k", "m", "q", "precision_bits") if c in ok.columns]
         if grp_cols:
-            g = ok.groupby(grp_cols, dropna=False).agg(
-                r_phi=("r_phi", "median"), ari=("ari", "median"),
-                q95=("delta_q95", "median"), exceed=("delta_exceedance", "median"),
-            ).reset_index()
-            for _, row in g.iterrows():
-                name = _tex_escape(row.get("dataset_name", ""))
+            for keys, group in ok.groupby(grp_cols, dropna=False):
+                keys = keys if isinstance(keys, tuple) else (keys,)
+                row = dict(zip(grp_cols, keys))
+                name = _tex_escape(f"{row.get('dataset_name', '')}/{row.get('projection', '')} "
+                                   f"(n={row.get('n')},d={row.get('d')},k={row.get('k')})")
                 mq = f"({int(row.get('m', 0))},{int(row.get('q', 0))})" if "m" in row else ""
-                lines.append(f"{name} & {mq} & {row['r_phi']:.3f} & {row['ari']:.3f} & "
-                              f"{row['q95']:.4f} & {row['exceed']:.3f} & -- \\\\")
+                lines.append(f"{name} & {mq} & {_mean_ci_text(group['r_phi'])} & "
+                              f"{_mean_ci_text(group['ari'])} & {_mean_ci_text(group['delta_q95'], 4)} & "
+                              f"{group['delta_exceedance'].mean():.3f} & {group['fidelity_ok'].mean():.3f} \\\\")
     else:
         lines.append(f"\\multicolumn{{7}}{{c}}{{{_empty_note('fidelity-a').strip('% ')}}} \\\\")
     lines += ["\\bottomrule", "\\end{tabular}"]
@@ -90,7 +115,7 @@ def table_zkperf_a():
     ]
     if len(df) and "variant" in df.columns:
         ok = df[df.get("_status") == "ok"] if "_status" in df else df
-        for variant, g in ok.groupby("variant"):
+        for variant, g in configuration_groups(ok, ("variant",)):
             constraints = g["num_constraints"].median() if "num_constraints" in g else float("nan")
             wc = g["witness_seconds_mean"].median() + g["compile_seconds_mean"].median() \
                 if {"witness_seconds_mean", "compile_seconds_mean"} <= set(g.columns) else float("nan")
@@ -103,7 +128,9 @@ def table_zkperf_a():
                           f"{ram:.3f} & {verify:.1f} & {proof_kib:.1f} & {ari if not pd.isna(ari) else '--'} \\\\")
     else:
         lines.append(f"\\multicolumn{{8}}{{c}}{{{_empty_note('zkperf-a').strip('% ')}}} \\\\")
-    lines += ["\\bottomrule", "\\end{tabular}"]
+    lines += ["\\midrule",
+              "\\multicolumn{8}{l}{\\footnotesize Input commitment/authentication scales with original $d$; projected distance operations scale with reduced $m$.} \\\\",
+              "\\bottomrule", "\\end{tabular}"]
     _write("zkperf-a", "\n".join(lines) + "\n")
 
 
@@ -119,28 +146,34 @@ def table_ordering_a():
     if len(df):
         ok = df[df.get("_status") == "ok"] if "_status" in df else df
         stage_map = {
-            "data/parameter commitment": "time_commit_X",
+            "data commitment": "time_commit_X",
+            "parameter commitment": "time_record_theta",
             "challenge acquisition": "time_issue_nonce",
-            "sparse-matrix expansion": "time_expand_sparse_and_CA",
-            "matrix authentication": "time_expand_sparse_and_CA",
+            "sparse-matrix expansion and authentication": "time_expand_sparse_and_CA",
             "project and cluster": "time_project_and_cluster",
         }
         byte_map = {
-            "data/parameter commitment": "bytes_commit_X",
+            "data commitment": "bytes_commit_X",
+            "parameter commitment": "bytes_record_theta",
             "challenge acquisition": "bytes_issue_nonce",
-            "sparse-matrix expansion": "bytes_expand_sparse_and_CA",
+            "sparse-matrix expansion and authentication": "bytes_expand_sparse_and_CA",
         }
-        for label, col in stage_map.items():
-            if col in ok.columns:
-                lat = ok[col].median() * 1000
-                byte_col = byte_map.get(label)
-                nbytes = ok[byte_col].median() if byte_col and byte_col in ok.columns else 0
-                lines.append(f"{label} & {lat:.3f} & -- & {nbytes:.0f} & 1 & yes \\\\")
+        sources = ok.groupby("seed_source", dropna=False) if "seed_source" in ok else [("unknown", ok)]
+        for source, group in sources:
+            source_label = "beacon (Simulated local trace)" if source == "beacon" else str(source).replace("_", "-")
+            for label, col in stage_map.items():
+                if col in group.columns:
+                    lat = group[col].median() * 1000
+                    byte_col = byte_map.get(label)
+                    nbytes = group[byte_col].median() if byte_col and byte_col in group.columns else 0
+                    lines.append(f"{_tex_escape(source_label)} / {label} & {lat:.3f} & -- & {nbytes:.0f} & 1 & yes \\\\")
         n_retries = ok["attempts"].sub(1).sum() if "attempts" in ok.columns else 0
         lines.append(f"rejected/retried commitments & -- & 0 & -- & {n_retries:.0f} & reported separately \\\\")
     else:
         lines.append(f"\\multicolumn{{5}}{{c}}{{{_empty_note('ordering-a').strip('% ')}}} \\\\")
-    lines += ["\\bottomrule", "\\end{tabular}"]
+    lines += ["\\midrule",
+              "\\multicolumn{6}{l}{\\footnotesize Beacon source: Simulated local trace; no external public beacon latency is claimed.} \\\\",
+              "\\bottomrule", "\\end{tabular}"]
     _write("ordering-a", "\n".join(lines) + "\n")
 
 
@@ -154,7 +187,7 @@ def table_cert_a():
     ]
     if len(df):
         ok = df[df.get("_status") == "ok"] if "_status" in df else df
-        for cert_type, g in ok.groupby(ok.get("cert_type", pd.Series(dtype=str))):
+        for cert_type, g in configuration_groups(ok, ("cert_type", "projection", "rho", "gamma")):
             n_cert = int(g["n_certified"].sum()) if "n_certified" in g else 0
             n_total = int(g["n_total"].sum()) if "n_total" in g else 0
             viol = g["violation_rate"].median() if "violation_rate" in g else float("nan")
@@ -171,20 +204,59 @@ def table_cert_a():
 def table_sensitivity_a():
     df = _read("rq5_scaling")
     lines = [
-        "\\begin{tabular}{lccc}",
+        "\\begin{tabular}{llcccc}",
         "\\toprule",
-        "Factor & n rows & median total time (s) & median constraints \\\\",
+        "Factor & value & repetitions & median time (s) & time IQR (s) & median ARI \\\\",
         "\\midrule",
     ]
     if len(df):
         ok = df[df.get("_status") == "ok"] if "_status" in df else df
-        lines.append(f"n,d,k,m,q sweep & {len(ok)} & "
-                      f"{ok['t_total_s'].median() if 't_total_s' in ok else float('nan'):.4f} & "
-                      f"{ok['symbolic_total_constraints'].median() if 'symbolic_total_constraints' in ok else float('nan'):.0f} \\\\")
+        if {"sweep_factor", "sweep_value"} <= set(ok.columns):
+            for (factor, value), group in ok.groupby(["sweep_factor", "sweep_value"], sort=False):
+                q1, q3 = group["t_total_s"].quantile([0.25, 0.75])
+                lines.append(f"{_tex_escape(factor)} & {value:g} & {len(group)} & "
+                             f"{group['t_total_s'].median():.4f} & {q3 - q1:.4f} & "
+                             f"{group['ari'].median():.3f} \\\\")
+        else:
+            lines.append(f"legacy mixed sweep & -- & {len(ok)} & "
+                         f"{ok['t_total_s'].median() if 't_total_s' in ok else float('nan'):.4f} & -- & "
+                         f"{ok['ari'].median() if 'ari' in ok else float('nan'):.3f} \\\\")
     else:
-        lines.append(f"\\multicolumn{{3}}{{c}}{{{_empty_note('sensitivity-a').strip('% ')}}} \\\\")
+        lines.append(f"\\multicolumn{{6}}{{c}}{{{_empty_note('sensitivity-a').strip('% ')}}} \\\\")
     lines += ["\\bottomrule", "\\end{tabular}"]
     _write("sensitivity-a", "\n".join(lines) + "\n")
+
+
+def table_precision_a():
+    df = _read("rq5_precision")
+    lines = [
+        "\\begin{tabular}{lccccccc}",
+        "\\toprule",
+        "Dataset & precision bits & SparseJL $q$ & seeds & ARI mean [95\\% CI] & "
+        "$Q_{0.95}(|\\delta|)$ mean [95\\% CI] & $r_\\Phi$ mean [95\\% CI] & "
+        "symbolic constraint units \\\\",
+        "\\midrule",
+    ]
+    if len(df):
+        ok = df[df["_status"].eq("ok")]
+        for keys, group in ok.groupby(["dataset_name", "d", "m", "q", "precision_bits"], dropna=False):
+            dataset, d, m, q, bits = keys
+            estimates = group["estimated_constraints"].unique()
+            if len(estimates) != 1:
+                raise ValueError("precision sweep has inconsistent constraint estimates")
+            lines.append(
+                f"{_tex_escape(dataset)} ($d={int(d)},m={int(m)}$) & {int(bits)} & {int(q)} & "
+                f"{group['seed'].nunique()} & {_mean_ci_text(group['ari'])} & "
+                f"{_mean_ci_text(group['delta_q95'])} & {_mean_ci_text(group['r_phi'])} & "
+                f"{int(estimates[0])} \\\\")
+    else:
+        lines.append("\\multicolumn{8}{c}{No precision sweep results available.} \\\\")
+    lines += [
+        "\\midrule",
+        "\\multicolumn{8}{l}{\\footnotesize Constraint counts are symbolic unit estimates, not measured gnark counts. At fixed $B=4096$, precision bits do not change circuit range constraints.} \\\\",
+        "\\bottomrule", "\\end{tabular}",
+    ]
+    _write("precision-a", "\n".join(lines) + "\n")
 
 
 def table_ablation_a():
@@ -196,15 +268,24 @@ def table_ablation_a():
         "\\midrule",
     ]
     if len(df):
-        for variant, g in df.groupby("variant"):
+        df = df[df["_status"].isin(["ok", "native_only"])]
+        for variant, g in configuration_groups(df, ("variant",)):
             prove = g["prove_seconds"].median() if "prove_seconds" in g and g["prove_seconds"].notna().any() else float("nan")
-            constraints = g["symbolic_total_constraints"].median() if "symbolic_total_constraints" in g else float("nan")
+            constraints = g["num_constraints"].median() if "num_constraints" in g and g["num_constraints"].notna().any() else float("nan")
+            ram = g["peak_rss_bytes"].median() / (1024 ** 3) if "peak_rss_bytes" in g and g["peak_rss_bytes"].notna().any() else float("nan")
             status = g["_status"].mode().iat[0] if "_status" in g and len(g) else "--"
-            lines.append(f"{_tex_escape(variant)} & {prove if not pd.isna(prove) else float('nan'):.4f} & "
-                          f"-- & {constraints:.0f} & {_tex_escape(status)} \\\\")
+            display_variant = ("incircuit-gen (Evaluated as native-only baseline)"
+                               if str(g["variant"].iloc[0]) == "incircuit-gen" else variant)
+            prove_text = f"{prove:.4f}" if np.isfinite(prove) else "--"
+            ram_text = f"{ram:.3f}" if np.isfinite(ram) else "--"
+            constraint_text = f"{constraints:.0f}" if np.isfinite(constraints) else "--"
+            lines.append(f"{_tex_escape(display_variant)} & {prove_text} & "
+                          f"{ram_text} & {constraint_text} & {_tex_escape(status)} \\\\")
     else:
         lines.append(f"\\multicolumn{{4}}{{c}}{{{_empty_note('ablation-a').strip('% ')}}} \\\\")
-    lines += ["\\bottomrule", "\\end{tabular}"]
+    lines += ["\\midrule",
+              "\\multicolumn{5}{l}{\\footnotesize incircuit-gen is not implemented in the circuit and is evaluated as a native-only baseline.} \\\\",
+              "\\bottomrule", "\\end{tabular}"]
     _write("ablation-a", "\n".join(lines) + "\n")
 
 
@@ -250,7 +331,8 @@ def table_circuit_cost():
 
 DISPATCH = {
     "fidelity-a": table_fidelity_a, "zkperf-a": table_zkperf_a, "ordering-a": table_ordering_a,
-    "cert-a": table_cert_a, "sensitivity-a": table_sensitivity_a, "ablation-a": table_ablation_a,
+    "cert-a": table_cert_a, "sensitivity-a": table_sensitivity_a,
+    "precision-a": table_precision_a, "ablation-a": table_ablation_a,
     "datasets-a": table_datasets_a, "circuit-cost": table_circuit_cost,
 }
 

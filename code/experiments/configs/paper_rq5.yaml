@@ -1,0 +1,58 @@
+# Paper RQ5 one-factor-at-a-time native scaling grid. Each block fixes every
+# other factor at n=1000,d=256,k=5,m=32,q=2 and uses ten paired seeds.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+  projection: sparse_jl
+
+blocks:
+  # n sweep
+  - fixed: {sweep_factor: n, sweep_value: 250, dataset: {loader: gaussian_mixture, kwargs: {n: 250, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: n, sweep_value: 500, dataset: {loader: gaussian_mixture, kwargs: {n: 500, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: n, sweep_value: 1000, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: n, sweep_value: 2000, dataset: {loader: gaussian_mixture, kwargs: {n: 2000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+
+  # d sweep
+  - fixed: {sweep_factor: d, sweep_value: 64, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 64, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: d, sweep_value: 128, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 128, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: d, sweep_value: 256, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: d, sweep_value: 512, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 512, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+
+  # k sweep
+  - fixed: {sweep_factor: k, sweep_value: 2, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 2, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 2, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: k, sweep_value: 5, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: k, sweep_value: 10, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 10, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 10, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: k, sweep_value: 20, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 20, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 20, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+
+  # m sweep
+  - fixed: {sweep_factor: m, sweep_value: 16, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 16, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: m, sweep_value: 32, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: m, sweep_value: 64, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 64, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: m, sweep_value: 128, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 128, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+
+  # q sweep
+  - fixed: {sweep_factor: q, sweep_value: 1, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 1}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: q, sweep_value: 2, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 2}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: q, sweep_value: 4, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 4}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  - fixed: {sweep_factor: q, sweep_value: 8, dataset: {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}, k: 5, m: 32, q: 8}
+    grid: {seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}

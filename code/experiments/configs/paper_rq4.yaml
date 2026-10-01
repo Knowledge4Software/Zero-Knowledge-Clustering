@@ -1,0 +1,14 @@
+# Paper RQ4 certificate grid on the controlled ambiguity-band generator.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+  projection: sparse_jl
+  dataset: {loader: dbscan_margin, kwargs: {n: 1000, d: 128, rho: 1.0, eps: 0.15, frac_near_band: 0.5, seed: 12345}}
+  rho: 1.0
+  k: 5
+
+grid:
+  m: [16, 32, 64, 128]
+  q: [1, 2, 4]
+  seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

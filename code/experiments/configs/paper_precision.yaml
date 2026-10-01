@@ -1,0 +1,17 @@
+# One-factor precision sweep: q is fixed SparseJL column sparsity.
+# precision_bits alone varies. Ten paired seeds per dataset/configuration.
+fixed:
+  B: 4096
+  backend: groth16
+  projection: sparse_jl
+  m: 32
+  q: 2
+  k: 5
+  normalization_reference_bits: 20
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 1000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}
+    - {loader: dbscan_margin, kwargs: {n: 1000, d: 128, rho: 1.0, eps: 0.15, seed: 12345}}
+    - {loader: mnist, kwargs: {n_max: 1000}}
+  precision_bits: [8, 12, 16, 20]
+  seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

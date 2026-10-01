@@ -1,0 +1,16 @@
+# Paper RQ3 grinding sensitivity. Use one fixed dataset so changes in m and q
+# are not confounded with a different geometry. Each row runs independent
+# Monte Carlo projection trials in rq3_grinding.py.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+  projection: sparse_jl
+  k: 5
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 500, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}
+  m: [16, 32, 64]
+  q: [1, 2, 4]
+  seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

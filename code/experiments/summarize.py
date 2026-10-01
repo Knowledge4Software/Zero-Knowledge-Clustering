@@ -16,16 +16,14 @@ import numpy as np
 import pandas as pd
 
 from experiments.common import RESULTS_DIR, capture_env
+from experiments.make_tables import _read
 
 
 def _safe_read(name: str):
     path = RESULTS_DIR / f"{name}.parquet"
     if not path.exists():
         return None
-    try:
-        return pd.read_parquet(path)
-    except Exception:
-        return None
+    return _read(name)
 
 
 def main():

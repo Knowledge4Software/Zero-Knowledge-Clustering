@@ -12,7 +12,7 @@ grid:
     - {loader: gaussian_mixture, kwargs: {n: 12, d: 8, k: 2, gamma: 3.0, imbalance: 1.0}}
   variant: [sparse]
   projection: [sparse_jl]
-  m: [8]
+  m: [4]
   q: [1]
   k: [2]
   seed: [0]

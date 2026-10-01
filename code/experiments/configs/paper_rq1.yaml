@@ -1,0 +1,22 @@
+# Paper RQ1 fidelity grid. Ten seeds implement the preregistered native
+# repetitions. rq1_fidelity canonicalizes inactive q/identity-m axes.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 2000, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}
+    - {loader: gaussian_mixture, kwargs: {n: 2000, d: 512, k: 8, gamma: 2.0, imbalance: 2.0, seed: 12345}}
+    - {loader: dbscan_margin, kwargs: {n: 1000, d: 128, rho: 1.0, eps: 0.15, seed: 12345}}
+    - {loader: mnist, kwargs: {n_max: 5000}}
+    - {loader: fashion_mnist, kwargs: {n_max: 5000}}
+    - {loader: gisette, kwargs: {n_max: 3000}}
+    - {loader: arcene, kwargs: {n_max: 200}}
+    - {loader: 20ng_tfidf, kwargs: {n_max: 3000, max_features: 2000}}
+  projection: [identity, gaussian, rademacher, achlioptas, sparse_jl, coordinate, pca, pisot]
+  m: [16, 32, 64, 128, 256]
+  q: [1, 2, 4]
+  k: [5, 10]
+  seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

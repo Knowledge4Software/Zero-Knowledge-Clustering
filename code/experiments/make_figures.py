@@ -21,20 +21,11 @@ import numpy as np
 import pandas as pd
 
 from experiments.common import RESULTS_DIR
+from experiments.make_tables import _read
 
 FIG_DIR = RESULTS_DIR / "figures"
 LABELS = ["fidelity-vs-m", "pareto", "cost-breakdown", "phase-diagram",
-          "scaling-dashboard", "dbscan-band", "margin-geometry"]
-
-
-def _read(name: str) -> pd.DataFrame:
-    path = RESULTS_DIR / f"{name}.parquet"
-    if not path.exists():
-        return pd.DataFrame()
-    try:
-        return pd.read_parquet(path)
-    except Exception:
-        return pd.DataFrame()
+          "scaling-dashboard", "precision-sensitivity", "dbscan-band", "margin-geometry"]
 
 
 def _save(fig, label: str):
@@ -128,24 +119,54 @@ def fig_scaling_dashboard():
         return _save(_empty_fig("scaling-dashboard"), "scaling-dashboard")
     ok = df[df.get("_status") == "ok"] if "_status" in df else df
     fig, axes = plt.subplots(2, 2, figsize=(8, 6))
-    if "n" in ok.columns and "t_total_s" in ok.columns:
-        g = ok.groupby("n")["t_total_s"].median().sort_index()
+    n_rows = ok[ok["sweep_factor"] == "n"] if "sweep_factor" in ok else ok
+    d_rows = ok[ok["sweep_factor"] == "d"] if "sweep_factor" in ok else ok
+    q_rows = ok[ok["sweep_factor"] == "q"] if "sweep_factor" in ok else ok
+    m_rows = ok[ok["sweep_factor"] == "m"] if "sweep_factor" in ok else ok
+    if "n" in n_rows.columns and "t_total_s" in n_rows.columns:
+        g = n_rows.groupby("n")["t_total_s"].median().sort_index()
         axes[0, 0].loglog(g.index, g.values, marker="o")
-    axes[0, 0].set_title("proving time vs n")
-    if "d" in ok.columns:
-        g = ok.groupby("d")["t_total_s"].median().sort_index()
+    axes[0, 0].set_title("native component time vs n")
+    if "d" in d_rows.columns:
+        g = d_rows.groupby("d")["t_total_s"].median().sort_index()
         axes[0, 1].loglog(g.index, g.values, marker="o")
-    axes[0, 1].set_title("proving time vs d")
-    if "q" in ok.columns and "symbolic_total_constraints" in ok.columns:
-        g = ok.groupby("q")["symbolic_total_constraints"].median().sort_index()
+    axes[0, 1].set_title("native component time vs d")
+    if "q" in q_rows.columns and "t_total_s" in q_rows.columns:
+        g = q_rows.groupby("q")["t_total_s"].median().sort_index()
         axes[1, 0].plot(g.index, g.values, marker="o")
-    axes[1, 0].set_title("constraints vs q")
-    if "m" in ok.columns:
-        g = ok.groupby("m")["t_total_s"].median().sort_index()
+    axes[1, 0].set_title("native component time vs q")
+    if "m" in m_rows.columns:
+        g = m_rows.groupby("m")["t_total_s"].median().sort_index()
         axes[1, 1].plot(g.index, g.values, marker="o")
     axes[1, 1].set_title("time vs m")
     fig.tight_layout()
     _save(fig, "scaling-dashboard")
+
+
+def fig_precision_sensitivity():
+    df = _read("rq5_precision")
+    if df.empty:
+        return _save(_empty_fig("precision-sensitivity"), "precision-sensitivity")
+    ok = df[df["_status"].eq("ok")]
+    fig, axes = plt.subplots(1, 3, figsize=(12, 3.7))
+    for dataset, g in ok.groupby("dataset_name"):
+        agg = g.groupby("precision_bits").agg(
+            ari=("ari", "mean"),
+            distortion=("delta_q95", "mean"),
+            error=("mean_abs_quantization_error", "mean"),
+        ).sort_index()
+        for ax, col in zip(axes, ["ari", "distortion", "error"]):
+            ax.plot(agg.index, agg[col], marker="o", label=dataset)
+    for ax in axes:
+        ax.set_xticks([8, 12, 16, 20])
+        ax.set_xlabel("Quantization precision (bits)")
+    axes[0].set_ylabel("ARI vs full")
+    axes[1].set_ylabel("Q95 absolute distortion")
+    axes[2].set_ylabel("Mean absolute quantization error")
+    axes[0].legend(fontsize=7)
+    fig.suptitle("Fixed-input-scale precision sweep; circuit range bound B=4096")
+    fig.tight_layout()
+    _save(fig, "precision-sensitivity")
 
 
 def fig_dbscan_band():
@@ -181,6 +202,7 @@ def fig_margin_geometry():
 DISPATCH = {
     "fidelity-vs-m": fig_fidelity_vs_m, "pareto": fig_pareto, "cost-breakdown": fig_cost_breakdown,
     "phase-diagram": fig_phase_diagram, "scaling-dashboard": fig_scaling_dashboard,
+    "precision-sensitivity": fig_precision_sensitivity,
     "dbscan-band": fig_dbscan_band, "margin-geometry": fig_margin_geometry,
 }
 

@@ -1,0 +1,18 @@
+# Paper RQ3 protocol-ordering grid. These are controlled representative
+# shapes; the beacon source remains explicitly simulated.
+fixed:
+  precision_bits: 16
+  B: 4096
+  backend: groth16
+  projection: sparse_jl
+  m: 32
+  q: 2
+  k: 5
+
+grid:
+  dataset:
+    - {loader: gaussian_mixture, kwargs: {n: 500, d: 256, k: 5, gamma: 3.0, imbalance: 1.0, seed: 12345}}
+    - {loader: gaussian_mixture, kwargs: {n: 1000, d: 1024, k: 10, gamma: 2.5, imbalance: 1.0, seed: 12345}}
+    - {loader: mnist, kwargs: {n_max: 500}}
+  seed: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
