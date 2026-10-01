@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
+from .certificates import _pair_ranks_to_indices, pair_squared_distances
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
 
@@ -18,18 +19,14 @@ def sample_pair_set(n: int, n_pairs: int, seed: int, exclude_identical: bool = T
     """Preregistered pair-set sampler: uniformly samples n_pairs distinct
     unordered index pairs (i, j), i != j by default."""
     rng = np.random.default_rng(seed)
-    pairs = set()
-    max_possible = n * (n - 1) // 2
-    n_pairs = min(n_pairs, max_possible) if exclude_identical else min(n_pairs, n * n)
-    attempts = 0
-    while len(pairs) < n_pairs and attempts < n_pairs * 50 + 1000:
-        i, j = rng.integers(0, n, size=2)
-        attempts += 1
-        if exclude_identical and i == j:
-            continue
-        key = (min(int(i), int(j)), max(int(i), int(j)))
-        pairs.add(key)
-    return list(pairs)
+    if n < 0 or n_pairs < 0:
+        raise ValueError("pair counts and n must be nonnegative")
+    total = n * (n - 1) // 2 if exclude_identical else n * (n + 1) // 2
+    ranks = np.sort(rng.choice(total, size=min(n_pairs, total), replace=False))
+    i, j = _pair_ranks_to_indices(n if exclude_identical else n + 1, ranks)
+    if not exclude_identical:
+        j = j - 1
+    return list(zip(i.tolist(), j.tolist()))
 
 
 def delta_uv(U: np.ndarray, V: np.ndarray, pairs: Sequence[Tuple[int, int]],
@@ -41,10 +38,10 @@ def delta_uv(U: np.ndarray, V: np.ndarray, pairs: Sequence[Tuple[int, int]],
     """
     U = np.asarray(U, dtype=np.float64)
     V = np.asarray(V, dtype=np.float64)
-    idx_i = np.array([p[0] for p in pairs])
-    idx_j = np.array([p[1] for p in pairs])
-    orig_sq = np.sum((U[idx_i] - U[idx_j]) ** 2, axis=1)
-    proj_sq = np.sum((V[idx_i] - V[idx_j]) ** 2, axis=1)
+    idx_i = np.array([p[0] for p in pairs], dtype=np.int64)
+    idx_j = np.array([p[1] for p in pairs], dtype=np.int64)
+    orig_sq = pair_squared_distances(U, idx_i, idx_j)
+    proj_sq = pair_squared_distances(V, idx_i, idx_j)
     with np.errstate(divide="ignore", invalid="ignore"):
         delta = np.where(orig_sq > 0, proj_sq / np.maximum(orig_sq, 1e-300) - 1.0, np.nan)
     return delta

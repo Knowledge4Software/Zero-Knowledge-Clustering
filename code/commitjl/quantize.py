@@ -14,7 +14,7 @@ import numpy as np
 
 from .hashing import BN254_FR
 
-SUPPORTED_PRECISION_BITS = (8, 12, 16, 24)
+SUPPORTED_PRECISION_BITS = (8, 12, 16, 20, 24)
 
 
 @dataclass(frozen=True)
@@ -39,10 +39,11 @@ class QuantizationParams:
         return max(2 * self.d * self.B, 2 * self.D_max, self.Psi_max)
 
     def check_no_wraparound(self) -> None:
-        assert self.p > 2 * self.M, (
-            f"no-wraparound violated: field modulus p={self.p} must exceed 2*M={2*self.M} "
-            f"(M={self.M}, D_max={self.D_max}, Psi_max={self.Psi_max})"
-        )
+        if self.p <= 2 * self.M:
+            raise AssertionError(
+                f"no-wraparound violated: field modulus p={self.p} must exceed 2*M={2*self.M} "
+                f"(M={self.M}, D_max={self.D_max}, Psi_max={self.Psi_max})"
+            )
 
 
 def scale_for_precision(precision_bits: int) -> int:
@@ -59,17 +60,22 @@ def make_quant_params(precision_bits: int, B: int, n: int, d: int, m: int, p: in
 
 
 def quantize(x: np.ndarray, S: int, B: int) -> np.ndarray:
-    """Round real x by scale S to integers, then clip/assert within [-B, B].
+    """Round real x by scale S to integers and reject values outside [-B, B].
 
     Raises OverflowError if any scaled+rounded coordinate exceeds the bound B
     (this is the host-side analogue of the circuit's range check failing).
     """
     x = np.asarray(x, dtype=np.float64)
-    scaled = np.round(x * S).astype(np.int64)
-    if np.any(np.abs(scaled) > B):
-        bad = np.abs(scaled).max()
+    if not isinstance(S, (int, np.integer)) or S <= 0 or not 0 <= B < 2**63:
+        raise ValueError("S must be a positive integer and B must fit signed int64")
+    with np.errstate(over="ignore", invalid="ignore"):
+        rounded = np.rint(x * S)
+    if not np.all(np.isfinite(rounded)):
+        raise OverflowError("quantization requires finite, representable coordinates")
+    if np.any(np.abs(rounded) > B) or np.any(rounded >= 2**63) or np.any(rounded < -(2**63)):
+        bad = np.abs(rounded).max()
         raise OverflowError(f"quantized value {bad} exceeds bound B={B} (scale S={S})")
-    return scaled
+    return rounded.astype(np.int64)
 
 
 def dequantize(xi: np.ndarray, S: int) -> np.ndarray:
