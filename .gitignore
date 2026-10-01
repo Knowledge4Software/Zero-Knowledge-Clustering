@@ -3,9 +3,14 @@ __pycache__/
 *.py[cod]
 .venv/
 *.egg-info/
+.pytest_cache/
+.DS_Store
 
 # Dataset cache (large, re-downloadable; manifest records SHA256)
 code/.cache/
+
+# Local Overleaf paper copy (reference only; do not commit)
+Sparse_JL_for_ZK_Clustering/
 
 # LaTeX build artifacts
 *.aux
@@ -14,3 +19,15 @@ code/.cache/
 *.bbl
 *.blg
 *.synctex.gz
+
+# Locally compiled Windows proof runner
+code/zk/bin/
+code/zk/golden
+code/zk/err.log
+
+# Resumable experiment lock files
+*.parquet.lock
+
+# Preserve benchmark/audit logs while ignoring build logs.
+!code/results/**/logs/*.log
+!code/validation/**/*.log
