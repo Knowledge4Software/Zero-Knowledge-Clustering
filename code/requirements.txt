@@ -8,3 +8,4 @@ matplotlib
 psutil
 pytest
 pycryptodome
+tqdm
