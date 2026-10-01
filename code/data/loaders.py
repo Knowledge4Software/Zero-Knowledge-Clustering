@@ -14,10 +14,18 @@ import hashlib
 import json
 import os
 import time
+import tempfile
 from pathlib import Path
 from typing import Dict, Optional
 
 import numpy as np
+
+
+DBSCAN_MARGIN_BENCHMARK = {
+    "kwargs": {"n": 1000, "d": 128, "rho": 1.0, "eps": 0.15,
+               "frac_near_band": 0.5, "seed": 0},
+    "sha256": "853ac376614a4f8fcc672358f165c9e1b7e04955a3d019f56813d7949dd2cf05",
+}
 
 
 def data_home() -> Path:
@@ -28,7 +36,7 @@ def data_home() -> Path:
 
 def _sha256_array(X: np.ndarray) -> str:
     h = hashlib.sha256()
-    h.update(np.ascontiguousarray(X).tobytes())
+    h.update(memoryview(np.ascontiguousarray(X)).cast("B"))
     return h.hexdigest()
 
 
@@ -42,12 +50,22 @@ def write_manifest_entry(name: str, meta: Dict) -> None:
     path = _manifest_path()
     manifest = {}
     if path.exists():
-        try:
-            manifest = json.loads(path.read_text())
-        except Exception:
-            manifest = {}
+        manifest = json.loads(path.read_text())
     manifest[name] = {**meta, "recorded_at": time.time()}
-    path.write_text(json.dumps(manifest, indent=2, sort_keys=True))
+    # Preserve each dataset/sample separately; the summary's latest-name entry
+    # may change when another grid seed or sample size is loaded.
+    entries = path.parent / "manifest_entries"
+    entries.mkdir(exist_ok=True)
+    entry = entries / f"{name}_{meta['sha256']}.json"
+    for target, content in ((entry, meta), (path, manifest)):
+        fd, tmp = tempfile.mkstemp(dir=target.parent, suffix=".tmp")
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as stream:
+                json.dump(content, stream, indent=2, sort_keys=True)
+            os.replace(tmp, target)
+        finally:
+            if os.path.exists(tmp):
+                os.unlink(tmp)
 
 
 # --------------------------------------------------------------------------
@@ -57,10 +75,12 @@ def write_manifest_entry(name: str, meta: Dict) -> None:
 def gaussian_mixture(n: int, d: int, k: int, gamma: float = 3.0, imbalance: float = 1.0,
                       seed: int = 0) -> Dict:
     """k-component isotropic Gaussian mixture with center separation
-    controlled by `gamma` (centers placed so that pairwise center distance
-    is >= gamma * sqrt(d) * sigma, a standard "gamma-separated" construction)
+    controlled by `gamma` (mean center norm is gamma * sqrt(d) * sigma;
+    this does not guarantee a minimum pairwise separation)
     and cluster-size imbalance controlled by `imbalance` (ratio of largest
     to smallest expected cluster size; 1.0 = balanced)."""
+    if not 1 <= k <= n or d < 1 or gamma <= 0 or imbalance < 1:
+        raise ValueError("require n >= k >= 1, d >= 1, gamma > 0 and imbalance >= 1")
     rng = np.random.default_rng(seed)
     sigma = 1.0
     # place centers on a simplex-like well-separated lattice, scaled by gamma
@@ -73,6 +93,15 @@ def gaussian_mixture(n: int, d: int, k: int, gamma: float = 3.0, imbalance: floa
     weights = weights / weights.sum()
     counts = np.maximum((weights * n).astype(int), 1)
     counts[-1] += n - counts.sum()
+    if counts[-1] < 1:
+        deficit = 1 - counts[-1]
+        counts[-1] = 1
+        for j in np.argsort(-counts):
+            take = min(deficit, counts[j] - 1)
+            counts[j] -= take
+            deficit -= take
+            if deficit == 0:
+                break
     X_parts, y_parts = [], []
     for j in range(k):
         X_parts.append(centers[j] + sigma * rng.normal(size=(counts[j], d)))
@@ -94,6 +123,8 @@ def dbscan_margin_dataset(n: int, d: int, rho: float = 1.0, eps: float = 0.1,
     placed in pairs at distance ~rho*(1 +- small offsets spanning the
     ambiguity band [rho^2/(1+eps), rho^2/(1-eps)]), the remainder scattered
     uniformly at large/small distances (unambiguous)."""
+    if n < 1 or d < 1 or rho <= 0 or not 0 <= eps < 1 or not 0 <= frac_near_band <= 1:
+        raise ValueError("invalid DBSCAN generator dimensions, radius, epsilon or band fraction")
     rng = np.random.default_rng(seed)
     n_pairs = int((n // 2) * frac_near_band)
     pts = []
@@ -114,7 +145,7 @@ def dbscan_margin_dataset(n: int, d: int, rho: float = 1.0, eps: float = 0.1,
     X = np.asarray(pts[:n], dtype=np.float64)
     meta = {"name": "dbscan_margin", "n": n, "d": d, "rho": rho, "eps": eps,
             "frac_near_band": frac_near_band, "seed": seed, "source": "synthetic",
-            "sha256": _sha256_array(X)}
+            "generator_version": "dbscan-margin-v1", "sha256": _sha256_array(X)}
     return {"X": X, "meta": meta}
 
 
@@ -150,8 +181,16 @@ def _try_uci_download(base_url: str, files, cache_subdir: str) -> Optional[Path]
     try:
         for fn in files:
             dest = outdir / fn
+            dest.parent.mkdir(parents=True, exist_ok=True)
             if not dest.exists():
-                urllib.request.urlretrieve(base_url + fn, str(dest))
+                fd, tmp = tempfile.mkstemp(dir=dest.parent, suffix=".download")
+                os.close(fd)
+                try:
+                    urllib.request.urlretrieve(base_url + fn, tmp)
+                    os.replace(tmp, dest)
+                finally:
+                    if os.path.exists(tmp):
+                        os.unlink(tmp)
         return outdir
     except Exception:
         return None
@@ -162,6 +201,8 @@ def load_gisette(n_max: Optional[int] = None, seed: int = 0) -> Dict:
     if outdir is not None:
         X = np.loadtxt(outdir / "gisette_train.data")
         y = np.loadtxt(outdir / "gisette_train.labels").astype(int)
+        if X.shape != (6000, 5000) or y.shape != (6000,):
+            raise ValueError("incomplete Gisette training cache: expected 6000 x 5000 with 6000 labels")
         return _finish("gisette", X, y, n_max, seed, source="uci")
     ds = _fetch_openml("gisette")
     X, y = ds.data.astype(np.float64), ds.target.astype(str)
@@ -175,6 +216,8 @@ def load_arcene(n_max: Optional[int] = None, seed: int = 0) -> Dict:
         try:
             X = np.loadtxt(outdir / "ARCENE" / "arcene_train.data")
             y = np.loadtxt(outdir / "ARCENE" / "arcene_train.labels").astype(int)
+            if X.shape != (100, 10000) or y.shape != (100,):
+                raise ValueError("incomplete Arcene training cache: expected 100 x 10000 with 100 labels")
             return _finish("arcene", X, y, n_max, seed, source="uci")
         except Exception:
             pass
@@ -215,6 +258,13 @@ def load_embedding_corpus(n_max: Optional[int] = None, seed: int = 0) -> Optiona
 
 def _finish(name: str, X: np.ndarray, y: Optional[np.ndarray], n_max: Optional[int], seed: int,
             source: str) -> Dict:
+    if X.ndim != 2 or min(X.shape) < 1 or not np.isfinite(X).all():
+        raise ValueError(f"{name}: expected a nonempty finite feature matrix")
+    if y is not None and y.shape != (len(X),):
+        raise ValueError(f"{name}: feature and label counts do not match")
+    if n_max is not None and n_max < 1:
+        raise ValueError("n_max must be positive")
+    source_n, source_d = X.shape
     if n_max is not None and n_max < X.shape[0]:
         rng = np.random.default_rng(seed)
         idx = rng.choice(X.shape[0], size=n_max, replace=False)
@@ -223,7 +273,9 @@ def _finish(name: str, X: np.ndarray, y: Optional[np.ndarray], n_max: Optional[i
             y = y[idx]
     meta = {"name": name, "n": int(X.shape[0]), "d": int(X.shape[1]),
             "k": int(len(np.unique(y))) if y is not None else None,
-            "source": source, "seed": seed, "sha256": _sha256_array(X)}
+            "source": source, "seed": seed, "sha256": _sha256_array(X),
+            "source_n": source_n, "source_d": source_d,
+            "labels_sha256": _sha256_array(y) if y is not None else None}
     write_manifest_entry(name, meta)
     return {"X": X, "y": y, "meta": meta}
 

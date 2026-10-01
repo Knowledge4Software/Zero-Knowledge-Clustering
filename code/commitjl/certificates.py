@@ -18,6 +18,7 @@ from dataclasses import dataclass
 from typing import Dict, Optional, Tuple
 
 import numpy as np
+from .clustering import _squared_distances
 
 
 def centroid_margin_certificate(X: np.ndarray, centroids: np.ndarray, eps: float) -> np.ndarray:
@@ -27,28 +28,58 @@ def centroid_margin_certificate(X: np.ndarray, centroids: np.ndarray, eps: float
     centroids."""
     X = np.asarray(X, dtype=np.float64)
     C = np.asarray(centroids, dtype=np.float64)
-    diffs = X[:, None, :] - C[None, :, :]
-    sq = np.sum(diffs ** 2, axis=2)  # (n, k)
+    if not 0 <= eps < 1:
+        raise ValueError("eps must be in [0,1)")
+    sq = _squared_distances(X, C)
     sorted_sq = np.sort(sq, axis=1)
     d1_sq = sorted_sq[:, 0]
     d2_sq = sorted_sq[:, 1] if sq.shape[1] > 1 else np.full(sq.shape[0], np.inf)
     threshold = (1 + eps) / (1 - eps)
     with np.errstate(divide="ignore", invalid="ignore"):
         ratio = np.where(d1_sq > 0, d2_sq / np.maximum(d1_sq, 1e-300), np.inf)
-    certified = ratio > threshold
+    certified = (ratio > threshold) & (d2_sq > 0)
     return certified
 
 
 def dbscan_ambiguity_band(rho: float, eps: float) -> Tuple[float, float]:
     """A_eps(rho) = [rho^2/(1+eps), rho^2/(1-eps)]."""
+    if rho <= 0 or not 0 <= eps < 1:
+        raise ValueError("rho must be positive and eps must be in [0,1)")
     lo = (rho ** 2) / (1 + eps)
     hi = (rho ** 2) / (1 - eps) if eps < 1 else float("inf")
     return lo, hi
 
 
+def _pair_ranks_to_indices(n: int, ranks: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    """Map lexicographic upper-triangle ranks to pairs without an n-by-n grid."""
+    ranks = np.asarray(ranks, dtype=np.int64)
+    starts = np.arange(n, dtype=np.int64)
+    starts = starts * (2 * n - starts - 1) // 2
+    i = np.searchsorted(starts, ranks, side="right") - 1
+    j = i + 1 + (ranks - starts[i])
+    return i, j
+
+
 def _all_pair_indices(n: int) -> Tuple[np.ndarray, np.ndarray]:
-    iu = np.triu_indices(n, k=1)
-    return iu[0], iu[1]
+    total = n * (n - 1) // 2
+    return _pair_ranks_to_indices(n, np.arange(total, dtype=np.int64))
+
+
+def pair_squared_distances(X: np.ndarray, i: np.ndarray, j: np.ndarray,
+                           chunk_size: int = 50_000) -> np.ndarray:
+    """Compute selected squared distances with O(chunk_size * d) workspace."""
+    X = np.asarray(X, dtype=np.float64)
+    i, j = np.asarray(i), np.asarray(j)
+    if chunk_size <= 0 or i.shape != j.shape:
+        raise ValueError("positive chunk_size and matching pair index shapes are required")
+    # A fixed number of pairs is not a memory bound when d can reach 10,000.
+    chunk_size = min(chunk_size, max(1, (32 * 1024**2) // (24 * max(1, X.shape[1]))))
+    out = np.empty(len(i), dtype=np.float64)
+    for start in range(0, len(i), chunk_size):
+        end = min(start + chunk_size, len(i))
+        diffs = X[i[start:end]] - X[j[start:end]]
+        out[start:end] = np.einsum("ij,ij->i", diffs, diffs)
+    return out
 
 
 def dbscan_pair_certificate(X: np.ndarray, rho: float, eps: float,
@@ -78,25 +109,22 @@ def dbscan_pair_certificate(X: np.ndarray, rho: float, eps: float,
     """
     X = np.asarray(X, dtype=np.float64)
     n = X.shape[0]
-    i_all, j_all = _all_pair_indices(n)
-    pairs_total = i_all.shape[0]
+    pairs_total = n * (n - 1) // 2
+    if max_pairs is not None and max_pairs < 0:
+        raise ValueError("max_pairs must be nonnegative")
 
     subsampled = False
     if max_pairs is not None and pairs_total > max_pairs:
         rng = np.random.default_rng(seed)
-        sel = rng.choice(pairs_total, size=max_pairs, replace=False)
-        sel.sort()
-        i_sel, j_sel = i_all[sel], j_all[sel]
+        ranks = rng.choice(pairs_total, size=max_pairs, replace=False)
+        ranks.sort()
+        i_sel, j_sel = _pair_ranks_to_indices(n, ranks)
         subsampled = True
     else:
-        i_sel, j_sel = i_all, j_all
+        i_sel, j_sel = _all_pair_indices(n)
 
     n_pairs = i_sel.shape[0]
-    sqd = np.empty(n_pairs, dtype=np.float64)
-    for start in range(0, n_pairs, chunk_size):
-        end = min(start + chunk_size, n_pairs)
-        diffs = X[i_sel[start:end]] - X[j_sel[start:end]]
-        sqd[start:end] = np.sum(diffs ** 2, axis=1)
+    sqd = pair_squared_distances(X, i_sel, j_sel, chunk_size)
 
     lo, hi = dbscan_ambiguity_band(rho, eps)
     certified = (sqd < lo) | (sqd > hi)
