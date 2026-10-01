@@ -1,0 +1,9 @@
+# Existing benchmark provenance hashes exact source bytes, including line endings.
+# Preserve those bytes across Windows and Unix checkouts.
+code/commitjl/** -text whitespace=cr-at-eol
+code/experiments/** -text whitespace=cr-at-eol
+code/data/** -text whitespace=cr-at-eol
+code/zk/**/*.go -text whitespace=cr-at-eol
+code/zk/go.mod -text whitespace=cr-at-eol
+code/zk/go.sum -text whitespace=cr-at-eol
+code/campaigns/supplements/engine.py -text whitespace=cr-at-eol
