@@ -113,7 +113,11 @@ class CommitRevealChallenge:
         self._values: Dict[str, bytes] = {}
 
     def commit(self, party: str, value: Optional[bytes] = None) -> bytes:
+        if party in self._commitments or len(self._commitments) >= 2:
+            raise ValueError("each of exactly two parties may commit only once")
         value = value if value is not None else os.urandom(32)
+        if not isinstance(value, bytes) or len(value) != 32:
+            raise ValueError("commit-reveal contributions must be exactly 32 bytes")
         self._values[party] = value
         c = sha256(value)
         self._commitments[party] = c

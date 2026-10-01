@@ -22,6 +22,7 @@ import pytest
 
 from commitjl.zk_bridge import binary_available, build_sparse_instance, run_prove
 from commitjl.clustering import nearest_centroid_assign, psi_hat as psi_hat_fn
+from commitjl.protocol import derive_seed, run_protocol
 
 pytestmark = pytest.mark.skipif(
     not binary_available(),
@@ -67,6 +68,25 @@ def test_native_psi_hat_matches_instance_psi_hat():
     res = run_prove(inst, timeout=300)
     assert res.ok
     assert res.verify_ok
+
+
+def test_protocol_transcript_proves_and_verifies_end_to_end():
+    rng = np.random.default_rng(7)
+    X = rng.integers(-8, 9, size=(4, 4), dtype=np.int64)
+    centroids = rng.integers(-8, 9, size=(2, 4), dtype=np.int64)
+    result = run_protocol(
+        X, centroids, m=2, q=1, scale=256,
+        generate_zk_proof=True, backend="groth16", proof_timeout=300,
+    )
+
+    proof = result["proof_result"]
+    public = result["transcript"]["public"]
+    assert result["seed"] == derive_seed(result["C_X"], result["C_theta"], result["rho"])
+    assert proof is not None and proof.ok and proof.verify_ok, proof.error
+    assert public["proof"]["ok"] is True
+    assert public["proof"]["verify_ok"] is True
+    assert proof.num_constraints > 0
+    assert proof.proof_bytes > 0
 
 
 @pytest.mark.parametrize("tamper", [

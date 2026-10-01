@@ -1,7 +1,8 @@
 import numpy as np
 
-from commitjl.protocol import run_protocol
+from commitjl.protocol import derive_seed, run_protocol
 from commitjl.randomness import TaskLog
+from commitjl.zk_bridge import ProveResult, field_hash_sparse_list, field_hash_theta
 
 
 def _small_instance(seed=0):
@@ -26,14 +27,13 @@ def test_protocol_deterministic_given_fixed_rho():
     sparse matrix expansion and resulting Psi_hat must be identical across
     repeated runs, since SparseMatrixGen is a deterministic function of s."""
     X, centroids = _small_instance()
-    from commitjl.commit import commit_matrix, commit_theta, commit_sparse_matrix
-    from commitjl.protocol import derive_seed
+    from commitjl.commit import commit_matrix
     from commitjl.sparse_gen import sparse_matrix_gen
     from commitjl.clustering import nearest_centroid_assign, psi_hat
 
     commitment = commit_matrix(X, salt=12345)
     C_X = commitment.root
-    C_theta = commit_theta(centroids, m=8, q=2)
+    C_theta = field_hash_theta(centroids)
     rho = b"\x00" * 32
 
     def run_once():
@@ -50,6 +50,37 @@ def test_protocol_deterministic_given_fixed_rho():
     assert np.array_equal(A1, A2)
 
 
+def test_protocol_proof_path_uses_exact_transcript(monkeypatch):
+    X, centroids = _small_instance()
+    captured = {}
+
+    def fake_run_prove(instance, timeout, build_if_missing):
+        captured["instance"] = instance
+        return ProveResult(ok=True, variant="sparse", backend=instance.backend,
+                           num_constraints=123, proof_bytes=196, verify_ok=True)
+
+    monkeypatch.setattr("commitjl.protocol.run_prove", fake_run_prove)
+    result = run_protocol(
+        X, centroids, m=8, q=2, scale=256, generate_zk_proof=True,
+        backend="groth16", build_if_missing=False,
+    )
+    instance = captured["instance"]
+    public = result["transcript"]["public"]
+
+    assert result["seed"] == derive_seed(result["C_X"], result["C_theta"], result["rho"])
+    assert result["C_theta"] == field_hash_theta(centroids)
+    assert result["C_A"] == field_hash_sparse_list(result["records"])
+    assert instance.projection_seed == result["seed"]
+    assert instance.challenge_rho == result["rho"]
+    assert instance.c_x == result["C_X"]
+    assert instance.c_theta == result["C_theta"]
+    assert instance.c_a == result["C_A"]
+    assert instance.r_x == result["r_X"]
+    assert instance.assign == result["assignments"].tolist()
+    assert public["proof"]["ok"] is True
+    assert public["proof"]["verify_ok"] is True
+
+
 def test_tasklog_enforces_budget():
     log = TaskLog(Q=1)
     log.record_commitment("prover0", C_X=1, C_theta=2)
@@ -58,3 +89,16 @@ def test_tasklog_enforces_budget():
         assert False, "expected budget exhaustion to raise"
     except PermissionError:
         pass
+
+
+def test_protocol_uses_supplied_randomness_source():
+    X, centroids = _small_instance()
+    rho = bytes(range(32))
+    calls = []
+    result = run_protocol(
+        X, centroids, m=8, q=2, scale=256,
+        challenge_fn=lambda: calls.append("challenge") or rho,
+    )
+    assert calls == ["challenge"]
+    assert result["rho"] == rho
+    assert result["seed"] == derive_seed(result["C_X"], result["C_theta"], rho)

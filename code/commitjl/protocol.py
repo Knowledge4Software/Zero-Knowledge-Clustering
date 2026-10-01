@@ -10,23 +10,25 @@ protocol":
 5. Verifier derives A <- SparseMatrixGen(s, m, d, q) and C_A <- H_A(Encode(A)).
 6. Z <- X A^T (signed integer semantics).
 7. y <- Cluster(Z, theta).
-8. pi <- Prove(...).  [P3, out of scope here: we stub a native "proof" marker]
+8. pi <- Prove(...) when proof generation is requested.
 9. Return (C_X, C_theta, C_A, rho, theta, y, pi).
 """
 from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 import numpy as np
 
-from .commit import commit_matrix, commit_theta, commit_sparse_matrix
-from .encoding import VERSION_TAG, encode_sparse_list, dense_to_sparse_list
-from .hashing import BN254_FR, mimc_hash_bytes
+from .commit import commit_matrix
+from .encoding import VERSION_TAG, encode_sparse_list
+from .hashing import BN254_FR
 from .randomness import TaskLog
 from .sparse_gen import sparse_matrix_gen
 from .clustering import nearest_centroid_assign, psi_hat
+from .zk_bridge import (build_sparse_instance_from_transcript, field_hash_sparse_list,
+                        field_hash_theta, run_prove)
 
 
 def _u32le(x: int) -> bytes:
@@ -92,7 +94,10 @@ class Verifier:
 
     def record_theta(self):
         t0 = time.perf_counter()
-        self.C_theta = commit_theta(self.centroids, self.m, self.q, self.mu)
+        # The circuit authenticates the centroid coordinates with this exact
+        # field-native MiMC sequence. m and q are fixed by the compiled circuit
+        # shape; arbitrary metadata mu is not yet part of the circuit relation.
+        self.C_theta = field_hash_theta(self.centroids)
         dt = time.perf_counter() - t0
         return self.C_theta, dt
 
@@ -103,7 +108,7 @@ class Verifier:
         t0 = time.perf_counter()
         seed = derive_seed(C_X, self.C_theta, rho)
         records, A_dense = sparse_matrix_gen(seed, self.m, d, self.q)
-        C_A = commit_sparse_matrix(A_dense)
+        C_A = field_hash_sparse_list(records)
         dt = time.perf_counter() - t0
         nbytes = len(encode_sparse_list(records))
         return seed, records, A_dense, C_A, dt, nbytes
@@ -111,8 +116,23 @@ class Verifier:
 
 def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: int,
                   task_log: Optional[TaskLog] = None, mu: bytes = b"",
-                  prover_id: str = "prover0") -> Dict[str, Any]:
-    """Runs Algorithm 1 end-to-end natively and returns a transcript dict."""
+                  prover_id: str = "prover0", generate_zk_proof: bool = False,
+                  backend: str = "groth16", proof_timeout: float = 300.0,
+                  range_bits: int = 48, build_if_missing: bool = True,
+                  challenge_fn: Optional[Callable[[], bytes]] = None) -> Dict[str, Any]:
+    """Run Algorithm 1 and optionally prove the exact resulting transcript."""
+    X = np.asarray(X)
+    centroids = np.asarray(centroids)
+    if not np.issubdtype(X.dtype, np.integer) or not np.issubdtype(centroids.dtype, np.integer):
+        raise TypeError("run_protocol requires quantized integer X and centroids")
+    if X.ndim != 2 or centroids.ndim != 2 or min(X.shape) < 1 or len(centroids) < 1 or X.shape[1] != centroids.shape[1]:
+        raise ValueError("protocol requires compatible nonempty point/centroid matrices")
+    if np.any(X < -4096) or np.any(X > 4096) or np.any(centroids < -4096) or np.any(centroids > 4096):
+        raise ValueError("protocol coordinates must lie in [-4096, 4096]")
+    if mu:
+        raise ValueError("non-empty mu is not supported by the current field-native circuit commitment")
+    if not 1 <= q <= m:
+        raise ValueError(f"sparse projection requires 1 <= q <= m, got q={q}, m={m}")
     n, d = X.shape
     if task_log is None:
         task_log = TaskLog(Q=1)
@@ -132,7 +152,11 @@ def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: in
     task_log.record_commitment(prover_id, C_X, C_theta)
 
     t0 = time.perf_counter()
-    rho, _ = verifier.issue_nonce()
+    rho = challenge_fn() if challenge_fn is not None else verifier.issue_nonce()[0]
+    if not isinstance(rho, bytes) or len(rho) != 32:
+        raise ValueError("challenge must be exactly 32 bytes")
+    if challenge_fn is not None:
+        task_log.consume_nonce(rho)
     transcript.stage_times_s["issue_nonce"] = time.perf_counter() - t0
     transcript.stage_bytes["issue_nonce"] = len(rho)
 
@@ -144,14 +168,34 @@ def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: in
     transcript.stage_times_s["project_and_cluster"] = dt_cluster
     transcript.stage_bytes["project_and_cluster"] = int(Z.nbytes)
 
-    # P3 (ZK proof generation) is out of scope; record a native-only marker.
+    proof_result = None
+    if generate_zk_proof:
+        t0 = time.perf_counter()
+        instance = build_sparse_instance_from_transcript(
+            X, centroids, seed=seed, rho=rho, records=records, A_dense=A_dense,
+            assignments=assignments, psi_hat=int(Psi_hat), c_x=C_X,
+            r_x=prover.r_X, c_theta=C_theta, c_a=C_A, q=q, m=m,
+            backend=backend, range_bits=range_bits,
+        )
+        proof_result = run_prove(
+            instance, timeout=proof_timeout, build_if_missing=build_if_missing)
+        transcript.stage_times_s["zk_prove_and_verify"] = time.perf_counter() - t0
+        transcript.stage_bytes["zk_proof"] = int(proof_result.proof_bytes)
+
     transcript.public.update({
         "version": VERSION_TAG.decode(),
         "n": n, "d": d, "m": m, "q": q, "k": int(centroids.shape[0]),
         "C_X": C_X, "C_theta": C_theta, "C_A": C_A,
-        "rho": rho.hex(),
+        "rho": rho.hex(), "seed": seed.hex(),
         "Psi_hat": int(Psi_hat),
-        "proof": "NATIVE_ONLY_NO_ZK_PROOF (P3 out of scope for this build)",
+        "proof": None if proof_result is None else {
+            "ok": proof_result.ok, "verify_ok": proof_result.verify_ok,
+            "backend": proof_result.backend,
+            "num_constraints": proof_result.num_constraints,
+            "proof_bytes": proof_result.proof_bytes,
+            "error": proof_result.error,
+            "failure_kind": proof_result.failure_kind,
+        },
     })
 
     return {
@@ -161,4 +205,6 @@ def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: in
         "A_dense": A_dense,
         "Z": Z,
         "C_X": C_X, "C_theta": C_theta, "C_A": C_A, "rho": rho,
+        "seed": seed, "records": records, "r_X": prover.r_X,
+        "proof_result": proof_result,
     }
