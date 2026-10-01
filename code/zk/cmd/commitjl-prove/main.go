@@ -1,7 +1,7 @@
 // commitjl-prove: reads an "instance" JSON (written by Python's
 // commitjl/zk_bridge.py) describing a CommitJL circuit instance, compiles
-// the circuit for the requested variant, runs setup, builds the witness,
-// proves, verifies, and emits a JSON result with timings/sizes/RSS.
+// the circuit for the requested variant, runs setup once, builds the witness,
+// proves and verifies one or more times, and emits timings/sizes/RSS as JSON.
 package main
 
 import (
@@ -11,7 +11,6 @@ import (
 	"math/big"
 	"os"
 	"runtime"
-	"syscall"
 	"time"
 
 	"github.com/consensys/gnark-crypto/ecc"
@@ -28,20 +27,20 @@ import (
 )
 
 type Instance struct {
-	N             int    `json:"n"`
-	D             int    `json:"d"`
-	M             int    `json:"m"`
-	K             int    `json:"k"`
-	Q             int    `json:"q"`
-	Variant       string `json:"variant"`
-	Backend       string `json:"backend"` // "groth16" | "plonk"
-	NoRangeBatch  bool   `json:"no_range_batch"`
-	RangeBits     int    `json:"range_bits"`
+	N            int    `json:"n"`
+	D            int    `json:"d"`
+	M            int    `json:"m"`
+	K            int    `json:"k"`
+	Q            int    `json:"q"`
+	Variant      string `json:"variant"`
+	Backend      string `json:"backend"` // "groth16" | "plonk"
+	NoRangeBatch bool   `json:"no_range_batch"`
+	RangeBits    int    `json:"range_bits"`
 
-	CX     string     `json:"c_x"`
-	CTheta string     `json:"c_theta"`
-	CA     string     `json:"c_a"`
-	PsiHat string     `json:"psi_hat"`
+	CX        string     `json:"c_x"`
+	CTheta    string     `json:"c_theta"`
+	CA        string     `json:"c_a"`
+	PsiHat    string     `json:"psi_hat"`
 	Centroids [][]string `json:"centroids"` // k x d
 
 	X  [][]string `json:"x"` // n x d
@@ -52,23 +51,29 @@ type Instance struct {
 	DenseA      [][]string `json:"dense_a"`      // m x d
 	ConstantA   [][]string `json:"constant_a"`   // m x d (for AConstant variants)
 
-	Assign []int `json:"assign"`
+	Assign      []int `json:"assign"`
+	Repetitions int   `json:"n_repetitions"`
+	Warmup      int   `json:"n_warmup"`
 }
 
 type Result struct {
-	Variant           string  `json:"variant"`
-	Backend           string  `json:"backend"`
-	NumConstraints    int     `json:"num_constraints"`
-	CompileSeconds    float64 `json:"compile_seconds"`
-	SetupSeconds      float64 `json:"setup_seconds"`
-	WitnessSeconds    float64 `json:"witness_seconds"`
-	ProveSeconds      float64 `json:"prove_seconds"`
-	VerifySeconds     float64 `json:"verify_seconds"`
-	ProofBytes        int     `json:"proof_bytes"`
-	VerifyOK          bool    `json:"verify_ok"`
-	PeakRSSBytesGoMem uint64  `json:"peak_rss_bytes_go_memstats"` // HeapSys as a Go-side proxy
-	PeakRSSBytesOS    int64   `json:"peak_rss_bytes_os_maxrss"`   // syscall.Getrusage MaxRSS
-	Error             string  `json:"error,omitempty"`
+	Variant           string    `json:"variant"`
+	Backend           string    `json:"backend"`
+	NumConstraints    int       `json:"num_constraints"`
+	CompileSeconds    float64   `json:"compile_seconds"`
+	SetupSeconds      float64   `json:"setup_seconds"`
+	WitnessSeconds    float64   `json:"witness_seconds"`
+	ProveSeconds      float64   `json:"prove_seconds"`
+	VerifySeconds     float64   `json:"verify_seconds"`
+	ProofBytes        int       `json:"proof_bytes"`
+	VerifyOK          bool      `json:"verify_ok"`
+	Repetitions       int       `json:"n_repetitions"`
+	SuccessfulProofs  int       `json:"successful_proofs"`
+	ProveSamples      []float64 `json:"prove_seconds_samples"`
+	VerifySamples     []float64 `json:"verify_seconds_samples"`
+	PeakRSSBytesGoMem uint64    `json:"peak_rss_bytes_go_memstats"` // HeapSys as a Go-side proxy
+	PeakRSSBytesOS    int64     `json:"peak_rss_bytes_os_maxrss"`   // zero where the OS has no portable MaxRSS API
+	Error             string    `json:"error,omitempty"`
 }
 
 func str2fe(s string) (*big.Int, error) {
@@ -80,6 +85,15 @@ func str2fe(s string) (*big.Int, error) {
 }
 
 func buildParams(inst *Instance) (circpkg.Params, error) {
+	if inst.N < 1 || inst.D < 1 || inst.M < 1 || inst.K < 1 {
+		return circpkg.Params{}, fmt.Errorf("dimensions must be positive")
+	}
+	if inst.Backend != "groth16" && inst.Backend != "plonk" {
+		return circpkg.Params{}, fmt.Errorf("unsupported backend %q", inst.Backend)
+	}
+	if inst.Repetitions < 0 || inst.Warmup < 0 {
+		return circpkg.Params{}, fmt.Errorf("invalid repetition or warmup count")
+	}
 	variant, err := circpkg.VariantFromString(inst.Variant)
 	if err != nil {
 		return circpkg.Params{}, err
@@ -91,7 +105,7 @@ func buildParams(inst *Instance) (circpkg.Params, error) {
 		RangeBits:    inst.RangeBits,
 	}
 	switch variant {
-	case circpkg.VariantSparse, circpkg.VariantIncircuitGen:
+	case circpkg.VariantSparse:
 		p.SparseSelf = true
 		p.AuthenticateA = true
 	case circpkg.VariantDense, circpkg.VariantCoord:
@@ -101,17 +115,12 @@ func buildParams(inst *Instance) (circpkg.Params, error) {
 		p.SparseSelf = false
 		p.AConstant = true
 		p.AuthenticateA = false
-		p.ConstantA = strMatrixToInt64(inst.ConstantA)
+		p.ConstantA, err = strMatrixToInt64(inst.ConstantA)
 	case circpkg.VariantPrepublished:
-		p.SparseSelf = inst.SparseRows != nil
+		p.SparseSelf = false
 		p.AConstant = true
 		p.AuthenticateA = false
-		if p.SparseSelf {
-			// bake sparse list into a dense constant matrix for simplicity
-			p.ConstantA = sparseToConstantDense(inst, p.M, p.D)
-		} else {
-			p.ConstantA = strMatrixToInt64(inst.ConstantA)
-		}
+		p.ConstantA, err = strMatrixToInt64(inst.ConstantA)
 	case circpkg.VariantFull:
 		p.SparseSelf = false
 		p.AConstant = true
@@ -119,6 +128,12 @@ func buildParams(inst *Instance) (circpkg.Params, error) {
 		p.ConstantA = identityMatrix(p.M, p.D)
 	default:
 		return circpkg.Params{}, fmt.Errorf("variant %s not fully implemented in this bridge", variant)
+	}
+	if err != nil {
+		return circpkg.Params{}, err
+	}
+	if err := validateWitnessShape(inst, p); err != nil {
+		return circpkg.Params{}, err
 	}
 	if p.RangeBits == 0 {
 		p.RangeBits = 48
@@ -137,16 +152,57 @@ func identityMatrix(m, d int) [][]int64 {
 	return out
 }
 
-func strMatrixToInt64(s [][]string) [][]int64 {
+func strMatrixToInt64(s [][]string) ([][]int64, error) {
 	out := make([][]int64, len(s))
 	for i, row := range s {
 		out[i] = make([]int64, len(row))
 		for j, v := range row {
-			bi, _ := new(big.Int).SetString(v, 10)
+			bi, ok := new(big.Int).SetString(v, 10)
+			if !ok || !bi.IsInt64() {
+				return nil, fmt.Errorf("constant matrix element must be a signed int64: %q", v)
+			}
 			out[i][j] = bi.Int64()
 		}
 	}
-	return out
+	return out, nil
+}
+
+func validateWitnessShape(inst *Instance, p circpkg.Params) error {
+	check := func(name string, matrix [][]string, rows, columns int) error {
+		if len(matrix) != rows {
+			return fmt.Errorf("%s requires %d rows", name, rows)
+		}
+		for _, row := range matrix {
+			if len(row) != columns {
+				return fmt.Errorf("%s requires %d columns", name, columns)
+			}
+		}
+		return nil
+	}
+	if err := check("x", inst.X, p.N, p.D); err != nil {
+		return err
+	}
+	if err := check("centroids", inst.Centroids, p.K, p.D); err != nil {
+		return err
+	}
+	if len(inst.Assign) != p.N {
+		return fmt.Errorf("assign requires N entries")
+	}
+	if p.SparseSelf && !p.AConstant {
+		if p.Q < 1 || p.Q > p.M {
+			return fmt.Errorf("Q must be in [1,M]")
+		}
+		if err := check("sparse_rows", inst.SparseRows, p.D, p.Q); err != nil {
+			return err
+		}
+		if err := check("sparse_signs", inst.SparseSigns, p.D, p.Q); err != nil {
+			return err
+		}
+	}
+	if !p.SparseSelf && !p.AConstant {
+		return check("dense_a", inst.DenseA, p.M, p.D)
+	}
+	return nil
 }
 
 func sparseToConstantDense(inst *Instance, m, d int) [][]int64 {
@@ -231,16 +287,6 @@ func fillWitness(c *circpkg.Circuit, inst *Instance, p circpkg.Params) error {
 	return nil
 }
 
-func getMaxRSS() int64 {
-	var ru syscall.Rusage
-	if err := syscall.Getrusage(syscall.RUSAGE_SELF, &ru); err != nil {
-		return -1
-	}
-	// on darwin, Maxrss is in bytes; on linux, kilobytes. Report raw value;
-	// Python side (psutil) is the primary cross-checked source of truth.
-	return int64(ru.Maxrss)
-}
-
 func run(inst *Instance) Result {
 	res := Result{Variant: inst.Variant, Backend: inst.Backend}
 
@@ -264,6 +310,15 @@ func run(inst *Instance) Result {
 		return res
 	}
 	res.NumConstraints = ccs.GetNbConstraints()
+	repetitions := inst.Repetitions
+	if repetitions < 1 {
+		repetitions = 1
+	}
+	warmup := inst.Warmup
+	if warmup < 0 {
+		warmup = 0
+	}
+	res.Repetitions = repetitions
 
 	wc := circpkg.NewCircuit(p)
 	if err := fillWitness(wc, inst, p); err != nil {
@@ -298,22 +353,32 @@ func run(inst *Instance) Result {
 			res.Error = "setup: " + err.Error()
 			return res
 		}
-		t0 = time.Now()
-		proof, err := backendplonk.Prove(ccs, pk, fullWitness)
-		res.ProveSeconds = time.Since(t0).Seconds()
-		if err != nil {
-			res.Error = "prove: " + err.Error()
-			return res
-		}
-		buf := new(bytesBuffer)
-		_, _ = proof.WriteTo(buf)
-		res.ProofBytes = buf.Len()
-		t0 = time.Now()
-		verr := backendplonk.Verify(proof, vk, publicWitness)
-		res.VerifySeconds = time.Since(t0).Seconds()
-		res.VerifyOK = verr == nil
-		if verr != nil {
-			res.Error = "verify: " + verr.Error()
+		for rep := 0; rep < warmup+repetitions; rep++ {
+			t0 = time.Now()
+			proof, proveErr := backendplonk.Prove(ccs, pk, fullWitness)
+			proveTime := time.Since(t0).Seconds()
+			if proveErr != nil {
+				res.Error = "prove: " + proveErr.Error()
+				return res
+			}
+			buf := new(bytesBuffer)
+			_, _ = proof.WriteTo(buf)
+			res.ProofBytes = buf.Len()
+			t0 = time.Now()
+			verr := backendplonk.Verify(proof, vk, publicWitness)
+			verifyTime := time.Since(t0).Seconds()
+			if verr != nil {
+				res.Error = "verify: " + verr.Error()
+				return res
+			}
+			if rep >= warmup {
+				res.ProveSeconds += proveTime
+				res.VerifySeconds += verifyTime
+				res.ProveSamples = append(res.ProveSamples, proveTime)
+				res.VerifySamples = append(res.VerifySamples, verifyTime)
+				res.SuccessfulProofs++
+			}
+			runtime.GC() // release per-proof temporaries before the next repetition
 		}
 	default:
 		t0 = time.Now()
@@ -323,24 +388,37 @@ func run(inst *Instance) Result {
 			res.Error = "setup: " + err.Error()
 			return res
 		}
-		t0 = time.Now()
-		proof, err := backendgroth16.Prove(ccs, pk, fullWitness)
-		res.ProveSeconds = time.Since(t0).Seconds()
-		if err != nil {
-			res.Error = "prove: " + err.Error()
-			return res
-		}
-		buf := new(bytesBuffer)
-		_, _ = proof.WriteTo(buf)
-		res.ProofBytes = buf.Len()
-		t0 = time.Now()
-		verr := backendgroth16.Verify(proof, vk, publicWitness)
-		res.VerifySeconds = time.Since(t0).Seconds()
-		res.VerifyOK = verr == nil
-		if verr != nil {
-			res.Error = "verify: " + verr.Error()
+		for rep := 0; rep < warmup+repetitions; rep++ {
+			t0 = time.Now()
+			proof, proveErr := backendgroth16.Prove(ccs, pk, fullWitness)
+			proveTime := time.Since(t0).Seconds()
+			if proveErr != nil {
+				res.Error = "prove: " + proveErr.Error()
+				return res
+			}
+			buf := new(bytesBuffer)
+			_, _ = proof.WriteTo(buf)
+			res.ProofBytes = buf.Len()
+			t0 = time.Now()
+			verr := backendgroth16.Verify(proof, vk, publicWitness)
+			verifyTime := time.Since(t0).Seconds()
+			if verr != nil {
+				res.Error = "verify: " + verr.Error()
+				return res
+			}
+			if rep >= warmup {
+				res.ProveSeconds += proveTime
+				res.VerifySeconds += verifyTime
+				res.ProveSamples = append(res.ProveSamples, proveTime)
+				res.VerifySamples = append(res.VerifySamples, verifyTime)
+				res.SuccessfulProofs++
+			}
+			runtime.GC() // release per-proof temporaries before the next repetition
 		}
 	}
+	res.ProveSeconds /= float64(repetitions)
+	res.VerifySeconds /= float64(repetitions)
+	res.VerifyOK = res.SuccessfulProofs == repetitions
 
 	var ms runtime.MemStats
 	runtime.ReadMemStats(&ms)
