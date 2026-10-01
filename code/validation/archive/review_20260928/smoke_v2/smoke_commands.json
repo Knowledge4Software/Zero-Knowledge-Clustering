@@ -1,0 +1,37 @@
+[
+  {
+    "module": "rq1_fidelity",
+    "returncode": 0,
+    "seconds": 2.9652048999851104
+  },
+  {
+    "module": "rq2_proof_cost",
+    "returncode": 0,
+    "seconds": 11.354201199981617
+  },
+  {
+    "module": "rq3_overhead",
+    "returncode": 0,
+    "seconds": 2.564124800002901
+  },
+  {
+    "module": "rq3_grinding",
+    "returncode": 0,
+    "seconds": 2.266974600002868
+  },
+  {
+    "module": "rq4_certificates",
+    "returncode": 0,
+    "seconds": 2.5009964000200853
+  },
+  {
+    "module": "rq5_scaling",
+    "returncode": 0,
+    "seconds": 2.193213199992897
+  },
+  {
+    "module": "ablation",
+    "returncode": 0,
+    "seconds": 153.86692430000403
+  }
+]

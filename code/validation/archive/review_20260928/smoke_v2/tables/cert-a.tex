@@ -1,0 +1,13 @@
+\begin{tabular}{lcccc}
+\toprule
+Dataset/configuration & certified points/pairs & observed stable & uncertified stable & violations \\
+\midrule
+cert\_type=centroid\_margin; projection=sparse\_jl; rho=1.0; gamma=1.0; dataset\_config={"kwargs": {"d": 8, "gamma": 1.0, "imbalance": 1.0, "k": 2, "n": 12}, "loader": "gaussian\_mixture"}; n=12; d=8; k=2; m=8; q=1; precision\_bits=16; B=4096; backend=groth16 & 60/60 & 1.000 & 0.000 & 0 \\
+cert\_type=centroid\_margin; projection=sparse\_jl; rho=1.0; gamma=1.5; dataset\_config={"kwargs": {"d": 8, "gamma": 1.5, "imbalance": 1.0, "k": 2, "n": 12}, "loader": "gaussian\_mixture"}; n=12; d=8; k=2; m=8; q=1; precision\_bits=16; B=4096; backend=groth16 & 60/60 & 1.000 & 0.000 & 0 \\
+cert\_type=centroid\_margin; projection=sparse\_jl; rho=1.0; gamma=2.0; dataset\_config={"kwargs": {"d": 8, "gamma": 2.0, "imbalance": 1.0, "k": 2, "n": 12}, "loader": "gaussian\_mixture"}; n=12; d=8; k=2; m=8; q=1; precision\_bits=16; B=4096; backend=groth16 & 60/60 & 1.000 & 0.000 & 0 \\
+cert\_type=centroid\_margin; projection=sparse\_jl; rho=1.0; gamma=3.0; dataset\_config={"kwargs": {"d": 8, "gamma": 3.0, "imbalance": 1.0, "k": 2, "n": 12}, "loader": "gaussian\_mixture"}; n=12; d=8; k=2; m=8; q=1; precision\_bits=16; B=4096; backend=groth16 & 60/60 & 1.000 & 0.000 & 0 \\
+cert\_type=centroid\_margin; projection=sparse\_jl; rho=1.0; gamma=4.0; dataset\_config={"kwargs": {"d": 8, "gamma": 4.0, "imbalance": 1.0, "k": 2, "n": 12}, "loader": "gaussian\_mixture"}; n=12; d=8; k=2; m=8; q=1; precision\_bits=16; B=4096; backend=groth16 & 60/60 & 1.000 & 0.000 & 0 \\
+cert\_type=centroid\_margin; projection=sparse\_jl; rho=1.0; gamma=nan; dataset\_config={"kwargs": {"d": 8, "gamma": 3.0, "imbalance": 1.0, "k": 2, "n": 12}, "loader": "gaussian\_mixture"}; n=12; d=8; k=2; m=4; q=1; precision\_bits=16; B=4096; backend=groth16 & 12/12 & 1.000 & 0.000 & 0 \\
+cert\_type=dbscan\_band; projection=sparse\_jl; rho=1.0; gamma=nan; dataset\_config={"kwargs": {"d": 8, "gamma": 3.0, "imbalance": 1.0, "k": 2, "n": 12}, "loader": "gaussian\_mixture"}; n=12; d=8; k=2; m=4; q=1; precision\_bits=16; B=4096; backend=groth16 & 66/66 & 1.000 & 0.000 & 0 \\
+\bottomrule
+\end{tabular}

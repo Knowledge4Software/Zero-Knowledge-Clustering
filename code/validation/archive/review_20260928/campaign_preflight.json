@@ -1,0 +1,134 @@
+{
+  "native": {
+    "expanded_rows": 5760,
+    "axes": {
+      "dataset": 8,
+      "projection": 8,
+      "m": 5,
+      "q": 3,
+      "k": 2,
+      "seed": 3
+    },
+    "fixed": {
+      "precision_bits": 16,
+      "B": 4096,
+      "backend": "groth16"
+    },
+    "dataset_specs": [
+      {
+        "loader": "gaussian_mixture",
+        "kwargs": {
+          "n": 2000,
+          "d": 256,
+          "k": 5,
+          "gamma": 3.0,
+          "imbalance": 1.0
+        }
+      },
+      {
+        "loader": "gaussian_mixture",
+        "kwargs": {
+          "n": 2000,
+          "d": 512,
+          "k": 8,
+          "gamma": 2.0,
+          "imbalance": 2.0
+        }
+      },
+      {
+        "loader": "dbscan_margin",
+        "kwargs": {
+          "n": 1000,
+          "d": 128,
+          "rho": 1.0,
+          "eps": 0.15
+        }
+      },
+      {
+        "loader": "mnist",
+        "kwargs": {
+          "n_max": 5000
+        }
+      },
+      {
+        "loader": "fashion_mnist",
+        "kwargs": {
+          "n_max": 5000
+        }
+      },
+      {
+        "loader": "gisette",
+        "kwargs": {
+          "n_max": 3000
+        }
+      },
+      {
+        "loader": "arcene",
+        "kwargs": {
+          "n_max": 200
+        }
+      },
+      {
+        "loader": "20ng_tfidf",
+        "kwargs": {
+          "n_max": 3000,
+          "max_features": 2000
+        }
+      }
+    ]
+  },
+  "core": {
+    "expanded_rows": 540,
+    "axes": {
+      "dataset": 3,
+      "variant": 5,
+      "m": 3,
+      "q": 2,
+      "k": 2,
+      "seed": 3
+    },
+    "fixed": {
+      "precision_bits": 16,
+      "B": 4096,
+      "backend": "groth16",
+      "n_reps_proof": 10,
+      "n_warmup_proof": 1
+    },
+    "dataset_specs": [
+      {
+        "loader": "gaussian_mixture",
+        "kwargs": {
+          "n": 500,
+          "d": 256,
+          "k": 5,
+          "gamma": 3.0,
+          "imbalance": 1.0
+        }
+      },
+      {
+        "loader": "gaussian_mixture",
+        "kwargs": {
+          "n": 1000,
+          "d": 1024,
+          "k": 10,
+          "gamma": 2.5,
+          "imbalance": 1.0
+        }
+      },
+      {
+        "loader": "mnist",
+        "kwargs": {
+          "n_max": 500
+        }
+      }
+    ]
+  },
+  "decision": "NOT_READY_FOR_FINAL_PAPER_CAMPAIGN",
+  "unresolved": [
+    "native paired repetitions from preregistration",
+    "automatic fidelity-eligible m selection",
+    "controlled sensitivity sweeps and statistical summaries",
+    "memory/time calibration for full proof-grid shapes"
+  ],
+  "all_configured_dataset_entries_loaded": true
+}

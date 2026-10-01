@@ -1,0 +1,8 @@
+\begin{tabular}{lcccc}
+\toprule
+Dataset/configuration & certified points/pairs & observed stable & uncertified stable & violations \\
+\midrule
+cert\_type=centroid\_margin; projection=sparse\_jl; rho=1.0; dataset\_config={"kwargs": {"d": 128, "eps": 0.15, "frac\_near\_band": 0.5, "n": 1000, "rho": 1.0, "seed": 12345}, "loader": "dbscan\_margin"}; n=1000; d=128; k=5; m=16; q=1; precision\_bits=16; B=4096; backend=groth16 & 499/1000 & 0.872 & 0.379 & 63 \\
+cert\_type=dbscan\_band; projection=sparse\_jl; rho=1.0; dataset\_config={"kwargs": {"d": 128, "eps": 0.15, "frac\_near\_band": 0.5, "n": 1000, "rho": 1.0, "seed": 12345}, "loader": "dbscan\_margin"}; n=1000; d=128; k=5; m=16; q=1; precision\_bits=16; B=4096; backend=groth16 & 499250/499500 & 1.000 & 0.524 & 0 \\
+\bottomrule
+\end{tabular}

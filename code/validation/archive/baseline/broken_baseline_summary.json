@@ -1,0 +1,52 @@
+{
+  "ablation.parquet": {
+    "rows": 14,
+    "statuses": {
+      "symbolic_only": 12,
+      "ok": 2
+    },
+    "num_constraints_median": 176214.5
+  },
+  "rq1_fidelity.parquet": {
+    "rows": 769,
+    "statuses": {
+      "ok": 769
+    },
+    "ari_median": 0.8968405428180475,
+    "delta_q95_median": 0.5603328504646398
+  },
+  "rq2_proof_cost.parquet": {
+    "rows": 1,
+    "statuses": {
+      "ok": 1
+    },
+    "prove_seconds_mean_median": 2.234498917,
+    "num_constraints_median": 174325.0,
+    "peak_rss_bytes_psutil_max_median": 378929152.0
+  },
+  "rq3_grinding.parquet": {
+    "rows": 5,
+    "statuses": {
+      "ok": 5
+    }
+  },
+  "rq3_overhead.parquet": {
+    "rows": 3,
+    "statuses": {
+      "ok": 3
+    }
+  },
+  "rq4_certificates.parquet": {
+    "rows": 412,
+    "statuses": {
+      "ok": 387,
+      "failed": 25
+    }
+  },
+  "rq5_scaling.parquet": {
+    "rows": 769,
+    "statuses": {
+      "ok": 769
+    }
+  }
+}
