@@ -1,0 +1,41 @@
+fixed:
+  n_reps_proof: 10
+  n_warmup_proof: 1
+blocks:
+- fixed:
+    dataset:
+      loader: gaussian_mixture
+      kwargs:
+        n: 2000
+        d: 256
+        k: 5
+        gamma: 3
+        imbalance: 1
+        seed: 12345
+    k: 5
+    m: 16
+    q: 1
+    seed: 0
+    precision_bits: 16
+    B: 4096
+    backend: groth16
+    selection_dataset_sha256: 1c670f901a69d418b1faa46504b0a4c9e2eff4f70a6466f8e82d4f5f61ca8f30
+  grid:
+    variant:
+    - sparse
+- fixed:
+    dataset:
+      loader: arcene
+      kwargs:
+        n_max: 200
+    k: 5
+    m: 16
+    q: 1
+    seed: 0
+    precision_bits: 16
+    B: 4096
+    backend: groth16
+    selection_dataset_sha256: 4fac809d28bd91101cd5cfcc95a2a6ef84ece3bb04960c9b138f9422a923f375
+  grid:
+    variant:
+    - sparse
