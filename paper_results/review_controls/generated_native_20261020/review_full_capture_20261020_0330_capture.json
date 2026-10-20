@@ -1,0 +1,58 @@
+{
+  "remote": "/root/commitjl/results/review_full_controls_20261019T224939Z",
+  "completed_cases": [
+    "mnist_n64"
+  ],
+  "files": [
+    {
+      "path": "mnist_n64/approved_public_task.json",
+      "sha256": "47448f4a8b5b199946ef9c88485576348fe0fbfa2a8936029bccb502da887d78"
+    },
+    {
+      "path": "mnist_n64/bundle/full_reuse_8.json",
+      "sha256": "a937bb4e405f22d2641e51462df16744f2fdb26b0138d82229c05cd016aff804"
+    },
+    {
+      "path": "mnist_n64/bundle/full_reuse_8_progress.json",
+      "sha256": "f96eb9ceb10840019fbbd592e610be41ae0ab9427a6e10419d926cd8b157efd2"
+    },
+    {
+      "path": "mnist_n64/bundle/prepare.json",
+      "sha256": "824fdb6fe456e0f82e4919ce5a80d0085ee9fbadcb8be1e4735f80909ff4f91d"
+    },
+    {
+      "path": "mnist_n64/bundle/statistics.json",
+      "sha256": "456dfbe3a99b1d87144769b9ceb7c6d086be73d326ab0d3c2b253e87fa68a215"
+    },
+    {
+      "path": "mnist_n64/bundle/trusted.json",
+      "sha256": "bb29815ebe386affe2946881403546887c28a4c70be421894bd57f1f59e50020"
+    },
+    {
+      "path": "mnist_n64/owner_setup_pin.json",
+      "sha256": "bb29815ebe386affe2946881403546887c28a4c70be421894bd57f1f59e50020"
+    },
+    {
+      "path": "mnist_n64/protocol.json",
+      "sha256": "2e2a643b1321d47f27fcc606739e6659787d8afb8a3c8a7bfb87bae63d34ac83"
+    },
+    {
+      "path": "mnist_n64/public_bundle/verify.json",
+      "sha256": "f0a9d06151fbc56feff2a0fc8749dc92fedcbdfa8892f356a0398d500636cdb7"
+    },
+    {
+      "path": "mnist_n64/status.json",
+      "sha256": "4498bd6296e87e1f69ea378d27b345c4dc6bb15c23ba93ce8cd945e8315035c1"
+    },
+    {
+      "path": "mnist_n64/summary.json",
+      "sha256": "bbbb967e007ff78aafafcbd3325331965cd7ba85e6199a72ed7bf1b5a5ec7a1d"
+    },
+    {
+      "path": "mnist_n64/workload.csv",
+      "sha256": "839055d5f5eff234d22d1ce1b27c5876ef47f39d660a227fb8f7d4c28e0d6143"
+    }
+  ],
+  "captured_unix": 1792454217.9907782,
+  "all_transferred_hashes_valid": true
+}

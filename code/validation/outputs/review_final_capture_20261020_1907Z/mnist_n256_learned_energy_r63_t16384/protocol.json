@@ -1,0 +1,19 @@
+{
+  "source_input": "/root/commitjl/results/review_certified_controls_20261019T234210Z/owner_inputs/mnist_n256_learned_energy_r63_t16384.json",
+  "source_sha256": "54cfc6ee96ce330fa10f75a459f17599e1a3055cc1492788d3958882bb94c6e5",
+  "binary_sha256": "39bfe713828345e91f2eb09e70f80f7b3b1155dab4d45eab104fd3012f4d61fc",
+  "n": 256,
+  "d": 784,
+  "k": 5,
+  "center_sets": 10,
+  "batch": 16,
+  "reps": 1,
+  "warmup": 1,
+  "all_catalog_rows_proved": true,
+  "full_catalog_extrapolated": false,
+  "setup_reused_across_centers": true,
+  "input_scale": "16.062745098039215",
+  "basis_scale": 16384,
+  "label": "mnist_n256_learned_energy_r63_t16384",
+  "cost_policy": "native prepare + compile + setup + native answer construction + witness + median measured prove; verify, warmup, fitting, I/O and public center preparation separate"
+}

@@ -1,0 +1,112 @@
+{
+  "phase": "reuse_certified",
+  "status": "complete",
+  "complete": true,
+  "constraints": 6117,
+  "compile_seconds": 0.0446415,
+  "setup_seconds": 0.4914936,
+  "load_seconds": 0.0010747,
+  "native_prepare_seconds": 0,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+    "ch": "6715856438576969068865982534019681501303879076261115563701834598775882467528",
+    "ce": "0",
+    "ct": "0",
+    "context": "815197241804908756149029838025683442418165523450336748766228789201945808101"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1
+      ],
+      "psi": "40960",
+      "prove_seconds": [
+        0.0599697
+      ],
+      "verify_seconds": [
+        0.0021727
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0.0005689,
+      "proof_bytes": 196,
+      "file": "reuse_certified/s000_q2_0000.proof",
+      "margin_sum": "8192",
+      "certified_count": 2,
+      "cost_lower_scaled": "2621440",
+      "cost_upper_scaled": "2621440"
+    },
+    {
+      "id": 1,
+      "indices": [
+        2,
+        3
+      ],
+      "psi": "49152",
+      "prove_seconds": [
+        0.0555052
+      ],
+      "verify_seconds": [
+        0.0025123
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "reuse_certified/s000_q2_0001.proof",
+      "margin_sum": "28672",
+      "certified_count": 1,
+      "cost_lower_scaled": "3145728",
+      "cost_upper_scaled": "3145728"
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1
+      ],
+      "psi": "40960",
+      "prove_seconds": [
+        0.0507781
+      ],
+      "verify_seconds": [
+        0.0030012
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "reuse_certified/s001_q2_0000.proof",
+      "centre_set": 1,
+      "margin_sum": "8192",
+      "certified_count": 2,
+      "cost_lower_scaled": "2621440",
+      "cost_upper_scaled": "2621440"
+    },
+    {
+      "id": 1,
+      "indices": [
+        2,
+        3
+      ],
+      "psi": "49152",
+      "prove_seconds": [
+        0.0538347
+      ],
+      "verify_seconds": [
+        0.0029993
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "reuse_certified/s001_q2_0001.proof",
+      "centre_set": 1,
+      "margin_sum": "65536",
+      "certified_count": 2,
+      "cost_lower_scaled": "3145728",
+      "cost_upper_scaled": "3145728"
+    }
+  ],
+  "verified": 4,
+  "wall_seconds": 0.8266867
+}

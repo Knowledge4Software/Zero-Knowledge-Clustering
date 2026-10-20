@@ -1,0 +1,20 @@
+\begin{table*}[tp]
+\caption{Native MNIST $N=1024$ budget controls (nine updated sets, quantized Full reference). All ranks and both basis scales are retained in the CSV artifact; this table shows the original configuration and larger-rank high-scale controls. These are not proof benchmarks.}\label{tab:native-certificate-budget}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Head rank / $T$ & Method & Agreement (\%) & Certified (\%) & Worst (\%) & Width (\%) \\
+\midrule
+15/4096 & Learned + energy & 98.25 & 61.63 & 21.09 & 20.65 \\
+15/4096 & PCA + energy & 97.89 & 37.65 & 16.02 & 37.97 \\
+31/16384 & Learned + energy & 99.36 & 76.86 & 31.05 & 12.28 \\
+31/16384 & PCA + energy & 99.35 & 63.43 & 29.00 & 18.53 \\
+63/16384 & Learned + energy & 99.75 & 85.84 & 45.80 & 7.37 \\
+63/16384 & PCA + energy & 99.71 & 81.89 & 44.92 & 8.98 \\
+127/16384 & Learned + energy & 99.86 & 90.32 & 59.86 & 4.64 \\
+127/16384 & PCA + energy & 99.84 & 88.61 & 60.06 & 5.22 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

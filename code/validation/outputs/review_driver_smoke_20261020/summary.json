@@ -1,0 +1,17 @@
+{
+  "complete": true,
+  "n": 4,
+  "sets": 2,
+  "method": "learned_energy",
+  "original_root": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+  "total_seconds": 1.2977465,
+  "query_constraints": 5152,
+  "verified_public_samples": 12,
+  "full_catalog_extrapolated": false,
+  "certificate_constraints": 6117,
+  "certificate_total_seconds": 1.3557878999999997,
+  "exact_label_policy_sets": 1,
+  "coverage99_cost1_policy_sets": 1,
+  "native_certificate_reference_matches": true,
+  "peak_rss_bytes": 35000320
+}

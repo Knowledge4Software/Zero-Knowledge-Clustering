@@ -1,0 +1,54 @@
+{
+  "observed_utc": "2026-10-19T12:17:11.660847+00:00",
+  "hashes_checked": 818,
+  "source_checks": [
+    {
+      "path": "experiments/reuse_workload.py",
+      "matches": true
+    },
+    {
+      "path": "experiments/shift_owner_reuse.py",
+      "matches": true
+    },
+    {
+      "path": "experiments/new_center_hybrid.py",
+      "matches": true
+    },
+    {
+      "path": "experiments/protected_fixed_center.py",
+      "matches": true
+    },
+    {
+      "path": "commitjl/enriched_jl.py",
+      "matches": true
+    }
+  ],
+  "workloads": [
+    {
+      "run": "reuse_cifar_n64",
+      "complete": true,
+      "rows": 83,
+      "recorded_verified_samples": 1532
+    },
+    {
+      "run": "reuse_mnist_n256",
+      "complete": false,
+      "rows": 22,
+      "recorded_verified_samples": 592
+    },
+    {
+      "run": "reuse_mnist_n64",
+      "complete": true,
+      "rows": 83,
+      "recorded_verified_samples": 1532
+    },
+    {
+      "run": "smoke_mnist_n8",
+      "complete": true,
+      "rows": 19,
+      "recorded_verified_samples": 68
+    }
+  ],
+  "shift_owner_jobs": 60,
+  "shift_owner_rows": 22260
+}

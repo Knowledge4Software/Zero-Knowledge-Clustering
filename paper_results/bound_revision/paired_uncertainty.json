@@ -1,0 +1,8 @@
+{
+  "paired_mean_agreement_gain_percentage_points": 2.7698749157040585,
+  "exploratory_fixed_corpus_bootstrap_95_percent": [
+    1.8199066504057049,
+    3.8046157777523946
+  ],
+  "note": "Resamples fitted corpus/k/start cells; descriptive for these fixed corpora, not a population or multiplicity-adjusted test."
+}

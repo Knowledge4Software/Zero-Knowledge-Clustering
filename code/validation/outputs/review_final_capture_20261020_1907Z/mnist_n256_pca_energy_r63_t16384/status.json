@@ -1,0 +1,81 @@
+{
+  "complete": true,
+  "status": "complete",
+  "started_unix": 1792487052.8817685,
+  "phases": [
+    {
+      "phase": "prepare",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 10.232098701875657,
+        "peak_rss_bytes": 24121344,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 0
+    },
+    {
+      "phase": "stage1",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 846.7173499180935,
+        "peak_rss_bytes": 504745984,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 256
+    },
+    {
+      "phase": "reuse",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 914.9339632720221,
+        "peak_rss_bytes": 968433664,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 160
+    },
+    {
+      "phase": "reuse_certified",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 1013.007805153029,
+        "peak_rss_bytes": 1002074112,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 160
+    },
+    {
+      "phase": "verify_public",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 155.43173206108622,
+        "peak_rss_bytes": 17498112,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 576
+    }
+  ],
+  "phase": "verify",
+  "finished_unix": 1792489999.1618233,
+  "summary": {
+    "complete": true,
+    "n": 256,
+    "sets": 10,
+    "method": "mnist_n256_pca_energy_r63_t16384",
+    "original_root": "13545838002007715786332710622372328650711230816695693914604586797751209777458",
+    "total_seconds": 1753.5496146999997,
+    "query_constraints": 355344,
+    "verified_public_samples": 576,
+    "full_catalog_extrapolated": false,
+    "certificate_constraints": 391139,
+    "certificate_total_seconds": 1850.1491906889999,
+    "exact_label_policy_sets": 0,
+    "coverage99_cost1_policy_sets": 0,
+    "native_certificate_reference_matches": true,
+    "peak_rss_bytes": 1002074112
+  }
+}

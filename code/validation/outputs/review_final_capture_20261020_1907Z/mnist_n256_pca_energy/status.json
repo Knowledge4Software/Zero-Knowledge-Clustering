@@ -1,0 +1,81 @@
+{
+  "complete": true,
+  "status": "complete",
+  "started_unix": 1792480590.381288,
+  "phases": [
+    {
+      "phase": "prepare",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 5.497907285112888,
+        "peak_rss_bytes": 17653760,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 0
+    },
+    {
+      "phase": "stage1",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 820.1573400408961,
+        "peak_rss_bytes": 480677888,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 256
+    },
+    {
+      "phase": "reuse",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 464.72263010498136,
+        "peak_rss_bytes": 1589444608,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 40
+    },
+    {
+      "phase": "reuse_certified",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 503.93943240097724,
+        "peak_rss_bytes": 1634910208,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 40
+    },
+    {
+      "phase": "verify_public",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 7.442906289128587,
+        "peak_rss_bytes": 17440768,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 336
+    }
+  ],
+  "phase": "verify",
+  "finished_unix": 1792482394.771436,
+  "summary": {
+    "complete": true,
+    "n": 256,
+    "sets": 10,
+    "method": "mnist_n256_pca_energy",
+    "original_root": "13545838002007715786332710622372328650711230816695693914604586797751209777458",
+    "total_seconds": 1271.1307566790001,
+    "query_constraints": 568022,
+    "verified_public_samples": 336,
+    "full_catalog_extrapolated": false,
+    "certificate_constraints": 693387,
+    "certificate_total_seconds": 1309.7496174589999,
+    "exact_label_policy_sets": 0,
+    "coverage99_cost1_policy_sets": 0,
+    "native_certificate_reference_matches": true,
+    "peak_rss_bytes": 1634910208
+  }
+}

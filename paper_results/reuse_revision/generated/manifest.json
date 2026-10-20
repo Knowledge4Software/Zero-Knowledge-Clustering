@@ -1,0 +1,49 @@
+{
+  "snapshot": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2",
+  "observed_utc": "2026-10-19T12:17:11.660847+00:00",
+  "claims": {
+    "reuse_mnist_n64": {
+      "crossover_vs_cached": 2,
+      "cached_over_learned_T10": 6.888969400802613
+    },
+    "reuse_cifar_n64": {
+      "crossover_vs_cached": 2,
+      "cached_over_learned_T10": 7.759604088165528
+    }
+  },
+  "raw_verification": "Recorded in-process proof verification; no independent replay of saved reuse proofs in this export.",
+  "inputs": [
+    {
+      "path": "code\\results\\new_center_reuse_20261018\\summary\\matched_comparisons.csv",
+      "sha256": "8850d2af9d7cac8425a35e7270bb0b252a80d042d09d6722801d61c3d12462d4"
+    },
+    {
+      "path": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2\\checks.json",
+      "sha256": "a0fb84b43d98d2a425829ad538efea27cb5e761039587e2395a51895df2ca7cd"
+    },
+    {
+      "path": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2\\cumulative_costs.csv",
+      "sha256": "902334bfc3e96fafafb14c015308b1ed182e498d345d50bafb733e0a1e773c2a"
+    },
+    {
+      "path": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2\\manifest.json",
+      "sha256": "b02fc447b9a778fffc0b8ef0f1488ffb66801ae8aaa2ce2db5850f3ea068e83f"
+    },
+    {
+      "path": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2\\proof_quality.csv",
+      "sha256": "a7a68a67d458483c79d0e46e54b45df5e324168695881bd0e3cbb29b5a9fb958"
+    },
+    {
+      "path": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2\\results\\paper_runs_20261019\\reuse_cifar_n64\\workload.csv",
+      "sha256": "e4ce0f412e3989d0fba5d51a9cd857372904247f1eff0f9b57c62405249ce951"
+    },
+    {
+      "path": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2\\results\\paper_runs_20261019\\reuse_mnist_n64\\workload.csv",
+      "sha256": "66ca154e0e589ac5d59912b83dc9c73cb2aa617442b8d600a353425f78663979"
+    },
+    {
+      "path": "code\\validation\\outputs\\reuse_paper_continuation_20261019_v2\\shift_owner_paired.csv",
+      "sha256": "a6c1915abad7a383a9ef481c7f3800d70efb0ad01f86bf24b9ff96c8ec8236a0"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+gaussian_easy k=5 s=0 rows=4896 13s
+gaussian_easy k=10 s=1 rows=4656 15s
+gaussian_hard k=5 s=2 rows=6360 25s
+dbscan_margin k=5 s=0 rows=3432 8s
+dbscan_margin k=10 s=1 rows=3192 7s
+mnist k=5 s=2 rows=6360 63s
+fashion_mnist k=5 s=0 rows=6360 61s
+fashion_mnist k=10 s=1 rows=6120 66s
+gisette k=5 s=2 rows=6360 276s
+arcene k=5 s=0 rows=8208 68s
+arcene k=10 s=1 rows=7968 76s
+20ng_tfidf_nonzero k=5 s=2 rows=6360 80s
+cifar10_resnet50 k=5 s=0 rows=6360 129s
+cifar10_resnet50 k=10 s=1 rows=6120 133s
+20ng_minilm k=5 s=2 rows=6360 40s
+ALL_DONE

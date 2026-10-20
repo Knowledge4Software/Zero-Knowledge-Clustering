@@ -1,0 +1,34 @@
+{
+  "model": {
+    "version": "bound-audit-v1",
+    "method": "full",
+    "n": 4,
+    "d": 3,
+    "k": 2,
+    "input_bits": 4,
+    "basis_scale": 8,
+    "input_scale": "1",
+    "centers": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0
+      ]
+    ],
+    "basis": [],
+    "tail_rows": [],
+    "tail_signs": [],
+    "tail_width": 0,
+    "seed": ""
+  },
+  "model_hash": "803339578216017778246404348135900199448426158882898654391159215764101844386",
+  "original_root": "3610805114900242071285934585192577419543788385099758125714538549591842513147",
+  "verifying_key_sha256": {
+    "full_reuse_2_k2": "deba0ca771a61f08f7545016eea57812091e54d86fd30199d32f031905297fad"
+  }
+}

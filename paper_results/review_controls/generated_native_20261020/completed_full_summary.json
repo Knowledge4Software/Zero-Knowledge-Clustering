@@ -1,0 +1,13 @@
+[
+  {
+    "case": "mnist_n64",
+    "n": 64,
+    "sets": 10,
+    "proofs": 80,
+    "constraints": 1416899,
+    "total_seconds": 1715.864233016,
+    "original_v1_total_seconds": 1715.52196439,
+    "independently_verified_proofs": 80,
+    "peak_rss_bytes": 3422687232
+  }
+]

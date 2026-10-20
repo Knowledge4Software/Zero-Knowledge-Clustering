@@ -1,0 +1,23 @@
+{
+  "files": [
+    "trusted.json",
+    "prepare.json",
+    "full_reuse_2.json",
+    "keys/full_reuse_2_k2.vk",
+    "full_reuse/s000_q2_0000.proof",
+    "full_reuse/s000_q2_0001.proof",
+    "full_reuse/s001_q2_0000.proof",
+    "full_reuse/s001_q2_0001.proof"
+  ],
+  "private_witness_files_included": false,
+  "sha256": {
+    "trusted.json": "57a46bde8920924cf732e93dced9e09bc7e1a12d266cdcfd9921bdb881edf6da",
+    "prepare.json": "401c4ba13d6b6ffb54b919075373d25434604c5718380dcc7474f1407cf2da06",
+    "full_reuse_2.json": "2fdcba7b3164d703fa4253fb770ce59743b506c41eb9951897c65e9d5851f772",
+    "keys/full_reuse_2_k2.vk": "deba0ca771a61f08f7545016eea57812091e54d86fd30199d32f031905297fad",
+    "full_reuse/s000_q2_0000.proof": "3f59be772add2d2e6f5c5da6f884932978bccd4771113795a7138fd32f53949b",
+    "full_reuse/s000_q2_0001.proof": "4769770808d5085b8c2f0bfc3db267fae24257f6237d5fc529556166bb06c4c7",
+    "full_reuse/s001_q2_0000.proof": "d661e53cdd8647aa3d69faff13dd49a1daa208bd8f4725664203d31b14a498c3",
+    "full_reuse/s001_q2_0001.proof": "04b563b98a5849c3a4a3000911429bdc3cf9db294145184ab257c92d9b832d3d"
+  }
+}

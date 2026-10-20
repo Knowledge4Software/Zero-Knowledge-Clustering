@@ -1,0 +1,708 @@
+{
+  "remote": "/root/commitjl/results/review_certified_controls_20261019T234210Z",
+  "completed_cases": [
+    "cifar_n64_learned_energy",
+    "cifar_n64_pca_energy",
+    "mnist_n1024_full_public",
+    "mnist_n1024_learned_energy",
+    "mnist_n1024_pca_energy",
+    "mnist_n256_learned_energy",
+    "mnist_n256_learned_energy_r63_t16384",
+    "mnist_n256_pca_energy",
+    "mnist_n256_pca_energy_r63_t16384",
+    "mnist_n64_learned_energy",
+    "mnist_n64_pca_energy"
+  ],
+  "files": [
+    {
+      "path": "cifar_n64_learned_energy/approved_public_task.json",
+      "sha256": "f7b5dbc73fbe119ab448b8b427e18364a9f0e2ffa5f77dc4a87a877f66fca5b4"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/prepare.json",
+      "sha256": "78583848e5630943a9e65981df3aab72336cd3dd6c0ce0223a95ba49bab6ca2a"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/reuse_64.json",
+      "sha256": "2b2fe8e500c76a7702b6a0a70684b20298f5ec182e6d58885c87710c8a1be935"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/reuse_64_progress.json",
+      "sha256": "0cda306cb54ac34e2635dc9cbfb1050a4f254efae40989cf1762bfcf4913243f"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/reuse_certified_64.json",
+      "sha256": "5e62d64a24d8620cf54fb3eaa512ccdd115ac0d931bcbcf2204bf3273f299557"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "14e6cde2484898558e12f82b72bea1dfdd8c8fa687134b1ad1711ace371a6477"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/stage1.json",
+      "sha256": "401d8fb5f8b046d70453bd542f9cecedb35ad4162cdcafb19814e1abbe329cae"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/stage1_progress.json",
+      "sha256": "cba95a837d92e606b9d389f7b0ce0054829d737724e4bd907d08f3b7e6a397a1"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/statistics.json",
+      "sha256": "fb402445e69ba1160f4abfff8e6ab3d29e7058f59caac5bef6cb13d2cd33d680"
+    },
+    {
+      "path": "cifar_n64_learned_energy/bundle/trusted.json",
+      "sha256": "cc19c3dff0822e3d00b158e14e2903ac7cb4c77731688c75e4367597fd826213"
+    },
+    {
+      "path": "cifar_n64_learned_energy/owner_setup_pin.json",
+      "sha256": "cc19c3dff0822e3d00b158e14e2903ac7cb4c77731688c75e4367597fd826213"
+    },
+    {
+      "path": "cifar_n64_learned_energy/protocol.json",
+      "sha256": "7c8f257cc7c70ca9b0c369797d81082c17728642faaebe494f9802791ed8af17"
+    },
+    {
+      "path": "cifar_n64_learned_energy/public_bundle/verify.json",
+      "sha256": "e9acbc090be656cb99a9efa5423620566182bb2f916914185137aa32c4c1f8cc"
+    },
+    {
+      "path": "cifar_n64_learned_energy/status.json",
+      "sha256": "8ce3a79976eee99a1ecc002d5702840c9b57bfd572812e5d582b86b7c09056e1"
+    },
+    {
+      "path": "cifar_n64_learned_energy/summary.json",
+      "sha256": "9a1e5175bd6f3e424308529970af43e0629dacbaa1f6607370ecbbc26c89c98a"
+    },
+    {
+      "path": "cifar_n64_learned_energy/workload.csv",
+      "sha256": "f9a3133874212f36c4117089bccf2c0e98abfafcf4774a5323234b373b79f419"
+    },
+    {
+      "path": "cifar_n64_pca_energy/approved_public_task.json",
+      "sha256": "f7b5dbc73fbe119ab448b8b427e18364a9f0e2ffa5f77dc4a87a877f66fca5b4"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/prepare.json",
+      "sha256": "3de0d4182e39d9b7eece1db0cacfcc7be5356f3c15ac115edcbff9b2c438e9cd"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/reuse_64.json",
+      "sha256": "b5f016b0348b94874d38c96309f4efd77f864a698a9b394897d42a8f53aa20c6"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/reuse_64_progress.json",
+      "sha256": "823cce591b9680fac188e7af3b0acfb8eb0229c62fe5b39b45744be60d69ce26"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/reuse_certified_64.json",
+      "sha256": "77ea6c559eb1fb21d1991a096d75b7560aeb83fa57468f3b7ba7ac670af02f2d"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "807e71a12cca471332e0db527c752dd89bc8f202c840e59012e52eb863d53f20"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/stage1.json",
+      "sha256": "886e5bd7cd40522447c5f3ab93dbaeebdaccb03a0607604e8f8c3578715384dc"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/stage1_progress.json",
+      "sha256": "8c633b0b1c0a0c76cd106a08b7c279f99edc605cf6bedbd821925ccc4d0b4278"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/statistics.json",
+      "sha256": "fc0abb4ca83ae53877b69d4d0558bfb4107e44e9011fa9704f24129ad9ea3a07"
+    },
+    {
+      "path": "cifar_n64_pca_energy/bundle/trusted.json",
+      "sha256": "07f7c0f9fac19b72d57c1adcf55d017274af82d5263c795ae798a7c96516af59"
+    },
+    {
+      "path": "cifar_n64_pca_energy/owner_setup_pin.json",
+      "sha256": "07f7c0f9fac19b72d57c1adcf55d017274af82d5263c795ae798a7c96516af59"
+    },
+    {
+      "path": "cifar_n64_pca_energy/protocol.json",
+      "sha256": "6847a63db17e28b3bbff7526a9dae6cb33f96cd1b6dc851c456c393e7c9c7fc0"
+    },
+    {
+      "path": "cifar_n64_pca_energy/public_bundle/verify.json",
+      "sha256": "eb401aa403856646f4b3b2d84c193bf3067e5bf90e01451d6ba7a205d5ca1a73"
+    },
+    {
+      "path": "cifar_n64_pca_energy/status.json",
+      "sha256": "8df42aa9e1666953a438d9af87ba1420e8b14356e9ad5e4a18b44bb1cb29e90c"
+    },
+    {
+      "path": "cifar_n64_pca_energy/summary.json",
+      "sha256": "83c52643d0c8e2027ca138246bc2ddf1faba58d8f5ed27d78f35cbab9a24e3b0"
+    },
+    {
+      "path": "cifar_n64_pca_energy/workload.csv",
+      "sha256": "578091c0584f3f0a105d5579e0e735a936d840b3359754b13e03e87de8174490"
+    },
+    {
+      "path": "mnist_n1024_full_public/approved_public_task.json",
+      "sha256": "7583c8109dbdd5ec7334c9a9b6266150cbd9b7d8b6c36d4d23bf139eefdf874d"
+    },
+    {
+      "path": "mnist_n1024_full_public/bundle/full_reuse_8.json",
+      "sha256": "0e783e965518c61946a1399cc0d4f49e68063065de3d1be749fa15e850400fc6"
+    },
+    {
+      "path": "mnist_n1024_full_public/bundle/full_reuse_8_progress.json",
+      "sha256": "d9be30c09279222cae9a784b13b548645a07b858ee0268f78edb4262ebf5130d"
+    },
+    {
+      "path": "mnist_n1024_full_public/bundle/prepare.json",
+      "sha256": "f854ffc957e7b4339ddad93928cc38f64a88eaa9a7efba70436d8f748b8759e4"
+    },
+    {
+      "path": "mnist_n1024_full_public/bundle/statistics.json",
+      "sha256": "286a602b8d61fe73df64dd44211130f7fa32691c1013a6df702314701b2e7672"
+    },
+    {
+      "path": "mnist_n1024_full_public/bundle/trusted.json",
+      "sha256": "6216fef243a3d0685c48fbf10694008c95e573bab29fdd8484577dbe79ddca4b"
+    },
+    {
+      "path": "mnist_n1024_full_public/owner_setup_pin.json",
+      "sha256": "6216fef243a3d0685c48fbf10694008c95e573bab29fdd8484577dbe79ddca4b"
+    },
+    {
+      "path": "mnist_n1024_full_public/protocol.json",
+      "sha256": "b395d0c3bd687937fece130ec6e3fe49015b5ba11fbc0cfac163d86984559d2f"
+    },
+    {
+      "path": "mnist_n1024_full_public/public_bundle/verify.json",
+      "sha256": "e436322e8122dd64f9f65277edc3bf6ed846cd43497ccbbb21ce7f06a997fae2"
+    },
+    {
+      "path": "mnist_n1024_full_public/status.json",
+      "sha256": "467d7dc4ab2d1158f12447c33ddf59d03eeaea71453f9ab007cb4b13361fddfb"
+    },
+    {
+      "path": "mnist_n1024_full_public/summary.json",
+      "sha256": "e397f1ef27d54f8214fe7e02732b8d0a75bd7b455df5286b3ad3a8147eb48be6"
+    },
+    {
+      "path": "mnist_n1024_full_public/workload.csv",
+      "sha256": "a53c968cef5560200df139df8cdb3b6a2ace9f5040b0b98633b5aa72fe6b0fb9"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/approved_public_task.json",
+      "sha256": "9f7d2951ac999b138a20d4e14c6ae23a1e755c55e1602436a28391a2ee06aeb9"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/prepare.json",
+      "sha256": "fc8cbf06faca53506eef92988c9eacd99927fa3ef1cac6cb4c946720021f3071"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/reuse_64.json",
+      "sha256": "0f0106a4b5a555659d9c99357dbae96cfb89afd4313504ba30fc2079551bf934"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/reuse_64_progress.json",
+      "sha256": "dd96bc27a406f7f7d2cdf7ef719befed5ebb19fff92904aafb663e46a55ae35a"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/reuse_certified_64.json",
+      "sha256": "579510ae84fc808b4468f03fc94c48c74f0d67a23e07527fcec255905c3ee877"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "4f2d0fb711874036a9ed68992ae9daa366c24bb26fe5807d9f142c186a6e4769"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/stage1.json",
+      "sha256": "53e5e3c040f4a12b7cf56ab1f6c5e2829f96c47080dfe3a9f78bf3a8a9c7bc31"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/stage1_progress.json",
+      "sha256": "969dc0dc15da479a0f785e949bac080d9f33a3a696b7b3434b33473f8063e617"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/statistics.json",
+      "sha256": "a1ada35ec2b72fbd245f17ddb27ecf55a202bd651e22e735561a1c8ecea1ad81"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/bundle/trusted.json",
+      "sha256": "00f393b108b49b4020a008d454b0123cdd70635f15aa624f73adb0acd2bfbfcb"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/owner_setup_pin.json",
+      "sha256": "00f393b108b49b4020a008d454b0123cdd70635f15aa624f73adb0acd2bfbfcb"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/protocol.json",
+      "sha256": "b86fc62e71158a4dbeba591b90b6f5c7b7b271d443a5149248a44ac740ab40dc"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/public_bundle/verify.json",
+      "sha256": "8ef92ed27c51bc6307b7b7ddbe5858f1aaf9820c2929f40b2ea2da7112427f67"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/status.json",
+      "sha256": "cf6dfdcef5675e6c32d66adbbd480c480a8c744172d94a8c665371ce1afbdfee"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/summary.json",
+      "sha256": "7d4cfe83ede5d31d61c79ea67a129adcf969c08b08a7025c079f30246c00b29a"
+    },
+    {
+      "path": "mnist_n1024_learned_energy/workload.csv",
+      "sha256": "f2c99e0063f6a3ef478695bbfd204f1478ca793bf02d3cfdbe0ac4e874545d58"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/approved_public_task.json",
+      "sha256": "9f7d2951ac999b138a20d4e14c6ae23a1e755c55e1602436a28391a2ee06aeb9"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/prepare.json",
+      "sha256": "6c8b372f3b57e5ef9941261bdf3d6a972186f15af5ef91aa850fb9f1cdd476e8"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/reuse_64.json",
+      "sha256": "8ba40405394ddcb4b3e628af2e4258083e6dc3673f36a0123117ed3fb79ddc9d"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/reuse_64_progress.json",
+      "sha256": "148644e1c31f9b4fc0d30037559d52a5eee65198550c295bd5cd92c24031417d"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/reuse_certified_64.json",
+      "sha256": "d2bc47911dab27b3cfc952a104fce273def19047973892b2ee45a0f184fd0905"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "b688bdf5753320c959bfe11ceeda8abb2ea60e3a552ac511edf91122a8ee6c06"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/stage1.json",
+      "sha256": "0d1eeaecea5be904c25d5ba33e2a1c6ce0cb7caac3f77c96df1e33e05c6d887b"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/stage1_progress.json",
+      "sha256": "3e5f3cc905b21e55c2e25a513e50d6e3c24ee81c493ab08c9798d4c209ed5285"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/statistics.json",
+      "sha256": "5cab59fc8fb27612105db2a4e521e01879f49f2d17a671447a5ec9487c03b689"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/bundle/trusted.json",
+      "sha256": "24ae682d278e0187bdf08a91aba005c71860e626aa15b8afe97fe45916b528ac"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/owner_setup_pin.json",
+      "sha256": "24ae682d278e0187bdf08a91aba005c71860e626aa15b8afe97fe45916b528ac"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/protocol.json",
+      "sha256": "8bcc022851e15d2f31a78f6b0f8ac53abebfb43b95a61a098deb163689bc0cc6"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/public_bundle/verify.json",
+      "sha256": "e59fae5611422e31b8317b848d5a4907951a989ed2d4243bd94008fa9a604fbb"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/status.json",
+      "sha256": "2e9a4fdafd3860d458c910dc1b670cd4bc1c34550de798d884127d5306cf4e7d"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/summary.json",
+      "sha256": "629a081abbf579b252102a1586825c1ed1292fe1606e406f95441138c7be458b"
+    },
+    {
+      "path": "mnist_n1024_pca_energy/workload.csv",
+      "sha256": "afdb4504963385ea3583a5b6e4d167fb6674a8e9269a025e64de91030c77dad0"
+    },
+    {
+      "path": "mnist_n256_learned_energy/approved_public_task.json",
+      "sha256": "d2102e2147dde9bf3fed727a3cec9d70ff508e826a5d1077854f0ca850754a1c"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/prepare.json",
+      "sha256": "41c36d4601cfb49e12b4d2f71aa7cb870d5f8b4bd2b8df8cfe4241a61a7ccb81"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/reuse_64.json",
+      "sha256": "2b83e7fd17be7863cfb55bd24564b912b7b386d0d7743e2fc13ec6bc28cbdd76"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/reuse_64_progress.json",
+      "sha256": "577e22cd42a178afedd59639f03fe156c12012f668eb8753ee955c8f93361675"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/reuse_certified_64.json",
+      "sha256": "3a67c4defd0cd4eae01710179a87049dce765dfaeff45fcc6a917ab00d6d5bdd"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "46b6dc57becf468e84ebfcaface0c5057988ed10a9239ddbee73a05d71921aab"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/stage1.json",
+      "sha256": "d6dfa9ff9f7d916274c5b8f731a7e9a218f556621902ff112c53941fb33f818f"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/stage1_progress.json",
+      "sha256": "af69e9923c61565c995cea990c123154f6dbdc33e69a3adc602c19c883297c4a"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/statistics.json",
+      "sha256": "936e1eef31dee88321b5651d26ca367bc0cdbda685ddfd9154405212b31ee6ac"
+    },
+    {
+      "path": "mnist_n256_learned_energy/bundle/trusted.json",
+      "sha256": "5f4460bc39f7dd0e3de3d0f2f5a086d90a999ee78da972d8bbce863cec69ccb8"
+    },
+    {
+      "path": "mnist_n256_learned_energy/owner_setup_pin.json",
+      "sha256": "5f4460bc39f7dd0e3de3d0f2f5a086d90a999ee78da972d8bbce863cec69ccb8"
+    },
+    {
+      "path": "mnist_n256_learned_energy/protocol.json",
+      "sha256": "6cc2132a40302fe4b3f11cde480a4b125d7578034116206d822c3ab9b3ee14ce"
+    },
+    {
+      "path": "mnist_n256_learned_energy/public_bundle/verify.json",
+      "sha256": "3e5942cea845c38259e62c73a2dc52d325380f5af830f01d07f24d4fbe91c973"
+    },
+    {
+      "path": "mnist_n256_learned_energy/status.json",
+      "sha256": "4e30d1bcb59cb66bd9716c6c5d8dabaf8c312aebb36deb57d627a4b31a510b65"
+    },
+    {
+      "path": "mnist_n256_learned_energy/summary.json",
+      "sha256": "6f35de876bf6add11c4d58ad96ae08ed1f0285feaf90f546fa65540022e5c72b"
+    },
+    {
+      "path": "mnist_n256_learned_energy/workload.csv",
+      "sha256": "f2e6ab29ad6e37c0959356bd932781ced6f28cc3d5e9d97f159d42bfa2756a2d"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/approved_public_task.json",
+      "sha256": "dba423674842ee79a8347873b6b5df27ac6c158ca23637196e979641f3e932a0"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/prepare.json",
+      "sha256": "568d4d01d3c4f19a0224a516850b0cb3d61e2edde4b327999d63afb0966607bd"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/reuse_16.json",
+      "sha256": "d000774098243cd9019e47e81da4d564a522d3a14c3c149af58ce86a9073795a"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/reuse_16_progress.json",
+      "sha256": "6bbae064e7ac864d3b329ba8b5f9c95edbcd302e8089b68eb374ca6112bd0444"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/reuse_certified_16.json",
+      "sha256": "b7424bc73f7f2184a5eb2dadf93bd7169825ac16d7c674a1783c691bd39d0afd"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/reuse_certified_16_progress.json",
+      "sha256": "f8b22e81d17b70c3465064a0394662836a4b162c03963c741f540ede3d1ba0c1"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/stage1.json",
+      "sha256": "30d6c065171619c01a161323c2102953254fd24a597699ef7581dac22332a8ef"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/stage1_progress.json",
+      "sha256": "d62719cc6383052334f93b24bf600884e74a723e7a5f4ff5363e25d33464f36d"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/statistics.json",
+      "sha256": "882bfd353a3292c9a828f3037c088f81169bc3ecfd8c45eb4845240317ea30cc"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/bundle/trusted.json",
+      "sha256": "fad3dad8338a1d1c7cc87ffc3cd382889dac7ec3f696e19f3e26e7140d63a839"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/owner_setup_pin.json",
+      "sha256": "fad3dad8338a1d1c7cc87ffc3cd382889dac7ec3f696e19f3e26e7140d63a839"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/protocol.json",
+      "sha256": "a30f5096d4d6ec9834567b2369273fa993e62458ac6a6c6e11aac3c33e6b558a"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/public_bundle/verify.json",
+      "sha256": "7c1362b98fa050f8dffd02c0be70d86eeaa0f9de4a59700a25708366696a8b74"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/status.json",
+      "sha256": "7d694994fe35ce374217da6cc9c40dfad42763997496c77a75be404d686c6404"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/summary.json",
+      "sha256": "c0fc5054890fc1a5d07f6021e91d34d2ecd63aa30110e9e48b9c16f292df532f"
+    },
+    {
+      "path": "mnist_n256_learned_energy_r63_t16384/workload.csv",
+      "sha256": "dbdcf272cb21ee0620b0a06821bc7ee7f1015cda5a1685c1e0991273b9281266"
+    },
+    {
+      "path": "mnist_n256_pca_energy/approved_public_task.json",
+      "sha256": "d2102e2147dde9bf3fed727a3cec9d70ff508e826a5d1077854f0ca850754a1c"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/prepare.json",
+      "sha256": "177a2ce214d1f91c3ce59f63f97397eb7a370e9aed7f21f1389840cdc851d718"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/reuse_64.json",
+      "sha256": "4319e4c3fd3ec366824b251e31ad76e60bbd1d3fe15120b98a30bbb0d07933da"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/reuse_64_progress.json",
+      "sha256": "81f684380321d20c3fd26ef92e851f9b730b4b9d981905a78dbc2232a8550e17"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/reuse_certified_64.json",
+      "sha256": "ff6c49b5e6ee0662f6338cb83e560b7a10fbc01abe650ff7d7d5e806019e5ce5"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "a513165be853a81ecdc45fac17f96112152b736b599e95fdc5fa3b33e7d20a0f"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/stage1.json",
+      "sha256": "75365380822eaa7d669476147d56c655aadbf546e2cff5465851c40bbc56abc4"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/stage1_progress.json",
+      "sha256": "f0cf12a914e84f4732be4d39f7f33d0875cefdc4f65c4a3285911f789657c939"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/statistics.json",
+      "sha256": "8b5068ed75765eda5513cdf0aec2a1235d6c0951c11b1c021a54625702315888"
+    },
+    {
+      "path": "mnist_n256_pca_energy/bundle/trusted.json",
+      "sha256": "cbba205ee78f474b2d39dcb3ede51542793e90f01452765be20539590ba6ac2d"
+    },
+    {
+      "path": "mnist_n256_pca_energy/owner_setup_pin.json",
+      "sha256": "cbba205ee78f474b2d39dcb3ede51542793e90f01452765be20539590ba6ac2d"
+    },
+    {
+      "path": "mnist_n256_pca_energy/protocol.json",
+      "sha256": "55a3949341bb2ce0fa66e581aebf8e3c868677a498bd0272cf0248594fd80fa7"
+    },
+    {
+      "path": "mnist_n256_pca_energy/public_bundle/verify.json",
+      "sha256": "a1128fed02190bcaf1498e2e500652815db55778ac236ccbda2891ab311c33b3"
+    },
+    {
+      "path": "mnist_n256_pca_energy/status.json",
+      "sha256": "64bc4c133814d2d3ecbeb4925ce94cbf5c01e6f20effa1bdf8a2bdc150407000"
+    },
+    {
+      "path": "mnist_n256_pca_energy/summary.json",
+      "sha256": "4b4a7ad24f6068301b91d073b734f39334e2202819e3e77409a8f81f4e60e1a5"
+    },
+    {
+      "path": "mnist_n256_pca_energy/workload.csv",
+      "sha256": "903f2509221535bf47fe067539382f6959647ddc5dd285a86cf152315ac9a24f"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/approved_public_task.json",
+      "sha256": "dba423674842ee79a8347873b6b5df27ac6c158ca23637196e979641f3e932a0"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/prepare.json",
+      "sha256": "846af993d1cf45ad6f940bc50ad55f29c4009ccc8f4f265c66f7c6a9a9c077b5"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/reuse_16.json",
+      "sha256": "476b712c608337193e1ca6b1c8a0baa5848ec18a21a2bb203eb8afaf2ff60a49"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/reuse_16_progress.json",
+      "sha256": "3093da356a2e736a18cacb851f8cdc814ec0d7cb138906b9930fb8034ac2c259"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/reuse_certified_16.json",
+      "sha256": "74d3fedd425c334d5bfc905933407069f6f256ea44c084a89e68633e2352f0b0"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/reuse_certified_16_progress.json",
+      "sha256": "2acb73bb158931f6d51bf00e9605618dc2d650885ad35c110510088cdcfb9fb6"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/stage1.json",
+      "sha256": "1e30028ef12e78cc636fb0e4bc403c8b8085d93dcc2e2cc6fe8354de1234cb1b"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/stage1_progress.json",
+      "sha256": "50238418f4ce0bae940bf8ce1a3d33561dcb4a3f6ad76d6a8f3668642c406720"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/statistics.json",
+      "sha256": "50d285f9295b47941ad585ca85711a9eaa585b6e3863ab51af845cfc23edd955"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/bundle/trusted.json",
+      "sha256": "08ac38a8f8c3c385d1a30a133c75a2ff909117efa87789982c125e2763e9985b"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/owner_setup_pin.json",
+      "sha256": "08ac38a8f8c3c385d1a30a133c75a2ff909117efa87789982c125e2763e9985b"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/protocol.json",
+      "sha256": "4cfa70461676c4775a25b953bddbba1c4bb6e1f7c05c5df414bc48e79c1308e0"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/public_bundle/verify.json",
+      "sha256": "c1067d70db5b1d83f6d26d71e3148e846900045b9db5a64a2739ffb58fb52906"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/status.json",
+      "sha256": "6713402b72c0bc11f010cf1933350afe3300bbdb88c4a35edbd93e3c9e26771d"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/summary.json",
+      "sha256": "81acdde1ffe528097817e4c52cbaaec1332d2cd8487a9bf6d404b80810bf254a"
+    },
+    {
+      "path": "mnist_n256_pca_energy_r63_t16384/workload.csv",
+      "sha256": "c10dfdf9a8f8d2d4bebf85c1b261a6b686fc8c9f62b846a04600587f88248ad7"
+    },
+    {
+      "path": "mnist_n64_learned_energy/approved_public_task.json",
+      "sha256": "f7eeaaa93a94a096c1d402beeacd703b00efa202a3400feeae5f0094a488a3a7"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/prepare.json",
+      "sha256": "49f217ccb176291a14bc920854585e0bd801f515cce4654dfbf54704eb1047cb"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/reuse_64.json",
+      "sha256": "961158b79802bae31f7d6f910d1b52dbbf5aab6a085ae5e5f42e2d7e3f2a020b"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/reuse_64_progress.json",
+      "sha256": "acc3ecfd6698a0e6eb0c84906435457135f4c7fdd0d4e879755cbc914fc4d1c0"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/reuse_certified_64.json",
+      "sha256": "86854178bdc6c0f21eeb4cbdfe37646f05d40278b721b40f98106e8376d13932"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "e0f8f4ab427e7258843a9c523c101fbd4372e59e2f171937032ac22ad0f38da2"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/stage1.json",
+      "sha256": "05ec7e907a0f9349b3e5424ba974ef37520dbc8227df78c6668648614ab07867"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/stage1_progress.json",
+      "sha256": "d1558cf37b9cafbd4879223781aecbc32dbbcbc636e57ad79b39f22e1e2c4f9e"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/statistics.json",
+      "sha256": "e1b75d42e4e550f54fb021dd8d76e2a4c0d4ab8d1e114ea99a79ac7cebfe8a7a"
+    },
+    {
+      "path": "mnist_n64_learned_energy/bundle/trusted.json",
+      "sha256": "081018c678e023ce9cb04e4a11240c207c926e10d9cc47e2babc0dc4d6017206"
+    },
+    {
+      "path": "mnist_n64_learned_energy/owner_setup_pin.json",
+      "sha256": "081018c678e023ce9cb04e4a11240c207c926e10d9cc47e2babc0dc4d6017206"
+    },
+    {
+      "path": "mnist_n64_learned_energy/protocol.json",
+      "sha256": "b86d64ae94f4ef76741c80cb093a66f126088db25f9c8bbebdff428d3a2114c0"
+    },
+    {
+      "path": "mnist_n64_learned_energy/public_bundle/verify.json",
+      "sha256": "dd746f5f1abc30b767290ca8c65dcb11765c4df15a6838bfb7fd4c6839e29cc1"
+    },
+    {
+      "path": "mnist_n64_learned_energy/status.json",
+      "sha256": "03fc58066161d5b7783208ceb0c35a37c573f1818b3a238952784687619f54ad"
+    },
+    {
+      "path": "mnist_n64_learned_energy/summary.json",
+      "sha256": "f12b2030bccee07ae5cb6ba308000b71d30d307422a727f22353631fc4fdb081"
+    },
+    {
+      "path": "mnist_n64_learned_energy/workload.csv",
+      "sha256": "20a464b7538ccdb72741bcf3a9eb9b121b338e995de4dc9fad6fb64ce22bf131"
+    },
+    {
+      "path": "mnist_n64_pca_energy/approved_public_task.json",
+      "sha256": "f7eeaaa93a94a096c1d402beeacd703b00efa202a3400feeae5f0094a488a3a7"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/prepare.json",
+      "sha256": "56eb7bc9fd1c2431d13a86715ff2a03d8ba05996f2099ca3c0e418058f0ace93"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/reuse_64.json",
+      "sha256": "a45f7669f466e40ffcc620654f018ccce37b434c465a4bb562519701661c1750"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/reuse_64_progress.json",
+      "sha256": "60e66923bda983f841e1933388abcb5123fa27ec928f80d28d2ea56024e17587"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/reuse_certified_64.json",
+      "sha256": "4a62cff6969f756d162cf3966467ed56f492aca5ba4991157c2eda87a853310c"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/reuse_certified_64_progress.json",
+      "sha256": "0fc0b3bc0ea508a0e402d1cdd9e9ad612855785aa0e42727b4651fadb41f5ae0"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/stage1.json",
+      "sha256": "647b7dbb6f627d4c08f340e01a87047c0e3ada664347acc1a54474d49e7e8cb7"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/stage1_progress.json",
+      "sha256": "90068a77692bf947b9e05d9bc3280b5c37258d337bc56b3170861f685632c9f0"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/statistics.json",
+      "sha256": "1cc0a7b6e096b1f0acc086de0ce7968a668c4d60136130058223af5fcc7ba501"
+    },
+    {
+      "path": "mnist_n64_pca_energy/bundle/trusted.json",
+      "sha256": "c66f48ac868760e9401ecc89f08f9d8233d4f168ece7a730b6638d6f95ebd1d6"
+    },
+    {
+      "path": "mnist_n64_pca_energy/owner_setup_pin.json",
+      "sha256": "c66f48ac868760e9401ecc89f08f9d8233d4f168ece7a730b6638d6f95ebd1d6"
+    },
+    {
+      "path": "mnist_n64_pca_energy/protocol.json",
+      "sha256": "2b70b7b41426c45dcfafb8d6f3efb5c8c732adb261a47caf78978d565afb3bed"
+    },
+    {
+      "path": "mnist_n64_pca_energy/public_bundle/verify.json",
+      "sha256": "8478ebf5a63d41cb05255cdad2052c410beeae7f669ed76744efefab2ff42eae"
+    },
+    {
+      "path": "mnist_n64_pca_energy/status.json",
+      "sha256": "b044b60d6bf3b3a24c6dc506666f887c736683f94282d153d15d0ef561c5a924"
+    },
+    {
+      "path": "mnist_n64_pca_energy/summary.json",
+      "sha256": "6bf5154ccc7c8063ca4ebb18b0dcbc41d6b8281c1be0d321bc9eafb256cdd5ec"
+    },
+    {
+      "path": "mnist_n64_pca_energy/workload.csv",
+      "sha256": "553d454df0b6fcea23c4cdcbf0636276628bf37ffc2965a046db6e91681c8f76"
+    }
+  ],
+  "captured_unix": 1792523560.5430498,
+  "all_transferred_hashes_valid": true
+}

@@ -1,0 +1,44 @@
+{
+  "revision": "targeted update preserving original manuscript structure",
+  "current_cohort": "bound-audit-v1",
+  "table_exporter_sha256": "adfc2d4724b4137018e2f0ed99f044508c364b9ae283dc4a9d5139199051f446",
+  "scaling_figure_sha256": "fae11369500c250b0d40319d95dc5c9168b29a0a9b954e9c947492732f251389",
+  "current_numeric_manifest": "paper_results/bound_revision/manifest.json",
+  "current_manifest_sha256": "bb5a1c52945e435ec50771cb55f6594a8253d9c86500d5f323aad4d28fbd4ac1",
+  "archived_tables": [
+    "eligibility.tex",
+    "ordering.tex",
+    "attacks.tex",
+    "certificates.tex"
+  ],
+  "source_inputs": {
+    "code/analysis/revise_paper_results.py": "2ea0323fe9a8bef25080348832a9c02d867cd58b0e6f4470e0b9cfe5d34b6da2",
+    "code/results/final_paper_review_1792295389/checked_review/component_attribution.csv": "021f429c552b25ee20a2db3b657aa8db0efa6c5785197b245c7e676689b49526",
+    "code/results/final_paper_review_1792295389/checked_review/full_native_by_dataset_k.csv": "807435e164ed7b934bcb48b393dbd7f459938f37af51d4bf9280d2c29715cbfe",
+    "code/results/final_paper_review_1792295389/checked_review/full_native_reference_comparison.csv": "b349134178f2a33198860e6089a1086d6ac1ff5874b0937b3403648823dec302",
+    "code/results/final_paper_review_1792295389/checked_review/geometry_matched_cells.csv": "f4146262c9b4cc931d619851cee27d2c3df4e5557f7a95c8b28247ee175717ae",
+    "code/results/final_paper_review_1792295389/checked_review/mnist_64catalog_four_distinct_queries.csv": "f318b44a0b1c0d8005efb7b289216c405d2a55f6fc6b5a9cb71fc7cefc899562",
+    "code/results/final_paper_review_1792295389/checked_review/mnist_64point_query.csv": "c0905add70d482b74d66fb316d015de41a5318687fe4eb004eb72bb7521a5e3b",
+    "code/results/final_paper_review_1792295389/checked_review/precision_all_tested_center_counts.csv": "38cf1ceab7cd71599e64532f99ecf59259debaa171067909e731b764c310c672",
+    "code/results/final_paper_review_1792295389/checked_review/sparsity_separate_settings.csv": "fedcbb91c98f313af6f1c7342e219bf66e184e16e649eed90899460ff44704a7",
+    "code/results/final_paper_review_1792295389/checked_review/validation_summary.json": "42d9d36bf489e3786ccae5a710ea94499a6aa46500b2bfbed084e4c1f73b7061",
+    "code/results/final_paper_review_1792295389/completion/campaign/native.csv": "5b6f9f68b9b338defd0ef3f521aadeb034f1bd32741f129e61f7fdb19da6a8f6",
+    "code/results/final_paper_review_1792295389/completion/campaign/proofs.csv": "096ac1bb58f14297840073c312ba05ad32de57beec081754a128f6ba5eacdff7",
+    "code/results/final_paper_review_1792295389/completion/full_budget_control/full_q8_controls.csv": "ceee841fd6f88daf93a9fb9dc2e7aca419e330230a04200ba09f27ffe4919064",
+    "code/results/final_paper_review_1792295389/corrected_handoff/geometry_plot_common_cases.csv": "145f71f66506dff49b9410ad51df3f1b5bce8eeb0278247d8e543df4d48af906",
+    "code/results/final_paper_review_1792295389/corrected_handoff/main_actual_queries.csv": "726b3bf7594630ceb5c7ce6c3b34521205e6a5c6aeca3cd08da3463a518c89b0",
+    "code/results/final_paper_review_1792295389/followup/campaign/full_native.csv": "42f2d2534a60d0ca67c80159781fdb844bc163272f406e82aa179ac9a732a521",
+    "code/results/final_paper_review_1792295389/followup/campaign/geometry_proofs.csv": "1d77b489df622189ebd3e614306d93cdc15a88e15410cf241de920871261c5e5",
+    "code/results/final_paper_review_1792295389/main/analysis/proof_instance_quality.csv": "636487589afc392683eb9cb4c490fe35361deb396962150cb2e14af216f40e39",
+    "code/results/final_paper_review_1792295389/main/datasets.json": "c09efb7348db0ca5de805f3b61190993d11a52a5aed1f3bf4bba2768aa17f318"
+  },
+  "updated_tables": {
+    "datasets.tex": "107eae2463691c6ab19a389659f1cc5837a4fa2887362d6953d3dd2d08e54432",
+    "fidelity.tex": "2b4539a644de629322f35b1a328c2699562358c5c04bb8c8ac70d94d32375ada",
+    "proof.tex": "d8918360f3de87367467a8505f8ac11c9f7c6ace7617b5c34586bfe0593553cd",
+    "cost_error.tex": "96a6454ce2767ab0e8b9c776fb9a2c96ada06318066a61a649b54289e863132b",
+    "earlier_full.tex": "c20e5c464a2cec5ffda89718dd5f01c7e7716c70017ed46eb8018f4716e4838f",
+    "scaling.tex": "e25a9d896587fe39befce65cd604269570d8a2bfd454c599262db7fe94813460",
+    "ablation.tex": "3caeeb4c0f1938c704fae350eb137909e563601a95f5433abe007bd0d8f81852"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "phase": "stage1",
+  "status": "complete",
+  "complete": true,
+  "constraints": 4443,
+  "compile_seconds": 0.0384212,
+  "setup_seconds": 0.3542077,
+  "load_seconds": 0.0010753,
+  "native_prepare_seconds": 0,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+    "ch": "6715856438576969068865982534019681501303879076261115563701834598775882467528",
+    "ce": "0",
+    "ct": "0",
+    "context": "815197241804908756149029838025683442418165523450336748766228789201945808101"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "prove_seconds": [
+        0.0537632
+      ],
+      "verify_seconds": [
+        0.0026662
+      ],
+      "witness_seconds": 0.0005367,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000000.proof"
+    },
+    {
+      "id": 1,
+      "prove_seconds": [
+        0.0551172
+      ],
+      "verify_seconds": [
+        0.0025061
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000001.proof"
+    },
+    {
+      "id": 2,
+      "prove_seconds": [
+        0.0551148
+      ],
+      "verify_seconds": [
+        0.0025158
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000002.proof"
+    },
+    {
+      "id": 3,
+      "prove_seconds": [
+        0.0554214
+      ],
+      "verify_seconds": [
+        0.0019996
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000003.proof"
+    }
+  ],
+  "verified": 4,
+  "wall_seconds": 0.6791066
+}

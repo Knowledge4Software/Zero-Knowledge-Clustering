@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "source": "code\\validation\\outputs\\review_certificate_preflight_20261020\\new_set_summary.csv",
+      "exported": "review_certificate_preflight_20261020_new_set_summary.csv",
+      "sha256": "5ad3244ea6986c0c980014b6ad8dde8544cd583b0691ae49f96dd466fd68be97"
+    },
+    {
+      "source": "code\\validation\\outputs\\review_certificate_preflight_20261020\\certificate_preflight.csv",
+      "exported": "review_certificate_preflight_20261020_certificate_preflight.csv",
+      "sha256": "036b2dcf961555492e652ca05eeff8b27e5092d4039436a51e0d7821dd363da3"
+    },
+    {
+      "source": "code\\validation\\outputs\\review_certificate_preflight_20261020\\manifest.json",
+      "exported": "review_certificate_preflight_20261020_manifest.json",
+      "sha256": "f82d8c439e1ec1b3efdfdccc5bcdaafccdcad1f869c2c257ebc5476bf6ff2c34"
+    },
+    {
+      "source": "code\\validation\\outputs\\review_certificate_budget_20261020\\certificate_budget_summary.csv",
+      "exported": "review_certificate_budget_20261020_certificate_budget_summary.csv",
+      "sha256": "af507334c4e4b118ce91fd7b8c7bda709eae0d8e36a0b95074b30f6a146f1fe0"
+    },
+    {
+      "source": "code\\validation\\outputs\\review_certificate_budget_20261020\\certificate_budget_cells.csv",
+      "exported": "review_certificate_budget_20261020_certificate_budget_cells.csv",
+      "sha256": "62ae61cf757d1c17de31e6b045aadf81c4cc631b7dc92104773f871ad046ef9f"
+    },
+    {
+      "source": "code\\validation\\outputs\\review_certificate_budget_20261020\\protocol.json",
+      "exported": "review_certificate_budget_20261020_protocol.json",
+      "sha256": "6dc35a328ec717a7d885c3a22187d08df4547059699aa790c08f8091c29a1be8"
+    },
+    {
+      "source": "code\\validation\\outputs\\review_certificate_budget_20261020\\fit_records.json",
+      "exported": "review_certificate_budget_20261020_fit_records.json",
+      "sha256": "9c954f5c4b40018e379086674c9555c54ac983ae01f9ad0771ca9133ad02e3df"
+    },
+    {
+      "source": "code\\validation\\outputs\\review_full_capture_20261020_0330\\capture.json",
+      "exported": "review_full_capture_20261020_0330_capture.json",
+      "sha256": "4e12fd75172682dba41bc7ec52d77770c3cbcfb77c070534a3aa4b72b0f28f49"
+    }
+  ],
+  "source_files_hashed": true,
+  "native_not_proofs": true,
+  "full_capture_all_hashes_valid": true,
+  "timing_policy": "native prepare + compile + setup + native answer construction + witness + median proving; verification/warmup/fitting/I-O/public center preparation excluded",
+  "normalization": "First frozen Full worker omitted native_answer_seconds from its CSV total; new exports reconstruct this component from saved samples, without modifying the original output."
+}

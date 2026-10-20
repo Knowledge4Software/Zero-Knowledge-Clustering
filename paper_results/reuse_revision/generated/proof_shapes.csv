@@ -1,0 +1,11 @@
+run,method,stage1_constraints,query_constraints,peak_rss_bytes
+reuse_mnist_n64,learned_energy,171586,519896,1117974528.0
+reuse_mnist_n64,pca_energy,171582,519896,1137807360.0
+reuse_mnist_n64,span_energy,168901,343455,838795264.0
+reuse_mnist_n64,cached,168446,197147,528728064.0
+reuse_mnist_n64,affine,168815,271205,764186624.0
+reuse_cifar_n64,learned_energy,432049,524336,1466408960.0
+reuse_cifar_n64,pca_energy,432049,524336,1443217408.0
+reuse_cifar_n64,span_energy,429318,347645,1053638656.0
+reuse_cifar_n64,cached,428869,197406,1074094080.0
+reuse_cifar_n64,affine,429234,271590,1060442112.0

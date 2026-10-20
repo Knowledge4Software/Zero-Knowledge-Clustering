@@ -1,0 +1,19 @@
+{
+  "source_input": "/root/commitjl/results/paper_runs_20261019/reuse_cifar_n64/cases/cifar10_resnet50_n64_learned_energy/input.json",
+  "source_sha256": "5a781683a58e183ab1ee98f1f9fb93d1316254b8783a98485e4b9bf185d81a98",
+  "binary_sha256": "551e6b64d2c55ebee2e29c132071f7ac30e9a111c2d41592fbf47343ae173e28",
+  "n": 64,
+  "d": 2048,
+  "k": 5,
+  "center_sets": 10,
+  "batch": 2,
+  "reps": 1,
+  "warmup": 1,
+  "all_catalog_rows_proved": true,
+  "full_catalog_extrapolated": false,
+  "setup_reused_across_centers": true,
+  "input_scale": "328.30940664445205",
+  "basis_scale": 4096,
+  "label": "full_public_centers",
+  "cost_policy": "native prepare + compile + setup + witness + median measured prove; verify, warmup, fitting, I/O and public center preparation separate"
+}

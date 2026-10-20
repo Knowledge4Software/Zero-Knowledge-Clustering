@@ -1,0 +1,19 @@
+{
+  "source_input": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\review_certified_smoke_20261020\\input.json",
+  "source_sha256": "0302aa68fb4f882c5a474684573258486f8c6e2fa32c2334d7180202297b61c3",
+  "binary_sha256": "523c4f88403517ecd9cfd537cea47c2172c685aaaa44aedea490d2cefacfab4c",
+  "n": 4,
+  "d": 4,
+  "k": 3,
+  "center_sets": 2,
+  "batch": 2,
+  "reps": 1,
+  "warmup": 0,
+  "all_catalog_rows_proved": true,
+  "full_catalog_extrapolated": false,
+  "setup_reused_across_centers": true,
+  "input_scale": "1",
+  "basis_scale": 8,
+  "label": "learned_energy",
+  "cost_policy": "native prepare + compile + setup + native answer construction + witness + median measured prove; verify, warmup, fitting, I/O and public center preparation separate"
+}

@@ -1,0 +1,854 @@
+{
+  "phase": "stage1",
+  "status": "complete",
+  "complete": true,
+  "constraints": 168817,
+  "compile_seconds": 2.079783084,
+  "setup_seconds": 26.454810956,
+  "load_seconds": 0.003093356,
+  "native_prepare_seconds": 0,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "7256884467618851239297707545318058082814776634856184875946658412629035846496",
+    "ch": "11706657476330129500565435376305381432566357901877619055799319144557800420907",
+    "ce": "0",
+    "ct": "0",
+    "context": "15580983112631523540839643596618406722308934110841996027962223957154646146333"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "prove_seconds": [
+        3.133957751
+      ],
+      "verify_seconds": [
+        0.003681911
+      ],
+      "witness_seconds": 0.000966355,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000000.proof"
+    },
+    {
+      "id": 1,
+      "prove_seconds": [
+        2.905151966
+      ],
+      "verify_seconds": [
+        0.004316444
+      ],
+      "witness_seconds": 0.000746829,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000001.proof"
+    },
+    {
+      "id": 2,
+      "prove_seconds": [
+        3.273716454
+      ],
+      "verify_seconds": [
+        0.00354913
+      ],
+      "witness_seconds": 0.000671623,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000002.proof"
+    },
+    {
+      "id": 3,
+      "prove_seconds": [
+        2.816409823
+      ],
+      "verify_seconds": [
+        0.002505527
+      ],
+      "witness_seconds": 0.000680223,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000003.proof"
+    },
+    {
+      "id": 4,
+      "prove_seconds": [
+        3.078452628
+      ],
+      "verify_seconds": [
+        0.004109178
+      ],
+      "witness_seconds": 0.000500459,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000004.proof"
+    },
+    {
+      "id": 5,
+      "prove_seconds": [
+        3.051614351
+      ],
+      "verify_seconds": [
+        0.006590584
+      ],
+      "witness_seconds": 0.000520569,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000005.proof"
+    },
+    {
+      "id": 6,
+      "prove_seconds": [
+        2.998118061
+      ],
+      "verify_seconds": [
+        0.003735293
+      ],
+      "witness_seconds": 0.001373369,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000006.proof"
+    },
+    {
+      "id": 7,
+      "prove_seconds": [
+        2.979888963
+      ],
+      "verify_seconds": [
+        0.005711985
+      ],
+      "witness_seconds": 0.000564863,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000007.proof"
+    },
+    {
+      "id": 8,
+      "prove_seconds": [
+        3.12584918
+      ],
+      "verify_seconds": [
+        0.005424191
+      ],
+      "witness_seconds": 0.000475148,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000008.proof"
+    },
+    {
+      "id": 9,
+      "prove_seconds": [
+        2.9764678460000003
+      ],
+      "verify_seconds": [
+        0.008308295
+      ],
+      "witness_seconds": 0.001073523,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000009.proof"
+    },
+    {
+      "id": 10,
+      "prove_seconds": [
+        3.114597279
+      ],
+      "verify_seconds": [
+        0.003581122
+      ],
+      "witness_seconds": 0.000600594,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000010.proof"
+    },
+    {
+      "id": 11,
+      "prove_seconds": [
+        3.27605969
+      ],
+      "verify_seconds": [
+        0.005066756
+      ],
+      "witness_seconds": 0.000753385,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000011.proof"
+    },
+    {
+      "id": 12,
+      "prove_seconds": [
+        2.913348838
+      ],
+      "verify_seconds": [
+        0.00441983
+      ],
+      "witness_seconds": 0.00066458,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000012.proof"
+    },
+    {
+      "id": 13,
+      "prove_seconds": [
+        3.015087317
+      ],
+      "verify_seconds": [
+        0.003606552
+      ],
+      "witness_seconds": 0.00119031,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000013.proof"
+    },
+    {
+      "id": 14,
+      "prove_seconds": [
+        2.878603743
+      ],
+      "verify_seconds": [
+        0.002495643
+      ],
+      "witness_seconds": 0.001189354,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000014.proof"
+    },
+    {
+      "id": 15,
+      "prove_seconds": [
+        3.255765997
+      ],
+      "verify_seconds": [
+        0.005676579
+      ],
+      "witness_seconds": 0.000995399,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000015.proof"
+    },
+    {
+      "id": 16,
+      "prove_seconds": [
+        3.109824394
+      ],
+      "verify_seconds": [
+        0.005508943
+      ],
+      "witness_seconds": 0.001106294,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000016.proof"
+    },
+    {
+      "id": 17,
+      "prove_seconds": [
+        3.075203112
+      ],
+      "verify_seconds": [
+        0.003402863
+      ],
+      "witness_seconds": 0.001178288,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000017.proof"
+    },
+    {
+      "id": 18,
+      "prove_seconds": [
+        3.011453169
+      ],
+      "verify_seconds": [
+        0.004489487
+      ],
+      "witness_seconds": 0.001000009,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000018.proof"
+    },
+    {
+      "id": 19,
+      "prove_seconds": [
+        2.9512784290000003
+      ],
+      "verify_seconds": [
+        0.003397983
+      ],
+      "witness_seconds": 0.000503943,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000019.proof"
+    },
+    {
+      "id": 20,
+      "prove_seconds": [
+        2.943217757
+      ],
+      "verify_seconds": [
+        0.005529132
+      ],
+      "witness_seconds": 0.000555486,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000020.proof"
+    },
+    {
+      "id": 21,
+      "prove_seconds": [
+        3.027555526
+      ],
+      "verify_seconds": [
+        0.003519298
+      ],
+      "witness_seconds": 0.001294325,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000021.proof"
+    },
+    {
+      "id": 22,
+      "prove_seconds": [
+        2.991356787
+      ],
+      "verify_seconds": [
+        0.005280674
+      ],
+      "witness_seconds": 0.000658198,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000022.proof"
+    },
+    {
+      "id": 23,
+      "prove_seconds": [
+        3.161617175
+      ],
+      "verify_seconds": [
+        0.002997521
+      ],
+      "witness_seconds": 0.001226256,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000023.proof"
+    },
+    {
+      "id": 24,
+      "prove_seconds": [
+        3.122873628
+      ],
+      "verify_seconds": [
+        0.003752572
+      ],
+      "witness_seconds": 0.000693508,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000024.proof"
+    },
+    {
+      "id": 25,
+      "prove_seconds": [
+        3.109547123
+      ],
+      "verify_seconds": [
+        0.004823903
+      ],
+      "witness_seconds": 0.000753571,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000025.proof"
+    },
+    {
+      "id": 26,
+      "prove_seconds": [
+        3.139804173
+      ],
+      "verify_seconds": [
+        0.003303864
+      ],
+      "witness_seconds": 0.001583858,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000026.proof"
+    },
+    {
+      "id": 27,
+      "prove_seconds": [
+        2.965901749
+      ],
+      "verify_seconds": [
+        0.003230677
+      ],
+      "witness_seconds": 0.001034895,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000027.proof"
+    },
+    {
+      "id": 28,
+      "prove_seconds": [
+        3.051245705
+      ],
+      "verify_seconds": [
+        0.006005925
+      ],
+      "witness_seconds": 0.000910204,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000028.proof"
+    },
+    {
+      "id": 29,
+      "prove_seconds": [
+        3.114066699
+      ],
+      "verify_seconds": [
+        0.00350379
+      ],
+      "witness_seconds": 0.000661762,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000029.proof"
+    },
+    {
+      "id": 30,
+      "prove_seconds": [
+        2.824574647
+      ],
+      "verify_seconds": [
+        0.003898035
+      ],
+      "witness_seconds": 0.000445353,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000030.proof"
+    },
+    {
+      "id": 31,
+      "prove_seconds": [
+        2.89385692
+      ],
+      "verify_seconds": [
+        0.005687227
+      ],
+      "witness_seconds": 0.001162337,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000031.proof"
+    },
+    {
+      "id": 32,
+      "prove_seconds": [
+        2.908950744
+      ],
+      "verify_seconds": [
+        0.003307643
+      ],
+      "witness_seconds": 0.000460875,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000032.proof"
+    },
+    {
+      "id": 33,
+      "prove_seconds": [
+        3.190138174
+      ],
+      "verify_seconds": [
+        0.005517096
+      ],
+      "witness_seconds": 0.000454122,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000033.proof"
+    },
+    {
+      "id": 34,
+      "prove_seconds": [
+        3.004335081
+      ],
+      "verify_seconds": [
+        0.003910969
+      ],
+      "witness_seconds": 0.002351192,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000034.proof"
+    },
+    {
+      "id": 35,
+      "prove_seconds": [
+        3.01734545
+      ],
+      "verify_seconds": [
+        0.005340769
+      ],
+      "witness_seconds": 0.00157366,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000035.proof"
+    },
+    {
+      "id": 36,
+      "prove_seconds": [
+        2.985560127
+      ],
+      "verify_seconds": [
+        0.003979693
+      ],
+      "witness_seconds": 0.00104682,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000036.proof"
+    },
+    {
+      "id": 37,
+      "prove_seconds": [
+        3.171504974
+      ],
+      "verify_seconds": [
+        0.003940919
+      ],
+      "witness_seconds": 0.001272495,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000037.proof"
+    },
+    {
+      "id": 38,
+      "prove_seconds": [
+        2.91332604
+      ],
+      "verify_seconds": [
+        0.005495397
+      ],
+      "witness_seconds": 0.001313317,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000038.proof"
+    },
+    {
+      "id": 39,
+      "prove_seconds": [
+        3.01063983
+      ],
+      "verify_seconds": [
+        0.003748064
+      ],
+      "witness_seconds": 0.001051168,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000039.proof"
+    },
+    {
+      "id": 40,
+      "prove_seconds": [
+        2.9546189050000002
+      ],
+      "verify_seconds": [
+        0.00411213
+      ],
+      "witness_seconds": 0.00050976,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000040.proof"
+    },
+    {
+      "id": 41,
+      "prove_seconds": [
+        2.912185595
+      ],
+      "verify_seconds": [
+        0.003303044
+      ],
+      "witness_seconds": 0.000789841,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000041.proof"
+    },
+    {
+      "id": 42,
+      "prove_seconds": [
+        3.036150668
+      ],
+      "verify_seconds": [
+        0.005988545
+      ],
+      "witness_seconds": 0.001264494,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000042.proof"
+    },
+    {
+      "id": 43,
+      "prove_seconds": [
+        3.055189706
+      ],
+      "verify_seconds": [
+        0.003480914
+      ],
+      "witness_seconds": 0.000776578,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000043.proof"
+    },
+    {
+      "id": 44,
+      "prove_seconds": [
+        2.919933751
+      ],
+      "verify_seconds": [
+        0.004123781
+      ],
+      "witness_seconds": 0.000609484,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000044.proof"
+    },
+    {
+      "id": 45,
+      "prove_seconds": [
+        3.082427815
+      ],
+      "verify_seconds": [
+        0.005516356
+      ],
+      "witness_seconds": 0.000558772,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000045.proof"
+    },
+    {
+      "id": 46,
+      "prove_seconds": [
+        2.93384013
+      ],
+      "verify_seconds": [
+        0.003661824
+      ],
+      "witness_seconds": 0.001059204,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000046.proof"
+    },
+    {
+      "id": 47,
+      "prove_seconds": [
+        3.109214504
+      ],
+      "verify_seconds": [
+        0.002600418
+      ],
+      "witness_seconds": 0.001434115,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000047.proof"
+    },
+    {
+      "id": 48,
+      "prove_seconds": [
+        2.930039276
+      ],
+      "verify_seconds": [
+        0.003484092
+      ],
+      "witness_seconds": 0.000693565,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000048.proof"
+    },
+    {
+      "id": 49,
+      "prove_seconds": [
+        3.176219036
+      ],
+      "verify_seconds": [
+        0.003729969
+      ],
+      "witness_seconds": 0.001025953,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000049.proof"
+    },
+    {
+      "id": 50,
+      "prove_seconds": [
+        2.9881260320000003
+      ],
+      "verify_seconds": [
+        0.004228289
+      ],
+      "witness_seconds": 0.001034736,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000050.proof"
+    },
+    {
+      "id": 51,
+      "prove_seconds": [
+        3.162660311
+      ],
+      "verify_seconds": [
+        0.003955693
+      ],
+      "witness_seconds": 0.001030497,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000051.proof"
+    },
+    {
+      "id": 52,
+      "prove_seconds": [
+        2.9648924709999998
+      ],
+      "verify_seconds": [
+        0.004881931
+      ],
+      "witness_seconds": 0.000424421,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000052.proof"
+    },
+    {
+      "id": 53,
+      "prove_seconds": [
+        2.977135287
+      ],
+      "verify_seconds": [
+        0.003492762
+      ],
+      "witness_seconds": 0.0005186,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000053.proof"
+    },
+    {
+      "id": 54,
+      "prove_seconds": [
+        2.940293312
+      ],
+      "verify_seconds": [
+        0.002379896
+      ],
+      "witness_seconds": 0.000505863,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000054.proof"
+    },
+    {
+      "id": 55,
+      "prove_seconds": [
+        3.000405351
+      ],
+      "verify_seconds": [
+        0.005361749
+      ],
+      "witness_seconds": 0.000644805,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000055.proof"
+    },
+    {
+      "id": 56,
+      "prove_seconds": [
+        2.840081096
+      ],
+      "verify_seconds": [
+        0.00436486
+      ],
+      "witness_seconds": 0.001308327,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000056.proof"
+    },
+    {
+      "id": 57,
+      "prove_seconds": [
+        3.2629064
+      ],
+      "verify_seconds": [
+        0.008167761
+      ],
+      "witness_seconds": 0.000939533,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000057.proof"
+    },
+    {
+      "id": 58,
+      "prove_seconds": [
+        2.903539838
+      ],
+      "verify_seconds": [
+        0.002509294
+      ],
+      "witness_seconds": 0.00114451,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000058.proof"
+    },
+    {
+      "id": 59,
+      "prove_seconds": [
+        2.992265342
+      ],
+      "verify_seconds": [
+        0.004630209
+      ],
+      "witness_seconds": 0.000529759,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000059.proof"
+    },
+    {
+      "id": 60,
+      "prove_seconds": [
+        2.914840438
+      ],
+      "verify_seconds": [
+        0.004792397
+      ],
+      "witness_seconds": 0.000467539,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000060.proof"
+    },
+    {
+      "id": 61,
+      "prove_seconds": [
+        2.985697009
+      ],
+      "verify_seconds": [
+        0.002684353
+      ],
+      "witness_seconds": 0.000468815,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000061.proof"
+    },
+    {
+      "id": 62,
+      "prove_seconds": [
+        3.08143286
+      ],
+      "verify_seconds": [
+        0.008878387
+      ],
+      "witness_seconds": 0.000481743,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000062.proof"
+    },
+    {
+      "id": 63,
+      "prove_seconds": [
+        2.873637383
+      ],
+      "verify_seconds": [
+        0.002348879
+      ],
+      "witness_seconds": 0.000924388,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "file": "stage1/row_000063.proof"
+    }
+  ],
+  "verified": 64,
+  "wall_seconds": 226.323140901
+}

@@ -1,0 +1,6 @@
+job,dataset,k,variant,budget,large,n_catalog,phase,status,constraints,prove_median_seconds,compile_seconds,setup_seconds,prove_sum_seconds,distinct_instances,observed_wall_seconds,public_export_verified
+091_proof_mnist_k5_s0_pca,mnist,5,pca,16,True,64,stage1,complete,170744,3.0869996355,2.971094626,26.040208265,197.961484667,64,231.61871755996253,True
+092_proof_mnist_k5_s0_protected_energy,mnist,5,protected_energy,16,True,64,stage1,complete,168901,3.067438355,2.872161154,25.49998163,196.990191206,64,229.3629503570264,True
+093_proof_mnist_k5_s0_protected_tail,mnist,5,protected_tail,16,True,64,stage1,complete,174208,3.0831714135,2.783180229,26.566915889,198.221124987,64,231.83776095008943,True
+094_proof_mnist_k5_s0_affine,mnist,5,affine,16,True,64,stage1,complete,168815,3.0581652595,2.929908507,26.628736445,195.779646061,64,229.88371654297225,True
+095_proof_mnist_k5_s0_cached,mnist,5,cached,16,True,64,stage1,complete,168446,3.0144009075,2.658377399,24.494924325,194.488188975,64,225.8364664990222,True

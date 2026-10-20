@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "n": 256,
+  "sets": 10,
+  "method": "full_public_centers",
+  "original_root": "13545838002007715786332710622372328650711230816695693914604586797751209777458",
+  "total_seconds": 6236.570129126,
+  "query_constraints": 1422913,
+  "verified_public_samples": 320,
+  "full_catalog_extrapolated": false,
+  "certificate_phase": null,
+  "peak_rss_bytes": 3442716672
+}

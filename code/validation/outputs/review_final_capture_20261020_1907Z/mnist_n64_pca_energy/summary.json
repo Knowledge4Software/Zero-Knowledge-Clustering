@@ -1,0 +1,17 @@
+{
+  "complete": true,
+  "n": 64,
+  "sets": 10,
+  "method": "mnist_n64_pca_energy",
+  "original_root": "7256884467618851239297707545318058082814776634856184875946658412629035846496",
+  "total_seconds": 367.322031274,
+  "query_constraints": 519896,
+  "verified_public_samples": 84,
+  "full_catalog_extrapolated": false,
+  "certificate_constraints": 645261,
+  "certificate_total_seconds": 419.94914372599993,
+  "exact_label_policy_sets": 0,
+  "coverage99_cost1_policy_sets": 0,
+  "native_certificate_reference_matches": true,
+  "peak_rss_bytes": 1608871936
+}

@@ -1,0 +1,73 @@
+{
+ "datasets": [
+  [
+   "mnist",
+   "mnist",
+   {
+    "n_max": 5000,
+    "seed": 0
+   }
+  ],
+  [
+   "fashion_mnist",
+   "fashion_mnist",
+   {
+    "n_max": 5000,
+    "seed": 0
+   }
+  ],
+  [
+   "cifar10_resnet50",
+   "cifar10_resnet50",
+   {
+    "n_max": 5000,
+    "seed": 0
+   }
+  ],
+  [
+   "20ng_tfidf_nonzero",
+   "20ng_tfidf",
+   {
+    "n_max": 3000,
+    "seed": 0
+   }
+  ],
+  [
+   "20ng_minilm",
+   "20ng_minilm",
+   {
+    "n_max": 5000,
+    "seed": 0
+   }
+  ]
+ ],
+ "settings": [
+  "shift",
+  "owners"
+ ],
+ "ks": [
+  5,
+  10
+ ],
+ "starts": [
+  0,
+  1,
+  2
+ ],
+ "budgets": [
+  16,
+  32,
+  64,
+  128
+ ],
+ "maps": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "q": 4,
+ "owners": 5,
+ "alpha": 0.3
+}

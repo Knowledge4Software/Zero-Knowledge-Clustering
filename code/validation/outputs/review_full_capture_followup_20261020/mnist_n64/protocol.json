@@ -1,0 +1,19 @@
+{
+  "source_input": "/root/commitjl/results/paper_runs_20261019/reuse_mnist_n64/cases/mnist_n64_learned_energy/input.json",
+  "source_sha256": "5274a5da491efb91d117447607dadbcbc96aa34830a0c7adf31b21805ca02ab6",
+  "binary_sha256": "551e6b64d2c55ebee2e29c132071f7ac30e9a111c2d41592fbf47343ae173e28",
+  "n": 64,
+  "d": 784,
+  "k": 5,
+  "center_sets": 10,
+  "batch": 8,
+  "reps": 1,
+  "warmup": 1,
+  "all_catalog_rows_proved": true,
+  "full_catalog_extrapolated": false,
+  "setup_reused_across_centers": true,
+  "input_scale": "16.062745098039215",
+  "basis_scale": 4096,
+  "label": "full_public_centers",
+  "cost_policy": "native prepare + compile + setup + witness + median measured prove; verify, warmup, fitting, I/O and public center preparation separate"
+}

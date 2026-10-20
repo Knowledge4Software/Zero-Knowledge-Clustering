@@ -1,0 +1,54 @@
+{
+  "n": 1024,
+  "prefix_matches_original_256": true,
+  "training_refit": false,
+  "certificate_target": "committed quantized records; native preflight, not proof receipts",
+  "sources": [
+    {
+      "path": "code\\validation\\outputs\\review_owner_inputs_20261020\\reuse_cifar_n64_learned_energy.json",
+      "sha256": "5a781683a58e183ab1ee98f1f9fb93d1316254b8783a98485e4b9bf185d81a98"
+    },
+    {
+      "path": "code\\validation\\outputs\\review_owner_inputs_20261020\\reuse_cifar_n64_pca_energy.json",
+      "sha256": "89235fae3c9ca2ed49846c045cf6f9a05cbb97f996ba7c5a95471372e723e01f"
+    },
+    {
+      "path": "code\\validation\\outputs\\review_owner_inputs_20261020\\reuse_mnist_n256_learned_energy.json",
+      "sha256": "cefb18ca149cf11d899cd6a08ad0b7f6fb4c04a00b9ca815ffbb97778f443d78"
+    },
+    {
+      "path": "code\\validation\\outputs\\review_owner_inputs_20261020\\reuse_mnist_n256_pca_energy.json",
+      "sha256": "95e89d9fa46ce49d1d64b0991f3bbbf171689f7036e309c6f7b30ba67bb543bc"
+    },
+    {
+      "path": "code\\validation\\outputs\\review_owner_inputs_20261020\\reuse_mnist_n64_learned_energy.json",
+      "sha256": "5274a5da491efb91d117447607dadbcbc96aa34830a0c7adf31b21805ca02ab6"
+    },
+    {
+      "path": "code\\validation\\outputs\\review_owner_inputs_20261020\\reuse_mnist_n64_pca_energy.json",
+      "sha256": "44ab98742f9103969f7415707ca2afbcaf7d0505fe44a8a8509da6e77fd1b3f3"
+    },
+    {
+      "path": "code\\validation\\outputs\\review_certificate_preflight_20261020\\owner_inputs\\mnist_n1024_learned_energy.json",
+      "sha256": "a997627b43e1e926bfb381dafda5c3c6b02aeb766a6c2ffcdec3ca2ba9b459f4"
+    },
+    {
+      "path": "code\\validation\\outputs\\review_certificate_preflight_20261020\\owner_inputs\\mnist_n1024_pca_energy.json",
+      "sha256": "53015de8060327d3d64dd25ff044a4d8789ca70f3007fbabf9668e101c05277e"
+    }
+  ],
+  "data_metadata": {
+    "name": "mnist",
+    "n": 5000,
+    "d": 784,
+    "k": 10,
+    "source": "openml:mnist_784",
+    "seed": 0,
+    "sha256": "77346dea3480d6b0608c7b0a1d4d1ef9b547f7899f65d82e46994b4c345aa1f0",
+    "source_n": 70000,
+    "source_d": 784,
+    "labels_sha256": "58257b992412da0b7edd431448138337e84c6882fc9bbcc4e6cfcd83b2070844"
+  },
+  "certified_wrong_rows": 0,
+  "intervals_contain_reference": true
+}

@@ -1,0 +1,81 @@
+{
+  "complete": true,
+  "status": "complete",
+  "started_unix": 1792464445.9556677,
+  "phases": [
+    {
+      "phase": "prepare",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 1.2698808019049466,
+        "peak_rss_bytes": 14913536,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 0
+    },
+    {
+      "phase": "stage1",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 228.20244662906043,
+        "peak_rss_bytes": 470695936,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 64
+    },
+    {
+      "phase": "reuse",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 143.97713951091282,
+        "peak_rss_bytes": 1149685760,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 10
+    },
+    {
+      "phase": "reuse_certified",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 199.3106775758788,
+        "peak_rss_bytes": 1588510720,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 10
+    },
+    {
+      "phase": "verify_public",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 1.9162204961758107,
+        "peak_rss_bytes": 16580608,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 84
+    }
+  ],
+  "phase": "verify",
+  "finished_unix": 1792465022.0017357,
+  "summary": {
+    "complete": true,
+    "n": 64,
+    "sets": 10,
+    "method": "mnist_n64_learned_energy",
+    "original_root": "7256884467618851239297707545318058082814776634856184875946658412629035846496",
+    "total_seconds": 361.9412946880001,
+    "query_constraints": 519896,
+    "verified_public_samples": 84,
+    "full_catalog_extrapolated": false,
+    "certificate_constraints": 644365,
+    "certificate_total_seconds": 413.545190856,
+    "exact_label_policy_sets": 0,
+    "coverage99_cost1_policy_sets": 0,
+    "native_certificate_reference_matches": true,
+    "peak_rss_bytes": 1588510720
+  }
+}

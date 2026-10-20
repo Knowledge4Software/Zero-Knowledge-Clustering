@@ -1,0 +1,50 @@
+[
+  {
+    "rank": 15,
+    "method": "learned_energy",
+    "fit_seconds": 0.0009787000017240644,
+    "basis_source": "preserved original rounded basis; rescaled for precision control"
+  },
+  {
+    "rank": 15,
+    "method": "pca_energy",
+    "fit_seconds": 0.0008704000065336004,
+    "basis_source": "preserved original rounded basis; rescaled for precision control"
+  },
+  {
+    "rank": 31,
+    "method": "learned_energy",
+    "fit_seconds": 0.14328399999067187,
+    "basis_source": "training residual PCA plus deployed-center span"
+  },
+  {
+    "rank": 31,
+    "method": "pca_energy",
+    "fit_seconds": 0.1683937999914633,
+    "basis_source": "training PCA"
+  },
+  {
+    "rank": 63,
+    "method": "learned_energy",
+    "fit_seconds": 0.1606482000061078,
+    "basis_source": "training residual PCA plus deployed-center span"
+  },
+  {
+    "rank": 63,
+    "method": "pca_energy",
+    "fit_seconds": 0.2447134000103688,
+    "basis_source": "training PCA"
+  },
+  {
+    "rank": 127,
+    "method": "learned_energy",
+    "fit_seconds": 0.26480760000413284,
+    "basis_source": "training residual PCA plus deployed-center span"
+  },
+  {
+    "rank": 127,
+    "method": "pca_energy",
+    "fit_seconds": 0.3279899000044679,
+    "basis_source": "training PCA"
+  }
+]

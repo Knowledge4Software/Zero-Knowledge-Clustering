@@ -1,0 +1,25 @@
+{
+  "ranks": [
+    15,
+    31,
+    63,
+    127
+  ],
+  "basis_scales": [
+    4096,
+    16384
+  ],
+  "native_catalog": 1024,
+  "proof_pilot": {
+    "n": 256,
+    "rank": 63,
+    "basis_scale": 16384,
+    "batch": 16,
+    "methods": [
+      "learned_energy",
+      "pca_energy"
+    ]
+  },
+  "selection": "Rank 63/T=16384 pilot specified before native budget results; all ranks/scales retained",
+  "fit_policy": "Training split only; deployed centers retained; no future-center fitting"
+}

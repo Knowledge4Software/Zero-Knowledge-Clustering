@@ -1,0 +1,20 @@
+\begin{table*}[tp]
+\caption{Completed integer certificate quality at rank 15, $T=4096$. Agreement, certified coverage and relative cost-interval width are means across nine updated center sets. Strict accepts requires at least 99\% certified assignments and at most 1\% width. All checked intervals contain the exact quantized optimum; no certified assignment is incorrect.}\label{tab:matched-certificate-quality}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Catalog & Method & Agreement (\%) & Certified (\%) & Width (\%) & Strict accepts \\
+\midrule
+CIFAR/ResNet $N=64$ & Learned + energy & 99.48 & 60.76 & 24.00 & 0/9 \\
+CIFAR/ResNet $N=64$ & PCA + energy & 98.44 & 39.76 & 33.58 & 0/9 \\
+MNIST $N=64$ & Learned + energy & 98.26 & 52.26 & 20.80 & 0/9 \\
+MNIST $N=64$ & PCA + energy & 96.53 & 30.03 & 38.19 & 0/9 \\
+MNIST $N=256$ & Learned + energy & 98.31 & 59.20 & 20.51 & 0/9 \\
+MNIST $N=256$ & PCA + energy & 97.44 & 35.98 & 38.10 & 0/9 \\
+MNIST $N=1024$ & Learned + energy & 98.25 & 61.63 & 20.65 & 0/9 \\
+MNIST $N=1024$ & PCA + energy & 97.89 & 37.65 & 37.97 & 0/9 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

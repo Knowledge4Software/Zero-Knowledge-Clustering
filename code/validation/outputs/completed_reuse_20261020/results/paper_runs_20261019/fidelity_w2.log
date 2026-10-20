@@ -1,0 +1,9 @@
+gaussian_easy 5 done
+gaussian_easy 10 done
+gaussian_hard 5 done
+gaussian_hard 10 done
+dbscan_margin 5 done
+dbscan_margin 10 done
+20ng_tfidf_nonzero 5 done
+20ng_tfidf_nonzero 10 done
+ALL_DONE

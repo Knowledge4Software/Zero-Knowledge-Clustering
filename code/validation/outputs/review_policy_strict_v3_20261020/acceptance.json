@@ -1,0 +1,47 @@
+{
+  "cryptographic_replay_valid": true,
+  "accuracy_policy_accepted": false,
+  "policy": {
+    "min_certified_bps": 9900,
+    "max_cost_width_bps": 100,
+    "require_whole_catalog": true
+  },
+  "per_set": [
+    {
+      "key": "reuse_certified_2_k3",
+      "center_set": 0,
+      "requested_rows": 4,
+      "certified_rows": 3,
+      "certified_fraction": 0.75,
+      "cost_lower_scaled": "5767168",
+      "cost_upper_scaled": "5767168",
+      "quoted_cost_scaled": "5767168",
+      "cost_denominator": "262144",
+      "input_scale": "1",
+      "interval_relative_width": 0.0,
+      "certified_fraction_pass": false,
+      "cost_precision_pass": true,
+      "accepted": false
+    },
+    {
+      "key": "reuse_certified_2_k3",
+      "center_set": 1,
+      "requested_rows": 4,
+      "certified_rows": 4,
+      "certified_fraction": 1.0,
+      "cost_lower_scaled": "5767168",
+      "cost_upper_scaled": "5767168",
+      "quoted_cost_scaled": "5767168",
+      "cost_denominator": "262144",
+      "input_scale": "1",
+      "interval_relative_width": 0.0,
+      "certified_fraction_pass": true,
+      "cost_precision_pass": true,
+      "accepted": true
+    }
+  ],
+  "trusted_inputs_sha256": {
+    "code\\validation\\outputs\\review_certified_smoke_20261020\\owner_pin.json": "4d753b54f8ce0ba17409a60f37358bfa2f5fe505ef75a3e9d845a1cbbe8cde26",
+    "code\\validation\\outputs\\review_certified_smoke_20261020\\approved_task.json": "4fa2adca1453332985a0608472c2612bbdc9c08292b55750ece359ee0b979e0b"
+  }
+}

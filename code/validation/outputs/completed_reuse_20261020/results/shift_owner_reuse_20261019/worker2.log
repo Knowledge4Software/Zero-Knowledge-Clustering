@@ -1,0 +1,16 @@
+mnist shift k=5 s=2 rows=106 9s
+mnist owners k=5 s=0 rows=636 28s
+mnist owners k=10 s=1 rows=636 28s
+fashion_mnist shift k=5 s=2 rows=106 7s
+fashion_mnist owners k=5 s=0 rows=636 27s
+fashion_mnist owners k=10 s=1 rows=636 29s
+cifar10_resnet50 shift k=5 s=2 rows=106 19s
+cifar10_resnet50 owners k=5 s=0 rows=636 74s
+cifar10_resnet50 owners k=10 s=1 rows=636 75s
+20ng_tfidf_nonzero shift k=5 s=2 rows=106 11s
+20ng_tfidf_nonzero owners k=5 s=0 rows=636 35s
+20ng_tfidf_nonzero owners k=10 s=1 rows=636 37s
+20ng_minilm shift k=5 s=2 rows=106 3s
+20ng_minilm owners k=5 s=0 rows=636 12s
+20ng_minilm owners k=10 s=1 rows=636 12s
+ALL_DONE

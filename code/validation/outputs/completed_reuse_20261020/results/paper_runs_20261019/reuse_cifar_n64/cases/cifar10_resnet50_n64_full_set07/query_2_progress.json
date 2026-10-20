@@ -1,0 +1,48 @@
+{
+  "phase": "query",
+  "status": "failed",
+  "complete": false,
+  "constraints": 850972,
+  "compile_seconds": 8.458995381,
+  "setup_seconds": 109.997835459,
+  "load_seconds": 0.0987749,
+  "native_prepare_seconds": 0,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "1536465236095931482561871365193847106025725225477796835990234885625291803158",
+    "ch": "1536465236095931482561871365193847106025725225477796835990234885625291803158",
+    "ce": "0",
+    "ct": "0",
+    "context": "9835712512845477927985129009804988544634947440432021109855655254623048961205"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1
+      ],
+      "assign": [
+        2,
+        3
+      ],
+      "psi": "24068393",
+      "prove_seconds": [
+        11.424194344,
+        10.493358492,
+        11.142528223
+      ],
+      "verify_seconds": [
+        0.003877215,
+        0.004818064,
+        0.003668572
+      ],
+      "witness_seconds": 0.00374827,
+      "native_answer_seconds": 0.005187369,
+      "proof_bytes": 196,
+      "file": "queries/q2_0000.proof"
+    }
+  ],
+  "verified": 1,
+  "wall_seconds": 0
+}

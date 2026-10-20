@@ -1,0 +1,32 @@
+{
+  "dataset": "cifar10_resnet50",
+  "n": 64,
+  "k": 5,
+  "b": 64,
+  "d": 2048,
+  "reps": 3,
+  "sets": [
+    "same",
+    "refit1",
+    "refit2",
+    "subsample1",
+    "subsample2",
+    "lloyd1",
+    "lloyd3",
+    "lloyd10",
+    "perturb0.1",
+    "perturb0.3"
+  ],
+  "methods": [
+    "learned_energy",
+    "pca_energy",
+    "span_energy",
+    "cached",
+    "affine",
+    "full"
+  ],
+  "scale": 328.30940664445205,
+  "width": 15,
+  "limit": 1600000,
+  "full": "one measured subset per set; catalog total reconstructed"
+}
