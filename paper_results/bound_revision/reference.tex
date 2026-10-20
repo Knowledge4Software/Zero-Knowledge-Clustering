@@ -1,0 +1,18 @@
+\begin{table*}[tp]
+\caption{Effect of reference precision in the full-cached native study.}\label{tab:references}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Method & ARI vs. floating & Agree. vs. floating (\%) & ARI vs. quantized & Agree. vs. quantized (\%) \\
+\midrule
+Exact affine & 0.997491 & 99.9129 & 1.000000 & 100.0000 \\
+Full & 0.997491 & 99.9129 & 1.000000 & 100.0000 \\
+PCA-16 & 0.933536 & 97.2218 & 0.933384 & 97.2146 \\
+Head + energy & 0.997434 & 99.9108 & 0.999647 & 99.9845 \\
+CommitJL-16 & 0.997434 & 99.9108 & 0.999647 & 99.9845 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Equal-weight means over 30 corpus/$k$/start cells. Quantized Full is not identical to floating Full. Exact affine is exact relative to integer Full; cached exact answers have this same algebraic property.\end{minipage}
+\end{table*}

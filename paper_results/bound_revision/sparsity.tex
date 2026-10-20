@@ -1,0 +1,22 @@
+\begin{table*}[tp]
+\caption{Plain sparse-map density sensitivity, kept separate by nonzeros per input column.}\label{tab:sparsity}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Budget & Nonzeros/column $s$ & ARI vs. floating & Agreement (\%) & Mean absolute cost error (\%) \\
+\midrule
+16 & 1 & 0.37761 & 62.271 & 7.493 \\
+16 & 2 & 0.37540 & 62.171 & 7.533 \\
+16 & 4 & 0.38158 & 62.460 & 7.910 \\
+32 & 1 & 0.48948 & 71.519 & 4.366 \\
+32 & 2 & 0.49148 & 71.469 & 4.261 \\
+32 & 4 & 0.48769 & 71.313 & 4.344 \\
+64 & 1 & 0.59319 & 79.028 & 2.443 \\
+64 & 2 & 0.58967 & 78.867 & 2.401 \\
+64 & 4 & 0.59062 & 78.870 & 2.427 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Three starts and five maps per setting on the eight capped corpora. Increasing density does not consistently improve fidelity. This is a native sparse-JL control, not a multi-sparsity proof-performance experiment.\end{minipage}
+\end{table*}

@@ -1,0 +1,19 @@
+\begin{table*}[tp]
+\caption{Actual eight-record fixed-center query proving time (seconds).}\label{tab:zkperf-a}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Corpus & $k$ & Full & PCA-16 & Head + energy & CommitJL-16 & Exact affine \\
+\midrule
+Gaussian-hard & 5 & 11.723 & 1.037 & 0.890 & 0.882 & 0.594 \\
+Gaussian-hard & 10 & 11.377 & 1.101 & 1.007 & 1.051 & 0.935 \\
+MNIST & 5 & 18.519$^{\dagger}$ & 1.057 & 0.831 & 0.829 & 0.596 \\
+Fashion-MNIST & 5 & 17.869$^{\dagger}$ & 1.045 & 0.822 & 0.846 & 0.592 \\
+20 Newsgroups & 5 & -- & 1.021 & 0.840 & 0.841 & 0.600 \\
+Gisette & 5 & -- & 0.967 & 0.588 & 0.594 & 0.596 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Compilation, setup and Stage 1 excluded. Three measured repetitions after one warmup, summarized across distinct subsets. Main $b=8$ runs have eight subsets when $N>8$; Gisette has one full-catalog subset. $^{\dagger}$Additional Full controls use two subsets at a 1.5M-constraint ceiling. Dashes are unmeasured resource-budget exclusions, not observed out-of-memory failures.\end{minipage}
+\end{table*}

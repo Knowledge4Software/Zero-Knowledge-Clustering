@@ -1,0 +1,7 @@
+{
+  "rows": 9900,
+  "expected_cells": 80,
+  "observed_cells": 80,
+  "non_ablation_duplicates": 0,
+  "aggregation": "Mean maps within dataset/k/start/width/method, then equal-weight cells; width=16; comparison against floating Full; PCA here has no energy statistic; head_only repeats across widths excluded."
+}

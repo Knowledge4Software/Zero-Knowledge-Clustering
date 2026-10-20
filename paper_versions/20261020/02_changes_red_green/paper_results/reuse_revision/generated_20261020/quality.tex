@@ -1,0 +1,28 @@
+\begin{table*}[tp]
+\caption{Answer fidelity on the nine new center sets in each proof workload.}\label{tab:reuse-quality}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Catalog & Method & Mean agree. (\%) & Min. agree. (\%) & Mean $|e_\Psi|$ (\%) \\
+\midrule
+MNIST ($N=64$) & Cached exact & 100.00 & 100.00 & 0.003 \\
+MNIST ($N=64$) & Exact affine & 100.00 & 100.00 & 0.003 \\
+MNIST ($N=64$) & Span + energy & 83.51 & 67.19 & 1.977 \\
+MNIST ($N=64$) & PCA + energy & 96.53 & 93.75 & 1.536 \\
+MNIST ($N=64$) & Learned head + energy & 98.26 & 95.31 & 0.228 \\
+CIFAR/ResNet-50 ($N=64$) & Cached exact & 100.00 & 100.00 & 0.002 \\
+CIFAR/ResNet-50 ($N=64$) & Exact affine & 100.00 & 100.00 & 0.002 \\
+CIFAR/ResNet-50 ($N=64$) & Span + energy & 96.35 & 89.06 & 0.757 \\
+CIFAR/ResNet-50 ($N=64$) & PCA + energy & 98.44 & 96.88 & 0.441 \\
+CIFAR/ResNet-50 ($N=64$) & Learned head + energy & 99.48 & 96.88 & 0.338 \\
+MNIST ($N=256$) & Cached exact & 100.00 & 100.00 & 0.004 \\
+MNIST ($N=256$) & Exact affine & 100.00 & 100.00 & 0.004 \\
+MNIST ($N=256$) & Span + energy & 85.76 & 64.84 & 2.219 \\
+MNIST ($N=256$) & PCA + energy & 97.44 & 95.31 & 1.722 \\
+MNIST ($N=256$) & Learned head + energy & 98.31 & 94.92 & 0.178 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize Agreement is against floating-point original-space Full on the same catalog rows. Means weight the nine new center sets equally; minimum is the worst set, not a confidence bound. Cached and affine are exact on quantized inputs, so their floating-reference cost errors can be nonzero.\end{minipage}
+\end{table*}

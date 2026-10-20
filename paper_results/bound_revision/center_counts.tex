@@ -1,0 +1,19 @@
+\begin{table*}[tp]
+\caption{Native protected-head sensitivity beyond five and ten centers.}\label{tab:centers}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Corpus & $k$ & Head/E statistics & ARI vs. quantized Full & Agreement (\%) \\
+\midrule
+Gaussian-hard & 2 & 2 & 1.00000 & 100.000 \\
+Gaussian-hard & 20 & 20 & 0.99952 & 99.958 \\
+Gaussian-hard & 50 & 50 & 0.99938 & 99.917 \\
+MNIST & 2 & 2 & 1.00000 & 100.000 \\
+MNIST & 20 & 20 & 0.99884 & 99.950 \\
+MNIST & 50 & 50 & 0.99890 & 99.950 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Three starts per cell at input/basis scale bits 12. The head rank determines the minimum budget. At $k=50$, rank 49 plus energy requires 50 values; a 16- or 32-value head/tail representation is infeasible. No high-$k$ proof-time claim is inferred from these native checks.\end{minipage}
+\end{table*}

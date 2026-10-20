@@ -1,0 +1,805 @@
+block,source,category,nearest_original_block,lexical_similarity,revised_text,nearest_original_text
+1,paper_results/reuse_revision/introduction.tex,unchanged,6,1.0,\section{Introduction}\label{sec:introduction},\section{Introduction}\label{sec:introduction}
+2,paper_results/reuse_revision/introduction.tex,revised,8,0.0757,"A data owner may need to demonstrate that public cluster centers give a reported assignment cost on private records. Examples include an analyst checking a deployed model on sensitive embeddings and an auditor requesting costs for several proposed model updates. Zero-knowledge proofs establish the specified computation without disclosing its private witness \cite{gmr1991knowledge,groth2016}. The difficulty is repeated high-dimensional arithmetic: a direct nearest-center audit evaluates distances in $d$ dimensions for every record and every candidate center. In our Groth16 implementation, a batch of eight 784-dimensional MNIST records requires 1.31 million constraints and 18.5 seconds of proving.","\tpexplain{Paragraph 2 --- quantify the bottleneck. Explain why distances in dimension d are expensive and distinguish native computation from proving cost. Insert a motivating profile from the implemented backend.}
+The difficulty is proof cost. For $n$ points, $k$ candidate centroids, and dimension $d$, one assignment step already evaluates $\Theta(nkd)$ coordinate contributions. A ZK circuit must also constrain ranges, compare distances, and materialize witnesses, so fast native linear algebra does not imply a cheap proof \cite{zkcnn2021,ezdps2023}. Whether distance and comparison gadgets dominate in the selected backend is therefore measured rather than assumed."
+3,paper_results/reuse_revision/introduction.tex,revised,127,0.1111,The same committed records can be queried many times. This motivates a two-stage construction. Stage~1 proves once that compact statistics were derived correctly from every committed original row. Stage~2 authenticates the requested statistics and proves nearest-center assignments and their aggregate cost. The central systems question is which statistics allow useful later queries while avoiding repeated original-space work.,"\bmhead{Data availability}
+The public datasets analyzed in this study are available from the repositories cited in Table~\ref{tab:datasets-a}. Generated datasets, processed manifests, and raw experimental results will be archived at \placeholder{repository and persistent URL}."
+4,paper_results/reuse_revision/introduction.tex,revised,9,0.0982,"For one fixed center set, the geometry is elementary. An orthonormal basis spanning the center differences preserves all assignment comparisons; adding each record's squared residual norm recovers every center distance. This follows from Pythagoras and belongs to the established projection-plus-offset approach to clustering sketches \cite{feldman2013tiny,feldman2020tiny,cohen2015dimensionality}. We use this identity as an interface to a proof system. We do not propose a new dimensionality-reduction identity or a new coreset theorem.","\tpexplain{Paragraph 3 --- introduce JL but immediately expose the security subtlety. The novelty setup is commit first, sample second.}
+A Johnson--Lindenstrauss (JL) transform maps points from $\mathbb{R}^d$ to $\mathbb{R}^m$, with $m\ll d$, while approximately preserving pairwise distances \cite{johnson1984extensions,achlioptas2003database,kane2014sparser}. This suggests reducing the dimension before proving repeated distance computations. The usual JL guarantee, however, fixes the point set before drawing an independent transform. A prover that sees the transform first can instead choose data in its kernel or in a badly distorted subspace. The protocol order must match the order assumed in the geometric argument."
+5,paper_results/reuse_revision/introduction.tex,revised,34,0.0936,"Fixed-center answers alone are insufficient to justify a reusable representation. A stronger task-specific baseline computes and proves the exact winning center and minimum cost in Stage~1, then authenticates those two values in later subset queries. It is cheaper for a single fixed center set. Exact affine scores provide another compact baseline with the same fixed-center information. Both measured implementations specialize preprocessing to the selected centers, so their Stage~1 work is repeated when those centers change.","\tpexplain{One paragraph on classical JL, one on clustering-specific projection dimensions. State theorem parameters accurately and separate pairwise preservation from objective preservation.}
+Classical JL embeddings preserve all pairwise distances in a fixed set with target dimension logarithmic in the set size and quadratic in the inverse distortion \cite{johnson1984extensions}. Sparse constructions reduce application time while retaining similar embedding guarantees \cite{kane2014sparser}. Clustering-specific analyses can require dimension depending on $k$ and $\epsilon$ rather than directly on $n$ \cite{cohen2015dimensionality,makarychev2019performance}. Our design uses these results as mathematical interfaces, but does not apply their bounds until the implemented distribution satisfies the cited hypotheses."
+6,paper_results/reuse_revision/introduction.tex,added,82,0.1204,"We therefore study audits under changing public centers. We augment the deployed-center span with principal components of training residuals, and store the resulting head coordinates and residual energy. New centers enter Stage~2 through public head coordinates and residual offsets. They change the query inputs without changing the catalog or the query setup. This yields an exact real-arithmetic distance when the new centers remain in the represented affine span, and an approximation otherwise. The approximation drops a residual cross term, which we expose explicitly and evaluate against original-space distances.","To avoid choosing a favorable metric after seeing the results, each research question has one primary endpoint and a fixed decision rule (Table~\ref{tab:rq-metrics-a}). Let $\mathcal P$ be the preregistered set of evaluated point pairs and define the signed squared-distance distortion
+\begin{equation}
+\delta_{uv}=\frac{\|P(u-v)\|_2^2}{\|u-v\|_2^2}-1,
+\qquad (u,v)\in\mathcal P,
+\end{equation}
+excluding identical pairs from this ratio and reporting them separately. Geometry is summarized by the median, 95th and 99th percentiles of $|\delta_{uv}|$, the maximum, and the empirical exceedance rate $\Pr(|\delta_{uv}|>\epsilon)$. For clustering, the primary cost metric is
+\begin{equation}
+r_\Phi=\frac{\Phi_X(\widehat{\mathcal C}_P)}{\Phi_X(\widehat{\mathcal C}_{\rm full})},
+\end{equation}
+where both solutions are evaluated in the original space. Assignment agreement, ARI, and NMI compare the projected and full-dimensional outputs on the same points; scores against class labels are secondary because class labels need not coincide with clustering structure."
+7,paper_results/reuse_revision/introduction.tex,revised,39,0.1217,"The contribution has three parts:
+\begin{enumerate}[leftmargin=*]
+\item A checked integer, original-data-bound implementation of head and energy statistics, with all-row Stage~1 coverage and authenticated subset queries.
+\item A reusable nearest-center circuit with public new-center statistics and a proved sum of compressed assignment margins. One setup serves center sets of the same shape; the margin is a diagnostic, not an original-space certificate.
+\item Matched native and actual-proof measurements, including cached exact answers, affine scores, PCA with energy, direct Full proofs, and sparse-JL controls. Across three 64-/256-row proof workloads, reuse crosses the tested center-specific cached baseline at the second center set and reduces ten-set cumulative measured-component cost by factors of 6.82--7.76. Learned head and PCA with energy have similar proof cost; the learned head has higher assignment agreement on these proof catalogs. A separate eight-corpus, five-start campaign checks fixed-center fidelity.
+\end{enumerate}","\tpexplain{Walk through Figure~\ref{fig:Protocol overview} in message order. Specify which computations occur inside versus outside the circuit.}
+The protocol has six stages: binding the data and public parameters; sampling the challenge; deterministic sparse-matrix expansion by the verifier; authentication of the sparse matrix inside the circuit; checked projection and clustering; and proof generation. The primary construction authenticates a verifier-derived sparse list through $C_A$. This keeps variable-length rejection sampling outside the fixed circuit while still preventing the prover from substituting another matrix. In-circuit regeneration is an optional variant and requires a separate bounded, circuit-compatible generator."
+8,paper_results/reuse_revision/introduction.tex,unchanged,27,1.0,\section{Related work}\label{sec:related},\section{Related work}\label{sec:related}
+9,paper_results/reuse_revision/introduction.tex,revised,15,0.25,\paragraph{Projection and residual offsets},\subsubsection{Notation and verifiable clustering}
+10,paper_results/reuse_revision/introduction.tex,revised,39,0.1275,"Feldman, Schmidt and Sohler reduce clustering dimension while retaining an additive cost independent of the queried solution \cite{feldman2013tiny,feldman2020tiny}. Their arXiv extended version states the matrix Pythagorean identity (Claim~3) and, for centers in a subspace, the decomposition into projection cost and orthogonal residual cost (Eq.~9). Cohen et al. formalize projection-cost-preserving sketches with a solution-independent additive constant \cite{cohen2015dimensionality}. These results address approximation over classes of clustering solutions. Here we keep one energy value per authenticated record so that arbitrary requested subsets can be audited, and prove the deterministic derivation from the original commitment. The fixed-center identity is a special case of this classical geometry; the reuse circuit and its measured trade-offs are the focus.","\tpexplain{Walk through Figure~\ref{fig:Protocol overview} in message order. Specify which computations occur inside versus outside the circuit.}
+The protocol has six stages: binding the data and public parameters; sampling the challenge; deterministic sparse-matrix expansion by the verifier; authentication of the sparse matrix inside the circuit; checked projection and clustering; and proof generation. The primary construction authenticates a verifier-derived sparse list through $C_A$. This keeps variable-length rejection sampling outside the fixed circuit while still preventing the prover from substituting another matrix. In-circuit regeneration is an optional variant and requires a separate bounded, circuit-compatible generator."
+11,paper_results/reuse_revision/introduction.tex,revised,30,0.5455,\paragraph{Verifiable clustering and private analytics},\subsection{ZK machine learning and private analytics}
+12,paper_results/reuse_revision/introduction.tex,revised,106,0.0719,"Prior work already combines private $k$-means and zero-knowledge techniques. Patel, Patel and Jinwala use secret sharing with a code-based identification scheme for horizontally partitioned clustering against malicious participants \cite{patel2013clustering}. Repetto et al. prove PAC-private mechanisms, including $k$-means, using RISC-Zero \cite{repetto2026pac}. Their objectives differ from auditing successive public center sets against an unchanged committed catalog. In nearby vector search, V3DB proves execution of published approximate-search semantics over committed snapshots \cite{v3db2026}. Our relation instead proves exhaustive nearest-center comparisons on authenticated statistics and reports the resulting approximation to original-space answers. These systems establish that neither ZK clustering nor audits over committed vector data are new categories.","\widefigureplaceholder{Margin, dimension, and exact-preservation phase diagram}{Heatmaps with projection dimension on one axis and synthetic separation/margin on the other. Cells show probability of exact assignment or exact DBSCAN graph preservation across seeds. Overlay the theoretical sufficient-condition boundary.}"
+13,paper_results/reuse_revision/introduction.tex,revised,1,0.0,\paragraph{Proof-oriented representations},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+14,paper_results/reuse_revision/introduction.tex,revised,32,0.1221,"ezDPS studies a ZK inference pipeline including PCA, and Artemis develops commit-and-prove techniques for external data or model commitments \cite{ezdps2023,artemis2024}. Our PCA baseline proves an approved projected computation in the same backend; it does not reproduce ezDPS or prove PCA training. We use Groth16 over BN254 and Poseidon2 row-Merkle authentication \cite{groth2016,poseidon22023}. The contribution is a representation and circuit design within this setting, not a new proof primitive.","ezDPS provides a ZK pipeline for principal-component analysis and classification and is therefore the relevant data-dependent dimensionality-reduction baseline \cite{ezdps2023}. CommitJL asks a narrower question: can a data-oblivious sparse embedding selected after commitment reduce clustering-proof cost without unacceptable geometric error? Accordingly, the comparison is limited to systems that expose a reproducible dimensionality-reduction or proof-cost baseline; it is not intended as a survey of privacy-preserving $k$-means."
+15,paper_results/reuse_revision/introduction.tex,added,1,0.0,\paragraph{Privacy-preserving prototype models},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+16,paper_results/reuse_revision/introduction.tex,added,12,0.1167,"Schubert et al. implement a nearest-prototype learning model using fully homomorphic encryption and study the effects of integer encoding and distance computation \cite{schubert2026prototype}. Their objective is computation over encrypted data. Our objective is a zero-knowledge audit of specified nearest-center answers over committed records. Both settings make representation cost and integer semantics important, but encryption, proof soundness and approximation fidelity address different guarantees. The present experiments audit public centers; they do not prove private model training or neural feature extraction.","\tpexplain{Paragraph 6 --- roadmap. Keep this short and aligned exactly with the final section order.}
+The remainder of the paper reviews the closest work, defines the protocol and its guarantees, and then evaluates proof cost and clustering fidelity before discussing limitations."
+17,paper_results/reuse_revision/introduction.tex,revised,1,0.0,\paragraph{Data-oblivious alternatives},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+18,paper_results/reuse_revision/introduction.tex,revised,100,0.098,"JL and sparse JL preserve geometry for an independently fixed point set under their stated distribution and dimension assumptions \cite{johnson1984extensions,achlioptas2003database,kane2014sparser,makarychev2019performance}. A post-commit random map avoids requiring training data to choose a projection. We retain that protocol option and evaluate sparse-JL estimators, but the tested tails do not outperform PCA with energy on matched new-center cells. The binding guarantee for the learned representation comes from Stage~1 proofs, independently of whether a random tail is present.","\figureplaceholder{Measured prover stage costs}{Show compile, setup and prove-only timings for completed matched configurations. Report total constraints separately; do not infer per-gadget wall-time or constraint shares from symbolic counts.}"
+19,paper_results/reuse_revision/method.tex,revised,15,0.2222,\section{Reusable statistics and proof relations}\label{sec:design},\subsubsection{Notation and verifiable clustering}
+20,paper_results/reuse_revision/method.tex,added,15,0.2,\subsection{Audit task and classical fixed-center identity}\label{sec:background},\subsubsection{Notation and verifiable clustering}
+21,paper_results/reuse_revision/method.tex,added,16,0.1504,"Let $X=(x_1,\ldots,x_N)$ be an ordered private catalog and $\mathcal C=\{c_0,\ldots,c_{k-1}\}$ public centers. For a public sorted, distinct index set $I$, the audit computes private first-index nearest-center assignments and the public sum
+\begin{equation}
+\Phi_I(\mathcal C)=\sum_{i\in I}\min_j\|x_i-c_j\|^2.
+\end{equation}
+The original row commitment, the approved representation and all verification keys must be authenticated to the verifier. Proving that the centers were obtained by $k$-means training is a separate task.","\tpexplain{Paragraph 1 --- define every symbol used later. Table~\ref{tab:notation} is authoritative; keep symbols consistent across equations, pseudocode, and code.}
+Let $X=[\mathbf{x}_1,\ldots,\mathbf{x}_n]^\top\in\mathbb{Z}^{n\times d}$ denote the private, quantized dataset, $A\in\{-1,0,+1\}^{m\times d}$ the public unnormalized sparse transform, $P=A/\sqrt q$ the corresponding real embedding, and $Z=XA^\top\in\mathbb{Z}^{n\times m}$ the circuit representation. The field used by the proof system is $\mathbb{F}_p$. Signed integers are represented canonically within a bounded interval embedded in $\mathbb{F}_p$."
+22,paper_results/reuse_revision/method.tex,added,52,0.0905,"Choose anchor $c_0$ and $U\in\mathbb R^{d\times a}$ with orthonormal columns whose span contains the deployed center differences. Write
+\begin{align}
+w(x)&=x-c_0,& h(x)&=U^\top w(x),\nonumber\\
+r(x)&=(I-UU^\top)w(x),& e(x)&=\|r(x)\|^2.
+\end{align}
+We state the classical identity to define the relation that will be implemented \cite{feldman2013tiny,feldman2020tiny,cohen2015dimensionality}.
+\begin{proposition}[Fixed-center decomposition]\label{prop:head-energy}
+For every deployed center $c_j$,
+\begin{equation}\label{eq:head-energy}
+\|x-c_j\|^2=\|h(x)-h(c_j)\|^2+e(x).
+\end{equation}
+Thus $h(x)$ determines the nearest-center index, and $(h(x),e(x))$ determines every fixed-center distance.
+\end{proposition}
+\begin{proof}
+Since $r(c_j)=0$, the decomposition $x-c_j=U(h(x)-h(c_j))+r(x)$ is orthogonal. Apply Pythagoras. The same energy is added for every candidate, including ties.
+\end{proof}
+The deployed span has rank at most $k-1$, so at most $k$ scalar values per record suffice in real arithmetic. Energy is a squared norm with a different range from a head coordinate; scalar counts are not byte counts.","\tpexplain{Give deployable alternatives and state the trust/freshness assumption for each. Select one primary instantiation for experiments.}
+We consider three challenge sources: a verifier nonce, a public randomness beacon referenced by round, and a two-party commit--reveal coin flip. Deriving the seed from $C_X$ alone is deterministic and permits offline search over commitment randomness. The primary protocol therefore uses a fresh 256-bit verifier nonce after $(C_X,C_\theta)$ has entered the task log. A nonce is single-use, and the log admits at most $Q$ eligible commitments per authenticated prover and task. A new commitment consumes another attempt; it does not reset the analysis. A beacon with a commitment deadline gives the cleanest public enforcement, while commit--reveal avoids trusting either party as the sole entropy source."
+23,paper_results/reuse_revision/method.tex,added,47,0.4,\subsection{Integer derivation and checked bounds}\label{sec:protected-method},\subsection{Circuit realization and checked arithmetic}
+24,paper_results/reuse_revision/method.tex,added,97,0.0973,"The owner quantizes points and centers with input scale $S$, producing integers $\widetilde x$ and $\widetilde c_j$. The workload uses $S=4096/\max(\max|X|,\max|\mathcal C_0|,10^{-12})$, where $\mathcal C_0$ is the deployed set; later centers use the same scale and are clipped to the approved coordinate range. The basis scale is $T=4096$, and $B_U=\operatorname{round}(TU^\top)$. For $w=\widetilde x-\widetilde c_0$, Stage~1 proves
+\begin{align}
+v&=B_Uw,& H&=Tv,\nonumber\\
+R&=T^2w-B_U^\top v,& E&=\sum_{\ell=1}^d R_\ell^2.\label{eq:protected-integer}
+\end{align}
+The decoded coordinates are $H/(T^2S)$ and residual energy $E/(T^4S^2)$. The circuit proves this integer computation exactly. Rounding $B_U$ generally destroys exact orthonormality, so Eq.~\eqref{eq:head-energy} is an approximate original-space statement for the implementation. We distinguish compression error from input quantization in the evaluation.","\tpexplain{Lead with actual wall-clock and memory, then explain constraint counts. Show absolute values as well as speedups.}
+On the synthetic $96\times128$ workload at $(m,q)=(16,2)$, sparse JL reduces total constraints by 7.64\%, but median prove-only time is 62.94\,s versus 62.43\,s for full dimension. Setup falls from 728.09\,s to 662.18\,s. No general prove-only speedup is observed; the tiny MNIST subset is 56.33\% slower. These comparisons are scoped to the declared witnesses and repetitions. Measured per-gadget constraint or wall-time attribution is unavailable."
+25,paper_results/reuse_revision/method.tex,added,71,0.125,"For concreteness, suppose $|\widetilde x_\ell|,|\widetilde c_{0\ell}|\le B$, and let $L_j=\sum_\ell |(B_U)_{j\ell}|$. Valid bounds are
+\begin{align}
+|H_j|&\le 2BTL_j,\nonumber\\
+|R_\ell|&\le 2B\left(T^2+\sum_j|(B_U)_{j\ell}|L_j\right).\label{eq:row-bounds}
+\end{align}
+Let $H_{\max}$ be the maximum head bound and $R_{\max}$ the maximum residual bound; then $0\le E\le E_{\max}=dR_{\max}^2$. The implementation derives these bounds from the public integer model, range-checks signed inputs and heads and unsigned energies, and rejects model/aggregate bounds unsafe for the BN254 scalar field. No orthonormality assumption is needed for exact execution of Eq.~\eqref{eq:protected-integer}.","\tpexplain{Paragraph 2 --- describe optimizations and make every one independently disableable for ablation.}
+The implementation batches signed accumulation, reuses projected centroids where allowed, applies an argmin tournament, and separates matrix generation from projection constraints. Compile-time and run-time switches independently disable sparsity, post-commitment generation, range-check batching, and shared subexpressions, enabling the ablation in Table~\ref{tab:ablation-a}."
+26,paper_results/reuse_revision/method.tex,added,41,0.025,\subsection{Stage 1: original-data binding}\label{sec:query-relation},"\begin{figure}[!htbp]
+\centering
+\begin{minipage}{0.95\columnwidth}\small
+\textbf{Algorithm 1: Commit-then-sample sparse projection protocol}\label{alg:commitjl}
+\begin{enumerate}[leftmargin=*,nosep]
+\item \textbf{Input:} private integer data $X$; public metadata $\mu$; public clustering parameters $\theta=(\mathcal C,m,q)$.
+\item $(C_X,r_X)\gets\mathsf{Commit}(\mathsf{Encode}(X,\mu))$.
+\item Publish $(C_X,C_\theta)$, where $C_\theta=H_\theta(\mathsf{Encode}(\theta,\mu))$, before learning $\rho$.
+\item $s\gets H(\texttt{CommitJL-v1}\|C_X\|C_\theta\|\rho)$.
+\item The verifier derives $A\gets\mathsf{SparseMatrixGen}(s,m,d,q)$ and $C_A\gets H_A(\mathsf{Encode}(A))$; $P=A/\sqrt q$ is used only in the real-valued analysis.
+\item $Z\gets XA^\top$ using signed integer semantics.
+\item $y\gets\mathsf{Cluster}(Z,\theta)$.
+\item $\pi\gets\mathsf{Prove}(C_X,C_\theta,C_A,\rho,\theta,y;X,r_X,A,Z,\omega)$.
+\item \textbf{Return:} $(C_X,C_\theta,C_A,\rho,\theta,y,\pi)$.
+\end{enumerate}
+\end{minipage}
+\caption{Pseudocode for the proposed protocol.}
+\end{figure}"
+27,paper_results/reuse_revision/method.tex,added,10,0.1111,"The owner commits an ordered, power-of-two catalog using salted Poseidon2 row-Merkle trees. Each original leaf binds its index and full integer row. The derived tree binds the same index and the joint row $(H_i,E_i)$. A context binds the original root $C_X$, statistic roots, and a hash of the complete public model: dimensions, scales, anchor/deployed centers, integer basis and method. Unused optional roots are retained by the versioned context format.","\tpexplain{Paragraph 4 --- one crisp system sentence and one crisp separation of guarantees. Name the system only after checking trademark/name collisions.}
+CommitJL first binds the prover to the private dataset and fixes the public clustering parameters; only then does fresh randomness select a sparse signed projection. The ZK proof checks matrix authentication, projection, and the subsequent clustering computation. A separate geometric argument relates the projected answer to the original-space problem. Keeping these claims separate matters: proof soundness concerns correct execution in the projected space, whereas geometric fidelity concerns the quality of the approximation."
+28,paper_results/reuse_revision/method.tex,added,44,0.1221,"A Stage~1 proof for index $i$ opens both the original row under $C_X$ and the derived row under $C_H$, proves Eq.~\eqref{eq:protected-integer}, and enforces the approved ranges. The verifier accepts preprocessing only after checking one proof for every catalog index exactly once, under one context and pinned verification key. This coverage check prevents a prover from supplying derived statistics for only a convenient subset. A later query cannot substitute another row or another basis without changing the authenticated statement.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+29,paper_results/reuse_revision/method.tex,added,33,0.2222,\subsection{Learned head for changing centers}\label{sec:reuse},\subsection{Dimensionality reduction for clustering}
+30,paper_results/reuse_revision/method.tex,added,132,0.086,"To support new center sets, we retain the deployed-center span and append principal components of training residuals, orthogonalizing them against that span (\path{code/commitjl/enriched_jl.py}). The main workload uses $a=15$ head coordinates and one energy scalar. Neither basis fitting nor $k$-means training uses the held-out audit rows. The approved basis and original catalog remain unchanged across queries. These statistics are sufficient for exact real-arithmetic distances to in-span centers; for arbitrary out-of-span centers they support the approximation below.","\bmhead{Conflict of interest}
+The authors have no relevant financial or non-financial interests to disclose. \placeholder{Confirm for all authors.}"
+31,paper_results/reuse_revision/method.tex,added,32,0.1341,"For a new center $c'_j$, define its head and residual using this same basis and anchor. The exact real identity is
+\begin{align}
+\|x-c'_j\|^2={}&\|h(x)-h(c'_j)\|^2+e(x)+e(c'_j)\nonumber\\
+&-2\langle r(x),r(c'_j)\rangle.\label{eq:new-center-exact}
+\end{align}
+The reusable estimate $\widehat d_j(x)$ drops the last term. It is exact if $r(c'_j)=0$. In general,
+\begin{equation}\label{eq:reuse-error}
+|\widehat d_j(x)-\|x-c'_j\|^2|\le2\sqrt{e(x)e(c'_j)}.
+\end{equation}
+This follows from Cauchy--Schwarz and does not assume a data distribution. If $a_i$ minimizes the estimated distances and $j$ is any competitor, a sufficient real-arithmetic stability condition is
+\begin{equation}\label{eq:reuse-certificate}
+\widehat d_j(x_i)-\widehat d_{a_i}(x_i)>
+2\sqrt{e(x_i)}\left(\sqrt{e(c'_j)}+\sqrt{e(c'_{a_i})}\right).
+\end{equation}
+The reported circuit does not implement these individual certificates or a rounding-error certificate. Its aggregate margin is a softer diagnostic.","ezDPS provides a ZK pipeline for principal-component analysis and classification and is therefore the relevant data-dependent dimensionality-reduction baseline \cite{ezdps2023}. CommitJL asks a narrower question: can a data-oblivious sparse embedding selected after commitment reduce clustering-proof cost without unacceptable geometric error? Accordingly, the comparison is limited to systems that expose a reproducible dimensionality-reduction or proof-cost baseline; it is not intended as a survey of privacy-preserving $k$-means."
+32,paper_results/reuse_revision/method.tex,added,33,0.1538,\subsection{Stage 2: one circuit for successive public center sets}\label{sec:reuse-circuit},\subsection{Dimensionality reduction for clustering}
+33,paper_results/reuse_revision/method.tex,added,12,0.1099,"The verifier quantizes every public new center with the deployed scale, checks its coordinate range, and computes $(H'_j,E'_j)$ by the same integer rule. These values are public inputs to \path{code/zk/circuit/bound_reuse.go}. Their consistency with the intended full centers is a verifier obligation; the circuit alone accepts any bounded public center statistics.","\tpexplain{Paragraph 6 --- roadmap. Keep this short and aligned exactly with the final section order.}
+The remainder of the paper reviews the closest work, defines the protocol and its guarantees, and then evaluates proof cost and clustering fidelity before discussing limitations."
+34,paper_results/reuse_revision/method.tex,added,26,0.113,"For public sorted distinct indices $I$, the witness supplies authenticated $(H_i,E_i)$, paths, a salt and private assignments. The circuit opens each row, checks its ranges, and compares
+\begin{equation}
+s_{ij}=2\langle H_i,H'_j\rangle-\|H'_j\|^2-E'_j.
+\end{equation}
+It selects the greatest score with lowest-index tie breaking, equivalently the smallest $D_{ij}=\|H_i-H'_j\|^2+E_i+E'_j$. It proves the public outputs
+\begin{align}
+\widehat\Psi&=\sum_{i\in I}D_{i,a_i},\nonumber\\
+M&=\sum_{i\in I}(D_{i,(2)}-D_{i,(1)}),\label{eq:reuse-outputs}
+\end{align}
+where $(1),(2)$ denote the two smallest distances, counting ties. Cost and margin decode by $T^4S^2$. The energy $E_i$ cancels in comparisons but remains in the reported cost. A large $M$ can coexist with a few unstable records and does not certify Eq.~\eqref{eq:reuse-certificate}.","\tpexplain{Paragraph 1 --- define the primary algorithm. Prefer nearest-centroid or assignment/cost verification for the first prototype; full Lloyd iteration is an explicit scope decision.}
+For centroids $\mathcal{C}=\{\mathbf{c}_1,\ldots,\mathbf{c}_k\}$, nearest-centroid assignment is
+\begin{equation}
+a_i=\arg\min_{j\in[k]}\|\mathbf{x}_i-\mathbf{c}_j\|_2^2,
+\end{equation}
+with deterministic lowest-index tie-breaking. The $k$-means objective is
+\begin{equation}
+\Phi_X(\mathcal{C})=\sum_{i=1}^{n}\min_{j\in[k]}\|\mathbf{x}_i-\mathbf{c}_j\|_2^2.
+\end{equation}
+The primary implementation proves the fixed-centroid assignments and their aggregate projected cost. This scope avoids conflating dimensionality reduction with the separate difficulty of proving centroid division and convergence; fixed-iteration Lloyd training and DBSCAN are modular extensions."
+35,paper_results/reuse_revision/method.tex,added,106,0.1188,"For bounded comparisons, the implementation shifts each score by
+$\Delta=6aH_{\max}^2+2E_{\max}$ and bounds it below $2\Delta$. Distances are bounded by $4aH_{\max}^2+2E_{\max}$. Range checks and a field bound on the subset aggregate prevent modular wraparound. With the catalog model, subset size and number of new centers fixed, the constraint system and Groth16 setup are reused for all new center sets. Changing these circuit shapes requires another setup.","\widefigureplaceholder{Margin, dimension, and exact-preservation phase diagram}{Heatmaps with projection dimension on one axis and synthetic separation/margin on the other. Cells show probability of exact assignment or exact DBSCAN graph preservation across seeds. Overlay the theoretical sufficient-condition boundary.}"
+36,paper_results/reuse_revision/method.tex,added,1,0.0,\subsection{Exact fixed-task alternatives}\label{sec:baselines},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+37,paper_results/reuse_revision/method.tex,added,44,0.087,"The cached baseline proves each original-space integer argmin and minimum cost in Stage~1, then authenticates and sums them in Stage~2. It stores two values per row and is the strongest tested control for one fixed set. Exact affine instead stores $\beta(x)=\|\widetilde x-\widetilde c_0\|^2$ and $k-1$ scores
+\begin{equation}
+f_j(x)=2\langle\widetilde x-\widetilde c_0,\widetilde c_j-\widetilde c_0\rangle-
+\|\widetilde c_j-\widetilde c_0\|^2,
+\end{equation}
+with $f_0=0$. The nearest cost is $\beta-\max_j f_j$. Both reproduce integer Full exactly for their approved centers. Our center-specific cached and affine implementations repeat preprocessing for each new set. This is a property of the evaluated baselines: affine information could also be parameterized in a fixed spanning basis to support in-span changes.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+38,paper_results/reuse_revision/method.tex,added,99,0.1042,"PCA with energy stores 15 PCA coordinates plus a residual norm, applies the same new-center estimate, and uses the same reuse circuit. Its basis uses only training rows; the proof establishes the approved transformation, not correctness of PCA training. Direct Full opens original rows and computes exact integer distances for each requested set without statistic preprocessing.",\figureplaceholder{Proof-cost versus clustering-fidelity Pareto frontier}{Scatter/line plot with proving time or peak RAM on the horizontal axis and original-space objective ratio/ARI on the vertical axis. One symbol per transform and $m$; visually identify nondominated points. Include absolute units and confidence intervals.}
+39,paper_results/reuse_revision/security.tex,added,15,0.25,\section{Security and approximation boundaries}\label{sec:security},\subsubsection{Notation and verifiable clustering}
+40,paper_results/reuse_revision/security.tex,revised,21,0.4,\subsection{Threat model and two-stage binding},\subsubsection{Threat model and commit-then-sample requirement}
+41,paper_results/reuse_revision/security.tex,revised,44,0.129,"The prover may choose false statistics, assignments, costs or authentication paths. The verifier has an authentic original root, approved public model and verification-key hashes. We assume binding commitments, collision-resistant context hashing, and knowledge soundness and zero knowledge of the instantiated proof system. Groth16 setup is trusted; a compromised setup falls outside these assumptions. The proof establishes computations on the owner's committed catalog, not the truth or provenance of the owner's measurements.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+42,paper_results/reuse_revision/security.tex,revised,52,0.1038,"\begin{theorem}[Binding of reused integer audits]\label{thm:binding}
+Suppose the verifier accepts complete Stage~1 coverage for one context and accepts a Stage~2 proof under the pinned keys. It also checks that the public new-center statistics are the approved integer derivations of the intended centers. Except for a commitment/hash collision or a proof-system soundness failure, the accepted cost and margin equal Eq.~\eqref{eq:reuse-outputs} on the deterministic statistics of the committed original rows at the public requested indices.
+\end{theorem}
+\begin{proof}
+Extract satisfying witnesses from the accepted proofs. Complete Stage~1 coverage binds every original index to its derived statistic row under the common context. Distinct openings under the same authenticated roots would contradict binding. Thus every row opened in Stage~2 is the same derived row established in Stage~1. The range checks give the specified integer semantics; the score comparisons enforce first-index minimizers and the second-smallest distance. The output constraints then give the claimed sums. The verifier's center-statistic check identifies those public inputs with the intended centers. No approximation claim is needed for this argument.
+\end{proof}","\tpexplain{Give deployable alternatives and state the trust/freshness assumption for each. Select one primary instantiation for experiments.}
+We consider three challenge sources: a verifier nonce, a public randomness beacon referenced by round, and a two-party commit--reveal coin flip. Deriving the seed from $C_X$ alone is deterministic and permits offline search over commitment randomness. The primary protocol therefore uses a fresh 256-bit verifier nonce after $(C_X,C_\theta)$ has entered the task log. A nonce is single-use, and the log admits at most $Q$ eligible commitments per authenticated prover and task. A new commitment consumes another attempt; it does not reset the analysis. A beacon with a commitment deadline gives the cleanest public enforcement, while commit--reveal avoids trusting either party as the sole entropy source."
+43,paper_results/reuse_revision/security.tex,revised,83,0.1119,"Knowledge soundness applies to the proof transcript; the union of soundness errors across a finite collection of proofs and commitment/hash failures bounds failure of the combined audit. This does not certify closeness to floating-point Full. That is determined by basis coverage, the omitted cross term and quantization. In particular, a malicious choice of an approved learned basis can give a faithfully proved but poor approximation. Orthonormality, center-span coverage, basis training policy and approval remain external checks.","For a certificate-eligible set $\mathcal S$ and observed stable set $\mathcal U$, certificate coverage is $|\mathcal S|/N$, and the violation rate is $|\mathcal S\setminus\mathcal U|/\max(1,|\mathcal S|)$. We also report stability among uncertified items, $|\mathcal U\setminus\mathcal S|/\max(1,N-|\mathcal S|)$, because a sufficient certificate can be sound but conservative. Arithmetic validation reports native--circuit output mismatches, rejected range checks, and observed wraparound/overflow events; all must be zero for an accepted configuration."
+44,paper_results/reuse_revision/security.tex,revised,18,0.4,\subsection{Public outputs and verification boundary},\subsubsection{Proof statement and privacy boundary}
+45,paper_results/reuse_revision/security.tex,revised,127,0.1081,"Original rows, derived heads/energies, paths, salts and assignments remain private witnesses. The public statement exposes roots, model metadata, subset indices, center statistics, aggregate cost and aggregate margin. Diagnostic assignment arrays are saved by the experimental prover for fidelity analysis; they are not required public inputs. Repeated costs and margins can reveal information about the private data, and zero knowledge does not provide differential privacy or an unrestricted-query leakage bound. Owner/model approval and a query policy are application responsibilities.","\bmhead{Data availability}
+The public datasets analyzed in this study are available from the repositories cited in Table~\ref{tab:datasets-a}. Generated datasets, processed manifests, and raw experimental results will be archived at \placeholder{repository and persistent URL}."
+46,paper_results/reuse_revision/security.tex,revised,39,0.1039,Every generated benchmark proof is verified by the proving CLI. The saved original fixed-center bundles also support public-only re-verification from pinned keys and public statements. Reuse requires the verifier to supply the intended new centers and recompute their public statistics; acceptance of a prover-supplied cost alone is insufficient. The artifact validation records which of these checks were actually performed for each cohort.,"\tpexplain{Walk through Figure~\ref{fig:Protocol overview} in message order. Specify which computations occur inside versus outside the circuit.}
+The protocol has six stages: binding the data and public parameters; sampling the challenge; deterministic sparse-matrix expansion by the verifier; authentication of the sparse matrix inside the circuit; checked projection and clustering; and proof generation. The primary construction authenticates a verifier-derived sparse list through $C_A$. This keeps variable-length rejection sampling outside the fixed circuit while still preventing the prover from substituting another matrix. In-circuit regeneration is an optional variant and requires a separate bounded, circuit-compatible generator."
+47,paper_results/reuse_revision/security.tex,revised,1,0.125,\subsection{Commit-then-sample JL option}\label{sec:theory},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+48,paper_results/reuse_revision/security.tex,revised,44,0.1569,"A data-oblivious alternative fixes data and the queried parameter set before fresh projection randomness. Register the original root $C_X$ and a digest $C_\theta$ of the public task, then obtain unpredictable challenge $\rho$ and derive
+\begin{equation}
+s=H(\texttt{CommitJL-v1}\|C_X\|C_\theta\|\rho).
+\end{equation}
+The verifier expands a canonical sparse signed map $A$, hashes its canonical encoding, and requires the proved computation to authenticate that same map. Each column has $q$ distinct signed buckets; the real normalized map is $A/\sqrt q$. Canonical sampling and its distribution assumptions are specified in Appendix~\ref{app:jl}. The learned head does not acquire a geometric guarantee merely because a JL tail is attached.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+49,paper_results/reuse_revision/security.tex,revised,57,0.1436,"For a point/center set fixed independently of $A$, let $\mathcal E_\epsilon$ be the event that every relevant squared distance is preserved within $1\pm\epsilon$. Conditional on this event, the normalized projected nearest-center cost obeys
+\begin{equation}
+(1-\epsilon)\Phi_I(\mathcal C)\le
+\Phi_{AI}(A\mathcal C)/q\le(1+\epsilon)\Phi_I(\mathcal C).
+\end{equation}
+Take the minimum of the pointwise bounds, then sum over $I$. A unique nearest center remains nearest if its squared-distance gap satisfies $d_2^2/d_1^2>(1+\epsilon)/(1-\epsilon)$, handling $d_1=0$ separately. Any failure probability requires hypotheses for the actual sparse distribution, dimension and admissible vectors. In particular, the tested one-bucket maps do not receive a dense-JL concentration bound by assumption.","\tpexplain{Use the strongest applicable theorem from the clustering-sketch literature, with exact constants/conditions copied and cited after verification.}
+For the primary fixed public center set $\mathcal C$, let $S=X\cup\mathcal C$. If the realized transform preserves every squared distance in $S$ within $1\pm\epsilon$, then summing the point-to-assigned-center inequalities gives
+\begin{equation}
+(1-\epsilon)\Phi_X(\mathcal C)\le q^{-1}\Phi_{AX}(A\mathcal C)\le(1+\epsilon)\Phi_X(\mathcal C).
+\end{equation}
+This statement requires no claim about recovering an optimal center set. Stronger results that preserve an optimum or all candidate clusterings require the precise projection-cost-preserving sketch hypotheses in the cited clustering literature \cite{cohen2015dimensionality,makarychev2019performance}; they are evaluated separately and are not used to justify the primary audit."
+50,paper_results/reuse_revision/security.tex,revised,115,0.1209,"The challenge order prevents choosing data after seeing the random map. It does not address unlimited aborts or recommitments: if a uniform single-attempt geometric failure bound is $\delta$, a policy allowing at most $Q$ eligible attempts admits the union bound $Q\delta$, plus the cryptographic/generator errors. Later centers chosen adaptively after observing the map require a separate argument; the fixed-set JL event does not cover them automatically. Our deployment experiments use locally generated challenges, not a deployed public beacon service.","\tpexplain{Discuss leakage from output, seed bias/grinding, denial of service, malicious verifier parameters, and trusted setup if applicable.}
+The protocol does not make the public cost private; output leakage may require a separately analyzed privacy mechanism or access control. Commit-then-sample prevents adaptation after an eligible commitment but does not eliminate grinding unless the deployment enforces the stated budget $Q$ and eligibility policy. It also does not prevent denial-of-service inputs or malicious application choices that are already contained in the recorded public parameters. Security inherits the assumptions and setup model of \placeholder{selected proof system}. The draft therefore makes no differential-privacy, fairness, or unbounded selective-abort-resistance claim."
+51,paper_results/reuse_revision/experiments.tex,revised,73,0.5,\section{Experimental evaluation}\label{sec:method},\section{Experimental analysis}\label{sec:method}
+52,paper_results/reuse_revision/experiments.tex,revised,15,0.2222,"\subsection{Datasets, references and evidence cohorts}",\subsubsection{Notation and verifiable clustering}
+53,paper_results/reuse_revision/experiments.tex,revised,79,0.1146,"We evaluate fixed-center fidelity, actual proof cost and changing-center reuse separately. The capped native studies use Gaussian-easy/hard, a margin-synthetic corpus, MNIST, Fashion-MNIST, Gisette, Arcene and nonzero 20 Newsgroups TF--IDF. Table~\ref{tab:datasets-a} records their caps and the earlier fixed-center proof catalogs. Image and text sources are documented by their original dataset references \cite{lecun1998,fashion2017,gisette2004,arcene2004,news20data}.","\tpexplain{Fix hyperparameter budgets fairly. PCA must include both “projection matrix public” and “PCA itself proved” interpretations if both are discussed.}
+We compare no reduction, coordinate sampling, PCA, Gaussian JL, Rademacher JL, Achlioptas projection, sparse JL at multiple $q$. Each method receives the same candidate dimensions $m$. The completed native campaigns use 10 projection seeds and 5 paired clustering starts. The verified Pisot reference was unavailable and is excluded from the empirical comparison. The additional $q=8$ sweep covers only Gaussian easy, DBSCAN-margin, and 20 Newsgroups. If end-to-end proving cost makes the full grid infeasible, a preregistered core subset is proved and the remaining configurations are labeled native-only."
+54,paper_results/datasets.tex,added,77,0.3462,"\begin{table*}[tp]
+\caption{Capped native corpora and actual fixed-center proof catalogs.}\label{tab:datasets-a}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+Corpus & Native rows & Features $d$ & Audit rows/start & Proof catalog $N$ \\
+\midrule
+Gaussian-easy & 2,000 & 256 & 800 & -- \\
+Gaussian-hard & 2,000 & 512 & 800 & 32 ($k=5,10$) \\
+Margin-synthetic & 1,000 & 128 & 400 & -- \\
+MNIST & 5,000 & 784 & 2,000 & 16; 64 ($k=5$) \\
+Fashion-MNIST & 5,000 & 784 & 2,000 & 16 ($k=5$) \\
+Gisette & 3,000 & 5,000 & 1,200 & 8 ($k=5$) \\
+Arcene & 100 & 10,000 & 40 & -- \\
+20 Newsgroups & 2,913 & 2,000 & 1,166 & 16 ($k=5$) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Each capped corpus uses a 60/40 fit/audit split and $k=5,10$ with three starts. Image subsets are sampled by the loader. Text starts with at most 3,000 training documents; zero vectors are removed, leaving 2,913. Gisette uses a 3,000-row cap; Arcene uses 100 cached training rows. Margin-synthetic is used here only for fixed-center and geometry tests, not a DBSCAN proof.\end{minipage}
+\end{table*}","\begin{table*}[!htbp]
+\caption{Datasets and their role in the evaluation.}\label{tab:datasets-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R Y Y@{}}
+\toprule
+Dataset/family & $n$ & $d$ & classes/$k$ & Preprocessing & Why included \\
+\midrule
+Gaussian mixtures & $2{,}000$ (primary fidelity) & 256, 512 & 5, 8 (latent) & controlled separation, variance, imbalance & known latent labels and tunable margin \\
+DBSCAN margin generator & \newtext{300--1{,}000 (config-dependent)} & \newtext{64--128 (config-dependent)} & variable & construct pair distances around $\rho$ & direct test of ambiguity-band theorem \\
+MNIST (analyzed subset) & 5,000 & 784 & 10 & scale pixels; fixed split/subsample & standard dense benchmark \\
+Fashion-MNIST (analyzed subset) & 5,000 & 784 & 10 & same protocol as MNIST & harder same-shape benchmark \\
+Gisette (training subset) & 3,000 & 5,000 & 2 & fixed training split/subset & high-dimensional dense features \\
+Arcene (training split) & 100 & 10,000 & 2 & missing-value/scale policy & very high dimension, low sample count \\
+20 Newsgroups & \newtext{3,000 (training subset)} & \newtext{2,000 (TF--IDF \texttt{max\_features})} & 20 & TF--IDF; sparse input & sparse high-dimensional text \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+55,paper_results/reuse_revision/experiments.tex,revised,129,0.0708,"New-center native studies add two neural representations: 2,048-dimensional ResNet-50 average-pool features for a seed-0 sample of 10,000 CIFAR-10 training images, and 384-dimensional \texttt{all-MiniLM-L6-v2} embeddings of nonempty 20 Newsgroups training documents \cite{krizhevsky2009cifar,he2016resnet,reimers2019sbert,minilmv2model}. The embedding builder records preprocessing and source-selection metadata; experiment loaders cap each embedding corpus at 5,000 rows. The changing-center proof workloads use 64 held-out records from MNIST and CIFAR embeddings, plus a 256-record MNIST scale check, at their full feature dimensions. All three use $k=5$ and query batch $b=64$; the larger catalog is audited in four batches per center set.","\bmhead{Materials availability}
+The circuits, configuration manifests, generated instances, and supplementary artifacts will be available at \placeholder{repository and DOI}. \placeholder{State any redistribution restrictions.}"
+56,paper_results/reuse_revision/experiments.tex,revised,59,0.1235,"Training uses 60\% of the loaded corpus and auditing uses the remaining 40\%, after removing zero-norm rows. The deployed centers use $k$-means with five initializations and seed~0 in the proof workload. Both learned and PCA bases use the training split. Scaling uses the loaded corpus maximum; image source partitions are pooled by the original loader, and TF--IDF vocabulary fitting precedes the center/PCA split. These are fixed-corpus audits rather than unseen-data predictive-learning benchmarks. The stored embedding vectors are the inputs to the proof; the neural feature extractor is not proved.","\tpexplain{This is a simple but useful exact-decision theorem. Define the closest and runner-up distances and handle zero distance/ties.}
+Let $d_1<d_2$ be the original distances from a query point to its closest and second-closest centroids. Under squared-distance distortion $1\pm\epsilon$, the assignment is unchanged whenever
+\begin{equation}
+\frac{d_2^2}{d_1^2}>\frac{1+\epsilon}{1-\epsilon}.
+\label{eq:centroid-margin}
+\end{equation}
+This condition yields a per-point certificate: points satisfying Eq.~\eqref{eq:centroid-margin} are guaranteed stable under the embedding event, while other points are empirically evaluated rather than declared incorrect."
+57,paper_results/reuse_revision/experiments.tex,revised,16,0.0879,"Earlier capped fixed-center native results use three fitted starts. The completed follow-up uses five starts on all eight capped corpora, $k=5,10$, widths 16/32/64/128 where eligible, and ten random maps: 80 corpus/$k$/start cells and 9,900 raw rows across methods and widths. A separate full-cached image/text study uses five starts and the complete cached corpora, giving 28,000 audit rows per image corpus and 4,378 text audit rows per start. The new-center native study comprises 60 corpus/$k$/start jobs across ten corpora, $k=5,10$ and three starts, with one deployed-center control and twelve new scenarios per job. Its 227,604 raw method/map/scenario rows are correlated repetitions. Random maps are averaged within a cell before aggregate comparisons; eligible ranks differ by experiment.","\tpexplain{Paragraph 1 --- define every symbol used later. Table~\ref{tab:notation} is authoritative; keep symbols consistent across equations, pseudocode, and code.}
+Let $X=[\mathbf{x}_1,\ldots,\mathbf{x}_n]^\top\in\mathbb{Z}^{n\times d}$ denote the private, quantized dataset, $A\in\{-1,0,+1\}^{m\times d}$ the public unnormalized sparse transform, $P=A/\sqrt q$ the corresponding real embedding, and $Z=XA^\top\in\mathbb{Z}^{n\times m}$ the circuit representation. The field used by the proof system is $\mathbb{F}_p$. Signed integers are represented canonically within a bounded interval embedded in $\mathbb{F}_p$."
+58,paper_results/reuse_revision/experiments.tex,revised,15,0.2222,\subsection{Proof implementation and timing policy}\label{sec:implementation},\subsubsection{Notation and verifiable clustering}
+59,paper_results/reuse_revision/experiments.tex,revised,71,0.0784,"The Go implementation uses gnark v0.16.3, gnark-crypto v0.21.0, Groth16 over BN254, Poseidon2 row-Merkle commitments, batched range checks and bounded comparisons. Experiments run on one Linux host with four logical CPUs and approximately 7.8\,GiB RAM. The reuse queue sets \texttt{GOMAXPROCS}=4 and \texttt{OMP\_NUM\_THREADS}=4. Each $N=64$ phase uses one warmup where specified and three timed proof repetitions; the $N=256$ scale check uses one timed repetition per sample. We add each sample's median proving time to its measured witness time. The process guard limits constraint count to 1.6 million per circuit. The five-start native follow-up runs three worker groups with one OpenMP/BLAS thread each.","\tpexplain{Paragraph 2 --- describe optimizations and make every one independently disableable for ablation.}
+The implementation batches signed accumulation, reuses projected centroids where allowed, applies an argmin tournament, and separates matrix generation from projection constraints. Compile-time and run-time switches independently disable sparsity, post-commitment generation, range-check batching, and shared subexpressions, enabling the ablation in Table~\ref{tab:ablation-a}."
+60,paper_results/reuse_revision/experiments.tex,revised,44,0.1006,"For each method and the first $L$ center sets, cumulative cost adds native Go preparation, compilation, setup and witness/proving costs actually recorded for that method. Reuse methods pay Stage~1 and one query setup once. The evaluated cached/affine methods pay their center-specific preparation, Stage~1 and setup for every set. Full has no Stage~1; its center-specific setup is charged for every set. Its catalog proving component is extrapolated by multiplying one measured batch by $N/b_{\rm Full}$, where the resource guard selects batch eight for MNIST and two for CIFAR embeddings. Each Full batch is proved and verified, but its whole-catalog total is not a measured full run. The other methods prove all catalog rows and requested batches. These totals exclude verification, fitting, warmups, I/O and public new-center-statistic preparation.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+61,paper_results/reuse_revision/experiments.tex,revised,44,0.1065,"Every generated proof is checked during the proving run. The snapshot analysis checks phase completeness, recorded verification counts, positive timings and exact reconstruction of exported witness/proving sums from saved samples. It validates 1,092 captured file hashes and matching copies of the five available Python sources. Each $N=64$ cohort records 1,532 verified proof samples; the $N=256$ cohort records 6,098. These counts describe the recorded verifier checks, not a fresh independent replay of every saved reuse proof. The binary hash is retained; Go source was not present in the remote runtime directory. AI-assisted development was used for experiment and analysis code and for manuscript preparation; the source package records the numerical exports and the checks applied to them.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+62,paper_results/reuse_revision/experiments.tex,revised,1,0.0,\subsection{Metrics},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+63,paper_results/reuse_revision/experiments.tex,revised,106,0.0946,"Assignment agreement and adjusted Rand index (ARI) compare method assignments with nearest original-space centers, not class labels. Fixed-center tables explicitly distinguish quantized Full from floating Full. For new centers, agreement uses floating Full on the same held-out records. Cost error is
+\begin{equation}
+e_\Psi=\frac{\widehat\Psi/(T^4S^2)}{\Phi_I(\mathcal C')}-1
+\end{equation}
+for head/energy methods, with divisor $S^2$ for cached/affine/Full. Mean absolute cost error is the mean of $|e_\Psi|$ across the specified center sets or matched native cells. It includes both assignment and distance-estimation effects. Means in the proof workload exclude the deployed set, leaving nine new sets; the timing workload includes all ten. Repeated timing samples do not supply independent geometric trials or confidence intervals over future models.","\widefigureplaceholder{Margin, dimension, and exact-preservation phase diagram}{Heatmaps with projection dimension on one axis and synthetic separation/margin on the other. Cells show probability of exact assignment or exact DBSCAN graph preservation across seeds. Overlay the theoretical sufficient-condition boundary.}"
+64,paper_results/reuse_revision/experiments.tex,added,15,0.2,\subsection{Fixed-center fidelity and the cached baseline}\label{sec:results},\subsubsection{Notation and verifiable clustering}
+65,paper_results/reuse_revision/experiments.tex,added,102,0.1217,"On the full-cached five-start study, head+energy has mean ARI 0.999647 and agreement 99.9845\% against quantized Full, compared with PCA-16's 0.933384 and 97.2146\%. Against floating Full, head+energy agreement is 99.9108\%, while quantized Full itself reaches 99.9129\%. This separates input rounding from the additional basis-rounding effect. Table~\ref{tab:full-accuracy} gives the corpus/$k$ values; the capped eight-corpus results appear in Appendix~\ref{app:fixed}.","\tpexplain{Measure the marginal cost of binding data and deriving randomness; do not compare a secure protocol only against itself.}
+Post-commitment seed generation adds \resultplaceholder{milliseconds/percentage} to end-to-end latency and \resultplaceholder{constraints/none} to the circuit under the \resultplaceholder{instantiation}. Commitment grinding is evaluated analytically and with \placeholder{bounded-retry simulation}; the selected entropy source prevents the prover from predicting $R$ at binding time under \placeholder{assumption}."
+66,paper_results/bound_revision/full_accuracy.tex,added,103,0.3175,"\begin{table*}[tp]
+\caption{Native fidelity on all cached image rows and nonzero cached text-training rows.}\label{tab:full-accuracy}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Corpus & $k$ & PCA ARI$_Q$ & Ours ARI$_Q$ & PCA agree.$_Q$ (\%) & Ours agree.$_Q$ (\%) & Ours agree.$_F$ (\%) \\
+\midrule
+MNIST & 5 & 0.97712 & 0.99974 & 99.072 & 99.990 & 99.989 \\
+MNIST & 10 & 0.93466 & 0.99975 & 96.956 & 99.989 & 99.989 \\
+Fashion-MNIST & 5 & 0.99601 & 0.99987 & 99.831 & 99.994 & 99.995 \\
+Fashion-MNIST & 10 & 0.98809 & 0.99988 & 99.416 & 99.994 & 99.994 \\
+20 Newsgroups & 5 & 0.88163 & 0.99920 & 95.724 & 99.968 & 99.712 \\
+20 Newsgroups & 10 & 0.82280 & 0.99945 & 92.289 & 99.973 & 99.785 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Subscripts $Q$ and $F$ denote quantized-Full and floating-Full references. Five fitted starts per corpus/$k$; 60/40 fitting/audit split. MNIST and Fashion-MNIST: 70,000 rows each (28,000 audit rows). Text: 10,944 nonzero training documents, 2,000 TF--IDF features (4,378 audit rows). These are native runs, not whole-corpus proofs. Ours denotes both head/energy variants.\end{minipage}
+\end{table*}","\begin{table*}[!htbp]
+\caption{Marginal cost of commit-then-sample ordering. Report zero rather than ``n/a'' when a stage is measured and has no circuit cost.}\label{tab:ordering-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R R Y@{}}
+\toprule
+Component & host latency (ms) & circuit constraints & transcript bytes & invocations/attempt & Included in end-to-end total \\
+\midrule
+data/parameter commitment & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & 1 & yes \\
+challenge acquisition & \resultplaceholder{} & 0 & \resultplaceholder{} & 1 & yes \\
+sparse-matrix expansion & \resultplaceholder{} & 0 & 0 & 1 & yes \\
+matrix authentication & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & 1 & yes \\
+eligibility log/check & \resultplaceholder{} & 0 & \resultplaceholder{} & 1 & yes \\
+rejected/retried commitments & \resultplaceholder{} & 0 & \resultplaceholder{} & \resultplaceholder{} & reported separately \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+67,paper_results/reuse_revision/experiments.tex,added,102,0.1333,"The earlier Poseidon2 fixed-center proof cohort provides the relevant control. For one whole-catalog MNIST query with $N=64$, head+energy+JL requires 306,274 constraints and 5.09\,s of proving, PCA-16 requires 472,429 and 6.30\,s, and cached exact answers require 197,147 and 3.44\,s. Its matched no-tail head+energy control has the same answers; the optional tail is unused by the fixed-center query. Including preprocessing in four distinct 32-row subset queries gives 268.38\,s for head+energy+JL versus 279.12\,s for PCA and 246.66\,s for cached answers (Appendix~\ref{app:fixed}). Thus the single-set evidence favors the exact cached baseline, motivating the changing-center workload.","\tpexplain{Measure the marginal cost of binding data and deriving randomness; do not compare a secure protocol only against itself.}
+Post-commitment seed generation adds \resultplaceholder{milliseconds/percentage} to end-to-end latency and \resultplaceholder{constraints/none} to the circuit under the \resultplaceholder{instantiation}. Commitment grinding is evaluated analytically and with \placeholder{bounded-retry simulation}; the selected entropy source prevents the prover from predicting $R$ at binding time under \placeholder{assumption}."
+68,paper_results/reuse_revision/experiments.tex,added,91,0.1078,"The completed five-start capped follow-up independently checks fixed-center numerical fidelity (Table~\ref{tab:fixed-five-starts}). At total width 16, the protected head with a JL residual tail has 100\% mean assignment agreement in floating arithmetic and 99.987\% after input/basis rounding, versus 95.340\% for plain PCA and 62.409\% for sparse JL. Its integer mean absolute cost error is 3.114\%, because this control estimates residual cost with a random tail. It is not the head+energy representation used by the main reuse circuit, and plain PCA here is not the stronger PCA+energy baseline. These native results support fixed-center fidelity rather than an additional proof-speed claim.","The primary evaluation contains eight fixed corpora with the analyzed sizes in Table~\ref{tab:datasets-a}. Proof costs are restricted to completed engineering shapes and explicitly identified row subsets; no full-size MNIST, Fashion-MNIST, Gisette, Arcene, or text-corpus proof is claimed. The follow-up proves 32 Gaussian-easy points, 16 Gaussian-hard points, and eight images from each image corpus, retaining all features. Small-subset fidelity is qualified anew and is not evidence of full-corpus proof fidelity. Missing Pisot reproduction, in-circuit generator, cross-hardware replication, and per-gadget measured constraint/time breakdown are limitations rather than zero-cost entries. Total compiler constraints and compile/setup/prove/verify timings are reported; verifier RSS is scoped to an isolated verifier process where measured."
+69,paper_results/reuse_revision/generated_20261020/fixed_five_starts.tex,added,77,0.3002,"\begin{table*}[tp]
+\caption{Five-start fixed-center fidelity at total width 16 on the capped eight-corpus campaign.}\label{tab:fixed-five-starts}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Corpus & Head/JL float (\%) & Head/JL int. (\%) & PCA (\%) & Sparse JL (\%) & Int. $|e_\Psi|$ (\%) \\
+\midrule
+Gaussian-easy & 100.000 & 100.000 & 100.000 & 89.240 & 2.977 \\
+Gaussian-hard & 100.000 & 100.000 & 98.600 & 45.235 & 1.297 \\
+Margin synthetic & 100.000 & 99.975 & 82.950 & 60.350 & 2.833 \\
+MNIST & 100.000 & 99.990 & 97.850 & 66.036 & 4.431 \\
+Fashion-MNIST & 100.000 & 100.000 & 99.600 & 82.540 & 3.610 \\
+Gisette & 100.000 & 99.967 & 97.767 & 45.371 & 1.718 \\
+Arcene & 100.000 & 100.000 & 99.000 & 86.775 & 7.116 \\
+20 Newsgroups & 100.000 & 99.966 & 86.955 & 23.726 & 0.927 \\
+Mean & 100.000 & 99.987 & 95.340 & 62.409 & 3.114 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize Assignment agreement is against floating original-space Full. There are 80 corpus/$k$/start cells (eight corpora, $k=5,10$, five starts); ten random maps are averaged within each cell. Head/JL preserves the deployed-center head and uses a sparse residual tail, not the energy statistic of the main reuse method. PCA here is plain PCA, not PCA with energy. The final column is mean absolute cost error of the integer Head/JL method. These native runs do not measure proof performance.\end{minipage}
+\end{table*}","\begin{table*}[!htbp]
+\caption{Datasets and their role in the evaluation.}\label{tab:datasets-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R Y Y@{}}
+\toprule
+Dataset/family & $n$ & $d$ & classes/$k$ & Preprocessing & Why included \\
+\midrule
+Gaussian mixtures & $2{,}000$ (primary fidelity) & 256, 512 & 5, 8 (latent) & controlled separation, variance, imbalance & known latent labels and tunable margin \\
+DBSCAN margin generator & \newtext{300--1{,}000 (config-dependent)} & \newtext{64--128 (config-dependent)} & variable & construct pair distances around $\rho$ & direct test of ambiguity-band theorem \\
+MNIST (analyzed subset) & 5,000 & 784 & 10 & scale pixels; fixed split/subsample & standard dense benchmark \\
+Fashion-MNIST (analyzed subset) & 5,000 & 784 & 10 & same protocol as MNIST & harder same-shape benchmark \\
+Gisette (training subset) & 3,000 & 5,000 & 2 & fixed training split/subset & high-dimensional dense features \\
+Arcene (training split) & 100 & 10,000 & 2 & missing-value/scale policy & very high dimension, low sample count \\
+20 Newsgroups & \newtext{3,000 (training subset)} & \newtext{2,000 (TF--IDF \texttt{max\_features})} & 20 & TF--IDF; sparse input & sparse high-dimensional text \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+70,paper_results/reuse_revision/experiments.tex,added,96,0.1818,\subsection{Changing-center reuse: cumulative proof cost},\subsubsection{RQ2: proof cost and Pareto efficiency}
+71,paper_results/reuse_revision/experiments.tex,added,127,0.1165,"The workload audits the same catalog against ten center sets in this fixed order: the deployed set, two independent refits, two half-training subsample refits, Lloyd iterates 1/3/10 from another initialization, and perturbations of size 0.1/0.3 of median deployed-center spacing. These scenarios retain $k=5$. They use training data and do not form an optimization loop driven by private audit outputs. All methods receive the same integer catalog and quantized center sets.","\bmhead{Data availability}
+The public datasets analyzed in this study are available from the repositories cited in Table~\ref{tab:datasets-a}. Generated datasets, processed manifests, and raw experimental results will be archived at \placeholder{repository and persistent URL}."
+72,paper_results/reuse_revision/experiments.tex,added,44,0.122,"Table~\ref{tab:reuse-cost} and Fig.~\ref{fig:reuse-cost} show the main amortization result. For MNIST $N=64$, learned head+energy costs 311.4\,s at one set, 317.7\,s at two and 368.8\,s at ten. The center-specific cached baseline costs 250.1, 502.2 and 2,540.9\,s, respectively. For CIFAR embeddings, the ten-set totals are 635.2\,s versus 4,928.8\,s. The $N=256$ MNIST check gives 941.2, 977.4 and 1,267.6\,s for learned head+energy, versus 860.9, 1,724.8 and 8,642.8\,s for cached. The learned method crosses cached at $L=2$ in all three workloads; ten-set ratios are 6.89, 7.76 and 6.82. PCA+energy has essentially the same reuse cost: 366.2, 635.6 and 1,265.0\,s at ten sets. The result is amortization across changing centers, not faster individual query proofs than cached answers.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+73,paper_results/reuse_revision/generated_20261020/cumulative.tex,added,98,0.2571,"\begin{table*}[tp]
+\caption{Cumulative cost across successive center sets, query batch $b=64$, $k=5$ (seconds).}\label{tab:reuse-cost}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Catalog & Method & $L=1$ & $L=2$ & $L=10$ \\
+\midrule
+MNIST ($N=64$) & Cached exact & 250.1 & 502.2 & 2,540.9 \\
+MNIST ($N=64$) & Exact affine & 277.9 & 552.0 & 2,758.4 \\
+MNIST ($N=64$) & Full (extrapolated) & 342.3 & 684.6 & 3,473.6 \\
+MNIST ($N=64$) & Span + energy & 282.3 & 287.4 & 329.1 \\
+MNIST ($N=64$) & PCA + energy & 309.5 & 315.9 & 366.2 \\
+MNIST ($N=64$) & Learned head + energy & 311.4 & 317.7 & 368.8 \\
+CIFAR/ResNet-50 ($N=64$) & Cached exact & 490.3 & 980.3 & 4,928.8 \\
+CIFAR/ResNet-50 ($N=64$) & Exact affine & 517.4 & 1,029.7 & 5,099.5 \\
+CIFAR/ResNet-50 ($N=64$) & Full (extrapolated) & 493.6 & 984.2 & 4,781.0 \\
+CIFAR/ResNet-50 ($N=64$) & Span + energy & 515.6 & 520.9 & 563.2 \\
+CIFAR/ResNet-50 ($N=64$) & PCA + energy & 555.3 & 563.7 & 635.6 \\
+CIFAR/ResNet-50 ($N=64$) & Learned head + energy & 554.9 & 563.7 & 635.2 \\
+MNIST ($N=256$) & Cached exact & 860.9 & 1,724.8 & 8,642.8 \\
+MNIST ($N=256$) & Exact affine & 889.4 & 1,777.1 & 8,851.4 \\
+MNIST ($N=256$) & Full (extrapolated) & 808.9 & 1,574.4 & 8,036.5 \\
+MNIST ($N=256$) & Span + energy & 904.2 & 926.4 & 1,105.6 \\
+MNIST ($N=256$) & PCA + energy & 940.5 & 977.1 & 1,265.0 \\
+MNIST ($N=256$) & Learned head + energy & 941.2 & 977.4 & 1,267.6 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize Totals add measured native preparation, compilation, setup, witness generation and median proving times. All compressed/cached/affine catalog proofs were generated; Full catalog proving is extrapolated from one measured batch per set. The deployed set is first. Verification, fitting, warmups, I/O and public new-center preparation are excluded.\end{minipage}
+\end{table*}","\begin{table*}[!htbp]
+\caption{End-to-end proof performance at the fidelity-matched operating point.}\label{tab:zkperf-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R R R R R Y@{}}
+\toprule
+Method & constraints & witness/compile (s) & proving (s) & peak RAM (GiB) & verify (ms) & proof (KiB) & ARI & Notes \\
+\midrule
+Full dimension & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & 1.000 & baseline \\
+PCA, public matrix & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & excludes PCA training proof \\
+Dense Rade\-macher & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & signed dense \\
+Sparse JL & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & proposed \\
+Coordinate sample & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & naive lower-cost baseline \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+74,paper_results/reuse_revision/experiments.tex,added,102,0.1071,"\begin{figure*}[tp]
+\centering
+\includegraphics[width=\textwidth]{paper_results/reuse_revision/generated_20261020/cumulative_cost.pdf}
+\caption{Cumulative cost for the three completed changing-center workloads. Learned head and PCA with energy almost overlap; savings over the tested center-specific cached/affine baselines come from reusing preprocessing and setup. The vertical line marks the second center set. Full catalog proving is extrapolated from one measured batch per set.}
+\label{fig:reuse-cost}
+\end{figure*}","\tpexplain{Measure the marginal cost of binding data and deriving randomness; do not compare a secure protocol only against itself.}
+Post-commitment seed generation adds \resultplaceholder{milliseconds/percentage} to end-to-end latency and \resultplaceholder{constraints/none} to the circuit under the \resultplaceholder{instantiation}. Commitment grinding is evaluated analytically and with \placeholder{bounded-retry simulation}; the selected entropy source prevents the prover from predicting $R$ at binding time under \placeholder{assumption}."
+75,paper_results/reuse_revision/experiments.tex,added,12,0.1143,"For MNIST $N=64$, learned and PCA with energy have the same 519,896-constraint reuse circuit, compared with 343,455 for the narrower span-only head. Their Stage~1 circuits have 171,586 and 171,582 constraints per row. At $N=256$, the larger Merkle depth increases the shared reuse circuit to 568,022 constraints; learned Stage~1 uses 173,086 per row. For CIFAR, learned/PCA reuse requires 524,336 constraints and Stage~1 requires 432,049 per row. Selecting a different basis can therefore change accuracy without materially changing proof cost. Saved peak process-tree RSS is about 1.1--1.6\,GB for the 16-statistic methods; it excludes the Python driver and is not whole-pipeline memory.","\tpexplain{Paragraph 6 --- roadmap. Keep this short and aligned exactly with the final section order.}
+The remainder of the paper reviews the closest work, defines the protocol and its guarantees, and then evaluates proof cost and clustering fidelity before discussing limitations."
+76,paper_results/reuse_revision/experiments.tex,added,54,0.2857,\subsection{Changing-center fidelity},\subsubsection{Separation of soundness and fidelity}
+77,paper_results/reuse_revision/experiments.tex,added,93,0.1098,"The learned head has higher new-center agreement than PCA with energy on all three proof workloads: 98.26\% versus 96.53\% on MNIST $N=64$, 99.48\% versus 98.44\% on CIFAR embeddings, and 98.31\% versus 97.44\% on MNIST $N=256$ (Table~\ref{tab:reuse-quality}). The narrower deployed span alone reaches 83.51\%, 96.35\% and 85.76\%. Learned mean absolute cost errors are 0.228\%, 0.338\% and 0.178\%, compared with PCA/energy's 1.536\%, 0.441\% and 1.722\%. Cached and affine attain 100\% agreement, with small floating-reference cost differences due to quantization. Mean agreement is not a worst-case guarantee: learned agreement on the least accurate updated set is 95.31\%, 96.88\% and 94.92\%, respectively.","\tpexplain{Paragraph 1 --- answer RQ1 in the first sentence with the minimum $m$ meeting a predeclared fidelity threshold. Then explain variations across datasets.}
+At the predeclared thresholds $r_\Phi\leq\tau_\Phi$ and $\mathrm{ARI}\geq\tau_{\rm ARI}$, where \decisionplaceholder{fix $\tau_\Phi$ and $\tau_{\rm ARI}$ before inspecting proof-performance results}, \resultplaceholder{method} requires $m=\resultplaceholder{value}$ on \resultplaceholder{dataset/median}, compared with \resultplaceholder{values for baselines}. Fidelity improves \resultplaceholder{monotonically/non-monotonically} with \resultplaceholder{dimension/sparsity}; the principal exception is \resultplaceholder{dataset and reason supported by evidence}."
+78,paper_results/reuse_revision/generated_20261020/quality.tex,added,98,0.2751,"\begin{table*}[tp]
+\caption{Answer fidelity on the nine new center sets in each proof workload.}\label{tab:reuse-quality}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Catalog & Method & Mean agree. (\%) & Min. agree. (\%) & Mean $|e_\Psi|$ (\%) \\
+\midrule
+MNIST ($N=64$) & Cached exact & 100.00 & 100.00 & 0.003 \\
+MNIST ($N=64$) & Exact affine & 100.00 & 100.00 & 0.003 \\
+MNIST ($N=64$) & Span + energy & 83.51 & 67.19 & 1.977 \\
+MNIST ($N=64$) & PCA + energy & 96.53 & 93.75 & 1.536 \\
+MNIST ($N=64$) & Learned head + energy & 98.26 & 95.31 & 0.228 \\
+CIFAR/ResNet-50 ($N=64$) & Cached exact & 100.00 & 100.00 & 0.002 \\
+CIFAR/ResNet-50 ($N=64$) & Exact affine & 100.00 & 100.00 & 0.002 \\
+CIFAR/ResNet-50 ($N=64$) & Span + energy & 96.35 & 89.06 & 0.757 \\
+CIFAR/ResNet-50 ($N=64$) & PCA + energy & 98.44 & 96.88 & 0.441 \\
+CIFAR/ResNet-50 ($N=64$) & Learned head + energy & 99.48 & 96.88 & 0.338 \\
+MNIST ($N=256$) & Cached exact & 100.00 & 100.00 & 0.004 \\
+MNIST ($N=256$) & Exact affine & 100.00 & 100.00 & 0.004 \\
+MNIST ($N=256$) & Span + energy & 85.76 & 64.84 & 2.219 \\
+MNIST ($N=256$) & PCA + energy & 97.44 & 95.31 & 1.722 \\
+MNIST ($N=256$) & Learned head + energy & 98.31 & 94.92 & 0.178 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize Agreement is against floating-point original-space Full on the same catalog rows. Means weight the nine new center sets equally; minimum is the worst set, not a confidence bound. Cached and affine are exact on quantized inputs, so their floating-reference cost errors can be nonzero.\end{minipage}
+\end{table*}","\begin{table*}[!htbp]
+\caption{End-to-end proof performance at the fidelity-matched operating point.}\label{tab:zkperf-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R R R R R Y@{}}
+\toprule
+Method & constraints & witness/compile (s) & proving (s) & peak RAM (GiB) & verify (ms) & proof (KiB) & ARI & Notes \\
+\midrule
+Full dimension & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & 1.000 & baseline \\
+PCA, public matrix & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & excludes PCA training proof \\
+Dense Rade\-macher & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & signed dense \\
+Sparse JL & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & proposed \\
+Coordinate sample & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & naive lower-cost baseline \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+79,paper_results/reuse_revision/experiments.tex,added,96,0.1395,"This is an accuracy--reuse trade-off against exact recomputation and an accuracy comparison at similar proof cost against PCA. The nine updated sets reuse the same rows and fitted basis, so they are not nine independent dataset replications.",\subsubsection{RQ2: proof cost and Pareto efficiency}
+80,paper_results/reuse_revision/experiments.tex,added,15,0.2,"\subsection{Native new-center, shift and owner controls}",\subsubsection{Notation and verifiable clustering}
+81,paper_results/reuse_revision/experiments.tex,added,102,0.1046,"The broader native new-center grid evaluates budgets 16/32/64/128/256, two sparse-map densities and ten maps per randomized setting, subject to input dimension and PCA training-rank restrictions. It includes twelve new scenarios, adding changed center counts and another Lloyd snapshot to the proof workload's families. On matched cells, head+energy with a JL residual cross-term estimate is less accurate than PCA+energy at every tested budget. At budget 16 the agreement is 73.92\% versus 93.27\%; at 256 it is 91.16\% versus 98.13\% (Table~\ref{tab:reuse-jl}). The real same-center control gives 100\% agreement and maximum absolute relative cost error below $1.5\times10^{-15}$.","\tpexplain{Measure the marginal cost of binding data and deriving randomness; do not compare a secure protocol only against itself.}
+Post-commitment seed generation adds \resultplaceholder{milliseconds/percentage} to end-to-end latency and \resultplaceholder{constraints/none} to the circuit under the \resultplaceholder{instantiation}. Commitment grinding is evaluated analytically and with \placeholder{bounded-retry simulation}; the selected entropy source prevents the prover from predicting $R$ at binding time under \placeholder{assumption}."
+82,paper_results/reuse_revision/generated_20261020/native_jl.tex,added,105,0.2844,"\begin{table*}[tp]
+\caption{Native new-center comparison on matched cells: head/energy/JL versus PCA/energy.}\label{tab:reuse-jl}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+Budget & Cells & JL agree. (\%) & PCA/E agree. (\%) & JL $|e_\Psi|$ (\%) & PCA/E $|e_\Psi|$ (\%) \\
+\midrule
+16 & 720 & 73.92 & 93.27 & 5.852 & 0.673 \\
+64 & 648 & 85.34 & 96.14 & 1.110 & 0.152 \\
+256 & 504 & 91.16 & 98.13 & 0.326 & 0.037 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize The tail estimates the residual cross term with one signed bucket per column. Maps are averaged within a corpus/$k$/start/scenario cell before aggregation. Eligibility differs across budgets; within each row both methods use identical cells. Native float64 computation, not proofs.\end{minipage}
+\end{table*}","\begin{table*}[!htbp]
+\caption{Validation of assignment and DBSCAN stability certificates. A “violation” means a theorem-certified item changed, which should be zero absent implementation error or a failed embedding event.}\label{tab:cert-a}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R R Y@{}}
+\toprule
+Dataset/configuration & certified points/pairs & observed stable & uncertified stable & violations & Interpretation \\
+\midrule
+\placeholder{nearest-centroid case} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \placeholder{} \\
+\placeholder{low-margin case} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \placeholder{} \\
+\placeholder{DBSCAN synthetic} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \placeholder{} \\
+\placeholder{DBSCAN real} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \placeholder{} \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+83,paper_results/reuse_revision/experiments.tex,added,52,0.114,"A follow-up tests learned-head/JL budget splits, $q=4,8$, SRHT maps, clipping and shrinkage. No tested hybrid improves the mean agreement over PCA with energy on its matched cells at any tested budget. The full learned head without a tail is also slightly below PCA/energy in this broader native comparison: 93.19\% versus 93.27\% agreement at budget 16, and 98.07\% versus 98.13\% at 256. Thus the learned method's higher agreement on the two proof catalogs does not extend to the aggregate native grid. The results motivate spending the residual budget on learned directions instead of a random cross-term estimator for the main circuit, while retaining PCA/energy as a strong baseline.","\tpexplain{Give deployable alternatives and state the trust/freshness assumption for each. Select one primary instantiation for experiments.}
+We consider three challenge sources: a verifier nonce, a public randomness beacon referenced by round, and a two-party commit--reveal coin flip. Deriving the seed from $C_X$ alone is deterministic and permits offline search over commitment randomness. The primary protocol therefore uses a fresh 256-bit verifier nonce after $(C_X,C_\theta)$ has entered the task log. A nonce is single-use, and the log admits at most $Q$ eligible commitments per authenticated prover and task. A new commitment consumes another attempt; it does not reset the analysis. A beacon with a commitment deadline gives the cleanest public enforcement, while commit--reveal avoids trusting either party as the sole entropy source."
+84,paper_results/reuse_revision/experiments.tex,added,97,0.0909,"The shift/owner study comprises 60 jobs and 22,260 rows across five corpora. The owner simulation partitions training records among five owners with Dirichlet parameter 0.3; the residual/PCA basis sees only owner~0, while deployed public centers come from pooled training data. The shift simulation fits on old classes and tests new-only and mixed-class cases. At budget 16, learned head+energy reaches 89.89\% agreement versus 81.71\% for PCA/energy in the owner setting, but 74.50\% versus 76.33\% under shift. JL is weaker in both aggregate comparisons (Table~\ref{tab:reuse-shift}). These are native simulations with different information constraints, not federated proof or communication measurements.","\tpexplain{Lead with actual wall-clock and memory, then explain constraint counts. Show absolute values as well as speedups.}
+On the synthetic $96\times128$ workload at $(m,q)=(16,2)$, sparse JL reduces total constraints by 7.64\%, but median prove-only time is 62.94\,s versus 62.43\,s for full dimension. Setup falls from 728.09\,s to 662.18\,s. No general prove-only speedup is observed; the tiny MNIST subset is 56.33\% slower. These comparisons are scoped to the declared witnesses and repetitions. Measured per-gadget constraint or wall-time attribution is unavailable."
+85,paper_results/reuse_revision/generated_20261020/shift_owner.tex,added,94,0.2846,"\begin{table*}[tp]
+\caption{Native budget-16 agreement under non-IID owners and class distribution shift.}\label{tab:reuse-shift}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Setting & Method & Cells & Agree. (\%) & Matched PCA/E (\%) \\
+\midrule
+owners & Learned head + energy & 360 & 89.89 & 81.71 \\
+shift & Learned head + energy & 60 & 74.50 & 76.33 \\
+owners & Head/energy/JL ($q=4$) & 360 & 72.02 & 81.71 \\
+shift & Head/energy/JL ($q=4$) & 60 & 60.14 & 76.33 \\
+owners & Plain JL ($q=4$) & 360 & 55.38 & 81.71 \\
+shift & Plain JL ($q=4$) & 60 & 58.48 & 76.33 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize Five corpora, $k=5,10$, three starts. Random maps are averaged within each matched cell. Owners: residual/PCA fitting uses owner 0, while deployed public centers use pooled training rows. Shift: fit on old classes and audit new-only/mixed cases. These are native simulations.\end{minipage}
+\end{table*}","\begin{table*}[!htbp]
+\caption{Clustering fidelity at selected operating points. Report the preregistered point estimate and 95\% confidence interval across seeds.}\label{tab:fidelity-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y Y R R R R R@{}}
+\toprule
+Dataset & Projection $(m,q)$ & $r_\Phi$ & ARI vs. full & $Q_{0.95}(|\delta|)$ & $\Pr(|\delta|>\epsilon)$ & certified coverage \\
+\midrule
+\placeholder{dataset} & full & 1.000 & 1.000 & 0 & 0 & 100\% \\
+\placeholder{dataset} & PCA $(\_,\_)$ & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & n/a \\
+\placeholder{dataset} & dense JL $(\_,\_)$ & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} \\
+\placeholder{dataset} & sparse JL $(\_,\_)$ & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+86,paper_results/reuse_revision/experiments.tex,added,15,0.25,\subsection{Binding and adaptive-map controls},\subsubsection{Notation and verifiable clustering}
+87,paper_results/reuse_revision/experiments.tex,added,31,0.1,"The existing circuit tests exercise honest in-span and out-of-span reuse, check that the in-span integer fixture agrees with Full, and reject altered costs, margins, assignments, authenticated heads and offsets. Earlier original-binding tests also cover missing Stage~1 indices, substituted roots and keys, and changed subset data. These are targeted engineering checks of the implemented relation.","\tpexplain{Two paragraphs. First map generic ZKML compilers and specialized systems; second focus on PCA/clustering. Cite performance claims only after checking artifact versions and hardware.}
+General-purpose ZK compilers and specialized ZKML systems reduce inference-proof cost through quantization, lookup arguments, polynomial commitments, and operator-specific protocols \cite{zkmlsurvey2026,zkcnn2021,artemis2024}. Their results also show why operation counts alone are insufficient: arithmetic representation and the selected backend determine the cost of an operator."
+88,paper_results/reuse_revision/experiments.tex,added,44,0.0959,"The earlier native adaptive-map controls illustrate a different question (Table~\ref{tab:attack-controls}). With a known PCA map, the constructed perturbation changes about 97.6\% of assignments while leaving the projected claim unchanged. The corresponding fresh sparse-map control does not hide the same injected energy. These controls generate no forged end-to-end proofs and test a linear head/tail representation, not head+energy. They show why a faithfully executed known projection can be a poor proxy on adversarial data; the Stage~1 binding guarantee itself does not depend on a JL tail.
+The detailed native perturbation table is retained in Appendix~\ref{app:attack}.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+89,paper_results/reuse_revision/discussion.tex,revised,1,0.0,\section{Discussion}\label{sec:discussion},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+90,paper_results/reuse_revision/discussion.tex,revised,112,0.1818,\subsection{Choosing the representation},\subsubsection{What the evidence would and would not establish}
+91,paper_results/reuse_revision/discussion.tex,revised,44,0.1111,"For a single approved center set with repeated subset queries, cached exact answers are the strongest tested choice: the original-space integer argmin and cost are proved once and later authenticated cheaply. Affine scores retain all candidate fixed-center distances and are exact on the same integer inputs. Head and energy are useful when a common represented span supports several center sets, or when later approximate audits justify retaining more information than one cached answer.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+92,paper_results/reuse_revision/discussion.tex,revised,32,0.094,"The learned representation targets the latter use. Protecting the deployed span preserves its real-arithmetic comparisons, while residual PCA spends the remaining budget on training directions likely to matter for updates. The main proof workloads show a favorable combination of reuse cost and agreement, rather than a proof-speed advantage over equally reusable PCA with energy. The distribution-shift study further shows that learned head is not uniformly more accurate than PCA. Basis selection is an approximation policy that should be approved and evaluated for the intended queries.","ezDPS provides a ZK pipeline for principal-component analysis and classification and is therefore the relevant data-dependent dimensionality-reduction baseline \cite{ezdps2023}. CommitJL asks a narrower question: can a data-oblivious sparse embedding selected after commitment reduce clustering-proof cost without unacceptable geometric error? Accordingly, the comparison is limited to systems that expose a reproducible dimensionality-reduction or proof-cost baseline; it is not intended as a survey of privacy-preserving $k$-means."
+93,paper_results/reuse_revision/discussion.tex,revised,127,0.1075,The tested sparse-JL tails have a distinct reason to remain in the study: choosing a map without training data and analyzing its dependence on commitment order. Their negative fidelity results are evidence about the tested estimators and budgets. They neither invalidate JL theory nor establish that learned maps have a worst-case accuracy guarantee. Stage~1 binding applies to either approved map.,"\bmhead{Data availability}
+The public datasets analyzed in this study are available from the repositories cited in Table~\ref{tab:datasets-a}. Generated datasets, processed manifests, and raw experimental results will be archived at \placeholder{repository and persistent URL}."
+94,paper_results/reuse_revision/discussion.tex,revised,114,0.5714,\subsection{Scope and limitations},\subsubsection{Security and privacy limitations}
+95,paper_results/reuse_revision/discussion.tex,revised,106,0.1207,"The completed changing-center proof evidence comprises two 64-record catalogs and one 256-record MNIST catalog, each with ten ordered center sets on one four-CPU Linux host. The larger MNIST catalog is a scale check on the same corpus and fitted-model configuration, not a third independent application. New-center sets are refits, subsamples, Lloyd snapshots and perturbations from a fixed training corpus. The completed eight-corpus five-start native campaign broadens fixed-center fidelity evidence, but does not substitute for larger-catalog, independent-model or cross-host proof replication.","\widefigureplaceholder{Margin, dimension, and exact-preservation phase diagram}{Heatmaps with projection dimension on one axis and synthetic separation/margin on the other. Cells show probability of exact assignment or exact DBSCAN graph preservation across seeds. Overlay the theoretical sufficient-condition boundary.}"
+96,paper_results/reuse_revision/discussion.tex,revised,31,0.0764,"Cumulative costs reconstruct sums of measured compilation, circuit-specific setup, native preparation, witness generation and median proving times. They are not observed wall-clock latency for an online deployment. They exclude public-model fitting, verification, warmups, I/O and new-center-statistic preparation. Full catalog proving is extrapolated from one actual batch per center set; cached, affine and reusable compressed methods prove all catalog rows and requested subsets. The crossover is relative to these concrete implementations, including center-specific setups for cached/affine and Full. A dynamic-center Full circuit or an in-span reusable affine parameterization would change the comparison.","\tpexplain{Two paragraphs. First map generic ZKML compilers and specialized systems; second focus on PCA/clustering. Cite performance claims only after checking artifact versions and hardware.}
+General-purpose ZK compilers and specialized ZKML systems reduce inference-proof cost through quantization, lookup arguments, polynomial commitments, and operator-specific protocols \cite{zkmlsurvey2026,zkcnn2021,artemis2024}. Their results also show why operation counts alone are insufficient: arithmetic representation and the selected backend determine the cost of an operator."
+97,paper_results/reuse_revision/discussion.tex,revised,70,0.0995,"All reuse methods prove an approximate original-space score outside the represented span, with exact execution only for their approved integer relation. The aggregate margin is not a per-record fidelity certificate. The study also excludes proof of model training, real federated communication, arbitrary-center worst-case guarantees, adaptive leakage bounds and full-corpus proof deployment. The benchmark verifies generated proofs inside the proving CLI. A fresh independent, public-only replay of the saved reuse bundles has not been completed; this artifact check should precede a public submission. A real model-update trace and larger catalogs would further test deployment relevance.","\newtext{The PLONK backend is instantiated with an unsafe, test-only KZG SRS (gnark's \texttt{test/unsafekzg}) suitable only for benchmarking circuit cost, not for a trusted deployment. Of the circuit variants enumerated in \texttt{zk/circuit/circuit.go} (full, sparse, dense, coord, pca-public, pisot, prepublished, incircuit-gen), the sparse, full, prepublished, pca-public, and pisot variants are implemented and exercised by the test suite; the dense and coord variants are implemented but untested; and the incircuit-gen variant, which would rebuild the sparse generator and MiMC XOF inside the circuit, is not yet implemented (it is a stub). In-circuit, the public commitments $C_\theta$ and $C_A$ are checked against a field-native MiMC digest of the centroids/sparse list (\texttt{zk\_bridge.py}'s \texttt{field\_hash\_theta}/\texttt{field\_hash\_sparse\_list}), which differs from \texttt{commit.py}'s host-side byte-packed encoding of the same values; the two are intentionally not required to match.}"
+98,paper_results/reuse_revision/discussion.tex,unchanged,121,1.0,\section{Conclusion}\label{sec:conclusion},\section{Conclusion}\label{sec:conclusion}
+99,paper_results/reuse_revision/discussion.tex,revised,79,0.1008,"Classical head coordinates and residual energy provide a compact interface for verifiable center-based audits. The system proves their derivation from committed original rows, then reuses the authenticated catalog across public center updates through one Stage~2 circuit. Across the completed 64-/256-row MNIST and 64-row CIFAR-embedding workloads, reuse beats the tested center-specific cached baseline from the second center set and reduces ten-set cumulative measured-component cost by factors of 6.82--7.76. The learned head achieves 98.26--99.48\% new-center agreement and improves on equally reusable PCA with energy on these proof catalogs at similar proof cost. The broader native evidence keeps that accuracy claim local to the tested catalogs. Exact cached and affine controls remain preferable for a single fixed task; sparse-JL tails remain a data-oblivious protocol option and an empirically weaker new-center baseline at the tested budgets.","\tpexplain{Fix hyperparameter budgets fairly. PCA must include both “projection matrix public” and “PCA itself proved” interpretations if both are discussed.}
+We compare no reduction, coordinate sampling, PCA, Gaussian JL, Rademacher JL, Achlioptas projection, sparse JL at multiple $q$. Each method receives the same candidate dimensions $m$. The completed native campaigns use 10 projection seeds and 5 paired clustering starts. The verified Pisot reference was unavailable and is excluded from the empirical comparison. The additional $q=8$ sweep covers only Gaussian easy, DBSCAN-margin, and 20 Newsgroups. If end-to-end proving cost makes the full grid infeasible, a preregistered core subset is proved and the remaining configurations are labeled native-only."
+100,manuscript.tex,revised,1,0.0,"\FloatBarrier
+\onecolumn
+\appendix
+\numberwithin{table}{section}
+\renewcommand{\thetable}{\Alph{section}.\arabic{table}}
+\renewcommand{\theHtable}{appendix.\Alph{section}.\arabic{table}}
+\renewcommand{\theHequation}{appendix.\Alph{section}.\arabic{equation}}",\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+101,paper_results/reuse_revision/appendix.tex,added,3,0.0142,\section{Additional fixed-center evidence}\label{app:fixed},"\abstract{Zero-knowledge proofs can verify clustering over private high-dimensional data, but repeated distance calculations may dominate prover cost. \emph{CommitJL} binds the dataset and public clustering parameters before a verifier challenge selects a sparse finite-field-friendly Johnson--Lindenstrauss transform. This order prevents post-challenge adaptation within an eligible commitment and reduces projection to signed additions; a task-level commitment budget limits grinding across repeated attempts. The proof establishes correct execution in the projected space, while a separate geometric argument relates the result to the original data. We give preservation conditions for fixed-center clustering cost, nearest-centroid assignments, and density neighborhoods. The planned evaluation compares full dimension, principal component analysis, dense and sparse random projections and coordinate sampling on synthetic and real datasets; the cited deterministic ZK-oriented projection remains outside the measured comparison. \resultplaceholder{Replace with the principal quantitative result, fidelity result, and tested backend before submission.}}"
+102,paper_results/reuse_revision/appendix.tex,added,127,0.1556,"The tables in this appendix retain the earlier completed Poseidon2 cohort and its native component/five-start follow-ups. They are not pooled with the new changing-center timing cohort. ``CommitJL'' in these retained tables means the protected head, energy and optional sparse tail; fixed-center assignment/cost queries do not use the tail. Native accuracy compares with quantized Full unless marked otherwise.","\bmhead{Data availability}
+The public datasets analyzed in this study are available from the repositories cited in Table~\ref{tab:datasets-a}. Generated datasets, processed manifests, and raw experimental results will be archived at \placeholder{repository and persistent URL}."
+103,paper_results/reuse_revision/fixed_supplement.tex,added,77,0.2186,"% Numerical contents retained from bound_revision; regular floats for the single-column appendix.
+\begin{table}[!htbp]
+\caption{Fixed-center fidelity on eight capped corpora at storage budget 16.}\label{tab:capped}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Corpus & $k$ & Sparse ARI & PCA ARI & Head/E ARI & PCA agree. (\%) & Head/E agree. (\%) \\
+\midrule
+Gaussian-easy & 5 & 0.62947 & 1.00000 & 1.00000 & 100.000 & 100.000 \\
+Gaussian-easy & 10 & 0.87790 & 1.00000 & 1.00000 & 100.000 & 100.000 \\
+Gaussian-hard & 5 & 0.11602 & 0.99365 & 1.00000 & 99.792 & 100.000 \\
+Gaussian-hard & 10 & 0.15151 & 0.99359 & 1.00000 & 99.000 & 100.000 \\
+Margin-synthetic & 5 & 0.18329 & 0.62386 & 0.99640 & 89.833 & 99.917 \\
+Margin-synthetic & 10 & 0.21543 & 0.49844 & 1.00000 & 79.167 & 100.000 \\
+MNIST & 5 & 0.36872 & 0.98165 & 0.99960 & 99.183 & 99.983 \\
+MNIST & 10 & 0.36090 & 0.92547 & 0.99964 & 96.567 & 99.983 \\
+Fashion-MNIST & 5 & 0.66488 & 0.99484 & 1.00000 & 99.783 & 100.000 \\
+Fashion-MNIST & 10 & 0.64867 & 0.98679 & 0.99958 & 99.317 & 99.983 \\
+Gisette & 5 & 0.14792 & 0.96671 & 0.99917 & 98.694 & 99.972 \\
+Gisette & 10 & 0.12200 & 0.92786 & 1.00000 & 96.861 & 100.000 \\
+Arcene & 5 & 0.85164 & 1.00000 & 1.00000 & 100.000 & 100.000 \\
+Arcene & 10 & 0.67673 & 0.95751 & 1.00000 & 97.500 & 100.000 \\
+20 Newsgroups & 5 & 0.01789 & 0.82891 & 1.00000 & 93.511 & 100.000 \\
+20 Newsgroups & 10 & 0.00868 & 0.61244 & 1.00000 & 78.988 & 100.000 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Reference: quantized Full. Means over three fitted starts; sparse maps are averaged within a start before aggregation. Head/E and CommitJL have identical fixed-center outputs. Sparse JL uses one signed bucket per input column. ARI measures assignment fidelity, not agreement with class labels.\end{minipage}
+\end{table}","\begin{table*}[!htbp]
+\caption{Datasets and their role in the evaluation.}\label{tab:datasets-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R Y Y@{}}
+\toprule
+Dataset/family & $n$ & $d$ & classes/$k$ & Preprocessing & Why included \\
+\midrule
+Gaussian mixtures & $2{,}000$ (primary fidelity) & 256, 512 & 5, 8 (latent) & controlled separation, variance, imbalance & known latent labels and tunable margin \\
+DBSCAN margin generator & \newtext{300--1{,}000 (config-dependent)} & \newtext{64--128 (config-dependent)} & variable & construct pair distances around $\rho$ & direct test of ambiguity-band theorem \\
+MNIST (analyzed subset) & 5,000 & 784 & 10 & scale pixels; fixed split/subsample & standard dense benchmark \\
+Fashion-MNIST (analyzed subset) & 5,000 & 784 & 10 & same protocol as MNIST & harder same-shape benchmark \\
+Gisette (training subset) & 3,000 & 5,000 & 2 & fixed training split/subset & high-dimensional dense features \\
+Arcene (training split) & 100 & 10,000 & 2 & missing-value/scale policy & very high dimension, low sample count \\
+20 Newsgroups & \newtext{3,000 (training subset)} & \newtext{2,000 (TF--IDF \texttt{max\_features})} & 20 & TF--IDF; sparse input & sparse high-dimensional text \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+104,paper_results/reuse_revision/fixed_supplement.tex,added,17,0.1933,"\begin{table}[!htbp]
+\caption{Actual whole-catalog query on 64 committed MNIST records, $k=5$.}\label{tab:query64}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method & Constraints & Proving time (s) \\
+\midrule
+PCA-16 & 472,429 & 6.303 \\
+Head + energy & 306,275 & 5.341 \\
+CommitJL-16 & 306,274 & 5.087 \\
+Exact affine & 271,205 & 5.240 \\
+Cached exact & 197,147 & 3.442 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Same original catalog and centers for all methods; each saved proof independently verifies. This is one possible 64-record subset, with three timing repetitions after warmup. Full was measured only at $q=1$ for this catalog; no large-shape Full estimate is inserted. The one-constraint head/E difference comes from compiled context details, not useful tail computation.\end{minipage}
+\end{table}","\begin{table}[!htbp]
+\caption{Notation and ownership of protocol values.}\label{tab:notation}
+\centering\scriptsize
+\begin{tabularx}{\columnwidth}{@{}Y Y Y@{}}
+\toprule
+Symbol/domain & Meaning & Visibility \\
+\midrule
+$n,d,m,k\in\mathbb N$ & points, input/projected dimensions, clusters & public \\
+$X\in\mathbb Z^{n\times d}$ & quantized dataset & private \\
+$C_X,C_\theta,C_A$ & data commitment and parameter/matrix digests & public \\
+$s,\rho\in\{0,1\}^{\lambda}$ & projection seed and fresh challenge & public \\
+$A,P=A/\sqrt q$ & circuit matrix and real embedding & witness/derived \\
+$q,Q\in\mathbb N$ & column sparsity and task attempt budget & public \\
+$Z\in\mathbb Z^{n\times m}$ & projected points & private \\
+$\mathcal C,a_i$ & fixed centers and assignment & public/private \\
+$\epsilon,\delta\in(0,1)$ & distortion and failure targets & public \\
+$p,B$ & field modulus and coordinate bound & public \\
+\bottomrule
+\end{tabularx}
+\end{table}"
+105,paper_results/reuse_revision/fixed_supplement.tex,added,109,0.3271,"\begin{table}[!htbp]
+\caption{Preprocessing and reconstructed fresh-workload cost, MNIST $N=64$, $k=5$.}\label{tab:preprocessing}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Method & \shortstack{Stage-1\\constraints/row} & \shortstack{Median row\\proof (s)} & \shortstack{All row\\proofs (s)} & \shortstack{Stage-1\\compile/setup (s)} & \shortstack{Four-query\\workload (s)} \\
+\midrule
+PCA-16 & 170,744 & 3.087 & 197.961 & 29.011 & 279.123 \\
+Head + energy & 168,901 & 3.067 & 196.990 & 28.372 & 264.617 \\
+CommitJL-16 & 174,208 & 3.083 & 198.221 & 29.350 & 268.383 \\
+Exact affine & 168,815 & 3.058 & 195.780 & 29.559 & 268.288 \\
+Cached exact & 168,446 & 3.014 & 194.488 & 27.153 & 246.660 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize The workload uses four genuinely distinct 32-record subsets. It adds native Go preparation, all 64 Stage-1 witness/proof costs, Stage-1 and query compilation/setup, and one witness/proof per subset. Public-model fitting, verification, warmups and I/O are excluded. These sums reconstruct measured components; they are not observed elapsed times or an empirical break-even threshold.\end{minipage}
+\end{table}","\begin{table*}[!htbp]
+\caption{Ablation study at one representative and one stress-test configuration.}\label{tab:ablation-a}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y R R R R Y@{}}
+\toprule
+Variant removed/changed & proving (s) & RAM (GiB) & constraints & fidelity & Conclusion \\
+\midrule
+Full CommitJL & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & reference \\
+Dense instead of sparse & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & isolates sparsity \\
+Pre-published instead of post-commit $R$ & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & same & isolates security overhead \\
+No range-check batching & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & same & implementation optimization \\
+Lower precision & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & \resultplaceholder{} & quantization trade-off \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+106,paper_results/reuse_revision/appendix.tex,added,1,0.0,\FloatBarrier,\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+107,paper_results/reuse_revision/appendix.tex,added,1,0.0,\Needspace{10\baselineskip},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+108,paper_results/reuse_revision/appendix.tex,revised,66,0.0157,\section{Native perturbation control}\label{app:attack},"\tpexplain{Bridge real-valued theorems and field arithmetic. Bound errors from quantization separately from random-projection distortion.}
+Let real input coordinates be scaled by $S$ and rounded to integers with per-coordinate error at most $1/(2S)$. Hence $\|x-\widetilde x/S\|_2\le\sqrt d/(2S)$; for a pair $u,v$, the distance perturbation is at most $\sqrt d/S$, and the squared-distance error is at most $2\|u-v\|_2\sqrt d/S+d/S^2$. If $|x_t|,|c_t|\le B$, distinct rows within each column imply that a fixed output row receives at most one contribution per input coordinate. Thus a projected point--centroid coordinate has magnitude at most $2dB$, independent of $q$. Put $D_{\max}=4md^2B^2$ and $\Psi_{\max}=nD_{\max}$. Comparison differences may reach $2D_{\max}$. The implementation range-checks signed values against $M=\max\{2dB,2D_{\max},\Psi_{\max}\}$ and requires $p>2M$; tighter data-dependent bounds may improve performance but cannot replace a proved worst-case certificate."
+109,paper_results/reuse_revision/appendix.tex,revised,8,0.1324,This earlier control tests whether a native linear head/tail projection can conceal injected energy when its map is known. It does not construct a forged proof and does not attack the head+energy relation. The output definitions and limitations are retained with the original numerical values.,"\tpexplain{Paragraph 2 --- quantify the bottleneck. Explain why distances in dimension d are expensive and distinguish native computation from proving cost. Insert a motivating profile from the implemented backend.}
+The difficulty is proof cost. For $n$ points, $k$ candidate centroids, and dimension $d$, one assignment step already evaluates $\Theta(nkd)$ coordinate contributions. A ZK circuit must also constrain ranges, compare distances, and materialize witnesses, so fast native linear algebra does not imply a cheap proof \cite{zkcnn2021,ezdps2023}. Whether distance and comparison gadgets dominate in the selected backend is therefore measured rather than assumed."
+110,paper_results/reuse_revision/attack_supplement.tex,added,45,0.2717,"\begin{table}[!htbp]
+\caption{Earlier native perturbation controls; no forged end-to-end proofs are generated.}\label{tab:attack-controls}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Projection/order & True inflation & Claim inflation & Flip fraction & Honest error \\
+\midrule
+pca\_public & 11.000 & 1.000 & 0.9762 & 0.0273 \\
+protected\_commit & 11.000 & 11.010 & 0.0000 & 0.0000 \\
+protected\_prepublished & 11.000 & 1.000 & 0.0000 & 0.0000 \\
+sparse\_commit & 10.988 & 11.138 & 0.6082 & 0.3715 \\
+sparse\_prepublished & 10.988 & 1.000 & 0.8578 & 0.3713 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip
+\begin{minipage}{\textwidth}\scriptsize Protected rows test the linear head+tail representation, not head+energy. Fresh-map rows use one independently guessed-map strategy. Flip and honest-error fractions concern different point sets and cannot be subtracted to isolate attack advantage. The unverified internal Pisot surrogate is excluded from comparisons with published methods.\end{minipage}
+\end{table}","\begin{table*}[!htbp]
+\caption{Projection baselines and circuit-relevant characteristics.}\label{tab:transforms}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabularx}{\textwidth}{@{}Y Y Y Y Y@{}}
+\toprule
+Transform & Coefficients & Expected nonzeros & In-circuit operations & Security/order note \\
+\midrule
+No reduction & identity & $d$ per point & downstream cost only & exact baseline \\
+Gaussian JL & real/quantized & $md$ & multiply--accumulate & sampled after commitment \\
+Rademacher JL & $\{-1,+1\}$ & $md$ & signed additions & sampled after commitment \\
+Achlioptas & $\{-1,0,+1\}$ & distribution-dependent & sparse signed additions & sampled after commitment \\
+Sparse JL & hashed signs/buckets & $qd$ & $qd$ additions & primary candidate \\
+Coordinate sampling & $\{0,1\}$ & $m$ & copies/selects & cheap naive baseline \\
+PCA & quantized dense & $md$ & multiply--accumulate plus PCA proof if learned & data-dependent baseline \\
+\bottomrule
+\end{tabularx}
+\end{adjustbox}
+\end{table*}"
+111,paper_results/reuse_revision/appendix.tex,revised,1,0.0,\FloatBarrier,\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+112,paper_results/reuse_revision/appendix.tex,revised,1,0.0,\section{Data-oblivious sparse-map specification}\label{app:jl},\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+113,paper_results/reuse_revision/appendix.tex,revised,44,0.129,"The canonical generator uses domain-separated SHAKE-256 streams for bucket indices and signs. For each original coordinate it draws $q$ distinct bucket indices by rejection and independent signs, retaining a canonical ordered encoding. Reducing a fixed-width word modulo $m$ without rejecting the biased prefix is not uniform; \path{code/commitjl/sparse_gen.py} implements the canonical rejection specification. Generator expansion and challenge approval are verifier-side checks, rather than an in-circuit XOF proof in the measured reuse system.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+114,paper_results/reuse_revision/appendix.tex,revised,44,0.1653,"Under ideal independent zero-mean signs and the specified column sampling, $\mathbb E[\|Av\|^2/q]=\|v\|^2$: expand the square, cancel cross terms by sign independence, and count the $q$ diagonal contributions per coordinate. This is a first-moment statement, not a concentration bound. A tail estimator for the missing inner product uses $\langle Ar(x),Ar(c')\rangle/q$ in Eq.~\eqref{eq:new-center-exact}; its noise explains why adding a tail need not improve assignment fidelity at a fixed storage budget.","\begin{proposition}[Unbiased squared norm]\label{prop:unbiased-a}
+For any fixed $v\in\mathbb R^d$, if the sign bits are mutually independent and uniform in $\{-1,+1\}$ and independent of the sampled rows, then
+\[
+\mathbb E_A\!\left[q^{-1}\|Av\|_2^2\right]=\|v\|_2^2.
+\]
+\end{proposition}
+The proof is in Appendix~\ref{app:geometry-a}. Unbiasedness alone is not a JL tail bound; the required simultaneous concentration event remains explicit in Theorem~\ref{thm:composition-a}."
+115,paper_results/reuse_revision/appendix.tex,revised,52,0.1554,"For commitment order, eligible roots and a digest of the relevant centers/task are registered before a fresh challenge. A verifier nonce, a beacon round with a registration deadline, or a commit--reveal protocol can supply the entropy. A task log must bound eligible attempts when claiming a task-level geometric failure probability. Root-derived deterministic randomness alone permits offline search over commitment salts. Public reproducibility is not sufficient to establish independence from adversarially chosen inputs.","\tpexplain{Give deployable alternatives and state the trust/freshness assumption for each. Select one primary instantiation for experiments.}
+We consider three challenge sources: a verifier nonce, a public randomness beacon referenced by round, and a two-party commit--reveal coin flip. Deriving the seed from $C_X$ alone is deterministic and permits offline search over commitment randomness. The primary protocol therefore uses a fresh 256-bit verifier nonce after $(C_X,C_\theta)$ has entered the task log. A nonce is single-use, and the log admits at most $Q$ eligible commitments per authenticated prover and task. A new commitment consumes another attempt; it does not reset the analysis. A beacon with a commitment deadline gives the cleanest public enforcement, while commit--reveal avoids trusting either party as the sole entropy source."
+116,paper_results/reuse_revision/appendix.tex,revised,15,0.25,\section{Quantization and evidence provenance}\label{app:configurations},\subsubsection{Notation and verifiable clustering}
+117,paper_results/reuse_revision/appendix.tex,revised,66,0.1128,"With per-coordinate rounding error at most $1/(2S)$, each point has Euclidean error at most $\sqrt d/(2S)$. For two points $u,v$, write the difference error as $\eta$, where $\|\eta\|\le\sqrt d/S$. Expanding $\|(u-v)+\eta\|^2$ gives the additive bound
+\begin{equation}
+\begin{aligned}
+&\left|\|\widetilde u/S-\widetilde v/S\|^2-\|u-v\|^2\right|\\
+&\qquad\le2\|u-v\|\sqrt d/S+d/S^2.
+\end{aligned}
+\end{equation}
+Rounded-basis error and the omitted new-center cross term are separate from this input perturbation. The integer row bounds in Eq.~\eqref{eq:row-bounds} do not assert an original-space approximation ratio.","\tpexplain{Bridge real-valued theorems and field arithmetic. Bound errors from quantization separately from random-projection distortion.}
+Let real input coordinates be scaled by $S$ and rounded to integers with per-coordinate error at most $1/(2S)$. Hence $\|x-\widetilde x/S\|_2\le\sqrt d/(2S)$; for a pair $u,v$, the distance perturbation is at most $\sqrt d/S$, and the squared-distance error is at most $2\|u-v\|_2\sqrt d/S+d/S^2$. If $|x_t|,|c_t|\le B$, distinct rows within each column imply that a fixed output row receives at most one contribution per input coordinate. Thus a projected point--centroid coordinate has magnitude at most $2dB$, independent of $q$. Put $D_{\max}=4md^2B^2$ and $\Psi_{\max}=nD_{\max}$. Comparison differences may reach $2D_{\max}$. The implementation range-checks signed values against $M=\max\{2dB,2D_{\max},\Psi_{\max}\}$ and requires $p>2M$; tighter data-dependent bounds may improve performance but cannot replace a proved worst-case certificate."
+118,paper_results/reuse_revision/appendix.tex,revised,79,0.1083,"The current export manifest is \path{paper_results/reuse_revision/generated_20261020/manifest.json}; it records input hashes, exact cumulative costs, crossover calculations and five-start cell coverage. The completed snapshot observed at 20:32 UTC on 19 October 2026 (00:02 Tehran time on 20 October) contains both $N=64$ workloads, the complete $N=256$ workload and all three native fidelity workers. Its analysis checks 1,092 captured hashes and reconstructs exported proof costs from the saved phase samples. The fidelity export contains all 80 expected corpus/$k$/start cells with no duplicate non-ablation method/width/map rows. The legacy head-only ablation is emitted once per eligible width; those repeated entries are excluded from the width-16 comparison. Earlier fixed-center exports retain their own manifests under \path{paper_results/bound_revision}. Full raw arrays and saved proof artifacts remain in preserved experiment folders; the source package includes numerical exports and provenance rather than all proving artifacts.","\tpexplain{Fix hyperparameter budgets fairly. PCA must include both “projection matrix public” and “PCA itself proved” interpretations if both are discussed.}
+We compare no reduction, coordinate sampling, PCA, Gaussian JL, Rademacher JL, Achlioptas projection, sparse JL at multiple $q$. Each method receives the same candidate dimensions $m$. The completed native campaigns use 10 projection seeds and 5 paired clustering starts. The verified Pisot reference was unavailable and is excluded from the empirical comparison. The additional $q=8$ sweep covers only Gaussian easy, DBSCAN-margin, and 20 Newsgroups. If end-to-end proving cost makes the full grid infeasible, a preregistered core subset is proved and the remaining configurations are labeled native-only."
+119,manuscript.tex,revised,1,0.0,"\FloatBarrier
+\twocolumn",\title[Commit-Then-Sample Sparse JL for ZK Clustering]{Commit-Then-Sample Sparse Johnson--Lindenstrauss Transforms for Efficient Zero-Knowledge Clustering}
+120,manuscript.tex,unchanged,130,1.0,\section*{Declarations},\section*{Declarations}
+121,manuscript.tex,revised,15,0.2222,"\paragraph{Author information, contributions and acknowledgements}",\subsubsection{Notation and verifiable clustering}
+122,manuscript.tex,revised,15,0.1176,"Names, affiliations, corresponding-author details, contributor roles and acknowledgements require author confirmation before submission.",\subsubsection{Notation and verifiable clustering}
+123,manuscript.tex,revised,15,0.25,\paragraph{Funding and competing interests},\subsubsection{Notation and verifiable clustering}
+124,manuscript.tex,revised,15,0.1333,Funding sources and the competing-interest declaration require confirmation by all authors.,\subsubsection{Notation and verifiable clustering}
+125,manuscript.tex,revised,15,0.25,\paragraph{Data and code availability},\subsubsection{Notation and verifiable clustering}
+126,manuscript.tex,revised,127,0.1474,"The experiments use the public benchmark sources cited in Table~\ref{tab:datasets-a} and synthetic data. The research artifact preserves loaders, circuit and analysis code, configuration records, captured output hashes and raw benchmark results. A public repository or persistent archive identifier has not yet been assigned. The portable paper source package includes the numerical exports and their provenance; large datasets and proof bundles remain separate.","\bmhead{Data availability}
+The public datasets analyzed in this study are available from the repositories cited in Table~\ref{tab:datasets-a}. Generated datasets, processed manifests, and raw experimental results will be archived at \placeholder{repository and persistent URL}."
+127,manuscript.tex,revised,15,0.2857,\paragraph{Ethics and consent},\subsubsection{Notation and verifiable clustering}
+128,manuscript.tex,revised,133,0.1304,The final ethics and consent declarations require author review of the benchmark data sources and intended release. No claim of new collection of sensitive participant records is made in this study.,"\bmhead{Ethics approval and consent to participate}
+Not applicable. \placeholder{Reassess if human-derived sensitive data are added.}"
+129,manuscript.tex,revised,54,0.2353,\paragraph{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process},\subsubsection{Separation of soundness and fidelity}
+130,manuscript.tex,revised,127,0.1176,"OpenAI Codex assisted with source-code development, result aggregation, literature navigation, manuscript organization and language revision. Numerical claims are derived from retained experiment outputs and deterministic analysis scripts. The human authors are responsible for checking the code, sources, interpretation and complete manuscript, and for approving the final submission. AI tools are not authors.","\bmhead{Data availability}
+The public datasets analyzed in this study are available from the repositories cited in Table~\ref{tab:datasets-a}. Generated datasets, processed manifests, and raw experimental results will be archived at \placeholder{repository and persistent URL}."

@@ -1,0 +1,21 @@
+\begin{table*}[tp]
+\caption{Capped native corpora and actual fixed-center proof catalogs.}\label{tab:datasets}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+Corpus & Native rows & Features $d$ & Audit rows/start & Proof catalog $N$ \\
+\midrule
+Gaussian-easy & 2,000 & 256 & 800 & -- \\
+Gaussian-hard & 2,000 & 512 & 800 & 32 ($k=5,10$) \\
+Margin-synthetic & 1,000 & 128 & 400 & -- \\
+MNIST & 5,000 & 784 & 2,000 & 16; 64 ($k=5$) \\
+Fashion-MNIST & 5,000 & 784 & 2,000 & 16 ($k=5$) \\
+Gisette & 3,000 & 5,000 & 1,200 & 8 ($k=5$) \\
+Arcene & 100 & 10,000 & 40 & -- \\
+20 Newsgroups & 2,913 & 2,000 & 1,166 & 16 ($k=5$) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Each capped corpus uses a 60/40 fit/audit split and $k=5,10$ with three starts. Image subsets are sampled by the loader. Text starts with at most 3,000 training documents; zero vectors are removed, leaving 2,913. Gisette uses a 3,000-row cap; Arcene uses 100 cached training rows. Margin-synthetic is used here only for fixed-center and geometry tests, not a DBSCAN proof.\end{minipage}
+\end{table*}

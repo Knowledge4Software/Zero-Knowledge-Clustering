@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-20",
+  "original_source_sha256": "4f06491ac2e89b747083d42f9983289b278de6835dc86d2bcac7fd2294f93a69",
+  "original_source_unchanged": true,
+  "comparison_level": "paragraph/environment; editorial section mapping",
+  "comparison_counts": {
+    "unchanged": 4,
+    "revised": 69,
+    "added": 57
+  },
+  "builds": [
+    {
+      "name": "01_supervisor_original",
+      "pdf": "output/pdf/01_supervisor_original.pdf",
+      "sha256": "8b88b1d2b469c891773d3200fdae8831f444745b5ec7a67d16b811656e4a44d3",
+      "warnings": [
+        "Overfull \\hbox (0.57074pt too wide) in paragraph at lines 349--349",
+        "Overfull \\vbox (53.88481pt too high) has occurred while \\output is active []",
+        "Overfull \\hbox (6.7628pt too wide) in paragraph at lines 639--639",
+        "Overfull \\hbox (17.97467pt too wide) in paragraph at lines 684--684",
+        "Overfull \\vbox (64.69806pt too high) has occurred while \\output is active []",
+        "Overfull \\hbox (17.89915pt too wide) in paragraph at lines 760--761"
+      ],
+      "source": "paper_versions/20261020/01_supervisor_original",
+      "visual_review": "All pages inspected in rendered contact sheets; historical placeholders and layout warnings retained to preserve original.",
+      "pages": 23,
+      "rendered_pages": 23
+    },
+    {
+      "name": "02_changes_red_green",
+      "pdf": "output/pdf/02_changes_red_green.pdf",
+      "sha256": "dd1c901696f70b2f6a4b2583308f19b95f7941357c2e06fc8b83e1772c85462d",
+      "warnings": [],
+      "source": "paper_versions/20261020/02_changes_red_green",
+      "visual_review": "Passed final all-page rendered review; individual title, numerical tables, cumulative figure and appendix inspected.",
+      "pages": 14,
+      "rendered_pages": 14
+    },
+    {
+      "name": "03_final_revised",
+      "pdf": "output/pdf/03_final_revised.pdf",
+      "sha256": "b82dfa56fa363096ef01489b45e563cf96584fb452ecee780768c32a9904ca68",
+      "warnings": [],
+      "source": "paper_versions/20261020/03_final_revised",
+      "visual_review": "Passed final all-page rendered review; individual title, numerical tables, cumulative figure and appendix inspected.",
+      "pages": 14,
+      "rendered_pages": 14
+    }
+  ],
+  "supervisor_baseline_confirmed_by_user": "2026-10-20; preserved paper_history/supervisor_draft.tex",
+  "cleanup": {
+    "archived_superseded_paper_files": 81,
+    "archive_hashes_checked": 81,
+    "deleted_files": 0,
+    "experiment_result_directories_moved": 0
+  },
+  "fidelity_width16_map_coverage": "All 320 method/cell groups complete: ten maps for each randomized method, one PCA reference.",
+  "publication_readiness": "Supervisor-review research draft; human scientific approval, author declarations, public artifact details and independent reuse-bundle replay remain pending."
+}

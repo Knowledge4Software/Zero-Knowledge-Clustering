@@ -1,0 +1,78 @@
+% Clean AI-assisted research revision, 20 October 2026.
+% The preserved supervisor source is paper_history/supervisor_draft.tex.
+% Author metadata and declarations need human approval before submission.
+\documentclass[5p,times,twocolumn]{elsarticle}
+\usepackage[T1]{fontenc}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{graphicx,multirow}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{xcolor,textcomp,booktabs,tabularx,array,adjustbox}
+\usepackage{placeins,dblfloatfix,listings,enumitem,url}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+\Urlmuskip=0mu plus 1mu
+\newcolumntype{Y}{>{\raggedright\arraybackslash\hspace{0pt}}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash\hspace{0pt}}X}
+\newcolumntype{C}{>{\centering\arraybackslash\hspace{0pt}}X}
+\newcommand{\newtext}[1]{#1}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\raggedbottom
+\setlength{\tabcolsep}{3pt}
+\setlength{\dblfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{14pt plus 2pt minus 2pt}
+\renewcommand{\dblfloatpagefraction}{0.65}
+\journal{Neurocomputing}
+
+\begin{document}
+\begin{frontmatter}
+\title{Verifiable Center-Based Clustering with Reusable Sufficient Statistics and Zero-Knowledge Proofs}
+\author{Author information pending confirmation}
+\begin{abstract}
+Auditing nearest-center assignments over private high-dimensional records is expensive when successive proofs repeat original-space distances. We implement a two-stage zero-knowledge system that first binds compact statistics to committed records, then authenticates those statistics for later subset audits. The representation combines classical head coordinates with residual energy; a learned head augments the deployed-center span with principal components of training residuals. Public head coordinates and residual offsets let successive center sets share one query circuit and setup. The distance estimate is exact in real arithmetic for in-span centers and approximate otherwise, while the circuit proves the approved integer execution exactly. Across three ten-set proof workloads on 64- and 256-record MNIST catalogs and a 64-record CIFAR-10/ResNet-50 catalog, cumulative measured-component cost is 6.82--7.76 times lower than for a center-specific cached exact baseline, with crossover at the second center set. Agreement with floating original-space assignments is 98.26--99.48\%, with mean absolute cost error of 0.178--0.338\%. PCA with energy is equally reusable at similar proof cost and is a strong baseline; the learned head is more accurate on these proof catalogs but not uniformly across broader native studies. A separate eight-corpus, five-start fixed-center campaign gives 99.987\% agreement for the rounded protected-head method. The contribution is an original-data-bound reuse system and its measured accuracy--cost trade-offs, rather than a new geometric identity.
+\end{abstract}
+\begin{keyword}
+zero-knowledge proofs \sep verifiable clustering \sep reusable statistics \sep dimensionality reduction \sep privacy-preserving computation
+\end{keyword}
+\end{frontmatter}
+
+\input{paper_results/reuse_revision/introduction.tex}
+\input{paper_results/reuse_revision/method.tex}
+\input{paper_results/reuse_revision/security.tex}
+\input{paper_results/reuse_revision/experiments.tex}
+\input{paper_results/reuse_revision/discussion.tex}
+
+\FloatBarrier
+\onecolumn
+\appendix
+\numberwithin{table}{section}
+\renewcommand{\thetable}{\Alph{section}.\arabic{table}}
+\renewcommand{\theHtable}{appendix.\Alph{section}.\arabic{table}}
+\renewcommand{\theHequation}{appendix.\Alph{section}.\arabic{equation}}
+\input{paper_results/reuse_revision/appendix.tex}
+\FloatBarrier
+\twocolumn
+\section*{Declarations}
+\paragraph{Author information, contributions and acknowledgements}
+Names, affiliations, corresponding-author details, contributor roles and acknowledgements require author confirmation before submission.
+\paragraph{Funding and competing interests}
+Funding sources and the competing-interest declaration require confirmation by all authors.
+\paragraph{Data and code availability}
+The experiments use the public benchmark sources cited in Table~\ref{tab:datasets-a} and synthetic data. The research artifact preserves loaders, circuit and analysis code, configuration records, captured output hashes and raw benchmark results. A public repository or persistent archive identifier has not yet been assigned. The portable paper source package includes the numerical exports and their provenance; large datasets and proof bundles remain separate.
+\paragraph{Ethics and consent}
+The final ethics and consent declarations require author review of the benchmark data sources and intended release. No claim of new collection of sensitive participant records is made in this study.
+\paragraph{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+OpenAI Codex assisted with source-code development, result aggregation, literature navigation, manuscript organization and language revision. Numerical claims are derived from retained experiment outputs and deterministic analysis scripts. The human authors are responsible for checking the code, sources, interpretation and complete manuscript, and for approving the final submission. AI tools are not authors.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+\end{document}

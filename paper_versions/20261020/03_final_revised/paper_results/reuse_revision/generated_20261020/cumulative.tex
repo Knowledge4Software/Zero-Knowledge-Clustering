@@ -1,0 +1,31 @@
+\begin{table*}[tp]
+\caption{Cumulative cost across successive center sets, query batch $b=64$, $k=5$ (seconds).}\label{tab:reuse-cost}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Catalog & Method & $L=1$ & $L=2$ & $L=10$ \\
+\midrule
+MNIST ($N=64$) & Cached exact & 250.1 & 502.2 & 2,540.9 \\
+MNIST ($N=64$) & Exact affine & 277.9 & 552.0 & 2,758.4 \\
+MNIST ($N=64$) & Full (extrapolated) & 342.3 & 684.6 & 3,473.6 \\
+MNIST ($N=64$) & Span + energy & 282.3 & 287.4 & 329.1 \\
+MNIST ($N=64$) & PCA + energy & 309.5 & 315.9 & 366.2 \\
+MNIST ($N=64$) & Learned head + energy & 311.4 & 317.7 & 368.8 \\
+CIFAR/ResNet-50 ($N=64$) & Cached exact & 490.3 & 980.3 & 4,928.8 \\
+CIFAR/ResNet-50 ($N=64$) & Exact affine & 517.4 & 1,029.7 & 5,099.5 \\
+CIFAR/ResNet-50 ($N=64$) & Full (extrapolated) & 493.6 & 984.2 & 4,781.0 \\
+CIFAR/ResNet-50 ($N=64$) & Span + energy & 515.6 & 520.9 & 563.2 \\
+CIFAR/ResNet-50 ($N=64$) & PCA + energy & 555.3 & 563.7 & 635.6 \\
+CIFAR/ResNet-50 ($N=64$) & Learned head + energy & 554.9 & 563.7 & 635.2 \\
+MNIST ($N=256$) & Cached exact & 860.9 & 1,724.8 & 8,642.8 \\
+MNIST ($N=256$) & Exact affine & 889.4 & 1,777.1 & 8,851.4 \\
+MNIST ($N=256$) & Full (extrapolated) & 808.9 & 1,574.4 & 8,036.5 \\
+MNIST ($N=256$) & Span + energy & 904.2 & 926.4 & 1,105.6 \\
+MNIST ($N=256$) & PCA + energy & 940.5 & 977.1 & 1,265.0 \\
+MNIST ($N=256$) & Learned head + energy & 941.2 & 977.4 & 1,267.6 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize Totals add measured native preparation, compilation, setup, witness generation and median proving times. All compressed/cached/affine catalog proofs were generated; Full catalog proving is extrapolated from one measured batch per set. The deployed set is first. Verification, fitting, warmups, I/O and public new-center preparation are excluded.\end{minipage}
+\end{table*}

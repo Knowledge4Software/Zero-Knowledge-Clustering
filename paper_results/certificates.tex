@@ -1,0 +1,30 @@
+\begin{table*}[!htbp]
+\caption{Archived sparse-JL margin checks at $m=128,q=2$ (assignment: $k=5$).}\label{tab:cert-a}
+\centering\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+Query & Dataset & $n$ & Draws & Qualified coverage & Conditional violations & Uncert. stability & ARI \\
+\midrule
+Assignment & 20 Newsgroups & 3000 & 50 & 0.0122 & undefined & 0.6216 & 0.2660 \\
+Assignment & Arcene & 100 & 50 & 0.3344 & 0.0000 & 0.9937 & 0.9906 \\
+Assignment & DBSCAN margin & 1000 & 50 & 0.1139 & undefined & 0.8851 & 0.6673 \\
+Assignment & Fashion-MNIST & 5000 & 50 & 0.2374 & 0.0000 & 0.9306 & 0.8761 \\
+Assignment & Gaussian easy & 2000 & 50 & 0.3515 & 0.0000 & 1.0000 & 1.0000 \\
+Assignment & Gaussian hard & 2000 & 50 & 0.3334 & 0.0000 & 1.0000 & 1.0000 \\
+Assignment & Gisette & 3000 & 50 & 0.0046 & 0.0000 & 0.8075 & 0.5749 \\
+Assignment & MNIST & 5000 & 50 & 0.1967 & 0.0000 & 0.8758 & 0.7644 \\
+DBSCAN & 20 Newsgroups & 1000 & 10 & 0.7279 & 0.0000 & 0.8650 & 0.0148 \\
+DBSCAN & Arcene & 100 & 10 & 0.7425 & 0.0000 & 0.9278 & 0.8527 \\
+DBSCAN & DBSCAN margin & 1000 & 10 & 0.7694 & 0.0000 & 0.9994 & 1.0000 \\
+DBSCAN & Fashion-MNIST & 1000 & 10 & 0.7409 & 0.0000 & 0.9871 & 0.7753 \\
+DBSCAN & Gaussian easy & 1000 & 10 & 0.7144 & 0.0000 & 0.8879 & 0.7413 \\
+DBSCAN & Gaussian hard & 1000 & 10 & 0.6893 & 0.0000 & 0.9013 & 0.7234 \\
+DBSCAN & Gisette & 1000 & 10 & 0.6494 & 0.0000 & 0.8438 & 0.1699 \\
+DBSCAN & MNIST & 1000 & 10 & 0.7543 & 0.0000 & 0.9813 & 0.5496 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip
+\begin{minipage}{\textwidth}\scriptsize Fractions are means over the recorded draws, not pooled counts. Qualification conditions on the realized embedding checks and margin; zero conditional violations do not imply unconditional stability. Assignment uses 50 map/start observations; DBSCAN uses 10 maps. This supporting study predates the protected-energy circuit.\end{minipage}
+\end{table*}

@@ -1,0 +1,78 @@
+{
+  "snapshot": "code\\validation\\outputs\\completed_reuse_20261020",
+  "observed_utc": "2026-10-19T20:32:06.503125+00:00",
+  "claims": {
+    "reuse_mnist_n64": {
+      "crossover_vs_cached": 2,
+      "cached_over_learned_T10": 6.888969400802613
+    },
+    "reuse_cifar_n64": {
+      "crossover_vs_cached": 2,
+      "cached_over_learned_T10": 7.759604088165528
+    },
+    "reuse_mnist_n256": {
+      "crossover_vs_cached": 2,
+      "cached_over_learned_T10": 6.818466993383517
+    },
+    "fixed_five_starts": {
+      "cells": 80,
+      "raw_rows": 9900,
+      "width": 16,
+      "protected_float_agreement": 1.0,
+      "protected_integer_agreement": 0.999871701686678,
+      "pca_agreement": 0.9534025871926814,
+      "sparse_jl_agreement": 0.6240921855345911
+    }
+  },
+  "raw_verification": "Recorded in-process proof verification; no independent replay of saved reuse proofs in this export.",
+  "inputs": [
+    {
+      "path": "code\\results\\new_center_reuse_20261018\\summary\\matched_comparisons.csv",
+      "sha256": "8850d2af9d7cac8425a35e7270bb0b252a80d042d09d6722801d61c3d12462d4"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\checks.json",
+      "sha256": "e0f861959e06b68275bf56f409732ac52e9b2ce10a5e3807d05748e8f55aface"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\cumulative_costs.csv",
+      "sha256": "7b366b4ce35839d432b5b38d70a512308d7b0fc0d459efa6730cdb0aacde0805"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\manifest.json",
+      "sha256": "26c26f1e50c4e533e55946bbac224dcf80a410b5490f06da87d3c1d607674e39"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\proof_quality.csv",
+      "sha256": "1bc3c4910bde2ad502629bdab541263d0df96fd70dcea815d14d2901ab8efd6c"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\results\\paper_runs_20261019\\fidelity_5starts\\worker0\\rows.csv",
+      "sha256": "b8de5860b54fe9bed69caf31198d3875fdc8171136406d2442b3fd40410509ef"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\results\\paper_runs_20261019\\fidelity_5starts\\worker1\\rows.csv",
+      "sha256": "300d2e5a3f013574f3d4365bcca34df1ee4d0fa33fccac1a32f0db2b13ddec6d"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\results\\paper_runs_20261019\\fidelity_5starts\\worker2\\rows.csv",
+      "sha256": "c300819fdb2d0c64fa409875383f574b1b48f5a1e4c9976e65264bef98f74961"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\results\\paper_runs_20261019\\reuse_cifar_n64\\workload.csv",
+      "sha256": "e4ce0f412e3989d0fba5d51a9cd857372904247f1eff0f9b57c62405249ce951"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\results\\paper_runs_20261019\\reuse_mnist_n256\\workload.csv",
+      "sha256": "3ff65a96109795f087c217f2a2d59ac134e1ebbaa5ac5e608da4dd0d49d039ef"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\results\\paper_runs_20261019\\reuse_mnist_n64\\workload.csv",
+      "sha256": "66ca154e0e589ac5d59912b83dc9c73cb2aa617442b8d600a353425f78663979"
+    },
+    {
+      "path": "code\\validation\\outputs\\completed_reuse_20261020\\shift_owner_paired.csv",
+      "sha256": "a6c1915abad7a383a9ef481c7f3800d70efb0ad01f86bf24b9ff96c8ec8236a0"
+    }
+  ]
+}

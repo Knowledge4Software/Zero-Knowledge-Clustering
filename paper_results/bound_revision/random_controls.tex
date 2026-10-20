@@ -1,0 +1,22 @@
+\begin{table*}[tp]
+\caption{Matched native random-map baselines at three budgets.}\label{tab:random-controls}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Budget & Method & ARI vs. floating & Agreement (\%) & Mean absolute cost error (\%) \\
+\midrule
+16 & PCA & 0.89294 & 95.502 & 74.443 \\
+16 & Rademacher & 0.37964 & 62.303 & 7.582 \\
+16 & Sparse JL & 0.37761 & 62.271 & 7.493 \\
+32 & PCA & 0.92360 & 97.122 & 66.136 \\
+32 & Rademacher & 0.48743 & 71.231 & 4.344 \\
+32 & Sparse JL & 0.48948 & 71.519 & 4.366 \\
+64 & PCA & 0.94631 & 98.063 & 57.439 \\
+64 & Rademacher & 0.55436 & 77.071 & 2.092 \\
+64 & Sparse JL & 0.55220 & 76.984 & 2.194 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize 48 matched corpus/$k$/start cells at 16 and 32; 42 at 64, excluding Arcene from all methods. One PCA fit or five maps per start/setting. Sparse JL uses one nonzero per input column. Rademacher uses normalized signed dense coefficients rounded at basis scale 4096.\end{minipage}
+\end{table*}

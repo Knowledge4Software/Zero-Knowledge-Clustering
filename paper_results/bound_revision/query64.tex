@@ -1,0 +1,18 @@
+\begin{table*}[tp]
+\caption{Actual whole-catalog query on 64 committed MNIST records, $k=5$.}\label{tab:query64}
+\centering\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Method & Constraints & Proving time (s) \\
+\midrule
+PCA-16 & 472,429 & 6.303 \\
+Head + energy & 306,275 & 5.341 \\
+CommitJL-16 & 306,274 & 5.087 \\
+Exact affine & 271,205 & 5.240 \\
+Cached exact & 197,147 & 3.442 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\vspace{3pt}\begin{minipage}{0.98\textwidth}\footnotesize Same original catalog and centers for all methods; each saved proof independently verifies. This is one possible 64-record subset, with three timing repetitions after warmup. Full was measured only at $q=1$ for this catalog; no large-shape Full estimate is inserted. The one-constraint head/E difference comes from compiled context details, not useful tail computation.\end{minipage}
+\end{table*}
