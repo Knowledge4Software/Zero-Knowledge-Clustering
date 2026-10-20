@@ -5,6 +5,7 @@
 package main
 
 import (
+	"crypto/sha256"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -17,7 +18,9 @@ import (
 	backendgroth16 "github.com/consensys/gnark/backend/groth16"
 	backendplonk "github.com/consensys/gnark/backend/plonk"
 	"github.com/consensys/gnark/constraint"
+	"github.com/consensys/gnark/constraint/solver"
 	"github.com/consensys/gnark/frontend"
+	frontendcs "github.com/consensys/gnark/frontend/cs"
 	"github.com/consensys/gnark/frontend/cs/r1cs"
 	"github.com/consensys/gnark/frontend/cs/scs"
 	"github.com/consensys/gnark/logger"
@@ -27,15 +30,24 @@ import (
 )
 
 type Instance struct {
-	N            int    `json:"n"`
-	D            int    `json:"d"`
-	M            int    `json:"m"`
-	K            int    `json:"k"`
-	Q            int    `json:"q"`
-	Variant      string `json:"variant"`
-	Backend      string `json:"backend"` // "groth16" | "plonk"
-	NoRangeBatch bool   `json:"no_range_batch"`
-	RangeBits    int    `json:"range_bits"`
+	N                int        `json:"n"`
+	D                int        `json:"d"`
+	M                int        `json:"m"`
+	K                int        `json:"k"`
+	Q                int        `json:"q"`
+	Variant          string     `json:"variant"`
+	Backend          string     `json:"backend"` // "groth16" | "plonk"
+	NoRangeBatch     bool       `json:"no_range_batch"`
+	RangeBits        int        `json:"range_bits"`
+	LegacyProjection bool       `json:"legacy_projection"`
+	LegacyBounds     bool       `json:"legacy_bounds"`
+	ScoreDistances   bool       `json:"score_distances"`
+	LookupSparse     bool       `json:"lookup_sparse"`
+	SpecializeSparse bool       `json:"specialize_sparse"`
+	ProtectedBasis   [][]string `json:"protected_basis"`
+	BasisScale       int64      `json:"basis_scale"`
+	SolveOnly        bool       `json:"solve_only"`
+	DiagnosticPrefix string     `json:"diagnostic_prefix"`
 
 	CX        string     `json:"c_x"`
 	CTheta    string     `json:"c_theta"`
@@ -74,6 +86,18 @@ type Result struct {
 	PeakRSSBytesGoMem uint64    `json:"peak_rss_bytes_go_memstats"` // HeapSys as a Go-side proxy
 	PeakRSSBytesOS    int64     `json:"peak_rss_bytes_os_maxrss"`   // zero where the OS has no portable MaxRSS API
 	Error             string    `json:"error,omitempty"`
+	CircuitRevision   string    `json:"circuit_revision"`
+	LegacyProjection  bool      `json:"legacy_projection"`
+	LegacyBounds      bool      `json:"legacy_bounds"`
+	ScoreDistances    bool      `json:"score_distances"`
+	LookupSparse      bool      `json:"lookup_sparse"`
+	SpecializeSparse  bool      `json:"specialize_sparse"`
+	ProtectedRank     int       `json:"protected_rank"`
+	RoutingPattern    [][]int   `json:"routing_pattern,omitempty"`
+	SolveOnly         bool      `json:"solve_only"`
+	SolveOK           bool      `json:"solve_ok"`
+	SolveSeconds      float64   `json:"solve_seconds"`
+	DiagnosticPrefix  string    `json:"diagnostic_prefix"`
 }
 
 func str2fe(s string) (*big.Int, error) {
@@ -85,6 +109,9 @@ func str2fe(s string) (*big.Int, error) {
 }
 
 func buildParams(inst *Instance) (circpkg.Params, error) {
+	if inst.DiagnosticPrefix != "" && !inst.SolveOnly {
+		return circpkg.Params{}, fmt.Errorf("diagnostic prefixes require solve_only; proofs are forbidden")
+	}
 	if inst.N < 1 || inst.D < 1 || inst.M < 1 || inst.K < 1 {
 		return circpkg.Params{}, fmt.Errorf("dimensions must be positive")
 	}
@@ -100,9 +127,15 @@ func buildParams(inst *Instance) (circpkg.Params, error) {
 	}
 	p := circpkg.Params{
 		N: inst.N, D: inst.D, M: inst.M, K: inst.K, Q: inst.Q,
-		Variant:      variant,
-		NoRangeBatch: inst.NoRangeBatch,
-		RangeBits:    inst.RangeBits,
+		Variant:          variant,
+		NoRangeBatch:     inst.NoRangeBatch,
+		RangeBits:        inst.RangeBits,
+		LegacyProjection: inst.LegacyProjection,
+		LegacyBounds:     inst.LegacyBounds,
+		ScoreDistances:   inst.ScoreDistances,
+		LookupSparse:     inst.LookupSparse,
+		BasisScale:       inst.BasisScale,
+		DiagnosticPrefix: inst.DiagnosticPrefix,
 	}
 	switch variant {
 	case circpkg.VariantSparse:
@@ -134,6 +167,28 @@ func buildParams(inst *Instance) (circpkg.Params, error) {
 	}
 	if err := validateWitnessShape(inst, p); err != nil {
 		return circpkg.Params{}, err
+	}
+	if len(inst.ProtectedBasis) > 0 {
+		p.ProtectedBasis, err = strMatrixToInt64(inst.ProtectedBasis)
+		if err != nil {
+			return circpkg.Params{}, err
+		}
+	}
+	if inst.SpecializeSparse {
+		if !p.SparseSelf || p.AConstant {
+			return circpkg.Params{}, fmt.Errorf("specialization requires witnessed sparse")
+		}
+		p.FixedSparseRows = make([][]int, p.D)
+		for t, rows := range inst.SparseRows {
+			p.FixedSparseRows[t] = make([]int, p.Q)
+			for l, value := range rows {
+				bi, ok := new(big.Int).SetString(value, 10)
+				if !ok || !bi.IsInt64() || bi.Sign() < 0 || bi.Cmp(big.NewInt(int64(p.M))) >= 0 {
+					return circpkg.Params{}, fmt.Errorf("invalid specialized row")
+				}
+				p.FixedSparseRows[t][l] = int(bi.Int64())
+			}
+		}
 	}
 	if p.RangeBits == 0 {
 		p.RangeBits = 48
@@ -288,21 +343,36 @@ func fillWitness(c *circpkg.Circuit, inst *Instance, p circpkg.Params) error {
 }
 
 func run(inst *Instance) Result {
-	res := Result{Variant: inst.Variant, Backend: inst.Backend}
+	res := Result{Variant: inst.Variant, Backend: inst.Backend,
+		CircuitRevision:  "shared-routing-derived-bounds-v1",
+		LegacyProjection: inst.LegacyProjection, LegacyBounds: inst.LegacyBounds}
+	res.ScoreDistances = inst.ScoreDistances
+	res.LookupSparse = inst.LookupSparse
+	res.SpecializeSparse = inst.SpecializeSparse
+	res.ProtectedRank = len(inst.ProtectedBasis)
+	res.DiagnosticPrefix = inst.DiagnosticPrefix
+	if inst.ScoreDistances || inst.SpecializeSparse || inst.LookupSparse || len(inst.ProtectedBasis) > 0 {
+		res.CircuitRevision = "experimental-protected-sparse-scores-v2"
+	}
 
 	p, err := buildParams(inst)
 	if err != nil {
 		res.Error = err.Error()
 		return res
 	}
+	res.RoutingPattern = p.FixedSparseRows
 	c := circpkg.NewCircuit(p)
 
 	t0 := time.Now()
 	var ccs constraint.ConstraintSystem
+	var compileOptions []frontend.CompileOption
+	if inst.DiagnosticPrefix != "" {
+		compileOptions = append(compileOptions, frontend.IgnoreUnconstrainedInputs())
+	}
 	if inst.Backend == "plonk" {
-		ccs, err = frontend.Compile(ecc.BN254.ScalarField(), scs.NewBuilder, c)
+		ccs, err = frontend.Compile(ecc.BN254.ScalarField(), scs.NewBuilder, c, compileOptions...)
 	} else {
-		ccs, err = frontend.Compile(ecc.BN254.ScalarField(), r1cs.NewBuilder, c)
+		ccs, err = frontend.Compile(ecc.BN254.ScalarField(), r1cs.NewBuilder, c, compileOptions...)
 	}
 	res.CompileSeconds = time.Since(t0).Seconds()
 	if err != nil {
@@ -338,6 +408,32 @@ func run(inst *Instance) Result {
 		return res
 	}
 	res.WitnessSeconds = time.Since(t0).Seconds()
+	if inst.SolveOnly {
+		res.SolveOnly = true
+		t0 = time.Now()
+		// Solver-only profiling needs a diagnostic commitment challenge. The
+		// real backends replace this hint with a cryptographic commitment.
+		// This override is never passed to Prove and is not a security test.
+		hint := func(mod *big.Int, inputs []*big.Int, outputs []*big.Int) error {
+			h := sha256.New()
+			for _, value := range inputs {
+				h.Write(value.FillBytes(make([]byte, 32)))
+			}
+			outputs[0].SetBytes(h.Sum(nil))
+			outputs[0].Mod(outputs[0], mod)
+			if outputs[0].Sign() == 0 {
+				outputs[0].SetInt64(1)
+			}
+			return nil
+		}
+		err = ccs.IsSolved(fullWitness, solver.OverrideHint(solver.GetHintID(frontendcs.Bsb22CommitmentComputePlaceholder), hint))
+		res.SolveSeconds = time.Since(t0).Seconds()
+		res.SolveOK = err == nil
+		if err != nil {
+			res.Error = "solve: " + err.Error()
+		}
+		return res // no proof or cryptographic verification was performed
+	}
 
 	switch inst.Backend {
 	case "plonk":

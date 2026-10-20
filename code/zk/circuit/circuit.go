@@ -83,6 +83,24 @@ type Params struct {
 	Variant       Variant
 	NoRangeBatch  bool
 	RangeBits     int // bit-width for range checks (>= ceil(log2(2M+1)))
+	// Diagnostic controls retain the previous circuit for matched comparisons.
+	// Both are false for the optimized implementation; neither changes inputs.
+	LegacyProjection bool
+	LegacyBounds     bool
+	// Experimental controls: defaults preserve the existing relation/path.
+	ScoreDistances bool
+	LookupSparse   bool
+	// FixedSparseRows specializes routing after the challenge. Every witnessed
+	// row is constrained to this pattern; authentication of rows/signs stays.
+	// A fresh pattern requires a new compiled circuit and setup/key.
+	FixedSparseRows [][]int
+	// Integer protected basis B (r x d), scaled by BasisScale T. Output is
+	// [T B x; T^2 A x - (A B^T)(B x)], with head weight Q in distances.
+	ProtectedBasis [][]int64
+	BasisScale     int64
+	// DiagnosticPrefix truncates the relation for solver-only cost profiling.
+	// The CLI refuses to generate any proof when this field is nonempty.
+	DiagnosticPrefix string
 	// SparseSelf: true for the "sparse" family (row/sign witnessed per
 	// (t,ell) slot with distinctness constraints); false for dense-style
 	// variants where A is witnessed/constant as a full MxD matrix.
@@ -168,11 +186,23 @@ func mustMiMC(api frontend.API) mimc.MiMC {
 // project computes y = A . x  (length-M output) for a single length-D input
 // vector x, given the circuit's representation of A (sparse-list, dense
 // witness, or dense constant).
-func (c *Circuit) project(api frontend.API, x []frontend.Variable) []frontend.Variable {
+func (c *Circuit) project(api frontend.API, x []frontend.Variable, effectiveA [][]frontend.Variable) []frontend.Variable {
 	p := c.P
+	if p.LookupSparse {
+		return c.lookupProject(api, x)
+	}
 	y := make([]frontend.Variable, p.M)
 	for r := range y {
 		y[r] = frontend.Variable(0)
+	}
+	if len(p.FixedSparseRows) > 0 {
+		for t := 0; t < p.D; t++ {
+			for l := 0; l < p.Q; l++ {
+				r := p.FixedSparseRows[t][l]
+				y[r] = api.Add(y[r], api.Mul(c.SparseSigns[t][l], x[t]))
+			}
+		}
+		return y
 	}
 	if p.AConstant {
 		for r := 0; r < p.M; r++ {
@@ -186,6 +216,15 @@ func (c *Circuit) project(api frontend.API, x []frontend.Variable) []frontend.Va
 				acc = api.Add(acc, term)
 			}
 			y[r] = acc
+		}
+		return y
+	}
+	if effectiveA != nil {
+		// Sparse row/sign routing is shared by every point and centroid.
+		for r := 0; r < p.M; r++ {
+			for t := 0; t < p.D; t++ {
+				y[r] = api.Add(y[r], api.Mul(effectiveA[r][t], x[t]))
+			}
 		}
 		return y
 	}
@@ -216,6 +255,105 @@ func (c *Circuit) project(api frontend.API, x []frontend.Variable) []frontend.Va
 		y[r] = acc
 	}
 	return y
+}
+
+// prepareProjection materializes constrained coefficients once, rather than
+// repeating slot selection and sign multiplication for every projected vector.
+// It is local to Define: no compiler wires are cached across compilations.
+func (c *Circuit) prepareProjection(api frontend.API) [][]frontend.Variable {
+	p := c.P
+	if p.LookupSparse {
+		return nil
+	}
+	if len(p.FixedSparseRows) > 0 {
+		for t, rows := range p.FixedSparseRows {
+			for l, row := range rows {
+				api.AssertIsEqual(c.SparseRows[t][l], row)
+			}
+		}
+		return nil
+	}
+	if !p.SparseSelf || p.AConstant || p.LegacyProjection {
+		return nil
+	}
+	a := make([][]frontend.Variable, p.M)
+	for r := 0; r < p.M; r++ {
+		a[r] = make([]frontend.Variable, p.D)
+		for t := 0; t < p.D; t++ {
+			coefficient := frontend.Variable(0)
+			for l := 0; l < p.Q; l++ {
+				isR := api.IsZero(api.Sub(c.SparseRows[t][l], r))
+				coefficient = api.Add(coefficient, api.Mul(isR, c.SparseSigns[t][l]))
+			}
+			a[r][t] = coefficient
+		}
+	}
+	return a
+}
+
+// projectionBound tightens the configured limit using bounds already enforced
+// on inputs and matrix coefficients. Taking the minimum preserves deliberately
+// restrictive RangeBits settings. Sparse distinctness implies at most one
+// contribution per input coordinate to an output row, independent of Q.
+func (c *Circuit) projectionBound() (*big.Int, error) {
+	p := c.P
+	bits := p.RangeBits
+	if bits == 0 {
+		bits = 48
+	}
+	if bits < 2 || bits > 252 {
+		return nil, fmt.Errorf("RangeBits must be in [2,252]")
+	}
+	configured := new(big.Int).Sub(new(big.Int).Lsh(big.NewInt(1), uint(bits-1)), big.NewInt(1))
+	if p.LegacyBounds {
+		return configured, nil
+	}
+	rowL1 := big.NewInt(int64(p.D))
+	if p.AConstant {
+		rowL1 = new(big.Int)
+		for _, row := range p.ConstantA {
+			sum := new(big.Int)
+			for _, coefficient := range row {
+				sum.Add(sum, new(big.Int).Abs(big.NewInt(coefficient)))
+			}
+			if sum.Cmp(rowL1) > 0 {
+				rowL1.Set(sum)
+			}
+		}
+	} else if !p.SparseSelf && p.Variant == VariantCoord {
+		rowL1.SetInt64(1)
+	}
+	derived := new(big.Int).Mul(rowL1, big.NewInt(InputCoordinateBound))
+	if len(p.ProtectedBasis) > 0 {
+		// Each residual row has L1 <= d*T^2 + sum_l ||B_l||_1^2;
+		// each protected row has L1 <= T*||B_l||_1. Use exact big.Int.
+		scale := big.NewInt(p.BasisScale)
+		residualL1 := new(big.Int).Mul(big.NewInt(int64(p.D)), new(big.Int).Mul(scale, scale))
+		for _, row := range p.ProtectedBasis {
+			l1 := new(big.Int)
+			for _, v := range row {
+				l1.Add(l1, new(big.Int).Abs(big.NewInt(v)))
+			}
+			residualL1.Add(residualL1, new(big.Int).Mul(l1, l1))
+			headL1 := new(big.Int).Mul(l1, scale)
+			if headL1.Cmp(rowL1) > 0 {
+				rowL1.Set(headL1)
+			}
+		}
+		if residualL1.Cmp(rowL1) > 0 {
+			rowL1.Set(residualL1)
+		}
+		derived.Mul(rowL1, big.NewInt(InputCoordinateBound))
+	}
+	// The all-zero constant matrix is valid. Keep comparator bounds positive;
+	// projection equality still forces its output to zero.
+	if derived.Sign() == 0 {
+		derived.SetInt64(1)
+	}
+	if derived.Cmp(configured) < 0 {
+		return derived, nil
+	}
+	return configured, nil
 }
 
 func rangeCheckUnsigned(api frontend.API, rc frontend.Rangechecker, v frontend.Variable, upper *big.Int, noBatch bool) {
@@ -261,6 +399,34 @@ func (c *Circuit) Define(api frontend.API) error {
 	if p.Variant == VariantFull && p.M != p.D {
 		return fmt.Errorf("full variant requires M == D")
 	}
+	if p.LookupSparse && (!p.SparseSelf || p.AConstant || len(p.FixedSparseRows) > 0) {
+		return fmt.Errorf("lookup routing requires generic witnessed sparse")
+	}
+	if len(p.FixedSparseRows) > 0 {
+		if !p.SparseSelf || p.AConstant || len(p.FixedSparseRows) != p.D {
+			return fmt.Errorf("invalid specialized sparse pattern")
+		}
+		for _, rows := range p.FixedSparseRows {
+			if len(rows) != p.Q {
+				return fmt.Errorf("specialized row shape mismatch")
+			}
+			for _, row := range rows {
+				if row < 0 || row >= p.M {
+					return fmt.Errorf("specialized row out of bounds")
+				}
+			}
+		}
+	}
+	if len(p.ProtectedBasis) > 0 {
+		if !p.SparseSelf || p.AConstant || p.BasisScale < 1 {
+			return fmt.Errorf("protected basis requires witnessed sparse and positive scale")
+		}
+		for _, row := range p.ProtectedBasis {
+			if len(row) != p.D {
+				return fmt.Errorf("protected basis shape mismatch")
+			}
+		}
+	}
 	if p.AConstant {
 		if len(p.ConstantA) != p.M {
 			return fmt.Errorf("constant matrix must have M rows")
@@ -272,6 +438,11 @@ func (c *Circuit) Define(api frontend.API) error {
 		}
 	}
 	rc := rangecheck.New(api)
+	switch p.DiagnosticPrefix {
+	case "", "range", "theta", "data", "matrix", "projection":
+	default:
+		return fmt.Errorf("unknown diagnostic prefix")
+	}
 	// AuthenticateA alone does not constrain the integers represented by A.
 	// Enforce each supported witnessed distribution before multiplication so
 	// arbitrary field coefficients cannot wrap into apparently small outputs.
@@ -318,6 +489,9 @@ func (c *Circuit) Define(api frontend.API) error {
 	}
 
 	// ---- (iii) hash(theta) == C_theta ----
+	if p.DiagnosticPrefix == "range" {
+		return nil
+	}
 	hTheta := mustMiMC(api)
 	for j := 0; j < p.K; j++ {
 		for t := 0; t < p.D; t++ {
@@ -325,6 +499,9 @@ func (c *Circuit) Define(api frontend.API) error {
 		}
 	}
 	api.AssertIsEqual(hTheta.Sum(), c.CTheta)
+	if p.DiagnosticPrefix == "theta" {
+		return nil
+	}
 
 	// ---- (i) Merkle/sponge opening of X against C_X ----
 	// All n*d leaves are witnessed (X); compute
@@ -368,6 +545,9 @@ func (c *Circuit) Define(api frontend.API) error {
 		level = next
 	}
 	api.AssertIsEqual(level[0], c.CX)
+	if p.DiagnosticPrefix == "data" {
+		return nil
+	}
 
 	// ---- (ii) hash(sparse list) == C_A / (iv) sparse-list validity ----
 	if p.AuthenticateA {
@@ -410,23 +590,65 @@ func (c *Circuit) Define(api frontend.API) error {
 	}
 
 	// ---- (v) projected centroids (once) ----
+	if p.DiagnosticPrefix == "matrix" {
+		return nil
+	}
+	effectiveA := c.prepareProjection(api)
+	projectedBasis := make([][]frontend.Variable, len(p.ProtectedBasis))
+	for l, row := range p.ProtectedBasis {
+		v := make([]frontend.Variable, p.D)
+		for t, value := range row {
+			v[t] = value
+		}
+		projectedBasis[l] = c.project(api, v, effectiveA)
+	}
+	project := func(x []frontend.Variable) []frontend.Variable {
+		y := c.project(api, x, effectiveA)
+		if len(p.ProtectedBasis) == 0 {
+			return y
+		}
+		head := make([]frontend.Variable, len(p.ProtectedBasis))
+		out := make([]frontend.Variable, len(head)+p.M)
+		for l, row := range p.ProtectedBasis {
+			head[l] = frontend.Variable(0)
+			for t, value := range row {
+				if value != 0 {
+					head[l] = api.Add(head[l], api.Mul(value, x[t]))
+				}
+			}
+			out[l] = api.Mul(p.BasisScale, head[l])
+		}
+		scaleSquared := new(big.Int).Mul(big.NewInt(p.BasisScale), big.NewInt(p.BasisScale))
+		for r := range y {
+			v := api.Mul(scaleSquared, y[r])
+			for l := range head {
+				v = api.Sub(v, api.Mul(projectedBasis[l][r], head[l]))
+			}
+			out[len(head)+r] = v
+		}
+		return out
+	}
+	outputDimension := p.M + len(p.ProtectedBasis)
+	weight := func(r int) int {
+		if r < len(p.ProtectedBasis) {
+			return p.Q
+		}
+		return 1
+	}
 	projC := make([][]frontend.Variable, p.K)
 	for j := 0; j < p.K; j++ {
-		projC[j] = c.project(api, c.Centroids[j])
+		projC[j] = project(c.Centroids[j])
 	}
 
 	// ---- per-point: projection, range checks, distances, argmin ----
-	rangeBits := p.RangeBits
-	if rangeBits == 0 {
-		rangeBits = 48
+	projectedBound, err := c.projectionBound()
+	if err != nil {
+		return err
 	}
-	if rangeBits < 2 {
-		return fmt.Errorf("RangeBits must be at least 2")
-	}
-	projectedBound := new(big.Int).Sub(new(big.Int).Lsh(big.NewInt(1), uint(rangeBits-1)), big.NewInt(1))
 	differenceBound := new(big.Int).Mul(projectedBound, big.NewInt(2))
 	distanceBound := new(big.Int).Mul(differenceBound, differenceBound)
-	distanceBound.Mul(distanceBound, big.NewInt(int64(p.M)))
+	weightedDimension := p.M + len(p.ProtectedBasis)*p.Q
+	distanceBound.Mul(distanceBound, big.NewInt(int64(weightedDimension)))
 	totalDistanceBound := new(big.Int).Mul(distanceBound, big.NewInt(int64(p.N)))
 	twiceTotalDistanceBound := new(big.Int).Mul(totalDistanceBound, big.NewInt(2))
 	if twiceTotalDistanceBound.Cmp(api.Compiler().Field()) >= 0 {
@@ -438,20 +660,63 @@ func (c *Circuit) Define(api frontend.API) error {
 		}
 	}
 	psiSum := frontend.Variable(0)
+	centerNorm := make([]frontend.Variable, p.K)
+	if p.ScoreDistances && p.DiagnosticPrefix != "projection" {
+		for j := range centerNorm {
+			centerNorm[j] = frontend.Variable(0)
+			for r, v := range projC[j] {
+				centerNorm[j] = api.Add(centerNorm[j], api.Mul(weight(r), v, v))
+			}
+		}
+	}
 	for i := 0; i < p.N; i++ {
-		zi := c.project(api, c.X[i])
+		zi := project(c.X[i])
 		for _, zc := range zi {
 			c.rangeCheckSigned(api, rc, zc, projectedBound)
+		}
+		if p.DiagnosticPrefix == "projection" {
+			continue
+		}
+		if p.ScoreDistances {
+			norm := frontend.Variable(0)
+			for r, v := range zi {
+				norm = api.Add(norm, api.Mul(weight(r), v, v))
+			}
+			// score in [-3L,L], L=sum weights * P^2. Shift to [0,4L].
+			shift := new(big.Int).Mul(projectedBound, projectedBound)
+			shift.Mul(shift, big.NewInt(3*int64(weightedDimension)))
+			bc := cmp.NewBoundedComparator(api, distanceBound, false)
+			var best frontend.Variable
+			idx := frontend.Variable(0)
+			for j := 0; j < p.K; j++ {
+				score := api.Sub(shift, centerNorm[j])
+				for r, v := range zi {
+					score = api.Add(score, api.Mul(2*weight(r), v, projC[j][r]))
+				}
+				rangeCheckUnsigned(api, rc, score, distanceBound, p.NoRangeBatch)
+				if j == 0 {
+					best = score
+				} else {
+					greater := bc.IsLess(best, score)
+					best = api.Select(greater, score, best)
+					idx = api.Select(greater, j, idx)
+				}
+			}
+			bestDistance := api.Sub(api.Add(norm, shift), best)
+			rangeCheckUnsigned(api, rc, bestDistance, distanceBound, p.NoRangeBatch)
+			api.AssertIsEqual(idx, c.Assign[i])
+			psiSum = api.Add(psiSum, bestDistance)
+			continue
 		}
 
 		// squared distances to each centroid
 		dist := make([]frontend.Variable, p.K)
 		for j := 0; j < p.K; j++ {
 			acc := frontend.Variable(0)
-			for r := 0; r < p.M; r++ {
+			for r := 0; r < outputDimension; r++ {
 				diff := api.Sub(zi[r], projC[j][r])
 				c.rangeCheckSigned(api, rc, diff, differenceBound)
-				acc = api.Add(acc, api.Mul(diff, diff))
+				acc = api.Add(acc, api.Mul(weight(r), diff, diff))
 			}
 			rangeCheckUnsigned(api, rc, acc, distanceBound, p.NoRangeBatch)
 			dist[j] = acc
@@ -472,6 +737,9 @@ func (c *Circuit) Define(api frontend.API) error {
 		}
 		api.AssertIsEqual(bestIdx, c.Assign[i])
 		psiSum = api.Add(psiSum, bestDist)
+	}
+	if p.DiagnosticPrefix == "projection" {
+		return nil
 	}
 	rangeCheckUnsigned(api, rc, psiSum, totalDistanceBound, p.NoRangeBatch)
 	api.AssertIsEqual(psiSum, c.PsiHat)
