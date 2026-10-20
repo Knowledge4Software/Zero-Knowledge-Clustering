@@ -1,6 +1,6 @@
 # CommitJL implementation
 
-This directory contains the Python implementation, the Go/gnark proof circuit, benchmark runners, tests, and saved results for the research project. Start with the [repository overview](../README.md) for the scientific status and layout.
+The Python implementation, Go/gnark circuits, experiment runners and preserved results live here. Start with the [repository overview](../README.md) and [completed review-control guide](docs/review_controls_20261020.md).
 
 ## Install and verify
 
@@ -11,19 +11,32 @@ python -m pip install -r requirements.txt -e .
 python -m pytest tests --ignore=tests/test_zk.py -q
 ```
 
-The Go circuit is in `zk/`. From that directory, run `go build ./...` and `go test ./...`. On Windows, build the CLI with `go build -o bin/commitjl-prove.exe ./cmd/commitjl-prove`. On Unix-like systems, use `go build -o bin/commitjl-prove ./cmd/commitjl-prove`. Then return here to run `python -m pytest tests -q` for the complete Python suite, including proof integration tests. The CLI executable is a local build product and is ignored by Git.
+For focused checks of the active reuse study:
 
-## Experiments and saved evidence
+```powershell
+python -m pytest tests/test_new_center_reuse.py tests/test_certified_head.py tests/test_protected_jl.py -q
+```
 
-The [experiment runbook](docs/experiments.md) lists independent PowerShell commands, resume behavior, and output locations. The [author overview](results/overview/analysis/project_overview_for_authors.md) summarizes the completed native results and charts. The [readiness review](results/overview/analysis/paper_readiness_review.md) explains why the selected full-size RQ2 proofs are not yet paper-ready.
+The Go module is in `zk/`. Build the main CLI from there with `go build -o bin/commitjl-prove.exe ./cmd/commitjl-prove` on Windows, or `go build -o bin/commitjl-prove ./cmd/commitjl-prove` on Linux. Bound and query studies use their corresponding `cmd/commitjl-bound` and `cmd/commitjl-query` tools. Go circuit tests and proof integration tests can be expensive; choose checks appropriate to the changed relation.
 
-The main code paths are `commitjl/` for protocol and mathematics, `data/` for loaders, `experiments/` for benchmark logic and configuration, `zk/` for the proof circuit, `tests/` for verification, and `validation/` for the independent audit. Campaign launchers are in [`campaigns/`](campaigns/README.md), reporting scripts in [`analysis/`](analysis/README.md), and notebooks in `notebooks/`. The `env_capture/` module records environment metadata.
+## Current entry points
 
-Only `README.md`, `Makefile`, `pyproject.toml`, and `requirements.txt` belong as
-loose files at this level. `commitjl.egg-info/` is ignored metadata for the local
-editable installation. Downloaded data and reversible housekeeping backups are
-under the ignored `.cache/` directory; they are not source code.
+| Task | Entry point |
+| --- | --- |
+| Completed review controls | [20 October guide](docs/review_controls_20261020.md), `python -m experiments.review_controls --help` |
+| Certificate acceptance policy | `python validation/verify_certificate_policy.py --help` (public-only replay followed by integer accuracy thresholds) |
+| New-center numerical reuse | [Study guide](docs/new_center_reuse.md), `python -m experiments.new_center_reuse --help` |
+| New-center analysis | `python -m analysis.new_center_reuse_report results/NEW_CENTER_RUN` |
+| Original-data/statistics binding | [Bound-audit protocol](docs/bound_audit.md), `python -m experiments.bound_audit --help` |
+| Bound-audit analysis | `python analysis/bound_audit_report.py results/BOUND_AUDIT_RUN` |
+| Current paper regeneration | Repository-root commands in [current analysis guide](analysis/README.md) |
 
-`results/rq1/` through `results/rq5/` each contain `runs/` and `analysis/`; `results/overview/` holds cross-RQ reports; `results/archive/` retains original mixed campaign bundles. Do not combine rows from different campaigns without checking their source fingerprints, normalization policy, and sample sizes.
+Launchers are in [campaigns/](campaigns/README.md), reporting tools in [analysis/](analysis/README.md), and earlier run instructions in [docs/experiments.md](docs/experiments.md). Check campaign dates and circuit versions before using older instructions.
 
-To refresh the completed campaign analysis without rerunning benchmarks, run `python -m analysis.paper_results` and `python -m analysis.author_overview` from this directory. These scripts write each RQ's summaries and charts under `results/rq*/analysis/` and the cross-RQ reports under `results/overview/analysis/`.
+## Evidence and earlier studies
+
+The [results index](results/README.md) distinguishes the tracked current evidence from local raw campaigns and recovery bundles. Superseded historical HTML/PDF reports were archived outside the workspace; the cleanup manifest records their hashes. They do not rebuild the current manuscript.
+
+Other retained research includes [circuit optimization](docs/circuit_optimization.md), [protected-coordinate JL](docs/protected_jl_research.md), [native compression](docs/paper_compression.md), [its correctness audit](docs/paper_compression_audit.md), [laptop comparisons](docs/laptop_comparison.md), [reusable native representations](docs/reusable_native.md), and [residual maps](docs/residual_map_comparison.md). These experiments and tests retain their original source paths for reproducibility.
+
+Dataset caches and local housekeeping material are under ignored `.cache/`; local binaries are under ignored `zk/bin/`. The loose files at this level are `README.md`, `Makefile`, `pyproject.toml`, and `requirements.txt`.

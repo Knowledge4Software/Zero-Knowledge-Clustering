@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "release": "neurocomputing_completed_20261020",
+  "pdf_sha256": "4a0e8c9348f87c07961210aa301e63b207cebf8c6c72392d828d5e8e20dd259d",
+  "source_zip_sha256": "25c490a2e8a7ed2461c9176b0c3f727f00c3c0e591c28a308d9445daae215caa",
+  "pdf_pages": 18,
+  "source_zip_project_files_byte_checked": 76,
+  "all_completed_result_tokens_present": true,
+  "preserved_earlier_pdfs_unchanged": true,
+  "captured_file_hashes_checked": 208,
+  "completed_cases": 14,
+  "worker_public_replayed_proofs": 6848,
+  "independent_integer_record_set_evaluations": 33280,
+  "archived_file_hashes_checked": 564,
+  "visual_review": "Assistant inspected all 18 final rendered pages and corrected chart; no clipping or overlap observed.",
+  "validation_boundary": "Numerical/capture/PDF checks are local. Full-campaign cryptographic replay counts come from the completed public-only worker receipts.",
+  "implementation_validation": {
+    "python_command": "python -m pytest tests --ignore=tests/test_zk.py -q",
+    "python_cwd": "code",
+    "python_passed": 249,
+    "python_skipped": 2,
+    "python_exit_code": 0,
+    "go_command": "go test ./... -p 1 -timeout 15m",
+    "go_cwd": "code/zk",
+    "go_exit_code": 0,
+    "go_packages_with_tests_passed": [
+      "circuit",
+      "cmd/commitjl-bound",
+      "cmd/commitjl-prove"
+    ],
+    "subsequent_targeted_python_passed": 5,
+    "numerical_csv_reproduction": "Every row of matched_methods.csv, matched_quality_by_set.csv and completed_full.csv reproduced in a fresh output directory."
+  },
+  "git_index_source_zip_project_files_byte_checked": 76,
+  "portable_git_checkout_layout_and_release_checks": "PASS"
+}

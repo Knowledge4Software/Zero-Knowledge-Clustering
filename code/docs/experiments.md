@@ -1,5 +1,10 @@
 # Experiment runbook (Windows PowerShell)
 
+For the new 10-seed Ã— 5-start Ubuntu/56 GB campaign, use the
+[RQ1 runner guide](rq1_complete.md) and [RQ2â€“RQ5 server guide](rq2345_complete.md).
+The observations listed below describe the historical campaign, rather than
+results from these new runners.
+
 Run the commands from the repository root. The completed paper observations are already organized under `code/results/rq1/` through `rq5/`, with each RQ's raw files in `runs/` and summaries/figures in `analysis/`. [The results index](../results/README.md) explains the folders. `code/results/archive/` preserves the original mixed campaign bundles and is not an extra set of independent seeds.
 
 ## Current status
@@ -62,4 +67,4 @@ fingerprinted implementation/configuration files and supplemental engine without
 line-ending conversion so a new checkout retains the recorded provenance. Avoid
 bulk line-ending normalization of those files when resuming existing runs.
 
-RQ1 ARI measures agreement with full-space K-means assignments, not class-label accuracy. RQ1 `r_phi` is a clustering-objective ratio, not runtime or prover cost. RQ5 `t_total_s` sums cached native component timings and is not an end-to-end stopwatch. RQ4 certificate claims require their realized embedding premise. For paper use, read the [author overview](../results/overview/analysis/project_overview_for_authors.md) and [readiness review](../results/overview/analysis/paper_readiness_review.md).
+RQ1 ARI measures agreement with full-space K-means assignments, not class-label accuracy. RQ1 `r_phi` is a clustering-objective ratio, not runtime or prover cost. RQ5 `t_total_s` sums cached native component timings and is not an end-to-end stopwatch. RQ4 certificate claims require their realized embedding premise. For paper use, read the [consolidated server study](../results/reports/full_persian_20261007/report.html) and [table coverage](../results/reports/paper_tables_english_20261007/report.html). Earlier laptop result folders were removed; these legacy commands generate new outputs.

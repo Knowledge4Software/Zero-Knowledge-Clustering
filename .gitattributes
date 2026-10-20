@@ -13,6 +13,8 @@ code/validation/outputs/** -text whitespace=cr-at-eol
 paper_results/** -text whitespace=cr-at-eol
 paper_history/supervisor_draft.tex -text whitespace=cr-at-eol
 paper_versions/** -text whitespace=cr-at-eol
+manuscript.tex -text whitespace=cr-at-eol
+references.bib -text whitespace=cr-at-eol
 
 # Ubuntu launchers must retain Unix line endings.
 *.sh text eol=lf

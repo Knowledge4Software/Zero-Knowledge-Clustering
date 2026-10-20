@@ -1,0 +1,16 @@
+{
+  "pdf": "output\\pdf\\neurocomputing_completed_20261020.pdf",
+  "source_zip": "output\\neurocomputing_completed_20261020_sources.zip",
+  "pdf_sha256": "4a0e8c9348f87c07961210aa301e63b207cebf8c6c72392d828d5e8e20dd259d",
+  "build_returncode": 0,
+  "latex_warnings_requiring_review": [],
+  "source_files": 79,
+  "visual_review": "Assistant inspected all 18 final rendered pages and corrected chart; no clipping or overlap observed.",
+  "page_count": 18,
+  "source_project_files_byte_checked": 76,
+  "source_zip_sha256": "25c490a2e8a7ed2461c9176b0c3f727f00c3c0e591c28a308d9445daae215caa",
+  "preserved_earlier_pdf_hashes_match": true,
+  "layout_evidence_check": "PASS",
+  "archived_file_hashes_checked": 564,
+  "author_metadata_and_declarations": "Pending author confirmation; no submission approval implied"
+}

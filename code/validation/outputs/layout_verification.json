@@ -1,147 +1,16 @@
 {
-  "checked_at": "2026-10-01T16:17:53.555578+03:30",
+  "checked_utc": "2026-10-20T19:57:52.139104+00:00",
   "status": "PASS",
-  "source_sha256": "a6a14f152439206e8c37faf72692379786c01e5424af80fde485bf9333e321c7",
-  "code_root_files": [
-    "Makefile",
-    "README.md",
-    "pyproject.toml",
-    "requirements.txt"
-  ],
-  "supplement_engine_sha256": "6db5d96235adf22c6cfac4c4653ffd39f50d49536db940dc33a19c4794597768",
-  "raw_files_checked": 11,
-  "documents_checked": 24,
-  "local_links_checked": 91,
-  "raw_files": [
-    {
-      "file": "rq1/runs/native/rq1_fidelity.parquet",
-      "sha256": "5f4ec39a10c79f2db9d8e4fb31d8b3478a4ed37b4f2c68c177a7d6ab553492b3",
-      "rows": 7180,
-      "statuses": {
-        "ok": 7180
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_native_parallel_v1/rq1_fidelity.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq2/runs/representative/rq2_proof_cost.parquet",
-      "sha256": "00a486b1d987c8d0998b9edf8a53586450417f5a69226981e7c5c2f571c20203",
-      "rows": 2,
-      "statuses": {
-        "proof_failed": 2
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0
-    },
-    {
-      "file": "rq3/runs/native/rq3_overhead.parquet",
-      "sha256": "879726d782b11f7242cfce46a34e8e30720eb83aadb2ede4f6a8fffd6c3f3b4c",
-      "rows": 90,
-      "statuses": {
-        "ok": 90
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_native_parallel_v1/rq3_overhead.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq3/runs/native/rq3_grinding.parquet",
-      "sha256": "cbad1fdd516216e35dda4b94124656833045943b217e259c3b2dbe2f62b06234",
-      "rows": 540,
-      "statuses": {
-        "ok": 540
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_native_parallel_v1/rq3_grinding.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq3/runs/paired/rq3_paired.parquet",
-      "sha256": "ce9e68479a07e8f6f899a502205b6bc600519a60409780df579da74fe3fab5b0",
-      "rows": 30,
-      "statuses": {
-        "ok": 30
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_supplement_v1/rq3_paired.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq4/runs/native/rq4_certificates.parquet",
-      "sha256": "34ade7a778fe3f94c0e7d5e156e2a9373b2b143dedd17464c7b75ab0136360c0",
-      "rows": 265,
-      "statuses": {
-        "ok": 265
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_native_parallel_v1/rq4_certificates.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq4/runs/real/rq4_real_certificates.parquet",
-      "sha256": "d1e7bc19e1682a0fdf49cd24a866c11cb6135022de58e7d733a53196565caec1",
-      "rows": 100,
-      "statuses": {
-        "ok": 100
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_supplement_v1/rq4_real_certificates.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq5/runs/native/rq5_scaling.parquet",
-      "sha256": "25adaf6986fa8dd74fc567605ecb50271f3954b2e0175ca56d7994b9e5f6c3a9",
-      "rows": 200,
-      "statuses": {
-        "ok": 200
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_native_parallel_v1/rq5_scaling.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq5/runs/gamma/rq5_gamma.parquet",
-      "sha256": "29d286ddc696cf369b06d160aad06175d9394c8f366f863e67254a2c5d85fea6",
-      "rows": 80,
-      "statuses": {
-        "ok": 80
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_supplement_v1/rq5_gamma.parquet",
-      "archive_bytes_match": true
-    },
-    {
-      "file": "rq5/runs/precision_20ref/rq5_precision.parquet",
-      "sha256": "dd374a1977e912bc1aa3612e50fe01d9d1b58a79ecfd41005b8d74e154198544",
-      "rows": 120,
-      "statuses": {
-        "ok": 120
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0
-    },
-    {
-      "file": "rq5/runs/precision_24ref/rq5_precision_24_reference.parquet",
-      "sha256": "c0bde435e0263f0028ee17f8a414d8311cc49be81e650a000649cc439241c78e",
-      "rows": 150,
-      "statuses": {
-        "ok": 150
-      },
-      "source_matches": true,
-      "duplicate_row_hashes": 0,
-      "archive": "archive/paper_supplement_v1/rq5_precision_24_reference.parquet",
-      "archive_bytes_match": true
-    }
-  ],
-  "problems": [],
-  "scope": "Layout and byte preservation; proof failures remain recorded outcomes."
+  "scope": "Active manuscript dependencies/citations, primary navigation, selected captured bytes, completed worker verification receipts and owner input identity. Historical local-only campaigns are outside this check.",
+  "supervisor_original_sha256": "4f06491ac2e89b747083d42f9983289b278de6835dc86d2bcac7fd2294f93a69",
+  "manuscript_dependencies_checked": 24,
+  "bibliography_keys_cited": 27,
+  "captured_files_hash_checked": 208,
+  "completed_cases": 14,
+  "worker_public_replayed_proofs": 6848,
+  "quality_record_set_evaluations": 33280,
+  "documents_checked": 12,
+  "local_links_checked": 58,
+  "superseded_files_archived": 564,
+  "problems": []
 }

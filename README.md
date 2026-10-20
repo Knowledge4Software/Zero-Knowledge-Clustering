@@ -1,32 +1,51 @@
-# CommitJL: sparse JL clustering with zero-knowledge proofs
+# CommitJL: verifiable clustering audits
 
-This research repository studies whether a sparse, challenge-derived random projection can preserve clustering results and be authenticated in a zero-knowledge proof. The Python package implements the protocol, projection, metrics, certificates, and experiments; `code/zk/` contains the Go/gnark circuit.
+CommitJL implements reusable zero-knowledge audits of nearest-center assignments and clustering costs over committed records. Python supplies representations, integer references and experiments; Go/gnark supplies the proof relations and public verifier.
 
-The completed laptop campaign provides native clustering and sensitivity results. Its two selected full-size RQ2 proof attempts stopped at the memory watchdog, so the current results do not demonstrate full-size ZK proving cost or a proof-cost advantage. See the [author overview](code/results/overview/analysis/project_overview_for_authors.md) for the dataset inventory, four charts, and a plain-language assessment. The [paper-readiness review](code/results/overview/analysis/paper_readiness_review.md) records limitations that matter for publication.
+The current [Neurocomputing manuscript](manuscript.tex) incorporates the completed 20 October Mobin campaign. All **14 cases** finished: exact public-center Full and learned/PCA plain/certified reuse on MNIST catalogs of 64, 256 and 1,024 records and CIFAR/ResNet with 64 records, plus two higher-rank proof pilots. All **6,848 proofs** passed worker public-only replay. The local analysis checks 208 captured hashes, exact Full outputs and 33,280 record/set certificate evaluations.
 
-## Repository map
+At 1,024 MNIST records and ten public center sets, component costs are 24,681.3 s for exact Full, 4,778.1 s for plain learned reuse and 4,861.0 s for certified reuse. The 5.08-fold Full/certified ratio compares different accuracy guarantees. Learned empirical agreement averages 98.25%, certified assignment coverage 61.63%, and cost-interval width 20.65%. No updated case meets the illustrative 99% coverage / 1% width policy. PCA/energy is equally reusable; no universal learned-over-PCA improvement is claimed.
+
+## Start here
+
+- [Completed results](output/mobin_completed_results_20261020.md): every matched method and representation configuration.
+- [Current PDF and source package](output/README.md): latest paper plus the three preserved earlier versions.
+- [Reproduction guide](code/docs/review_controls_20261020.md): captures, verification, timing policy and commands.
+- [Numerical manifest](paper_results/review_controls/generated_completed_20261020/manifest.json): inputs, checks and exact measurements.
+
+## Layout
 
 | Path | Purpose |
 | --- | --- |
-| [`manuscript.tex`](manuscript.tex), [`figures/`](figures/) | Paper source and paper figures. |
-| [`code/commitjl/`](code/commitjl/) | Python protocol and mathematical implementation. |
-| [`code/zk/`](code/zk/) | Go/gnark circuit and proof CLI. |
-| [`code/data/`](code/data/) | Dataset loaders and local SHA-256 manifest generation. |
-| [`code/experiments/`](code/experiments/) | Benchmark runners, configurations, tables, and figure generators. |
-| [`code/campaigns/`](code/campaigns/) | PowerShell campaign commands and parallel orchestration. |
-| [`code/analysis/`](code/analysis/) | Statistics, comparison charts, and author reports. |
-| [`code/notebooks/`](code/notebooks/) | Interactive and Kaggle notebooks. |
-| [`code/tests/`](code/tests/) | Python verification tests. |
-| [`code/results/`](code/results/) | Per-RQ `runs/` and `analysis/` folders, an overview, and historical campaign bundles in `archive/`. |
-| [`code/docs/experiments.md`](code/docs/experiments.md) | Windows campaign commands, checkpoints, and result locations. |
-| [`code/validation/`](code/validation/) | Independent audit, baseline comparison, and verification records. |
+| `manuscript.tex`, `references.bib`, `figures/` | Canonical paper and required assets |
+| `paper_results/` | Authored sections, generated tables, plots and provenance |
+| `paper_history/supervisor_draft.tex` | Supervisor original, preserved byte for byte |
+| `paper_versions/20261020/` | Frozen original, red/green comparison and previous clean revision |
+| `output/` | Latest PDF/source package, delivery checks and completed-result report |
+| `code/commitjl/`, `code/data/` | Mathematical implementation and dataset loaders |
+| `code/zk/` | Circuits, proof CLIs and public verification |
+| `code/experiments/`, `code/campaigns/` | Experiment runners and launchers |
+| `code/analysis/`, `code/tests/` | Numerical export and implementation tests |
+| `code/validation/outputs/` | Selected hashed evidence, benchmark owner inputs and audit receipts |
+| `code/results/`, `code/.cache/`, `tmp/` | Ignored local raw runs, dataset caches and build scratch space |
 
-The local Overleaf copy in `Sparse_JL_for_ZK_Clustering/` and downloaded datasets in `code/.cache/` are excluded from Git. They are not required to browse the saved results.
+## Reproduce and check
 
-## Quick start
+From the repository root:
 
-From `code/`, install Python dependencies with `python -m pip install -r requirements.txt -e .`. Run Python tests with `python -m pytest tests --ignore=tests/test_zk.py -q`. The full proof tests additionally require Go and a built CLI; on Windows, run `go build -o bin/commitjl-prove.exe ./cmd/commitjl-prove` from `code/zk/`, then run the relevant ZK tests. The [implementation guide](code/README.md) gives more detail.
+```powershell
+python -m pip install -r code/requirements.txt -e code
+python code/analysis/export_review_matched.py --full-capture code/validation/outputs/review_full_capture_followup_20261020 --reuse-capture code/validation/outputs/review_final_capture_20261020_1907Z --out tmp/reproduced_review_controls
+python code/validation/check_layout.py
+python code/analysis/build_reuse_manuscript.py --tag LOCAL_REVIEW_BUILD
+```
 
-The experiment launchers are grouped in `code/campaigns/`. Use the updated commands in the [experiment runbook](code/docs/experiments.md); saved checkpoints remain compatible. The native campaign and the full-size proof campaign have very different memory requirements.
+Use a fresh export directory and build tag. The PDF builder requires TeX Live. Run Python tests from `code/` with `python -m pytest tests --ignore=tests/test_zk.py -q`, and Go checks from `code/zk/` with `go test ./... -p 1`. Proof integration tests require locally built CLI binaries.
 
-The saved benchmark rows are observations on the sample sizes recorded in each result file. They should not be described as whole-dataset results or as completed RQ2 proofs.
+## Evidence and cleanup
+
+The repository includes source code, compact historical paper exports, completed reviewer-control metadata, public-benchmark owner inputs and selected public replay artifacts. The benchmark inputs are not sensitive participant records. Captured diagnostic assignments are distinct from the public proof exports, which omit individual assignments and certificate flags. Bulk raw arrays, dataset downloads, proving artifacts, local binaries and recovery archives remain local; they are not required to compile the paper.
+
+Superseded reports, intermediate paper drafts and duplicate evidence views were moved to `C:/PyProjects/zero-knowledge-archive/cleanup-publication-20261020/`. The [cleanup receipt](code/validation/outputs/cleanup_publication_20261020.json) records 564 files with original paths and SHA-256 hashes. Earlier cleanup receipts and Git history preserve previous layouts. No raw measurement campaign or supervisor original was deleted.
+
+The target is Neurocomputing, using the subscription publication route given the authors' budget. Author details, declarations and final scientific approval remain to be completed before submission. This repository makes no prediction of journal acceptance.

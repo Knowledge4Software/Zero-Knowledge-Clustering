@@ -1,0 +1,3 @@
+# Optional paper-release checks and rendered-page contact sheets.
+pypdf
+Pillow
