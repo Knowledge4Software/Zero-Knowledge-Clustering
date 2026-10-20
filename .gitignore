@@ -31,3 +31,49 @@ code/zk/err.log
 # Preserve benchmark/audit logs while ignoring build logs.
 !code/results/**/logs/*.log
 !code/validation/**/*.log
+!code/results/complete_rq2345/**/run.log
+**/.campaign.lock
+
+# Reproducible local manuscript builds and delivery bundles.
+/tmp/
+/output/pdf/*
+!/output/pdf/01_supervisor_original.pdf
+!/output/pdf/02_changes_red_green.pdf
+!/output/pdf/03_final_revised.pdf
+!/output/pdf/neurocomputing_completed_20261020.pdf
+/output/*.zip
+!/output/neurocomputing_completed_20261020_sources.zip
+
+# Local editor preferences and large raw research/recovery stores.
+.vscode/
+/code/results/**
+!/code/results/README.md
+
+# Publish selected evidence once; intermediate captures and duplicate views stay local.
+/code/validation/outputs/*
+!/code/validation/outputs/cleanup_20261018.json
+!/code/validation/outputs/cleanup_publication_20261020.json
+!/code/validation/outputs/publication_checks_20261020.json
+!/code/validation/outputs/layout_verification.json
+!/code/validation/outputs/completed_reuse_20261020/
+!/code/validation/outputs/review_final_capture_20261020_1907Z/
+!/code/validation/outputs/review_full_capture_followup_20261020/
+!/code/validation/outputs/review_owner_inputs_20261020/
+!/code/validation/outputs/review_certificate_preflight_20261020/
+!/code/validation/outputs/review_certificate_budget_20261020/
+!/code/validation/outputs/review_full_public_capture_20261020_0345/
+!/code/validation/outputs/review_verifier_v3_checks_20261020/
+!/code/validation/outputs/review_verifier_release_20261020/
+!/code/validation/outputs/review_certified_smoke_20261020/
+!/code/validation/outputs/review_full_smoke_20261020/
+!/code/validation/outputs/review_driver_smoke_20261020/
+!/code/validation/outputs/review_policy_strict_v3_20261020/
+!/code/validation/outputs/review_policy_relaxed_v3_20261020/
+!/code/validation/outputs/review_full_controls_20261019T224939Z.json
+!/code/validation/outputs/review_certified_controls_20261019T234210Z.json
+!/code/validation/outputs/review_live_final_20261020_1908Z.json
+
+# Portable source snapshots preserve the three earlier paper versions.
+/paper_history/*
+!/paper_history/README.md
+!/paper_history/supervisor_draft.tex

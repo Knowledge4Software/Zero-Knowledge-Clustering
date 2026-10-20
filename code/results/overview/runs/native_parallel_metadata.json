@@ -1,8 +1,0 @@
-﻿{
-    "campaign":  "paper_native_parallel_v1",
-    "rq1_source":  "rq1/runs/native",
-    "rq3_execution_mode":  "parallel_processes",
-    "rq3_parallel_workers":  6,
-    "rq3_timing_semantics":  "per-job elapsed time under CPU contention; source comparisons use the same worker count",
-    "rq3_beacon":  "Simulated local trace"
-}

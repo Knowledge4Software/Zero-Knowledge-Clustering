@@ -7,3 +7,12 @@ code/zk/**/*.go -text whitespace=cr-at-eol
 code/zk/go.mod -text whitespace=cr-at-eol
 code/zk/go.sum -text whitespace=cr-at-eol
 code/campaigns/supplements/engine.py -text whitespace=cr-at-eol
+
+# Evidence digests and frozen paper sources describe bytes, not normalized text.
+code/validation/outputs/** -text whitespace=cr-at-eol
+paper_results/** -text whitespace=cr-at-eol
+paper_history/supervisor_draft.tex -text whitespace=cr-at-eol
+paper_versions/** -text whitespace=cr-at-eol
+
+# Ubuntu launchers must retain Unix line endings.
+*.sh text eol=lf

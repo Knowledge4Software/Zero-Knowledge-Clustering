@@ -1,2 +1,0 @@
-dataset_name,dataset_sha256,d,k,n,m,q,repetitions,ari_vs_full_median,ari_vs_full_q25,ari_vs_full_q75,r_phi_median,distortion_q95_median,distortion_exceedance_median,ground_truth_ari_full,ground_truth_ari_projected,fidelity_eligible
-gaussian_mixture,1c670f901a69d418b1faa46504b0a4c9e2eff4f70a6466f8e82d4f5f61ca8f30,256,5,2000,16,1,1,1.0,1.0,1.0,1.0000000000000002,0.5300741474470546,0.6145,1.0,1.0,True
