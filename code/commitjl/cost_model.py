@@ -15,6 +15,11 @@ All "constraints" fields below are therefore given as *symbolic unit
 counts* (invocations of the named primitive), not raw R1CS/PLONK gate
 counts, consistent with "Table circuit-cost" using invocation counts as the
 primary column and leaving raw constraints backend-dependent.
+
+This module models ideal sparse accumulation, not the implemented routing
+or the 10 October shared-coefficient circuit. Its reductions must not be used
+as measured constraint reductions or forecasts of proving-time speedups.
+Use compiled prover counters and the matched optimization benchmark instead.
 """
 from __future__ import annotations
 
@@ -145,9 +150,11 @@ def total_circuit_cost(n: int, d: int, m: int, k: int, q: int,
 
 def full_vs_sparse_reduction(n: int, d: int, m: int, k: int, q: int,
                               params: CostModelParams = CostModelParams()) -> Dict[str, float]:
-    """Ratio of full-dimensional baseline circuit constraints to the primary
-    sparse-JL circuit's constraints, for the reduction-percentage claims in
-    RQ2 ('reduces constraints by X%')."""
+    """Ratio of ideal symbolic operation costs, not compiled constraints.
+
+    This estimate omits circuit routing and backend effects. It cannot support
+    empirical RQ2 reduction claims; those require actual compiled counters.
+    """
     full = full_dimensional_baseline_cost(n, k, d, params)["constraints"]
     full += commitment_authentication_cost(n, d, params)["constraints"]  # both variants pay this
     full += argmin_cost(n, k, params)["constraints"]

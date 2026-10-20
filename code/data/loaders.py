@@ -256,6 +256,25 @@ def load_embedding_corpus(n_max: Optional[int] = None, seed: int = 0) -> Optiona
     return _finish("embedding_corpus_20ng", X, y, None, seed, source="sentence-transformers:all-MiniLM-L6-v2")
 
 
+def _load_cached_embedding(name: str, n_max: Optional[int], seed: int) -> Dict:
+    """Neural features precomputed by `python -m data.build_embeddings <name>`."""
+    path = data_home() / "embeddings" / f"{name}.npz"
+    if not path.exists():
+        raise FileNotFoundError(f"{path} missing; run `python -m data.build_embeddings {name}` "
+                                "in an environment with torch/sentence-transformers")
+    with np.load(path) as z:
+        X, y, meta = z["X"].astype(np.float64), z["y"].astype(int), json.loads(str(z["meta"]))
+    return _finish(name, X, y, n_max, seed, source=f"embedding:{meta['model']}")
+
+
+def load_cifar10_resnet50(n_max: Optional[int] = None, seed: int = 0) -> Dict:
+    return _load_cached_embedding("cifar10_resnet50", n_max, seed)
+
+
+def load_20ng_minilm(n_max: Optional[int] = None, seed: int = 0) -> Dict:
+    return _load_cached_embedding("20ng_minilm", n_max, seed)
+
+
 def _finish(name: str, X: np.ndarray, y: Optional[np.ndarray], n_max: Optional[int], seed: int,
             source: str) -> Dict:
     if X.ndim != 2 or min(X.shape) < 1 or not np.isfinite(X).all():
@@ -289,6 +308,8 @@ LOADERS = {
     "arcene": load_arcene,
     "20ng_tfidf": load_20ng_tfidf,
     "embedding_corpus": load_embedding_corpus,
+    "cifar10_resnet50": load_cifar10_resnet50,
+    "20ng_minilm": load_20ng_minilm,
 }
 
 

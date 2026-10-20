@@ -125,12 +125,18 @@ def shake256(data: bytes, out_len: int) -> bytes:
 def shake256_stream(data: bytes):
     """Generator yielding successive 4-byte (32-bit) little-endian words from
     a SHAKE256 XOF seeded with `data`. Used by sparse_gen.py's rejection
-    sampling loop, which needs a variable, unbounded number of words."""
+    sampling loop, which needs a variable, unbounded number of words.
+
+    hashlib.digest(n) returns a prefix, rather than advancing the XOF. Start
+    with a short prefix for sparse columns and grow the refill size up to the
+    previous 4096-byte block. Refill boundaries never change the word stream.
+    """
     shake = hashlib.shake_256(data)
-    block = 4096
+    block = 64
     pos = 0
     while True:
         buf = shake.digest(pos + block)
         while pos + 4 <= len(buf):
             yield buf[pos:pos + 4]
             pos += 4
+        block = min(2 * block, 4096)

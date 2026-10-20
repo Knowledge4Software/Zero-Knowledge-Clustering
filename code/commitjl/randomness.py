@@ -10,6 +10,7 @@ Q eligible commitments per authenticated prover/task.
 from __future__ import annotations
 
 import os
+import time
 from dataclasses import dataclass, field
 from typing import Dict, Optional, Set
 
@@ -20,20 +21,19 @@ from .hashing import sha256
 class TaskLog:
     """Tracks commit-then-sample eligibility for one task.
 
-    deadline: opaque marker (e.g. unix timestamp or round number) after which
-        no new commitments are eligible; enforcement is left to the caller
-        (this class just stores it and exposes `is_open`).
+    deadline: Unix timestamp after which new commitments are rejected. Tests
+        or recorded-round callers can supply an explicit `now` in the same units.
     Q: per-prover attempt budget (max eligible commitments).
     """
     deadline: Optional[float] = None
     Q: int = 1
-    _now: float = 0.0
+    _now: Optional[float] = None
     _attempts: Dict[str, int] = field(default_factory=dict)
     _used_nonces: Set[bytes] = field(default_factory=set)
     _committed: Dict[str, list] = field(default_factory=dict)  # prover_id -> [(C_X, C_theta), ...]
 
     def is_open(self, now: Optional[float] = None) -> bool:
-        t = self._now if now is None else now
+        t = (time.time() if self._now is None else self._now) if now is None else now
         return self.deadline is None or t <= self.deadline
 
     def record_commitment(self, prover_id: str, C_X: int, C_theta: int, now: Optional[float] = None) -> None:
@@ -124,6 +124,8 @@ class CommitRevealChallenge:
         return c
 
     def reveal(self, party: str) -> bytes:
+        if len(self._commitments) != 2:
+            raise ValueError("both parties must commit before either contribution is revealed")
         if party not in self._values:
             raise ValueError(f"party {party!r} has not committed")
         return self._values[party]

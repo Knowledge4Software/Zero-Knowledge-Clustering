@@ -2,6 +2,7 @@ numpy
 scipy
 scikit-learn
 pandas
+jinja2
 pyarrow
 pyyaml
 matplotlib

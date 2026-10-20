@@ -11,6 +11,7 @@ re-sampled. Domain tag is seed || "col" || t (t encoded as little-endian u32).
 from __future__ import annotations
 
 from typing import List, Tuple
+import operator
 
 import numpy as np
 
@@ -41,7 +42,9 @@ def gen_column(seed: bytes, t: int, m: int, q: int) -> List[Tuple[int, int]]:
     separately domain-separated stream (seed || "sgn" || t), one bit per
     accepted row, in the order the rows were accepted.
     """
-    assert 1 <= q <= m
+    m, q, t = map(operator.index, (m, q, t))
+    if not (1 <= q <= m <= WORD_MOD and 0 <= t < WORD_MOD):
+        raise ValueError("require 1 <= q <= m <= 2^32 and 0 <= t < 2^32")
     threshold = _accept_threshold(m)
     rows: List[int] = []
     seen = set()
@@ -69,6 +72,34 @@ def gen_column(seed: bytes, t: int, m: int, q: int) -> List[Tuple[int, int]]:
     return list(zip(rows, signs))
 
 
+def sparse_matrix_records(seed: bytes, m: int, d: int, q: int) -> List[SparseRecord]:
+    """Canonical column-major records without allocating an m-by-d array."""
+    m, d, q = map(operator.index, (m, d, q))
+    if not (1 <= q <= m <= WORD_MOD and 0 <= d <= WORD_MOD):
+        raise ValueError("require 1 <= q <= m <= 2^32 and 0 <= d <= 2^32")
+    records: List[SparseRecord] = []
+    for t in range(d):
+        for ell, (row, sign) in enumerate(gen_column(seed, t, m, q)):
+            records.append(SparseRecord(t=t, ell=ell, row=row, sign=sign))
+    return records
+
+
+def sparse_matrix_gen_csr(seed: bytes, m: int, d: int, q: int):
+    """Return exactly the canonical matrix as CSR, using O(d*q + m) storage.
+
+    Sampling order, sign domains and matrix entries match sparse_matrix_gen.
+    CSR conversion sorts input-column indices just as conversion from the dense
+    matrix does. This host optimization does not alter the proof circuit.
+    """
+    from scipy.sparse import coo_matrix
+    records = sparse_matrix_records(seed, m, d, q)
+    count = len(records)
+    rows = np.fromiter((r.row for r in records), dtype=np.int64, count=count)
+    cols = np.fromiter((r.t for r in records), dtype=np.int64, count=count)
+    signs = np.fromiter((r.sign for r in records), dtype=np.int64, count=count)
+    return records, coo_matrix((signs, (rows, cols)), shape=(m, d)).tocsr()
+
+
 def sparse_matrix_gen(seed: bytes, m: int, d: int, q: int):
     """Full SparseMatrixGen(s, m, d, q).
 
@@ -76,13 +107,10 @@ def sparse_matrix_gen(seed: bytes, m: int, d: int, q: int):
     sparse list [(t, ell, row, sign), ...] and A_dense is an (m, d) numpy
     int64 array in {-1, 0, +1}.
     """
-    records: List[SparseRecord] = []
+    records = sparse_matrix_records(seed, m, d, q)
     A = np.zeros((m, d), dtype=np.int64)
-    for t in range(d):
-        col = gen_column(seed, t, m, q)
-        for ell, (row, sign) in enumerate(col):
-            records.append(SparseRecord(t=t, ell=ell, row=row, sign=sign))
-            A[row, t] = sign
+    for record in records:
+        A[record.row, record.t] = record.sign
     return records, A
 
 

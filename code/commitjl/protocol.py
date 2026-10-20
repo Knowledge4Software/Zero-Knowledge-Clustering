@@ -67,9 +67,9 @@ class Prover:
         self.r_X = None
         self.commitment = None
 
-    def commit_data(self):
+    def commit_data(self, salt: Optional[int] = None):
         t0 = time.perf_counter()
-        self.commitment = commit_matrix(self.X)
+        self.commitment = commit_matrix(self.X, salt=salt)
         self.r_X = self.commitment.salt
         dt = time.perf_counter() - t0
         return self.commitment.root, dt
@@ -107,9 +107,14 @@ class Verifier:
     def expand_sparse(self, C_X: int, rho: bytes, d: int):
         t0 = time.perf_counter()
         seed = derive_seed(C_X, self.C_theta, rho)
+        t_seed = time.perf_counter()
         records, A_dense = sparse_matrix_gen(seed, self.m, d, self.q)
+        t_matrix = time.perf_counter()
         C_A = field_hash_sparse_list(records)
-        dt = time.perf_counter() - t0
+        t_hash = time.perf_counter()
+        dt = t_hash - t0
+        self.last_expansion_times_s = dict(derive_seed=t_seed-t0,
+            expand_matrix=t_matrix-t_seed, hash_CA=t_hash-t_matrix)
         nbytes = len(encode_sparse_list(records))
         return seed, records, A_dense, C_A, dt, nbytes
 
@@ -119,7 +124,8 @@ def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: in
                   prover_id: str = "prover0", generate_zk_proof: bool = False,
                   backend: str = "groth16", proof_timeout: float = 300.0,
                   range_bits: int = 48, build_if_missing: bool = True,
-                  challenge_fn: Optional[Callable[[], bytes]] = None) -> Dict[str, Any]:
+                  challenge_fn: Optional[Callable[[], bytes]] = None,
+                  commitment_salt: Optional[int] = None) -> Dict[str, Any]:
     """Run Algorithm 1 and optionally prove the exact resulting transcript."""
     X = np.asarray(X)
     centroids = np.asarray(centroids)
@@ -141,7 +147,7 @@ def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: in
     prover = Prover(X, scale, prover_id)
     verifier = Verifier(task_log, m, q, centroids, mu)
 
-    C_X, dt_commit = prover.commit_data()
+    C_X, dt_commit = prover.commit_data(salt=commitment_salt)
     transcript.stage_times_s["commit_X"] = dt_commit
     transcript.stage_bytes["commit_X"] = 32  # digest size
 
@@ -149,7 +155,9 @@ def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: in
     transcript.stage_times_s["record_theta"] = dt_theta
     transcript.stage_bytes["record_theta"] = 32
 
+    t_log = time.perf_counter()
     task_log.record_commitment(prover_id, C_X, C_theta)
+    transcript.stage_times_s['record_tasklog'] = time.perf_counter()-t_log
 
     t0 = time.perf_counter()
     rho = challenge_fn() if challenge_fn is not None else verifier.issue_nonce()[0]
@@ -163,6 +171,7 @@ def run_protocol(X: np.ndarray, centroids: np.ndarray, m: int, q: int, scale: in
     seed, records, A_dense, C_A, dt_expand, sparse_bytes = verifier.expand_sparse(C_X, rho, d)
     transcript.stage_times_s["expand_sparse_and_CA"] = dt_expand
     transcript.stage_bytes["expand_sparse_and_CA"] = sparse_bytes + 32
+    transcript.public['expansion_substage_times_s'] = verifier.last_expansion_times_s
 
     Z, assignments, Psi_hat, dt_cluster = prover.project_and_cluster(A_dense, centroids)
     transcript.stage_times_s["project_and_cluster"] = dt_cluster

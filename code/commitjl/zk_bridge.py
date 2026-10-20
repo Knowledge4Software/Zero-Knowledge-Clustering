@@ -70,6 +70,15 @@ class ZKInstance:
     projection_seed: Optional[bytes] = None  # host-verified transcript binding
     challenge_rho: Optional[bytes] = None   # serialized for audit; not a circuit input
     benchmark_metrics: Dict[str, Any] = field(default_factory=dict)  # host measurements only
+    legacy_projection: bool = False  # diagnostic comparison with original routing
+    legacy_bounds: bool = False      # diagnostic comparison with original bounds
+    score_distances: bool = False
+    lookup_sparse: bool = False  # generic authenticated sparse scatter
+    specialize_sparse: bool = False  # fresh row pattern requires new circuit/setup
+    protected_basis: Optional[np.ndarray] = None  # compiled public integer B
+    basis_scale: int = 0
+    solve_only: bool = False  # constraint solver diagnostic; no proof
+    diagnostic_prefix: str = ""  # truncated relation, only allowed with solve_only
 
     def to_json_dict(self) -> Dict[str, Any]:
         out: Dict[str, Any] = {
@@ -78,6 +87,14 @@ class ZKInstance:
             "backend": self.backend,
             "no_range_batch": self.no_range_batch,
             "range_bits": self.range_bits,
+            "legacy_projection": self.legacy_projection,
+            "legacy_bounds": self.legacy_bounds,
+            "score_distances": self.score_distances,
+            "lookup_sparse": self.lookup_sparse,
+            "specialize_sparse": self.specialize_sparse,
+            "basis_scale": int(self.basis_scale),
+            "solve_only": self.solve_only,
+            "diagnostic_prefix": self.diagnostic_prefix,
             "c_x": _fe_str(self.c_x),
             "c_theta": _fe_str(self.c_theta),
             "c_a": _fe_str(self.c_a),
@@ -99,6 +116,8 @@ class ZKInstance:
             out["dense_a"] = [[_fe_str(v) for v in row] for row in np.asarray(self.dense_A).tolist()]
         if self.constant_A is not None:
             out["constant_a"] = [[str(int(v)) for v in row] for row in np.asarray(self.constant_A).tolist()]
+        if self.protected_basis is not None:
+            out['protected_basis'] = [[str(int(v)) for v in row] for row in np.asarray(self.protected_basis).tolist()]
         if self.projection_seed is not None:
             out["projection_seed"] = self.projection_seed.hex()
         if self.challenge_rho is not None:
@@ -310,8 +329,12 @@ def run_prove(instance: ZKInstance, timeout: float = 300.0, build_if_missing: bo
                             failure_kind="parse_error",
                             peak_rss_bytes_psutil=rss_holder.get("peak_rss", 0))
 
+    operation_ok = ((returncode == 0 and raw.get('solve_only') is True and
+                     raw.get('solve_ok') is True and not raw.get('error'))
+                    if instance.solve_only else
+                    (res_ok(returncode, raw) and raw.get('successful_proofs') == repetitions))
     res = ProveResult(
-        ok=(res_ok(returncode, raw) and raw.get("successful_proofs") == repetitions),
+        ok=operation_ok,
         variant=raw.get("variant", instance.variant),
         backend=raw.get("backend", instance.backend),
         num_constraints=raw.get("num_constraints", 0),
@@ -327,8 +350,8 @@ def run_prove(instance: ZKInstance, timeout: float = 300.0, build_if_missing: bo
         peak_rss_bytes_go=raw.get("peak_rss_bytes_go_memstats", 0),
         peak_rss_bytes_os=raw.get("peak_rss_bytes_os_maxrss", 0),
         peak_rss_bytes_psutil=rss_holder.get("peak_rss", 0),
-        error=raw.get("error", "") if not res_ok(returncode, raw) else "",
-        failure_kind="" if res_ok(returncode, raw) else "prove_or_verify_failed",
+        error=raw.get("error", "") if not operation_ok else "",
+        failure_kind="" if operation_ok else ('constraint_solve_failed' if instance.solve_only else "prove_or_verify_failed"),
         raw=raw,
     )
     return res
