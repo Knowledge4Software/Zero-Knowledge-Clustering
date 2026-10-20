@@ -30,12 +30,12 @@ from commitjl.clustering import phi_X
 from experiments.pipeline import _centroids_from_labels
 
 
-def build_zk_instance(row, prereg):
+def build_zk_instance(row, prereg, *, data=None):
     variant = row.get("variant", "sparse")
     supported = {"sparse", "dense", "coord", "pca-public", "pisot", "prepublished", "full"}
     if variant not in supported:
         raise NotImplementedError(f"variant {variant!r} has no implemented circuit")
-    data = load_row_dataset(row)
+    data = data if data is not None else load_row_dataset(row)
     expected_sha = row.get("selection_dataset_sha256")
     if expected_sha and data["meta"].get("sha256") != expected_sha:
         raise ValueError("selected RQ1 dataset hash differs from current proof dataset")
@@ -51,9 +51,13 @@ def build_zk_instance(row, prereg):
     if not 1 <= B <= 4096:
         raise ValueError("B must be in [1, 4096] for the current circuit")
     from commitjl.quantize import quantize
-    X = normalize_for_quantization(X, S, B)
+    reference_bits=int(row.get('normalization_reference_bits',precision_bits))
+    if reference_bits<precision_bits:
+        raise ValueError('precision exceeds fixed physical reference')
+    X = normalize_for_quantization(X, scale_for_precision(reference_bits), B)
     Xq = quantize(X, S, B)
-    labels, centroids, _ = kmeans_paired(Xq.astype(np.float64), k, seeds=[seed])[0]
+    labels, centroids, _ = kmeans_paired(
+        Xq.astype(np.float64), k, seeds=[int(row.get("clustering_start", seed))])[0]
     Cq = np.round(centroids).astype(np.int64)
     if variant == "sparse":
         sparse_range_bits = max(int(row.get("range_bits", 48)), (d * B).bit_length() + 1)
@@ -97,6 +101,8 @@ def build_zk_instance(row, prereg):
             constant_A=A if variant in {"pca-public", "pisot", "prepublished", "full"} else None,
             range_bits=safe_range_bits,
         )
+    inst.legacy_projection = bool(row.get("legacy_projection", False))
+    inst.legacy_bounds = bool(row.get("legacy_bounds", False))
     # Quality measurements must use precisely the quantized witness and matrix
     # authenticated by the proof, including the transcript-derived sparse seed.
     factor = 1.0
@@ -114,10 +120,20 @@ def build_zk_instance(row, prereg):
     distortion = distortion_summary(delta_uv(Xq, projected, pairs), float(prereg.get("eps", 0.15)))
     full_cost = phi_X(Xq, Cq)
     assigned_cost = phi_X(Xq, _centroids_from_labels(Xq, assigned, k))
+    physical_metrics={}
+    if 'normalization_reference_bits' in row:
+        physical_labels,physical_centers,physical_cost=kmeans_paired(
+            X,k,seeds=[int(row.get('clustering_start',seed))])[0]
+        physical_agreement=clustering_agreement(physical_labels,assigned)
+        physical_assigned_cost=phi_X(X,_centroids_from_labels(X,assigned,k))
+        physical_metrics=dict(ari_physical_reference=physical_agreement['ari'],
+            r_phi_physical_reference=physical_assigned_cost/physical_cost if physical_cost else float('nan'))
     inst.benchmark_metrics = {
         **row, "n": n, "d": d, "k": k, "m": m, "q": q,
+        **physical_metrics,
         "requested_m": int(row.get("m", m)), "evaluation_mode": "quantized_proof_witness",
         "dataset_name": data["meta"]["name"], "dataset_sha256": data["meta"].get("sha256", ""),
+        "source_dataset_sha256": data['meta'].get('source_dataset_sha256',data['meta'].get('sha256')),
         "ari": agreement["ari"], "nmi": agreement["nmi"], "agreement": agreement["agreement"],
         "phi_full": full_cost, "phi_proj": assigned_cost,
         "r_phi": assigned_cost / full_cost if full_cost else float("nan"),
@@ -129,7 +145,10 @@ def build_zk_instance(row, prereg):
         "c_x": str(inst.c_x), "c_theta": str(inst.c_theta), "c_a": str(inst.c_a),
         "projection_seed_hex": inst.projection_seed.hex() if inst.projection_seed else None,
         "rho_hex": inst.challenge_rho.hex() if inst.challenge_rho else None,
-        "normalization_policy": "adaptive_to_B_and_S",
+        "normalization_policy": "single_fixed_physical_reference" if 'normalization_reference_bits' in row else "adaptive_to_B_and_S",
+        "normalization_reference_bits": reference_bits,
+        "mean_abs_quantization_error": float(np.mean(np.abs(Xq/S-X))),
+        "nonzero_quantized_fraction": float(np.mean(Xq!=0)),
         "input_commitment_elements": int(n * d),
         "projected_distance_coordinate_ops": int(n * k * m),
         "commitment_scaling_dimension": "d",

@@ -2,7 +2,8 @@ import numpy as np
 import pytest
 from scipy import stats as scipy_stats
 
-from commitjl.sparse_gen import sparse_matrix_gen, gen_column, sparse_matrix_gen_fixed_length
+from commitjl.sparse_gen import (sparse_matrix_gen, gen_column,
+                                sparse_matrix_gen_fixed_length, sparse_matrix_gen_csr)
 
 
 def test_determinism_same_seed():
@@ -63,3 +64,37 @@ def test_fixed_length_variant_matches_shape():
 def test_fixed_length_raises_on_insufficient_budget():
     with pytest.raises(ValueError):
         sparse_matrix_gen_fixed_length(b"fixedlen-fail-seed", m=4, d=2, q=4, max_words_per_column=1)
+
+
+@pytest.mark.parametrize('m,d,q', [(1,3,1),(7,17,3),(8,19,8),(32,65,1)])
+def test_direct_csr_preserves_canonical_records_matrix_and_products(m,d,q):
+    from scipy.sparse import csr_matrix
+    # Reference constructs the original matrix directly from the column sampler.
+    reference=np.zeros((m,d),dtype=np.int64)
+    for t in range(d):
+        for row,sign in gen_column(b'csr-equivalence',t,m,q):
+            reference[row,t]=sign
+    records,dense=sparse_matrix_gen(b'csr-equivalence',m,d,q)
+    direct_records,compact=sparse_matrix_gen_csr(b'csr-equivalence',m,d,q)
+    assert records==direct_records
+    np.testing.assert_array_equal(dense,reference)
+    np.testing.assert_array_equal(compact.toarray(),reference)
+    old=csr_matrix(dense.astype(float)/np.sqrt(q))
+    new=compact.astype(float);new.data/=np.sqrt(q)
+    np.testing.assert_array_equal(old.indptr,new.indptr)
+    np.testing.assert_array_equal(old.indices,new.indices)
+    np.testing.assert_array_equal(old.data,new.data)
+    X=np.random.default_rng(123).normal(size=(11,d))
+    np.testing.assert_array_equal(old@X.T,new@X.T)
+
+
+def test_direct_csr_rejects_an_unrepresentable_row_domain():
+    # m > 2^32 makes the 32-bit rejection threshold zero and cannot terminate.
+    with pytest.raises(ValueError):
+        sparse_matrix_gen_csr(b'invalid-domain',2**32+1,3,1)
+
+
+@pytest.mark.parametrize('m,q', [(7,1.5),(2**32+1,1),(4,5)])
+def test_column_sampler_rejects_nonterminating_invalid_parameters(m,q):
+    with pytest.raises((TypeError,ValueError)):
+        gen_column(b'invalid-column',0,m,q)

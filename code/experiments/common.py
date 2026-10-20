@@ -35,6 +35,24 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 RESULTS_DIR = Path(os.environ.get("COMMITJL_RESULTS_DIR") or REPO_ROOT / "results")
 
 
+def campaign_lock(root):
+    """Exclusive output-directory lock; close the returned handle to release it."""
+    handle=(Path(root)/'.campaign.lock').open('a+b')
+    try:
+        if os.name=='nt':
+            import msvcrt
+            handle.write(b'0');handle.flush();handle.seek(0)
+            msvcrt.locking(handle.fileno(),msvcrt.LK_NBLCK,1)
+        else:
+            import fcntl
+            fcntl.flock(handle.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
+    except OSError:
+        handle.close()
+        raise RuntimeError('Another campaign/export process is using this output directory') from None
+    atexit.register(handle.close)
+    return handle
+
+
 def load_config(path: str) -> Dict[str, Any]:
     with open(path) as f:
         cfg = yaml.safe_load(f) or {}

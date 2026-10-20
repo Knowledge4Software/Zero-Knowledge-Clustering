@@ -25,7 +25,7 @@ from experiments.pipeline import (build_projection, load_row_dataset,
 from experiments.statistics import write_native_summary
 
 
-def measure_precision_row(row, prereg, *, data=None):
+def measure_precision_row(row, prereg, *, data=None, cache=None, artifact_path=None):
     if row.get("projection", "sparse_jl") != "sparse_jl":
         raise ValueError("precision sweep supports SparseJL only")
     data = data or load_row_dataset(row)
@@ -47,21 +47,45 @@ def measure_precision_row(row, prereg, *, data=None):
 
     # Every precision sees the same physical data. Normalizing separately
     # at each S would erase the precision effect through adaptive rescaling.
-    physical = normalize_for_quantization(X, scale_for_precision(max_bits), B)
+    cache = cache if cache is not None else {}
+    namespace=(data['meta'].get('sha256'),k,bits,max_bits,B,m,q)
+    prepared_key=('prepared',namespace)
     S = scale_for_precision(bits)
-    Xq = quantize(physical, S, B)
-    decoded = Xq.astype(np.float64) / S
-    full_labels, _, full_cost = kmeans_paired(physical, k, seeds=[seed])[0]
-    quant_labels, quant_centroids, _ = kmeans_paired(decoded, k, seeds=[seed])[0]
-    P = build_projection("sparse_jl", decoded, m, q, seed, S)["real"]
-    Z = decoded @ P.T
+    if prepared_key not in cache:
+        physical = normalize_for_quantization(X, scale_for_precision(max_bits), B)
+        Xq = quantize(physical, S, B)
+        cache[prepared_key]=(physical,Xq,Xq.astype(np.float64)/S)
+    physical,Xq,decoded=cache[prepared_key]
+    start = int(row.get("clustering_start", seed))
+    baseline_key=('baseline',namespace,start)
+    if baseline_key not in cache:
+        cache[baseline_key]=(kmeans_paired(physical,k,seeds=[start])[0],
+                             kmeans_paired(decoded,k,seeds=[start])[0])
+    (full_labels,_,full_cost),(quant_labels,quant_centroids,_)=cache[baseline_key]
+    map_key=('map',namespace,seed)
+    if map_key not in cache:
+        P=build_projection('sparse_jl',decoded,m,q,seed,S)['real']
+        cache[map_key]=(P,decoded@P.T)
+    P,Z=cache[map_key]
     C = quant_centroids @ P.T
     assigned = nearest_centroid_assign(Z, C)
     agreement = clustering_agreement(full_labels, assigned)
     quant_agreement = clustering_agreement(full_labels, quant_labels)
     assigned_cost = phi_X(physical, _centroids_from_labels(physical, assigned, k))
-    pairs = sample_pair_set(n, min(int(prereg.get("pair_set_size", 2000)), n * (n - 1) // 2), seed)
-    distortion = distortion_summary(delta_uv(physical, Z, pairs), float(prereg.get("eps", .15)))
+    pairs = sample_pair_set(n, min(int(prereg.get("pair_set_size", 2000)), n * (n - 1) // 2), 20261005)
+    delta=delta_uv(physical,Z,pairs)
+    distortion = distortion_summary(delta, float(prereg.get("eps", .15)))
+    if artifact_path is not None:
+        from experiments.rq1_complete import save_npz
+        artifact_path=Path(artifact_path)
+        prepared_path=artifact_path.parent/'physical_quantized.npz'
+        if not prepared_path.exists():
+            save_npz(prepared_path,physical=physical,Xq=Xq,decoded=decoded,pairs=np.asarray(pairs))
+        projection_path=artifact_path.parent/f'projection_seed{seed}.npz'
+        if not projection_path.exists():
+            save_npz(projection_path,P=P,Z=Z,pair_delta=delta)
+        save_npz(artifact_path,full_labels=full_labels,quantized_labels=quant_labels,
+                 projected_labels=assigned,quantized_centroids=quant_centroids)
     estimate = total_circuit_cost(n, d, m, k, q)
     return {
         **row, "n": n, "d": d, "m": m, "q": q, "k": k, "seed": seed,

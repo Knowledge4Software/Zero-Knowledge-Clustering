@@ -19,7 +19,7 @@ from experiments.common import (common_arg_parser, load_config, load_prereg, gen
                                  release_process_memory)
 from experiments.common import progress
 from experiments.pipeline import load_row_dataset, build_projection, _centroids_from_labels, PipelineCache
-from commitjl.clustering import kmeans_paired, nearest_centroid_assign, dbscan_deterministic
+from commitjl.clustering import kmeans_paired, nearest_centroid_assign, dbscan_deterministic, _squared_distances
 from commitjl.certificates import (centroid_margin_certificate, dbscan_pair_certificate,
                                     coverage_violation_stability, cost_bounds,
                                     pair_squared_distances)
@@ -27,7 +27,7 @@ from commitjl.clustering import phi_X
 from commitjl.quantize import scale_for_precision
 
 
-def run_centroid_cert(row, prereg, cache=None):
+def run_centroid_cert(row, prereg, cache=None, *, artifact_path=None):
     cache = cache or PipelineCache()
     data, dataset_key = cache.dataset(row)
     X = np.asarray(data["X"], dtype=np.float64)
@@ -36,7 +36,7 @@ def run_centroid_cert(row, prereg, cache=None):
     m = int(row.get("m", 16))
     q = int(row.get("q", 1))
     eps = float(prereg.get("eps", 0.15))
-    (labels, centroids, _), _ = cache.kmeans_run(dataset_key, X, k, seed)
+    (labels, centroids, _), _ = cache.kmeans_run(dataset_key, X, k, int(row.get('clustering_start', seed)))
     labels = nearest_centroid_assign(X, centroids)
 
     certified = centroid_margin_certificate(X, centroids, eps)
@@ -47,6 +47,17 @@ def run_centroid_cert(row, prereg, cache=None):
     Cz = centroids if P["real"] is None else centroids @ P["real"].T
     assign_proj = nearest_centroid_assign(Z, Cz)
     observed_stable = (assign_proj == labels)
+
+    original_sq = _squared_distances(X, centroids)
+    projected_sq = _squared_distances(Z, Cz)
+    event = np.all(np.abs(projected_sq-original_sq) <= eps*original_sq + 1e-12, axis=1)
+    qualified = certified & event
+    n_qualified = int(qualified.sum())
+    n_violations = int(np.sum(qualified & ~observed_stable))
+    if artifact_path is not None:
+        from experiments.rq1_complete import save_npz
+        save_npz(artifact_path, labels=labels, projected_labels=assign_proj, centroids=centroids,
+                 original_sq=original_sq, projected_sq=projected_sq, margin=certified, embedding_event=event)
 
     cov = coverage_violation_stability(certified, observed_stable)
     phi_full = phi_X(X, centroids)
@@ -62,6 +73,10 @@ def run_centroid_cert(row, prereg, cache=None):
                 "coverage": cov.coverage, "violation_rate": cov.violation_rate,
                 "uncertified_stability": cov.uncertified_stability,
                 "n_certified": cov.n_certified, "n_total": cov.n_total,
+                "n_qualified": n_qualified, "n_violations": n_violations,
+                "qualified_coverage": n_qualified/len(X),
+                "conditional_violation_rate": n_violations/n_qualified if n_qualified else None,
+                "global_embedding_event": bool(event.all()),
                 "cost_bound_holds": bounds["holds"], "cost_bound_lower": bounds["lower"],
                 "cost_bound_upper": bounds["upper"], "cost_bound_observed": bounds["observed"]})
     return out

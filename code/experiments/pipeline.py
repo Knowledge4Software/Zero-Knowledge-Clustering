@@ -142,7 +142,7 @@ def build_projection(name: str, X: np.ndarray, m: int, q: int, seed: int, S: int
     raise KeyError(f"unknown projection {name!r}")
 
 
-def run_native(row: Dict[str, Any], prereg: Dict[str, Any], cache: PipelineCache | None = None) -> Dict[str, Any]:
+def run_native(row: Dict[str, Any], prereg: Dict[str, Any], cache: PipelineCache | None = None, *, artifact_path=None) -> Dict[str, Any]:
     """Runs one native fidelity/cost pipeline row; returns a flat dict of
     metrics ready to append to a parquet result file."""
     cache = cache or PipelineCache()
@@ -157,7 +157,8 @@ def run_native(row: Dict[str, Any], prereg: Dict[str, Any], cache: PipelineCache
     precision_bits = int(row.get("precision_bits", 16))
     S = scale_for_precision(precision_bits)
 
-    (labels_full, centroids_full, phi_full), t_kmeans = cache.kmeans_run(dataset_key, X, k, seed)
+    (labels_full, centroids_full, phi_full), t_kmeans = cache.kmeans_run(
+        dataset_key, X, k, int(row.get("clustering_start", seed)))
 
     P, t_build = cache.projection(dataset_key, projection_name, X, m, q, seed, S)
     real_P = P["real"]
@@ -180,6 +181,11 @@ def run_native(row: Dict[str, Any], prereg: Dict[str, Any], cache: PipelineCache
         delta = np.where(orig_sq > 0, proj_sq / np.maximum(orig_sq, 1e-300) - 1.0, np.nan)
     dist_summary = distortion_summary(delta, float(prereg.get("eps", 0.15)))
     agree = clustering_agreement(labels_full, assign_proj)
+    if artifact_path is not None:
+        from experiments.rq1_complete import save_npz
+        save_npz(artifact_path, full_labels=labels_full, projected_labels=assign_proj,
+                 centroids=centroids_full, Z=Z, P=real_P if real_P is not None else np.eye(d),
+                 pairs=np.asarray(pairs), pair_delta=delta)
     if data.get("y") is not None:
         ground_truth = np.asarray(data["y"])
         full_truth = clustering_agreement(ground_truth, labels_full)
