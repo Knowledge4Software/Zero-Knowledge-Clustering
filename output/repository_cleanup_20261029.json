@@ -44,6 +44,8 @@
   },
   "line_endings": "Preserve source/evidence bytes used by provenance hashes across Windows/Unix checkouts. Generated SVG formatting and frozen manuscript EOF spacing are retained.",
   "raw_results_are_complete_public_artifact": false,
-  "remote_target": "origin/referee-round2",
-  "push_result": "Recorded by Git remote verification after commit; this receipt does not invent a future commit hash."
+  "remote_target": "origin/clean-project",
+  "push_result": "Recorded by Git remote verification after commit; this receipt does not invent a future commit hash.",
+  "original_unpublished_history_retained_locally": "referee-round2",
+  "transfer_policy": "Publish an identical current source snapshot from origin/main, avoiding discarded unpublished artifact history. Upload current objects in bounded batches; delete task-owned temporary transfer refs after verification."
 }
