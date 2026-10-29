@@ -1,0 +1,7 @@
+{
+  "recorded_unix": 1793040375.8972924,
+  "old_supervisor_pid": 18664,
+  "matched_worker_pid": 23116,
+  "matched_worker_birth": 1793039473.3862455,
+  "reason": "Keep the same active proof worker; correct the outer series lifetime guard before larger cases. Inner command RAM/disk and 12-hour guards remain."
+}

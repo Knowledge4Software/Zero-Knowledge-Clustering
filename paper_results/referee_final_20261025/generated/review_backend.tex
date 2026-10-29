@@ -1,0 +1,14 @@
+\begin{table*}[tbp]
+\centering
+\caption{Completed exact Full controls on the same 64-record neural-text catalog and seven banks. Every exact batch and complete row coverage are independently checked; public proofs are replayed. Active time includes replay. Test-only cached KZG parameters are unsafe for deployment; creation is separate, while runs charge loading, circuit setup and proving. Interrupted timing is excluded from comparisons. Groth16 batch 1 separates backend from batching; larger feasible PLONK batches are retained when completed. Repetitions share one fitted model.}
+\label{tab:review-backend}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{lrlrrrrr}
+\toprule
+Backend & Batch & Execution & Proofs & Active min. & Replay s & Proof MiB & Setup s\\
+\midrule
+PLONK & 1 & repetition\_01 & 448 & \emph{interrupted} & 6.309 & 0.250 & 1.443\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

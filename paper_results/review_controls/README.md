@@ -1,17 +1,18 @@
-# Completed review controls
+# Supporting current-paper evidence
 
-All 14 Mobin cases completed on 20 October 2026. Four exact public-center Full controls cover MNIST N=64/256/1024 and CIFAR/ResNet N=64. Ten reuse cases cover learned/PCA plain and certified audits on these catalogs and the two predeclared rank-63/T=16384 MNIST N=256 pilots.
+These numerical records, public artifacts and checked exports support the
+current prototype-update audit. Keep negative cases and distinct native,
+real-proof and exploratory results separate. They are not extra independent
+replications merely because several exports or bases describe one fit.
 
-`generated_completed_20261020/` is the canonical measured export. Its manifest checks 208 transferred files, all requested rows, matching original integer data and centers, exact Full outputs and independent Python certificate outputs. Worker public-only replay accepts all 6,848 proofs. Every proved certificate is consistent with the exact quantized optimum; none of the 90 updated method/set cases meets the illustrative 99% coverage / 1% width policy.
+The [current manuscript](../../manuscript.tex) selects its generated tables
+from `paper_results/referee_final_20261025/`. Canonical raw/current proof
+records are in [code/validation/outputs](../../code/validation/README.md).
+[Current deliverables](../../output/README.md) identify the reviewed PDFs.
 
-`generated_native_20261020/` retains the earlier native preflight and training-only representation-budget grid. The rank-15 native cells overlap the proof campaign and must not be counted as independent observations. Rank-31/63/127 results at N=1024 are native calculations, except that rank-63 proof costs are measured separately at N=256.
-
-Re-export from the repository root into a fresh directory:
-
-```powershell
-python code/analysis/export_review_matched.py --full-capture code/validation/outputs/review_full_capture_followup_20261020 --reuse-capture code/validation/outputs/review_final_capture_20261020_1907Z --out tmp/reproduced_review_controls
-```
-
-The exporter accepts captures containing both exact and reuse cases. It preserves component-cost boundaries, emits separate cost/quality/pilot tables and a measured N=1024 figure, and checks the saved phase outputs rather than inferring proof success from native fidelity.
-
-See the [implementation/reproduction guide](../../code/docs/review_controls_20261020.md) and [completed result report](../../output/mobin_completed_results_20261020.md). Intermediate early-morning captures and duplicate tables are retired to the external cleanup archive. Raw measurement files are unchanged.
+Cleanup removes inactive proving/constraint/preparation caches from old
+completed controls, while retaining original model inputs, proof bytes,
+verification keys, numerical records, metadata and source receipts. Such
+caches can be rebuilt; existing public proofs can be verified without them.
+Superseded manuscript copies and old delivery bundles are deleted rather
+than moved to another archive.

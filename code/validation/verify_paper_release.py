@@ -64,7 +64,7 @@ def main():
     rendered = sorted((ROOT/'tmp/pdfs'/args.tag).glob('final-page-*.png'))
     if args.visual_review_complete:
         assert len(rendered) == len(reader.pages), 'final render count differs from PDF pages'
-        status['visual_review'] = f'Assistant inspected all {len(reader.pages)} final rendered pages and corrected chart; no clipping or overlap observed.'
+        status['visual_review'] = f'Assistant inspected all {len(reader.pages)} final rendered pages; no clipping or overlap observed.'
     status.update(page_count=len(reader.pages),source_project_files_byte_checked=len(matched),
                   source_zip_sha256=sha(archive),preserved_earlier_pdf_hashes_match=True,
                   layout_evidence_check=layout['status'],archived_file_hashes_checked=archived_verified,
@@ -83,7 +83,9 @@ def main():
         'visual_review':status['visual_review'],
         'validation_boundary':'Numerical/capture/PDF checks are local. Full-campaign cryptographic replay counts come from the completed public-only worker receipts.',
     }
-    (ROOT/'code/validation/outputs/publication_checks_20261020.json').write_text(json.dumps(checks,indent=2),encoding='utf-8')
+    check_name = ('publication_checks_20261020.json' if args.tag=='neurocomputing_completed_20261020'
+                  else args.tag+'_checks.json')
+    (ROOT/'code/validation/outputs'/check_name).write_text(json.dumps(checks,indent=2),encoding='utf-8')
     print(json.dumps(checks,indent=2))
 
 

@@ -1,13 +1,20 @@
-# Manuscript evidence
+# Current manuscript sources and evidence
 
-The canonical [manuscript](../manuscript.tex) includes the completed 14-case reviewer-control campaign. The [current paper delivery](../output/README.md) identifies the latest PDF/source package and the three preserved earlier versions.
+- [ccd_pilot_20261029/](ccd_pilot_20261029/README.md): active integrated
+  methodology, CCD-structured preliminary evaluation and editable SVG figures.
+- [referee_final_20261025/](referee_final_20261025/): preserved earlier sources;
+  the root still includes its abstract, introduction and retained evidence.
+- [supervisor_methodology_20261027/](supervisor_methodology_20261027/README.md):
+  new staged methodology, derivations and unchanged supervisor/style inputs.
+- [review_controls/](review_controls/README.md): retained numerical and proof
+  evidence supporting current results, including negative and exploratory cases.
 
-- [review_controls/](review_controls/README.md): completed exact public-center Full, learned/PCA plain/certified audits, actual N=1024 proofs, higher-rank pilots, numerical exports and provenance.
-- [reuse_revision/](reuse_revision/README.md): authored paper sections and the separately identified historical D/F exports.
-- [bound_revision/](bound_revision/README.md): earlier fixed-center bound-audit evidence retained as a distinct cohort.
+The [delivery index](../output/README.md) identifies current reviewed PDFs.
+Obsolete manuscript directories, early table fragments and copied version
+folders were deleted at the user's request. Current result records and proof
+verification artifacts are retained under `code/validation/outputs/`.
 
-Rebuild the current paper with `python code/analysis/build_reuse_manuscript.py --tag LOCAL_REVIEW_BUILD`. Choose a fresh tag. Do not run the old fixed-date three-paper builder over the preserved historical release.
-
-Exact, approximate and certified outputs have different verification contracts. Native larger-budget calculations are not proof timings. Earlier MiMC, fixed-center Poseidon2 and changing-center controls are separate cohorts and must not be pooled.
-
-Superseded source backups and intermediate paper exports were archived outside the workspace; the [cleanup receipt](../code/validation/outputs/cleanup_publication_20261020.json) records their paths and hashes. The [supervisor original](../paper_history/supervisor_draft.tex) remains unchanged. Author metadata, declarations and scientific approval remain pending.
+Compile the full paper from the repository root with
+`latexmk -pdf -outdir=tmp/pdfs/current manuscript.tex`. The methodology
+excerpt has its own wrapper and integration instructions. A successful
+compile does not constitute a new visual review or scientific validation.

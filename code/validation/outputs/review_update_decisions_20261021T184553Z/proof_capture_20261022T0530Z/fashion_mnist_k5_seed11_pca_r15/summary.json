@@ -1,0 +1,127 @@
+{
+  "complete": true,
+  "n": 128,
+  "sets": 6,
+  "alternatives": [
+    {
+      "phase": "reuse_certified",
+      "shared_preparation_seconds": 430.225534357,
+      "query_compile_setup_seconds": 8.971410823,
+      "query_components_seconds": 187.795077581,
+      "total_components_seconds": 626.992022761,
+      "public_center_parameter_seconds": 0,
+      "public_only_replay_wall_seconds": 19.013977851951495,
+      "components_plus_public_replay_seconds": 646.0060006129515,
+      "proves": 192,
+      "proof_bytes": 62720,
+      "verifying_key_bytes": 4352,
+      "proving_key_bytes": 44541052,
+      "public_witness_serialized_bytes": 636672,
+      "model_json_bytes": 82727,
+      "approved_task_bytes": 355107,
+      "stored_head_energy_scalars": 2048,
+      "genuine_requests": 5,
+      "conclusive_genuine_requests": 0,
+      "lloyd_requests": 4,
+      "conclusive_lloyd_requests": 0
+    },
+    {
+      "phase": "paired_change",
+      "shared_preparation_seconds": 430.225534357,
+      "query_compile_setup_seconds": 17.688158897,
+      "query_components_seconds": 287.145933901,
+      "total_components_seconds": 735.059627155,
+      "public_center_parameter_seconds": 1.129836646,
+      "public_only_replay_wall_seconds": 5.548048813827336,
+      "components_plus_public_replay_seconds": 740.6076759688274,
+      "proves": 192,
+      "proof_bytes": 62720,
+      "verifying_key_bytes": 15136,
+      "proving_key_bytes": 54298752,
+      "public_witness_serialized_bytes": 2707200,
+      "model_json_bytes": 82727,
+      "approved_task_bytes": 355107,
+      "stored_head_energy_scalars": 2048,
+      "genuine_requests": 5,
+      "conclusive_genuine_requests": 1,
+      "lloyd_requests": 4,
+      "conclusive_lloyd_requests": 0
+    }
+  ],
+  "original_root": "4274784215931636040271961768864336993058342045204456396578849748975330969036",
+  "workflow_wall_seconds": 966.3706099539995,
+  "actual_single_repetition_deployment": false,
+  "private_reference_validation_excluded_from_workflow_wall": true,
+  "numerical_false_decisions": 0,
+  "metadata": {
+    "dataset": "fashion_mnist",
+    "k": 5,
+    "fit_seed": 11,
+    "age": 1,
+    "training_sha256": "2856af294e263b23936092201a0bd7789842562e66a3a39fce668f37cdbe7791",
+    "audit_sha256": "73c6c0dd6710c3e79be2bab4a9fe734f9bddfa5cd5f84279984f61fbe4307334",
+    "training_indices_sha256": "d3d73b269d9ad627ffca7cd5213158f50f071fef03f5d92405fab280dc87c668",
+    "audit_indices_sha256": "0c96b3473dee888a69bcd3c76d2b0905483f57ad2f60aa96944748ad3071cd91",
+    "source": {
+      "name": "fashion_mnist",
+      "n": 5000,
+      "d": 784,
+      "k": 10,
+      "source": "openml:Fashion-MNIST",
+      "seed": 0,
+      "sha256": "a6a89295dd9775b988289c0763a161fac1556e21d76530d5d2e69e7a394cd20a",
+      "source_n": 70000,
+      "source_d": 784,
+      "labels_sha256": "0e5fe651e2221b0574b61130d19cf9f423f80e7652ac77840f7c583522250c0a"
+    },
+    "input_scale": "16.058823529411764",
+    "prototype_trace_seconds": 1.382021961035207,
+    "audit_clipped_coordinates": 0,
+    "representation_fit_seconds": {
+      "learned": 0.547604151070118,
+      "pca": 0.6832081228494644
+    },
+    "roles": [
+      {
+        "kind": "deployed",
+        "iteration": 1,
+        "set": 0,
+        "unchanged_centers": true
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 2,
+        "set": 1,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 4,
+        "set": 2,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 8,
+        "set": 3,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 16,
+        "set": 4,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "reverse_step_diagnostic",
+        "iteration": null,
+        "set": 5,
+        "unchanged_centers": false
+      }
+    ],
+    "method": "pca",
+    "rank": 15,
+    "basis_sha256": "46693751842d712039c4528ade877ce6370427ea1ed88c0e720d118816a8171e",
+    "proof_scope": "N128 prefix; native N1024 is separate"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "complete": true,
+  "pid": 16424,
+  "requests": 6,
+  "active_fit": "mnist_k5_seed37_age8_learned",
+  "active_set": 4,
+  "detected": 0,
+  "elapsed_seconds": 49.375919580459595,
+  "status": "complete",
+  "false_conclusive": 0,
+  "all_intervals_contain_truth": true,
+  "native_only": true,
+  "calculation_runs": 9,
+  "correction": "The first screen recomputed three duplicate refinement-budget rows before its expected-count assertion stopped. All nine calculations are retained in results.csv. Six distinct requested zero-refinement cases exactly match the independently checked source-case selection; unique_results.csv removes only repeated fit/set calculations. The reusable script now filters the zero-refinement cohort before computing."
+}

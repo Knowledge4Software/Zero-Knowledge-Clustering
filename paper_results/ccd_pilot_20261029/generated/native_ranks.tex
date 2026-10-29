@@ -1,0 +1,22 @@
+\begin{table}[tbp]
+\centering
+\small
+\caption{Native-only Fashion ablation; prediction rank remains 63 and the correction cap is 16. Cov. is conclusive update coverage and Rows is the total corrected-row count across eight requests. No proving time is inferred.}
+\label{tab:ccd-ranks}
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & $s$ & Cent. cov. & Rows & PCA cov. & Rows\\
+\midrule
+32 & 4 & 8/8 & 28 & 8/8 & 80\\
+32 & 39 & 8/8 & 7 & 8/8 & 9\\
+32 & 63 & 8/8 & 5 & 8/8 & 5\\
+32 & 79 & 8/8 & 4 & 8/8 & 5\\
+128 & 4 & 6/8 & 72 & 1/8 & 112\\
+128 & 39 & 8/8 & 1 & 8/8 & 1\\
+128 & 63 & 8/8 & 0 & 8/8 & 0\\
+128 & 79 & 8/8 & 0 & 8/8 & 0\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

@@ -1,0 +1,13 @@
+{
+  "completed_unix": 1793112667.040261,
+  "command": "python -m pytest code/tests/test_two_review_evidence.py code/tests/test_referee_learning_workflows.py code/tests/test_optimized_evidence_export.py code/tests/test_online_affine_control.py -q",
+  "passed": 15,
+  "failed": 0,
+  "source_sha256": {
+    "code/tests/test_two_review_evidence.py": "12487f018cbc5e81c59ba4fabb90bc41c2022f2099fc8ba2c3418fcfda59d9b6",
+    "code/tests/test_referee_learning_workflows.py": "890b38a8b9d41fb2f611e32b62e9748fe4a6e09d4341b01e41583189f9cdb00c",
+    "code/tests/test_optimized_evidence_export.py": "ba00d43b09ae17ba1eb5f06c799242a3de834fa594f12477470c763cea6e6017",
+    "code/tests/test_online_affine_control.py": "64ff144b122b8b9cfa7f97e6c8aac362b0d32545580b60a915c3a4cf95c51212"
+  },
+  "scope": "Targeted data selection, evidence export, complete exact batch coverage and online affine orchestration; not a full security audit."
+}

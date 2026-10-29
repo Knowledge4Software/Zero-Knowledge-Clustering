@@ -1,0 +1,28 @@
+{
+  "updated_unix": 1793084103.063138,
+  "heavy_runs_allowed": true,
+  "prover_generation_allowed": true,
+  "reason": "Local work remains authorized within the27October user-requested <=1024-record scope. Large proof benchmarks are deferred.",
+  "automatic_experiment_resume_allowed": false,
+  "remote_heavy_runs_allowed": false,
+  "remote_prover_generation_allowed": false,
+  "remote_allowed_hostnames": [],
+  "remote_target_environment": null,
+  "local_verification_only_allowed": true,
+  "local_lightweight_checks_allowed": true,
+  "mobin_server_retired": true,
+  "mobin_connection_attempts_allowed": false,
+  "replacement_execution_target": "laptop",
+  "local_campaign_authorized": true,
+  "local_allowed_hostname": "kousha",
+  "local_resource_limits": {
+    "serial": true,
+    "go_soft_memory_mib": 1200,
+    "maximum_process_rss_gib": 3.5,
+    "minimum_commit_headroom_mib": 1024,
+    "os_low_memory_stop": true,
+    "workers": 8
+  },
+  "maximum_proof_catalog_records": 1024,
+  "local_campaign_scope_amendment": "code/validation/outputs/referee_optimized_20261026/laptop_scope_amendment_20261027.json"
+}

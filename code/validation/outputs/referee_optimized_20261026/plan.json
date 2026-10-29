@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "prepared_unix": 1793038158.9717402,
+  "execution_target": "laptop",
+  "workers": 8,
+  "phase_wall_limit_seconds": 43200,
+  "binary": "code/zk/bin/commitjl-bound-final-optimized-20261026.exe",
+  "plonk_binary": "code/zk/bin/full-plonk-control-local-20261026.exe",
+  "native_study_sha256": "4b63b178d0408d99d3da5c79b71fa925e2dc454abb0d32303f51019d082672cd",
+  "source_sha256": {
+    "code/commitjl/reuse_certificates.py": "e05ab68c1cf6f0215075f0ffa7dbb8dd7b10247ca8bbf01c189143a1b56dcdb2",
+    "code/commitjl/paired_certificates.py": "9cdebb02122522b091296ab417e855655ddaa0626b566df5172c0b0dd1bb9b5e",
+    "code/commitjl/group_change_bounds.py": "63f89f243460ca92fff41ca7d8d878adc7be4cf2416b97d7bd59577fb67a266e",
+    "code/zk/cmd/commitjl-bound/main.go": "2c0e3937d39df653e536344cda618bb6069450698ddfa616f29c79d19833d3dc",
+    "code/zk/cmd/commitjl-bound/resume_cache.go": "6a02ba2b2047247b28466a64fcad0597066bb42ad5890142f8682d6ac5e76a42"
+  },
+  "scientific_profile": {
+    "prediction_rank": 63,
+    "certificate_rank": 79,
+    "basis_precision_bits": 14,
+    "maximum_exact_rows": 16,
+    "ordering": "Descending canonical width, index ties; stop at first conclusive sign"
+  },
+  "selection": "All predeclared outcomes retained. No rank/cap tuning or seed exclusion.",
+  "scope": "New timing controls exclude frozen-model fitting consistently and never mix historical cold-fitting totals. Native kernel speed ratios are not proving speed ratios.",
+  "remaining_after_small_controls": [
+    "Complete real proof scaling where resource preflight permits",
+    "Specialized exact matrix-product protocol remains unimplemented",
+    "Production challenge service and independent security audit remain separate work"
+  ],
+  "extended_proof_cases": [
+    {
+      "id": "mnist_k5_seed173_age8_n128",
+      "fit": "mnist_k5_seed173_age8",
+      "n": 128
+    },
+    {
+      "id": "fashion_mnist_k5_seed173_age8_n1024",
+      "fit": "fashion_mnist_k5_seed173_age8",
+      "n": 1024
+    },
+    {
+      "id": "mnist_k10_seed173_age1_n1024",
+      "fit": "mnist_k10_seed173_age1",
+      "n": 1024
+    },
+    {
+      "id": "mnist_k20_seed173_age1_n1024",
+      "fit": "mnist_k20_seed173_age1",
+      "n": 1024
+    },
+    {
+      "id": "mnist_k5_seed173_age1_n4096",
+      "fit": "mnist_k5_seed173_age1",
+      "n": 4096
+    },
+    {
+      "id": "mnist_k5_seed173_age1_n16384",
+      "fit": "mnist_k5_seed173_age1",
+      "n": 16384
+    }
+  ],
+  "binary_sha256": "80b82bfde2af0276b31106f2d658cffc71024f39b0d410c24f8890c6274768c5",
+  "plonk_binary_sha256": "1ba98ea242ebd50a299979c94e4612d8f550f2d6e7550b5eb3bea3a3495581f2"
+}

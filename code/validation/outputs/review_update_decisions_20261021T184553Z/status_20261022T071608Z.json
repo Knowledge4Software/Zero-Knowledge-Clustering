@@ -1,0 +1,136 @@
+{
+  "checked_utc": "2026-10-22T07:16:08.661764+00:00",
+  "main_completed": 13,
+  "main_total": 32,
+  "running": [
+    {
+      "case": "20ng_tfidf_k10_seed11_pca_r63",
+      "phase": "stage1"
+    }
+  ],
+  "completed_worker_failures": [],
+  "portability_complete": true,
+  "scale_jobs_queued": 3,
+  "new_text_result": {
+    "case": "20ng_tfidf_k10_seed11_learned_r63",
+    "status": "complete",
+    "complete": true,
+    "phase": "verify",
+    "updated_utc": "2026-10-22T07:06:11.194309+00:00",
+    "phases": [
+      {
+        "phase": "prepare",
+        "complete": true,
+        "verified": 0,
+        "resource": {
+          "returncode": 0,
+          "wall_seconds": 14.313495519803837,
+          "peak_rss_bytes": 37724160,
+          "stop": null
+        }
+      },
+      {
+        "phase": "stage1",
+        "complete": true,
+        "verified": 128,
+        "resource": {
+          "returncode": 0,
+          "wall_seconds": 880.0888950370718,
+          "peak_rss_bytes": 1190072320,
+          "stop": null
+        }
+      },
+      {
+        "phase": "reuse_certified",
+        "complete": true,
+        "verified": 768,
+        "resource": {
+          "returncode": 0,
+          "wall_seconds": 2067.8968420238234,
+          "peak_rss_bytes": 267935744,
+          "stop": null
+        }
+      },
+      {
+        "phase": "paired_change",
+        "complete": true,
+        "verified": 768,
+        "resource": {
+          "returncode": 0,
+          "wall_seconds": 5544.0079678238835,
+          "peak_rss_bytes": 1453416448,
+          "stop": null
+        }
+      },
+      {
+        "phase": "verify_owner_pin_reuse_certified",
+        "complete": true,
+        "verified": 896,
+        "resource": {
+          "returncode": 0,
+          "wall_seconds": 2029.961951659061,
+          "peak_rss_bytes": 24543232,
+          "stop": null
+        }
+      },
+      {
+        "phase": "verify_owner_pin_paired_change",
+        "complete": true,
+        "verified": 896,
+        "resource": {
+          "returncode": 0,
+          "wall_seconds": 118.28410983504727,
+          "peak_rss_bytes": 47443968,
+          "stop": null
+        }
+      }
+    ],
+    "alternatives": [
+      {
+        "phase": "reuse_certified",
+        "shared_preparation_seconds": 890.55981755,
+        "query_compile_setup_seconds": 16.587655768,
+        "query_components_seconds": 2027.263412449,
+        "total_components_seconds": 2934.410885767,
+        "public_center_parameter_seconds": 0,
+        "public_only_replay_wall_seconds": 2029.961951659061,
+        "components_plus_public_replay_seconds": 4964.372837426061,
+        "proves": 768,
+        "proof_bytes": 175616,
+        "verifying_key_bytes": 22336,
+        "proving_key_bytes": 98114582,
+        "public_witness_serialized_bytes": 16280064,
+        "model_json_bytes": 697876,
+        "approved_task_bytes": 1548303,
+        "stored_head_energy_scalars": 8192,
+        "genuine_requests": 5,
+        "conclusive_genuine_requests": 0,
+        "lloyd_requests": 4,
+        "conclusive_lloyd_requests": 0
+      },
+      {
+        "phase": "paired_change",
+        "shared_preparation_seconds": 890.55981755,
+        "query_compile_setup_seconds": 117.40436954,
+        "query_components_seconds": 5389.701982080001,
+        "total_components_seconds": 6397.666169170001,
+        "public_center_parameter_seconds": 37.476974316,
+        "public_only_replay_wall_seconds": 118.28410983504727,
+        "components_plus_public_replay_seconds": 6515.950279005048,
+        "proves": 768,
+        "proof_bytes": 175616,
+        "verifying_key_bytes": 209440,
+        "proving_key_bytes": 220305006,
+        "public_witness_serialized_bytes": 159975936,
+        "model_json_bytes": 697876,
+        "approved_task_bytes": 1548303,
+        "stored_head_energy_scalars": 8192,
+        "genuine_requests": 5,
+        "conclusive_genuine_requests": 0,
+        "lloyd_requests": 4,
+        "conclusive_lloyd_requests": 0
+      }
+    ],
+    "workflow_wall_seconds": 10657.44280710211
+  }
+}

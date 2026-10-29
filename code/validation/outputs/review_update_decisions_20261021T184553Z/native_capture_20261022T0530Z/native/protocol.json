@@ -1,0 +1,80 @@
+{
+  "version": "paired-update-decisions-v1",
+  "datasets": [
+    "mnist",
+    "fashion_mnist",
+    "20ng_tfidf"
+  ],
+  "fit_seeds": [
+    11,
+    23,
+    37,
+    41,
+    53
+  ],
+  "k": [
+    3,
+    5,
+    10
+  ],
+  "ranks": [
+    15,
+    63
+  ],
+  "basis_scale": 16384,
+  "native_n": 1024,
+  "proof_n": 128,
+  "training": "60% train / 40% audit; remove zero rows before split; fixed public source features; scales from training only, audit clipping counted.",
+  "prototype_updates": "Lloyd iterations on training only. Early base iteration1 -> 2,4,8,16; mature base8 -> 9,12,16,24. Null and reverse-step diagnostic retained.",
+  "basis": "Training-only rank63 learned and PCA; nested rank15 prefix at same precision.",
+  "decision": "Certify strict decrease/increase of exact quantized nearest-center cost from sign of interval; otherwise inconclusive. No coverage threshold.",
+  "comparisons": [
+    "independent absolute intervals",
+    "paired change envelope with exact rounded-Gram correction",
+    "exact integer Full oracle"
+  ],
+  "proof_fit_selection": [
+    {
+      "dataset": "20ng_tfidf",
+      "k": 5,
+      "fit_seed": 23,
+      "age": 1
+    },
+    {
+      "dataset": "20ng_tfidf",
+      "k": 10,
+      "fit_seed": 11,
+      "age": 1
+    },
+    {
+      "dataset": "fashion_mnist",
+      "k": 3,
+      "fit_seed": 23,
+      "age": 1
+    },
+    {
+      "dataset": "fashion_mnist",
+      "k": 5,
+      "fit_seed": 11,
+      "age": 1
+    },
+    {
+      "dataset": "mnist",
+      "k": 3,
+      "fit_seed": 11,
+      "age": 1
+    },
+    {
+      "dataset": "mnist",
+      "k": 10,
+      "fit_seed": 23,
+      "age": 1
+    }
+  ],
+  "selection": "Proof workloads fixed before this grid; every update proved regardless of native outcome. Exploratory seed0 pilot excluded from confirmation seeds.",
+  "replication": "Report fit seeds within each dataset/k stratum. Different k, ages, ranks and updates share each dataset/seed split and are dependent; proof counts are execution checks.",
+  "claim_boundary": "No universal learned superiority or novelty-firstness assumed. Algorithmic benchmark traces are not production deployment traces.",
+  "python": "3.12.3",
+  "numpy": "2.5.4",
+  "sklearn": "1.9.1"
+}

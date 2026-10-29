@@ -1,0 +1,5583 @@
+{
+  "complete": true,
+  "report_generated": true,
+  "native_complete": true,
+  "proof_campaign_complete": true,
+  "native_summary": [
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "exact_full",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": 1,
+      "refined_coverage": 1,
+      "corrections": 0,
+      "median_native_query_ms": {
+        "query": 0.24466799999345312
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "balanced_sign_agreement": 0.5714285714285714,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 4,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.13995000000477376
+      },
+      "wrong_estimated_signs": 6,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 653316023.253831
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.8095238095238095,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.18336900001258982
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 411424764.194442
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9986979166666666,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.94140625,
+      "base_coverage": 0.9166666666666666,
+      "refined_coverage": 1,
+      "corrections": 2,
+      "median_native_query_ms": {
+        "certificate": 212.34555099999852,
+        "prediction": 26.96819299998765
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 59475699.46188656
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "pca_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9986979166666666,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.9401041666666666,
+      "base_coverage": 0.9166666666666666,
+      "refined_coverage": 1,
+      "corrections": 3,
+      "median_native_query_ms": {
+        "certificate": 211.5160199999906,
+        "prediction": 27.42712699999572
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 51080971.787082516
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "rabitq_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9908854166666666,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 1.6802259997348301
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": 0.2916666666666667,
+      "estimated_delta_absolute_error": 38461533.02952448
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.11458333333333333,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.125,
+      "refined_coverage": 0.125,
+      "corrections": 336,
+      "median_native_query_ms": {
+        "certificate": 214.86113449999777,
+        "prediction": 27.570136999997885
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 29045247383.672207
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9361979166666666,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.9761904761904762,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.12292799999613635
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 194335634.30158758
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.11458333333333333,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.125,
+      "refined_coverage": 0.125,
+      "corrections": 336,
+      "median_native_query_ms": {
+        "certificate": 185.78189750000007,
+        "prediction": 25.597124000000804
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 29721355427.97463
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9401041666666666,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.8333333333333333,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.12137799998868104
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 145455302.99007845
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.7916666666666666,
+      "balanced_sign_agreement": 0.4523809523809524,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 2,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.13385300002255462
+      },
+      "wrong_estimated_signs": 5,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 648815160.3333334
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.7857142857142857,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 2,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.19182600001954597
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 363067176.25
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "exact_full",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": 1,
+      "refined_coverage": 1,
+      "corrections": 0,
+      "median_native_query_ms": {
+        "query": 0.9554729999763367
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.7916666666666666,
+      "balanced_sign_agreement": 0.8913043478260869,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 5,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.13048800002479766
+      },
+      "wrong_estimated_signs": 5,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 1218150053.6349475
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.9347826086956521,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 3,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.24903400000653164
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 1270062292.0447884
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.998046875,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.912109375,
+      "base_coverage": 0.9583333333333334,
+      "refined_coverage": 1,
+      "corrections": 3,
+      "median_native_query_ms": {
+        "certificate": 219.2918675000044,
+        "prediction": 31.06972300000166
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 177456140.4826196
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "pca_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9983723958333334,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.908203125,
+      "base_coverage": 0.9583333333333334,
+      "refined_coverage": 1,
+      "corrections": 3,
+      "median_native_query_ms": {
+        "certificate": 215.9288559999908,
+        "prediction": 30.91324799999029
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 148399031.70223045
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "rabitq_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9850260416666666,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 1.9436689999565715
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": 0.08333333333333333,
+      "estimated_delta_absolute_error": 155303263.56863847
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.1533203125,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.041666666666666664,
+      "refined_coverage": 0.041666666666666664,
+      "corrections": 368,
+      "median_native_query_ms": {
+        "certificate": 219.17842800000642,
+        "prediction": 30.907866000006834
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 115498147498.1202
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9283854166666666,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.2126889999942705
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 341734616.000665
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.1533203125,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.041666666666666664,
+      "refined_coverage": 0.041666666666666664,
+      "corrections": 368,
+      "median_native_query_ms": {
+        "certificate": 189.963606500001,
+        "prediction": 29.009542999972382
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 118426811282.01747
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9261067708333334,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.4782608695652174,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.21394600003077358
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 974332089.4087301
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.9565217391304348,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 2,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.13200099999721715
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 1384520772.0833333
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9583333333333334,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 1,
+        "worsens": 23,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.24482499998157436
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 1964265666.8333333
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "exact_full",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": 1,
+      "refined_coverage": 1,
+      "corrections": 0,
+      "median_native_query_ms": {
+        "query": 0.19497400001000642
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 0
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.9772727272727273,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.10924700001169185
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 106773125.94037294
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.9772727272727273,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.14767400000437192
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 147358338.83185542
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9934895833333334,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.9231770833333334,
+      "base_coverage": 1,
+      "refined_coverage": 1,
+      "corrections": 0,
+      "median_native_query_ms": {
+        "certificate": 158.06289950000973,
+        "prediction": 19.910316999983024
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 18229030.339208007
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "pca_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.99609375,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.9192708333333334,
+      "base_coverage": 0.9583333333333334,
+      "refined_coverage": 1,
+      "corrections": 1,
+      "median_native_query_ms": {
+        "certificate": 169.85557699999276,
+        "prediction": 19.687083999997412
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 14554039.908458551
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "rabitq_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9908854166666666,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.9909130003507016
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": 0.20833333333333334,
+      "estimated_delta_absolute_error": 21270412.50490423
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.24739583333333334,
+      "point_sign_agreement": 0.75,
+      "balanced_sign_agreement": 0.4090909090909091,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 4,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.08333333333333333,
+      "refined_coverage": 0.08333333333333333,
+      "corrections": 352,
+      "median_native_query_ms": {
+        "certificate": 172.10957200001076,
+        "prediction": 21.558308999999554
+      },
+      "wrong_estimated_signs": 6,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 6077448855.526871
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9440104166666666,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.10570799997822178
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 70489379.33730106
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.24739583333333334,
+      "point_sign_agreement": 0.8333333333333334,
+      "balanced_sign_agreement": 0.45454545454545453,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 2,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.08333333333333333,
+      "refined_coverage": 0.08333333333333333,
+      "corrections": 352,
+      "median_native_query_ms": {
+        "certificate": 145.7935624999891,
+        "prediction": 19.23693399999138
+      },
+      "wrong_estimated_signs": 4,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 6175652255.520801
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.94140625,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.10090199998558091
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 86687213.21031766
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.9545454545454546,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 2,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.10769100003926724
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 154936175.0
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.9772727272727273,
+      "always_worsens_agreement": 0.9166666666666666,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 2,
+        "worsens": 22,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.14035700002068552
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 141062428.20833334
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "exact_full",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": 1,
+      "refined_coverage": 1,
+      "corrections": 0,
+      "median_native_query_ms": {
+        "query": 0.7358569999951214
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 0
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.7916666666666666,
+      "balanced_sign_agreement": 0.7210526315789474,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 3,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.10695299999952113
+      },
+      "wrong_estimated_signs": 5,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 714693923.8003289
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.9473684210526316,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 2,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.18592100002479128
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 523421911.43403625
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9944661458333334,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.8,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.8932291666666666,
+      "base_coverage": 0.875,
+      "refined_coverage": 1,
+      "corrections": 11,
+      "median_native_query_ms": {
+        "certificate": 176.47920049998334,
+        "prediction": 23.970160000033047
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 69864054.31688277
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "pca_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9951171875,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.8,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.8889973958333334,
+      "base_coverage": 0.875,
+      "refined_coverage": 1,
+      "corrections": 12,
+      "median_native_query_ms": {
+        "certificate": 165.54726500001493,
+        "prediction": 24.058762999970895
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 60620695.454143204
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "rabitq_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.984375,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.9736842105263157,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 1.3092749995848862
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": 0.125,
+      "estimated_delta_absolute_error": 52115010.61675898
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.2747395833333333,
+      "point_sign_agreement": 0.625,
+      "balanced_sign_agreement": 0.39473684210526316,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 4,
+      "missed_improvement_predictions": 5,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.16666666666666666,
+      "refined_coverage": 0.16666666666666666,
+      "corrections": 320,
+      "median_native_query_ms": {
+        "certificate": 167.78319299999112,
+        "prediction": 24.061684999992394
+      },
+      "wrong_estimated_signs": 9,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 24236534037.342907
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9332682291666666,
+      "point_sign_agreement": 0.8333333333333334,
+      "balanced_sign_agreement": 0.6736842105263158,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.19135999997388353
+      },
+      "wrong_estimated_signs": 4,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 189609657.61772346
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.2747395833333333,
+      "point_sign_agreement": 0.7916666666666666,
+      "balanced_sign_agreement": 0.5736842105263158,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 4,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.16666666666666666,
+      "refined_coverage": 0.16666666666666666,
+      "corrections": 320,
+      "median_native_query_ms": {
+        "certificate": 149.02297800000497,
+        "prediction": 23.097086999996463
+      },
+      "wrong_estimated_signs": 5,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 24756216606.741467
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.92578125,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.8736842105263158,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.18830799996294445
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 330450033.0793651
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "balanced_sign_agreement": 0.6947368421052631,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 4,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.11513000004015339
+      },
+      "wrong_estimated_signs": 6,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 1282795355.6666667
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "balanced_sign_agreement": 0.6210526315789473,
+      "always_worsens_agreement": 0.7916666666666666,
+      "false_improvement_predictions": 3,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 5,
+        "worsens": 19,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.1959239999678175
+      },
+      "wrong_estimated_signs": 6,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 1109776637.5
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "exact_full",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": 1,
+      "refined_coverage": 1,
+      "corrections": 0,
+      "median_native_query_ms": {
+        "query": 0.18623099998649195
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 0
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.6666666666666666,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.0771580000105132
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 76989938.0739255
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.8095238095238095,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.14080699997975898
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 43522319.33888296
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9127604166666666,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.6666666666666666,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.15234375,
+      "base_coverage": 0.041666666666666664,
+      "refined_coverage": 0.25,
+      "corrections": 328,
+      "median_native_query_ms": {
+        "certificate": 127.26737200000571,
+        "prediction": 14.643143000000691
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 59180568.378599726
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "pca_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9153645833333334,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.6666666666666666,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.1015625,
+      "base_coverage": 0.041666666666666664,
+      "refined_coverage": 0.20833333333333334,
+      "corrections": 342,
+      "median_native_query_ms": {
+        "certificate": 121.98819049999088,
+        "prediction": 15.110576999973091
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 55529340.673336506
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "rabitq_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.90234375,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.6428571428571428,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.7306899997274741
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": 0,
+      "estimated_delta_absolute_error": 23143835.86226988
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.23307291666666666,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.041666666666666664,
+      "refined_coverage": 0.041666666666666664,
+      "corrections": 368,
+      "median_native_query_ms": {
+        "certificate": 125.12614950000511,
+        "prediction": 14.88944300001549
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 2300512597.0794315
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.7083333333333334,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.8095238095238095,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.08588100001816201
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 107716596.41402118
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.2708333333333333,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.041666666666666664,
+      "refined_coverage": 0.041666666666666664,
+      "corrections": 368,
+      "median_native_query_ms": {
+        "certificate": 108.42983449998655,
+        "prediction": 14.145940999981121
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 3244172365.3359895
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.67578125,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.7857142857142857,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 2,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.08339400000068053
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 72198638.94444446
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.6666666666666666,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.07731200003036065
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 74097659.25
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.8095238095238095,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 1,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.12176199999203163
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 49620431.458333336
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "exact_full",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": 1,
+      "refined_coverage": 1,
+      "corrections": 0,
+      "median_native_query_ms": {
+        "query": 0.7964199999719312
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 0
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "balanced_sign_agreement": 0.5714285714285714,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 4,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.08191500000975793
+      },
+      "wrong_estimated_signs": 6,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 335150803.7182376
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.9583333333333334,
+      "balanced_sign_agreement": 0.9761904761904762,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 1,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.13262799996027752
+      },
+      "wrong_estimated_signs": 1,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 128935045.34765498
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9348958333333334,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.1640625,
+      "base_coverage": 0.125,
+      "refined_coverage": 0.125,
+      "corrections": 336,
+      "median_native_query_ms": {
+        "certificate": 133.20849300001214,
+        "prediction": 19.13015100001303
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 218644501.6344954
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "pca_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.9254557291666666,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.1103515625,
+      "base_coverage": 0.125,
+      "refined_coverage": 0.125,
+      "corrections": 336,
+      "median_native_query_ms": {
+        "certificate": 127.14347149997707,
+        "prediction": 18.867854999996325
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 218575167.61430836
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "rabitq_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.8932291666666666,
+      "point_sign_agreement": 0.8333333333333334,
+      "balanced_sign_agreement": 0.9047619047619048,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 4,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.8894490001694066
+      },
+      "wrong_estimated_signs": 4,
+      "statistical_coverage": 0,
+      "estimated_delta_absolute_error": 59827671.33902836
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.2630208333333333,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.125,
+      "refined_coverage": 0.125,
+      "corrections": 336,
+      "median_native_query_ms": {
+        "certificate": 132.58711050002603,
+        "prediction": 18.624733999899945
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 9303400398.396261
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.6868489583333334,
+      "point_sign_agreement": 0.9166666666666666,
+      "balanced_sign_agreement": 0.6666666666666666,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.17744899997751418
+      },
+      "wrong_estimated_signs": 2,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 332998073.5595239
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.2962239583333333,
+      "point_sign_agreement": 0.875,
+      "balanced_sign_agreement": 0.5,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 3,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": 0.0,
+      "base_coverage": 0.125,
+      "refined_coverage": 0.125,
+      "corrections": 336,
+      "median_native_query_ms": {
+        "certificate": 114.55426800000623,
+        "prediction": 17.66356899997845
+      },
+      "wrong_estimated_signs": 3,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 12934934834.466974
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": 0.7067057291666666,
+      "point_sign_agreement": 0.8333333333333334,
+      "balanced_sign_agreement": 0.9047619047619048,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 4,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.17456899996659558
+      },
+      "wrong_estimated_signs": 4,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 337505006.4900799
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.7916666666666666,
+      "balanced_sign_agreement": 0.5952380952380952,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 3,
+      "missed_improvement_predictions": 2,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.08308799999667826
+      },
+      "wrong_estimated_signs": 5,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 321667616.8333333
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "requests": 24,
+      "fits": 3,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "balanced_sign_agreement": 1,
+      "always_worsens_agreement": 0.875,
+      "false_improvement_predictions": 0,
+      "missed_improvement_predictions": 0,
+      "true_sign_counts": {
+        "improves": 3,
+        "worsens": 21,
+        "equal": 0
+      },
+      "label_certificate_coverage": null,
+      "base_coverage": null,
+      "refined_coverage": null,
+      "corrections": null,
+      "median_native_query_ms": {
+        "query": 0.12981499997977153
+      },
+      "wrong_estimated_signs": 0,
+      "statistical_coverage": null,
+      "estimated_delta_absolute_error": 108204683.25
+    }
+  ],
+  "native_per_fit": [
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.5,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.99609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.99609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.98046875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9921875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.1484375,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": 0.375
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.0546875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.140625,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9140625,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.93359375,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.1484375,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": 0.375
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.0546875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.140625,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9609375,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.92578125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.93359375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9990234375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.9970703125,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.998046875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.9970703125,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.998046875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.98046875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.986328125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.98828125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.1259765625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.1455078125,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.1884765625,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9326171875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.90625,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9462890625,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.1259765625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.1455078125,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.1884765625,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.94140625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.912109375,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9248046875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "fashion",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9921875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.99609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9921875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9921875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.99609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.98828125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.99609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.98828125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.0546875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.53125,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.15625,
+      "point_sign_agreement": 0.5,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.8671875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.984375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.98046875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.0546875,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.53125,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.15625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.921875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.93359375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.96875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.994140625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.9951171875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.994140625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.994140625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.99609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9951171875,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.98046875,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.9833984375,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9892578125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.1572265625,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.525390625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.1416015625,
+      "point_sign_agreement": 0.5,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.90625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.9375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9560546875,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.1572265625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.525390625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.1416015625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9296875,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.9111328125,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9365234375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "har",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "exact_full",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.93359375,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.375
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.87109375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "ordered_head_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.93359375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9296875,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.375
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.8828125,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "pca_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.93359375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.953125,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.85546875,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "rabitq_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.8984375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.171875,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.34375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.18359375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.734375,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.6953125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sign_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.6953125,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.23828125,
+      "point_sign_agreement": 0.625,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.359375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.21484375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.72265625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.609375,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "sparse_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.6953125,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 32,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "exact_full",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 1.0,
+      "point_sign_agreement": 1,
+      "refined_coverage": 1
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "lightweight_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.951171875,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.912109375,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "ordered_head_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.94140625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.9375,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.90625,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "pca_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9326171875,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.927734375,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.8447265625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "rabitq_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.9072265625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.22265625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.32421875,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.2421875,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.7236328125,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.689453125,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sign_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.6474609375,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.3056640625,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": 0.25
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.3291015625,
+      "point_sign_agreement": 1,
+      "refined_coverage": 0
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_certificate",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.25390625,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": 0.125
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": 0.7451171875,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": 0.638671875,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "sparse_rp_raw",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": 0.736328125,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.875,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m16",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 0.75,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 557,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 563,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    },
+    {
+      "dataset": "text",
+      "n": 128,
+      "method": "uniform_coreset_m32",
+      "fit_seed": 569,
+      "requests": 8,
+      "assignment_agreement": null,
+      "point_sign_agreement": 1,
+      "refined_coverage": null
+    }
+  ],
+  "proof_rows": [
+    {
+      "dataset": "fashion",
+      "method": "Exact Full / Groth16",
+      "complete": true,
+      "active_phase_seconds": 465.51590910799985,
+      "requests": 4,
+      "seconds": 472.22827356000005,
+      "coverage": 4,
+      "fallback": 0,
+      "correct_decisions": true,
+      "scope": "Cold enclosing invocation wall; frozen model supplied; prepare/prove/public replay."
+    },
+    {
+      "dataset": "fashion",
+      "method": "Current centroid certificate",
+      "complete": true,
+      "active_phase_seconds": 388.81000325500014,
+      "requests": 4,
+      "seconds": 401.41752905599975,
+      "coverage": 4,
+      "fallback": 0,
+      "corrections": 0,
+      "correct_decisions": true,
+      "full_over_method": 1.1764017248337997,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "fashion",
+      "method": "PCA certificate",
+      "complete": true,
+      "active_phase_seconds": 389.95308007099965,
+      "requests": 4,
+      "seconds": 401.93012080600005,
+      "coverage": 4,
+      "fallback": 0,
+      "corrections": 0,
+      "correct_decisions": true,
+      "full_over_method": 1.174901429664016,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "fashion",
+      "method": "Sign RP + our certificate adapter",
+      "complete": true,
+      "active_phase_seconds": 825.2306521850003,
+      "requests": 4,
+      "seconds": 845.123742493,
+      "coverage": 3,
+      "fallback": 1,
+      "corrections": 16,
+      "correct_decisions": true,
+      "full_over_method": 0.5587682014079867,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "fashion",
+      "method": "Sparse RP + our certificate adapter",
+      "complete": true,
+      "active_phase_seconds": 821.4988268330003,
+      "requests": 4,
+      "seconds": 840.9919471539996,
+      "coverage": 3,
+      "fallback": 1,
+      "corrections": 16,
+      "correct_decisions": true,
+      "full_over_method": 0.5615134308456431,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "fashion",
+      "method": "ZKML primitive adapter / Halo2",
+      "complete": true,
+      "requests": 4,
+      "seconds": 237.42348517999997,
+      "coverage": 4,
+      "fallback": 0,
+      "correct_decisions": true,
+      "full_over_method": 1.9889703548155122,
+      "scope": "Cold outer invocation totals; diagnostic MockProver excluded, parameter generation included. Different exact-cost output/backend/commitment."
+    },
+    {
+      "dataset": "text",
+      "method": "Exact Full / Groth16",
+      "complete": true,
+      "active_phase_seconds": 228.7686878759987,
+      "requests": 4,
+      "seconds": 235.5530218130002,
+      "coverage": 4,
+      "fallback": 0,
+      "correct_decisions": true,
+      "scope": "Cold enclosing invocation wall; frozen model supplied; prepare/prove/public replay."
+    },
+    {
+      "dataset": "text",
+      "method": "Current centroid certificate",
+      "complete": true,
+      "active_phase_seconds": 640.5122224179994,
+      "requests": 4,
+      "seconds": 662.7481973420007,
+      "coverage": 1,
+      "fallback": 3,
+      "corrections": 50,
+      "correct_decisions": true,
+      "full_over_method": 0.35541857791194686,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "text",
+      "method": "PCA certificate",
+      "complete": true,
+      "active_phase_seconds": 639.5285053699985,
+      "requests": 4,
+      "seconds": 660.8519189299999,
+      "coverage": 1,
+      "fallback": 3,
+      "corrections": 50,
+      "correct_decisions": true,
+      "full_over_method": 0.3564384320686991,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "text",
+      "method": "Sign RP + our certificate adapter",
+      "complete": true,
+      "active_phase_seconds": 732.6528759169973,
+      "requests": 4,
+      "seconds": 758.014089011,
+      "coverage": 0,
+      "fallback": 4,
+      "corrections": 64,
+      "correct_decisions": true,
+      "full_over_method": 0.310750189512087,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "text",
+      "method": "Sparse RP + our certificate adapter",
+      "complete": true,
+      "active_phase_seconds": 688.5340251980003,
+      "requests": 4,
+      "seconds": 712.5222178820002,
+      "coverage": 0,
+      "fallback": 4,
+      "corrections": 64,
+      "correct_decisions": true,
+      "full_over_method": 0.3305904235704967,
+      "scope": "Cold enclosing invocation walls plus basis fitting; correction, validation and freshly generated fallback included. Shared Full denominator is one completed run."
+    },
+    {
+      "dataset": "text",
+      "method": "ZKML primitive adapter / Halo2",
+      "complete": true,
+      "requests": 4,
+      "seconds": 137.41210413299788,
+      "coverage": 4,
+      "fallback": 0,
+      "correct_decisions": true,
+      "full_over_method": 1.7142086812455335,
+      "scope": "Cold outer invocation totals; diagnostic MockProver excluded, parameter generation included. Different exact-cost output/backend/commitment."
+    }
+  ],
+  "truth_classes": {
+    "fashion_n32": {
+      "improves": 3,
+      "worsens": 21,
+      "equal": 0
+    },
+    "fashion_n128": {
+      "improves": 1,
+      "worsens": 23,
+      "equal": 0
+    },
+    "har_n32": {
+      "improves": 2,
+      "worsens": 22,
+      "equal": 0
+    },
+    "har_n128": {
+      "improves": 5,
+      "worsens": 19,
+      "equal": 0
+    },
+    "text_n32": {
+      "improves": 3,
+      "worsens": 21,
+      "equal": 0
+    },
+    "text_n128": {
+      "improves": 3,
+      "worsens": 21,
+      "equal": 0
+    }
+  },
+  "rabitq_followup_complete": true,
+  "warm_comparison_complete": true,
+  "warm_rows": [
+    {
+      "dataset": "fashion",
+      "method": "ordered_head",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 4,
+      "direct_full_requests": 0,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 127.4430917619975,
+      "measured_warm_full_seconds": 283.79908017399885,
+      "full_over_routed": 2.226869077407501,
+      "planner_seconds": 0.899135136998666,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 16,
+      "resources": {
+        "baseline_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/baseline_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/baseline_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793287029.934746,
+          "wall_seconds": 283.1601164189997,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1805959168,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "baseline_verify": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/baseline_full/public",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/baseline_full/pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/baseline_full/task.json"
+          ],
+          "started_unix": 1793287309.722081,
+          "wall_seconds": 0.6389637549991676,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 15327232,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_certificate_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_query",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/routed/base/bundle",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/routed/base/input.json",
+            "-q",
+            "16",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/routed/base/approved.json"
+          ],
+          "started_unix": 1793287338.858437,
+          "wall_seconds": 120.55902434699965,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1251688448,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_certificate": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/routed/public/certificate",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/routed/public/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32/routed/public/certificate_task.json"
+          ],
+          "started_unix": 1793287465.7980165,
+          "wall_seconds": 5.984932277999178,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 22106112,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 283.79908017399885,
+      "shared_full_over_routed": 2.226869077407501
+    },
+    {
+      "dataset": "fashion",
+      "method": "pca",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 4,
+      "direct_full_requests": 0,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 124.10415888100033,
+      "measured_warm_full_seconds": null,
+      "full_over_routed": null,
+      "planner_seconds": 0.9006729220018315,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 0,
+      "resources": {
+        "routed_certificate_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_query",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_pca/routed/base/bundle",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_pca/routed/base/input.json",
+            "-q",
+            "16",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_pca/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_pca/routed/base/approved.json"
+          ],
+          "started_unix": 1793287501.8154566,
+          "wall_seconds": 116.98544616199979,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1244401664,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_certificate": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_pca/routed/public/certificate",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_pca/routed/public/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_pca/routed/public/certificate_task.json"
+          ],
+          "started_unix": 1793287626.315826,
+          "wall_seconds": 6.21803979699871,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 21762048,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 283.79908017399885,
+      "shared_full_over_routed": 2.2867813837417414
+    },
+    {
+      "dataset": "fashion",
+      "method": "sign_rp",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 3,
+      "direct_full_requests": 1,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 215.82639779200326,
+      "measured_warm_full_seconds": null,
+      "full_over_routed": null,
+      "planner_seconds": 0.9258821190014714,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 0,
+      "resources": {
+        "routed_certificate_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_query",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/base/bundle",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/base/input.json",
+            "-q",
+            "16",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/base/approved.json"
+          ],
+          "started_unix": 1793287661.5382996,
+          "wall_seconds": 100.12471485400056,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1252257792,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/routed_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/routed_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793287784.7421954,
+          "wall_seconds": 109.17183985600059,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1826566144,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_certificate": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/public/certificate",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/public/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/public/certificate_task.json"
+          ],
+          "started_unix": 1793287894.991513,
+          "wall_seconds": 5.176398756999333,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 20537344,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_full": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/public/full",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/public/full_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sign_rp/routed/public/full_task.json"
+          ],
+          "started_unix": 1793287899.8292284,
+          "wall_seconds": 0.427562206001312,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 11796480,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 283.79908017399885,
+      "shared_full_over_routed": 1.3149414672041293
+    },
+    {
+      "dataset": "fashion",
+      "method": "sparse_rp",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 3,
+      "direct_full_requests": 1,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 219.67153954199966,
+      "measured_warm_full_seconds": null,
+      "full_over_routed": null,
+      "planner_seconds": 0.7958755440013192,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 0,
+      "resources": {
+        "routed_certificate_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_query",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/base/bundle",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/base/input.json",
+            "-q",
+            "16",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/base/approved.json"
+          ],
+          "started_unix": 1793287929.82703,
+          "wall_seconds": 103.89167272600025,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1255170048,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/routed_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/routed_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793288057.046919,
+          "wall_seconds": 110.20136995599933,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1767276544,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_certificate": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "group_verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/public/certificate",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/public/certificate_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/public/certificate_task.json"
+          ],
+          "started_unix": 1793288167.2226503,
+          "wall_seconds": 4.137653222998779,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 20480000,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_full": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/public/full",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/public/full_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/fashion_n32_sparse_rp/routed/public/full_task.json"
+          ],
+          "started_unix": 1793288171.9064057,
+          "wall_seconds": 0.6449680929999886,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 15421440,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 283.79908017399885,
+      "shared_full_over_routed": 1.291924665187401
+    },
+    {
+      "dataset": "text",
+      "method": "sparse_rp",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 0,
+      "direct_full_requests": 4,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 136.95871798499684,
+      "measured_warm_full_seconds": null,
+      "full_over_routed": null,
+      "planner_seconds": 0.45457264699507505,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 0,
+      "resources": {
+        "routed_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sparse_rp/routed/routed_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sparse_rp/routed/routed_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793288184.8831294,
+          "wall_seconds": 135.87040606700066,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1237647360,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_full": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sparse_rp/routed/public/full",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sparse_rp/routed/public/full_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sparse_rp/routed/public/full_task.json"
+          ],
+          "started_unix": 1793288321.006425,
+          "wall_seconds": 0.6337392710011045,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 15396864,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 136.56828854200103,
+      "shared_full_over_routed": 0.9971492910510554
+    },
+    {
+      "dataset": "text",
+      "method": "sign_rp",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 0,
+      "direct_full_requests": 4,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 134.46929954299776,
+      "measured_warm_full_seconds": null,
+      "full_over_routed": null,
+      "planner_seconds": 0.5351572079980542,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 0,
+      "resources": {
+        "routed_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sign_rp/routed/routed_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sign_rp/routed/routed_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793288333.9677043,
+          "wall_seconds": 133.29774051299864,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1233784832,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_full": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sign_rp/routed/public/full",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sign_rp/routed/public/full_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_sign_rp/routed/public/full_task.json"
+          ],
+          "started_unix": 1793288467.9226727,
+          "wall_seconds": 0.6364018220010621,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 15454208,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 136.56828854200103,
+      "shared_full_over_routed": 1.015609429112346
+    },
+    {
+      "dataset": "text",
+      "method": "pca",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 0,
+      "direct_full_requests": 4,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 136.89679630600222,
+      "measured_warm_full_seconds": null,
+      "full_over_routed": null,
+      "planner_seconds": 0.5169671940020635,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 0,
+      "resources": {
+        "routed_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_pca/routed/routed_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_pca/routed/routed_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793288480.962623,
+          "wall_seconds": 135.747571453001,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1232584704,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_full": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_pca/routed/public/full",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_pca/routed/public/full_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32_pca/routed/public/full_task.json"
+          ],
+          "started_unix": 1793288616.8463204,
+          "wall_seconds": 0.6322576589991513,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 15007744,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 136.56828854200103,
+      "shared_full_over_routed": 0.997600325406689
+    },
+    {
+      "dataset": "text",
+      "method": "ordered_head",
+      "complete": true,
+      "requests": 4,
+      "certificate_requests": 0,
+      "direct_full_requests": 4,
+      "selected_correction_proofs": 0,
+      "measured_warm_routed_seconds": 136.53584212399983,
+      "measured_warm_full_seconds": 136.56828854200103,
+      "full_over_routed": 1.0002376402964706,
+      "planner_seconds": 0.5119474900002388,
+      "all_requests_verified": true,
+      "all_decisions_correct": true,
+      "all_intervals_contain_truth": true,
+      "fresh_baseline_request_proofs": 16,
+      "resources": {
+        "routed_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/routed/routed_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/routed/routed_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793288629.7181756,
+          "wall_seconds": 135.38980766799978,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1232748544,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "routed_verify_full": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/routed/public/full",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/routed/public/full_pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/routed/public/full_task.json"
+          ],
+          "started_unix": 1793288764.8123207,
+          "wall_seconds": 0.6340869659998134,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 15671296,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "baseline_full_prove": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "full_reuse",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/baseline_full/private",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-instance",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/baseline_full/input.json",
+            "-q",
+            "8"
+          ],
+          "started_unix": 1793288775.387779,
+          "wall_seconds": 135.9310223930006,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 1237196800,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        },
+        "baseline_verify": {
+          "complete": true,
+          "command": [
+            "/mnt/c/PyProjects/zero-knowledge/tmp/external_baselines_20261027/commitjl-bound-linux",
+            "-phase",
+            "verify",
+            "-out",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/baseline_full/public",
+            "-max-constraints",
+            "1600000",
+            "-reps",
+            "1",
+            "-warmup",
+            "0",
+            "-trust",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/baseline_full/pin.json",
+            "-public-task",
+            "/mnt/c/PyProjects/zero-knowledge/code/validation/outputs/published_baseline_gate_20261029/warm_followup_v2/text_n32/baseline_full/task.json"
+          ],
+          "started_unix": 1793288910.8463387,
+          "wall_seconds": 0.6372661490004248,
+          "returncode": 0,
+          "stop": null,
+          "peak_process_tree_rss_bytes": 15360000,
+          "workers": 8,
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "os": "Linux/WSL",
+          "expected_failure": false
+        }
+      },
+      "timing": "Invocation wall sums for fresh query/refinement generation and public replay; native planner charged. Existing setup/old evidence excluded equally; export/copy and independent oracle validation excluded.",
+      "repetitions": 1,
+      "exploratory": true,
+      "shared_warm_full_seconds": 136.56828854200103,
+      "shared_full_over_routed": 1.0002376402964706
+    }
+  ],
+  "validation_tests": {
+    "complete": true,
+    "command": [
+      "/home/koush/.local/share/commitjl-external/python/bin/python",
+      "-m",
+      "pytest",
+      "code/tests/test_published_audit_baselines.py",
+      "code/tests/test_rabitq_audit_reference.py",
+      "code/tests/test_published_baseline_gate_reporting.py",
+      "code/tests/test_cost_aware.py",
+      "code/tests/test_referee_learning_workflows.py",
+      "-q"
+    ],
+    "started_unix": 1793286957.8741376,
+    "wall_seconds": 8.997578800000156,
+    "returncode": 0,
+    "stop": null,
+    "peak_process_tree_rss_bytes": 178704384,
+    "workers": 8,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "os": "Linux/WSL",
+    "expected_failure": false
+  },
+  "validation_test_summary": "28 passed in 7.70s",
+  "measurement_environment": {
+    "recorded_utc": "2026-10-29T14:03:52.311699+00:00",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "executable": "/home/koush/.local/share/commitjl-external/python/bin/python",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "logical_cpu_count": 16,
+    "cpu_models": [
+      "AMD Ryzen 7 5800H with Radeon Graphics"
+    ],
+    "allowed_cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "package_versions": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "pandas": "3.1.0",
+      "psutil": "7.2.2",
+      "threadpoolctl": "3.7.0",
+      "pytest": null
+    },
+    "note": "Read-only metadata. Per-attempt receipts hold actual proof worker/affinity settings and process-tree RSS."
+  },
+  "paper_and_methodology_unchanged": true,
+  "papers": {
+    "sign_rp": {
+      "title": "Random Projections for k-means Clustering",
+      "authors": "Boutsidis, Zouzias, Drineas",
+      "venue": "NeurIPS 2010",
+      "url": "https://papers.neurips.cc/paper/3901-random-projections-for-k-means-clustering.pdf",
+      "implementation": "Algorithm 1 random sign embedding; supplied banks, no cluster refit; rank63 is an empirical budget, not a certified theorem parameter."
+    },
+    "sparse_rp": {
+      "title": "Database-friendly random projections: Johnson-Lindenstrauss with binary coins",
+      "authors": "Achlioptas",
+      "venue": "JCSS 2003",
+      "url": "https://doi.org/10.1016/S0022-0000(03)00025-4",
+      "implementation": "Independent -sqrt(3/m),0,+sqrt(3/m) entries with probabilities1/6,2/3,1/6."
+    },
+    "lightweight_coreset": {
+      "title": "Scalable k-Means Clustering via Lightweight Coresets",
+      "authors": "Bachem, Lucic, Krause",
+      "venue": "KDD 2018",
+      "url": "https://las.inf.ethz.ch/files/bachem18scalable.pdf",
+      "implementation": "Algorithm1, sampling with replacement, exact importance weights; fixed empirical sample budgets, no claimed epsilon/delta at these sizes."
+    },
+    "ezdps": {
+      "title": "ezDPS: An Efficient and Zero-Knowledge Machine Learning Inference Pipeline",
+      "venue": "PoPETs 2023",
+      "url": "https://petsymposium.org/popets/2023/popets-2023-0061.pdf",
+      "implementation": "Applicability review only: DWT-PCA-SVM model-private inference, not this private-catalog cost-change task. No runtime imported."
+    },
+    "zhang2021": {
+      "title": "Verifiable k-means clustering scheme with privacy-preserving",
+      "venue": "Journal of Computer Applications 2021",
+      "url": "https://www.joca.cn/EN/10.11772/j.issn.1001-9081.2020060766",
+      "implementation": "Applicability review only: multiparty outsourced clustering using multiplication triples and garbled circuits, with a different statement and interaction contract."
+    },
+    "rabitq": {
+      "title": "RaBitQ: Quantizing High-Dimensional Vectors with a Theoretical Error Bound for Approximate Nearest Neighbor Search",
+      "authors": "Gao and Long",
+      "venue": "SIGMOD2024",
+      "url": "https://arxiv.org/abs/2405.12497"
+    }
+  },
+  "scope": "New exploratory fits, three per source. Native and proof times are separate. No unmodified external-system superiority claim."
+}

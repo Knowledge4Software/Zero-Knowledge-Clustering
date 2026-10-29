@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "returncode": 0,
+  "wall_seconds": 2.812999999965541,
+  "peak_rss_bytes": 66842624,
+  "attempts": [
+    {
+      "complete": true,
+      "running": false,
+      "pid": 4188,
+      "started_unix": 1792918131.5960565,
+      "wall_seconds": 2.812999999965541,
+      "peak_rss_bytes": 66842624,
+      "returncode": 0,
+      "stop": null
+    }
+  ],
+  "resumed": false,
+  "timing_basis": "Sum of active invocation wall times; interrupted attempts retain their last checkpoint. Offline gaps excluded.",
+  "interrupted_checkpoint": false
+}

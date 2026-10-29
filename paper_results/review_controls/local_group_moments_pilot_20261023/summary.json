@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "elapsed_seconds": 97.73500000004424,
+  "unique_requests": 16,
+  "unique_regressions": 8,
+  "method_request_checks": 32,
+  "all_exact_changes_match": true,
+  "all_stable_assignments_checked": true,
+  "evidence_scope": "Native correctness and uncertain-row count only. Group moments/membership are not yet cryptographically authenticated.",
+  "grouping": "Fixed approximate deployed labels, chosen once before future centers; no claim that group labels are exact.",
+  "targeted_tests_passed": 19,
+  "tested_regression_outcomes_exact_for_both_methods": 8,
+  "additional_moment_scope": "Fixed full audit catalog, same k and public center correspondence; arbitrary subsets need separately authenticated moments."
+}

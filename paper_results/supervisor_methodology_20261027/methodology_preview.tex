@@ -1,0 +1,21 @@
+\documentclass[5p,times,twocolumn]{elsarticle}
+\usepackage[T1]{fontenc}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{amsmath,amssymb,amsthm,graphicx,booktabs,enumitem,url}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Methodology: Reusable Prototype-Update Certificates}}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\newtheorem{proposition}{Proposition}
+\journal{Neurocomputing}
+\begin{document}
+\setcounter{section}{2}
+\input{methodology.tex}
+\appendix
+\input{methodology_appendix.tex}
+\bibliographystyle{elsarticle-num}
+\bibliography{methodology_references}
+\end{document}

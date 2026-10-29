@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "native_cells": 2160,
+  "refitted_prototype_models": 45,
+  "randomized_split_seed_replications": 15,
+  "dependent_age_configurations": 90,
+  "proof_inputs": 24,
+  "numerical_false_decisions": 0,
+  "scope": "Native grid, not proof completion",
+  "protocol_sha256": "45a683ae317410232f8cd54698362a4a88925a79c8bd282fe5f687403ef9021b"
+}

@@ -1,0 +1,56 @@
+{
+  "inputs": [
+    {
+      "path": "code/validation/outputs/review_update_decisions_20261021T184553Z/manuscript_capture_20261022T123127Z/capture.json",
+      "sha256": "c16e75ade57775864e0ffe93cd969600117b208e2c2dd429ff2911a90c2ee42c"
+    },
+    {
+      "path": "code/validation/outputs/review_update_decisions_20261021T184553Z/native_capture_20261022T0530Z/capture_manifest.json",
+      "sha256": "bfeebe386e1dfe89804be6c65ab59b5b3f8cbf78dab77014c0f5f47d0ad016c4"
+    },
+    {
+      "path": "code/validation/outputs/review_sensitivity_20261021T061346Z/proofs_completed_20261021T1900Z/capture.json",
+      "sha256": "7a1050f0ce5b3a1d10279e4853eb49f56ab25e186f94f1f08a33fb4a5af44cc7"
+    },
+    {
+      "path": "code/validation/outputs/review_sensitivity_20261021T061346Z/prepared/protocol.json",
+      "sha256": "4e8cfec8ac51333c62110551427f5e8e1022f0fb800cf5a624a8f0f0663fa90b"
+    }
+  ],
+  "files": [
+    {
+      "path": "completed_alternatives.csv",
+      "sha256": "c65b2fb90e6b1d6d3abd83cf977d2dd51eca432f63b9ce7c8e95cf99f50578df"
+    },
+    {
+      "path": "completed_costs.tex",
+      "sha256": "ef7ad2693bd4c4609f41f88231903eeedfea8df5c98233e77466fb0f98fb0f50"
+    },
+    {
+      "path": "controlled_rank.tex",
+      "sha256": "8450844070221b3639df6a04a9a8dc98e63d1916014df66cbcc1643b6b163a08"
+    },
+    {
+      "path": "cost_decisions.pdf",
+      "sha256": "9c453cb354ab2feb7ba0ae245f5f7c3ea56b9340d7d2556d94ab10728c7acb2d"
+    },
+    {
+      "path": "native_decisions.tex",
+      "sha256": "fef34f52b621a724e4c4b1b9a390064b75093cd74293314afa04edb3921bb7f2"
+    },
+    {
+      "path": "native_groups.csv",
+      "sha256": "b1c3d5efc6b42fa9459846b697a147822596e351c6f51cfe5d8a48a8b9c10937"
+    },
+    {
+      "path": "resources.tex",
+      "sha256": "08eeeffccd9d1124285179d05e4e0118a24eaf384c41269f1fb3e87586cda4e9"
+    },
+    {
+      "path": "snapshot.json",
+      "sha256": "c006d215af15e262fa88041db111f81ec84526ff976d9987e7471dc3813c0d5d"
+    }
+  ],
+  "validation": "PASS: capture hashes, complete cases, public replay counts, timing repetitions, reconstructed costs and retained outcomes.",
+  "boundary": "Numerical native grid, worker-replayed proofs and fresh local artifact replays are distinct evidence cohorts."
+}

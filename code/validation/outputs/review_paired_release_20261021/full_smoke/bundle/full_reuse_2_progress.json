@@ -1,0 +1,118 @@
+{
+  "phase": "full_reuse",
+  "status": "failed",
+  "complete": false,
+  "constraints": 4947,
+  "proving_key_bytes": 1010947,
+  "verifying_key_bytes": 1136,
+  "compile_seconds": 0.0439826,
+  "setup_seconds": 0.8352391,
+  "load_seconds": 0.0005646,
+  "native_prepare_seconds": 0,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+    "ch": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+    "ce": "0",
+    "ct": "0",
+    "context": "17941311969898880747988994992970909547210556740328062949781928428355898868335"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1
+      ],
+      "assign": [
+        0,
+        0
+      ],
+      "psi": "10",
+      "prove_seconds": [
+        0.0959985
+      ],
+      "verify_seconds": [
+        0.0035032
+      ],
+      "witness_seconds": 0.0005976,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 652,
+      "file": "full_reuse/s000_q2_0000.proof"
+    },
+    {
+      "id": 1,
+      "indices": [
+        2,
+        3
+      ],
+      "assign": [
+        1,
+        0
+      ],
+      "psi": "12",
+      "prove_seconds": [
+        0.0882074
+      ],
+      "verify_seconds": [
+        0.0027396
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 652,
+      "file": "full_reuse/s000_q2_0001.proof"
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1
+      ],
+      "assign": [
+        0,
+        0
+      ],
+      "psi": "10",
+      "prove_seconds": [
+        0.0938087
+      ],
+      "verify_seconds": [
+        0.0021797
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 652,
+      "file": "full_reuse/s001_q2_0000.proof",
+      "centre_set": 1
+    },
+    {
+      "id": 1,
+      "indices": [
+        2,
+        3
+      ],
+      "assign": [
+        1,
+        0
+      ],
+      "psi": "12",
+      "prove_seconds": [
+        0.1003405
+      ],
+      "verify_seconds": [
+        0.0030658
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 652,
+      "file": "full_reuse/s001_q2_0001.proof",
+      "centre_set": 1
+    }
+  ],
+  "verified": 4,
+  "wall_seconds": 0
+}

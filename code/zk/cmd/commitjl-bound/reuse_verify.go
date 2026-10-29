@@ -13,8 +13,9 @@ import (
 // The expected task is supplied independently of prover phase metadata. It
 // contains only intended public centers and approved ordered query subsets.
 type PublicTask struct {
-	Centers [][][]int64 `json:"reuse_centers"`
-	Queries [][]int     `json:"queries"`
+	Centers        [][][]int64 `json:"reuse_centers"`
+	Queries        [][]int     `json:"queries"`
+	ComparisonBase [][]int64   `json:"comparison_base,omitempty"`
 }
 
 // Every requested batch must have a pinned query key for every changing-center
@@ -26,6 +27,15 @@ func validateChangingTaskCoverage(keys []string, task PublicTask) error {
 	for _, key := range keys {
 		available[key] = true
 		switch {
+		case strings.HasPrefix(key, "family_affine_"):
+			kinds["family_affine"] = true
+		case strings.HasPrefix(key, "relative_reuse_"):
+			kinds["relative_reuse"] = true
+		case strings.HasPrefix(key, "paired_change_"):
+			if len(task.ComparisonBase) < 2 {
+				return fmt.Errorf("paired change requires independently approved base centers")
+			}
+			kinds["paired_change"] = true
 		case strings.HasPrefix(key, "reuse_certified_"):
 			kinds["reuse_certified"] = true
 		case strings.HasPrefix(key, "full_reuse_"):
@@ -54,7 +64,7 @@ func validateChangingTaskCoverage(keys []string, task PublicTask) error {
 func verifyChangingTaskCoverage(keys []string, taskPath string) error {
 	changing := false
 	for _, key := range keys {
-		changing = changing || strings.HasPrefix(key, "reuse_") || strings.HasPrefix(key, "full_reuse_")
+		changing = changing || strings.HasPrefix(key, "family_affine_") || strings.HasPrefix(key, "relative_reuse_") || strings.HasPrefix(key, "reuse_") || strings.HasPrefix(key, "full_reuse_") || strings.HasPrefix(key, "paired_change_")
 	}
 	if !changing {
 		return nil
@@ -81,11 +91,23 @@ func verifyChangingPhase(trust Trust, m c.BoundModel, s c.BoundStatement, key, t
 		return fmt.Errorf("empty approved task")
 	}
 	kind := "reuse"
+	if strings.HasPrefix(key, "family_affine_") {
+		kind = "family_affine"
+	}
+	if strings.HasPrefix(key, "relative_reuse_") {
+		kind = "relative_reuse"
+	}
 	if strings.HasPrefix(key, "reuse_certified_") {
 		kind = "reuse_certified"
 	}
 	if strings.HasPrefix(key, "full_reuse_") {
 		kind = "full_reuse"
+	}
+	if strings.HasPrefix(key, "paired_change_") {
+		kind = "paired_change"
+		if len(task.ComparisonBase) != m.K {
+			return fmt.Errorf("paired comparison base shape differs from model")
+		}
 	}
 	var q, knew int
 	if _, err := fmt.Sscanf(key, kind+"_%d_k%d", &q, &knew); err != nil || key != fmt.Sprintf("%s_%d_k%d", kind, q, knew) {
@@ -119,6 +141,26 @@ func verifyChangingPhase(trust Trust, m c.BoundModel, s c.BoundStatement, key, t
 	if err != nil {
 		return err
 	}
+	var pairedParameters []*c.PairedParameters
+	var relativeParameters []*c.RelativeReuseParameters
+	if kind == "relative_reuse" {
+		for _, centers := range task.Centers {
+			p, e := c.NewRelativeReuseParameters(m, centers)
+			if e != nil {
+				return e
+			}
+			relativeParameters = append(relativeParameters, p)
+		}
+	}
+	if kind == "paired_change" {
+		for _, centers := range task.Centers {
+			p, e := c.PairedChangeParameters(m, task.ComparisonBase, centers)
+			if e != nil {
+				return e
+			}
+			pairedParameters = append(pairedParameters, p)
+		}
+	}
 	for ordinal, sample := range phase.Samples {
 		set, id := ordinal/len(queries), ordinal%len(queries)
 		file := fmt.Sprintf("%s/s%03d_q%d_%04d.proof", kind, set, q, id)
@@ -126,8 +168,14 @@ func verifyChangingPhase(trust Trust, m c.BoundModel, s c.BoundStatement, key, t
 			return fmt.Errorf("reuse proof identity, center set or indices differ from approved task")
 		}
 		var public frontend.Circuit
-		if kind == "full_reuse" {
+		if kind == "family_affine" {
+			public, err = c.BoundFamilyAffinePublic(m, s, task.Centers[set], sample.Indices, sample.Psi)
+		} else if kind == "paired_change" {
+			public, err = c.BoundPairedChangePublicPrepared(m, s, pairedParameters[set], sample.Indices, sample.ChangeLower, sample.ChangeUpper)
+		} else if kind == "full_reuse" {
 			public, err = c.BoundFullReusePublic(m, s, task.Centers[set], sample.Indices, sample.Psi)
+		} else if kind == "relative_reuse" {
+			public, err = c.BoundRelativeReusePublicPrepared(m, s, relativeParameters[set], sample.Indices, sample.Psi, sample.Margin, sample.CertifiedCount, sample.RelativeCount, sample.CostLower, sample.CostUpper)
 		} else if kind == "reuse_certified" {
 			public, err = c.BoundCertifiedReusePublic(m, s, task.Centers[set], sample.Indices, sample.Psi, sample.Margin, sample.CertifiedCount, sample.CostLower, sample.CostUpper)
 		} else {

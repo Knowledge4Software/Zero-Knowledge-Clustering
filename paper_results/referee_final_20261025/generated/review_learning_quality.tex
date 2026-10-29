@@ -1,0 +1,21 @@
+\begin{table*}[tbp]
+\centering
+\caption{Native quality on 1,024-record catalogs. Image rows pool four new seeds and deployed ages 1/8; HAR and neural text pool two row-disjoint fitted configurations with six new-training-minibatch proposals each. HAR uses six centers and neural text five. Coverage is before full-catalog fallback. Agreement, individual-label certificates and update decisions concern different outputs. Below 99 counts requests missing the working agreement target; 0/0 means no regression occurred.}
+\label{tab:review-quality}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{llrrrrrrr}
+\toprule
+Data & Basis & Updates & Regressions & Mean agr. & Worst & Label cert. & Exact rows & Below 99\\
+\midrule
+Fashion & Centroid & 28/28 & 5/5 & 99.948 & 99.805 & 98.982 & 0 & 0\\
+Fashion & PCA & 28/28 & 5/5 & 99.916 & 99.707 & 98.525 & 14 & 0\\
+MNIST & Centroid & 32/32 & 0/0 & 99.942 & 99.707 & 96.613 & 0 & 0\\
+MNIST & PCA & 32/32 & 0/0 & 99.887 & 99.609 & 95.990 & 0 & 0\\
+HAR & Centroid & 11/12 & 3/4 & 99.691 & 99.023 & 92.871 & 24 & 0\\
+HAR & PCA & 11/12 & 3/4 & 99.642 & 98.926 & 91.829 & 23 & 1\\
+Neural text & Centroid & 8/12 & 0/4 & 96.370 & 92.188 & 28.743 & 64 & 12\\
+Neural text & PCA & 8/12 & 0/4 & 95.793 & 91.992 & 22.176 & 64 & 12\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

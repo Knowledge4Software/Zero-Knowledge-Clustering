@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "all_intervals_contain_full": true,
+  "no_wrong_decisions": true,
+  "decisions": [
+    {
+      "decision": "worsening",
+      "denominator": "19342813113834066795298816",
+      "lower": "22978567382892748447213231800320",
+      "refined_rows": 2,
+      "set": 0,
+      "upper": "25302875432973530128800649576448"
+    },
+    {
+      "decision": "worsening",
+      "denominator": "19342813113834066795298816",
+      "lower": "3023313676222141330507424805683200",
+      "refined_rows": 0,
+      "set": 1,
+      "upper": "4164967498129621318252152349523968"
+    },
+    {
+      "decision": "worsening",
+      "denominator": "19342813113834066795298816",
+      "lower": "3169533407696621931583162380451840",
+      "refined_rows": 0,
+      "set": 2,
+      "upper": "5394935057130212405231223136321536"
+    },
+    {
+      "decision": "worsening",
+      "denominator": "19342813113834066795298816",
+      "lower": "2799960031245616274680215123263488",
+      "refined_rows": 0,
+      "set": 3,
+      "upper": "5233096143865884381702026189340672"
+    }
+  ],
+  "proposal_updates": 4,
+  "conclusive_without_fallback": 4,
+  "fallback_updates": 0,
+  "new_refinement_proofs": 2,
+  "base_public_proofs": 164,
+  "fresh_fallback_proofs": 0,
+  "base_active_seconds": 613.2509999999311,
+  "refinement_active_seconds": 52.43900000001304,
+  "fallback_active_seconds": 0.0,
+  "active_phase_seconds_including_fitting_and_fallback": 665.6899999999441,
+  "full_reference_active_seconds": 1312.0770000000484,
+  "full_over_group_active_phase": 1.9710030194236936,
+  "timing_scope": "Measured reusable base component sum plus measured selection, lazy refinement setup, proof phase, full public replay and fresh residual Full fallback. Base work is shared, not a newly repeated end-to-end trial. Historical base fallback is excluded because this algorithm refines before fallback."
+}

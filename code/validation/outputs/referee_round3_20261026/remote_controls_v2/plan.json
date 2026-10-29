@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "source_sha256": {
+    "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_switching_mature_n128\\ordered_head\\head_r63\\input.json": "a82f3c6ff1bae3a0c62b08ed60327ed5f3cffbfa48d632d28a2f7d8becaea8f6",
+    "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_switching_mature_n128\\ordered_head\\full\\input.json": "54dba7d7de738be88e390d070081c0646979534fb67015de9b9a1eadad293f51",
+    "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_switching_mature_n128\\ordered_head\\auxiliary_basis.json": "353e0489d8a483602c9933b7d9433d83a1e681e51867527182578c919dee5c53",
+    "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_switching_mature_n128\\pca\\head_r63\\input.json": "685e502eeb4fb875402f5309917a218d82e1114d6341fa7493bd9b0fc741121f",
+    "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_switching_mature_n128\\pca\\full\\input.json": "54dba7d7de738be88e390d070081c0646979534fb67015de9b9a1eadad293f51",
+    "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_switching_mature_n128\\pca\\auxiliary_basis.json": "8b7c5b3fbc3c7ac3f571d8d70488ca6f1774c62af8d7d69c85d78eda4b3a885a"
+  },
+  "staged_sha256": {
+    "staged/ordered_head/auxiliary_basis.json": "d0f824970df7fc44d6ffac87987483ce70b0fe807a542053e79625c9c89ef209",
+    "staged/ordered_head/protocol.json": "de2584520ed9f6cd2915f4c82c3c1a60cf54a6846eea16708b8bb669359767e8",
+    "staged/pca/auxiliary_basis.json": "7930cd0e1942afe1ce5afd2ba639c3b369c29220a10284d306fb71b99cc1ac12",
+    "staged/pca/protocol.json": "a351ed80f461692dd59d5de8f3c7b736f5b120b279a2d906c67f0494901ee8e2",
+    "staged/ordered_head/full/input.json": "54dba7d7de738be88e390d070081c0646979534fb67015de9b9a1eadad293f51",
+    "staged/ordered_head/head_r63/input.json": "a82f3c6ff1bae3a0c62b08ed60327ed5f3cffbfa48d632d28a2f7d8becaea8f6",
+    "staged/pca/full/input.json": "54dba7d7de738be88e390d070081c0646979534fb67015de9b9a1eadad293f51",
+    "staged/pca/head_r63/input.json": "685e502eeb4fb875402f5309917a218d82e1114d6341fa7493bd9b0fc741121f"
+  },
+  "workers": 4,
+  "repetitions": 3,
+  "catalog_records": 128,
+  "methods": [
+    "reusable_exact_full",
+    "moment_switch_centroid",
+    "moment_switch_pca",
+    "online_affine_rebuild",
+    "exact_plonk_backend_control"
+  ],
+  "ranks": {
+    "prediction": 63,
+    "certificate": 79
+  },
+  "precision_bits": 14,
+  "refinement_cap": 16,
+  "before_timing": [
+    "compact_real_proof_tamper_smoke",
+    "refinement_real_proof_tamper_smoke",
+    "plonk_small_complete_catalog_smoke"
+  ],
+  "ordering": "Each repetition generates a fresh Full control required by subsequent checks. Compact basis order alternates. Online affine and PLONK run after the first matched repetition. Failures stop the queue and remain charged.",
+  "accounting": "One host only. Fresh keys/proofs for each timing repetition; fresh fallback generation if needed. Frozen fitted models are inputs to this control, and training/fitting is excluded consistently. This differs from the historical laptop cold-fitting totals.",
+  "inference": "Three timing repetitions of one diagnostic fit do not establish fit independence, production scale or superiority to optimized matrix-product protocols.",
+  "remaining_scientific_work": [
+    "Frozen-profile independent seeds/splits",
+    "N>=10000 (16384 real rows for the power-of-two implementation)",
+    "k=10,20 sweep",
+    "A specialized optimized exact matrix-product protocol",
+    "Stronger output privacy if aggregate hiding is required"
+  ]
+}

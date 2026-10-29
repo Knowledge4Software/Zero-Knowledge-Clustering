@@ -1,0 +1,293 @@
+{
+  "complete": true,
+  "suite": "quick",
+  "requests": 6,
+  "all_intervals_contain_truth": true,
+  "false_conclusive": 0,
+  "native_only": true,
+  "elapsed_seconds": 127.81199999991804,
+  "results": [
+    {
+      "idea": "aggregate",
+      "variant": "base63",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 325,
+      "private_aggregate_scalars_max": 650
+    },
+    {
+      "idea": "aggregate",
+      "variant": "jl_orthogonal_r79_s20261026",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 405,
+      "private_aggregate_scalars_max": 810
+    },
+    {
+      "idea": "aggregate",
+      "variant": "jl_orthogonal_r79_s20261027",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 405,
+      "private_aggregate_scalars_max": 810
+    },
+    {
+      "idea": "aggregate",
+      "variant": "jl_orthogonal_r79_s20261028",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 405,
+      "private_aggregate_scalars_max": 810
+    },
+    {
+      "idea": "aggregate",
+      "variant": "jl_orthogonal_r95_s20261026",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 485,
+      "private_aggregate_scalars_max": 970
+    },
+    {
+      "idea": "aggregate",
+      "variant": "jl_orthogonal_r95_s20261027",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 485,
+      "private_aggregate_scalars_max": 970
+    },
+    {
+      "idea": "aggregate",
+      "variant": "jl_orthogonal_r95_s20261028",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 485,
+      "private_aggregate_scalars_max": 970
+    },
+    {
+      "idea": "aggregate",
+      "variant": "learned79",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0,
+      "exact_moment_fallbacks": 6,
+      "private_aggregate_scalars_min": 405,
+      "private_aggregate_scalars_max": 810
+    },
+    {
+      "idea": "basis",
+      "variant": "base63",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0
+    },
+    {
+      "idea": "basis",
+      "variant": "jl_orthogonal_r79_s20261026",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0
+    },
+    {
+      "idea": "basis",
+      "variant": "jl_orthogonal_r79_s20261027",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0
+    },
+    {
+      "idea": "basis",
+      "variant": "jl_orthogonal_r79_s20261028",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0
+    },
+    {
+      "idea": "basis",
+      "variant": "jl_orthogonal_r95_s20261026",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0
+    },
+    {
+      "idea": "basis",
+      "variant": "jl_orthogonal_r95_s20261027",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0
+    },
+    {
+      "idea": "basis",
+      "variant": "jl_orthogonal_r95_s20261028",
+      "requests": 6,
+      "conclusive": 0,
+      "regressions": 6,
+      "regressions_detected": 0
+    },
+    {
+      "idea": "basis",
+      "variant": "learned79",
+      "requests": 6,
+      "conclusive": 4,
+      "regressions": 6,
+      "regressions_detected": 4
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m16_s20261026",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 34,
+      "maximum_exact_rows": 22
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m16_s20261027",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 37,
+      "maximum_exact_rows": 25
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m16_s20261028",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 35,
+      "maximum_exact_rows": 24
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m32_s20261026",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 35,
+      "maximum_exact_rows": 23
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m32_s20261027",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 35,
+      "maximum_exact_rows": 23
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m32_s20261028",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 33,
+      "maximum_exact_rows": 22
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m64_s20261026",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 33,
+      "maximum_exact_rows": 22
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m64_s20261027",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 33,
+      "maximum_exact_rows": 22
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m64_s20261028",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 33,
+      "maximum_exact_rows": 22
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m8_s20261026",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 36,
+      "maximum_exact_rows": 24
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m8_s20261027",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 39,
+      "maximum_exact_rows": 27
+    },
+    {
+      "idea": "refinement",
+      "variant": "jl_m8_s20261028",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 36,
+      "maximum_exact_rows": 25
+    },
+    {
+      "idea": "refinement",
+      "variant": "width",
+      "requests": 6,
+      "conclusive": 6,
+      "regressions": 6,
+      "regressions_detected": 6,
+      "total_exact_rows": 34,
+      "maximum_exact_rows": 23
+    }
+  ]
+}

@@ -91,6 +91,14 @@ func BoundReusePublic(m BoundModel, s BoundStatement, centers [][]int64, indices
 	if err != nil {
 		return nil, err
 	}
+	return boundReusePublicFromStats(m, s, heads, offs, indices, psi, margin)
+}
+
+// heads/offs must be derived from the verifier's approved centers.
+func boundReusePublicFromStats(m BoundModel, s BoundStatement, heads [][]*big.Int, offs []*big.Int, indices []int, psi, margin string) (*BoundReuseQuery, error) {
+	if err := validatePublicIndices(m, indices); err != nil {
+		return nil, err
+	}
 	cx, ch, ce, ct, ctx, err := s.Values(m)
 	if err != nil {
 		return nil, err
@@ -107,7 +115,7 @@ func BoundReusePublic(m BoundModel, s BoundStatement, centers [][]int64, indices
 	if pv.Cmp(mul(distance, bi(int64(len(indices))))) > 0 || mv.Cmp(mul(score, bi(int64(len(indices))))) > 0 {
 		return nil, fmt.Errorf("reuse output exceeds integer bound")
 	}
-	c := NewBoundReuseQuery(m, len(indices), len(centers))
+	c := NewBoundReuseQuery(m, len(indices), len(heads))
 	c.CX, c.CH, c.CE, c.CT, c.Context, c.Psi, c.MarginSum = cx, ch, ce, ct, ctx, pv, mv
 	for j, h := range heads {
 		for t, v := range h {

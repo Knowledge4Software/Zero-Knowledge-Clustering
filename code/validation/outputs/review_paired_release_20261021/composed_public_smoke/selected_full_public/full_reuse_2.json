@@ -1,0 +1,104 @@
+{
+  "phase": "full_reuse",
+  "status": "complete",
+  "complete": true,
+  "constraints": 4815,
+  "proving_key_bytes": 991659,
+  "verifying_key_bytes": 1008,
+  "compile_seconds": 0.0407251,
+  "setup_seconds": 0.5443608,
+  "load_seconds": 0.0005607,
+  "native_prepare_seconds": 0,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+    "ch": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+    "ce": "0",
+    "ct": "0",
+    "context": "17941311969898880747988994992970909547210556740328062949781928428355898868335"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1
+      ],
+      "psi": "8",
+      "prove_seconds": [
+        0.0584253
+      ],
+      "verify_seconds": [
+        0.0028117
+      ],
+      "witness_seconds": 0.0004619,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 524,
+      "file": "full_reuse/s000_q2_0000.proof",
+      "centre_set": 0
+    },
+    {
+      "id": 1,
+      "indices": [
+        2,
+        3
+      ],
+      "psi": "11",
+      "prove_seconds": [
+        0.0580607
+      ],
+      "verify_seconds": [
+        0.0042981
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 524,
+      "file": "full_reuse/s000_q2_0001.proof",
+      "centre_set": 0
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1
+      ],
+      "psi": "8",
+      "prove_seconds": [
+        0.0587132
+      ],
+      "verify_seconds": [
+        0.0022905
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 524,
+      "file": "full_reuse/s001_q2_0000.proof",
+      "centre_set": 1
+    },
+    {
+      "id": 1,
+      "indices": [
+        2,
+        3
+      ],
+      "psi": "7",
+      "prove_seconds": [
+        0.056051
+      ],
+      "verify_seconds": [
+        0.0023878
+      ],
+      "witness_seconds": 0,
+      "native_answer_seconds": 0,
+      "proof_bytes": 196,
+      "public_witness_bytes": 524,
+      "file": "full_reuse/s001_q2_0001.proof",
+      "centre_set": 1
+    }
+  ],
+  "verified": 4,
+  "wall_seconds": 1.0472557
+}

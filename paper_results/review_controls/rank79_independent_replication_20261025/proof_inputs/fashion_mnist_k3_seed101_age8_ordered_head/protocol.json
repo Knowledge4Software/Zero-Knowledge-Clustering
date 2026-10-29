@@ -1,0 +1,39 @@
+{
+  "dataset": "fashion_mnist",
+  "k": 3,
+  "fit_seed": 101,
+  "age": 8,
+  "training_sha256": "6221b4be112594212f1c879e521b72679bd6588d66578755b5e5a29d9c1d10d6",
+  "audit_sha256": "a38dd8e9066f1b10bac634ef8328034344b7793bbc8b77a40e336a1756a1b8ac",
+  "source_sample_sha256": "a6a89295dd9775b988289c0763a161fac1556e21d76530d5d2e69e7a394cd20a",
+  "prediction_fitting_seconds": 0.2029999999795109,
+  "auxiliary_fitting_seconds": 0.26500000001396984,
+  "input_scale": "16.058823529411764",
+  "lloyd_steps": [
+    8,
+    9,
+    12,
+    16,
+    24
+  ],
+  "source_fit": "fashion_mnist_k3_seed101_age8",
+  "representation": "ordered_head",
+  "n": 128,
+  "native_n": 1024,
+  "fitting_seconds": 0.2029999999795109,
+  "selected_source_sets": [
+    0,
+    1,
+    2
+  ],
+  "duplicate_source_sets": [
+    3,
+    4
+  ],
+  "selection": "First128 pinned audit rows, all4 predeclared training-only updates; exact duplicate center sets cached before evaluating outcomes. No outcome/accuracy selection.",
+  "timing": "Fresh matched Full and compact63/79, cold setup, generation, public-only replay, and newly generated fallback for every unresolved update. One repetition on a laptop.",
+  "batches": {
+    "full": 8,
+    "compact": 16
+  }
+}

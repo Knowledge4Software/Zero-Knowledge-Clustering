@@ -1,0 +1,857 @@
+[
+  {
+    "bits": 6,
+    "set": 1,
+    "truth": -1829166573,
+    "lower": "-200044184068815265792",
+    "upper": "-92362055413051138048",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6406053487116663
+  },
+  {
+    "bits": 6,
+    "set": 2,
+    "truth": -2936267728,
+    "lower": "-298761559426261655552",
+    "upper": "-130860822978899566592",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.5580739321076282
+  },
+  {
+    "bits": 6,
+    "set": 3,
+    "truth": -3494770306,
+    "lower": "-353503792423497236480",
+    "upper": "-145406296510190387200",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 3.1704969906406117
+  },
+  {
+    "bits": 6,
+    "set": 4,
+    "truth": -3693120664,
+    "lower": "-407737769381310504960",
+    "upper": "-132244814241133977600",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 4.19730944565761
+  },
+  {
+    "bits": 6,
+    "set": 5,
+    "truth": -3944841462,
+    "lower": "-441835174668369338368",
+    "upper": "-121318076492045148160",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 4.8832807466373565
+  },
+  {
+    "bits": 6,
+    "set": 6,
+    "truth": -4070770177,
+    "lower": "-454947174843606925312",
+    "upper": "-111496310116020928512",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 5.232691187717923
+  },
+  {
+    "bits": 6,
+    "set": 7,
+    "truth": -4077697771,
+    "lower": "-461682230852212514816",
+    "upper": "-107847400476482895872",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 5.390897473160542
+  },
+  {
+    "bits": 6,
+    "set": 8,
+    "truth": -4005390864,
+    "lower": "-465616852745205407744",
+    "upper": "-98832861565695426560",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 5.588186129516169
+  },
+  {
+    "bits": 6,
+    "set": 9,
+    "truth": -3954001794,
+    "lower": "-467741505264892723200",
+    "upper": "-92920272603442159616",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 5.7106385877723715
+  },
+  {
+    "bits": 6,
+    "set": 10,
+    "truth": -3942991039,
+    "lower": "-472657430088696020992",
+    "upper": "-89497458254840406016",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 5.837684554067234
+  },
+  {
+    "bits": 6,
+    "set": 11,
+    "truth": -3921343712,
+    "lower": "-474653744719465676800",
+    "upper": "-86176678044291497984",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 5.918693857515913
+  },
+  {
+    "bits": 6,
+    "set": 12,
+    "truth": -3914799443,
+    "lower": "-475409216147869081600",
+    "upper": "-84552593140383023104",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 5.954947903522298
+  },
+  {
+    "bits": 6,
+    "set": 13,
+    "truth": -3903115562,
+    "lower": "-476672888154971250688",
+    "upper": "-82031577322880425984",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 6.01261001668594
+  },
+  {
+    "bits": 6,
+    "set": 14,
+    "truth": -3896527473,
+    "lower": "-477651230931260719104",
+    "upper": "-80606206123311472640",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 6.049232119673642
+  },
+  {
+    "bits": 6,
+    "set": 15,
+    "truth": -3888654345,
+    "lower": "-477932930853954207744",
+    "upper": "-79337852948243464192",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 6.072848159166175
+  },
+  {
+    "bits": 6,
+    "set": 16,
+    "truth": -3890969721,
+    "lower": "-478496159038907555840",
+    "upper": "-78190584144904429568",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 6.098908662826152
+  },
+  {
+    "bits": 6,
+    "set": 17,
+    "truth": -3891098129,
+    "lower": "-478762812154827505664",
+    "upper": "-76926529835474690048",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 6.122229958761612
+  },
+  {
+    "bits": 6,
+    "set": 18,
+    "truth": -3893320985,
+    "lower": "-479087423970541789184",
+    "upper": "-76654379199602262016",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 6.131322012217513
+  },
+  {
+    "bits": 6,
+    "set": 19,
+    "truth": -3893137741,
+    "lower": "-479148509109424062464",
+    "upper": "-76643948831405850624",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 6.132411596207854
+  },
+  {
+    "bits": 8,
+    "set": 1,
+    "truth": -1829166573,
+    "lower": "-610447778538839535255552",
+    "upper": "-451953484973964186353664",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.5895412168874387
+  },
+  {
+    "bits": 8,
+    "set": 2,
+    "truth": -2936267728,
+    "lower": "-962365273052319766937600",
+    "upper": "-705423660250245775753216",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.9557294945660142
+  },
+  {
+    "bits": 8,
+    "set": 3,
+    "truth": -3494770306,
+    "lower": "-1147344904224619776180224",
+    "upper": "-828525293306157702447104",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.1858931773560328
+  },
+  {
+    "bits": 8,
+    "set": 4,
+    "truth": -3693120664,
+    "lower": "-1268457841940199260291072",
+    "upper": "-837277519955394916777984",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6038342201688784
+  },
+  {
+    "bits": 8,
+    "set": 5,
+    "truth": -3944841462,
+    "lower": "-1361431129979616913915904",
+    "upper": "-871148964398629621989376",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.8236716162687119
+  },
+  {
+    "bits": 8,
+    "set": 6,
+    "truth": -4070770177,
+    "lower": "-1404980621855199457968128",
+    "upper": "-885699764629272000331776",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.9315362186842169
+  },
+  {
+    "bits": 8,
+    "set": 7,
+    "truth": -4077697771,
+    "lower": "-1416842354556282933870592",
+    "upper": "-882885358506436489379840",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.9861261256572442
+  },
+  {
+    "bits": 8,
+    "set": 8,
+    "truth": -4005390864,
+    "lower": "-1403646582636048527654912",
+    "upper": "-856734994410620683026432",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.034312504256084
+  },
+  {
+    "bits": 8,
+    "set": 9,
+    "truth": -3954001794,
+    "lower": "-1395502224880683605032960",
+    "upper": "-837764007981445577310208",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.0745836313710413
+  },
+  {
+    "bits": 8,
+    "set": 10,
+    "truth": -3942991039,
+    "lower": "-1399975055239303483490304",
+    "upper": "-829285489672217720913920",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.1227579452989507
+  },
+  {
+    "bits": 8,
+    "set": 11,
+    "truth": -3921343712,
+    "lower": "-1400578333913043537494016",
+    "upper": "-822763841988474067353600",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.149260084022986
+  },
+  {
+    "bits": 8,
+    "set": 12,
+    "truth": -3914799443,
+    "lower": "-1399259070456257068007424",
+    "upper": "-818731434413920217726976",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.159351994897524
+  },
+  {
+    "bits": 8,
+    "set": 13,
+    "truth": -3903115562,
+    "lower": "-1399900165031425750859776",
+    "upper": "-811620048340232211398656",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.188188407697159
+  },
+  {
+    "bits": 8,
+    "set": 14,
+    "truth": -3896527473,
+    "lower": "-1401099831728604905340928",
+    "upper": "-807877396407694843445248",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.2065720382599583
+  },
+  {
+    "bits": 8,
+    "set": 15,
+    "truth": -3888654345,
+    "lower": "-1400815476020289436385280",
+    "upper": "-805292447457780457930752",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.2151294096877194
+  },
+  {
+    "bits": 8,
+    "set": 16,
+    "truth": -3890969721,
+    "lower": "-1401612519420003818405888",
+    "upper": "-803571289152806692454400",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.2244962055764446
+  },
+  {
+    "bits": 8,
+    "set": 17,
+    "truth": -3891098129,
+    "lower": "-1402296535969187829907456",
+    "upper": "-800836057868607122046976",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.237214565860549
+  },
+  {
+    "bits": 8,
+    "set": 18,
+    "truth": -3893320985,
+    "lower": "-1403152210207126764912640",
+    "upper": "-800590805843146825138176",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.241309611773114
+  },
+  {
+    "bits": 8,
+    "set": 19,
+    "truth": -3893137741,
+    "lower": "-1403873424605490073436160",
+    "upper": "-800146900714576225763328",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 2.2456434333150663
+  },
+  {
+    "bits": 10,
+    "set": 1,
+    "truth": -1829166573,
+    "lower": "-2409014164484093108555874304",
+    "upper": "-1900742046198924063105089536",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.46156926452813096
+  },
+  {
+    "bits": 10,
+    "set": 2,
+    "truth": -2936267728,
+    "lower": "-3835453581636693188820336640",
+    "upper": "-2987188265444654069760131072",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.7703220067243782
+  },
+  {
+    "bits": 10,
+    "set": 3,
+    "truth": -3494770306,
+    "lower": "-4583352107889738798709342208",
+    "upper": "-3514346661006745297246748672",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.9707793131739582
+  },
+  {
+    "bits": 10,
+    "set": 4,
+    "truth": -3693120664,
+    "lower": "-5026187078683987678377017344",
+    "upper": "-3593733306495492068302913536",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.3008319959204093
+  },
+  {
+    "bits": 10,
+    "set": 5,
+    "truth": -3944841462,
+    "lower": "-5382885044505483288873271296",
+    "upper": "-3759349768663496171978752000",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.4743558740426945
+  },
+  {
+    "bits": 10,
+    "set": 6,
+    "truth": -4070770177,
+    "lower": "-5560227537843623705299648512",
+    "upper": "-3838245240592316462442479616",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.56375703856101
+  },
+  {
+    "bits": 10,
+    "set": 7,
+    "truth": -4077697771,
+    "lower": "-5598896288535100065333641216",
+    "upper": "-3826063457467884662226419712",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.609935144048006
+  },
+  {
+    "bits": 10,
+    "set": 8,
+    "truth": -4005390864,
+    "lower": "-5528144789924976212270120960",
+    "upper": "-3740073204746789397859401728",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6237736771374403
+  },
+  {
+    "bits": 10,
+    "set": 9,
+    "truth": -3954001794,
+    "lower": "-5478394537616380140296601600",
+    "upper": "-3667378780438378753676017664",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6446096116972417
+  },
+  {
+    "bits": 10,
+    "set": 10,
+    "truth": -3942991039,
+    "lower": "-5488255044575058444469403648",
+    "upper": "-3637147539517815509821161472",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6810175080121177
+  },
+  {
+    "bits": 10,
+    "set": 11,
+    "truth": -3921343712,
+    "lower": "-5486514471582306943195152384",
+    "upper": "-3609779574230945110014558208",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7042901137432345
+  },
+  {
+    "bits": 10,
+    "set": 12,
+    "truth": -3914799443,
+    "lower": "-5480638194479529736898871296",
+    "upper": "-3593087039263311658131390464",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7141125140048736
+  },
+  {
+    "bits": 10,
+    "set": 13,
+    "truth": -3903115562,
+    "lower": "-5479648812931775117844807680",
+    "upper": "-3566005108360701134241792000",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.737807535592951
+  },
+  {
+    "bits": 10,
+    "set": 14,
+    "truth": -3896527473,
+    "lower": "-5485768830783077408300859392",
+    "upper": "-3552818744458100201008136192",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7553399401972276
+  },
+  {
+    "bits": 10,
+    "set": 15,
+    "truth": -3888654345,
+    "lower": "-5485648171319625872098459648",
+    "upper": "-3541832246965595742236835840",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7652073649233229
+  },
+  {
+    "bits": 10,
+    "set": 16,
+    "truth": -3890969721,
+    "lower": "-5490161137345074391553146880",
+    "upper": "-3534457316516476173120700416",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7760029357113991
+  },
+  {
+    "bits": 10,
+    "set": 17,
+    "truth": -3891098129,
+    "lower": "-5489262537682750343993098240",
+    "upper": "-3525826996235082645106589696",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7830242230716447
+  },
+  {
+    "bits": 10,
+    "set": 18,
+    "truth": -3893320985,
+    "lower": "-5490914301680637094018416640",
+    "upper": "-3526603138578359719567556608",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7838193877650899
+  },
+  {
+    "bits": 10,
+    "set": 19,
+    "truth": -3893137741,
+    "lower": "-5492628082687496457405071360",
+    "upper": "-3523711625134038107472003072",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.788001522287713
+  },
+  {
+    "bits": 12,
+    "set": 1,
+    "truth": -1829166573,
+    "lower": "-9845012338501317382195252297728",
+    "upper": "-7794317237420395829708703399936",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.4546547587123542
+  },
+  {
+    "bits": 12,
+    "set": 2,
+    "truth": -2936267728,
+    "lower": "-15682206095864178489535559106560",
+    "upper": "-12247083219920363528223855738880",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.761592964983581
+  },
+  {
+    "bits": 12,
+    "set": 3,
+    "truth": -3494770306,
+    "lower": "-18737786856671345821891961028608",
+    "upper": "-14414380150923298824111171567616",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.958532271121706
+  },
+  {
+    "bits": 12,
+    "set": 4,
+    "truth": -3693120664,
+    "lower": "-20535634286007196582536405843968",
+    "upper": "-14747809039748703819711207440384",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.2832050407785551
+  },
+  {
+    "bits": 12,
+    "set": 5,
+    "truth": -3944841462,
+    "lower": "-21987567831917545489693646258176",
+    "upper": "-15435824494843218342970216415232",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.4525715131872536
+  },
+  {
+    "bits": 12,
+    "set": 6,
+    "truth": -4070770177,
+    "lower": "-22713687774214601848417532510208",
+    "upper": "-15759218763731367547638395174912",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.541858869349798
+  },
+  {
+    "bits": 12,
+    "set": 7,
+    "truth": -4077697771,
+    "lower": "-22869816197788089041487069708288",
+    "upper": "-15710234276394014149915577417728",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.5873339675103202
+  },
+  {
+    "bits": 12,
+    "set": 8,
+    "truth": -4005390864,
+    "lower": "-22579373240031344118591985287168",
+    "upper": "-15360145162401045439975497138176",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6005579756807233
+  },
+  {
+    "bits": 12,
+    "set": 9,
+    "truth": -3954001794,
+    "lower": "-22372498912069760010017856028672",
+    "upper": "-15064348381334194153112312217600",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6202727623593356
+  },
+  {
+    "bits": 12,
+    "set": 10,
+    "truth": -3942991039,
+    "lower": "-22415814052084495970560718667776",
+    "upper": "-14936513461970137036812797870080",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6582180370661677
+  },
+  {
+    "bits": 12,
+    "set": 11,
+    "truth": -3921343712,
+    "lower": "-22404261064017696196713724772352",
+    "upper": "-14826780796636696455175741636608",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6799852210100863
+  },
+  {
+    "bits": 12,
+    "set": 12,
+    "truth": -3914799443,
+    "lower": "-22379448547080259888144409690112",
+    "upper": "-14758857673081554512172000739328",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6895431715993205
+  },
+  {
+    "bits": 12,
+    "set": 13,
+    "truth": -3903115562,
+    "lower": "-22377224718163354946376482947072",
+    "upper": "-14648124195098453231841035943936",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7136005891491797
+  },
+  {
+    "bits": 12,
+    "set": 14,
+    "truth": -3896527473,
+    "lower": "-22398301626573054655180937625600",
+    "upper": "-14595621253811905825671112294400",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7299138035281019
+  },
+  {
+    "bits": 12,
+    "set": 15,
+    "truth": -3888654345,
+    "lower": "-22400103757378064574649420742656",
+    "upper": "-14548342516445374707321029001216",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.740795406680205
+  },
+  {
+    "bits": 12,
+    "set": 16,
+    "truth": -3890969721,
+    "lower": "-22418220715544035780432660267008",
+    "upper": "-14518480143280866627052302761984",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7514327907056217
+  },
+  {
+    "bits": 12,
+    "set": 17,
+    "truth": -3891098129,
+    "lower": "-22416141947980196235413806907392",
+    "upper": "-14482512207781962994764667158528",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7589462779433676
+  },
+  {
+    "bits": 12,
+    "set": 18,
+    "truth": -3893320985,
+    "lower": "-22422675788582887486575760900096",
+    "upper": "-14486847118190003217586779586560",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7594337975539365
+  },
+  {
+    "bits": 12,
+    "set": 19,
+    "truth": -3893137741,
+    "lower": "-22428811379345782881120694566912",
+    "upper": "-14474181117428546460873769615360",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7636022539243674
+  },
+  {
+    "bits": 14,
+    "set": 1,
+    "truth": -1829166573,
+    "lower": "-40310223725346636228434516766621696",
+    "upper": "-31928944410204779765993010330861568",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.4536605483449122
+  },
+  {
+    "bits": 14,
+    "set": 2,
+    "truth": -2936267728,
+    "lower": "-64223168596399401450898207451119616",
+    "upper": "-50172416869471916686119122073812992",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.7605368456794186
+  },
+  {
+    "bits": 14,
+    "set": 3,
+    "truth": -3494770306,
+    "lower": "-76739158723516240111849754492665856",
+    "upper": "-59050505507814052602522766795603968",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 0.957448596519257
+  },
+  {
+    "bits": 14,
+    "set": 4,
+    "truth": -3693120664,
+    "lower": "-84110239167386692252672434676695040",
+    "upper": "-60411358711387400025870190866595840",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.282769216795538
+  },
+  {
+    "bits": 14,
+    "set": 5,
+    "truth": -3944841462,
+    "lower": "-90057999236902367456950753192574976",
+    "upper": "-63236947869043630572321617930616832",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.4517655853262672
+  },
+  {
+    "bits": 14,
+    "set": 6,
+    "truth": -4070770177,
+    "lower": "-93024928484026744493862381431029760",
+    "upper": "-64574565303288983751507611207335936",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.5399567149453652
+  },
+  {
+    "bits": 14,
+    "set": 7,
+    "truth": -4077697771,
+    "lower": "-93662425598889282448296359334248448",
+    "upper": "-64375166404814692350719083717591040",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.5852560887094804
+  },
+  {
+    "bits": 14,
+    "set": 8,
+    "truth": -4005390864,
+    "lower": "-92474051725453605643960571247198208",
+    "upper": "-62939947129821974449605882199146496",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.59861729718567
+  },
+  {
+    "bits": 14,
+    "set": 9,
+    "truth": -3954001794,
+    "lower": "-91623264176039048605586548546600960",
+    "upper": "-61729637136882906613276406202761216",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6180774705958283
+  },
+  {
+    "bits": 14,
+    "set": 10,
+    "truth": -3942991039,
+    "lower": "-91797244575106514837224611739860992",
+    "upper": "-61209390101393861318520912918609920",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6556545023107843
+  },
+  {
+    "bits": 14,
+    "set": 11,
+    "truth": -3921343712,
+    "lower": "-91753814435967316325103067390279680",
+    "upper": "-60756841017498306300237779684032512",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6777992272194444
+  },
+  {
+    "bits": 14,
+    "set": 12,
+    "truth": -3914799443,
+    "lower": "-91654717114971773797845491393757184",
+    "upper": "-60477670065410203716336983323181056",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.6875462239668648
+  },
+  {
+    "bits": 14,
+    "set": 13,
+    "truth": -3903115562,
+    "lower": "-91644194924099954990454295230414848",
+    "upper": "-60026301944321710280954861573898240",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7114082620779685
+  },
+  {
+    "bits": 14,
+    "set": 14,
+    "truth": -3896527473,
+    "lower": "-91732476827187738776926643994755072",
+    "upper": "-59809990728052775530324402584420352",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.727895229801358
+  },
+  {
+    "bits": 14,
+    "set": 15,
+    "truth": -3888654345,
+    "lower": "-91737281480736394316824870062653440",
+    "upper": "-59618845288626023238854439086325760",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7385015851422259
+  },
+  {
+    "bits": 14,
+    "set": 16,
+    "truth": -3890969721,
+    "lower": "-91810050177338864591066230945742848",
+    "upper": "-59497717463922971748414529313177600",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7489967850836854
+  },
+  {
+    "bits": 14,
+    "set": 17,
+    "truth": -3891098129,
+    "lower": "-91798892976650567675937071533391872",
+    "upper": "-59352369511903053124065508364124160",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7562602406425447
+  },
+  {
+    "bits": 14,
+    "set": 18,
+    "truth": -3893320985,
+    "lower": "-91825955479391065211957820432318464",
+    "upper": "-59369852348161281285946288461840384",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.756778767300099
+  },
+  {
+    "bits": 14,
+    "set": 19,
+    "truth": -3893137741,
+    "lower": "-91851886298796860132016467478577152",
+    "upper": "-59317617130122210260664854832480256",
+    "decision": "improvement",
+    "width_over_old_cost_percent": 1.7610097260924067
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "model": {
+    "version": "bound-audit-v1",
+    "method": "learned_energy",
+    "n": 4,
+    "d": 4,
+    "k": 2,
+    "input_bits": 4,
+    "basis_scale": 8,
+    "input_scale": "1",
+    "centers": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0
+      ]
+    ],
+    "basis": [
+      [
+        8,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0,
+        0
+      ]
+    ],
+    "tail_rows": [],
+    "tail_signs": [],
+    "tail_width": 0,
+    "seed": ""
+  },
+  "model_hash": "806700729952541523897711998607232707049959601334949612913915000473865663384",
+  "original_root": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+  "verifying_key_sha256": {
+    "paired_change_2_k2": "eef4bca80cab9dd3db7f94bf79c50962bec3d15cdad6edd979dcdc789ededa56",
+    "reuse_certified_2_k2": "26c7ae1463762d652cf0146b63bb24330fd340b820ed70913217f34caf0c5903",
+    "stage1": "4a80d8620416128bfa9ad1a5442b99a32c2f8cc497aa9d46daacffdbaa54463d"
+  }
+}

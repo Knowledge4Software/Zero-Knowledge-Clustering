@@ -1,0 +1,49 @@
+{
+  "source": "code/validation/outputs/review_update_decisions_20261021T184553Z/native_capture_20261022T0530Z/native/cells.csv",
+  "source_sha256": "6a3c299728e8d782c51a686d9a03175b05f543a02207eadb453c03c475b11e2d",
+  "unique_actual_requests": 360,
+  "improving": 336,
+  "worsening": 24,
+  "certified_natural_worsenings_head": 0,
+  "certified_natural_worsenings_pca": 0,
+  "all_regressions_mature": true,
+  "interpretation": "Inconclusive is neither approval nor an incorrect sign; all observed natural regressions need exact fallback for a final sign decision.",
+  "security_scope": "Integer consistency checks, not a full cryptographic security audit.",
+  "severity_summary": {
+    "learned": {
+      "true_regression_percent": {
+        "min": 0.00391935052434527,
+        "median": 0.017360303594514057,
+        "max": 0.12659334772772068
+      },
+      "interval_width_percent": {
+        "min": 0.20341010200668752,
+        "median": 0.5584586954739174,
+        "max": 1.3770317488547024
+      },
+      "width_over_true_change": {
+        "min": 7.795925267942993,
+        "median": 20.372544519250763,
+        "max": 86.25629196749824
+      }
+    },
+    "pca": {
+      "true_regression_percent": {
+        "min": 0.00391935052434527,
+        "median": 0.017360303594514057,
+        "max": 0.12659334772772068
+      },
+      "interval_width_percent": {
+        "min": 0.2068402010198067,
+        "median": 0.6020834056911784,
+        "max": 1.5405998614713194
+      },
+      "width_over_true_change": {
+        "min": 8.48813554073581,
+        "median": 21.03882169784046,
+        "max": 91.40461971761806
+      }
+    }
+  },
+  "severity_caution": "Full interval width divided by actual change is descriptive; it is not a proven required contraction factor for a modified bound."
+}

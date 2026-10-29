@@ -1,0 +1,61 @@
+{
+  "complete": true,
+  "pdf": "output/pdf/prototype_audit_ccd_pilot_20261029.pdf",
+  "pages": 18,
+  "pdf_sha256": "dbbb026da21d0a08d3050b227e41a754df7199840e24ec20254da7331a47c9ca",
+  "source_zip": "output/prototype_audit_ccd_pilot_20261029_sources.zip",
+  "source_zip_sha256": "508db3cd9e03c8813bb6d90f8ccb80f7c25c087a34550b590734b6f7b7430d2f",
+  "source_files": 81,
+  "methodology_svg_zip_sha256": "8a4bbf35fcf2668e81e8725606fbd8d6624882301ddcce7e7489ddd24e87724e",
+  "protected_files_unchanged": 22,
+  "early_master_prefix_unchanged": true,
+  "completed_methodology_and_appendix_byte_identical": true,
+  "original_master_backup_sha256": "0eb805ae79b44f54aed437e3be7682ceedc55744302f5b69eeea9a73fe73b56c",
+  "evidence_sources_unchanged": 11,
+  "archived_comparison_receipts_verified": 21,
+  "svg_figures_validated": [
+    "methodology_four_stages.svg",
+    "methodology_interval_refinement.svg",
+    "06_measured_warm_pilots.svg",
+    "07_rank_coverage_native_only.svg",
+    "05_cost_aware_variant.svg"
+  ],
+  "visual_review": {
+    "passed": true,
+    "pdf_sha256": "dbbb026da21d0a08d3050b227e41a754df7199840e24ec20254da7331a47c9ca",
+    "pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "render_directory": "tmp/pdfs/ccd_pilot_20261029/renders_final",
+    "inspection": "All page layouts inspected in five contact sheets; tables and references checked at full page size. Final native-rank footer spacing checked in the newly rendered page 9; two methodology figures inspected individually.",
+    "limitations": "Preliminary author-review draft. Existing early prose and methodology equations are preserved; visual QA is not a scientific peer review."
+  },
+  "latex_errors_or_overflows": [],
+  "new_proofs_run": false,
+  "server_experiments_run": false,
+  "results_status": "preliminary completed local evidence",
+  "submission_ready": false,
+  "source_package_independent_build": {
+    "returncode": 0,
+    "pages": 18,
+    "extracted_text_identical": true,
+    "log": "tmp/pdfs/ccd_pilot_20261029/package_check/build_check.log"
+  }
+}

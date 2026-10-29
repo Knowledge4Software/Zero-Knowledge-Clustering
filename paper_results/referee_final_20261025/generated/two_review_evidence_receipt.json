@@ -1,0 +1,357 @@
+{
+  "complete": true,
+  "native_study_complete": true,
+  "qualities": [
+    {
+      "dataset": "fashion_mnist",
+      "basis": "ordered_head",
+      "requests": 28,
+      "conclusive": 28,
+      "mean_agreement": 99.94768415178571,
+      "worst_agreement": 99.8046875,
+      "label_coverage": 98.98158482142857,
+      "exact_rows": 0,
+      "below99": 0,
+      "regressions": 5,
+      "detected": 5
+    },
+    {
+      "dataset": "fashion_mnist",
+      "basis": "pca",
+      "requests": 28,
+      "conclusive": 28,
+      "mean_agreement": 99.91629464285714,
+      "worst_agreement": 99.70703125,
+      "label_coverage": 98.52469308035714,
+      "exact_rows": 14,
+      "below99": 0,
+      "regressions": 5,
+      "detected": 5
+    },
+    {
+      "dataset": "mnist",
+      "basis": "ordered_head",
+      "requests": 32,
+      "conclusive": 32,
+      "mean_agreement": 99.9420166015625,
+      "worst_agreement": 99.70703125,
+      "label_coverage": 96.612548828125,
+      "exact_rows": 0,
+      "below99": 0,
+      "regressions": 0,
+      "detected": 0
+    },
+    {
+      "dataset": "mnist",
+      "basis": "pca",
+      "requests": 32,
+      "conclusive": 32,
+      "mean_agreement": 99.8870849609375,
+      "worst_agreement": 99.609375,
+      "label_coverage": 95.989990234375,
+      "exact_rows": 0,
+      "below99": 0,
+      "regressions": 0,
+      "detected": 0
+    },
+    {
+      "dataset": "har561",
+      "basis": "ordered_head",
+      "requests": 12,
+      "conclusive": 11,
+      "regressions": 4,
+      "detected": 3,
+      "mean_agreement": 99.69075520833333,
+      "worst_agreement": 99.0234375,
+      "label_coverage": 92.87109375,
+      "exact_rows": 24,
+      "below99": 0
+    },
+    {
+      "dataset": "har561",
+      "basis": "pca",
+      "requests": 12,
+      "conclusive": 11,
+      "regressions": 4,
+      "detected": 3,
+      "mean_agreement": 99.64192708333333,
+      "worst_agreement": 98.92578125,
+      "label_coverage": 91.82942708333333,
+      "exact_rows": 23,
+      "below99": 1
+    },
+    {
+      "dataset": "text_minilm384",
+      "basis": "ordered_head",
+      "requests": 12,
+      "conclusive": 8,
+      "regressions": 4,
+      "detected": 0,
+      "mean_agreement": 96.37044270833333,
+      "worst_agreement": 92.1875,
+      "label_coverage": 28.743489583333332,
+      "exact_rows": 64,
+      "below99": 12
+    },
+    {
+      "dataset": "text_minilm384",
+      "basis": "pca",
+      "requests": 12,
+      "conclusive": 8,
+      "regressions": 4,
+      "detected": 0,
+      "mean_agreement": 95.79264322916667,
+      "worst_agreement": 91.9921875,
+      "label_coverage": 22.176106770833332,
+      "exact_rows": 64,
+      "below99": 12
+    }
+  ],
+  "timing_uncertainty": [
+    {
+      "cohort": "matched_controls",
+      "method": "Centroid",
+      "n": 3,
+      "mean": 1.989593590693061,
+      "median": 1.9857020325014372,
+      "minimum": 1.9710030194236936,
+      "maximum": 2.0120757201540527,
+      "sample_sd": 0.02081105127547636,
+      "geometric_mean": 1.9895211641615211,
+      "conditional_t95": [
+        1.9385606759546261,
+        2.041821291302857
+      ],
+      "interpretation": "Three serial timing repetitions of one fit; conditional log-ratio t interval, not a confidence interval across learning problems."
+    },
+    {
+      "cohort": "matched_controls",
+      "method": "PCA",
+      "n": 3,
+      "mean": 1.9847475106860584,
+      "median": 1.9930896121268014,
+      "minimum": 1.9620723172626433,
+      "maximum": 1.9990806026687307,
+      "sample_sd": 0.019864447878316135,
+      "geometric_mean": 1.9846810075854715,
+      "conditional_t95": [
+        1.9358183767041106,
+        2.0347769962680498
+      ],
+      "interpretation": "Three serial timing repetitions of one fit; conditional log-ratio t interval, not a confidence interval across learning problems."
+    },
+    {
+      "cohort": "matched_controls",
+      "method": "Moments-only",
+      "n": 3,
+      "mean": 0.7903780388853823,
+      "median": 0.7637732825602526,
+      "minimum": 0.7580141426045468,
+      "maximum": 0.8493466914913476,
+      "sample_sd": 0.05114947131573904,
+      "geometric_mean": 0.7893002797759797,
+      "conditional_t95": [
+        0.6739327514303497,
+        0.9244170584263788
+      ],
+      "interpretation": "Three serial timing repetitions of one fit; conditional log-ratio t interval, not a confidence interval across learning problems."
+    },
+    {
+      "cohort": "mnist_k5_seed173_age8_n128",
+      "method": "Centroid",
+      "n": 3,
+      "mean": 2.0046219024707836,
+      "median": 2.0038739275137174,
+      "minimum": 2.000150759043431,
+      "maximum": 2.009841020855203,
+      "sample_sd": 0.004888240317074407,
+      "geometric_mean": 2.004617930610611,
+      "conditional_t95": [
+        1.9925148689333139,
+        2.016794509481806
+      ],
+      "interpretation": "Three serial timing repetitions of one fit; conditional log-ratio t interval, not a confidence interval across learning problems."
+    },
+    {
+      "cohort": "mnist_k5_seed173_age8_n128",
+      "method": "PCA",
+      "n": 3,
+      "mean": 1.9982867035198115,
+      "median": 1.9963410569215703,
+      "minimum": 1.9962586618245826,
+      "maximum": 2.002260391813282,
+      "sample_sd": 0.0034415615973347777,
+      "geometric_mean": 1.998284729076507,
+      "conditional_t95": [
+        1.9897579080566599,
+        2.006848090560101
+      ],
+      "interpretation": "Three serial timing repetitions of one fit; conditional log-ratio t interval, not a confidence interval across learning problems."
+    },
+    {
+      "cohort": "mnist_k5_seed173_age8_n128",
+      "method": "Moments-only",
+      "n": 3,
+      "mean": 1.0006771781211266,
+      "median": 1.0003429544763687,
+      "minimum": 0.9950593982984857,
+      "maximum": 1.0066291815885255,
+      "sample_sd": 0.005792128315926537,
+      "geometric_mean": 1.0006660063674062,
+      "conditional_t95": [
+        0.9863840343727162,
+        1.0151547687367874
+      ],
+      "interpretation": "Three serial timing repetitions of one fit; conditional log-ratio t interval, not a confidence interval across learning problems."
+    }
+  ],
+  "resources": [
+    {
+      "proofs": 80,
+      "proof_bytes": 15680,
+      "verifying_key_bytes": 76208,
+      "public_replay_seconds": 0.5842094,
+      "manifests": [
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/matched_controls/repetition_01/ordered_head/full/public_bundle/public_manifest.json",
+          "sha256": "c5184db52ef4cc2fe650005937c2a7b063571851aa284fa10cebb270e988e166"
+        }
+      ],
+      "label": "MNIST128/Full",
+      "n": 128,
+      "peak_rss_bytes": 2115735552,
+      "seconds": 1312.0770000000484
+    },
+    {
+      "proofs": 166,
+      "proof_bytes": 32536,
+      "verifying_key_bytes": 170304,
+      "public_replay_seconds": 10.832708400000001,
+      "manifests": [
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/matched_controls/repetition_01/ordered_head_base/public/public_manifest.json",
+          "sha256": "f16657bf547f780423478d99936a4e21a9d9fccf93c1e50afac9739fc8327b7c"
+        },
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/matched_controls/repetition_01/ordered_head_refined/public/public_manifest.json",
+          "sha256": "eacff240a3e7877b766575720d2b4cc925f7215ca4deb673b1aad15d3944f959"
+        }
+      ],
+      "label": "MNIST128/Centroid",
+      "n": 128,
+      "peak_rss_bytes": 1260347392,
+      "seconds": 665.6899999999441
+    },
+    {
+      "proofs": 167,
+      "proof_bytes": 32732,
+      "verifying_key_bytes": 170304,
+      "public_replay_seconds": 11.526667499999999,
+      "manifests": [
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/matched_controls/repetition_01/pca_base/public/public_manifest.json",
+          "sha256": "d81061b2a489a962929360a51d7f092e6db2d4764cf6f2421e2402941501d022"
+        },
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/matched_controls/repetition_01/pca_refined/public/public_manifest.json",
+          "sha256": "1126036d3c25c4e934b060930f1e592f9a9ff6cb2202f9a59ab27dd70c259fdf"
+        }
+      ],
+      "label": "MNIST128/PCA",
+      "n": 128,
+      "peak_rss_bytes": 1260908544,
+      "seconds": 668.7200000000885
+    },
+    {
+      "proofs": 512,
+      "proof_bytes": 100352,
+      "verifying_key_bytes": 126384,
+      "public_replay_seconds": 4.6153952,
+      "manifests": [
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/extended/fashion_mnist_k5_seed173_age8_n1024/repetition_01/ordered_head/full/public_bundle/public_manifest.json",
+          "sha256": "096e093029e69bf596e8b4efd01072fc03901207f217d81f0a749512e0abaa1c"
+        }
+      ],
+      "label": "Fashion1024/Full",
+      "n": 1024,
+      "peak_rss_bytes": 2209198080,
+      "seconds": 6094.500999999931
+    },
+    {
+      "proofs": 1219,
+      "proof_bytes": 238924,
+      "verifying_key_bytes": 142224,
+      "public_replay_seconds": 20.9269692,
+      "manifests": [
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/extended/fashion_mnist_k5_seed173_age8_n1024/repetition_01/ordered_head_base/public/public_manifest.json",
+          "sha256": "21c77afd254568a89b12ac019528f019532a1c09429113252707fd1aa1c6760d"
+        }
+      ],
+      "label": "Fashion1024/Centroid",
+      "n": 1024,
+      "peak_rss_bytes": 1515683840,
+      "seconds": 2552.0309999998426
+    },
+    {
+      "proofs": 1222,
+      "proof_bytes": 239512,
+      "verifying_key_bytes": 282048,
+      "public_replay_seconds": 44.142316300000005,
+      "manifests": [
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/extended/fashion_mnist_k5_seed173_age8_n1024/repetition_01/pca_base/public/public_manifest.json",
+          "sha256": "eacbb76b498c0f9dec609eb3b45ee069cb64d699e4407a0759969deef6b9bdcc"
+        },
+        {
+          "path": "code/validation/outputs/referee_optimized_20261026/extended/fashion_mnist_k5_seed173_age8_n1024/repetition_01/pca_refined/public/public_manifest.json",
+          "sha256": "00e1bf7bd718b801b2705092803c5096adb723b57bfc7eca0d36ae65f3766595"
+        }
+      ],
+      "label": "Fashion1024/PCA",
+      "n": 1024,
+      "peak_rss_bytes": 1524436992,
+      "seconds": 2649.3599999998696
+    }
+  ],
+  "completed_plonk_runs": [
+    {
+      "backend": "PLONK",
+      "batch": 1,
+      "repetition": "repetition_01",
+      "n": 64,
+      "complete": true,
+      "samples": 448,
+      "wall_seconds": 7994.2059431,
+      "active_seconds": 8000.5154219999995,
+      "clean_timing": false,
+      "sleep_interrupted": true,
+      "proof_bytes": 261632,
+      "public_replay_seconds": 6.3094789,
+      "srs_loading_seconds": 0.0985868,
+      "circuit_setup_seconds": 1.4432247,
+      "constraints": 222458,
+      "benchmark_only_unsafe_srs": true,
+      "receipt": "code/validation/outputs/referee_two_reviews_20261027/backend/repetition_01/result.json",
+      "receipt_sha256": "a96153a1fb6ce96276473603e0d80f6be6e3f0c05f3ccd1eb3ca47ce7b2152f1"
+    }
+  ],
+  "completed_groth_backend_controls": [],
+  "new_proof_pairs": [],
+  "source_sha256": {
+    "code/validation/outputs/referee_two_reviews_20261027/plan.json": "b5125818363caf551a680d3eaa50ae911e224201bdf08ebb42c14d4fec68a00a",
+    "code/validation/outputs/referee_two_reviews_20261027/learning_native/summary.json": "f5128d166a39d7afb3c0a6f1415f846cfa6e3f270d9da5c27a9919c289871c31",
+    "code/validation/outputs/referee_two_reviews_20261027/learning_native/records.json": "4246374c6779883b5ae381f78c597242e8b7dbcc0c090becc267094c84d73f04",
+    "code/validation/outputs/referee_two_reviews_20261027/learning_native/fit_records.json": "d0c3d91831ccae14b4a5d905b1cd36205839b97b4be42cf374a6a3db1d981797",
+    "code/validation/outputs/referee_two_reviews_20261027/learning_native/ablations.json": "8c7e73a9acb6fe5c4511dee8f21e67dc0f3cb47c22b55fe51cf85ece13248634",
+    "code/validation/outputs/referee_two_reviews_20261027/data/har561_source.json": "5903a15c2ec7ee99b801f04a1fc2aaf8a79b0586f8a3883a28e3373260f238e1",
+    "code/validation/outputs/referee_two_reviews_20261027/data/text_minilm384_source.json": "4c32b6a56b64d6353ab58b7f822e6d4ad8c1d0b9e27c4392cf94d0edd7e5da04",
+    "code/validation/outputs/referee_two_reviews_20261027/backend_timing_interruption_amendment.json": "4be02466081db0053658caa4271f2301605dfe227ecab6b21dac3fd5d29ca537",
+    "code/validation/outputs/referee_two_reviews_20261027/windows_sleep_events_20261027.json": "d5ae5aefe0657e1bb8fc254a32c8b9610677ac8fe225ab917c3cb166115ae934",
+    "code/validation/outputs/referee_two_reviews_20261027/neural_activity_amendment.json": "5c636e7abd9cdd7e42335059e224975c4072f09c9af245dd7793fc8773df6d94",
+    "code/validation/outputs/referee_two_reviews_20261027/bounded_followup_plan.json": "e24dc699d4a626bb8ee496b90a477f3b6cd1b4ab8d572e0ecbc1e4088eb64d12"
+  },
+  "all_intervals_contain_truth": true,
+  "source_review_revision": "Post-review additions; all new-training-minibatch requests retained, including failures. No universal99% or complete regression-detection claim."
+}

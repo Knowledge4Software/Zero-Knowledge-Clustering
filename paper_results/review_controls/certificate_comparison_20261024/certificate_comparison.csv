@@ -1,0 +1,15 @@
+method,variant,budget_fraction,requests,conclusive,coverage_percent,regressions,regressions_detected,regression_sensitivity_percent,incorrect_conclusive,fast_assigned_upper_updates,native_only
+learned,ordinary_paired,0.0,160,79,49.375,36,0,0.0,0,,True
+learned,group_separate,0.0,160,151,94.375,36,30,83.33333333333334,0,,True
+learned,group_separate,0.05,160,160,100.0,36,36,100.0,0,,True
+learned,group_paired,0.0,160,151,94.375,36,30,83.33333333333334,0,,True
+learned,group_paired,0.05,160,160,100.0,36,36,100.0,0,,True
+pca,ordinary_paired,0.0,160,75,46.875,36,0,0.0,0,,True
+pca,group_separate,0.0,160,124,77.5,36,17,47.22222222222222,0,,True
+pca,group_separate,0.05,160,155,96.875,36,34,94.44444444444444,0,,True
+pca,group_paired,0.0,160,135,84.375,36,22,61.111111111111114,0,,True
+pca,group_paired,0.05,160,156,97.5,36,34,94.44444444444444,0,,True
+learned,group_exact_old,0.0,160,151,94.375,36,30,83.33333333333334,0,59.0,True
+learned,group_exact_old,0.05,160,160,100.0,36,36,100.0,0,59.0,True
+pca,group_exact_old,0.0,160,135,84.375,36,17,47.22222222222222,0,59.0,True
+pca,group_exact_old,0.05,160,158,98.75,36,34,94.44444444444444,0,59.0,True

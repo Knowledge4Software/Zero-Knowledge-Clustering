@@ -1,22 +1,75 @@
-# Paper delivery
+# Current private deliverables
 
-## Current completed-results revision
+## Updated paper and bounded initial campaign, 29 October 2026
 
-- [Latest Neurocomputing paper](pdf/neurocomputing_completed_20261020.pdf).
-- [Portable editable source package](neurocomputing_completed_20261020_sources.zip).
-- [Build and visual-review receipt](neurocomputing_completed_20261020_validation.json).
-- [Completed Mobin results](mobin_completed_results_20261020.md).
+- [Current paper with the latest baseline gate, 20 pages](pdf/prototype_audit_latest_baselines_20261029.pdf).
+- [Editable LaTeX sources and evidence exports](prototype_audit_latest_baselines_20261029_sources.zip).
+- [Preservation, build and visual checks](prototype_audit_latest_baselines_20261029_validation.json).
+- [Current-method audit and evidence limits](current_method_audit_20261029.md).
+- [32-hour initial campaign, 36-hour cap and recovery reserve](server_initial_32h_20261029_fa.md).
 
-The canonical source is [manuscript.tex](../manuscript.tex). This revision includes all 14 completed controls, actual 1,024-record exact/plain/certified comparisons, the higher-rank proof pilots, and the failed strict accuracy policies. Cost ratios compare different fidelity guarantees. Author metadata, declarations and scientific approval are pending.
+The abstract, introduction, methodology, methodology appendix and method figures
+are unchanged. Five new tables report the later paper-derived numerical controls,
+matched cold proof cohort and equally optimized warm routes. The manuscript
+retains favorable, tied and unfavorable results. The server plan is prospective;
+the full executable campaign remains subject to pre-rental readiness checks.
 
-## Preserved earlier three-version release
+## Published-baseline gate, 29 October 2026
 
-1. [Supervisor original](pdf/01_supervisor_original.pdf).
-2. [Earlier red/green comparison](pdf/02_changes_red_green.pdf).
-3. [Earlier clean revision](pdf/03_final_revised.pdf).
+- [Measured comparisons and pre-server assessment](published_baseline_gate_20261029.md).
+- [Machine-readable results](published_baseline_gate_20261029.json).
+- [Per-fit quality](published_baseline_gate_20261029_native_per_fit.csv) and
+  [individual requests](published_baseline_gate_20261029_native_requests.csv).
+- [Scientific summary chart](published_baseline_gate_20261029_summary.png).
+- [Source, evidence and report hashes](published_baseline_gate_20261029_receipt.json).
 
-Their [frozen editable sources](../paper_versions/20261020/README.md) and [validation receipt](three_paper_versions_20261020_validation.json) are preserved. The red/green document compares the earlier revision with the supervisor original; it has not been relabeled as a comparison of the new completed-results paper.
+This separate evaluation adds paper-derived controls without changing the
+manuscript or its methodology. Native estimates, statistical intervals and
+cryptographic certificate adapters have explicitly different contracts.
 
-Superseded intermediate working PDFs, transfer ZIPs and status reports were archived outside the workspace; the [cleanup manifest](../code/validation/outputs/cleanup_publication_20261020.json) retains their hashes and original paths. The three earlier PDFs and supervisor source were not changed.
+## Current preliminary paper, 29 October 2026
 
-The [literature and scope note](related_methods_and_journal_fit_20261020.md) documents a bounded earlier literature search. It is background research, not a complete novelty clearance or a prediction of acceptance.
+- [CCD-structured full draft, 18 pages](pdf/prototype_audit_ccd_pilot_20261029.pdf).
+- [Editable sources and evidence exports](prototype_audit_ccd_pilot_20261029_sources.zip).
+- [Two editable methodology SVG figures](methodology_svg_20261029.zip).
+- [Preservation, build and visual checks](prototype_audit_ccd_pilot_20261029_validation.json).
+- [Scope and editing instructions](../paper_results/ccd_pilot_20261029/README.md).
+
+The completed methodology and earlier prose are preserved. New sections use
+completed local results, including negative cases; server results remain
+prospective. The source ZIP is a manuscript build package, not a proof archive.
+
+## Previous full paper
+
+- [Reviewed full paper, 15 pages](pdf/prototype_audit_two_reviews_20261027.pdf).
+- [Editable paper sources and derived evidence](prototype_audit_two_reviews_20261027_sources.zip).
+- [Build and visual validation](prototype_audit_two_reviews_20261027_validation.json).
+- [Referee response, completed results and pending work](two_review_response_20261027.md).
+- [Timestamped experiment status](two_review_campaign_status_20261027.json).
+- [Completed numerical/proof export](two_review_results_20261027.json).
+
+The paper includes completed results only. Later automatic
+`*_completed_candidate.pdf` files need visual review and do not replace the
+reviewed paper automatically. There are active serial laptop experiments;
+consult the timestamped status rather than older run reports.
+
+## Supervisor methodology handoff
+
+- [Methodology and technical appendix, 5 pages](pdf/prototype_update_methodology_20261027.pdf).
+- [Editable methodology, figure, bibliography and original input ZIPs](supervisor_methodology_20261027.zip).
+- [Inspection and integration notes](../paper_results/supervisor_methodology_20261027/README.md).
+
+This is a separately reviewable excerpt following the Spectral CCD form.
+It describes the implemented centroid/PCA and residual-certificate method,
+which uses no JL tail. The supervisor's abstract and introduction remain
+unchanged; their older sparse-JL claims need alignment before merging.
+
+## Cleanup
+
+[Deletion receipt](project_cleanup_20261027.json) and
+[reviewed deletion plan](project_cleanup_20261027_plan.json) record literal
+removals. Superseded PDFs, source bundles and interim reports are deleted.
+Canonical evidence, current source material and active/queued proof caches
+remain. Source synchronization is authorized by the user's current push
+request. Generated delivery bundles and raw experiment stores remain local
+under the repository's ignore rules; journal submission remains an author task.

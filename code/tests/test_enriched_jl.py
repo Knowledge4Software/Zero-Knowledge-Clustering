@@ -51,3 +51,23 @@ def test_reproducible_and_rejects_invalid_inputs():
     for extra in [-1, 1.5]:
         with pytest.raises(ValueError): enrich_centroid_basis(x, c, extra)
     with pytest.raises(ValueError): enrich_centroid_basis(x[:, :3], c)
+
+
+def test_ordered_prefix_keeps_leading_residual_pca_subspace():
+    from sklearn.decomposition import PCA
+    from commitjl.protected_jl import centroid_basis
+    rng = np.random.default_rng(613)
+    x = rng.normal(size=(100, 24))*np.geomspace(8, .01, 24)
+    centers = rng.normal(size=(3, 24))
+    u = centroid_basis(centers)
+    residual = x-centers[0]
+    residual -= (residual@u)@u.T
+    residual -= residual.mean(axis=0)
+    pca = PCA(10, svd_solver='randomized', random_state=7,
+              iterated_power=2, n_oversamples=10).fit(residual)
+    basis, _ = enrich_centroid_basis(x, centers, 10, random_state=7, preserve_pca_order=True)
+    for take in [1, 3, 7]:
+        target = pca.components_[:take].T
+        prefix = basis[:, u.shape[1]:u.shape[1]+take]
+        np.testing.assert_allclose(target@target.T, prefix@prefix.T, atol=1e-10)
+    np.testing.assert_allclose(basis.T@basis, np.eye(basis.shape[1]), atol=1e-12)

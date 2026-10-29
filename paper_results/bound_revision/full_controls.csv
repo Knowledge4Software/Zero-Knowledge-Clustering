@@ -1,3 +1,0 @@
-dataset,k,n_catalog,q,status,complete,constraints,compile_seconds,setup_seconds,prove_median_seconds,peak_rss_bytes,independent_public_verification
-mnist,5,16,8,complete,True,1311683,16.857158859,182.768923536,18.5186287575,2282356736,True
-fashion_mnist,5,16,8,complete,True,1311719,16.204248675,185.737468433,17.8688433475,2362081280,True

@@ -4,6 +4,7 @@
 package main
 
 import (
+	"bufio"
 	"crypto/sha256"
 	"encoding/gob"
 	"encoding/hex"
@@ -35,7 +36,8 @@ type Input struct {
 	SaltZ   string       `json:"salt_z"`
 	Queries [][]int      `json:"queries"`
 	// Reuse phase: new public centre sets (same input quantizer), all with equal K'.
-	ReuseCenters [][][]int64 `json:"reuse_centers,omitempty"`
+	ReuseCenters   [][][]int64 `json:"reuse_centers,omitempty"`
+	ComparisonBase [][]int64   `json:"comparison_base,omitempty"`
 }
 type Trust struct {
 	Model        c.BoundModel      `json:"model"`
@@ -44,41 +46,50 @@ type Trust struct {
 	Keys         map[string]string `json:"verifying_key_sha256"`
 }
 type Sample struct {
-	ID             int       `json:"id"`
-	Indices        []int     `json:"indices,omitempty"`
-	Assign         []int     `json:"assign,omitempty"`
-	Psi            string    `json:"psi,omitempty"`
-	Prove          []float64 `json:"prove_seconds"`
-	Verify         []float64 `json:"verify_seconds"`
-	Witness        float64   `json:"witness_seconds"`
-	NativeAnswer   float64   `json:"native_answer_seconds"`
-	ProofBytes     int64     `json:"proof_bytes"`
-	File           string    `json:"file"`
-	Set            int       `json:"centre_set,omitempty"`
-	Margin         string    `json:"margin_sum,omitempty"`
-	CertifiedCount int       `json:"certified_count,omitempty"`
-	CostLower      string    `json:"cost_lower_scaled,omitempty"`
-	CostUpper      string    `json:"cost_upper_scaled,omitempty"`
-	CertifiedFlags []bool    `json:"certified_flags,omitempty"`
+	ID                 int       `json:"id"`
+	Indices            []int     `json:"indices,omitempty"`
+	Assign             []int     `json:"assign,omitempty"`
+	Psi                string    `json:"psi,omitempty"`
+	Prove              []float64 `json:"prove_seconds"`
+	Verify             []float64 `json:"verify_seconds"`
+	Witness            float64   `json:"witness_seconds"`
+	NativeAnswer       float64   `json:"native_answer_seconds"`
+	ProofBytes         int64     `json:"proof_bytes"`
+	PublicWitnessBytes int64     `json:"public_witness_bytes"`
+	File               string    `json:"file"`
+	Set                int       `json:"centre_set,omitempty"`
+	Margin             string    `json:"margin_sum,omitempty"`
+	RelativeCount      int       `json:"relative_certified_count,omitempty"`
+	CertifiedCount     int       `json:"certified_count,omitempty"`
+	CostLower          string    `json:"cost_lower_scaled,omitempty"`
+	CostUpper          string    `json:"cost_upper_scaled,omitempty"`
+	CertifiedFlags     []bool    `json:"certified_flags,omitempty"`
+	ChangeLower        string    `json:"change_lower_scaled,omitempty"`
+	ChangeUpper        string    `json:"change_upper_scaled,omitempty"`
 }
 type Result struct {
-	Phase       string           `json:"phase"`
-	Status      string           `json:"status"`
-	Complete    bool             `json:"complete"`
-	Constraints int              `json:"constraints"`
-	Compile     float64          `json:"compile_seconds"`
-	Setup       float64          `json:"setup_seconds"`
-	Load        float64          `json:"load_seconds"`
-	Native      float64          `json:"native_prepare_seconds"`
-	Warmup      float64          `json:"warmup_seconds"`
-	Statement   c.BoundStatement `json:"statement"`
-	Samples     []Sample         `json:"samples"`
-	Verified    int              `json:"verified"`
-	Wall        float64          `json:"wall_seconds"`
-	Error       string           `json:"error,omitempty"`
+	ResumedSetup      bool             `json:"resumed_setup,omitempty"`
+	Phase             string           `json:"phase"`
+	Status            string           `json:"status"`
+	Complete          bool             `json:"complete"`
+	Constraints       int              `json:"constraints"`
+	ProvingKeyBytes   int64            `json:"proving_key_bytes"`
+	VerifyingKeyBytes int64            `json:"verifying_key_bytes"`
+	Compile           float64          `json:"compile_seconds"`
+	Setup             float64          `json:"setup_seconds"`
+	Load              float64          `json:"load_seconds"`
+	Native            float64          `json:"native_prepare_seconds"`
+	Warmup            float64          `json:"warmup_seconds"`
+	Statement         c.BoundStatement `json:"statement"`
+	Samples           []Sample         `json:"samples"`
+	Verified          int              `json:"verified"`
+	Wall              float64          `json:"wall_seconds"`
+	Error             string           `json:"error,omitempty"`
 }
 
 var folder string
+
+const binaryIOBufferSize = 256 << 10
 
 func save(name string, v any) error {
 	path := filepath.Join(folder, name)
@@ -122,7 +133,11 @@ func saveBinary(name string, v io.WriterTo) (int64, error) {
 	if err != nil {
 		return 0, err
 	}
-	n, err := v.WriteTo(f)
+	buffer := bufio.NewWriterSize(f, binaryIOBufferSize)
+	n, err := v.WriteTo(buffer)
+	if err == nil {
+		err = buffer.Flush()
+	}
 	if err == nil {
 		err = f.Sync()
 	}
@@ -133,12 +148,16 @@ func saveBinary(name string, v io.WriterTo) (int64, error) {
 	return n, err
 }
 func digest(path string) (string, error) {
-	b, err := os.ReadFile(path)
+	f, err := os.Open(path)
 	if err != nil {
 		return "", err
 	}
-	s := sha256.Sum256(b)
-	return hex.EncodeToString(s[:]), nil
+	defer f.Close()
+	h := sha256.New()
+	if _, err = io.Copy(h, f); err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(h.Sum(nil)), nil
 }
 func prepared() (*c.BoundPrepared, error) {
 	f, err := os.Open(filepath.Join(folder, "prepared.gob"))
@@ -232,6 +251,18 @@ func prepare(input string) (res Result, err error) {
 }
 
 func setup(shape frontend.Circuit, key string, limit int, res *Result) (constraint.ConstraintSystem, groth16.ProvingKey, groth16.VerifyingKey, error) {
+	if resumeEnabled() {
+		cs, pk, vk, hit, e := loadSetupCache(key, res)
+		if e != nil {
+			return nil, nil, nil, e
+		}
+		if hit {
+			if res.Constraints > limit {
+				return nil, nil, nil, fmt.Errorf("cached shape exceeds guard")
+			}
+			return cs, pk, vk, nil
+		}
+	}
 	t := time.Now()
 	ccs, err := frontend.Compile(ecc.BN254.ScalarField(), r1cs.NewBuilder, shape)
 	res.Compile = time.Since(t).Seconds()
@@ -249,8 +280,15 @@ func setup(shape frontend.Circuit, key string, limit int, res *Result) (constrai
 	if err != nil {
 		return nil, nil, nil, err
 	}
-	if _, err = saveBinary("keys/"+key+".vk", vk); err != nil {
+	if res.VerifyingKeyBytes, err = saveBinary("keys/"+key+".vk", vk); err != nil {
 		return nil, nil, nil, err
+	}
+	// A resumable setup writes the same canonical key below. Count those
+	// actual bytes instead of serializing a large elliptic-curve key twice.
+	if !resumeEnabled() {
+		if res.ProvingKeyBytes, err = pk.WriteTo(io.Discard); err != nil {
+			return nil, nil, nil, err
+		}
 	}
 	var trust Trust
 	if err = load(filepath.Join(folder, "trusted.json"), &trust); err != nil {
@@ -263,6 +301,11 @@ func setup(shape frontend.Circuit, key string, limit int, res *Result) (constrai
 	trust.Keys[key] = sha
 	if err = save("trusted.json", trust); err != nil {
 		return nil, nil, nil, err
+	}
+	if resumeEnabled() {
+		if e := saveSetupCache(key, ccs, pk, res); e != nil {
+			return nil, nil, nil, e
+		}
 	}
 	return ccs, pk, vk, nil
 }
@@ -280,7 +323,22 @@ func prove(ccs constraint.ConstraintSystem, pk groth16.ProvingKey, vk groth16.Ve
 		return
 	}
 	sample.Witness = time.Since(t).Seconds()
+	if sample.PublicWitnessBytes, err = pub.WriteTo(io.Discard); err != nil {
+		return
+	}
 	sample.File = file
+	if resumeEnabled() {
+		cached, hit, e := reuseSample(file, pub, vk)
+		if e != nil {
+			return sample, e
+		}
+		if hit {
+			if len(cached.Prove) != reps {
+				return sample, fmt.Errorf("cached repetitions differ")
+			}
+			return cached, nil
+		}
+	}
 	for i := 0; i < reps+warmup; i++ {
 		t = time.Now()
 		proof, e := groth16.Prove(ccs, pk, full)
@@ -306,6 +364,9 @@ func prove(ccs constraint.ConstraintSystem, pk groth16.ProvingKey, vk groth16.Ve
 			}
 		}
 		runtime.GC()
+	}
+	if resumeEnabled() {
+		err = saveSampleCache(file, sample, pub, vk)
 	}
 	return
 }
@@ -465,7 +526,7 @@ func readKey(trust Trust, key string) (groth16.VerifyingKey, error) {
 	}
 	defer f.Close()
 	vk := groth16.NewVerifyingKey(ecc.BN254)
-	_, err = vk.ReadFrom(f)
+	_, err = vk.ReadFrom(bufio.NewReaderSize(f, binaryIOBufferSize))
 	return vk, err
 }
 func verifyFile(vk groth16.VerifyingKey, file string, w frontend.Circuit) error {
@@ -475,7 +536,7 @@ func verifyFile(vk groth16.VerifyingKey, file string, w frontend.Circuit) error 
 	}
 	defer f.Close()
 	proof := groth16.NewProof(ecc.BN254)
-	if _, err = proof.ReadFrom(f); err != nil {
+	if _, err = proof.ReadFrom(bufio.NewReaderSize(f, binaryIOBufferSize)); err != nil {
 		return err
 	}
 	public, err := frontend.NewWitness(w, ecc.BN254.ScalarField(), frontend.PublicOnly())
@@ -567,7 +628,7 @@ func verify(trustPath, taskPath string) (res Result, err error) {
 		return
 	}
 	for _, key := range keys {
-		if strings.HasPrefix(key, "reuse_") || strings.HasPrefix(key, "full_reuse_") {
+		if strings.HasPrefix(key, "family_affine_") || strings.HasPrefix(key, "relative_reuse_") || strings.HasPrefix(key, "reuse_") || strings.HasPrefix(key, "full_reuse_") || strings.HasPrefix(key, "paired_change_") {
 			if err = verifyChangingPhase(trust, m, s, key, taskPath, &res); err != nil {
 				return
 			}
@@ -632,6 +693,9 @@ func main() {
 	out := flag.String("out", "", "new bundle directory")
 	trust := flag.String("trust", "", "pinned owner/setup manifest for independent verification")
 	task := flag.String("public-task", "", "independently approved public centers and query subsets for replay")
+	refineBase := flag.String("refinement-base", "", "complete compact base bundle, public-only for verification")
+	refineTrust := flag.String("refinement-trust", "", "independently pinned refinement setup manifest")
+	refineRequest := flag.String("refinement-request", "", "width-ordered bounded row requests")
 	q := flag.Int("q", 1, "query batch size")
 	reps := flag.Int("reps", 3, "measured query proofs")
 	warmup := flag.Int("warmup", 1, "warmup proofs")
@@ -657,6 +721,14 @@ func main() {
 	switch *phase {
 	case "prepare":
 		result, err = prepare(*input)
+	case "group_compact_prepare":
+		result, err = prepareCompactGroup(*input)
+	case "refinement_setup", "refinement_prove", "refinement_verify":
+		result, err = executeRefinement(*phase, *trust, *task, *refineBase, *refineTrust, *refineRequest, *limit)
+	case "moments_prepare", "moments_keys", "moments_rows", "moments_query", "moments_verify":
+		result, err = executeMoments(*phase, *input, *trust, *task, *q, *limit)
+	case "group_commit", "group_commit_exact", "group_keys", "group_rows", "group_link", "group_query", "group_verify":
+		result, err = executeGroup(*phase, *trust, *task, *q, *limit)
 	case "reuse":
 		if *reps < 1 || *warmup < 0 {
 			err = fmt.Errorf("invalid repeat count")
@@ -671,6 +743,20 @@ func main() {
 			result, err = executeFullReuse(*input, *q, *reps, *warmup, *limit)
 		}
 		name = fmt.Sprintf("full_reuse_%d.json", *q)
+	case "family_affine":
+		if *reps < 1 || *warmup < 0 {
+			err = fmt.Errorf("invalid repeat count")
+		} else {
+			result, err = executeFamilyAffine(*input, *q, *reps, *warmup, *limit)
+		}
+		name = fmt.Sprintf("family_affine_%d.json", *q)
+	case "relative_reuse":
+		if *reps < 1 || *warmup < 0 {
+			err = fmt.Errorf("invalid repeat count")
+		} else {
+			result, err = executeRelativeReuse(*input, *q, *reps, *warmup, *limit)
+		}
+		name = fmt.Sprintf("relative_reuse_%d.json", *q)
 	case "reuse_certified":
 		if *reps < 1 || *warmup < 0 {
 			err = fmt.Errorf("invalid repeat count")
@@ -678,6 +764,13 @@ func main() {
 			result, err = executeCertifiedReuse(*input, *q, *reps, *warmup, *limit)
 		}
 		name = fmt.Sprintf("reuse_certified_%d.json", *q)
+	case "paired_change":
+		if *reps < 1 || *warmup < 0 {
+			err = fmt.Errorf("invalid repeat count")
+		} else {
+			result, err = executePairedChange(*input, *q, *reps, *warmup, *limit)
+		}
+		name = fmt.Sprintf("paired_change_%d.json", *q)
 	case "stage1", "query", "geometry":
 		if *reps < 1 || *warmup < 0 {
 			err = fmt.Errorf("invalid repeat count")

@@ -1,0 +1,17 @@
+\begin{table*}[tbp]
+\centering
+\caption{Frozen-profile native confirmation on four new seed/splits per dataset, $k=5$, $N=1024$, deployed ages 1/8. Initial and refined columns count update signs; regression coverage conditions on naturally positive exact change. Agreement and label coverage are percentages. Exact rows counts bounded corrections. These are native results, not new proof timings; queries and ages share fits.}
+\label{tab:optimized-confirmation}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{llrrrrrrr}
+\toprule
+Data & Basis & Initial & Refined & Regressions & Mean agr. & Worst agr. & Label cert. & Exact rows\\
+\midrule
+Fashion & Centroid & 28/28 & 28/28 & 5/5 & 99.948 & 99.805 & 98.982 & 0\\
+Fashion & PCA & 24/28 & 28/28 & 5/5 & 99.916 & 99.707 & 98.525 & 14\\
+MNIST & Centroid & 32/32 & 32/32 & 0/0 & 99.942 & 99.707 & 96.613 & 0\\
+MNIST & PCA & 32/32 & 32/32 & 0/0 & 99.887 & 99.609 & 95.990 & 0\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

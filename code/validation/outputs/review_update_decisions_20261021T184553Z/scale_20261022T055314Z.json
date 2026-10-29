@@ -1,0 +1,29 @@
+{
+  "remote": "/root/commitjl/results/review_update_decisions_20261021T184553Z/paired_scale_20261022T055314Z",
+  "parent_campaign": "/root/commitjl/results/review_update_decisions_20261021T184553Z",
+  "parent_session": "review_update_20261021T184553Z",
+  "input_scope": "Same frozen MNIST/k3/seed11/early/rank63 learned and PCA fits; actual N1024, no new independent model.",
+  "selection": "Scale check selected as the first fixed portability workload; broad grid negatives and all original jobs retained.",
+  "jobs": [
+    "learned",
+    "pca",
+    "full"
+  ],
+  "batch": 4,
+  "reps": 1,
+  "warmup": 0,
+  "refit": false,
+  "frozen_backend_sha256": "2354b0b6bac79181ae50f8d599d6cdbd536159029d39729ac0d380ed1867820b",
+  "session": "review_scale_20261022T055314Z",
+  "archive_sha256": "de42f7cc178e82c55f24343a4f35a714ac143c6c6b04b77b4fe743f07daf67f0",
+  "inputs": [
+    {
+      "name": "learned.json",
+      "sha256": "1a9cfd07844b59e20c5e0867bf1aa938ac83769fa347a02050e33e20ba76a86f"
+    },
+    {
+      "name": "pca.json",
+      "sha256": "7f63fb546f67876a0e6efb04573060b75c5188b5e4d4fb8894e184593c7ec8b1"
+    }
+  ]
+}

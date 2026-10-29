@@ -1,0 +1,127 @@
+\section{Discussion}\label{sec:discussion}
+\subsection{What constitutes a useful audit result}
+Cryptographic validity establishes the specified integer relation. Observed
+agreement describes a finite workload. An assignment certificate lower-bounds
+correct labels, while a cost-change certificate can establish an update
+decision without certifying every label. These are different outputs: 100\%
+of requested update signs being resolved does not mean 100\% assignment
+coverage. A valid inconclusive proof should not be presented as a successful
+decision or as an exact-service speedup.
+
+The sign-stratified grid contains 24 naturally worsening updates, and neither
+representation certifies any of them directly. Requiring a negative upper
+endpoint before approval defers these tasks; exact fallback is needed to learn
+their true sign. This is selective improvement certification, not demonstrated
+natural-regression detection. Early-training image improvements provide a
+useful regime, but do not by themselves validate a broad deployed-model
+monitoring claim.
+
+The paired extension targets the decision gap left by overlapping absolute
+intervals. Early image updates give positive examples, and the public fallback
+demonstrates how inconclusive tasks can be resolved. However, mature updates
+and text expose a substantial negative result: uncertainty often exceeds the
+cost change. The original 1,024-record workload's 5.08-fold component saving
+and 98.25\% agreement remain an approximation trade-off rather than evidence
+of useful update ordering. New workloads and a changed decision interface do
+not erase that limitation.
+
+For fixed centers and repeated subsets, cached exact answers are the strongest
+tested option. Affine scores are also exact on the same quantized inputs.
+Their evaluated center-specific preprocessing repeats for new centers;
+reusable public-center Full avoids repeated setup and is the relevant exact
+changing-center control. A reusable affine parameterization remains possible
+for updates restricted to a fixed span. When the complete center family is
+known before preprocessing, exact family scores provide an additional
+alternative (Section~\ref{sec:family-baseline}); its proof cost is unmeasured
+and dominance over it is not claimed. The proposed benefit is lower total
+verifiable-audit cost in supported changing-center workloads, not greater
+accuracy than an exact baseline or faster individual queries than a cache.
+
+\subsection{Representation and cost--guarantee limits}
+The centroid-informed head preserves the deployed center span and fills its
+remaining budget using residual PCA. It is not a trained neural encoder.
+Both head and PCA receive the same reusable certificate circuit. In the new
+rank 63 early-update grid their decision rates tie across all fitted
+configurations, although assignment coverage differs. Historical native and
+shift studies likewise do not establish uniform learned superiority.
+Accordingly the contribution is representation-agnostic; application-specific
+basis choice remains an externally approved approximation policy.
+
+Increasing rank can improve coverage but raises computation and storage, and
+the rounded Gram defect changes too. The new fixed-precision/nested-basis
+control isolates this trade-off on one fit; older rank pilots changed
+precision and batching together. The paired relation also has quadratic
+center-count dependence. On the completed text proof fit it is only modestly
+cheaper than Full and resolves no actual update. Paying for paired proofs and
+then exact fallback can be more expensive than going directly to Full.
+Network latency, service concurrency and an on-demand fallback prover remain
+unmeasured.
+
+\subsection{Fallback economics and deployment selection}
+A certificate-first policy must charge failed attempts. For a fixed sequence
+of requests, write $C_P$ for the paid paired pipeline and $F_j$ for the
+incremental exact fallback cost of unresolved candidate $j$, including required
+public verification. Let $F_0$ be a baseline proof cost shared by the exact
+service and fallback, and $J$ the complete candidate set. With identical cost
+boundaries, certificate-first beats direct exact evaluation only if
+\begin{equation}
+ C_P+F_0+\sum_{j\in U}F_j < F_0+\sum_{j\in J}F_j,
+\end{equation}
+or equivalently $C_P<\sum_{j\in J\setminus U}F_j$. If the paired and exact
+pipelines share additional work, only measured reuse may be credited. A proof
+replay time alone cannot supply the missing fallback generation cost. When no
+request resolves, paying a positive paired cost before the same exact service
+gives no saving under this accounting. The text example therefore favors
+starting with Full; the no-fallback image deployment ratio is conditional.
+
+A practical deployment must choose its service contract before examining
+private audit outcomes: exact known-family preprocessing where appropriate,
+Full for exact decisions, or certificate-first with explicit inconclusive
+outcomes and a fallback budget. The present data do not establish an optimal
+selection policy, an online fallback latency distribution or a production
+regression-detection service. Those require targeted measurements rather than
+pooling further positive early-update examples.
+
+\subsection{Evidence and submission boundaries}
+The 2,160-cell numerical grid broadens learning-problem evidence but shares
+splits, centers and updates within its 15 dataset/seed replications. It is
+not 2,160 independent experiments. At the stated cutoff, new paired proof
+measurements cover three fitted 128-record workloads; 15 of 32 main cases are
+complete, with separate portability and synthetic controls. These completed
+cases are a temporal snapshot of a fixed queue, not a campaign-wide success
+estimate. The main queue and additional 1,024-record paired scale queue have since
+reported completion through the server console. The scale comparison is
+reported separately as provisional console evidence; second-seed case files
+and full scale proof exports still await recovery and independent replay. Earlier actual 1,024-record absolute
+certificate proofs are retained as a distinct cohort.
+
+The matched one-repetition deployment's 2.07-fold wall-time ratio includes
+public replay, but represents one fitted workload on one resource-bounded
+host. Other alternative costs reconstruct recorded components and exclude
+fitting and process overhead as stated. Windows/Linux portability confirms
+execution on a second environment, not a cross-host speed distribution.
+Public benchmarks and algorithmic Lloyd traces do not replace a production
+update study. The experiments prove neither model training nor feature
+extraction, and fixed-catalog preprocessing limits predictive-learning claims.
+
+The projection/residual identities, Cauchy--Schwarz, min/max monotonicity,
+Merkle authentication and Groth16 are established. The proposed systems
+contribution is their checked integer composition into reusable cost-change
+certificates, independently approved tasks and a public fallback interface.
+Implemented utility examples sharpen this contribution without establishing
+a new general sketching theorem or unrestricted novelty-firstness.
+The staged artifact is privately verifiable and has passed fresh replay, but
+public accessibility remains pending. Author details, declarations and final
+scientific approval remain with the authors.
+
+\section{Conclusion}\label{sec:conclusion}
+Authenticated reusable statistics support integer intervals for changes in
+exact quantized clustering cost. A conclusive sign guarantees an update
+decision; exact fallback resolves inconclusive tasks at additional cost.
+Completed image examples and one 2.07-fold deployment saving demonstrate
+conditional usefulness. The separately labelled 1,024-record console result
+extends this evidence with a provisional 2.10-fold component-plus-replay
+ratio and four resolved updates for both head and PCA; original export
+recovery and independent replay are still required. Text, mature updates, the single-fit scale comparison and incomplete
+recovery of the completed campaign limit generalization. The results do not
+establish uniform learned superiority.

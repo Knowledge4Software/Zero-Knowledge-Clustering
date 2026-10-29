@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "method_requests": 48,
+  "unique_requests": 24,
+  "historical_natural_regressions": 24,
+  "independent_natural_regressions": null,
+  "false_conclusive_decisions": 0,
+  "all_intervals_contain_truth": true,
+  "paired_correction_dominates_separate_row_bounds": null,
+  "elapsed_seconds": 252.5470000000205,
+  "scope": "Native compressed-moment feasibility. No authenticated implementation or speed inferred from this screen."
+}

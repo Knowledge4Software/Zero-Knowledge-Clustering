@@ -1,78 +1,68 @@
-% Clean AI-assisted research revision, 20 October 2026.
-% The preserved supervisor source is paper_history/supervisor_draft.tex.
-% Author metadata and declarations need human approval before submission.
+% Focused referee revision, 25 October 2026; selected method and baselines.
+% Only completed verified comparisons are included; new experiments are recorded separately.
 \documentclass[5p,times,twocolumn]{elsarticle}
 \usepackage[T1]{fontenc}
 \input{glyphtounicode}
 \pdfgentounicode=1
-\usepackage{graphicx,multirow}
-\usepackage{amsmath,amssymb,amsfonts,amsthm}
-\usepackage{xcolor,textcomp,booktabs,tabularx,array,adjustbox}
-\usepackage{placeins,dblfloatfix,listings,enumitem,url}
-\usepackage{needspace}
+\usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,enumitem,url}
+\usepackage{xcolor,textcomp,tabularx,array,adjustbox,placeins,dblfloatfix}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
 \usepackage[hidelinks]{hyperref}
 \setlength{\emergencystretch}{2em}
-\Urlmuskip=0mu plus 1mu
-\newcolumntype{Y}{>{\raggedright\arraybackslash\hspace{0pt}}X}
-\newcolumntype{R}{>{\raggedleft\arraybackslash\hspace{0pt}}X}
-\newcolumntype{C}{>{\centering\arraybackslash\hspace{0pt}}X}
-\newcommand{\newtext}[1]{#1}
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\setlength{\tabcolsep}{5pt}
+\setcounter{dbltopnumber}{4}
+\renewcommand{\dbltopfraction}{.9}
+\renewcommand{\dblfloatpagefraction}{.65}
 \raggedbottom
-\setlength{\tabcolsep}{3pt}
-\setlength{\dblfloatsep}{12pt plus 2pt minus 2pt}
-\setlength{\dbltextfloatsep}{14pt plus 2pt minus 2pt}
-\renewcommand{\dblfloatpagefraction}{0.65}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
 \journal{Neurocomputing}
-
 \begin{document}
 \begin{frontmatter}
-\title{Verifiable Center-Based Clustering with Reusable Statistics and Integer Accuracy Certificates}
-\author{Author information pending confirmation}
-\begin{abstract}
-Auditing nearest-center assignments over private high-dimensional records is expensive when successive proofs repeat original-space distances. We implement a two-stage zero-knowledge system that binds compact head coordinates and residual energy to committed records and reuses them across public center updates. An optional integer certificate proves a lower bound on the number of correct original-space assignments and an interval containing the exact quantized nearest-center cost, accounting for the Gram defect of the rounded basis. A public-only verifier checks approved centers, subsets and proof coverage before an explicit accuracy policy is applied. We evaluate exact public-center Full, equally reusable PCA/energy and plain and certified learned reuse on one four-CPU host. All 14 controls finish, including actual 1,024-record audits over ten center sets; 6,848 proofs pass independent public-only replay. At this scale, measured component costs are 24,681.3 seconds for exact Full, 4,778.1 for plain learned reuse and 4,861.0 for certified reuse. Certification adds 1.74\% to total cost. Across nine updated sets, observed quantized assignment agreement is 98.25\%, but certified coverage averages 61.63\% and cost-interval width 20.65\%. A completed higher-rank 256-record configuration improves agreement to 99.74\% and certified coverage to 85.20\%, with increased total cost. No updated set meets a strict 99\% coverage / 1\% width policy. The contribution is an authenticated reusable audit interface with checked integer approximation guarantees and a measured computation--accuracy trade-off; the lower costs do not establish equal-fidelity acceleration of exact computation.
-\end{abstract}
+\title{Reusable Zero-Knowledge Certificates for Prototype Updates}
+\author{Author information pending supervisor confirmation}
+\input{paper_results/referee_final_20261025/abstract.tex}
 \begin{keyword}
-zero-knowledge proofs \sep verifiable clustering \sep reusable statistics \sep dimensionality reduction \sep privacy-preserving computation
+zero-knowledge proofs \sep prototype-update audits \sep authenticated statistics
+\sep integer cost-change certificates \sep reusable computation
 \end{keyword}
 \end{frontmatter}
-
-\input{paper_results/reuse_revision/introduction.tex}
-\input{paper_results/reuse_revision/method.tex}
-\input{paper_results/reuse_revision/security.tex}
-\input{paper_results/reuse_revision/experiments.tex}
-\input{paper_results/reuse_revision/discussion.tex}
-
+\input{paper_results/referee_final_20261025/introduction.tex}
+% Completed methodology text is preserved verbatim in the integrated copy.
+\makeatletter
+\def\input@path{{paper_results/ccd_pilot_20261029/}}
+\makeatother
+\input{paper_results/ccd_pilot_20261029/methodology.tex}
+\input{paper_results/ccd_pilot_20261029/methodology_figures.tex}
+\input{paper_results/ccd_pilot_20261029/experimental_design.tex}
+\input{paper_results/ccd_pilot_20261029/experimental_results.tex}
+\input{paper_results/ccd_pilot_20261029/discussion.tex}
+\input{paper_results/ccd_pilot_20261029/threats_to_validity.tex}
+\input{paper_results/ccd_pilot_20261029/conclusions.tex}
 \FloatBarrier
-\onecolumn
 \appendix
-\numberwithin{table}{section}
-\renewcommand{\thetable}{\Alph{section}.\arabic{table}}
-\renewcommand{\theHtable}{appendix.\Alph{section}.\arabic{table}}
-\renewcommand{\theHequation}{appendix.\Alph{section}.\arabic{equation}}
-\input{paper_results/reuse_revision/appendix.tex}
+\input{paper_results/ccd_pilot_20261029/methodology_appendix.tex}
+\input{paper_results/ccd_pilot_20261029/evidence_appendix.tex}
 \FloatBarrier
-\twocolumn
 \section*{Declarations}
-\paragraph{Author information, contributions and acknowledgements}
-Names, affiliations, corresponding-author details, contributor roles and acknowledgements require author confirmation before submission.
-\paragraph{Funding and competing interests}
-Funding sources and the competing-interest declaration require confirmation by all authors.
+\paragraph{Authors, funding and competing interests}
+Author metadata, contribution roles, funding, competing interests, ethics and
+acknowledgements remain subject to the supervisor's final review.
 \paragraph{Data and code availability}
-The experiments use the public benchmark sources cited in Table~\ref{tab:datasets-a} and synthetic data. Code, completed review-control captures, numerical exports and provenance manifests are provided at \url{https://github.com/Knowledge4Software/Zero-Knowledge-Clustering}. The portable paper source package includes the numerical exports and their provenance. Large dataset caches, raw historical runs and proving artifacts are retained separately; the repository guide states which evidence is included. Final archival identifiers and release metadata require author approval before submission.
-\paragraph{Ethics and consent}
-The final ethics and consent declarations require author review of the benchmark data sources and intended release. No claim of new collection of sensitive participant records is made in this study.
-\paragraph{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
-OpenAI Codex assisted with source-code development, result aggregation, literature navigation, manuscript organization and language revision. Numerical claims are derived from retained experiment outputs and deterministic analysis scripts. The human authors are responsible for checking the code, sources, interpretation and complete manuscript, and for approving the final submission. AI tools are not authors.
-
+The study uses public MNIST, Fashion-MNIST, UCI HAR and 20 Newsgroups sources,
+with the archived MiniLM model specified in the experiments
+\cite{lecun1998,fashion2017,ucihar2012,minilmcard2026}.
+The private review package retains numerical records, source/model hashes,
+sample selections, verification receipts, resource ledgers and reproduction
+commands. Code and evidence remain under supervisor review in the authors'
+private repository. No public download or archival artifact identifier is
+claimed; public release remains an author decision.
+\paragraph{Generative AI assistance}
+OpenAI Codex assisted with implementation, aggregation, manuscript organization
+and language revision. Claims derive from retained numerical and proof exports.
+The human authors are responsible for checking sources, code and interpretation
+and approving the final manuscript. AI tools are not authors.
 \bibliographystyle{elsarticle-num}
 \bibliography{references}
 \end{document}

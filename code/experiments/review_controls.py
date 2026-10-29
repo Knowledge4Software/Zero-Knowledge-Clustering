@@ -22,7 +22,7 @@ from commitjl.reuse_certificates import certificate
 def public_export(bundle: Path, out: Path):
     out.mkdir(exist_ok=False)
     metadata=['trusted.json','prepare.json','stage1.json']
-    for prefix in ['reuse','reuse_certified','full_reuse']:
+    for prefix in ['reuse','reuse_certified','relative_reuse','full_reuse','paired_change','family_affine']:
         metadata += [p.name for p in bundle.glob(prefix+'_*.json')
                      if p.stem.removeprefix(prefix+'_').isdigit()]
     files=[]
@@ -33,7 +33,7 @@ def public_export(bundle: Path, out: Path):
         for sample in data.get('samples') or []:
             sample.pop('assign',None);sample.pop('certified_flags',None)
         save(out/name,data);files.append(name)
-    for sub in ['keys','stage1','reuse','reuse_certified','full_reuse']:
+    for sub in ['keys','stage1','reuse','reuse_certified','relative_reuse','full_reuse','paired_change','family_affine']:
         for p in (bundle/sub).glob('*.vk' if sub=='keys' else '*.proof'):
             target=out/p.relative_to(bundle);target.parent.mkdir(exist_ok=True)
             shutil.copy2(p,target);files.append(p.relative_to(bundle).as_posix())

@@ -1,0 +1,84 @@
+{
+  "complete": true,
+  "current_selected_method": "Authenticated exact old groups/moments, integer-safe rounded-basis switching intervals, bounded verified row refinement and fresh proved Full fallback.",
+  "latest_selected_profile_consistent": true,
+  "profiles": [
+    {
+      "dataset": "fashion",
+      "prediction_rank": 63,
+      "certificate_rank": 79,
+      "basis_scale": 16384,
+      "input_bits": 12,
+      "JL_tail": false,
+      "correction_cap": 16
+    },
+    {
+      "dataset": "text",
+      "prediction_rank": 63,
+      "certificate_rank": 79,
+      "basis_scale": 16384,
+      "input_bits": 12,
+      "JL_tail": false,
+      "correction_cap": 16
+    }
+  ],
+  "core_and_protected_authoring_unchanged": true,
+  "protected_files": 100,
+  "proof_binary_sha256": "5936b2db9e4a0455ddd0406857e7b222613c514bc2b32bbff329d612d0469267",
+  "proof_binary_matches_checked_smokes": true,
+  "native_integer_checks_passed": true,
+  "completed_cold_and_warm_public_replay_passed": true,
+  "python_test_summary": "39 passed in 13.00s",
+  "go_checks": {
+    "returncode": 0,
+    "command": [
+      "go",
+      "test",
+      "-p",
+      "1",
+      "-count",
+      "1",
+      "-run",
+      "Test(Compact|ExactOld|GroupRefinement|GroupFingerprint|PublicAssigned|FullReuseExact|ChangingTaskCoverage|PairedTaskRequires|DigestPreserves|SetupCache)",
+      "./circuit",
+      "./cmd/commitjl-bound"
+    ],
+    "working_directory": "code/zk",
+    "execution_os": "Windows",
+    "GOMAXPROCS": 2,
+    "GOMEMLIMIT": "700MiB",
+    "packages_passed": [
+      "commitjl/zk/circuit",
+      "commitjl/zk/cmd/commitjl-bound"
+    ],
+    "output": [
+      "ok commitjl/zk/circuit 16.176s",
+      "ok commitjl/zk/cmd/commitjl-bound 2.540s"
+    ],
+    "scope": "Current-source unit/circuit validation, including tiny public proof replay; not a benchmark timing repetition."
+  },
+  "method_changed": false,
+  "scope": "Current selected repository method. This is not a claim of newest/best published algorithm, production security audit or publication readiness.",
+  "evidence_assessment": "Coherent and useful regime-specific verification mechanism; insufficient for universal superiority, a consistent PCA advantage, general text benefit or a confident journal-readiness claim.",
+  "remaining_evidence": [
+    "Repeated paired real-proof timings across independent fits",
+    "Matched larger-catalog proof comparisons",
+    "Complete-response preparation/reuse/reference-reset accounting"
+  ],
+  "server_plan_checks": {
+    "complete": true,
+    "total_hours": 32,
+    "initial_campaign_hard_cap_hours": 36,
+    "rental_hours": 72,
+    "minimum_uncommitted_reserve_hours": 36,
+    "extension_assumed": false,
+    "primary_target_runs": 48,
+    "primary_n": 128,
+    "primary_q": 4,
+    "long_case_q": 32,
+    "new_proofs_or_remote_jobs": 0,
+    "validation_scope": "Structural plan checks, not an executable campaign readiness certificate.",
+    "plan_status": "proposed_not_executed",
+    "ready_to_start_billing": false
+  }
+}

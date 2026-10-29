@@ -1,0 +1,70 @@
+{
+  "configurations": [
+    {
+      "dataset": "fashion_mnist",
+      "k": 3,
+      "seed": 101
+    },
+    {
+      "dataset": "fashion_mnist",
+      "k": 5,
+      "seed": 113
+    },
+    {
+      "dataset": "mnist",
+      "k": 3,
+      "seed": 101
+    },
+    {
+      "dataset": "mnist",
+      "k": 5,
+      "seed": 113
+    }
+  ],
+  "ages": [
+    1,
+    8
+  ],
+  "update_steps": {
+    "1": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "8": [
+      9,
+      12,
+      16,
+      24
+    ]
+  },
+  "representations": [
+    "ordered_head",
+    "pca"
+  ],
+  "certificate_ranks": [
+    63,
+    79
+  ],
+  "prediction_rank": 63,
+  "basis_scale": 16384,
+  "scopes": [
+    1024,
+    128
+  ],
+  "proof_fits": [
+    "fashion_mnist_k3_seed101_age8",
+    "mnist_k5_seed113_age1"
+  ],
+  "proof_profiles": [
+    "head79",
+    "head63",
+    "pca79"
+  ],
+  "accuracy_target_percent": 99.0,
+  "selection": "All configurations/ages/methods/updates fixed before outcomes; retain duplicates, errors, natural regressions and inconclusive outcomes. Proof selection independent of quality.",
+  "replication_unit": "Four dataset/seed/k split configurations. Eight deployed models and two representations share these splits; updates/ranks/scopes are paired, not independent replications.",
+  "scope": "Numerical confirmation first. These are new fits on existing public source datasets, not new datasets or production logs. Actual proof timings are a separate campaign.",
+  "runner_sha256": "23c22e80d42e46b1bc1557c2e2282bff050d922606ead8253f4cc844f7f844f2"
+}

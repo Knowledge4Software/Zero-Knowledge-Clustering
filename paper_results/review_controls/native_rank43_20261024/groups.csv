@@ -1,0 +1,3 @@
+scope,sets,agreement_mean,agreement_min,relative_coverage_mean,relative_coverage_min,old_coverage_mean,cost_error_max,width_max,passes_user_99_on_every_set
+native1024,20,99.609375,99.21875,92.2509765625,91.2109375,90.1953125,0.06447546511068047,4.317040588375347,True
+proof_catalog,20,99.4921875,98.4375,90.46875,87.5,88.90625,0.07146464251253093,4.545431444760353,False

@@ -1,0 +1,103 @@
+{
+  "completed_only": true,
+  "records": [
+    {
+      "cohort": "matched_controls",
+      "method": "Online affine",
+      "complete": true,
+      "plan_sha256": "0ae58ee8ace5b547ef8b10ee5523ae9755ae8e1fe92136387d4bd3cd9232e770",
+      "rows": [
+        {
+          "request": 0,
+          "active_seconds": 289.655999999959,
+          "proofs": 136,
+          "exact_cost": 99260662002,
+          "exact_change": 0
+        },
+        {
+          "request": 1,
+          "active_seconds": 287.64000000001397,
+          "proofs": 136,
+          "exact_cost": 99261970130,
+          "exact_change": 1308128
+        },
+        {
+          "request": 2,
+          "active_seconds": 269.60899999993853,
+          "proofs": 136,
+          "exact_cost": 99454939025,
+          "exact_change": 194277023
+        },
+        {
+          "request": 3,
+          "active_seconds": 269.704000000027,
+          "proofs": 136,
+          "exact_cost": 99486970867,
+          "exact_change": 226308865
+        },
+        {
+          "request": 4,
+          "active_seconds": 269.625,
+          "proofs": 136,
+          "exact_cost": 99473062427,
+          "exact_change": 212400425
+        }
+      ],
+      "active_seconds": 1386.2339999999385,
+      "full_seconds": 1312.0770000000484,
+      "full_over_affine": 0.9465047026693232,
+      "proofs": 680,
+      "future_centers_available": false,
+      "fixed_reference": true
+    },
+    {
+      "cohort": "mnist_k5_seed173_age8_n128",
+      "method": "Online affine",
+      "complete": true,
+      "plan_sha256": "d1882b43441e378afb5890a2407a41a1e54a1c7e5b0224f9b82a7ae049676e43",
+      "rows": [
+        {
+          "request": 0,
+          "active_seconds": 236.51500000001397,
+          "proofs": 136,
+          "exact_cost": 101429877413,
+          "exact_change": 0
+        },
+        {
+          "request": 1,
+          "active_seconds": 229.51600000006147,
+          "proofs": 136,
+          "exact_cost": 101070130645,
+          "exact_change": -359746768
+        },
+        {
+          "request": 2,
+          "active_seconds": 228.51500000001397,
+          "proofs": 136,
+          "exact_cost": 100574151979,
+          "exact_change": -855725434
+        },
+        {
+          "request": 3,
+          "active_seconds": 228.5,
+          "proofs": 136,
+          "exact_cost": 99809674611,
+          "exact_change": -1620202802
+        },
+        {
+          "request": 4,
+          "active_seconds": 229.59499999997206,
+          "proofs": 136,
+          "exact_cost": 98938898936,
+          "exact_change": -2490978477
+        }
+      ],
+      "active_seconds": 1152.6410000000615,
+      "full_seconds": 1048.1089999999385,
+      "full_over_affine": 0.9093108782351856,
+      "proofs": 680,
+      "future_centers_available": false,
+      "fixed_reference": true
+    }
+  ]
+}

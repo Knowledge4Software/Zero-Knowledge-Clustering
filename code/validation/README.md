@@ -1,29 +1,37 @@
-# Evidence and verification
+# Current evidence and verification
 
-The active [layout/evidence check](check_layout.py) validates current manuscript dependencies, citations, primary documentation links, preserved supervisor bytes, and the hashes and completeness of the finished review-control captures. It writes `outputs/layout_verification.json`.
+Current native records, immutable model/input pins, public proofs, verification
+keys and checked timing receipts are retained in `outputs/`. Cleanup removes
+inactive proving keys, serialized constraint systems and preparation caches;
+these are rebuildable and are unnecessary for public proof replay. All caches
+in the active two-review campaign and the queued resumable online-affine
+control are preserved.
 
-From the repository root:
+Important roots:
 
-```powershell
-python code/validation/check_layout.py
+- `outputs/referee_two_reviews_20261027/`: current sensor/neural-text study,
+  exact backend controls, learning-workload proofs and serial queue.
+- `outputs/referee_optimized_20261026/`: retained frozen-profile image data,
+  matched timing repetitions and the queued 1024-row affine continuation.
+- `outputs/referee_final_20261025/`: earlier checked controls still used in
+  the current paper; public artifacts and measured metadata remain.
+- Other roots contain supporting refinements, negative tests and historical
+  evidence cited by current source receipts. Their age does not make their
+  public proofs or result records disposable.
+
+From the repository root, with `PYTHONPATH` set to `code`:
+
+```text
+python -m analysis.two_review_campaign_status
+python -m analysis.export_two_review_evidence
+python -m pytest code/tests/test_two_review_evidence.py code/tests/test_referee_learning_workflows.py code/tests/test_optimized_evidence_export.py code/tests/test_online_affine_control.py -q
 ```
 
-For independent integer recomputation of the full matched campaign, run the exporter in the [analysis guide](../analysis/README.md). Its canonical output is `paper_results/review_controls/generated_completed_20261020/manifest.json`.
+The current reviewed PDF validations are in `output/`. Regenerating exports
+can incorporate newly completed jobs; it does not visually approve a new
+PDF. Older fixed-date paper builders and layout checkers remain legacy
+source, not current release commands.
 
-## Included evidence
-
-- `outputs/review_full_capture_followup_20261020/`: complete three-case small-catalog exact metadata.
-- `outputs/review_final_capture_20261020_1907Z/`: all 11 later completed cases, including the exact N=1024 baseline.
-- `outputs/review_owner_inputs_20261020/`, `review_certificate_preflight_20261020/`, `review_certificate_budget_20261020/`: public-benchmark owner inputs, native grids and predeclared pilot records.
-- `outputs/completed_reuse_20261020/`: earlier historical D/F evidence, separate from the new controls.
-- Selected public replay, smoke, negative-policy and verifier-release receipts retain targeted engineering evidence.
-
-Captured phase diagnostics may contain individual benchmark assignments. They are analysis inputs, not the privacy-preserving public proof export. `verify_certificate_policy.py` uses only public proof metadata, independently approved tasks and setup pins; it applies explicit integer accuracy thresholds after cryptographic replay.
-
-All 6,848 campaign proofs passed the workers' separate public-only verification phase. Local numerical re-analysis is a further check and is not described as a fresh local cryptographic replay of every saved proof.
-
-## Historical tools
-
-`audit.py` and the earlier written formula/implementation reviews concern retired per-RQ campaigns and their historical assumptions. Their required raw inputs are not part of a fresh clone. Their old outcomes must not be presented as current campaign verification. The modern checker retains `provenance_flags` for the historical byte/provenance regression tests.
-
-Superseded status reports and duplicate evidence views are recorded in the [cleanup manifest](outputs/cleanup_publication_20261020.json). Bulk raw runs and local binaries are excluded from Git; current compact evidence and provenance are included.
+The canonical dataset cache in `code/.cache/commitjl_data` remains available.
+No connection to the retired Mobin server is permitted. Cleanup is actual
+filesystem deletion, recorded in `output/project_cleanup_20261027.json`.

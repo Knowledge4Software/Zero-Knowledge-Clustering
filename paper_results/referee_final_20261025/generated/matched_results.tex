@@ -1,0 +1,25 @@
+\begin{table*}[tbp]
+\centering
+\caption{Matched unknown-future-center controls against one fixed reference, eight Go workers and four distinct proposals per cohort. Centroid and PCA are two bases for the same rank-79 certificate with rank-63 prediction; Full is exact public-center evaluation. Mature and early mean reference Lloyd ages 8 and 1; scale is the larger age-1 catalog. Concl. counts decisions before exact fallback (FB); proof counts include paid FB. Min. denotes active minutes. Diagnostic fits were observed during development.}
+\label{tab:matched-results}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{lrlrrrrr}
+\toprule
+Cohort & $N$ & Method & Min. & Full/method & Concl. & FB & Proofs\\
+\midrule
+MNIST mature & 128 & Full & 20.971 & 1.000 & 4 & 0 & 80\\
+MNIST mature & 128 & Centroid & 10.753 & 1.950 & 4 & 0 & 166\\
+MNIST mature & 128 & PCA & 9.352 & 2.242 & 4 & 0 & 167\\
+MNIST mature & 128 & Moments-only & 24.288 & 0.863 & 0 & 4 & 212\\
+Fashion early & 128 & Full & 18.729 & 1.000 & 4 & 0 & 80\\
+Fashion early & 128 & Centroid & 9.199 & 2.036 & 4 & 0 & 164\\
+Fashion early & 128 & PCA & 10.170 & 1.842 & 4 & 0 & 164\\
+Fashion early & 128 & Moments-only & 25.566 & 0.733 & 2 & 2 & 180\\
+MNIST scale & 1024 & Full & 127.022 & 1.000 & 4 & 0 & 640\\
+MNIST scale & 1024 & Centroid & 45.662 & 2.782 & 4 & 0 & 1284\\
+MNIST scale & 1024 & PCA & 45.534 & 2.790 & 4 & 0 & 1284\\
+MNIST scale & 1024 & Moments-only & 128.503 & 0.988 & 2 & 2 & 1412\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

@@ -1,0 +1,145 @@
+\section{Technical Details and Derivations}
+\label{app:methodology-proofs}
+\subsection{Exact Decomposition of the Update Cost}
+For the authenticated deployed groups, define the assigned objective
+$\Psi(C)=\sum_i\|x_i-c_{g_i}\|_2^2$. Expanding its difference gives
+\begin{align}
+ \Psi(C^1)-\Psi(C^0)
+ &=\sum_i\bigl[2\langle x_i,c^0_{g_i}-c^1_{g_i}\rangle\nonumber\\
+ &\hspace{15mm}+\|c^1_{g_i}\|_2^2-\|c^0_{g_i}\|_2^2\bigr]
+ =\mathcal A.
+\end{align}
+Exact old membership implies $\Psi(C^0)=\Phi_X(C^0)$, whereas
+$\Phi_X(C^1)=\Psi(C^1)+\sum_i b_i$. Substitution proves
+Eq.~\eqref{eq:methodology-decomposition}. The derivation allows old ties,
+empty groups and centers outside the represented span.
+
+\subsection{Rounded-Basis Pairwise Bounds}
+Write $v=x-a$, $w=c-a$ and $K=B^\top B$. Then
+$H_B(x)=TBv$ and $R_B(x)=(T^2I-K)v$. Expanding
+\begin{align}
+ \mathcal D_B(x,c)
+ ={}&T^2(v-w)^\top K(v-w)\nonumber\\
+ &+v^\top(T^2I-K)^2v+w^\top(T^2I-K)^2w
+\end{align}
+and substituting $G=BB^\top-T^2I$ yields
+Eq.~\eqref{eq:methodology-rounded-identity}. Subtract its instances for
+$c^1_j$ and $c^1_g$. The private quadratic term $H_B(x)^\top GH_B(x)$
+cancels, leaving Eq.~\eqref{eq:methodology-affine} and the residual inner
+product in Eq.~\eqref{eq:methodology-pair-difference}.
+
+Since $\|R_B(x_i)\|_2\leq\rho_i$ and
+$\|R_B(c^1_j)-R_B(c^1_g)\|_2\leq\tau_{jg}$, Cauchy--Schwarz gives
+\begin{align}
+ q_{jg}(H_B(x_i))-2T^2\rho_i\tau_{jg}
+ &\leq T^6(\|x_i-c^1_j\|_2^2-\|x_i-c^1_g\|_2^2)\nonumber\\
+ &\leq q_{jg}(H_B(x_i))+2T^2\rho_i\tau_{jg}.
+\end{align}
+Taking the minimum over $j$ preserves both inequalities. The $j=g$
+comparison is exactly zero, so both endpoint minima are nonpositive.
+Summing and applying the exact decomposition proves
+Eq.~\eqref{eq:methodology-interval}. The argument requires no orthogonality
+assumption on the rounded basis and no probabilistic embedding event.
+
+\subsection{Monotone Exact-Row Refinement}
+The base circuit permits any bounded radius satisfying $E_i\leq\rho_i^2$.
+Its lower endpoint decreases and upper endpoint increases with the radius.
+For the canonical radius $\bar\rho_i=\lceil\sqrt{E_i}\rceil$,
+\begin{equation}
+ \ell_i\leq\bar\ell_i\leq T^6b_i\leq\bar u_i\leq u_i.
+\end{equation}
+For $E_i=0$, refinement forces $\bar\rho_i=0$. Otherwise it checks
+$(\bar\rho_i-1)^2<E_i\leq\bar\rho_i^2$. These constraints enforce the
+canonical endpoints used in Eq.~\eqref{eq:methodology-corrections}.
+For a refined row,
+\begin{equation}
+ \ell_i+d_i^-\leq T^6b_i,
+ \qquad u_i+d_i^+\geq T^6b_i.
+\end{equation}
+Leaving other rows unchanged proves containment for
+Eq.~\eqref{eq:methodology-refined}. Also
+$d_i^+-d_i^-=\bar\ell_i-\bar u_i=-w_i$, which gives
+Eq.~\eqref{eq:methodology-width}. For a fixed number of distinct indices,
+the largest widths maximize $\sum_{i\in J}w_i$. This minimizes interval
+width independently of the exact corrections, without establishing optimal
+sign resolution.
+
+\subsection{Fingerprint Linking and Conditional Soundness}
+Condition on binding commitments and valid proofs. The original rows,
+derived values, group memberships and proposed moments are fixed before
+$\xi$ is sampled. Summing Eq.~\eqref{eq:methodology-fingerprint} over the
+complete ordered catalog telescopes the linked masks. Comparing the result
+with Eq.~\eqref{eq:methodology-moment-link} leaves, for each group,
+\begin{equation}
+ f_g(\xi)=\delta n_g+\sum_{t=0}^{d-1}\delta S_{gt}\xi^{t+1}=0,
+\end{equation}
+where the deltas are the differences between committed moments and their
+true row aggregates. Integer ranges ensure that a nonzero difference is
+nonzero in $\mathbb F_p$. Thus a false group's $f_g$ is a nonzero polynomial
+of degree at most $d$, with at most $d$ roots. An independent uniform
+$\xi\in\mathbb F_p^*$ gives a collision probability at most $d/(p-1)$.
+The union bound over groups is $kd/(p-1)$ for one preprocessing session.
+
+Outside this event, the moment-link relation makes
+Eq.~\eqref{eq:methodology-assigned} exact. The preceding pairwise and
+refinement arguments then establish
+Proposition~\ref{prop:methodology-correctness}. Altering roots, models, keys,
+centers or row coverage instead violates a separately checked condition or
+a binding/soundness assumption. This is a conditional argument for the
+specified bounded session, not a composable-security theorem.
+
+For BN254, $p\simeq2.1888\times10^{76}$. At $k=5,d=784$, the fingerprint
+term is below $1.8\times10^{-73}$ per session. Across $10^6$ independently
+challenged sessions, the union bound is below $1.8\times10^{-67}$.
+Commitment, hash and proof-system failure terms are separate.
+
+\subsection{Integer Semantics and Field-Safety Guards}
+The implementation uses power-of-two catalog sizes for its Merkle layout
+and admits only models passing its dimensional and arithmetic guards.
+Let $X_{\max}=2^b$ bound every input and center coordinate and put
+$W_0=2X_{\max}$. Assume $|B_{jt}|\leq T$ and define
+$\lambda_j=\sum_t|B_{jt}|$. Conservative bounds are
+\begin{align}
+ H_{\max}&=TW_0\max_j\lambda_j,\nonumber\\
+ R_{\max}&=W_0\max_t\left(T^2+\sum_j|B_{jt}|\lambda_j\right),\nonumber\\
+ E_{\max}&=dR_{\max}^2,\qquad
+ \rho_{\max}=\lceil\sqrt{E_{\max}}\rceil.
+\end{align}
+They apply to rows and candidate centers relative to the bounded anchor.
+Pairwise center residual radii are at most $2\rho_{\max}$. With
+$\gamma=\max_a\sum_b|G_{ab}|$, affine coefficients and constants obey
+\begin{align}
+ C_{\max}&=4H_{\max}(\gamma+T^2),\nonumber\\
+ K_{\max}&=T^2(2sH_{\max}^2+2E_{\max})
+                    +2\gamma sH_{\max}^2,\nonumber\\
+ \Lambda&=sH_{\max}C_{\max}+K_{\max}
+                      +4T^2\rho_{\max}^2+1.
+\end{align}
+For a switching batch of $b_q$ rows, the implementation takes
+$L_G=16\Lambda$, bounds signed batch endpoints by $2b_qL_G$, and requires
+$64(n+b_q+k)L_G<p$ before compilation. The evaluated switching batch size
+is $b_q=16$, separately from the per-candidate correction cap
+$b_{\max}=16$. The model also checks its head, energy, score and distance
+limits, multiplied by $16n$, against $p$.
+
+Counts satisfy $0\leq n_g\leq n$ and $\sum_g n_g=n$;
+coordinate sums satisfy $|S_{gt}|\leq nX_{\max}$. Assigned change is bounded
+by $|\mathcal A|\leq4ndX_{\max}^2$. Exact center linear scores and their
+differences have magnitude at most $3dX_{\max}^2$ and $6dX_{\max}^2$,
+respectively. Signed range checks use explicit nonnegative shifts and
+bounded comparisons, so negative integers are not interpreted from bare
+field residues. Roots, challenges and mask contributions use canonical
+field encodings. Public endpoint aggregation uses arbitrary-precision
+integers outside the circuit. Models outside the guards are rejected.
+
+\subsection{Persisted Basis Recipe}
+The centroid span is obtained by SVD of the deployed-center differences.
+Training-residual PCA directions undergo two reprojections against this
+span and a nonpivoted QR preserving their order; signs are canonicalized
+before rounding. The auxiliary extension orthonormalizes the persisted
+prediction basis for residual construction, performs a rank-64 randomized
+SVD with four iterations and seed 20261025, and appends the first 16 rounded
+directions. Its prefix remains the original rank-63 integer basis. The
+randomized numerical solver fits a training-dependent basis; it does not
+provide an oblivious JL distance-preservation guarantee. The checked
+Gram correction accommodates its numerical and rounding deviations.

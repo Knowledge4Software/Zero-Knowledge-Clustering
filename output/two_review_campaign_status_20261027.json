@@ -1,0 +1,297 @@
+{
+  "updated_unix": 1793112670.337443,
+  "running": true,
+  "active_processes": [
+    {
+      "pid": 9720,
+      "name": "python.exe",
+      "created_unix": 1793102298.9512074,
+      "rss_bytes": 15319040,
+      "command": [
+        "C:\\Users\\koush\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-u",
+        "-m",
+        "campaigns.referee_review_followups",
+        "--root",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027"
+      ]
+    },
+    {
+      "pid": 10028,
+      "name": "python.exe",
+      "created_unix": 1793094110.0918107,
+      "rss_bytes": 38195200,
+      "command": [
+        "C:\\Users\\koush\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-u",
+        "-m",
+        "campaigns.referee_two_reviews_local",
+        "--root",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027"
+      ]
+    },
+    {
+      "pid": 15344,
+      "name": "python.exe",
+      "created_unix": 1793103996.75598,
+      "rss_bytes": 15294464,
+      "command": [
+        "C:\\Users\\koush\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-u",
+        "-m",
+        "analysis.finalize_two_review_revision",
+        "--root",
+        "C:/PyProjects/zero-knowledge/code/validation/outputs/referee_two_reviews_20261027"
+      ]
+    },
+    {
+      "pid": 29292,
+      "name": "python.exe",
+      "created_unix": 1793112180.1578145,
+      "rss_bytes": 95272960,
+      "command": [
+        "C:\\Users\\koush\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-u",
+        "-m",
+        "campaigns.run_group_fast_control",
+        "--compact",
+        "--proof-backbone-only",
+        "--parent",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027\\learning_inputs\\har561_k6_seed307_release\\ordered_head",
+        "--root",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027\\proof_har561\\ordered_head_base",
+        "--binary",
+        "C:\\PyProjects\\zero-knowledge\\code\\zk\\bin\\commitjl-bound-final-optimized-20261026.exe",
+        "--smoke-receipt",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_optimized_20261026\\compact_smoke\\checks.json",
+        "--auxiliary-basis",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027\\learning_inputs\\har561_k6_seed307_release\\ordered_head\\auxiliary_basis.json"
+      ]
+    },
+    {
+      "pid": 29976,
+      "name": "commitjl-bound-final-optimized-20261026.exe",
+      "created_unix": 1793112540.958818,
+      "rss_bytes": 1018933248,
+      "command": [
+        "C:\\PyProjects\\zero-knowledge\\code\\zk\\bin\\commitjl-bound-final-optimized-20261026.exe",
+        "-phase",
+        "group_query",
+        "-instance",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027\\proof_har561\\ordered_head_base\\input.json",
+        "-out",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027\\proof_har561\\ordered_head_base\\bundle",
+        "-q",
+        "16",
+        "-reps",
+        "1",
+        "-warmup",
+        "0",
+        "-max-constraints",
+        "1600000",
+        "-trust",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027\\proof_har561\\ordered_head_base\\owner_pin.json",
+        "-public-task",
+        "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027\\proof_har561\\ordered_head_base\\approved.json"
+      ]
+    }
+  ],
+  "main": {
+    "complete": false,
+    "status": "running",
+    "started_unix": 1793093509.7833664,
+    "active_processes": [
+      {
+        "pid": 10824,
+        "created_unix": 1793093509.4749875,
+        "command": [
+          "C:\\Users\\koush\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "-u",
+          "-m",
+          "experiments.referee_learning_workflows",
+          "--root",
+          "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_two_reviews_20261027"
+        ]
+      }
+    ],
+    "completed": [
+      "dataset_acquisition",
+      "learning_native",
+      "backend_pilot",
+      "backend_pilot_verify",
+      "backend_inspect",
+      "backend_srs_preparation",
+      "backend_r1",
+      "backend_r1_verify",
+      "backend_r2",
+      "backend_r2_verify",
+      "backend_r3",
+      "backend_r3_verify",
+      "backend_groth_controls_full",
+      "backend_groth_controls_ordered_head_base",
+      "backend_groth_controls_ordered_head_refined",
+      "backend_groth_controls_pca_base",
+      "backend_groth_controls_pca_refined",
+      "proof_har561_full"
+    ],
+    "plan_sha256": "b5125818363caf551a680d3eaa50ae911e224201bdf08ebb42c14d4fec68a00a",
+    "maximum_proof_catalog_records": 1024,
+    "supervisor_pid": 10028,
+    "attempts": [
+      {
+        "phase": "backend_pilot",
+        "wall_seconds": 104.6470377445221,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 892157952
+      },
+      {
+        "phase": "backend_pilot_verify",
+        "wall_seconds": 0.5301387310028076,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 5328896
+      },
+      {
+        "phase": "backend_inspect",
+        "wall_seconds": 0.5299742221832275,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 5599232
+      },
+      {
+        "phase": "backend_srs_preparation",
+        "wall_seconds": 1.0449061393737793,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 63832064
+      },
+      {
+        "phase": "backend_r1",
+        "wall_seconds": 0.531916618347168,
+        "returncode": 1,
+        "stop": null,
+        "peak_rss_bytes": 5709824
+      },
+      {
+        "phase": "backend_r1",
+        "wall_seconds": 7994.34020614624,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 939470848,
+        "log": "backend_r1.retry01.log"
+      },
+      {
+        "phase": "backend_r1_verify",
+        "wall_seconds": 7.598968982696533,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 69570560,
+        "log": "backend_r1_verify.log"
+      },
+      {
+        "phase": "backend_r2",
+        "wall_seconds": 2718.4301629066467,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 997957632,
+        "log": "backend_r2.log"
+      },
+      {
+        "phase": "backend_r2_verify",
+        "wall_seconds": 3.100144386291504,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 23769088,
+        "log": "backend_r2_verify.log"
+      },
+      {
+        "phase": "backend_r3",
+        "wall_seconds": 4660.432697057724,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 952135680,
+        "log": "backend_r3.log"
+      },
+      {
+        "phase": "backend_r3_verify",
+        "wall_seconds": 3.122093915939331,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 23912448,
+        "log": "backend_r3_verify.log"
+      },
+      {
+        "phase": "backend_groth_controls_full",
+        "wall_seconds": 396.76616501808167,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 1258663936,
+        "log": "backend_groth_controls_full.log"
+      },
+      {
+        "phase": "backend_groth_controls_ordered_head_base",
+        "wall_seconds": 280.07180404663086,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 1005453312,
+        "log": "backend_groth_controls_ordered_head_base.log"
+      },
+      {
+        "phase": "backend_groth_controls_ordered_head_refined",
+        "wall_seconds": 342.34461283683777,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 1259212800,
+        "log": "backend_groth_controls_ordered_head_refined.log"
+      },
+      {
+        "phase": "backend_groth_controls_pca_base",
+        "wall_seconds": 310.4882230758667,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 1056292864,
+        "log": "backend_groth_controls_pca_base.log"
+      },
+      {
+        "phase": "backend_groth_controls_pca_refined",
+        "wall_seconds": 333.09134554862976,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 1260679168,
+        "log": "backend_groth_controls_pca_refined.log"
+      },
+      {
+        "phase": "proof_har561_full",
+        "wall_seconds": 1009.608325958252,
+        "returncode": 0,
+        "stop": null,
+        "peak_rss_bytes": 1648750592,
+        "log": "proof_har561_full.log"
+      }
+    ],
+    "active_phase": "proof_har561_ordered_head_base",
+    "child_pid": 29292,
+    "restarts": [
+      {
+        "recorded_unix": 1793094110.3749619,
+        "previous_error": "backend_r1 failed; inspect its preserved log: None"
+      }
+    ],
+    "budget_started_unix": 1793093509.7833664
+  },
+  "followups": {
+    "complete": false,
+    "status": "waiting_for_serial_prerequisite",
+    "started_unix": 1793093509.7833664,
+    "budget_started_unix": 1793093509.7833664,
+    "completed": [],
+    "attempts": [],
+    "plan_sha256": "b5125818363caf551a680d3eaa50ae911e224201bdf08ebb42c14d4fec68a00a"
+  },
+  "maximum_proof_catalog_records": 1024,
+  "mobin_retired": true,
+  "all_scientific_issues_fixed": false,
+  "author_metadata_deferred": true,
+  "public_release_authorized": false
+}

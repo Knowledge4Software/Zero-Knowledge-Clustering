@@ -1,0 +1,32 @@
+2026-10-21T22:38:58+03:30 WAIT_FOR_PRIOR_CAMPAIGN
+2026-10-21T22:38:58+03:30 START server_smoke
+2026-10-21T22:39:15+03:30 END server_smoke rc=0
+2026-10-21T22:39:15+03:30 START portability_paired
+2026-10-21T22:56:52+03:30 END portability_paired rc=0
+2026-10-21T22:56:52+03:30 START native_independent_fits
+2026-10-22T00:19:54+03:30 END native_independent_fits rc=0
+2026-10-21T20:49:56.725126+00:00 START deployment_paired
+2026-10-21T21:07:37.436524+00:00 END deployment_paired rc=0
+2026-10-21T21:07:37.436929+00:00 START deployment_full
+2026-10-21T21:44:02.134493+00:00 END deployment_full rc=0
+2026-10-21T21:44:02.134732+00:00 START mnist_k3_seed11_learned_r63
+2026-10-21T22:40:19.647933+00:00 END mnist_k3_seed11_learned_r63 rc=0
+2026-10-21T22:40:19.648526+00:00 START mnist_k3_seed11_pca_r63
+2026-10-21T23:35:42.036408+00:00 END mnist_k3_seed11_pca_r63 rc=0
+2026-10-21T23:35:42.036625+00:00 START mnist_k3_seed11_full_r0
+2026-10-22T01:13:38.551952+00:00 END mnist_k3_seed11_full_r0 rc=0
+2026-10-22T01:13:38.552214+00:00 START mnist_k3_seed11_learned_r15
+2026-10-22T01:39:14.265038+00:00 END mnist_k3_seed11_learned_r15 rc=0
+2026-10-22T01:39:14.265444+00:00 START mnist_k3_seed11_pca_r15
+2026-10-22T02:04:55.759852+00:00 END mnist_k3_seed11_pca_r15 rc=0
+2026-10-22T02:04:55.760368+00:00 START fashion_mnist_k5_seed11_learned_r63
+2026-10-22T02:32:56.553081+00:00 END fashion_mnist_k5_seed11_learned_r63 rc=0
+2026-10-22T02:32:56.553473+00:00 START fashion_mnist_k5_seed11_pca_r63
+2026-10-22T03:01:10.857925+00:00 END fashion_mnist_k5_seed11_pca_r63 rc=0
+2026-10-22T03:01:10.858322+00:00 START fashion_mnist_k5_seed11_full_r0
+2026-10-22T03:35:57.060990+00:00 END fashion_mnist_k5_seed11_full_r0 rc=0
+2026-10-22T03:35:57.061256+00:00 START fashion_mnist_k5_seed11_learned_r15
+2026-10-22T03:52:06.039290+00:00 END fashion_mnist_k5_seed11_learned_r15 rc=0
+2026-10-22T03:52:06.039643+00:00 START fashion_mnist_k5_seed11_pca_r15
+2026-10-22T04:08:16.541405+00:00 END fashion_mnist_k5_seed11_pca_r15 rc=0
+2026-10-22T04:08:16.541646+00:00 START 20ng_tfidf_k10_seed11_learned_r63

@@ -1,0 +1,17 @@
+\begin{table*}[tbp]
+\centering
+\caption{Controlled native rank/cap ablation on the first declared fit per added corpus, N128, all six minibatch proposals. Prediction rank 63 and precision 14 stay fixed; only certificate rank and correction budget change. Each cell gives resolved updates. Ranks 39/63/79 use prefixes of the same frozen training basis. These are numerical resolution counts, not measured proof-speed ratios.}
+\label{tab:review-rank-cap}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{llrrrrrr}
+\toprule
+Data & Basis & 39/0 & 63/0 & 79/0 & 79/4 & 79/16 & 79/32\\
+\midrule
+HAR & Centroid & 5/6 & 5/6 & 5/6 & 6/6 & 6/6 & 6/6\\
+HAR & PCA & 5/6 & 5/6 & 5/6 & 6/6 & 6/6 & 6/6\\
+Neural text & Centroid & 4/6 & 4/6 & 4/6 & 4/6 & 4/6 & 4/6\\
+Neural text & PCA & 4/6 & 4/6 & 4/6 & 4/6 & 4/6 & 4/6\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

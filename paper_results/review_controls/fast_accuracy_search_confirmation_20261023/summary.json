@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "elapsed_seconds": 234.48399999999674,
+  "cells": 5120,
+  "proof_timings_measured": false,
+  "target_percent": 99.5,
+  "selection_scope": "Exploratory native screen; no proof speed, deterministic JL accuracy guarantee or exact-decision claim."
+}

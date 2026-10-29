@@ -1,0 +1,58 @@
+[
+  {
+    "fit": "mnist_k5_seed11_age1_learned",
+    "training_sha256": "3ce76ec46ccc289ea6619206a56ff4d11319af7a977de9e72cc93acf12ff1dfe",
+    "audit_sha256": "deb978d019eb56bbf5d22681889aa35655af8d609e711bd6754e1f784fa81cd7",
+    "basis_sha256": "9c6ddb6b8bc7cd1eb1d650268b8be77aa4425133566a2fd5f007049441956c15",
+    "basis_matches_frozen": false
+  },
+  {
+    "fit": "mnist_k5_seed11_age1_pca",
+    "training_sha256": "3ce76ec46ccc289ea6619206a56ff4d11319af7a977de9e72cc93acf12ff1dfe",
+    "audit_sha256": "deb978d019eb56bbf5d22681889aa35655af8d609e711bd6754e1f784fa81cd7",
+    "basis_sha256": "2e69212062cb1683b87ce86e8d5d795f14963d9cfb3e91d0943060cba8e37f31",
+    "basis_matches_frozen": true
+  },
+  {
+    "fit": "mnist_k5_seed11_age8_learned",
+    "training_sha256": "3ce76ec46ccc289ea6619206a56ff4d11319af7a977de9e72cc93acf12ff1dfe",
+    "audit_sha256": "deb978d019eb56bbf5d22681889aa35655af8d609e711bd6754e1f784fa81cd7",
+    "basis_sha256": "277b327a5ef808a2c7d3433dd0ba77a347c1a451a01de62c511b4657b3530eb2",
+    "basis_matches_frozen": false
+  },
+  {
+    "fit": "mnist_k5_seed11_age8_pca",
+    "training_sha256": "3ce76ec46ccc289ea6619206a56ff4d11319af7a977de9e72cc93acf12ff1dfe",
+    "audit_sha256": "deb978d019eb56bbf5d22681889aa35655af8d609e711bd6754e1f784fa81cd7",
+    "basis_sha256": "2e69212062cb1683b87ce86e8d5d795f14963d9cfb3e91d0943060cba8e37f31",
+    "basis_matches_frozen": true
+  },
+  {
+    "fit": "fashion_mnist_k3_seed11_age1_learned",
+    "training_sha256": "2856af294e263b23936092201a0bd7789842562e66a3a39fce668f37cdbe7791",
+    "audit_sha256": "73c6c0dd6710c3e79be2bab4a9fe734f9bddfa5cd5f84279984f61fbe4307334",
+    "basis_sha256": "6e83898faee6a6401b5900498b0326824b8ded9459cd794494db223cf44737fe",
+    "basis_matches_frozen": false
+  },
+  {
+    "fit": "fashion_mnist_k3_seed11_age1_pca",
+    "training_sha256": "2856af294e263b23936092201a0bd7789842562e66a3a39fce668f37cdbe7791",
+    "audit_sha256": "73c6c0dd6710c3e79be2bab4a9fe734f9bddfa5cd5f84279984f61fbe4307334",
+    "basis_sha256": "a793b5ad7e60d23465d086a4ef3ab9ae8a369bde2da5ad1c347fced7bf91edba",
+    "basis_matches_frozen": true
+  },
+  {
+    "fit": "fashion_mnist_k3_seed11_age8_learned",
+    "training_sha256": "2856af294e263b23936092201a0bd7789842562e66a3a39fce668f37cdbe7791",
+    "audit_sha256": "73c6c0dd6710c3e79be2bab4a9fe734f9bddfa5cd5f84279984f61fbe4307334",
+    "basis_sha256": "1591f5116b514f006ad95106f9b5957dbf53a7f3fb1a77ae469968a5549446bb",
+    "basis_matches_frozen": false
+  },
+  {
+    "fit": "fashion_mnist_k3_seed11_age8_pca",
+    "training_sha256": "2856af294e263b23936092201a0bd7789842562e66a3a39fce668f37cdbe7791",
+    "audit_sha256": "73c6c0dd6710c3e79be2bab4a9fe734f9bddfa5cd5f84279984f61fbe4307334",
+    "basis_sha256": "a793b5ad7e60d23465d086a4ef3ab9ae8a369bde2da5ad1c347fced7bf91edba",
+    "basis_matches_frozen": true
+  }
+]

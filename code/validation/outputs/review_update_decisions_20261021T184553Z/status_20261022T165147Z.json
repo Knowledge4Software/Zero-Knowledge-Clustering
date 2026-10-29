@@ -1,0 +1,1667 @@
+{
+  "checked_utc": "2026-10-22T16:51:47.064984+00:00",
+  "campaigns": [
+    {
+      "root": "/root/commitjl/results/review_update_decisions_20261021T184553Z",
+      "jobs": [
+        {
+          "case": "20ng_tfidf_k10_seed11_full_r0",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 7141.914003493963,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 4.2592618020717055,
+                "peak_rss_bytes": 42733568,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 7095.765497684013,
+                "peak_rss_bytes": 1907957760,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "verify_owner_pin_full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 40.38687356002629,
+                "peak_rss_bytes": 26365952,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            }
+          ]
+        },
+        {
+          "case": "20ng_tfidf_k10_seed11_learned_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 3254.8238421319984,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 7.03641151683405,
+                "peak_rss_bytes": 27787264,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 841.5184688030276,
+                "peak_rss_bytes": 1114836992,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 416.01546291215345,
+                "peak_rss_bytes": 108634112,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1734.175862620119,
+                "peak_rss_bytes": 456204288,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 222.70205777301453,
+                "peak_rss_bytes": 20373504,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 31.110080913174897,
+                "peak_rss_bytes": 30121984,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            }
+          ]
+        },
+        {
+          "case": "20ng_tfidf_k10_seed11_learned_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 10657.44280710211,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 14.313495519803837,
+                "peak_rss_bytes": 37724160,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 880.0888950370718,
+                "peak_rss_bytes": 1190072320,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2067.8968420238234,
+                "peak_rss_bytes": 267935744,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5544.0079678238835,
+                "peak_rss_bytes": 1453416448,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2029.961951659061,
+                "peak_rss_bytes": 24543232,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 118.28410983504727,
+                "peak_rss_bytes": 47443968,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            }
+          ]
+        },
+        {
+          "case": "20ng_tfidf_k10_seed11_pca_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 3229.565900773974,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 6.391087802127004,
+                "peak_rss_bytes": 25735168,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 834.7647625289392,
+                "peak_rss_bytes": 1067503616,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 413.00307248486206,
+                "peak_rss_bytes": 109023232,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1717.5544270989485,
+                "peak_rss_bytes": 440553472,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 223.77654273994267,
+                "peak_rss_bytes": 20017152,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 31.33347765286453,
+                "peak_rss_bytes": 30183424,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            }
+          ]
+        },
+        {
+          "case": "20ng_tfidf_k10_seed11_pca_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 10427.063119787024,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 14.855883826036006,
+                "peak_rss_bytes": 36241408,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 916.1919785260689,
+                "peak_rss_bytes": 1137037312,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2103.4013372561894,
+                "peak_rss_bytes": 268025856,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5379.171405175002,
+                "peak_rss_bytes": 1487261696,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 768
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1901.5267710278276,
+                "peak_rss_bytes": 24649728,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 109.30046042311005,
+                "peak_rss_bytes": 48508928,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 896
+            }
+          ]
+        },
+        {
+          "case": "deployment_full",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 2181.76710239402,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1.4985231629107147,
+                "peak_rss_bytes": 19529728,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2176.56189858797,
+                "peak_rss_bytes": 1879425024,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 3.219818813027814,
+                "peak_rss_bytes": 16449536,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            }
+          ]
+        },
+        {
+          "case": "deployment_paired",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1054.553322511958,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.759711982915178,
+                "peak_rss_bytes": 20807680,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 470.64670826890506,
+                "peak_rss_bytes": 490864640,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 559.2513934490271,
+                "peak_rss_bytes": 423428096,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 17.829477919032797,
+                "peak_rss_bytes": 19968000,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "fashion_mnist_k3_seed23_learned_r63",
+          "complete": false,
+          "status": "running",
+          "phase": "reuse_certified",
+          "wall_seconds": null,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.750044947024435,
+                "peak_rss_bytes": 16896000,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 431.1031418531202,
+                "peak_rss_bytes": 483520512,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            }
+          ],
+          "progress": [
+            {
+              "file": "stage1_progress.json",
+              "verified": 128,
+              "last_prove_seconds": [
+                3.171636077
+              ],
+              "last_set": null,
+              "mtime_utc": "2026-10-22T16:51:45.153970+00:00"
+            }
+          ]
+        },
+        {
+          "case": "fashion_mnist_k5_seed11_full_r0",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 2083.666864458006,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1.6922341580502689,
+                "peak_rss_bytes": 22282240,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2077.3703708269168,
+                "peak_rss_bytes": 1826525184,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 4.057959069032222,
+                "peak_rss_bytes": 16527360,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            }
+          ]
+        },
+        {
+          "case": "fashion_mnist_k5_seed11_learned_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 965.0285567690153,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 3.1987462560646236,
+                "peak_rss_bytes": 15310848,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 428.32708159298636,
+                "peak_rss_bytes": 479375360,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 202.9201707819011,
+                "peak_rss_bytes": 158588928,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 304.70645691105165,
+                "peak_rss_bytes": 273477632,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 19.402434434043244,
+                "peak_rss_bytes": 17174528,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.562113570049405,
+                "peak_rss_bytes": 19087360,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "fashion_mnist_k5_seed11_learned_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1672.3635407020338,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.518714541103691,
+                "peak_rss_bytes": 17371136,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 434.00308744003996,
+                "peak_rss_bytes": 494161920,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 453.8477527941577,
+                "peak_rss_bytes": 335175680,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 583.6906624108087,
+                "peak_rss_bytes": 628953088,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 173.39904666412622,
+                "peak_rss_bytes": 17924096,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 20.695704592159018,
+                "peak_rss_bytes": 23396352,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "fashion_mnist_k5_seed11_pca_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 966.3706099539995,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 3.197720520896837,
+                "peak_rss_bytes": 15056896,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 429.4054559529759,
+                "peak_rss_bytes": 496009216,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 199.89564690901898,
+                "peak_rss_bytes": 158699520,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 308.1738253161311,
+                "peak_rss_bytes": 272814080,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 19.013977851951495,
+                "peak_rss_bytes": 16969728,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.548048813827336,
+                "peak_rss_bytes": 18653184,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "fashion_mnist_k5_seed11_pca_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1686.559567833785,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.5465890020132065,
+                "peak_rss_bytes": 17047552,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 434.5978956921026,
+                "peak_rss_bytes": 503504896,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 453.0038914079778,
+                "peak_rss_bytes": 335503360,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 594.717206642963,
+                "peak_rss_bytes": 620318720,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 176.31997620104812,
+                "peak_rss_bytes": 17850368,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 20.987115431111306,
+                "peak_rss_bytes": 23269376,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k10_seed23_full_r0",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 2048.015498453984,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1.923104380024597,
+                "peak_rss_bytes": 19791872,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2040.0729988000821,
+                "peak_rss_bytes": 1786540032,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.300805499078706,
+                "peak_rss_bytes": 17674240,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            }
+          ]
+        },
+        {
+          "case": "mnist_k10_seed23_learned_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1511.3768571470864,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 3.187519457191229,
+                "peak_rss_bytes": 17375232,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 411.7861647340469,
+                "peak_rss_bytes": 477446144,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 285.86016995902173,
+                "peak_rss_bytes": 227893248,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 780.0887628630735,
+                "peak_rss_bytes": 776400896,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 21.273669887101278,
+                "peak_rss_bytes": 17358848,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 8.198784567881376,
+                "peak_rss_bytes": 22491136,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k10_seed23_learned_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 2754.8037805431522,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.1089417489711195,
+                "peak_rss_bytes": 17461248,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 436.0265582278371,
+                "peak_rss_bytes": 495779840,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 602.929518234916,
+                "peak_rss_bytes": 462819328,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1512.5794398530852,
+                "peak_rss_bytes": 1801056256,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 167.8924169470556,
+                "peak_rss_bytes": 17739776,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 29.013021516148,
+                "peak_rss_bytes": 35311616,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k10_seed23_pca_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1515.420066192979,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2.9670923959929496,
+                "peak_rss_bytes": 15904768,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 411.0506268411409,
+                "peak_rss_bytes": 471281664,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 286.9427180830389,
+                "peak_rss_bytes": 228179968,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 783.335390424123,
+                "peak_rss_bytes": 777228288,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 21.522618917981163,
+                "peak_rss_bytes": 17141760,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 8.44448570907116,
+                "peak_rss_bytes": 22261760,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k10_seed23_pca_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 2745.8910732949153,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.547591760987416,
+                "peak_rss_bytes": 20500480,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 427.30886473413557,
+                "peak_rss_bytes": 494264320,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 579.3201957319397,
+                "peak_rss_bytes": 450961408,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1529.5070559158921,
+                "peak_rss_bytes": 1742352384,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 172.74305636412464,
+                "peak_rss_bytes": 17670144,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 30.12268925900571,
+                "peak_rss_bytes": 35442688,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k3_seed11_full_r0",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 5873.6913096848875,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1.914561920100823,
+                "peak_rss_bytes": 19767296,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5868.1396903749555,
+                "peak_rss_bytes": 1883021312,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_full_reuse",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2.998548913979903,
+                "peak_rss_bytes": 16683008,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            }
+          ]
+        },
+        {
+          "case": "mnist_k3_seed11_learned_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1531.9012469679583,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2.9768531208392233,
+                "peak_rss_bytes": 15265792,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 426.73461142601445,
+                "peak_rss_bytes": 487964672,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 512.0371715370566,
+                "peak_rss_bytes": 127078400,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 569.3786595631391,
+                "peak_rss_bytes": 173953024,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 15.334565300960094,
+                "peak_rss_bytes": 16695296,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 4.481375406961888,
+                "peak_rss_bytes": 17661952,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k3_seed11_learned_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 3369.5073037641123,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.5810428517870605,
+                "peak_rss_bytes": 16797696,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 464.61151240882464,
+                "peak_rss_bytes": 493563904,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1164.8381156278774,
+                "peak_rss_bytes": 296992768,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1565.355946322903,
+                "peak_rss_bytes": 420151296,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 150.63595215207897,
+                "peak_rss_bytes": 17702912,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 17.131536717992276,
+                "peak_rss_bytes": 20471808,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k3_seed11_pca_r15",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1537.2150817927904,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 3.182951838010922,
+                "peak_rss_bytes": 15269888,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 427.49601680296473,
+                "peak_rss_bytes": 483827712,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 510.8898878050968,
+                "peak_rss_bytes": 130355200,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 575.730487053981,
+                "peak_rss_bytes": 172412928,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 14.270660038106143,
+                "peak_rss_bytes": 16846848,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 4.49546551797539,
+                "peak_rss_bytes": 17784832,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "mnist_k3_seed11_pca_r63",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 3315.6785825649276,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.562344629084691,
+                "peak_rss_bytes": 16551936,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 456.82217528903857,
+                "peak_rss_bytes": 500330496,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1146.6490316579584,
+                "peak_rss_bytes": 295755776,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 1538.3029905210715,
+                "peak_rss_bytes": 421756928,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 150.1821677677799,
+                "peak_rss_bytes": 17465344,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 16.90897898795083,
+                "peak_rss_bytes": 19984384,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "portability_paired",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 1050.8748547139112,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.767064176965505,
+                "peak_rss_bytes": 16785408,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 460.73594587901607,
+                "peak_rss_bytes": 482893824,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 128
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 566.8969515161589,
+                "peak_rss_bytes": 422567936,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 192
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 16.573927385965362,
+                "peak_rss_bytes": 20353024,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 320
+            }
+          ]
+        },
+        {
+          "case": "server_smoke",
+          "complete": true,
+          "status": "complete",
+          "phase": "verify",
+          "wall_seconds": 14.732134181074798,
+          "phases": [
+            {
+              "phase": "prepare",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 0.2067772699519992,
+                "peak_rss_bytes": 4849664,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 0
+            },
+            {
+              "phase": "stage1",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 2.8083713960368186,
+                "peak_rss_bytes": 27435008,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 4
+            },
+            {
+              "phase": "reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.522984811104834,
+                "peak_rss_bytes": 26796032,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 6
+            },
+            {
+              "phase": "paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 5.481435131980106,
+                "peak_rss_bytes": 28553216,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 6
+            },
+            {
+              "phase": "verify_owner_pin_reuse_certified",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 0.21413803496398032,
+                "peak_rss_bytes": 6029312,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 10
+            },
+            {
+              "phase": "verify_owner_pin_paired_change",
+              "resource": {
+                "returncode": 0,
+                "wall_seconds": 0.21835875092074275,
+                "peak_rss_bytes": 7077888,
+                "stop": null
+              },
+              "complete": true,
+              "verified": 10
+            }
+          ]
+        }
+      ],
+      "queue_tail": [
+        "2026-10-22T15:19:38.437244+00:00 END mnist_k10_seed23_pca_r63 rc=0",
+        "2026-10-22T15:19:38.437689+00:00 START mnist_k10_seed23_full_r0",
+        "2026-10-22T15:53:49.234652+00:00 END mnist_k10_seed23_full_r0 rc=0",
+        "2026-10-22T15:53:49.235163+00:00 START mnist_k10_seed23_learned_r15",
+        "2026-10-22T16:19:05.795347+00:00 END mnist_k10_seed23_learned_r15 rc=0",
+        "2026-10-22T16:19:05.795861+00:00 START mnist_k10_seed23_pca_r15",
+        "2026-10-22T16:44:25.958388+00:00 END mnist_k10_seed23_pca_r15 rc=0",
+        "2026-10-22T16:44:25.958779+00:00 START fashion_mnist_k3_seed23_learned_r63"
+      ]
+    },
+    {
+      "root": "/root/commitjl/results/review_update_decisions_20261021T184553Z/paired_scale_20261022T055314Z",
+      "jobs": [],
+      "queue_tail": [
+        "2026-10-22T09:24:27+03:30 WAIT_FOR_PARENT_PROOF_QUEUE"
+      ]
+    }
+  ],
+  "processes": [
+    " 966607       1  125  0.3 /root/commitjl/results/review_update_decisions_20261021T184553Z/bin/commitjl-bound-paired-linux -phase reuse_certified -instance /root/commitjl/results/review_update_decisions_20261021T184553Z/fashion_mnist_k3_seed23_learned_r63/input.json -out /root/commitjl/results/review_update_decisions_20261021T184553Z/fashion_mnist_k3_seed23_learned_r63/bundle -q 4 -reps 1 -warmup 0 -max-constraints 1600000"
+  ],
+  "sessions": [
+    "review_scale_20261022T055314Z",
+    "review_update_20261021T184553Z"
+  ]
+}

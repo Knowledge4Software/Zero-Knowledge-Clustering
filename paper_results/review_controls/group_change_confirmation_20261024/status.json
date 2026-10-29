@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "started_unix": 1792840561.0270116,
+  "phase": "complete",
+  "seeds": [
+    167,
+    193
+  ],
+  "datasets": [
+    "mnist",
+    "fashion_mnist"
+  ],
+  "k": [
+    3,
+    5
+  ],
+  "ages": [
+    1,
+    8
+  ],
+  "all_actual_updates_retained": true,
+  "child_pid": 28324,
+  "finished_unix": 1792841355.4032738
+}

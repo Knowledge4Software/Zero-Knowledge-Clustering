@@ -1,0 +1,22 @@
+\begin{table*}[tbp]
+\centering
+\small
+\caption{Component accounting of the earlier refine-first cold campaigns, in seconds. Native preparation, row authentication and base keys are separately observed stages. $S$ also includes recorded fitting, lazy correction setup and fallback/reference preparation where applicable. $\bar R$ is the remaining phase total divided by $Q$, not separately measured hot-RPC latency. Enclosing/export gaps are retained in the source ledger. These are not cold timings of the final router.}
+\label{tab:ccd-components}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular*}{.98\textwidth}{@{\extracolsep{\fill}}lrlrrrrr@{}}
+\toprule
+Data & $Q$ & Method & Native & Auth. & Keys & $S$ & $\bar R$\\
+\midrule
+Fashion & 8 & Full & 1.10 & 0.00 & 184.06 & 252.94 & 65.33\\
+Fashion & 8 & ZKML-ad. & 0.60 & 0.00 & 32.44 & 79.54 & 45.65\\
+Fashion & 8 & Centroid & 2.09 & 78.65 & 201.61 & 328.81 & 30.87\\
+Fashion & 8 & PCA & 2.08 & 79.80 & 202.58 & 331.01 & 31.51\\
+Text & 16 & Full & 1.12 & 0.00 & 89.00 & 120.65 & 30.59\\
+Text & 16 & ZKML-ad. & 0.32 & 0.00 & 17.03 & 43.52 & 25.21\\
+Text & 16 & Centroid & 1.06 & 46.36 & 134.32 & 329.63 & 79.52\\
+Text & 16 & PCA & 1.06 & 46.41 & 133.41 & 328.45 & 79.41\\
+\bottomrule
+\end{tabular*}
+\end{adjustbox}
+\end{table*}

@@ -16,6 +16,35 @@ def ceil_sqrt(value):
     return root+(root*root<value)
 
 
+def exact_squared_norms(values):
+    """Exact row energies, with bounded int64 limb products and Python sums.
+
+    Splitting signed coordinates avoids overflow without one Python integer
+    multiplication per coordinate. Chunking bounds the temporary working set.
+    The object path remains the oracle for values outside signed int64.
+    """
+    values=np.asarray(values)
+    if values.ndim!=2 or not values.shape[1]:raise ValueError('invalid energy shape')
+    if values.dtype!=np.dtype('int64'):
+        return np.asarray([sum(int(v)**2 for v in row) for row in values],dtype=object)
+    width=values.shape[1]
+    bits=max(1,min(30,(((2**63-1)//width).bit_length()-1)//2))
+    limbs=(64+bits-1)//bits;mask=(1<<bits)-1
+    result=np.empty(len(values),dtype=object)
+    for start in range(0,len(values),256):
+        remaining=values[start:start+256];parts=[]
+        for _ in range(limbs-1):
+            parts.append(remaining&mask);remaining=remaining>>bits
+        parts.append(remaining)
+        total=np.zeros(len(remaining),dtype=object)
+        for i,a in enumerate(parts):
+            for j in range(i,len(parts)):
+                term=(a*parts[j]).sum(axis=1,dtype=np.int64).astype(object)
+                total+=term*((1 if i==j else 2)<<(bits*(i+j)))
+        result[start:start+len(total)]=total
+    return result
+
+
 def integer_stats(model, rows):
     b=np.asarray(model['basis'],dtype=np.int64);t=int(model['basis_scale'])
     w=np.asarray(rows,dtype=np.int64)-np.asarray(model['centers'][0],dtype=np.int64)
@@ -27,7 +56,7 @@ def integer_stats(model, rows):
         dot=w@b.T;heads=t*dot;residual=t*t*w-dot@b
     else:
         w=w.astype(object);b=b.astype(object);dot=w@b.T;heads=t*dot;residual=t*t*w-dot@b
-    energy=np.asarray([sum(int(v)**2 for v in row) for row in residual],dtype=object)
+    energy=exact_squared_norms(residual)
     return heads,energy
 
 

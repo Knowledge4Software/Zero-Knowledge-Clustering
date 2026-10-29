@@ -1,0 +1,133 @@
+\section{Verification and security boundaries}\label{sec:security}
+The certificate has two distinct requirements: an accepted interval must
+contain the intended cost change, and the proof transcript must reveal no
+more than its declared public statement. The first requirement justifies an
+update decision. The second is a leakage-relative property of the proof
+system; it does not hide information implied by the public aggregates.
+Appendix~\ref{sec:security-experiments} specifies the corresponding experiments.
+
+\subsection{Approved inputs and verifier obligations}
+The prover may supply false memberships, moments, compact statistics or
+interval endpoints. The auditor therefore obtains the catalog root, deployed
+model, quantization, circuit shapes and verification-key hashes independently
+of the prover's bundle. Each query authorization specifies the complete
+candidate centers and catalog scope. The verifier reconstructs the
+center-dependent coefficients and residual radii from these approved inputs.
+A prover-supplied model identifier or decision string is insufficient.
+
+Preprocessing must cover every original row exactly once and authenticate
+its compact statistics and exact deployed membership. The moment commitment
+is fixed before an independent auditor samples a uniform nonzero challenge.
+The verifier checks the ordered mask chain and the linked moment proof under
+the same roots, model and challenge. Each query must include that linked
+aggregate relation and complete, nonduplicated switching-batch coverage.
+Signed arithmetic is interpreted only within the checked integer ranges.
+For refinement, the verifier also checks the original and derived openings
+at the same index, canonical radii, approved centers, distinct corrected
+indices and the 16-row budget. Corrections are accepted only with the
+complete compact proof backbone.
+
+These requirements assume binding commitments, collision-resistant context
+hashing, authentic owner and setup-authority pins, and the knowledge
+soundness and zero knowledge of the instantiated argument. Groth16 also
+requires an uncompromised trusted setup. The committed observations and
+encoder outputs are inputs to the task; their provenance and correctness
+are not established by these assumptions.
+
+\subsection{Conditional correctness of the decision}
+\begin{proposition}[Conditional soundness of the group decision]
+For fixed commitments and an independent uniform nonzero post-commit
+challenge in $\mathbb F_p$, suppose all preprocessing and query proofs pass
+under the approved keys and complete coverage checks. Except for a
+commitment or argument failure, or a moment-fingerprint collision of
+probability at most $kD/(p-1)$, the accepted interval in
+Eq.~\eqref{eq:group-envelope}, divided by $T^6$, contains the exact quantized
+cost change on the approved full catalog. Verified bounded refinement
+preserves this containment.
+\end{proposition}
+\begin{proof}
+Binding commitments and complete row coverage fix the original rows,
+derived statistics and exact old memberships. For fixed false moments,
+a nonzero discrepancy polynomial has degree at most $D$. Its root bound,
+with a union bound over groups, gives the fingerprint term. Outside that
+event, the linked counts and coordinate sums equal the true group moments;
+the checked ranges exclude equality caused only by field reduction.
+The aggregate relation therefore gives the exact assigned change in
+Eq.~\eqref{eq:group-assigned-change}. Independently reconstructed parameters
+and authenticated row statistics give conservative switching bounds.
+Complete query coverage and Eq.~\eqref{eq:group-change-identity} then imply
+containment of $T^6\Delta$.
+
+A refinement proof authenticates the original row and its compact statistics
+at one index, reconstructs canonical endpoints and computes its exact
+switching contribution. The monotonicity argument in
+Section~\ref{sec:refinement} shows that the corresponding endpoint
+corrections remain conservative even if the base proof used a larger valid
+row radius. Distinct indices prevent repeated corrections. Applying
+Eq.~\eqref{eq:refined-interval} consequently preserves containment.
+\end{proof}
+
+A negative upper endpoint certifies strict improvement; a positive lower
+endpoint certifies strict worsening. The interval $[0,0]$ certifies equality.
+An interval otherwise containing zero leaves the decision unresolved.
+Consequently, an inconclusive result is a limitation of decision coverage,
+not an accepted incorrect sign. Exact fallback must prove the required
+costs on the same catalog root and quantization before resolving that case.
+
+The fingerprint bound applies to one preprocessing session, including its
+queries. Repeating preprocessing with new commitments and challenges incurs
+the sum of the session bounds. For the BN254 scalar field,
+$p\simeq2.1888\times10^{76}$; at $k=5,D=784$, the algebraic collision term is
+below $1.8\times10^{-73}$ per session and below $1.8\times10^{-67}$ for a
+union bound over $10^6$ such sessions. These values describe the fingerprint
+event, rather than the overall cryptographic security level. The benchmark
+simulates the independent roles locally; authenticated challenge delivery
+and prevention of unaccounted retries are deployment requirements.
+
+\subsection{Declared outputs and aggregate inference}\label{sec:leakage}
+Rows, memberships, moments, salts, paths and masks are private witnesses.
+The public statement contains metadata, roots, approved centers, masked
+preprocessing contributions, the exact assigned-change aggregate $A$,
+per-batch switching intervals and the resulting decision. Refinement adds
+selected row indices and endpoint corrections. Fallback adds the required
+aggregate exact costs. The authorization and termination path, including
+proof counts, are also observable. Private diagnostic labels and
+certificate flags are excluded from the public export.
+
+Zero knowledge is relative to these outputs. In particular, the assigned
+aggregate permits recovery of group statistics under sufficiently revealing
+authorized queries. Change only coordinate $d$ of candidate center $g$
+from $c^0_{gd}$ to $c^0_{gd}+t$. If both signed probes are authorized and
+within range, their outputs satisfy
+\begin{equation}\label{eq:probe-leakage}
+ A(t)=2t(n_gc^0_{gd}-S_{gd})+n_gt^2.
+\end{equation}
+For nonzero integer $t$, the auditor can recover
+\begin{align}
+ n_g&=\frac{A(t)+A(-t)}{2t^2},\\
+ S_{gd}&=n_gc^0_{gd}-\frac{A(t)-A(-t)}{4t}.
+\end{align}
+Repeated coordinate probes recover the sums, and a singleton group's sum
+reveals its record. A retained implementation check reproduces this
+inference from assigned-change outputs. Witness privacy and hash
+commitments do not remove information carried by a valid public answer.
+
+Per-batch intervals and row corrections can reveal additional information
+about subcatalogs. The current relation exposes these values so that the
+verifier can check and aggregate complete coverage directly. It does not
+provide a total-only disclosure interface, differential privacy or adaptive
+record non-reconstruction. Externally approved queries restrict who can
+request an answer, but the implementation enforces no privacy budget that
+would establish those stronger properties. A data owner must authorize the
+statistics and the inferences they permit.
+
+\subsection{Implementation evidence and scope}
+Fresh public-only replay checks proof acceptance without loading original
+rows or private moments. Targeted modifications test rejection of changed
+centers, roots, corrections, indices, missing coverage and proof bytes.
+These checks support consistency of the implementation with the specified
+relations. They do not constitute an independent verifier implementation,
+a production challenge service or a composable-security audit. The
+mathematical guarantee remains conditional on the stated assumptions,
+while the experimental evaluation measures coverage and cost on finite
+workloads.

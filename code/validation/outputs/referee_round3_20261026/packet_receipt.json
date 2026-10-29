@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "packet": "output/referee_round3_mobin_private_20261026.zip",
+  "sha256": "bf095baddec9f5ffbf2a1536bf7188eab23bce52d94a58273205ddf60c4654ae",
+  "bytes": 1733838,
+  "manifest_files": 351,
+  "uploaded": false,
+  "remote_jobs_started": false,
+  "private_material": true,
+  "archived_preparation_only": true,
+  "execution_authorization_withdrawn": true,
+  "superseded_by_current_execution_policy": true,
+  "reason": "The packet predates the user's retirement of Mobin. Preserve its bytes and hash as history; do not execute it on the former server."
+}

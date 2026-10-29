@@ -4,7 +4,27 @@ __pycache__/
 .venv/
 *.egg-info/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
 .DS_Store
+Thumbs.db
+
+# Local credentials and machine configuration (examples may be committed).
+.env
+.env.*
+!.env.example
+!.env.sample
+.netrc
+.pypirc
+id_rsa
+id_ed25519
+
+# Supplied reference/source archives stay local; active extracted sources live
+# under paper_results/. Includes Sparse_JL_for_ZK_Clustering.zip and Spectral_CCD.zip.
+/*.zip
 
 # Dataset cache (large, re-downloadable; manifest records SHA256)
 code/.cache/
@@ -19,6 +39,13 @@ Sparse_JL_for_ZK_Clustering/
 *.bbl
 *.blg
 *.synctex.gz
+*.toc
+*.lof
+*.lot
+*.bcf
+*.run.xml
+*.xdv
+*.dvi
 
 # Locally compiled Windows proof runner
 code/zk/bin/
@@ -37,12 +64,7 @@ code/zk/err.log
 # Reproducible local manuscript builds and delivery bundles.
 /tmp/
 /output/pdf/*
-!/output/pdf/01_supervisor_original.pdf
-!/output/pdf/02_changes_red_green.pdf
-!/output/pdf/03_final_revised.pdf
-!/output/pdf/neurocomputing_completed_20261020.pdf
 /output/*.zip
-!/output/neurocomputing_completed_20261020_sources.zip
 
 # Local editor preferences and large raw research/recovery stores.
 .vscode/
@@ -72,8 +94,33 @@ code/zk/err.log
 !/code/validation/outputs/review_full_controls_20261019T224939Z.json
 !/code/validation/outputs/review_certified_controls_20261019T234210Z.json
 !/code/validation/outputs/review_live_final_20261020_1908Z.json
+!/code/validation/outputs/review_sensitivity_20261021*.json
+!/code/validation/outputs/review_sensitivity_20261021T061346Z/
+!/code/validation/outputs/neurocomputing_tradeoff_20261021_checks.json
+!/code/validation/outputs/neurocomputing_paired_20261022_checks.json
+!/code/validation/outputs/review_update_decisions_20261021T184553Z.json
+!/code/validation/outputs/review_update_decisions_20261021T184553Z/
+!/code/validation/outputs/review_paired_release_20261021/
+!/code/validation/outputs/review_portability_local_20261021/
+/output/review_public_artifact_20261022/
 
 # Portable source snapshots preserve the three earlier paper versions.
 /paper_history/*
 !/paper_history/README.md
 !/paper_history/supervisor_draft.tex
+
+# Current supervisor-review paper and sources.
+# Generated proving caches stay on disk, outside source-history snapshots.
+**/.resume/
+*.pk
+*.gob
+!/code/validation/outputs/cleanup_review_20261023.json
+
+
+# Additional rebuildable LaTeX and constraint caches.
+*.fls
+*.fdb_latexmk
+*.r1cs
+
+# Rebuildable Rust/compiler output; retain source and dependency lockfiles.
+**/target/

@@ -1,0 +1,29 @@
+\begin{table*}[tbp]
+\centering
+\caption{Native center-count sweep. Four seeds contribute to $k=5$; $k=3,10,20$ use seed 173. All declared distinct candidates are retained. Width is percent of deployed cost after bounded refinement; Below 99 counts requests missing the working agreement target. A 0/0 regression entry means no natural regression was present.}
+\label{tab:optimized-centers}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{lrlrrrrrr}
+\toprule
+Data & $k$ & Basis & Decisions & Regressions & Worst agr. & Label cert. & Width & Below 99\\
+\midrule
+Fashion & 3 & Centroid & 8/8 & 0/0 & 99.902 & 99.426 & 0.376 & 0\\
+Fashion & 3 & PCA & 8/8 & 0/0 & 100.000 & 99.524 & 0.297 & 0\\
+Fashion & 5 & Centroid & 28/28 & 5/5 & 99.805 & 98.982 & 0.227 & 0\\
+Fashion & 5 & PCA & 28/28 & 5/5 & 99.707 & 98.525 & 0.212 & 0\\
+Fashion & 10 & Centroid & 6/8 & 2/3 & 99.805 & 97.925 & 0.412 & 0\\
+Fashion & 10 & PCA & 6/8 & 2/3 & 99.805 & 96.680 & 0.413 & 0\\
+Fashion & 20 & Centroid & 8/8 & 0/0 & 99.316 & 92.664 & 1.120 & 0\\
+Fashion & 20 & PCA & 8/8 & 0/0 & 99.219 & 87.671 & 1.366 & 0\\
+MNIST & 3 & Centroid & 8/8 & 0/0 & 99.609 & 97.302 & 0.192 & 0\\
+MNIST & 3 & PCA & 8/8 & 0/0 & 99.707 & 96.570 & 0.173 & 0\\
+MNIST & 5 & Centroid & 32/32 & 0/0 & 99.707 & 96.613 & 0.397 & 0\\
+MNIST & 5 & PCA & 32/32 & 0/0 & 99.609 & 95.990 & 0.369 & 0\\
+MNIST & 10 & Centroid & 8/8 & 0/0 & 99.121 & 93.689 & 0.874 & 0\\
+MNIST & 10 & PCA & 8/8 & 0/0 & 99.512 & 92.065 & 0.842 & 0\\
+MNIST & 20 & Centroid & 8/8 & 0/0 & 98.926 & 89.294 & 1.410 & 1\\
+MNIST & 20 & PCA & 8/8 & 0/0 & 98.633 & 85.730 & 1.463 & 3\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

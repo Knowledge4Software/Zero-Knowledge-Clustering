@@ -1,0 +1,194 @@
+{
+  "status": "proposed_not_executed",
+  "supersedes_plan": "code/experiments/server_study_plan_20261029.json",
+  "superseded_assumption": "The user cannot extend the rental beyond three days.",
+  "rental_hours": 72,
+  "initial_campaign_target_hours": 32,
+  "initial_campaign_hard_cap_hours": 36,
+  "minimum_uncommitted_reserve_hours": 36,
+  "recovery_policy": {
+    "start": "After initial completion; no additional optional experiments consume recovery reserve.",
+    "proof_job_start_cutoff_hour": 62.5,
+    "proof_job_drain_deadline_hour": 64,
+    "final_verification_and_transfer_hours": [64, 72],
+    "scope": "Rerun failed or invalidated paired cells and missing required checks. A full campaign rerun is not guaranteed; preserve successful immutable work and all failed attempts."
+  },
+  "extension_possible": false,
+  "final_paid_allocation": true,
+  "future_paid_compute_assumed": false,
+  "budget_constraint": "The user can fund only this one rental. No extension, replacement rental or later paid campaign is assumed. Multiple experiments and timing repetitions must fit inside this allocation.",
+  "purchase_gate": {
+    "ready_to_start_billing": false,
+    "reason": "The completed published-baseline laptop gate is evidence of usefulness, not an end-to-end validation of this full server campaign. Freeze and locally smoke the executable queue, profiling, checkpoints and evidence export before starting the rental clock.",
+    "completion_rule": "Spend the one allocation on a fixed prioritized campaign. Drop optional cells by the prespecified budget rule and preserve incomplete outcomes; do not assume another rental.",
+    "scientific_limit": "One final paid allocation can be enforced. Completion of every proposed cell, publication acceptance and absence of future reviewer requests cannot be guaranteed."
+  },
+  "new_proving_job_start_cutoff_hours": 26.5,
+  "proof_job_drain_deadline_hours": 28,
+  "artifact_transfer_target_hours": 32,
+  "maximum_individual_job_minutes": 90,
+  "maximum_query_chunk": 32,
+  "remote_execution_authorized_or_started": false,
+  "experiment_runner_edits_manuscript": false,
+  "paper_update_authorization": "The user separately authorized an update of completed results while preserving methodology, introduction and abstract.",
+  "storage": {
+    "preferred_total_disk_gb": 50,
+    "minimal_target_total_disk_gb": 30,
+    "twenty_gb_validated": false,
+    "five_hundred_gb_required": false,
+    "policy": "Runtime-focused installation; keep only needed active model/key profiles, avoid duplicate immutable keys, transfer and verify completed evidence before retiring rebuildable caches. Preserve proofs, verification keys, pins, approved tasks, manifests and all attempt receipts.",
+    "guard_note": "Existing laptop runner requires12GiB free. A smaller-disk server needs a separately specified and canary-validated temporary-write/reserve policy, not a silent reduction of the old guard.",
+    "whole_campaign_peak_measured": false
+  },
+  "prerental_readiness_required": [
+    "Per-complete-response profiling including planning, key loads, moment link, switching, correction, Full and replay",
+    "Matched cost-aware implementation for PCA and centroid basis",
+    "Pinned inputs, three fits, unseen-as-applicable evaluation IDs, train-only unique proposals and executable hashes",
+    "Fixed online or known-batch semantics; all preflight work and nonresident key loads charged",
+    "Checkpointed bounded queue and independently verified public exports"
+  ],
+  "methods": [
+    "centroid certificate",
+    "PCA certificate with equal optimization",
+    "Full Groth16 exact cost",
+    "ZKML Halo2 primitive adapter"
+  ],
+  "datasets": [
+    "Fashion source",
+    "MiniLM384 text source"
+  ],
+  "primary": {
+    "n": 128,
+    "q": 4,
+    "fit_seeds": 3,
+    "request_timing_repetitions_per_fit": 2,
+    "target_method_request_runs": 48,
+    "priority": "Independent fits and paired timing blocks on a larger catalog precede long request sequences. Admit the frozen grid using server canaries and a conservative remaining-time ledger; no linear core speedup assumed.",
+    "cold_setup_policy": "Record fresh setup once per fit/profile; repeated warm request work is not a second cold-setup measurement."
+  },
+  "component_study": {
+    "native_ranks": [
+      4,
+      39,
+      63,
+      79
+    ],
+    "native_caps": [
+      0,
+      4,
+      16
+    ],
+    "real_proof_primary_contrast": "Primary rank79 comparison is covered by the paired main grid. Add rank4 centroid versus PCA on N128, first4 proposals and one pinned fit only if the initial phase budget permits; retain native ranks/caps across all three fits.",
+    "interpretation": "Native coverage is not proof runtime. Invalid security-removing variants are negative controls, not faster sound baselines."
+  },
+  "scale": {
+    "primary_cells": [
+      {
+        "n": 32,
+        "q": 4
+      },
+      {
+        "n": 512,
+        "q": 2
+      }
+    ],
+    "secondary_if_budget": [
+      {
+        "n": 1024,
+        "q": 1
+      }
+    ],
+    "fits": 1,
+    "selection": "Common feasibility and budget; no selection by certificate outcome or favorable speed ratio"
+  },
+  "long_case": {
+    "dataset": "Fashion source",
+    "n": 32,
+    "q": 32,
+    "fits": 1,
+    "all_methods_required_for_speed_comparisons": true,
+    "checkpoints": [
+      1,
+      4,
+      8,
+      16,
+      32
+    ],
+    "optional_after_primary_only": true,
+    "measured_128_available_now": false,
+    "laptop_rate_projection_hours_three_measured_methods_only": 4.645840404797772,
+    "projection_scope": "Historical Q128 budget heuristic retained for traceability only; not the selected Q32 workload, an admission forecast or a server speed prediction. Excludes PCA, setup, repetitions and new server calibration."
+  },
+  "questions": [
+    {
+      "id": "RQ-A",
+      "topic": "Roles of geometry, summaries, interval arithmetic and refinement",
+      "previous_questions": [
+        "RQ1",
+        "RQ2"
+      ]
+    },
+    {
+      "id": "RQ-B",
+      "topic": "Cold/warm amortization and observed per-baseline crossover",
+      "previous_questions": [
+        "RQ3"
+      ]
+    },
+    {
+      "id": "RQ-C",
+      "topic": "Time, memory, keys and proof-byte scaling",
+      "previous_questions": [
+        "RQ4"
+      ]
+    },
+    {
+      "id": "RQ-D",
+      "topic": "Difficult data, reference resets and cost-aware routing",
+      "previous_questions": [
+        "RQ5",
+        "RQ6"
+      ]
+    }
+  ],
+  "phase_budgets": [
+    {
+      "start_hour": 0,
+      "end_hour": 2,
+      "name": "server_smoke_and_canary"
+    },
+    {
+      "start_hour": 2,
+      "end_hour": 18,
+      "name": "primary_paired_comparisons"
+    },
+    {
+      "start_hour": 18,
+      "end_hour": 23,
+      "name": "bounded_scale_and_reference_reset"
+    },
+    {
+      "start_hour": 23,
+      "end_hour": 28,
+      "name": "budgeted_component_ablation_and_Q32_reuse"
+    },
+    {
+      "start_hour": 28,
+      "end_hour": 32,
+      "name": "independent_replay_audit_and_verified_backup"
+    }
+  ],
+  "drop_priority_when_budget_exceeded": [
+    "N1024 secondary cell",
+    "optional Q32 long-case extension",
+    "secondary scale and ablation cells"
+  ],
+  "preserve_priority": [
+    "complete primary baselines",
+    "negative and difficult outcomes",
+    "independent replay",
+    "audit and transfer reserve"
+  ],
+  "reporting": "Retain every prespecified win, loss, failure and unfinished cell. Never infer speedup from a missing comparator or promise universal superiority. Repeat timings do not create independent fits.",
+  "recommendation": "Evidence supports a bounded regime-specific confirmation study, contingent on finishing executable preparation before the rental clock begins."
+}

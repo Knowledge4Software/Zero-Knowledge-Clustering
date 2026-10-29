@@ -1,0 +1,12 @@
+{
+  "selection": "Every160 stored head update, including36 natural regressions. No outcome filtering. New sketch seeds fixed before confirmation.",
+  "development_choice": "Rank63 +16 sparse-JL residual measurements with shrinkage1/8; selected as the smallest development candidate improving mean agreement while preserving the99% floor on all19 matched updates/all3 development seeds.",
+  "seeds": [
+    20261029,
+    20261030,
+    20261031
+  ],
+  "width": 16,
+  "alpha": 0.125,
+  "scope": "Numerical prediction confirmation only. Not a new independent fitted-model cohort. Production model unchanged. No proof-cost or certificate-strength claim."
+}

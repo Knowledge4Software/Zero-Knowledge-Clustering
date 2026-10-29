@@ -1,0 +1,71 @@
+{
+  "complete": true,
+  "decisions": [
+    {
+      "set": 0,
+      "paired_decision": "equal",
+      "final_decision": "equal",
+      "used_exact_fallback": false,
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "set": 1,
+      "paired_decision": "inconclusive",
+      "final_decision": "improves",
+      "used_exact_fallback": true,
+      "change_lower_scaled": "-222845238820721590311926041753419776",
+      "change_upper_scaled": "222619773734328498629177250628501504",
+      "exact_public_cost_change": "-976804079"
+    },
+    {
+      "set": 2,
+      "paired_decision": "inconclusive",
+      "final_decision": "improves",
+      "used_exact_fallback": true,
+      "change_lower_scaled": "-489797848128863915472213107858735104",
+      "change_upper_scaled": "535906929329662695318060515521986560",
+      "exact_public_cost_change": "-2362753134"
+    },
+    {
+      "set": 3,
+      "paired_decision": "inconclusive",
+      "final_decision": "improves",
+      "used_exact_fallback": true,
+      "change_lower_scaled": "-701760503943975993025962265735593984",
+      "change_upper_scaled": "752567026535226504903492103036731392",
+      "exact_public_cost_change": "-2557051682"
+    },
+    {
+      "set": 4,
+      "paired_decision": "inconclusive",
+      "final_decision": "improves",
+      "used_exact_fallback": true,
+      "change_lower_scaled": "-774723309378061142820249240384569344",
+      "change_upper_scaled": "878721265877924814249164022057271296",
+      "exact_public_cost_change": "-2629864547"
+    },
+    {
+      "set": 5,
+      "paired_decision": "inconclusive",
+      "final_decision": "worsens",
+      "used_exact_fallback": true,
+      "change_lower_scaled": "-202864766823959359980794202711654400",
+      "change_upper_scaled": "237050231156325385431596080312614912",
+      "exact_public_cost_change": "1440702848"
+    }
+  ],
+  "exact_center_sets_proved": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "public_only": true,
+  "original_root": "12007192333380025210325895443117847125469942504879559818178191422677105362407",
+  "auditor_workflow_wall_seconds": 13.969000000040978,
+  "privacy": "Paired interval outputs plus exact aggregate baseline/candidate costs for fallback tasks; no per-row assignments or uncertain-row indices.",
+  "trust_boundary": "Owner/setup pins and approved task must be obtained independently of the prover."
+}

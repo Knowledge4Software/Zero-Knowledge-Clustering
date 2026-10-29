@@ -1,0 +1,26 @@
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=5mm and 6mm,>=Stealth,
+  stage/.style={draw,rounded corners=2pt,align=center,font=\small,
+    text width=29mm,minimum height=17mm,inner sep=3pt},
+  link/.style={->,semithick}]
+\node[stage,fill=gray!10] (prep) {Once per reference\\commit catalog; prove old groups and statistics};
+\node[stage,right=of prep] (query) {Each new proposal\\prove assigned change and switching bounds};
+\node[stage,right=of query] (refine) {If inconclusive\\authenticate up to 16 exact-row corrections};
+\node[stage,right=of refine] (full) {If still inconclusive\\generate and verify exact Full fallback};
+\node[stage,right=of full,fill=gray!10] (decision) {Auditor result\\improvement, worsening or equality};
+\draw[link] (prep)--(query);
+\draw[link] (query)--(refine);
+\draw[link] (refine)--(full);
+\draw[link] (full)--(decision);
+\draw[link] (query.north) -- ++(0,9mm) -| node[pos=.25,above,font=\small]{conclusive} (decision.north);
+\draw[link] (refine.south) -- ++(0,-9mm) -| node[pos=.25,below,font=\small]{conclusive} (decision.south);
+\end{tikzpicture}
+\caption{The same audit pipeline supports PCA and a centroid-informed basis.
+The compact stage proves an interval for exact cost change, rather than
+approving an approximate prediction. Refined indices and corrections are
+public. Every used stage, including exact fallback, is charged. Changing the
+deployed reference starts a new preprocessing episode.}
+\label{fig:audit-pipeline}
+\end{figure*}

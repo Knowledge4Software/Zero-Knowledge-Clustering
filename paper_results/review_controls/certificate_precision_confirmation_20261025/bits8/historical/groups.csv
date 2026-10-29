@@ -1,0 +1,13 @@
+cohort,method,variant,budget_fraction,truth,requests,conclusive,correct,median_exact_rows,max_exact_rows
+confirmation,learned,group_exact_old,0.0,improves,32,32,32,0.0,0
+confirmation,learned,ordinary_paired,0.0,improves,32,19,19,0.0,0
+confirmation,pca,group_exact_old,0.0,improves,32,32,32,0.0,0
+confirmation,pca,ordinary_paired,0.0,improves,32,19,19,0.0,0
+historical_development,learned,group_exact_old,0.0,improves,40,34,34,0.0,0
+historical_development,learned,group_exact_old,0.0,worsens,24,0,0,0.0,0
+historical_development,learned,ordinary_paired,0.0,improves,40,27,27,0.0,0
+historical_development,learned,ordinary_paired,0.0,worsens,24,0,0,0.0,0
+historical_development,pca,group_exact_old,0.0,improves,40,32,32,0.0,0
+historical_development,pca,group_exact_old,0.0,worsens,24,0,0,0.0,0
+historical_development,pca,ordinary_paired,0.0,improves,40,27,27,0.0,0
+historical_development,pca,ordinary_paired,0.0,worsens,24,0,0,0.0,0

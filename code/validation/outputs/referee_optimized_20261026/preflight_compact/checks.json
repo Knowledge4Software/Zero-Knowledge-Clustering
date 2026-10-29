@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "fresh_public_proofs": 13,
+  "intervals_contain_full": true,
+  "public_only": true,
+  "tamper_checks": 12,
+  "post_commit_random_auditor_challenge": true,
+  "binary_sha256": "80b82bfde2af0276b31106f2d658cffc71024f39b0d410c24f8890c6274768c5",
+  "compact_profile": true
+}

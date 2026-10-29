@@ -1,0 +1,77 @@
+{
+  "status": "proposed_not_executed",
+  "created_date": "2026-10-29",
+  "purpose": "Role of components, honest amortization, scalability and robustness for the current authenticated group cost-change certificate.",
+  "no_server_purchased_or_accessed": true,
+  "no_manuscript_edits": true,
+  "hardware": {
+    "architecture": "x86_64",
+    "preferred_physical_cpu_cores": 16,
+    "usable_physical_cpu_cores": 8,
+    "minimum_recommended_ram_gib": 64,
+    "preferred_ram_gib": 128,
+    "suggested_nvme_gb": 50,
+    "minimal_disk_target_gb": 30,
+    "storage_revision": "500GB was an unmeasured comfort allowance, not a requirement. Existing case directories are about1.5–2.4GiB, dominated by cached proving keys and constraint systems.30GB needs bounded active profiles and verified offloading;20GB is not yet validated.",
+    "gpu_required_by_current_implementation": false,
+    "cpu_allocation": "dedicated; distinguish physical cores and SMT vCPUs",
+    "initial_rental_hours": 72,
+    "rental_extension_possible": true,
+    "whole_grid_completion_guaranteed": false,
+    "software_base": "Ubuntu 24.04 LTS; pin all Go/Rust/Python/backend versions before measurements"
+  },
+  "request_prefixes": [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
+  "catalog_grid": [32, 128, 512, 1024],
+  "primary_center_count": 5,
+  "certificate_rank_ablation": [4, 39, 63, 79],
+  "correction_caps": [0, 4, 16],
+  "default_prediction_rank": 63,
+  "default_certificate_rank": 79,
+  "fit_replication_target": 3,
+  "paired_timing_blocks_target": 3,
+  "worker_policy": "Canary8 and16 workers where physical cores permit; freeze one common worker/affinity setting for every primary backend. Native BLAS1. Do not infer linear core speedup.",
+  "replication_note": "Repeated timings within a fit are not independent data/fit replications. Incomplete targets must be disclosed.",
+  "datasets": ["Fashion-MNIST source", "MiniLM384 text source"],
+  "baseline_scope": [
+    "Full Groth16: same backend, exact-cost output stronger than sign-only",
+    "PCA certificate: same wrapper, rank, cap and cost-aware scheduling",
+    "ZKML Halo2 primitive adapter: adapted task, not unmodified compiler"
+  ],
+  "cost_components": [
+    "common_training_separate", "basis_fit", "native_summary", "commitment",
+    "row_authentication", "moment_commitment", "per_request_moment_link", "compile", "parameters_or_srs", "key_setup",
+    "key_serialization", "process_or_batch_load", "native_request_planner",
+    "witness", "prove", "verify", "refinement", "direct_full", "paid_full_fallback",
+    "necessary_io", "network_or_transfer_separate", "failed_attempt_work"
+  ],
+  "cache_epoch": "X, C0, B, quantization and trust pins fixed. Candidate Ct varies. Rebuild/authenticate and charge new setup whenever the changed model/circuit requires it.",
+  "query_generation": "Generate and pin up to1024 genuinely distinct candidate banks using training/incoming data only. The existing64-bank pilot cannot be duplicated and called1024 independent requests.",
+  "cold_warm": "Give every baseline the same applicable setup/data/old-reference reuse. Count recurring process/key loads. Do not combine separate warm/cold runs into a newly measured cold run.",
+  "prefix_accounting": "One long pass per timing block with fresh request proofs and complete per-request readiness timestamps. Do not infer service-prefix latency from all-moments-first bulk generation.",
+  "research_questions": [
+    {"id": "RQ1", "topic": "Component roles and centroid-informed versus equal-rank PCA geometry"},
+    {"id": "RQ2", "topic": "Verified quality, exact-integer interval validity, refinement cost and tamper rejection"},
+    {"id": "RQ3", "topic": "Measured cold/warm cumulative request cost and per-baseline crossover"},
+    {"id": "RQ4", "topic": "Catalog/dimension scale, time, memory, keys and fresh versus complete proof bytes"},
+    {"id": "RQ5", "topic": "Candidate drift, difficult data and cache/reference lifetime"},
+    {"id": "RQ6", "topic": "Cost-aware scheduling applied equally to centroid and PCA certificates"}
+  ],
+  "readiness_work_remaining": [
+    "Interleave and timestamp complete per-request proof/replay work, retaining verifiable completeness",
+    "Run current cost-aware policy on the PCA baseline with matched inputs and profiling",
+    "Freeze train/validation/audit IDs, independent fits and new candidate streams",
+    "Canary each actual backend/shape and build a server-specific runtime/memory ledger",
+    "Freeze executable hashes, worker counts, resource caps and paired execution order"
+  ],
+  "resource_phase_plan_hours": [
+    {"start": 0, "end": 6, "scope": "Build, pin, smoke, canary and runtime forecast"},
+    {"start": 6, "end": 44, "scope": "Primary paired methods, two data sources, Q32/64 and replication targets"},
+    {"start": 44, "end": 60, "scope": "Budgeted scale and component ablations"},
+    {"start": 60, "end": 68, "scope": "Prespecified long-request case; Q256, extend only if all comparators fit"},
+    {"start": 68, "end": 72, "scope": "Independent replay, evidence audit, plots and backup"}
+  ],
+  "success_reporting": "All wins, ties, losses, unfinished and capacity-excluded cells retained. No universal superiority, invented crossover, native-as-ZK timing, or missing-baseline speed ratios.",
+  "not_measured_yet": ["server runtimes", "Q1000/1024 real proofs", "final held-out crossover", "exact sign-only Full timing control"],
+  "paired_analysis": "Use paired ratios and fit/block-aware dispersion; do not treat correlated requests or timing repeats as independent dataset replications.",
+  "public_output_note": "Routing and refinement indices are observable. No new assignment privacy claim. Exact-cost and interval/sign output contracts remain explicit."
+}

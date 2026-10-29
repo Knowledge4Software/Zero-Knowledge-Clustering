@@ -3,6 +3,13 @@
 code/commitjl/** -text whitespace=cr-at-eol
 code/experiments/** -text whitespace=cr-at-eol
 code/data/** -text whitespace=cr-at-eol
+code/analysis/** -text whitespace=cr-at-eol
+code/campaigns/** -text whitespace=cr-at-eol
+code/tools/** -text whitespace=cr-at-eol
+code/figures/** -text whitespace=cr-at-eol
+code/tests/** -text whitespace=cr-at-eol
+code/validation/** -text whitespace=cr-at-eol
+code/zk_external/** -text whitespace=cr-at-eol
 code/zk/**/*.go -text whitespace=cr-at-eol
 code/zk/go.mod -text whitespace=cr-at-eol
 code/zk/go.sum -text whitespace=cr-at-eol
@@ -10,11 +17,15 @@ code/campaigns/supplements/engine.py -text whitespace=cr-at-eol
 
 # Evidence digests and frozen paper sources describe bytes, not normalized text.
 code/validation/outputs/** -text whitespace=cr-at-eol
-paper_results/** -text whitespace=cr-at-eol
+paper_results/** -text whitespace=cr-at-eol,-blank-at-eof
 paper_history/supervisor_draft.tex -text whitespace=cr-at-eol
 paper_versions/** -text whitespace=cr-at-eol
 manuscript.tex -text whitespace=cr-at-eol
 references.bib -text whitespace=cr-at-eol
+output/** -text whitespace=cr-at-eol
+
+# Generated SVG path formatting is byte-pinned by figure manifests.
+*.svg -text whitespace=cr-at-eol,-blank-at-eol
 
 # Ubuntu launchers must retain Unix line endings.
 *.sh text eol=lf

@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "matched_updates": 19,
+  "identical_intervals": 17,
+  "wider_intervals": 2,
+  "normalization": "width divided by exact old quantized Full catalog cost95512379564",
+  "csv_sha256": "0b6da921248cc576a978071f475cc15bf3caed45ec005ddcbd6a347c5ba034b8",
+  "source_sha256": {
+    "code\\validation\\outputs\\group_fast_control_n128_20261024\\native_checks.json": "79cb051faea8aec0e877ba4cc10794cc5026080b245cd0bca48b37d41c671fd9",
+    "code\\validation\\outputs\\group_exact_control_n128_20261024\\native_checks.json": "34e901972b963043aea58cbbe2425bd8a3d9b1de4cdec08754a4f494a2ccbe9c"
+  }
+}

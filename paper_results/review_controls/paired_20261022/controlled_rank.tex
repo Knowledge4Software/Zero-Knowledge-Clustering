@@ -1,0 +1,17 @@
+\begin{table*}[tp]
+\centering
+\small
+\caption{Completed fixed-precision rank sensitivity on one MNIST fit (N=256).}\label{tab:controlled-rank}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Rank & Agreement (\%) & Coverage (\%) & Width (\%) & Cost (min) \\
+\midrule
+Full & -- & 100.00 & 100.00 & 0.000 & 114.65 \\
+Head & 15 & 99.80 & 92.58 & 2.403 & 22.80 \\
+Head & 63 & 100.00 & 96.09 & 1.338 & 32.34 \\
+PCA & 15 & 97.27 & 47.27 & 29.772 & 22.81 \\
+PCA & 63 & 99.61 & 88.48 & 4.239 & 32.15 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.98\linewidth}\footnotesize Quality averages the two requested relative-drift 0.01 directions. Cost charges all eleven center sets. Head/PCA use nested ranks 15/63, $T=16384$ and batch16; exact Full uses batch8 under the constraint guard. Component costs exclude verifier replay and fitting, unlike Table~\ref{tab:paired-costs}. This is a one-fit control, not independent-model replication. Two smaller-drift directions round to unchanged centers and are retained as controls.\end{minipage}
+\end{table*}

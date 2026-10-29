@@ -1,0 +1,838 @@
+{
+  "complete": true,
+  "complete_matched_cohorts": [
+    "mnist_switching_mature_n128",
+    "fashion_early_n128",
+    "mnist_early_n1024"
+  ],
+  "all_matched_complete": true,
+  "sources": {
+    "code/validation/outputs/known_family_affine_n128_20261024/checked_comparison.json": "29eae1e817a94d0b6225f452987db8320c09608fab97cabd79408238ad65cf6d",
+    "code/validation/outputs/referee_necessity_check_20261025/summary.json": "e2788f163e6b1b6a8d2b652451cfc9182bea09e3986d4ec024b4efa22fafcfa5",
+    "paper_results/review_controls/rank79_independent_replication_20261025/distinct_summary.json": "be95171b2c9440ac7bbc66580a88b668b6bff86f8893ba805d8e93b8fbe05b53",
+    "code/validation/outputs/referee_final_20261025/parents.json": "3b708d765713e0111b13266d77c1ea935f129babd4e8094bf2976fab7a6796a9",
+    "code/validation/outputs/referee_final_20261025/mnist_switching_mature_n128/head79/backbone_complete.json": "ab60f666071e11239e3d73df9651c5c354c05380c53202729a348efaee6ab048",
+    "code/validation/outputs/referee_final_20261025/mnist_switching_mature_n128/pca79/backbone_complete.json": "40ab06ae705c3d8504cf688504bbbfbcfcad79326e99c894024aca2e0549a3fd",
+    "code/validation/outputs/referee_final_20261025/mnist_switching_mature_n128/moments_only/checked_comparison.json": "3b20a1b01043e2537c63a52330b5b9856600be38100c1fc872581d7b8b952bb4",
+    "code/validation/outputs/referee_final_20261025/mnist_switching_mature_n128/known_family_affine/checked_comparison.json": "1c419ed846032868b1a582e1c03a6c1f1d248f72259bd7176ba1a725e460ff11",
+    "code/validation/outputs/referee_final_20261025/fashion_early_n128/head79/backbone_complete.json": "70da630f50bffd62d603ffa8ca031b9667656506d8b0d0fad5811a8d37600d80",
+    "code/validation/outputs/referee_final_20261025/fashion_early_n128/pca79/backbone_complete.json": "d4934e27a712f2630fd7ec30072742a70e86eca43f1e6d4a1e8b92f7d4aade9f",
+    "code/validation/outputs/referee_final_20261025/fashion_early_n128/moments_only/checked_comparison.json": "b1c9dc3a58bfc0f0930aca49c788b47343899d4fb110c4d54dae438511290be1",
+    "code/validation/outputs/referee_final_20261025/fashion_early_n128/known_family_affine/checked_comparison.json": "234dbd8a8e7cad91c72fe733d4b44951e2b8b4b03d3410953641b7a3651cdb2d",
+    "code/validation/outputs/referee_final_20261025/mnist_early_n1024/head79/backbone_complete.json": "e9774990d9af1ab8802c8e5c80043c686baf11e6ae3dcab5c4d4c2dcd67bd211",
+    "code/validation/outputs/referee_final_20261025/mnist_early_n1024/pca79/backbone_complete.json": "28066bb5a96a2dc0a7d6e8a9746463e82548c28629093b2f72ff9400622353ff",
+    "code/validation/outputs/referee_final_20261025/mnist_early_n1024/moments_only/checked_comparison.json": "a1fd0ceef8d7e944369bab6c58ae63745ed1bdb4a516ff683944090695a5ff24",
+    "code/validation/outputs/referee_final_20261025/mnist_early_n1024/known_family_affine/checked_comparison.json": "0d0b735da124d1a6ca940a3f6558bf5bbf6ac2d482e9e831f30d20a52416b6e0",
+    "code/validation/outputs/group_compact_auxiliary_r79_n128_20261025/control/checked_comparison.json": "f199a89b345b51cdc515df01ab5a725a7662966c1eb4295d4eaf4458b99d1325",
+    "code/validation/outputs/group_compact_auxiliary_r79_n128_20261025/control/native_checks.json": "02df50df90568f7775a3f79547d8175ec894718cc18da8e24fbaff882cd40cd0",
+    "code/validation/outputs/group_compact_auxiliary_r79_n128_20261025/control/public/public_manifest.json": "2a801213b5785011b31d5c8f0a3becb588e66804c1411b3039183ca1efefee84",
+    "code/validation/outputs/rank79_independent_replication_20261025/fashion_mnist_k3_seed101_age8/head79/checked_comparison.json": "b7ae297def800c31d99dcefc53f657bff2228d4082bbdda1e0d37bd3160f073d",
+    "code/validation/outputs/rank79_independent_replication_20261025/fashion_mnist_k3_seed101_age8/head79/native_checks.json": "8b65b9b5e496ba1fd1fcbf7a315aa4e5d851ad70bc683ef7012a8fa29a48140e",
+    "code/validation/outputs/rank79_independent_replication_20261025/fashion_mnist_k3_seed101_age8/head79/public/public_manifest.json": "b9ae194786aba415dffaeacf6020d449ef8595eb81743453911aa612629d460c",
+    "code/validation/outputs/selective_switch_refinement_20261025_v2/summary.json": "050abf74d72b639cd2a686d7e19d5b26eaaeeb1e2f31688b08b319eedac9cc4f",
+    "code/validation/outputs/selective_switch_refinement_20261025_v2/records.json": "2c847fb0a793c589e2f3faa059b39dd06cc87d1d73d9129a27c37475acebfdc3",
+    "code/validation/outputs/refinement_confirmation_20261025/summary.json": "7e503983afc3f88721c282a9c0f186c388ab92d903bb32878f7e2eca7f5dce1c",
+    "code/validation/outputs/refinement_confirmation_20261025/protocol.json": "64c0138c6ae70cd25cb4e8123761065b908b31ef6ce34a327c04340dac910306",
+    "code/validation/outputs/refinement_confirmation_20261025/records.json": "1a3e60871bcdfa4aba933b861a2c8021d3a303ba012e038b01b650bffdd34376",
+    "code/validation/outputs/refinement_confirmation_20261025/fit_records.json": "dec529c19bd6d5f115a4787a6fa12cc9182641f509ec14af2006941bf8a198a1",
+    "code/validation/outputs/referee_refinement_20261025/mnist_switching_mature_n128/head79/checked_comparison.json": "6cbeca90d5914073a8fe4c41d585de13aa27cb2b4c59c8071909f918b176cf3d",
+    "code/validation/outputs/referee_refinement_20261025/mnist_switching_mature_n128/head79/protocol.json": "034bd5a3d4ed8efc25d6f1a4dcb845201dccf3bd00aa891f6babf6333f98ea9b",
+    "code/validation/outputs/referee_refinement_20261025/mnist_switching_mature_n128/pca79/checked_comparison.json": "7fe4399cbdbf2a18578bd86b2f8f5187b75e8e88e6e8093ba4fe0ad74bae0d1c",
+    "code/validation/outputs/referee_refinement_20261025/mnist_switching_mature_n128/pca79/protocol.json": "9ac6a461c33f4c5ab8263c3a355b4ac524751f566eb0a59c4fb5b0b5051e7a32",
+    "code/validation/outputs/referee_refinement_20261025/fashion_early_n128/head79/checked_comparison.json": "4d4baa13785d9959b45d42d7a3a250554f81434957ac51b9428c44f98c77eb8a",
+    "code/validation/outputs/referee_refinement_20261025/fashion_early_n128/head79/protocol.json": "612328d866bbaae6defc972f66357e19ff33e9c6611b344a974cec7d06799fc8",
+    "code/validation/outputs/referee_refinement_20261025/fashion_early_n128/pca79/checked_comparison.json": "c9b0e275f90bd8022dd4e7d5b7e79baf3c86cb4036da001732ff821f7ab79e83",
+    "code/validation/outputs/referee_refinement_20261025/fashion_early_n128/pca79/protocol.json": "5502a24f8c6d5a70c6f7a67a771868b0c96e9201961b45c8abb591e8e4783190",
+    "code/validation/outputs/referee_refinement_20261025/mnist_early_n1024/head79/checked_comparison.json": "66a78abe22af5b7281c25fb759f829e76a9c660bc71eb2c4818b198a8e3a600d",
+    "code/validation/outputs/referee_refinement_20261025/mnist_early_n1024/head79/protocol.json": "de064cc5871685ed2643eb81654a36984192b4ea093e21acde02635410165d9a",
+    "code/validation/outputs/referee_refinement_20261025/mnist_early_n1024/pca79/checked_comparison.json": "0b6f0bf1fcc27dc4153fd17e4985a42e6061dab12ee2869098bdee9c716b3779",
+    "code/validation/outputs/referee_refinement_20261025/mnist_early_n1024/pca79/protocol.json": "1da19a949cd8d12b251c664c7df31762249818e6249061fd1b2b4cd5a95d9d0c",
+    "code/validation/outputs/referee_final_20261025/timing_repeat/checked_timing_repeat.json": "40efdaba2fa2238e1cf5d676bc57c7f6016f988bb5a0bb18d627b0b7a2456e4e"
+  },
+  "selected_certificate_rank": 79,
+  "prediction_rank": 63,
+  "old_variants_in_main_paper": false,
+  "quality_completed": {
+    "original": {
+      "mean_agreement": 99.79440789473684,
+      "minimum_agreement": 99.21875,
+      "mean_assignment_certified": 94.90131578947368,
+      "mean_change_width": 1.025037014859083,
+      "distinct_regressions": 0,
+      "regressions_certified_without_fallback": 0,
+      "mean_cost_error_percent": 0.0239837325216149,
+      "maximum_cost_error_percent": 0.027554626547211917,
+      "switching": [
+        {
+          "set": 0,
+          "strict_switch_rows": 15,
+          "truth": -1829166573,
+          "decision": "improvement"
+        },
+        {
+          "set": 1,
+          "strict_switch_rows": 23,
+          "truth": -2936267728,
+          "decision": "improvement"
+        },
+        {
+          "set": 2,
+          "strict_switch_rows": 29,
+          "truth": -3494770306,
+          "decision": "improvement"
+        },
+        {
+          "set": 3,
+          "strict_switch_rows": 39,
+          "truth": -3693120664,
+          "decision": "improvement"
+        },
+        {
+          "set": 4,
+          "strict_switch_rows": 44,
+          "truth": -3944841462,
+          "decision": "improvement"
+        },
+        {
+          "set": 5,
+          "strict_switch_rows": 47,
+          "truth": -4070770177,
+          "decision": "improvement"
+        },
+        {
+          "set": 6,
+          "strict_switch_rows": 48,
+          "truth": -4077697771,
+          "decision": "improvement"
+        },
+        {
+          "set": 7,
+          "strict_switch_rows": 49,
+          "truth": -4005390864,
+          "decision": "improvement"
+        },
+        {
+          "set": 8,
+          "strict_switch_rows": 51,
+          "truth": -3954001794,
+          "decision": "improvement"
+        },
+        {
+          "set": 9,
+          "strict_switch_rows": 51,
+          "truth": -3942991039,
+          "decision": "improvement"
+        },
+        {
+          "set": 10,
+          "strict_switch_rows": 53,
+          "truth": -3921343712,
+          "decision": "improvement"
+        },
+        {
+          "set": 11,
+          "strict_switch_rows": 54,
+          "truth": -3914799443,
+          "decision": "improvement"
+        },
+        {
+          "set": 12,
+          "strict_switch_rows": 54,
+          "truth": -3903115562,
+          "decision": "improvement"
+        },
+        {
+          "set": 13,
+          "strict_switch_rows": 54,
+          "truth": -3896527473,
+          "decision": "improvement"
+        },
+        {
+          "set": 14,
+          "strict_switch_rows": 55,
+          "truth": -3888654345,
+          "decision": "improvement"
+        },
+        {
+          "set": 15,
+          "strict_switch_rows": 56,
+          "truth": -3890969721,
+          "decision": "improvement"
+        },
+        {
+          "set": 16,
+          "strict_switch_rows": 56,
+          "truth": -3891098129,
+          "decision": "improvement"
+        },
+        {
+          "set": 17,
+          "strict_switch_rows": 56,
+          "truth": -3893320985,
+          "decision": "improvement"
+        },
+        {
+          "set": 18,
+          "strict_switch_rows": 56,
+          "truth": -3893137741,
+          "decision": "improvement"
+        }
+      ],
+      "distinct_switching_regressions": 0,
+      "certified_switching_regressions": 0
+    },
+    "fashion": {
+      "mean_agreement": 100.0,
+      "minimum_agreement": 100.0,
+      "mean_assignment_certified": 100.0,
+      "mean_change_width": 0.0,
+      "distinct_regressions": 2,
+      "regressions_certified_without_fallback": 2,
+      "mean_cost_error_percent": 0.0018017611687347061,
+      "maximum_cost_error_percent": 0.0019020234649187082,
+      "switching": [
+        {
+          "set": 0,
+          "strict_switch_rows": 0,
+          "truth": 42300542,
+          "decision": "worsening"
+        },
+        {
+          "set": 1,
+          "strict_switch_rows": 0,
+          "truth": 114819429,
+          "decision": "worsening"
+        }
+      ],
+      "distinct_switching_regressions": 0,
+      "certified_switching_regressions": 0
+    }
+  },
+  "source_scope": "Only complete verified comparisons enter tables; native and measured proof evidence are separate.",
+  "refinement_pairs": [
+    {
+      "case": "mnist_switching_mature_n128",
+      "variant": "head79",
+      "comparison": {
+        "complete": true,
+        "all_intervals_contain_full": true,
+        "no_wrong_decisions": true,
+        "decisions": [
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "22978567382892748447213231800320",
+            "refined_rows": 2,
+            "set": 0,
+            "upper": "25302875432973530128800649576448"
+          },
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "3023313676222141330507424805683200",
+            "refined_rows": 0,
+            "set": 1,
+            "upper": "4164967498129621318252152349523968"
+          },
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "3169533407696621931583162380451840",
+            "refined_rows": 0,
+            "set": 2,
+            "upper": "5394935057130212405231223136321536"
+          },
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "2799960031245616274680215123263488",
+            "refined_rows": 0,
+            "set": 3,
+            "upper": "5233096143865884381702026189340672"
+          }
+        ],
+        "proposal_updates": 4,
+        "conclusive_without_fallback": 4,
+        "fallback_updates": 0,
+        "new_refinement_proofs": 2,
+        "base_public_proofs": 164,
+        "fresh_fallback_proofs": 0,
+        "base_active_seconds": 591.8919999999925,
+        "refinement_active_seconds": 53.26599999994505,
+        "fallback_active_seconds": 0.0,
+        "active_phase_seconds_including_fitting_and_fallback": 645.1579999999376,
+        "full_reference_active_seconds": 1258.234000000055,
+        "full_over_group_active_phase": 1.9502726463907705,
+        "timing_scope": "Measured reusable base component sum plus measured selection, lazy refinement setup, proof phase, full public replay and fresh residual Full fallback. Base work is shared, not a newly repeated end-to-end trial. Historical base fallback is excluded because this algorithm refines before fallback."
+      },
+      "quality": {
+        "mean_agreement": 100.0,
+        "minimum_agreement": 100.0,
+        "mean_assignment_certified": 96.6796875,
+        "mean_change_width": 0.07555436226409445,
+        "distinct_regressions": 4,
+        "regressions_certified_without_fallback": 4,
+        "mean_cost_error_percent": 0.0013837730588175394,
+        "maximum_cost_error_percent": 0.002564936214141553,
+        "switching": [
+          {
+            "set": 0,
+            "strict_switch_rows": 2,
+            "truth": 1308128,
+            "decision": "inconclusive"
+          },
+          {
+            "set": 1,
+            "strict_switch_rows": 7,
+            "truth": 194277023,
+            "decision": "worsening"
+          },
+          {
+            "set": 2,
+            "strict_switch_rows": 12,
+            "truth": 226308865,
+            "decision": "worsening"
+          },
+          {
+            "set": 3,
+            "strict_switch_rows": 13,
+            "truth": 212400425,
+            "decision": "worsening"
+          }
+        ],
+        "distinct_switching_regressions": 4,
+        "certified_switching_regressions": 4
+      }
+    },
+    {
+      "case": "mnist_switching_mature_n128",
+      "variant": "pca79",
+      "comparison": {
+        "complete": true,
+        "all_intervals_contain_full": true,
+        "no_wrong_decisions": true,
+        "decisions": [
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "25302875432973530128800649576448",
+            "refined_rows": 3,
+            "set": 0,
+            "upper": "25302875432973530128800649576448"
+          },
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "2766394922714872930360513213235200",
+            "refined_rows": 0,
+            "set": 1,
+            "upper": "4225200158858563894711653257707520"
+          },
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "2964695285083385127228103049871360",
+            "refined_rows": 0,
+            "set": 2,
+            "upper": "5514464565417886628250930735218688"
+          },
+          {
+            "decision": "worsening",
+            "denominator": "19342813113834066795298816",
+            "lower": "2706346758498152586087609632030720",
+            "refined_rows": 0,
+            "set": 3,
+            "upper": "5303443477862423068605728654622720"
+          }
+        ],
+        "proposal_updates": 4,
+        "conclusive_without_fallback": 4,
+        "fallback_updates": 0,
+        "new_refinement_proofs": 3,
+        "base_public_proofs": 164,
+        "fresh_fallback_proofs": 0,
+        "base_active_seconds": 509.88999999989755,
+        "refinement_active_seconds": 51.21900000015739,
+        "fallback_active_seconds": 0.0,
+        "active_phase_seconds_including_fitting_and_fallback": 561.109000000055,
+        "full_reference_active_seconds": 1258.234000000055,
+        "full_over_group_active_phase": 2.2424056644964376,
+        "timing_scope": "Measured reusable base component sum plus measured selection, lazy refinement setup, proof phase, full public replay and fresh residual Full fallback. Base work is shared, not a newly repeated end-to-end trial. Historical base fallback is excluded because this algorithm refines before fallback."
+      },
+      "quality": {
+        "mean_agreement": 99.8046875,
+        "minimum_agreement": 99.21875,
+        "mean_assignment_certified": 95.3125,
+        "mean_change_width": 0.08601222070541253,
+        "distinct_regressions": 4,
+        "regressions_certified_without_fallback": 4,
+        "mean_cost_error_percent": 0.05678108536156007,
+        "maximum_cost_error_percent": 0.05885014180242266,
+        "switching": [
+          {
+            "set": 0,
+            "strict_switch_rows": 2,
+            "truth": 1308128,
+            "decision": "inconclusive"
+          },
+          {
+            "set": 1,
+            "strict_switch_rows": 7,
+            "truth": 194277023,
+            "decision": "worsening"
+          },
+          {
+            "set": 2,
+            "strict_switch_rows": 12,
+            "truth": 226308865,
+            "decision": "worsening"
+          },
+          {
+            "set": 3,
+            "strict_switch_rows": 13,
+            "truth": 212400425,
+            "decision": "worsening"
+          }
+        ],
+        "distinct_switching_regressions": 4,
+        "certified_switching_regressions": 4
+      }
+    },
+    {
+      "case": "fashion_early_n128",
+      "variant": "head79",
+      "comparison": {
+        "complete": true,
+        "all_intervals_contain_full": true,
+        "no_wrong_decisions": true,
+        "decisions": [
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-35244430060704575317526498978562048",
+            "mode": "switch",
+            "set": 0,
+            "upper": "-33714698823915393974891783913472000",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-35403898015129364848220172349079552",
+            "mode": "switch",
+            "set": 1,
+            "upper": "-33116896903788763965403581655285760",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-27800699435168830481285167789899776",
+            "mode": "switch",
+            "set": 2,
+            "upper": "-25196684492762382261807623606108160",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-25582242390514752689789340846391296",
+            "mode": "switch",
+            "set": 3,
+            "upper": "-22949960353686438694263756475596800",
+            "refined_rows": 0
+          }
+        ],
+        "proposal_updates": 4,
+        "conclusive_without_fallback": 4,
+        "fallback_updates": 0,
+        "new_refinement_proofs": 0,
+        "base_public_proofs": 164,
+        "fresh_fallback_proofs": 0,
+        "base_active_seconds": 551.9379999999655,
+        "refinement_active_seconds": 0.0,
+        "fallback_active_seconds": 0.0,
+        "active_phase_seconds_including_fitting_and_fallback": 551.9379999999655,
+        "full_reference_active_seconds": 1123.749000000069,
+        "full_over_group_active_phase": 2.0360058557304246,
+        "timing_scope": "Measured reusable base component sum plus measured selection, lazy refinement setup, proof phase, full public replay and fresh residual Full fallback. Base work is shared, not a newly repeated end-to-end trial. Historical base fallback is excluded because this algorithm refines before fallback."
+      },
+      "quality": {
+        "mean_agreement": 100.0,
+        "minimum_agreement": 100.0,
+        "mean_assignment_certified": 99.8046875,
+        "mean_change_width": 0.12088253313589864,
+        "distinct_regressions": 0,
+        "regressions_certified_without_fallback": 0,
+        "mean_cost_error_percent": 0.007319312889279235,
+        "maximum_cost_error_percent": 0.009052864697543237,
+        "switching": [
+          {
+            "set": 0,
+            "strict_switch_rows": 6,
+            "truth": -1778776689,
+            "decision": "improvement"
+          },
+          {
+            "set": 1,
+            "strict_switch_rows": 7,
+            "truth": -1771364784,
+            "decision": "improvement"
+          },
+          {
+            "set": 2,
+            "strict_switch_rows": 8,
+            "truth": -1370129129,
+            "decision": "improvement"
+          },
+          {
+            "set": 3,
+            "strict_switch_rows": 8,
+            "truth": -1255309700,
+            "decision": "improvement"
+          }
+        ],
+        "distinct_switching_regressions": 0,
+        "certified_switching_regressions": 0
+      }
+    },
+    {
+      "case": "fashion_early_n128",
+      "variant": "pca79",
+      "comparison": {
+        "complete": true,
+        "all_intervals_contain_full": true,
+        "no_wrong_decisions": true,
+        "decisions": [
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-35246490155473500409937185736753152",
+            "mode": "switch",
+            "set": 0,
+            "upper": "-33799213925831976170891512142364672",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-35192595279873827546006567843266560",
+            "mode": "switch",
+            "set": 1,
+            "upper": "-33420834271683273557127014104694784",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-27450677074783546903626506999693312",
+            "mode": "switch",
+            "set": 2,
+            "upper": "-25585800577417169881858505648898048",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-25222985962996163267582739011862528",
+            "mode": "switch",
+            "set": 3,
+            "upper": "-23344500817860002772679319812571136",
+            "refined_rows": 0
+          }
+        ],
+        "proposal_updates": 4,
+        "conclusive_without_fallback": 4,
+        "fallback_updates": 0,
+        "new_refinement_proofs": 0,
+        "base_public_proofs": 164,
+        "fresh_fallback_proofs": 0,
+        "base_active_seconds": 610.1879999999655,
+        "refinement_active_seconds": 0.0,
+        "fallback_active_seconds": 0.0,
+        "active_phase_seconds_including_fitting_and_fallback": 610.1879999999655,
+        "full_reference_active_seconds": 1123.749000000069,
+        "full_over_group_active_phase": 1.8416438868023173,
+        "timing_scope": "Measured reusable base component sum plus measured selection, lazy refinement setup, proof phase, full public replay and fresh residual Full fallback. Base work is shared, not a newly repeated end-to-end trial. Historical base fallback is excluded because this algorithm refines before fallback."
+      },
+      "quality": {
+        "mean_agreement": 100.0,
+        "minimum_agreement": 100.0,
+        "mean_assignment_certified": 99.8046875,
+        "mean_change_width": 0.09296693768718886,
+        "distinct_regressions": 0,
+        "regressions_certified_without_fallback": 0,
+        "mean_cost_error_percent": 0.017375823777621875,
+        "maximum_cost_error_percent": 0.019201597230810975,
+        "switching": [
+          {
+            "set": 0,
+            "strict_switch_rows": 6,
+            "truth": -1778776689,
+            "decision": "improvement"
+          },
+          {
+            "set": 1,
+            "strict_switch_rows": 7,
+            "truth": -1771364784,
+            "decision": "improvement"
+          },
+          {
+            "set": 2,
+            "strict_switch_rows": 8,
+            "truth": -1370129129,
+            "decision": "improvement"
+          },
+          {
+            "set": 3,
+            "strict_switch_rows": 8,
+            "truth": -1255309700,
+            "decision": "improvement"
+          }
+        ],
+        "distinct_switching_regressions": 0,
+        "certified_switching_regressions": 0
+      }
+    },
+    {
+      "case": "mnist_early_n1024",
+      "variant": "head79",
+      "comparison": {
+        "complete": true,
+        "all_intervals_contain_full": true,
+        "no_wrong_decisions": true,
+        "decisions": [
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-363385431651210448527886998157918208",
+            "mode": "switch",
+            "set": 0,
+            "upper": "-313754485085830409833203440782671872",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-638898958470988859118054788892196864",
+            "mode": "switch",
+            "set": 1,
+            "upper": "-539415862105202002849879150674575360",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-753067869467551360202648659001606144",
+            "mode": "switch",
+            "set": 2,
+            "upper": "-633429588387351615423308210517311488",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-797758044125071062776176095281545216",
+            "mode": "switch",
+            "set": 3,
+            "upper": "-648558183289882466707237697440710656",
+            "refined_rows": 0
+          }
+        ],
+        "proposal_updates": 4,
+        "conclusive_without_fallback": 4,
+        "fallback_updates": 0,
+        "new_refinement_proofs": 0,
+        "base_public_proofs": 1284,
+        "fresh_fallback_proofs": 0,
+        "base_active_seconds": 2739.7029999999795,
+        "refinement_active_seconds": 0.0,
+        "fallback_active_seconds": 0.0,
+        "active_phase_seconds_including_fitting_and_fallback": 2739.7029999999795,
+        "full_reference_active_seconds": 7621.343999999925,
+        "full_over_group_active_phase": 2.7818139411461686,
+        "timing_scope": "Measured reusable base component sum plus measured selection, lazy refinement setup, proof phase, full public replay and fresh residual Full fallback. Base work is shared, not a newly repeated end-to-end trial. Historical base fallback is excluded because this algorithm refines before fallback."
+      },
+      "quality": {
+        "mean_agreement": 99.853515625,
+        "minimum_agreement": 99.8046875,
+        "mean_assignment_certified": 94.5068359375,
+        "mean_change_width": 0.6867152799484277,
+        "distinct_regressions": 0,
+        "regressions_certified_without_fallback": 0,
+        "mean_cost_error_percent": 0.025842751924965122,
+        "maximum_cost_error_percent": 0.031912777866901325,
+        "switching": [
+          {
+            "set": 0,
+            "strict_switch_rows": 122,
+            "truth": -17391356243,
+            "decision": "improvement"
+          },
+          {
+            "set": 1,
+            "strict_switch_rows": 234,
+            "truth": -30359941528,
+            "decision": "improvement"
+          },
+          {
+            "set": 2,
+            "strict_switch_rows": 305,
+            "truth": -35763711476,
+            "decision": "improvement"
+          },
+          {
+            "set": 3,
+            "strict_switch_rows": 373,
+            "truth": -37314467959,
+            "decision": "improvement"
+          }
+        ],
+        "distinct_switching_regressions": 0,
+        "certified_switching_regressions": 0
+      }
+    },
+    {
+      "case": "mnist_early_n1024",
+      "variant": "pca79",
+      "comparison": {
+        "complete": true,
+        "all_intervals_contain_full": true,
+        "no_wrong_decisions": true,
+        "decisions": [
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-359470914188503535237762906079625216",
+            "mode": "switch",
+            "set": 0,
+            "upper": "-316373082471396568025531969754365952",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-628713599437652546410088921028362240",
+            "mode": "switch",
+            "set": 1,
+            "upper": "-547865459215008672542180201681911808",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-741700198747367388169154949585829888",
+            "mode": "switch",
+            "set": 2,
+            "upper": "-643416010889882392319554389803008000",
+            "refined_rows": 0
+          },
+          {
+            "decision": "improvement",
+            "denominator": "19342813113834066795298816",
+            "lower": "-783462226151140410560539176523005952",
+            "mode": "switch",
+            "set": 3,
+            "upper": "-661342661179780962300954345341976576",
+            "refined_rows": 0
+          }
+        ],
+        "proposal_updates": 4,
+        "conclusive_without_fallback": 4,
+        "fallback_updates": 0,
+        "new_refinement_proofs": 0,
+        "base_public_proofs": 1284,
+        "fresh_fallback_proofs": 0,
+        "base_active_seconds": 2732.0310000000754,
+        "refinement_active_seconds": 0.0,
+        "fallback_active_seconds": 0.0,
+        "active_phase_seconds_including_fitting_and_fallback": 2732.0310000000754,
+        "full_reference_active_seconds": 7621.343999999925,
+        "full_over_group_active_phase": 2.7896257399713673,
+        "timing_scope": "Measured reusable base component sum plus measured selection, lazy refinement setup, proof phase, full public replay and fresh residual Full fallback. Base work is shared, not a newly repeated end-to-end trial. Historical base fallback is excluded because this algorithm refines before fallback."
+      },
+      "quality": {
+        "mean_agreement": 99.90234375,
+        "minimum_agreement": 99.8046875,
+        "mean_assignment_certified": 95.2392578125,
+        "mean_change_width": 0.5657829441218172,
+        "distinct_regressions": 0,
+        "regressions_certified_without_fallback": 0,
+        "mean_cost_error_percent": 0.31785616790745036,
+        "maximum_cost_error_percent": 0.32086431553661116,
+        "switching": [
+          {
+            "set": 0,
+            "strict_switch_rows": 122,
+            "truth": -17391356243,
+            "decision": "improvement"
+          },
+          {
+            "set": 1,
+            "strict_switch_rows": 234,
+            "truth": -30359941528,
+            "decision": "improvement"
+          },
+          {
+            "set": 2,
+            "strict_switch_rows": 305,
+            "truth": -35763711476,
+            "decision": "improvement"
+          },
+          {
+            "set": 3,
+            "strict_switch_rows": 373,
+            "truth": -37314467959,
+            "decision": "improvement"
+          }
+        ],
+        "distinct_switching_regressions": 0,
+        "certified_switching_regressions": 0
+      }
+    }
+  ],
+  "timing_repeat": {
+    "complete": true,
+    "case": "mnist_switching_mature_n128",
+    "first_method_seconds": 645.1579999999376,
+    "second_method_seconds": 555.2210000000196,
+    "first_full_seconds": 1258.234000000055,
+    "second_full_seconds": 1125.5,
+    "second_pair_ratio": 2.027120732104802,
+    "first_pair_ratio": 1.9502726463907705,
+    "fresh_method_proofs": 166,
+    "fresh_full_proofs": 80,
+    "proof_hash_sets_disjoint": true,
+    "full_input_sha256": "54dba7d7de738be88e390d070081c0646979534fb67015de9b9a1eadad293f51",
+    "scope": "One fresh Head proof-pipeline repetition between timed workloads.\n\nThe second identical-task Full execution is the paid moments fallback.\nNo proof is borrowed from either first execution. Representation fitting\nremains the same recorded component, not a new independent model fit.\n"
+  },
+  "identical_task_full_repeats": [
+    {
+      "case": "mnist_switching_mature_n128",
+      "full_input_sha256": "54dba7d7de738be88e390d070081c0646979534fb67015de9b9a1eadad293f51",
+      "first_seconds": 1258.234000000055,
+      "repeat_seconds": 1125.5,
+      "scope": "Second cold Full execution is paid moments fallback on byte-identical inputs; selected method components are not repeated."
+    }
+  ],
+  "timing_scope": "Selected refinement uses shared measured compact components plus new refinement and residual fallback; not an independent end-to-end repetition. Scheduling changed after the initial Full baseline; see memory_policy_amendment.json.",
+  "presentation_amendment": {
+    "date": "2026-10-26",
+    "known_family_separated": true,
+    "representation_agnostic": true,
+    "online_affine_measured": false,
+    "measurements_recomputed": false,
+    "previous_table_sha256": {
+      "completed_proofs.tex": "13ece045ab8f5b631ab3d92d59f859409531e6cb411f4650d8c22793313f148b",
+      "matched_results.tex": "f59d2b7ff68c221f6059dc4a84390f2a2cb3112a00427267091023e857270ca2",
+      "matched_quality.tex": "d70c27ce0170020de266f335ff78a3d1879564363d7d5a15e6e8ba271bf1b483",
+      "matched_components.tex": "3e037e1fe7abc8f0ddf591c4b9d483df20dec078604a00950b028c73e2585846"
+    }
+  },
+  "additional_replay": {
+    "source": "code/validation/outputs/referee_final_20261025/public_replay_round3_20261026/status.json",
+    "sha256": "8cbcafb026f65e4d78dfb48c26ed695c8489639dc8337d0dbacbc23e93855462",
+    "verified": 7679,
+    "verification_only": true
+  }
+}

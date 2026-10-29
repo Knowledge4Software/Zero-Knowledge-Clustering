@@ -1,0 +1,200 @@
+{
+  "complete": true,
+  "status": "complete",
+  "phases": [
+    {
+      "phase": "prepare",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 5.562344629084691,
+        "peak_rss_bytes": 16551936,
+        "stop": null
+      },
+      "complete": true,
+      "verified": 0
+    },
+    {
+      "phase": "stage1",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 456.82217528903857,
+        "peak_rss_bytes": 500330496,
+        "stop": null
+      },
+      "complete": true,
+      "verified": 128
+    },
+    {
+      "phase": "reuse_certified",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 1146.6490316579584,
+        "peak_rss_bytes": 295755776,
+        "stop": null
+      },
+      "complete": true,
+      "verified": 192
+    },
+    {
+      "phase": "paired_change",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 1538.3029905210715,
+        "peak_rss_bytes": 421756928,
+        "stop": null
+      },
+      "complete": true,
+      "verified": 192
+    },
+    {
+      "phase": "verify_owner_pin_reuse_certified",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 150.1821677677799,
+        "peak_rss_bytes": 17465344,
+        "stop": null
+      },
+      "complete": true,
+      "verified": 320
+    },
+    {
+      "phase": "verify_owner_pin_paired_change",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 16.90897898795083,
+        "peak_rss_bytes": 19984384,
+        "stop": null
+      },
+      "complete": true,
+      "verified": 320
+    }
+  ],
+  "phase": "verify",
+  "summary": {
+    "complete": true,
+    "n": 128,
+    "sets": 6,
+    "alternatives": [
+      {
+        "phase": "reuse_certified",
+        "shared_preparation_seconds": 455.90249888100004,
+        "query_compile_setup_seconds": 17.912134768,
+        "query_components_seconds": 424.41649430300004,
+        "total_components_seconds": 898.2311279520001,
+        "public_center_parameter_seconds": 0,
+        "public_only_replay_wall_seconds": 150.1821677677799,
+        "components_plus_public_replay_seconds": 1048.4132957197799,
+        "proves": 192,
+        "proof_bytes": 62720,
+        "verifying_key_bytes": 7872,
+        "proving_key_bytes": 55885134,
+        "public_witness_serialized_bytes": 1312512,
+        "model_json_bytes": 244253,
+        "approved_task_bytes": 201348,
+        "stored_head_energy_scalars": 8192,
+        "genuine_requests": 5,
+        "conclusive_genuine_requests": 3,
+        "lloyd_requests": 4,
+        "conclusive_lloyd_requests": 3
+      },
+      {
+        "phase": "paired_change",
+        "shared_preparation_seconds": 455.90249888100004,
+        "query_compile_setup_seconds": 25.514524201,
+        "query_components_seconds": 506.128937286,
+        "total_components_seconds": 987.545960368,
+        "public_center_parameter_seconds": 8.7576598,
+        "public_only_replay_wall_seconds": 16.90897898795083,
+        "components_plus_public_replay_seconds": 1004.4549393559508,
+        "proves": 192,
+        "proof_bytes": 62720,
+        "verifying_key_bytes": 20256,
+        "proving_key_bytes": 67163618,
+        "public_witness_serialized_bytes": 3690240,
+        "model_json_bytes": 244253,
+        "approved_task_bytes": 201348,
+        "stored_head_energy_scalars": 8192,
+        "genuine_requests": 5,
+        "conclusive_genuine_requests": 5,
+        "lloyd_requests": 4,
+        "conclusive_lloyd_requests": 4
+      }
+    ],
+    "original_root": "12007192333380025210325895443117847125469942504879559818178191422677105362407",
+    "workflow_wall_seconds": 3315.6785825649276,
+    "actual_single_repetition_deployment": false,
+    "private_reference_validation_excluded_from_workflow_wall": true,
+    "numerical_false_decisions": 0,
+    "metadata": {
+      "dataset": "mnist",
+      "k": 3,
+      "fit_seed": 11,
+      "age": 1,
+      "training_sha256": "3ce76ec46ccc289ea6619206a56ff4d11319af7a977de9e72cc93acf12ff1dfe",
+      "audit_sha256": "deb978d019eb56bbf5d22681889aa35655af8d609e711bd6754e1f784fa81cd7",
+      "training_indices_sha256": "d3d73b269d9ad627ffca7cd5213158f50f071fef03f5d92405fab280dc87c668",
+      "audit_indices_sha256": "0c96b3473dee888a69bcd3c76d2b0905483f57ad2f60aa96944748ad3071cd91",
+      "source": {
+        "name": "mnist",
+        "n": 5000,
+        "d": 784,
+        "k": 10,
+        "source": "openml:mnist_784",
+        "seed": 0,
+        "sha256": "77346dea3480d6b0608c7b0a1d4d1ef9b547f7899f65d82e46994b4c345aa1f0",
+        "source_n": 70000,
+        "source_d": 784,
+        "labels_sha256": "58257b992412da0b7edd431448138337e84c6882fc9bbcc4e6cfcd83b2070844"
+      },
+      "input_scale": "16.058823529411764",
+      "prototype_trace_seconds": 1.0659202910028398,
+      "audit_clipped_coordinates": 0,
+      "representation_fit_seconds": {
+        "learned": 0.2805601579602808,
+        "pca": 0.8470409470610321
+      },
+      "roles": [
+        {
+          "kind": "deployed",
+          "iteration": 1,
+          "set": 0,
+          "unchanged_centers": true
+        },
+        {
+          "kind": "lloyd_update",
+          "iteration": 2,
+          "set": 1,
+          "unchanged_centers": false
+        },
+        {
+          "kind": "lloyd_update",
+          "iteration": 4,
+          "set": 2,
+          "unchanged_centers": false
+        },
+        {
+          "kind": "lloyd_update",
+          "iteration": 8,
+          "set": 3,
+          "unchanged_centers": false
+        },
+        {
+          "kind": "lloyd_update",
+          "iteration": 16,
+          "set": 4,
+          "unchanged_centers": false
+        },
+        {
+          "kind": "reverse_step_diagnostic",
+          "iteration": null,
+          "set": 5,
+          "unchanged_centers": false
+        }
+      ],
+      "method": "pca",
+      "rank": 63,
+      "basis_sha256": "2e69212062cb1683b87ce86e8d5d795f14963d9cfb3e91d0943060cba8e37f31",
+      "proof_scope": "N128 prefix; native N1024 is separate"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "figures": 7,
+  "svg_xml_valid": true,
+  "editable_text": true,
+  "no_embedded_raster": true,
+  "png_integrity": true,
+  "label_canvas_and_card_checks": true,
+  "visual_review": "All7 inspected; card overflow and flow routing corrected.",
+  "paper_unchanged": true,
+  "server_plan_only": true
+}

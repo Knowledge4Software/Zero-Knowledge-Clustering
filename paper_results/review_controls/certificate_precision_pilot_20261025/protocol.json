@@ -1,0 +1,13 @@
+{
+  "input_sha256": "dc250961addc3fb3bb8a81a0c3bccfee6608a73c193e31aedfde114dea829ccd",
+  "prediction_basis_unchanged": true,
+  "certificate_scale_bits": [
+    6,
+    8,
+    10,
+    12,
+    14
+  ],
+  "selection": "Every nonidentity source update. Quantization changes only the auxiliary certificate basis, not frozen prediction outputs. No refitting.",
+  "scope": "Native screening; no proof-speed claim."
+}

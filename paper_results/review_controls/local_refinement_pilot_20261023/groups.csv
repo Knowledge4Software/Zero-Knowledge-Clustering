@@ -1,0 +1,17 @@
+age,method,blocks,truth,requests,resolved
+1,learned,1,improves,8,4
+1,learned,4,improves,8,4
+1,learned,16,improves,8,4
+1,learned,49,improves,8,4
+1,pca,1,improves,8,4
+1,pca,4,improves,8,4
+1,pca,16,improves,8,4
+1,pca,49,improves,8,4
+8,learned,1,worsens,8,0
+8,learned,4,worsens,8,0
+8,learned,16,worsens,8,0
+8,learned,49,worsens,8,0
+8,pca,1,worsens,8,0
+8,pca,4,worsens,8,0
+8,pca,16,worsens,8,0
+8,pca,49,worsens,8,0

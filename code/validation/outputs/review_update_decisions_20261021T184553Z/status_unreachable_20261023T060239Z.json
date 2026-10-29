@@ -1,0 +1,14 @@
+{
+  "checked_utc": "2026-10-23T06:02:39Z",
+  "status": "connection_unreachable",
+  "checks": [
+    "WSL SSH timed out on initial attempt and retry",
+    "Direct Windows TCP22 connection timed out"
+  ],
+  "remote_run_status": "unknown; no conclusion about completion or failure",
+  "last_confirmed_snapshot": "status_20261022T165147Z.json",
+  "last_confirmed_main_complete": 22,
+  "main_total": 32,
+  "last_confirmed_scale_complete": 0,
+  "scale_total": 3
+}

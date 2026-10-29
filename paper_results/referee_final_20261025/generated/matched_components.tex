@@ -1,0 +1,26 @@
+\begin{table*}[tbp]
+\centering
+\setlength{\tabcolsep}{8pt}
+\caption{Phase costs in minutes, including all recorded attempts. Prep includes fitting where used, commitments, cold key work and original-row proofs; Full compile and setup time is separated from query. Query retains native parameters and key I/O. Replay is fresh public-only checking; FB is newly generated exact fallback. Centroid and PCA denote bases of the same certificate; mature/early are reference Lloyd ages 8/1.}
+\label{tab:matched-components}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{llrrrr}
+\toprule
+Cohort & Method & Prep & Query & Replay & FB\\
+\midrule
+MNIST mature & Full & 2.731 & 18.222 & 0.017 & 0.000\\
+MNIST mature & Centroid & 7.392 & 3.160 & 0.201 & 0.000\\
+MNIST mature & PCA & 6.461 & 2.690 & 0.201 & 0.000\\
+MNIST mature & Moments-only & 4.937 & 0.576 & 0.017 & 18.758\\
+Fashion early & Full & 2.338 & 16.374 & 0.017 & 0.000\\
+Fashion early & Centroid & 5.803 & 3.296 & 0.100 & 0.000\\
+Fashion early & PCA & 7.162 & 2.908 & 0.100 & 0.000\\
+Fashion early & Moments-only & 5.967 & 0.710 & 0.017 & 18.872\\
+MNIST scale & Full & 2.386 & 124.536 & 0.101 & 0.000\\
+MNIST scale & Centroid & 31.250 & 14.044 & 0.367 & 0.000\\
+MNIST scale & PCA & 31.239 & 13.927 & 0.367 & 0.000\\
+MNIST scale & Moments-only & 35.578 & 1.003 & 0.067 & 91.855\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

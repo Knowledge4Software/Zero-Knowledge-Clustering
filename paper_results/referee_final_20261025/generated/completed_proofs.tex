@@ -1,0 +1,17 @@
+\begin{table*}[tbp]
+\centering
+\caption{Completed real-proof controls, $N=128$, two Go workers and one repetition per workload. Active minutes include cold preparation, setup and fresh public replay. Neither cohort triggers fallback. Future candidate centers are not required by preprocessing.}
+\label{tab:completed-proofs}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{llrrr}
+\toprule
+Cohort, updates & Method & Minutes & Full/method & Proofs\\
+\midrule
+MNIST, 19 & Exact Full & 196.703 & 1.000 & 320\\
+MNIST, 19 & Centroid & 61.637 & 3.191 & 299\\
+Fashion, 2 & Exact Full & 39.457 & 1.000 & 48\\
+Fashion, 2 & Centroid & 24.771 & 1.593 & 146\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

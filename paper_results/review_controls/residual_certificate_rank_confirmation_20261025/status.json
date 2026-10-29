@@ -1,0 +1,237 @@
+{
+  "complete": true,
+  "unique_requests": 160,
+  "results_by_rank": {
+    "63": {
+      "requests": 160,
+      "conclusive": 151,
+      "regressions": 36,
+      "detected": 30,
+      "combined_conclusive": 151,
+      "combined_detected": 30
+    },
+    "79": {
+      "requests": 160,
+      "conclusive": 156,
+      "regressions": 36,
+      "detected": 34,
+      "combined_conclusive": 156,
+      "combined_detected": 34
+    },
+    "95": {
+      "requests": 160,
+      "conclusive": 157,
+      "regressions": 36,
+      "detected": 35,
+      "combined_conclusive": 157,
+      "combined_detected": 35
+    }
+  },
+  "all_intervals_contain_truth": true,
+  "false_conclusive": 0,
+  "native_only": true,
+  "prediction_model_unchanged": true,
+  "source_checks": {
+    "fashion_mnist_k3_seed167_age1_learned": {
+      "source_archive_sha256": "3514df38b855bee79ea000a36fbfb1dd6ab1b49702487a21f19103d24ef75e24",
+      "auxiliary_archive_sha256": "d99ea1c8968eb3468065fa6720db816207a94021741f287546ceb623be549449",
+      "auxiliary_fitting_seconds": 0.3589999999385327
+    },
+    "fashion_mnist_k3_seed167_age8_learned": {
+      "source_archive_sha256": "e33703102658beb54414c0da986d0c132642e46a1dbaa04a2251141841afe772",
+      "auxiliary_archive_sha256": "26251cf745bade2059d476330a817125b8ee4fd44516bc1c9307228024d87a47",
+      "auxiliary_fitting_seconds": 0.2970000000204891
+    },
+    "fashion_mnist_k3_seed193_age1_learned": {
+      "source_archive_sha256": "18d7ed37b0af2f03c1d8228911c62c6aa21c9db96a4803d075a83eb9f4fa9cea",
+      "auxiliary_archive_sha256": "53edbad2497d2931eeaa7994181820aad7fc235f6d7553850402ad6f48c45663",
+      "auxiliary_fitting_seconds": 0.3279999999795109
+    },
+    "fashion_mnist_k3_seed193_age8_learned": {
+      "source_archive_sha256": "45cccc996c6f30759dd07c309c4420f7802cace3957e9d51d724f0935c7a698e",
+      "auxiliary_archive_sha256": "4e7377b00a63a28d02405f6e3c3ce1bbf1cf7a7925aa8aef5c67282760a09103",
+      "auxiliary_fitting_seconds": 0.2970000000204891
+    },
+    "fashion_mnist_k5_seed167_age1_learned": {
+      "source_archive_sha256": "9bba1937688a66851995bb8295ac0101912303f508cb3ad6ce1567c504aa265d",
+      "auxiliary_archive_sha256": "41841f7f48ca064156d84978e68b46df6cc5e3de0f84a6c0666ce18db75bceed",
+      "auxiliary_fitting_seconds": 0.31200000003445894
+    },
+    "fashion_mnist_k5_seed167_age8_learned": {
+      "source_archive_sha256": "aaedfa5513c39e70806997ee85d1a96a5f858906254766c57b43f301cc33a982",
+      "auxiliary_archive_sha256": "2dbae7fa4232b1588600b2cead733fa3b8d7ff4418c30fefdcf07b4f8a18cee4",
+      "auxiliary_fitting_seconds": 0.26599999994505197
+    },
+    "fashion_mnist_k5_seed193_age1_learned": {
+      "source_archive_sha256": "69d994bded25777f05a37d6eb87911ee28231304d1658e36648205fe2237423c",
+      "auxiliary_archive_sha256": "ca2ac098e30b04c1622de67e92000b106e028fcd1671a2ae79db6e6e50f8a33b",
+      "auxiliary_fitting_seconds": 0.1869999999180436
+    },
+    "fashion_mnist_k5_seed193_age8_learned": {
+      "source_archive_sha256": "6463301e0e4cfe9c63793f17c09de0048eb17c4ad42d06d85dd4b9e0fac01cb4",
+      "auxiliary_archive_sha256": "0296c61679801ca1ef762bf6ddb477f3c0cebac9ea642241ea8aaa767d7edc5c",
+      "auxiliary_fitting_seconds": 0.23499999998603016
+    },
+    "mnist_k3_seed167_age1_learned": {
+      "source_archive_sha256": "5190f75913c302fd8b0ea26a016fd374bf05dd92366d8b055a324caad03d5501",
+      "auxiliary_archive_sha256": "5a4bd4c147f0d1ece69577a017827baa7ee4a5b7d4d4b5069824ee3377940b53",
+      "auxiliary_fitting_seconds": 0.2970000000204891
+    },
+    "mnist_k3_seed167_age8_learned": {
+      "source_archive_sha256": "190a28f7beadd19856413628d5bf6556f6ef59c34dbf3ca2f750362acae16c98",
+      "auxiliary_archive_sha256": "68a4a0c92bae7638643f8bac6d064ab4354541c89b65058280be47c9c4af5d6e",
+      "auxiliary_fitting_seconds": 0.28100000007543713
+    },
+    "mnist_k3_seed193_age1_learned": {
+      "source_archive_sha256": "0c0e9da309961d352e0735646759101f4d2243769533f5535fa6e0462a9343f9",
+      "auxiliary_archive_sha256": "b933e9571b77a114cf24c76368533d2a4c0909343f550f13b85bc3099bfafdd1",
+      "auxiliary_fitting_seconds": 0.2970000000204891
+    },
+    "mnist_k3_seed193_age8_learned": {
+      "source_archive_sha256": "147cf6a250f1447308c72067ca40e1fe52e7a1eaf6268bd3bfaf81024f54c7bc",
+      "auxiliary_archive_sha256": "bb8cf67af18ed587a2779cdc48e30f13c24412b1664d91e86adefabb73b6e52b",
+      "auxiliary_fitting_seconds": 0.28200000000651926
+    },
+    "mnist_k5_seed167_age1_learned": {
+      "source_archive_sha256": "e11a5298a0080bd2e70bdf7b317a0536a7e67003b7920f6a26b3c22fdfd6378a",
+      "auxiliary_archive_sha256": "d2714ddc0d7b6f7442c452278d931024b5c781c342cb8ac6a6b281e1eda5d5b2",
+      "auxiliary_fitting_seconds": 0.26500000001396984
+    },
+    "mnist_k5_seed167_age8_learned": {
+      "source_archive_sha256": "9d5be9e77d63abf03566405b0bf2eae0590eac6c6fa45cb856037d6352edd5b4",
+      "auxiliary_archive_sha256": "e6e57eebde97c8c4f9e48423c0df5cc5cc2da62c08032caa9de3f38818fb497f",
+      "auxiliary_fitting_seconds": 0.18799999996554106
+    },
+    "mnist_k5_seed193_age1_learned": {
+      "source_archive_sha256": "289033c512aa28333b397909eacf1ade9fe844fffbd4f3fe031a72014b90852f",
+      "auxiliary_archive_sha256": "1f2836164642e8cb7bdee9cee62d79435f629800697942da2b06f3e2504d82b3",
+      "auxiliary_fitting_seconds": 0.2970000000204891
+    },
+    "mnist_k5_seed193_age8_learned": {
+      "source_archive_sha256": "bc55192ae463fe25ff90c3b89d384ce9136017a193b40121ec00a9f5a233454c",
+      "auxiliary_archive_sha256": "803a9f24c35300535d1aadd5df0812411539c397896480a2b4f5d9764e5451a1",
+      "auxiliary_fitting_seconds": 0.28200000000651926
+    },
+    "fashion_mnist_k3_seed11_age1_learned": {
+      "source_archive_sha256": "18220b984f7dc1e3175a5457a0f1ec6d2a641d9045243ea5f4082b55eef98d53",
+      "auxiliary_archive_sha256": "e302f7bc3093dbad6d4b447c4c534fff54329e478ffe63f1a87b67792313bd87",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "fashion_mnist_k3_seed11_age8_learned": {
+      "source_archive_sha256": "fc0753c07a77249762776c716c62c000e6bf4d8ca0d3aeec41024c30843ed52f",
+      "auxiliary_archive_sha256": "5f8bbcde04295c466652d4bebaf7e40159d4d5034a1e3c355f53d0924cb1f9ec",
+      "auxiliary_fitting_seconds": 0.28200000000651926
+    },
+    "fashion_mnist_k3_seed37_age1_learned": {
+      "source_archive_sha256": "7c00d0c3cb8bc838d0bda28d4e5b86ee568cfb1527c7d837097fc5c4e65679b1",
+      "auxiliary_archive_sha256": "ac7a33ba1d7c9859c55649ede3653418369aa26933f5afc38dbdf8692ece09b2",
+      "auxiliary_fitting_seconds": 0.26500000001396984
+    },
+    "fashion_mnist_k3_seed37_age8_learned": {
+      "source_archive_sha256": "f495d351fc1dabe0ea9b9fb3020f4aa30951138c7a2a9fa8625d082f6eb9b74e",
+      "auxiliary_archive_sha256": "80fcd8b5b9bd6fff69de3c7bd15f7162b139156512869f1150836c7f8d3b678f",
+      "auxiliary_fitting_seconds": 0.2969999999040738
+    },
+    "fashion_mnist_k3_seed67_age1_learned": {
+      "source_archive_sha256": "cfdfec9ad9fb6f570b9f42e72a4850e9179507b9ce1d1b36a636b1ccbd7507d0",
+      "auxiliary_archive_sha256": "32f0a334ba9e92872e9cb52b79d62505facc8f6a00bf99cdb5ee9f7342858a5f",
+      "auxiliary_fitting_seconds": 0.26599999994505197
+    },
+    "fashion_mnist_k3_seed67_age8_learned": {
+      "source_archive_sha256": "a8324c3d9f6481be0f8193fb7388725b9e621e61ff845ee0f077a5a52a3f5c9e",
+      "auxiliary_archive_sha256": "db49426c8a9613e64410d10bdc5f25fde04dee3edca4c8b65d0aaedc89d525d4",
+      "auxiliary_fitting_seconds": 0.28100000007543713
+    },
+    "fashion_mnist_k3_seed79_age1_learned": {
+      "source_archive_sha256": "0a0be154106b7b398e2015328c0cf28443800a33e57bac75f748d375b8ff3374",
+      "auxiliary_archive_sha256": "4ba51496cd9c5851bb072b57fc3b6255e3e0b313407be31671c77c56e1720d9f",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "fashion_mnist_k3_seed79_age8_learned": {
+      "source_archive_sha256": "65b1dd984921f19942896954915f5996d8d35f48bcc9e62e5f2d6693ac1dccbb",
+      "auxiliary_archive_sha256": "ab7c4a6e5206fcde1ab98a087ff907cface50b485e00e5a52c97b8c370fc0646",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "fashion_mnist_k5_seed11_age1_learned": {
+      "source_archive_sha256": "1231830976108fbd294e8cc5116205d117ca123e2391aa72cf5561fa0df12cd2",
+      "auxiliary_archive_sha256": "ad6b020088f5f6eb45648c699406e166d7c9cebe8a655060f96403b2f4acec85",
+      "auxiliary_fitting_seconds": 0.2660000000614673
+    },
+    "fashion_mnist_k5_seed11_age8_learned": {
+      "source_archive_sha256": "ed5cbdff08572c9f662aa264b1e5bd6f93ba004d479b2aeeefba68dcecb65c7b",
+      "auxiliary_archive_sha256": "1beba3affcdceff15db276f3fcccd118f0550c3618ca4fb806925ef092f9523b",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "fashion_mnist_k5_seed41_age1_learned": {
+      "source_archive_sha256": "c76025743036249472aebe33f19c3d5641edd20adbef22fd8c28bd6a99e6f6eb",
+      "auxiliary_archive_sha256": "79769bb83004d5817bf19228fb74dba83afaa6b98a20782f5b0d9d03f9649948",
+      "auxiliary_fitting_seconds": 0.28200000000651926
+    },
+    "fashion_mnist_k5_seed41_age8_learned": {
+      "source_archive_sha256": "1f7d73f9b0668e9a85494da590b45231fc8ade343f05f39cd9c6109611ec0020",
+      "auxiliary_archive_sha256": "52f4a3264d8c93518e44b7bd9f79f6791ab59d05ff21267e1de3b0bd72b56035",
+      "auxiliary_fitting_seconds": 0.2660000000614673
+    },
+    "mnist_k10_seed37_age1_learned": {
+      "source_archive_sha256": "ca58f05c49b8f8a6d7939070ef4dae34ed858ead2023a074c10cfe403aa55204",
+      "auxiliary_archive_sha256": "c5220a151739a79ce9993738ddb038b923f3dd1cc7827ae102806e38b9dad8c6",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "mnist_k10_seed37_age8_learned": {
+      "source_archive_sha256": "89783f5abe85073c08ac46ac21c4c177acf98f09732aa188042d3399d0c3aab8",
+      "auxiliary_archive_sha256": "c43876a78dceebbb822a971d18ac147ffaeb3e644789ff700043e8f7d11f7ec6",
+      "auxiliary_fitting_seconds": 0.2970000000204891
+    },
+    "mnist_k10_seed41_age1_learned": {
+      "source_archive_sha256": "9b6ee11eb5a60599e65530edd2340fb3f147e31306f024d0686c021b4a037b13",
+      "auxiliary_archive_sha256": "06fc9c77c917e871fecd5d3d24fbb5001a7a0021ae7468cbf18683a7a93206ac",
+      "auxiliary_fitting_seconds": 0.2660000000614673
+    },
+    "mnist_k10_seed41_age8_learned": {
+      "source_archive_sha256": "08c3c18cb3ca1f6c480a9a7eb171a8a9e77e6001d0e27dc6ee7f6a396d5f13e3",
+      "auxiliary_archive_sha256": "118810637f990d158c5422680abff9a0e8fafa8634d7010220b0b3147c3e6d30",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "mnist_k5_seed11_age1_learned": {
+      "source_archive_sha256": "1462426c91d065073626ebccc1cf6ea7e8c55393c69dfaf2e2432d17c8a451a7",
+      "auxiliary_archive_sha256": "95bb8215a9dfec3ff049ce6c2e1055f415b70088a384181e5528b015be25b99b",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "mnist_k5_seed11_age8_learned": {
+      "source_archive_sha256": "e7ce081dc903306644379a8467238ebfd4e3ceab9ab3b331d58546a57d554422",
+      "auxiliary_archive_sha256": "73e7b8d6b4a1b5dd657bee5528304f9df8a90fc007f7c696725901e00f2b6b41",
+      "auxiliary_fitting_seconds": 0.2809999999590218
+    },
+    "mnist_k5_seed37_age1_learned": {
+      "source_archive_sha256": "253b071a9a28fa5695a268edc678afaeea9edd4cec84286ff11d9f4ccabed047",
+      "auxiliary_archive_sha256": "ada38b79f6871c132291d41f1ee5a899e2ee298505928cfc6fefe0d4da842d24",
+      "auxiliary_fitting_seconds": 0.3279999999795109
+    },
+    "mnist_k5_seed37_age8_learned": {
+      "source_archive_sha256": "8ee92cb65316286aae36e7a6369fa386fcf52a3842da6a707b8dc1038f6a0915",
+      "auxiliary_archive_sha256": "7db7daf28e446c9948c0504f2817677684d052bf72bde7f77a0625af6946419a",
+      "auxiliary_fitting_seconds": 0.2970000000204891
+    },
+    "mnist_k5_seed67_age1_learned": {
+      "source_archive_sha256": "1de288f366233ed68c3cbf243c57d1ba802d2e2703bc152fa63c29dd54500da2",
+      "auxiliary_archive_sha256": "0c75c1b1adac940cc579c836e3bcfb982dffeb8b7b7402458da5fecdb6f8471d",
+      "auxiliary_fitting_seconds": 0.31200000003445894
+    },
+    "mnist_k5_seed67_age8_learned": {
+      "source_archive_sha256": "513a7ee4e20ed28ba849d790b084a5dc90fbc638f08365cf459c17dc5b372d0d",
+      "auxiliary_archive_sha256": "f03743ad61d564c33341d6a9f80dd04bf76036c2a280d706ea2b7e65ec486893",
+      "auxiliary_fitting_seconds": 0.2660000000614673
+    },
+    "mnist_k5_seed79_age1_learned": {
+      "source_archive_sha256": "6993fef1f95ad439bbfc7d051e2d65b1204d4615867d4dea716fb184ab880ecb",
+      "auxiliary_archive_sha256": "2d9a7ab553c23693d0d344b37393e21728b64a8afd2dd5ed99eb1ca2a435abc0",
+      "auxiliary_fitting_seconds": 0.2660000000614673
+    },
+    "mnist_k5_seed79_age8_learned": {
+      "source_archive_sha256": "1d0df9be729046b92242f6a2eaad732c84933534084616089594889350d45fec",
+      "auxiliary_archive_sha256": "9b65625b1e1ba6647960dfc744d627359f45bab33bb6394994ee2c6397fe8d8d",
+      "auxiliary_fitting_seconds": 0.26500000001396984
+    }
+  },
+  "elapsed_seconds": 548.0104310512543
+}

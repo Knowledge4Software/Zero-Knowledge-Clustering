@@ -1,0 +1,31 @@
+\begin{figure*}[tbp]
+\centering
+\begin{tikzpicture}[
+ node distance=6mm and 6mm,>=Stealth,
+ stage/.style={draw,rounded corners=2pt,align=center,font=\small,
+ text width=33mm,minimum height=19mm,inner sep=3pt},
+ result/.style={stage,minimum height=12mm,fill=gray!10},
+ flow/.style={->,semithick}]
+\node[stage] (basis) {Stage 1\\Training-only basis\\Compact features and residual energy};
+\node[stage,right=of basis] (prepare) {Stage 2\\Authenticate old groups, row statistics and group moments};
+\node[stage,right=of prepare] (bound) {Stage 3\\Exact assigned change plus integer-safe switching bounds};
+\node[stage,right=of bound] (refine) {Stage 4\\Refine up to 16 rows\\Verify exact\\corrections};
+\node[result,below=17mm of bound] (decision) {Verified update decision};
+\node[result,below=17mm of refine] (full) {Generate and verify exact Full fallback};
+\draw[flow] (basis)--(prepare);
+\draw[flow] (prepare)--(bound);
+\draw[flow] (bound)--(refine);
+\draw[flow] (bound)--node[left,font=\scriptsize]{conclusive}(decision);
+\draw[flow] (refine.south west)--node[above,sloped,font=\scriptsize]{conclusive}(decision.north east);
+\draw[flow] (refine)--node[right,font=\scriptsize]{ambiguous}(full);
+\draw[flow] (full)--(decision);
+\node[above=4mm of basis.north east,anchor=south,font=\small] {Shared within one reference episode};
+\node[above=4mm of bound.north east,anchor=south,font=\small] {Repeated for each approved candidate};
+\end{tikzpicture}
+\caption{Reusable prototype-update audit. Stages 1--2 prepare one deployed
+reference; stages 3--4 evaluate centers that may arrive later. Complete
+coverage, authenticated statistics and verified corrections support each
+accepted decision. Exact fallback is generated only when required and its
+cost is included. Installing a new reference repeats group preprocessing.}
+\label{fig:methodology-pipeline}
+\end{figure*}

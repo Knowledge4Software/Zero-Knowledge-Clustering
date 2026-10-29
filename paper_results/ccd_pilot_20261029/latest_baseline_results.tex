@@ -1,0 +1,75 @@
+\subsection{Later Matched Gate against Paper-Derived Baselines}
+\label{sec:latest-gate}
+\subsubsection{Quality across independently fitted configurations}
+Table~\ref{tab:latest-native} pools the three later fits on 128-record
+catalogs. Centroid label agreement is 99.80\% on Fashion, 93.49\% on text
+and 99.45\% on HAR. It exceeds the tested raw sign/sparse sketches and
+one-bit RaBitQ estimates, while PCA remains close: 99.84\%, 92.55\% and
+99.51\%, respectively. This does not establish the best possible accuracy
+of the full published systems or an advantage in ground-truth class accuracy.
+\input{paper_results/ccd_pilot_20261029/generated/latest_native_quality.tex}
+
+Label agreement and aggregate decision estimation can rank methods
+differently. On text, 21 of 24 true changes worsen the objective and three
+improve it. The centroid/PCA point predictors achieve 87.50\% overall
+estimated-sign agreement, equal to always predicting worsening, and
+50.00\% balanced agreement. Lightweight32 reaches 97.62\% balanced
+agreement; RaBitQ reaches 90.48\%. These useful estimates have different
+assurance contracts from an authenticated deterministic decision.
+
+Centroid and PCA both resolve every Fashion and HAR request after at most
+16 numerical row corrections, but only 12.50\% of text requests
+(Table~\ref{tab:latest-coverage}). Every retained deterministic interval
+contains the independently computed exact change, with no wrong certified
+labels. The sign/sparse wrappers have much weaker Fashion/HAR coverage;
+their nonorthogonal sketches can retain useful raw distance estimates
+while leaving large residual norms for this deterministic envelope.
+\input{paper_results/ccd_pilot_20261029/generated/latest_native_coverage.tex}
+
+The RaBitQ statistical intervals resolve 8.33\% of Fashion, 0\% of text
+and 12.50\% of HAR requests at $n=128$. No wrong statistical decision or
+interval failure is observed among the 144 recorded requests across both
+catalog sizes. Observed success is not a deterministic or cryptographic
+guarantee, and the finite-query analysis does not cover adaptively chosen
+future queries. Appendix~\ref{app:latest-runtime} reports recurring native
+times: the raw estimates are generally cheaper than the conservative
+integer predictor/bound implementation, and those milliseconds are not
+ZK proving times.
+
+\subsubsection{Cold proof work with all fallback charged}
+Table~\ref{tab:latest-cold} retains every request in the later matched
+32-record proof cohort. Fashion takes 6.690 minutes with centroid, 6.699
+with PCA and 7.870 with Full. The small centroid/PCA difference does not
+establish a speed ranking. Both random-projection wrappers require one
+Full fallback and exceed 14 minutes. The ZKML primitive adapter takes
+3.957 minutes and is faster in this cold cohort.
+\input{paper_results/ccd_pilot_20261029/generated/latest_cold_proofs.tex}
+
+On text, centroid/PCA resolve only one of four requests before fallback
+and take 11.046/11.014 minutes, against 3.926 for Full and 2.290 for the
+adapter. The sign/sparse wrappers resolve none before fallback. Every
+selected exact fallback is newly generated and charged. All completed
+public verification and independent integer checks pass; this establishes
+correct answers for the recorded workload, not favorable compact economics.
+
+\subsubsection{Equal cost-aware scheduling and reuse}
+Table~\ref{tab:latest-warm} applies the same existing policy to all four
+bases. On Fashion, centroid takes 2.124 minutes against 4.730 for warm
+Full, a ratio of 2.227; PCA takes 2.068 minutes. Both use compact proofs
+for every request. The sign/sparse wrappers use three compact requests
+and one direct Full request, taking 3.597/3.661 minutes. No current-basis
+advantage over equally optimized PCA is established by this execution.
+\input{paper_results/ccd_pilot_20261029/generated/latest_warm_routing.tex}
+
+On text, every representation routes every request directly to Full.
+The centroid service and shared Full comparator both take approximately
+2.276 minutes. Small timing differences among the all-Full routes are
+single-execution variation, not evidence of a geometric benefit. These
+warm totals and the cold totals have different timing boundaries and
+cannot be combined into a newly measured cold crossover.
+
+The later gate therefore extends comparative breadth and checks that
+scheduling is applied equally, while retaining the same main conclusions:
+verified reuse is useful in the measured image regime, PCA is competitive,
+and difficult text provides no compact-path speed benefit. Three fits
+strengthen numerical breadth; proof replication and scale remain limited.

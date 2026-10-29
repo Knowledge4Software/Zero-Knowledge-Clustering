@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "prediction_rows": 1120,
+  "checked_intervals": 126,
+  "all_intervals_contain_truth": true,
+  "false_conclusive": 0,
+  "new_proofs": 0,
+  "sha256": {
+    "protocol.json": "4d694b216dd1d41f569f3ad57ddc04b42f52f19224c94e5352cbedc76dff6553",
+    "summary.json": "c5f4dfb9b7a38d774060b7bdf5b6be169063a3f3239ad5b2b3ebc00c9431ba39",
+    "prediction.csv": "e2d9135e12d2235e7344f4eebea82619bdce251dcac9195e35f5cb39181cb9e0",
+    "certificates.csv": "e8f6eb450c5782d587f2e3ccbdbd789828c51d7f861b4e4e21adcbf2d764a12e"
+  }
+}

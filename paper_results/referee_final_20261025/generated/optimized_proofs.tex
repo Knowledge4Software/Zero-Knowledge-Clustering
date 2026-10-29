@@ -1,0 +1,22 @@
+\begin{table*}[tbp]
+\centering
+\caption{Completed method--Full pairs, eight workers, frozen fitted models supplied as inputs; fitting is excluded consistently. Case identifies dataset and $k$/seed/reference Lloyd step. Reps counts completed pairs for that method, not completion of every baseline. Ratios include preprocessing, keys, recorded attempts, generation, public replay and newly paid fallback (FB). Repeated decisions share the same fit and proposals.}
+\label{tab:optimized-proofs}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{lrlrrrrrrr}
+\toprule
+Case & $N$ & Method & Reps & Full min. & Method min. & Range & Full/method & Decisions & FB\\
+\midrule
+Fashion 5/173/8 & 1024 & Centroid & 1 & 101.575 & 42.534 & 42.534--42.534 & 2.388 & 3/3 & 0\\
+Fashion 5/173/8 & 1024 & Moments-only & 1 & 101.575 & 134.413 & 134.413--134.413 & 0.756 & 0/3 & 3\\
+Fashion 5/173/8 & 1024 & PCA & 1 & 101.575 & 44.156 & 44.156--44.156 & 2.300 & 3/3 & 0\\
+MNIST 3/101/8 & 128 & Centroid & 3 & 20.475 & 10.176 & 8.705--11.095 & 1.986 & 12/12 & 0\\
+MNIST 3/101/8 & 128 & Moments-only & 3 & 20.475 & 24.107 & 22.632--28.849 & 0.764 & 0/12 & 12\\
+MNIST 3/101/8 & 128 & PCA & 3 & 20.475 & 10.242 & 8.673--11.145 & 1.993 & 12/12 & 0\\
+MNIST 5/173/8 & 128 & Centroid & 3 & 17.501 & 8.734 & 8.734--8.734 & 2.004 & 12/12 & 0\\
+MNIST 5/173/8 & 128 & Moments-only & 3 & 17.501 & 17.495 & 17.438--17.555 & 1.000 & 6/12 & 6\\
+MNIST 5/173/8 & 128 & PCA & 3 & 17.501 & 8.767 & 8.750--8.767 & 1.996 & 12/12 & 0\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "method_requests": 192,
+  "unique_requests": 96,
+  "historical_natural_regressions": 24,
+  "false_conclusive_decisions": 0,
+  "all_intervals_contain_truth": true,
+  "paired_correction_dominates_separate_row_bounds": true,
+  "elapsed_seconds": 1142.8119999999763,
+  "scope": "Native feasibility only. Moment/membership binding and correction-bound proofs still require an efficient authenticated implementation. No speed claim from exact-row fractions."
+}

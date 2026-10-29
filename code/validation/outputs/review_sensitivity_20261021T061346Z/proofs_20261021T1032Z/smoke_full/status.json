@@ -1,0 +1,59 @@
+{
+  "complete": true,
+  "status": "complete",
+  "started_unix": 1792563427.6510046,
+  "phases": [
+    {
+      "phase": "prepare",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 0.21565140993334353,
+        "peak_rss_bytes": 7077888,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 0
+    },
+    {
+      "phase": "full_reuse",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 4.356203217990696,
+        "peak_rss_bytes": 29270016,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 4
+    },
+    {
+      "phase": "verify_public",
+      "resource": {
+        "returncode": 0,
+        "wall_seconds": 0.21411684015765786,
+        "peak_rss_bytes": 7340032,
+        "stop": null
+      },
+      "status": "complete",
+      "verified": 4
+    }
+  ],
+  "phase": "verify",
+  "finished_unix": 1792563432.6099565,
+  "summary": {
+    "complete": true,
+    "n": 4,
+    "sets": 2,
+    "method": "smoke_full",
+    "original_root": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+    "total_seconds": 2.177536584,
+    "query_constraints": 4947,
+    "verified_public_samples": 4,
+    "full_catalog_extrapolated": false,
+    "certificate_constraints": null,
+    "certificate_total_seconds": null,
+    "exact_label_policy_sets": null,
+    "coverage99_cost1_policy_sets": null,
+    "native_certificate_reference_matches": false,
+    "peak_rss_bytes": 29270016
+  }
+}

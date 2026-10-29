@@ -1,0 +1,84 @@
+{
+  "source_sha256": "7568802052fd3ef07001573d0096daaba94a0f5c785d413bc1e1a649395bfa57",
+  "binary_sha256": "2354b0b6bac79181ae50f8d599d6cdbd536159029d39729ac0d380ed1867820b",
+  "n": 128,
+  "batch": 1,
+  "reps": 1,
+  "warmup": 0,
+  "full": false,
+  "also_absolute": true,
+  "alternative": "paired original-space cost change",
+  "metadata": {
+    "dataset": "20ng_tfidf",
+    "k": 10,
+    "fit_seed": 11,
+    "age": 1,
+    "training_sha256": "e384b5f49ccf4638712a1bcc5121a54d3ca03e43c3b47188987ec975b1708c4a",
+    "audit_sha256": "b29c9e3fbcd331f44c733d11e22287a0d94fea4d417c4e40a32574265c319a98",
+    "training_indices_sha256": "cc8c6cd1fb4eeee7bde66a79e15b81cfc33b8cdc9b099e4a776452b7ec591861",
+    "audit_indices_sha256": "e4ada7ee9571d6c26f1811f7d1dbabb1d48f80e289cbe32214469505c2bdeaad",
+    "source": {
+      "name": "20ng_tfidf",
+      "n": 5000,
+      "d": 2000,
+      "k": 20,
+      "source": "sklearn:fetch_20newsgroups+tfidf",
+      "seed": 0,
+      "sha256": "39b5a64d5a839cf087e448b7b89f4551edf0da4e1203578211cfdb045d17095e",
+      "source_n": 11314,
+      "source_d": 2000,
+      "labels_sha256": "744f69d61b15662f8e4247e04625e8787d0ab5ca49b8c0515562a124f19bd9d5"
+    },
+    "input_scale": "4095.0",
+    "prototype_trace_seconds": 6.40713796694763,
+    "audit_clipped_coordinates": 0,
+    "representation_fit_seconds": {
+      "learned": 0.6505248020403087,
+      "pca": 1.6107612478081137
+    },
+    "roles": [
+      {
+        "kind": "deployed",
+        "iteration": 1,
+        "set": 0,
+        "unchanged_centers": true
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 2,
+        "set": 1,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 4,
+        "set": 2,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 8,
+        "set": 3,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "lloyd_update",
+        "iteration": 16,
+        "set": 4,
+        "unchanged_centers": false
+      },
+      {
+        "kind": "reverse_step_diagnostic",
+        "iteration": null,
+        "set": 5,
+        "unchanged_centers": false
+      }
+    ],
+    "method": "learned",
+    "rank": 63,
+    "basis_sha256": "57dc50e277fb7212fc8c9ad697b360767d539eed8ece702012204f7b6b8a633a",
+    "proof_scope": "N128 prefix; native N1024 is separate"
+  },
+  "decision": "strict sign of true quantized minimum-cost difference; inconclusive retained",
+  "timing": "Query reps as requested; Stage1 timed once per row. Phase-specific public-only replay includes key loading and verifier center-parameter preparation."
+}

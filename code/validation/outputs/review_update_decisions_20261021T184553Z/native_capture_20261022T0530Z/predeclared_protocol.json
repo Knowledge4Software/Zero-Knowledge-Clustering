@@ -1,0 +1,88 @@
+{
+  "version": "paired-update-decisions-v1",
+  "datasets": [
+    "mnist",
+    "fashion_mnist",
+    "20ng_tfidf"
+  ],
+  "fit_seeds": [
+    11,
+    23,
+    37,
+    41,
+    53
+  ],
+  "k": [
+    3,
+    5,
+    10
+  ],
+  "ranks": [
+    15,
+    63
+  ],
+  "basis_scale": 16384,
+  "native_n": 1024,
+  "proof_n": 128,
+  "training": "60% train / 40% audit; remove zero rows before split; fixed public source features; scales from training only, audit clipping counted.",
+  "prototype_updates": "Lloyd iterations on training only. Early base iteration1 -> 2,4,8,16; mature base8 -> 9,12,16,24. Null and reverse-step diagnostic retained.",
+  "basis": "Training-only rank63 learned and PCA; nested rank15 prefix at same precision.",
+  "decision": "Certify strict decrease/increase of exact quantized nearest-center cost from sign of interval; otherwise inconclusive. No coverage threshold.",
+  "comparisons": [
+    "independent absolute intervals",
+    "paired change envelope with exact rounded-Gram correction",
+    "exact integer Full oracle"
+  ],
+  "proof_fit_selection": [
+    {
+      "dataset": "20ng_tfidf",
+      "k": 5,
+      "fit_seed": 23,
+      "age": 1
+    },
+    {
+      "dataset": "20ng_tfidf",
+      "k": 10,
+      "fit_seed": 11,
+      "age": 1
+    },
+    {
+      "dataset": "fashion_mnist",
+      "k": 3,
+      "fit_seed": 23,
+      "age": 1
+    },
+    {
+      "dataset": "fashion_mnist",
+      "k": 5,
+      "fit_seed": 11,
+      "age": 1
+    },
+    {
+      "dataset": "mnist",
+      "k": 3,
+      "fit_seed": 11,
+      "age": 1
+    },
+    {
+      "dataset": "mnist",
+      "k": 10,
+      "fit_seed": 23,
+      "age": 1
+    }
+  ],
+  "selection": "Proof workloads fixed before this grid; every update proved regardless of native outcome. Exploratory seed0 pilot excluded from confirmation seeds.",
+  "replication": "Report fit seeds within each dataset/k stratum. Different k, ages, ranks and updates share each dataset/seed split and are dependent; proof counts are execution checks.",
+  "claim_boundary": "No universal learned superiority or novelty-firstness assumed. Algorithmic benchmark traces are not production deployment traces.",
+  "python": "3.12.10",
+  "numpy": "2.3.5",
+  "sklearn": "1.8.0",
+  "proof_case_count": 33,
+  "proof_catalog_size": 128,
+  "proof_cases": "6 predeclared independent fits x (learned/PCA x rank15/63 + exact Full), plus 2 single-repetition deployment controls and 1 same-input portability control.",
+  "portability": "Frozen locally prepared MNIST/k3/seed11/early/r63 input, same bytes on Windows and Mobin Linux, 4-CPU caps, paired-only one-repetition workflow; not an additional independent fitted model.",
+  "query_timing": "First MNIST k3/seed11 family uses 3 query repetitions and 1 warmup; other families use 1 repetition and no warmup. All alternatives within each fit matched. Stage1 once per row.",
+  "batches": "Common within each fit: MNIST/Fashion4; text k5 batch2; text k10 batch1 for exact Full memory/constraint feasibility.",
+  "workflow": "Every predeclared update and all original rows proved; absolute and paired alternatives independently publicly replayed. Single-repetition deployment controls measure paired-only and exact Full workflows.",
+  "publication_status": "Private repository; public release not authorized. Author details delegated to supervisor."
+}

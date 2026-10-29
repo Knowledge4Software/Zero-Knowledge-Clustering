@@ -1,0 +1,60 @@
+{
+  "complete": true,
+  "scope": "One previously predeclared fresh-fit N128 Fashion-MNIST mature workload. Two distinct naturally worsening candidate sets, not independent model fits. All Full/group proofs already publicly replayed. No new experimental generation after user pause.",
+  "result": {
+    "complete": true,
+    "proposal_updates": 2,
+    "conclusive_without_fallback": 2,
+    "fallback_updates": 0,
+    "fresh_fallback_proofs": 0,
+    "fallback_active_seconds": 0.0,
+    "group_public_proofs": 146,
+    "active_phase_seconds_including_fitting_and_fallback": 1486.265000000014,
+    "full_reference_active_seconds": 2367.4220000000205,
+    "full_over_group_active_phase": 1.5928666825902502,
+    "all_intervals_contain_full": true,
+    "no_wrong_decisions": true,
+    "interrupted": false,
+    "timing_caveat": "Serial laptop measurements across changing clock/load conditions, one fit and one repetition. Active phase total includes all attempts, setup, native preparation and fresh public replay. Export/file-monitor gaps are outside this phase sum. Native independent validation is outside deployment time.",
+    "statement": "Cost-change audit against reusable public-center Full. The group relation certifies an interval for the exact cost change, not individual approximate assignments.",
+    "source_contract": "Full fixed committed catalog. All2 distinct nonidentical source updates; old public identity omitted. No update selection by outcomes.",
+    "profile": "group-compact-v3",
+    "assigned_upper_fast_updates": 0,
+    "switch_updates": 2,
+    "interval_scope": "Same exact-old switching algebra and original certificate precision; independent numerical reference checks all endpoints.",
+    "certificate_precision_unchanged": true,
+    "certificate_scale_bits": 14,
+    "prediction_model_unchanged": true,
+    "three_cold_key_setups": true,
+    "certificate_rank": 79,
+    "frozen_prediction_rank": 63,
+    "auxiliary_scope": "Standalone higher-rank cost-change certificate. Prediction basis stays frozen. Separate fresh setup/proofs; no adaptive-rank sharing or joint63/79 proof-cost claim."
+  },
+  "quality": {
+    "mean_agreement": 100.0,
+    "minimum_agreement": 100.0,
+    "mean_assignment_certified": 100.0,
+    "mean_change_width": 0.0,
+    "distinct_regressions": 2,
+    "regressions_certified_without_fallback": 2
+  },
+  "full": {
+    "case": "full",
+    "wall_seconds": 2368.344000000041,
+    "active_phase_wall_seconds": 2367.4220000000205,
+    "uninterrupted_cold_wall_available": true,
+    "timing_kind": "enclosing uninterrupted case wall",
+    "public_proofs": 48,
+    "native_output_checks_passed": true,
+    "input_sha256": "770e3e1599f8f4d79bf68089e7cfcb86e9a94aab27ea09d87aeff857c86c2211",
+    "proof_phase_sha256": "629588cd426d1e870f68cb191f9bd2c8b2fe5714ddaa9ab6291cf577c2b66ec8"
+  },
+  "public_manifest_files": 154,
+  "source_sha256": {
+    "code\\validation\\outputs\\rank79_independent_replication_20261025\\fashion_mnist_k3_seed101_age8\\head79\\checked_comparison.json": "b7ae297def800c31d99dcefc53f657bff2228d4082bbdda1e0d37bd3160f073d",
+    "code\\validation\\outputs\\rank79_independent_replication_20261025\\fashion_mnist_k3_seed101_age8\\head79\\native_checks.json": "8b65b9b5e496ba1fd1fcbf7a315aa4e5d851ad70bc683ef7012a8fa29a48140e",
+    "code\\validation\\outputs\\rank79_independent_replication_20261025\\fashion_mnist_k3_seed101_age8\\head79\\public\\public_manifest.json": "b9ae194786aba415dffaeacf6020d449ef8595eb81743453911aa612629d460c",
+    "code\\validation\\outputs\\rank79_independent_replication_20261025\\fashion_mnist_k3_seed101_age8\\head79\\public\\group_verify.json": "99ff0fbec33fb41fc86fc23e3e6481328fdd9f0ef3d70ab0fd39dd42d043dfd2",
+    "code\\validation\\outputs\\rank79_independent_replication_20261025\\fashion_mnist_k3_seed101_age8\\head79\\frozen_prediction_model.json": "7fd07bbbc3f845f2121c263873351beb9290d14ea5f303e0f9b2528ee3247cf1"
+  }
+}

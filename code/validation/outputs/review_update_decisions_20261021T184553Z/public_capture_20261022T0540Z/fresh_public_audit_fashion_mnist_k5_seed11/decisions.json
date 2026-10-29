@@ -1,0 +1,59 @@
+{
+  "complete": true,
+  "decisions": [
+    {
+      "set": 0,
+      "paired_decision": "equal",
+      "final_decision": "equal",
+      "used_exact_fallback": false,
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "set": 1,
+      "paired_decision": "improves",
+      "final_decision": "improves",
+      "used_exact_fallback": false,
+      "change_lower_scaled": "-57911862843994123563375982748368896",
+      "change_upper_scaled": "-29534248646312619695627631377514496"
+    },
+    {
+      "set": 2,
+      "paired_decision": "improves",
+      "final_decision": "improves",
+      "used_exact_fallback": false,
+      "change_lower_scaled": "-67856815835860533379167842195210240",
+      "change_upper_scaled": "-33124302721827412274578668707119104"
+    },
+    {
+      "set": 3,
+      "paired_decision": "improves",
+      "final_decision": "improves",
+      "used_exact_fallback": false,
+      "change_lower_scaled": "-64502281494731465081659350623191040",
+      "change_upper_scaled": "-27947717976688255230215145968893952"
+    },
+    {
+      "set": 4,
+      "paired_decision": "improves",
+      "final_decision": "improves",
+      "used_exact_fallback": false,
+      "change_lower_scaled": "-64176923018933276020095231262195712",
+      "change_upper_scaled": "-27433653538634863665029380059430912"
+    },
+    {
+      "set": 5,
+      "paired_decision": "worsens",
+      "final_decision": "worsens",
+      "used_exact_fallback": false,
+      "change_lower_scaled": "57531865824425887835022966690676736",
+      "change_upper_scaled": "82347201454308668523543307172708352"
+    }
+  ],
+  "exact_center_sets_proved": [],
+  "public_only": true,
+  "original_root": "4274784215931636040271961768864336993058342045204456396578849748975330969036",
+  "auditor_workflow_wall_seconds": 18.65600000001723,
+  "privacy": "Paired interval outputs plus exact aggregate baseline/candidate costs for fallback tasks; no per-row assignments or uncertain-row indices.",
+  "trust_boundary": "Owner/setup pins and approved task must be obtained independently of the prover."
+}

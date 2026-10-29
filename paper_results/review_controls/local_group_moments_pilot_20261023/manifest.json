@@ -1,0 +1,87 @@
+[
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/fashion_mnist_k3_seed11_age1_learned.npz",
+    "bytes": 143399,
+    "sha256": "18220b984f7dc1e3175a5457a0f1ec6d2a641d9045243ea5f4082b55eef98d53"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/fashion_mnist_k3_seed11_age1_pca.npz",
+    "bytes": 143303,
+    "sha256": "3fbaf4849fec318cbe8dbe12fdad0f5ae10b901f459f2320db11794631839221"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/fashion_mnist_k3_seed11_age8_learned.npz",
+    "bytes": 134050,
+    "sha256": "fc0753c07a77249762776c716c62c000e6bf4d8ca0d3aeec41024c30843ed52f"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/fashion_mnist_k3_seed11_age8_pca.npz",
+    "bytes": 133863,
+    "sha256": "303197a46a72a50088d30d4092e26b8029a52edf6bd87e14591f0b38b71fa248"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/groups.csv",
+    "bytes": 264,
+    "sha256": "f7f16d40d39ff7f4b0a3f1deb6d14c72fcb4ab5ce547ee71e4dd996984905c9f"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/mnist_k5_seed11_age1_learned.npz",
+    "bytes": 132737,
+    "sha256": "1462426c91d065073626ebccc1cf6ea7e8c55393c69dfaf2e2432d17c8a451a7"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/mnist_k5_seed11_age1_pca.npz",
+    "bytes": 132351,
+    "sha256": "809091f36435d1b236711dbb94d24b84c0698f33f59949537ef790937420c391"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/mnist_k5_seed11_age8_learned.npz",
+    "bytes": 127837,
+    "sha256": "e7ce081dc903306644379a8467238ebfd4e3ceab9ab3b331d58546a57d554422"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/mnist_k5_seed11_age8_pca.npz",
+    "bytes": 127436,
+    "sha256": "999c30f9dc2cb0415a89373aa39f5b6da7ff95b6b39dad15aa4504f7944d8054"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/pins.json",
+    "bytes": 2895,
+    "sha256": "ee5611d49d66e0cd2da951516c7cdeb1764c23cfe63e364e9a858fa1aeeca97c"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/protocol.json",
+    "bytes": 762,
+    "sha256": "71ad18fce1daaf89205b89c5d10ebba3498087edda3463f6f8568b918e857bca"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/REPORT.md",
+    "bytes": 4511,
+    "sha256": "dc4816e0b34b79a8040ff5cae5d903eaa328a3533bf69504b457b36cfc7e7fd9"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/results.csv",
+    "bytes": 3281,
+    "sha256": "db5fb806ef64e6c28a822aa3b678d7dc11e8fb1aa5f29735b0d0ae7414162b10"
+  },
+  {
+    "path": "paper_results/review_controls/local_group_moments_pilot_20261023/summary.json",
+    "bytes": 747,
+    "sha256": "7d49a4df031cc578d840e0a24f2df89613ac2c11f406e72630ec52eba6f66676"
+  },
+  {
+    "path": "code/commitjl/group_moment_reference.py",
+    "bytes": 2362,
+    "sha256": "647b6992b7b65ba9872cc14764f7c5da01d06a52b62ba42083d655121c84d6ec"
+  },
+  {
+    "path": "code/experiments/pilot_group_moments.py",
+    "bytes": 7201,
+    "sha256": "3286b626af979ba539cb52633ffa7f67868e1807c232e18424054bf10e35f726"
+  },
+  {
+    "path": "code/tests/test_group_moment_reference.py",
+    "bytes": 1584,
+    "sha256": "d5081a1cff12e4374b852f5dfa59abdc9f4df7ecb24228a99e26138e87801814"
+  }
+]

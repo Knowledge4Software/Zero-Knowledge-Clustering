@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "release": "neurocomputing_tradeoff_20261021",
+  "pdf_sha256": "1dc481a1dad8e6bf7566554b92398ea07c15e54db234d8ea266970d413905984",
+  "source_zip_sha256": "e13e6a829cbeba47cdc8be5bee12c0bda41d2ca76a8f7393b80fb28ec9b69805",
+  "pdf_pages": 18,
+  "source_zip_project_files_byte_checked": 78,
+  "all_completed_result_tokens_present": true,
+  "preserved_earlier_pdfs_unchanged": true,
+  "captured_file_hashes_checked": 208,
+  "completed_cases": 14,
+  "worker_public_replayed_proofs": 6848,
+  "independent_integer_record_set_evaluations": 33280,
+  "archived_file_hashes_checked": 564,
+  "visual_review": "Assistant inspected all 18 final rendered pages; no clipping or overlap observed.",
+  "validation_boundary": "Numerical/capture/PDF checks are local. Full-campaign cryptographic replay counts come from the completed public-only worker receipts."
+}

@@ -1,0 +1,17 @@
+\begin{table}[tbp]
+\centering
+\small
+\caption{Archived completed Fashion control, $n=1024$, $k=5$, seed 173 and reference step 8. Frozen models are supplied and eight workers are used. Times are minutes, including preparation, proof work, replay and paid fallback. This is a separate workload from the new seed 521 pilots.}
+\label{tab:ccd-archive}
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Min. & Full min. & Ratio & Cov. & FB\\
+\midrule
+Centroid & 42.534 & 101.575 & 2.388 & 3/3 & 0\\
+Moments-only & 134.413 & 101.575 & 0.756 & 0/3 & 3\\
+PCA & 44.156 & 101.575 & 2.300 & 3/3 & 0\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

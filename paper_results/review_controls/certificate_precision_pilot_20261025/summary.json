@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "input_sha256": "dc250961addc3fb3bb8a81a0c3bccfee6608a73c193e31aedfde114dea829ccd",
+  "all_intervals_contain_full": true,
+  "no_wrong_conclusions": true,
+  "by_bits": {
+    "6": {
+      "conclusive": 19,
+      "updates": 19
+    },
+    "8": {
+      "conclusive": 19,
+      "updates": 19
+    },
+    "10": {
+      "conclusive": 19,
+      "updates": 19
+    },
+    "12": {
+      "conclusive": 19,
+      "updates": 19
+    },
+    "14": {
+      "conclusive": 19,
+      "updates": 19
+    }
+  },
+  "prediction_basis_unchanged": true
+}

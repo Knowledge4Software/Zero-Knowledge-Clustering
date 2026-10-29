@@ -1,0 +1,20 @@
+{
+  "recorded_unix": 1793043157.9038317,
+  "python_unique_cases_passed": 57,
+  "go_unique_cases_passed": 3,
+  "python_invocations": [
+    "55 selected numerical/campaign/export tests passed",
+    "1 supervisor-adoption identity test passed"
+  ],
+  "go_cases": [
+    "TestSetupCachePinsAndCorruption",
+    "TestTaskAdmission",
+    "TestLaptopCannotStartProofGeneration"
+  ],
+  "standalone_preflight_fresh_proofs": 32,
+  "standalone_preflight_tamper_rejections": 20,
+  "native_kernel_exact_output_comparisons": 3,
+  "all_passed": true,
+  "security_audit": false,
+  "additional_runtime_check": "13 runtime/staging cases passed after adding one explicit large-catalog time-budget admission case"
+}

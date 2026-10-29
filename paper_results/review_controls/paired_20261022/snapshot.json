@@ -1,0 +1,17 @@
+{
+  "native_cells": 2160,
+  "actual_native_requests": 1440,
+  "fitted_configurations": 45,
+  "split_seed_replications": 15,
+  "completed_main_cases": 15,
+  "planned_main_cases": 32,
+  "cutoff_utc": "2026-10-22T12:32:07.870612+00:00",
+  "deployment_paired_seconds": 1054.553322511958,
+  "deployment_full_seconds": 2181.76710239402,
+  "deployment_ratio": 2.0689016437756096,
+  "early_learned_absolute_rate": 0.5777777777777777,
+  "early_pca_absolute_rate": 0.25,
+  "early_learned_paired_rate": 0.6,
+  "early_pca_paired_rate": 0.6,
+  "file_hashes_checked": 409
+}

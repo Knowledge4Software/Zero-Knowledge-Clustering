@@ -1,0 +1,74 @@
+{
+  "complete": true,
+  "new_zk_proofs": 0,
+  "production_method_unchanged": true,
+  "interval_rows_rechecked": 725,
+  "all_intervals_contain_truth": true,
+  "incorrect_conclusive": 0,
+  "guide_exact_rows_without_jl": 34,
+  "guide_exact_rows_with_jl_each_seed": [
+    33,
+    33,
+    33
+  ],
+  "development_prediction_without_jl": 99.79440789473684,
+  "development_prediction_with_jl": 99.8218201754386,
+  "confirmation_prediction_without_jl": 99.91943359375,
+  "confirmation_prediction_with_jl": 99.91902669270833,
+  "confirmation_extra_errors": 2,
+  "confirmation_correct_assignment_difference": -2,
+  "confirmation_error_count_note": "Three sketch seeds are not independent learning problems.",
+  "confirmation_minimum_without_jl": 99.4140625,
+  "confirmation_minimum_with_jl": 99.31640625,
+  "decision": "No measured, consistent improvement justifying adding JL to the current production protocol or launching a large JL proof campaign.",
+  "source_sha256": {
+    "jl_ideas_quick_20261025/protocol.json": "b5e390b31f290bd482af36fc3c16dbd4b2187e2a0c3b00bdb8a7c6be58ef1e13",
+    "jl_ideas_quick_20261025/summary.json": "fdc6cb993e8529fcca500cce8fded63e1fa8a114e3c42bdfa981291c756157dc",
+    "jl_ideas_quick_20261025/results.csv": "6c78c90fe1c155bddde8633d3135ea228ca3194a1e76a910d002cb20915f176e",
+    "jl_ideas_matched_20261025/protocol.json": "18bd777218835b008f3f7d772396a0a7d644f41a84d2343fc077d7e308db7016",
+    "jl_ideas_matched_20261025/summary.json": "bfd24902eeb5a5e154a6275061b074979fb1d2aaee8b17429e28f6206626a396",
+    "jl_ideas_matched_20261025/results.csv": "a495b80979ead4a12000d4bdaead92051ea173d55729d8c05c5c7ab1a0e56ecf",
+    "jl_assignment_pilot_20261025/protocol.json": "89ca5fc41c21213083820a33fa5a1b534e9bfe88aaf643fc4173eb28aef3a3fe",
+    "jl_assignment_pilot_20261025/summary.json": "89c4776d6f54cd27d4ed787dbe13c80ce30b0580705c818e5237c2010752e062",
+    "jl_assignment_pilot_20261025/results.csv": "79ff4625bdbb8cb7e91e9128eefe295eec1b7347056b23ae7b138372b8bf9170",
+    "jl_assignment_confirmation_20261025/protocol.json": "5e4711db387da10470c219d459f2641d00dd4b5be73f3f918032758876f7dc77",
+    "jl_assignment_confirmation_20261025/summary.json": "58a7597bf2576a1616f8ee64c97fd1507585e2d62be5677439f59a7d328a4248",
+    "jl_assignment_confirmation_20261025/results.csv": "2efaa9602a9dc70e5f008ee2605ebab5b390fa7de8cd52b2e276bf5ebe1443f6",
+    "code/commitjl/jl_certificate_pilots.py": "475fc4539950bd596199d603f0bec16a483c92ac3120b802efc20b1e51eadbb1",
+    "code/commitjl/pilot_io.py": "fb6d0584bf29ba151bcb53eb78bf2e77964cfafe192987682f7b5b98d3194ac3",
+    "code/experiments/pilot_jl_certificate_ideas.py": "f630ad15917cae8727da6fa8d73df1f9e811e9af6455c75ab05d9e83ba6224fa",
+    "code/experiments/pilot_jl_assignment_shrinkage.py": "f30ab4380c8aa532b81a510781951a2dfd108f72354d96621d10c0787bfcffe6",
+    "code/experiments/confirm_jl_shrinkage.py": "6e34f97110a9718a0990ffd37c6f293a0382a5b57383062495424e5d327b852f",
+    "code/tests/test_jl_certificate_pilots.py": "a7ce0701914ffc1fc76f468f0d9a8a76601238c2bf0902f3f7c011a7f3f01272"
+  },
+  "gaussian_jl_illustration": [
+    {
+      "comparisons": 12160,
+      "squared_norm_relative_error": 0.25,
+      "failure_budget": 1e-06,
+      "sufficient_dimension": 1781,
+      "scope": "Standard Gaussian chi-square Chernoff + union bound; sufficient, not necessary; fixed nonadaptive family; no claim for the sparse-q3 experimental maps."
+    },
+    {
+      "comparisons": 12160,
+      "squared_norm_relative_error": 0.25,
+      "failure_budget": 9.094947017729282e-13,
+      "sufficient_dimension": 2817,
+      "scope": "Standard Gaussian chi-square Chernoff + union bound; sufficient, not necessary; fixed nonadaptive family; no claim for the sparse-q3 experimental maps."
+    },
+    {
+      "comparisons": 12160,
+      "squared_norm_relative_error": 0.5,
+      "failure_budget": 1e-06,
+      "sufficient_dimension": 506,
+      "scope": "Standard Gaussian chi-square Chernoff + union bound; sufficient, not necessary; fixed nonadaptive family; no claim for the sparse-q3 experimental maps."
+    },
+    {
+      "comparisons": 12160,
+      "squared_norm_relative_error": 0.5,
+      "failure_budget": 9.094947017729282e-13,
+      "sufficient_dimension": 801,
+      "scope": "Standard Gaussian chi-square Chernoff + union bound; sufficient, not necessary; fixed nonadaptive family; no claim for the sparse-q3 experimental maps."
+    }
+  ]
+}

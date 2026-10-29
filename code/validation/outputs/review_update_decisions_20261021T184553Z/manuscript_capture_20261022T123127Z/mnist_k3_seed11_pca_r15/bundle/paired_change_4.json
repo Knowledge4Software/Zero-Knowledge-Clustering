@@ -1,0 +1,5176 @@
+{
+  "phase": "paired_change",
+  "status": "complete",
+  "complete": true,
+  "constraints": 52995,
+  "proving_key_bytes": 10514167,
+  "verifying_key_bytes": 5744,
+  "compile_seconds": 0.982485876,
+  "setup_seconds": 8.345579837,
+  "load_seconds": 0,
+  "native_prepare_seconds": 0.785577109,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "12007192333380025210325895443117847125469942504879559818178191422677105362407",
+    "ch": "2868710873088153631912183779994262637086545333913474706675802316616678695423",
+    "ce": "0",
+    "ct": "0",
+    "context": "5159983231324383084185868425362393304051420186605752052835869663133870731092"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prove_seconds": [
+        0.894659139,
+        0.986118827,
+        1.010551328
+      ],
+      "verify_seconds": [
+        0.005427959,
+        0.006490362,
+        0.006821851
+      ],
+      "witness_seconds": 0.000371144,
+      "native_answer_seconds": 0.00074799,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0000.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 1,
+      "indices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "prove_seconds": [
+        0.95505373,
+        0.818307141,
+        0.931721489
+      ],
+      "verify_seconds": [
+        0.004115495,
+        0.003959068,
+        0.004935943
+      ],
+      "witness_seconds": 0.000816008,
+      "native_answer_seconds": 0.0020729,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0001.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 2,
+      "indices": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "prove_seconds": [
+        1.032521301,
+        1.10211537,
+        1.00337537
+      ],
+      "verify_seconds": [
+        0.005257422,
+        0.006546423,
+        0.007093183
+      ],
+      "witness_seconds": 0.000289277,
+      "native_answer_seconds": 0.00118729,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0002.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 3,
+      "indices": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "prove_seconds": [
+        0.89189158,
+        0.916722335,
+        0.886623725
+      ],
+      "verify_seconds": [
+        0.005104725,
+        0.007367229,
+        0.004667466
+      ],
+      "witness_seconds": 0.000975598,
+      "native_answer_seconds": 0.002138733,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0003.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 4,
+      "indices": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "prove_seconds": [
+        0.965198143,
+        1.060398795,
+        0.979800633
+      ],
+      "verify_seconds": [
+        0.005794216,
+        0.004849364,
+        0.006868538
+      ],
+      "witness_seconds": 0.000715566,
+      "native_answer_seconds": 0.002496552,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0004.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 5,
+      "indices": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "prove_seconds": [
+        1.017562624,
+        0.977840221,
+        0.960140315
+      ],
+      "verify_seconds": [
+        0.007636507,
+        0.005267853,
+        0.003371955
+      ],
+      "witness_seconds": 0.000534884,
+      "native_answer_seconds": 0.002134895,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0005.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 6,
+      "indices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "prove_seconds": [
+        0.871541347,
+        0.932743315,
+        0.942548273
+      ],
+      "verify_seconds": [
+        0.003647858,
+        0.004361531,
+        0.003292118
+      ],
+      "witness_seconds": 0.000519239,
+      "native_answer_seconds": 0.002205394,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0006.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 7,
+      "indices": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "prove_seconds": [
+        0.984936337,
+        0.853849663,
+        0.890869492
+      ],
+      "verify_seconds": [
+        0.004296348,
+        0.004659606,
+        0.003210092
+      ],
+      "witness_seconds": 0.000677255,
+      "native_answer_seconds": 0.002076791,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0007.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 8,
+      "indices": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "prove_seconds": [
+        0.936512858,
+        0.958559296,
+        0.978566425
+      ],
+      "verify_seconds": [
+        0.007628331,
+        0.005909072,
+        0.004378655
+      ],
+      "witness_seconds": 0.000287153,
+      "native_answer_seconds": 0.001090831,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0008.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 9,
+      "indices": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "prove_seconds": [
+        1.091640201,
+        0.96059861,
+        0.899905496
+      ],
+      "verify_seconds": [
+        0.003930291,
+        0.004990942,
+        0.006594509
+      ],
+      "witness_seconds": 0.000481182,
+      "native_answer_seconds": 0.001169295,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0009.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 10,
+      "indices": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "prove_seconds": [
+        1.009551438,
+        1.046749772,
+        0.992274273
+      ],
+      "verify_seconds": [
+        0.004516986,
+        0.004608832,
+        0.00791277
+      ],
+      "witness_seconds": 0.000606578,
+      "native_answer_seconds": 0.001286808,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0010.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 11,
+      "indices": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "prove_seconds": [
+        0.967814792,
+        1.062538115,
+        0.998002624
+      ],
+      "verify_seconds": [
+        0.005034146,
+        0.006171268,
+        0.00604989
+      ],
+      "witness_seconds": 0.000604681,
+      "native_answer_seconds": 0.001972522,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0011.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 12,
+      "indices": [
+        48,
+        49,
+        50,
+        51
+      ],
+      "prove_seconds": [
+        1.064294647,
+        0.862893384,
+        0.860966189
+      ],
+      "verify_seconds": [
+        0.004494194,
+        0.003417204,
+        0.004551672
+      ],
+      "witness_seconds": 0.000735793,
+      "native_answer_seconds": 0.001935636,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0012.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 13,
+      "indices": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "prove_seconds": [
+        1.027651842,
+        0.923579577,
+        0.896314681
+      ],
+      "verify_seconds": [
+        0.005593761,
+        0.004522397,
+        0.003318483
+      ],
+      "witness_seconds": 0.002939986,
+      "native_answer_seconds": 0.00197929,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0013.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 14,
+      "indices": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "prove_seconds": [
+        0.989946592,
+        1.053063856,
+        1.017487268
+      ],
+      "verify_seconds": [
+        0.008086255,
+        0.003770194,
+        0.005229811
+      ],
+      "witness_seconds": 0.000426174,
+      "native_answer_seconds": 0.000978809,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0014.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 15,
+      "indices": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "prove_seconds": [
+        1.06744789,
+        1.039667183,
+        0.943492348
+      ],
+      "verify_seconds": [
+        0.008213211,
+        0.004779468,
+        0.004584076
+      ],
+      "witness_seconds": 0.000388942,
+      "native_answer_seconds": 0.001085476,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0015.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 16,
+      "indices": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "prove_seconds": [
+        0.955560256,
+        0.864037377,
+        0.986085388
+      ],
+      "verify_seconds": [
+        0.004614587,
+        0.005446761,
+        0.004873201
+      ],
+      "witness_seconds": 0.000358484,
+      "native_answer_seconds": 0.001113957,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0016.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 17,
+      "indices": [
+        68,
+        69,
+        70,
+        71
+      ],
+      "prove_seconds": [
+        0.888727424,
+        0.886977544,
+        0.989922563
+      ],
+      "verify_seconds": [
+        0.00443706,
+        0.004716142,
+        0.006527041
+      ],
+      "witness_seconds": 0.000618666,
+      "native_answer_seconds": 0.002512148,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0017.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 18,
+      "indices": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "prove_seconds": [
+        0.922827974,
+        0.90738259,
+        0.967159296
+      ],
+      "verify_seconds": [
+        0.003445604,
+        0.005326998,
+        0.00423032
+      ],
+      "witness_seconds": 0.000581426,
+      "native_answer_seconds": 0.001909903,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0018.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 19,
+      "indices": [
+        76,
+        77,
+        78,
+        79
+      ],
+      "prove_seconds": [
+        1.01186917,
+        0.974561909,
+        0.985349828
+      ],
+      "verify_seconds": [
+        0.009209568,
+        0.007312243,
+        0.004821694
+      ],
+      "witness_seconds": 0.000594561,
+      "native_answer_seconds": 0.001422154,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0019.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 20,
+      "indices": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "prove_seconds": [
+        1.037119612,
+        0.95524235,
+        0.995268553
+      ],
+      "verify_seconds": [
+        0.006664123,
+        0.005827867,
+        0.005697666
+      ],
+      "witness_seconds": 0.000566713,
+      "native_answer_seconds": 0.001067915,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0020.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 21,
+      "indices": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "prove_seconds": [
+        0.908567944,
+        0.943040547,
+        1.019970765
+      ],
+      "verify_seconds": [
+        0.005203401,
+        0.005173937,
+        0.005700153
+      ],
+      "witness_seconds": 0.000620117,
+      "native_answer_seconds": 0.002107101,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0021.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 22,
+      "indices": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "prove_seconds": [
+        0.988306326,
+        0.9509726,
+        1.014592413
+      ],
+      "verify_seconds": [
+        0.005268416,
+        0.007825767,
+        0.006417988
+      ],
+      "witness_seconds": 0.000566794,
+      "native_answer_seconds": 0.001948106,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0022.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 23,
+      "indices": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "prove_seconds": [
+        0.931816585,
+        0.924862733,
+        0.92126587
+      ],
+      "verify_seconds": [
+        0.005189038,
+        0.005966918,
+        0.006204098
+      ],
+      "witness_seconds": 0.000560273,
+      "native_answer_seconds": 0.001754249,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0023.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 24,
+      "indices": [
+        96,
+        97,
+        98,
+        99
+      ],
+      "prove_seconds": [
+        0.96211482,
+        0.959204487,
+        0.968160735
+      ],
+      "verify_seconds": [
+        0.006395745,
+        0.004436183,
+        0.00344094
+      ],
+      "witness_seconds": 0.000567881,
+      "native_answer_seconds": 0.002177889,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0024.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 25,
+      "indices": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "prove_seconds": [
+        0.890981717,
+        0.853225325,
+        1.093497151
+      ],
+      "verify_seconds": [
+        0.003601782,
+        0.004405758,
+        0.007751152
+      ],
+      "witness_seconds": 0.00083559,
+      "native_answer_seconds": 0.003065352,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0025.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 26,
+      "indices": [
+        104,
+        105,
+        106,
+        107
+      ],
+      "prove_seconds": [
+        1.062450531,
+        0.981556149,
+        1.038584232
+      ],
+      "verify_seconds": [
+        0.005211242,
+        0.006685033,
+        0.003570581
+      ],
+      "witness_seconds": 0.000539669,
+      "native_answer_seconds": 0.001293386,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0026.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 27,
+      "indices": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "prove_seconds": [
+        1.040718236,
+        1.013471384,
+        1.089743829
+      ],
+      "verify_seconds": [
+        0.005063989,
+        0.009322588,
+        0.005538232
+      ],
+      "witness_seconds": 0.000335626,
+      "native_answer_seconds": 0.000887634,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0027.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 28,
+      "indices": [
+        112,
+        113,
+        114,
+        115
+      ],
+      "prove_seconds": [
+        0.910023588,
+        0.942744939,
+        0.933188574
+      ],
+      "verify_seconds": [
+        0.004119593,
+        0.003287811,
+        0.004443631
+      ],
+      "witness_seconds": 0.000492828,
+      "native_answer_seconds": 0.001322894,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0028.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 29,
+      "indices": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "prove_seconds": [
+        0.994773478,
+        0.95246585,
+        1.059865386
+      ],
+      "verify_seconds": [
+        0.005769487,
+        0.00612263,
+        0.003382365
+      ],
+      "witness_seconds": 0.00026717,
+      "native_answer_seconds": 0.000908679,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0029.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 30,
+      "indices": [
+        120,
+        121,
+        122,
+        123
+      ],
+      "prove_seconds": [
+        0.997390354,
+        0.893213421,
+        0.940716608
+      ],
+      "verify_seconds": [
+        0.005350328,
+        0.003432367,
+        0.005090359
+      ],
+      "witness_seconds": 0.000280344,
+      "native_answer_seconds": 0.001201955,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0030.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 31,
+      "indices": [
+        124,
+        125,
+        126,
+        127
+      ],
+      "prove_seconds": [
+        1.007999046,
+        1.032902678,
+        1.082914446
+      ],
+      "verify_seconds": [
+        0.005478662,
+        0.004747393,
+        0.007285127
+      ],
+      "witness_seconds": 0.00086253,
+      "native_answer_seconds": 0.001963345,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s000_q4_0031.proof",
+      "change_lower_scaled": "0",
+      "change_upper_scaled": "0"
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prove_seconds": [
+        1.078814578,
+        0.960052131,
+        0.874678408
+      ],
+      "verify_seconds": [
+        0.00374083,
+        0.004600902,
+        0.005099027
+      ],
+      "witness_seconds": 0.000972745,
+      "native_answer_seconds": 0.002028132,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0000.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2577521239415735924238586222739456",
+      "change_upper_scaled": "1979347410066492163636299575590912"
+    },
+    {
+      "id": 1,
+      "indices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "prove_seconds": [
+        1.030431257,
+        0.970505059,
+        0.97103486
+      ],
+      "verify_seconds": [
+        0.008172138,
+        0.005921772,
+        0.00557808
+      ],
+      "witness_seconds": 0.000435223,
+      "native_answer_seconds": 0.000989998,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0001.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3121801259705427066685227393875968",
+      "change_upper_scaled": "2959649632151490505927045582684160"
+    },
+    {
+      "id": 2,
+      "indices": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "prove_seconds": [
+        1.160424403,
+        0.933808326,
+        0.964969945
+      ],
+      "verify_seconds": [
+        0.011748125,
+        0.003997641,
+        0.004999026
+      ],
+      "witness_seconds": 0.000426634,
+      "native_answer_seconds": 0.001142795,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0002.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2839833506342996382374364163604480",
+      "change_upper_scaled": "1962194882143813796168507418738688"
+    },
+    {
+      "id": 3,
+      "indices": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "prove_seconds": [
+        0.973045741,
+        0.908397934,
+        1.008602482
+      ],
+      "verify_seconds": [
+        0.005024428,
+        0.005000503,
+        0.004416867
+      ],
+      "witness_seconds": 0.000413543,
+      "native_answer_seconds": 0.000924111,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0003.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3023679121361664006096566288908288",
+      "change_upper_scaled": "2116706290888068216799791981527040"
+    },
+    {
+      "id": 4,
+      "indices": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "prove_seconds": [
+        0.980848763,
+        0.948818873,
+        0.968495651
+      ],
+      "verify_seconds": [
+        0.007596094,
+        0.005386935,
+        0.005169537
+      ],
+      "witness_seconds": 0.000787895,
+      "native_answer_seconds": 0.002362251,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0004.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2257335884031219112318733100515328",
+      "change_upper_scaled": "2442548932813252634947637286535168"
+    },
+    {
+      "id": 5,
+      "indices": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "prove_seconds": [
+        1.044745854,
+        0.967361809,
+        1.025561988
+      ],
+      "verify_seconds": [
+        0.00966819,
+        0.005077538,
+        0.005919727
+      ],
+      "witness_seconds": 0.000806213,
+      "native_answer_seconds": 0.004660745,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0005.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3179024612126867659648862026465280",
+      "change_upper_scaled": "369248786493115483447217755258880"
+    },
+    {
+      "id": 6,
+      "indices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "prove_seconds": [
+        1.026706572,
+        0.988648197,
+        1.02918795
+      ],
+      "verify_seconds": [
+        0.005933671,
+        0.006958004,
+        0.006989562
+      ],
+      "witness_seconds": 0.001126269,
+      "native_answer_seconds": 0.002457647,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0006.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2565062415994336814570087204782080",
+      "change_upper_scaled": "1719731277731850445851725452541952"
+    },
+    {
+      "id": 7,
+      "indices": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "prove_seconds": [
+        0.97511558,
+        1.023120789,
+        1.016451342
+      ],
+      "verify_seconds": [
+        0.006457007,
+        0.006906454,
+        0.007164102
+      ],
+      "witness_seconds": 0.000579818,
+      "native_answer_seconds": 0.002429035,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0007.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3417499027146703867793250896052224",
+      "change_upper_scaled": "2285092980340242358655043000860672"
+    },
+    {
+      "id": 8,
+      "indices": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "prove_seconds": [
+        0.947361036,
+        0.964589382,
+        0.933222634
+      ],
+      "verify_seconds": [
+        0.005532099,
+        0.004720558,
+        0.005828241
+      ],
+      "witness_seconds": 0.000686366,
+      "native_answer_seconds": 0.001034682,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0008.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3266927318819233497463727362932736",
+      "change_upper_scaled": "2529431752132117088633647943122944"
+    },
+    {
+      "id": 9,
+      "indices": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "prove_seconds": [
+        1.008996119,
+        0.939967638,
+        1.002895591
+      ],
+      "verify_seconds": [
+        0.005236854,
+        0.007366266,
+        0.005516646
+      ],
+      "witness_seconds": 0.000963037,
+      "native_answer_seconds": 0.002204436,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0009.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-4612934962407428389029058688581632",
+      "change_upper_scaled": "910460620785585347152703515525120"
+    },
+    {
+      "id": 10,
+      "indices": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "prove_seconds": [
+        1.016360109,
+        1.077527089,
+        0.934582649
+      ],
+      "verify_seconds": [
+        0.00719391,
+        0.004893914,
+        0.004830103
+      ],
+      "witness_seconds": 0.000403543,
+      "native_answer_seconds": 0.001615083,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0010.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-4411248655105652682399125772173312",
+      "change_upper_scaled": "117243048291482201342840898846720"
+    },
+    {
+      "id": 11,
+      "indices": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "prove_seconds": [
+        0.979588613,
+        0.881964437,
+        0.915178109
+      ],
+      "verify_seconds": [
+        0.00471283,
+        0.006721044,
+        0.005839125
+      ],
+      "witness_seconds": 0.000333246,
+      "native_answer_seconds": 0.001036364,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0011.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2564203985662598301151599397961728",
+      "change_upper_scaled": "2145504187212649456328917360050176"
+    },
+    {
+      "id": 12,
+      "indices": [
+        48,
+        49,
+        50,
+        51
+      ],
+      "prove_seconds": [
+        0.928332533,
+        0.996428011,
+        1.076574652
+      ],
+      "verify_seconds": [
+        0.004318775,
+        0.004496976,
+        0.009394524
+      ],
+      "witness_seconds": 0.000780357,
+      "native_answer_seconds": 0.002103012,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0012.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-1703101997509196707183787927142400",
+      "change_upper_scaled": "2951821034933067761368417859272704"
+    },
+    {
+      "id": 13,
+      "indices": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "prove_seconds": [
+        0.925769767,
+        1.054224256,
+        0.968999877
+      ],
+      "verify_seconds": [
+        0.005705345,
+        0.006785001,
+        0.005422885
+      ],
+      "witness_seconds": 0.00053177,
+      "native_answer_seconds": 0.002393563,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0013.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2027787868259715086685837174243328",
+      "change_upper_scaled": "3391498689781195600792789196996608"
+    },
+    {
+      "id": 14,
+      "indices": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "prove_seconds": [
+        0.874689931,
+        0.886983405,
+        1.002626471
+      ],
+      "verify_seconds": [
+        0.005183911,
+        0.006117194,
+        0.004372058
+      ],
+      "witness_seconds": 0.000733863,
+      "native_answer_seconds": 0.002455893,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0014.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3208614521041758299200044165758976",
+      "change_upper_scaled": "1541360059243035742529719139041280"
+    },
+    {
+      "id": 15,
+      "indices": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "prove_seconds": [
+        0.972182985,
+        0.910606418,
+        0.796045776
+      ],
+      "verify_seconds": [
+        0.00557886,
+        0.005126618,
+        0.006350943
+      ],
+      "witness_seconds": 0.000436733,
+      "native_answer_seconds": 0.001805098,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0015.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2555358231918053383204206544945152",
+      "change_upper_scaled": "3036573812294878890635886772355072"
+    },
+    {
+      "id": 16,
+      "indices": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "prove_seconds": [
+        1.038816025,
+        0.984183296,
+        0.992118248
+      ],
+      "verify_seconds": [
+        0.005652238,
+        0.006565943,
+        0.010560542
+      ],
+      "witness_seconds": 0.000287581,
+      "native_answer_seconds": 0.001000994,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0016.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2888953962661150811504864504315904",
+      "change_upper_scaled": "1728435119426269816224246650634240"
+    },
+    {
+      "id": 17,
+      "indices": [
+        68,
+        69,
+        70,
+        71
+      ],
+      "prove_seconds": [
+        1.112210773,
+        0.964994857,
+        0.877653789
+      ],
+      "verify_seconds": [
+        0.006334965,
+        0.004999933,
+        0.006619958
+      ],
+      "witness_seconds": 0.000421213,
+      "native_answer_seconds": 0.001024493,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0017.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-4095974366089300238173606380568576",
+      "change_upper_scaled": "674808117739647754554956562038784"
+    },
+    {
+      "id": 18,
+      "indices": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "prove_seconds": [
+        0.968855266,
+        0.915701329,
+        1.035754973
+      ],
+      "verify_seconds": [
+        0.005619532,
+        0.006770933,
+        0.005534813
+      ],
+      "witness_seconds": 0.000588845,
+      "native_answer_seconds": 0.002385635,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0018.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-4219122440088225056744538061668352",
+      "change_upper_scaled": "428955652864591805413283428564992"
+    },
+    {
+      "id": 19,
+      "indices": [
+        76,
+        77,
+        78,
+        79
+      ],
+      "prove_seconds": [
+        0.916291441,
+        0.874209859,
+        1.004432463
+      ],
+      "verify_seconds": [
+        0.008000115,
+        0.005222548,
+        0.005949938
+      ],
+      "witness_seconds": 0.00067845,
+      "native_answer_seconds": 0.002548262,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0019.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3747808010248047544775312628776960",
+      "change_upper_scaled": "1032131930633046139823422550573056"
+    },
+    {
+      "id": 20,
+      "indices": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "prove_seconds": [
+        0.909831577,
+        0.979871028,
+        0.969273283
+      ],
+      "verify_seconds": [
+        0.004070959,
+        0.010220177,
+        0.005334689
+      ],
+      "witness_seconds": 0.000484698,
+      "native_answer_seconds": 0.001783259,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0020.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3805160148455476502402557661937664",
+      "change_upper_scaled": "3286023572007994209373368977719296"
+    },
+    {
+      "id": 21,
+      "indices": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "prove_seconds": [
+        0.880430799,
+        1.004733641,
+        1.01645208
+      ],
+      "verify_seconds": [
+        0.004830579,
+        0.00514,
+        0.004961103
+      ],
+      "witness_seconds": 0.000462345,
+      "native_answer_seconds": 0.001002354,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0021.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-1159435357141061716362280069758976",
+      "change_upper_scaled": "2480220947488163212786265216778240"
+    },
+    {
+      "id": 22,
+      "indices": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "prove_seconds": [
+        0.992910693,
+        0.97152692,
+        0.907604093
+      ],
+      "verify_seconds": [
+        0.006242706,
+        0.003703078,
+        0.003391084
+      ],
+      "witness_seconds": 0.000352195,
+      "native_answer_seconds": 0.000975783,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0022.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2047952803159715774206523018838016",
+      "change_upper_scaled": "2221594910733930908772811325571072"
+    },
+    {
+      "id": 23,
+      "indices": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "prove_seconds": [
+        1.077720716,
+        0.972541877,
+        0.902789082
+      ],
+      "verify_seconds": [
+        0.007693912,
+        0.004253824,
+        0.003590154
+      ],
+      "witness_seconds": 0.000272681,
+      "native_answer_seconds": 0.000895614,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0023.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3926026983256884187999389341450240",
+      "change_upper_scaled": "2230269033075077379687216563879936"
+    },
+    {
+      "id": 24,
+      "indices": [
+        96,
+        97,
+        98,
+        99
+      ],
+      "prove_seconds": [
+        0.836742467,
+        0.979457412,
+        0.886327797
+      ],
+      "verify_seconds": [
+        0.004929576,
+        0.00817499,
+        0.004600006
+      ],
+      "witness_seconds": 0.000291139,
+      "native_answer_seconds": 0.001051817,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0024.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-4082483311848527301927277713948672",
+      "change_upper_scaled": "1830887693895615153628512725762048"
+    },
+    {
+      "id": 25,
+      "indices": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "prove_seconds": [
+        0.908963746,
+        0.987606362,
+        1.009077302
+      ],
+      "verify_seconds": [
+        0.00700901,
+        0.005971327,
+        0.005691232
+      ],
+      "witness_seconds": 0.000272898,
+      "native_answer_seconds": 0.000952998,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0025.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2307777796727764484964476478554112",
+      "change_upper_scaled": "2371591828697755537896127646924800"
+    },
+    {
+      "id": 26,
+      "indices": [
+        104,
+        105,
+        106,
+        107
+      ],
+      "prove_seconds": [
+        1.088077449,
+        1.051117407,
+        0.937793314
+      ],
+      "verify_seconds": [
+        0.008489235,
+        0.005916099,
+        0.006020449
+      ],
+      "witness_seconds": 0.001183157,
+      "native_answer_seconds": 0.00192168,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0026.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2077408931335631690660341878882304",
+      "change_upper_scaled": "5118583204694665347755771611316224"
+    },
+    {
+      "id": 27,
+      "indices": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "prove_seconds": [
+        0.895935845,
+        0.916610052,
+        0.985778342
+      ],
+      "verify_seconds": [
+        0.003785223,
+        0.005711201,
+        0.003859151
+      ],
+      "witness_seconds": 0.000533525,
+      "native_answer_seconds": 0.001660034,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0027.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3316440708475348425997474204745728",
+      "change_upper_scaled": "1252644426314126524034981371576320"
+    },
+    {
+      "id": 28,
+      "indices": [
+        112,
+        113,
+        114,
+        115
+      ],
+      "prove_seconds": [
+        0.987683857,
+        0.971754336,
+        0.935258046
+      ],
+      "verify_seconds": [
+        0.005676004,
+        0.006355326,
+        0.007948434
+      ],
+      "witness_seconds": 0.000267473,
+      "native_answer_seconds": 0.000914058,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0028.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3030829829934655209386164004847616",
+      "change_upper_scaled": "-261734878572317372857729618542592"
+    },
+    {
+      "id": 29,
+      "indices": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "prove_seconds": [
+        0.958235412,
+        0.949546852,
+        0.992852677
+      ],
+      "verify_seconds": [
+        0.005797252,
+        0.005014758,
+        0.005318486
+      ],
+      "witness_seconds": 0.000457149,
+      "native_answer_seconds": 0.001705229,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0029.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-4066165957070313660337041690329088",
+      "change_upper_scaled": "-368722000333046118590490129465344"
+    },
+    {
+      "id": 30,
+      "indices": [
+        120,
+        121,
+        122,
+        123
+      ],
+      "prove_seconds": [
+        0.999303149,
+        1.097921732,
+        0.955219721
+      ],
+      "verify_seconds": [
+        0.006872425,
+        0.00718893,
+        0.006748798
+      ],
+      "witness_seconds": 0.000380946,
+      "native_answer_seconds": 0.001634641,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0030.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-2985909435494874104919681887371264",
+      "change_upper_scaled": "2097778751423373935325310770741248"
+    },
+    {
+      "id": 31,
+      "indices": [
+        124,
+        125,
+        126,
+        127
+      ],
+      "prove_seconds": [
+        1.082337221,
+        1.017738437,
+        1.003092814
+      ],
+      "verify_seconds": [
+        0.005239643,
+        0.008589972,
+        0.006730999
+      ],
+      "witness_seconds": 0.000756887,
+      "native_answer_seconds": 0.001967796,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s001_q4_0031.proof",
+      "centre_set": 1,
+      "change_lower_scaled": "-3751080801832608748309340548497408",
+      "change_upper_scaled": "320694797144910641998842401128448"
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prove_seconds": [
+        0.953697218,
+        1.214432029,
+        1.051104495
+      ],
+      "verify_seconds": [
+        0.004587895,
+        0.007267535,
+        0.006821463
+      ],
+      "witness_seconds": 0.000954277,
+      "native_answer_seconds": 0.001831365,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0000.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-4785753908867102886935306895884288",
+      "change_upper_scaled": "1974379051405221392240644611637248"
+    },
+    {
+      "id": 1,
+      "indices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "prove_seconds": [
+        0.95414622,
+        1.005405524,
+        0.854214495
+      ],
+      "verify_seconds": [
+        0.006168694,
+        0.005118345,
+        0.004620433
+      ],
+      "witness_seconds": 0.000492501,
+      "native_answer_seconds": 0.001544437,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0001.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-5969525699700095165266959286665216",
+      "change_upper_scaled": "1712650943367025611614061592576000"
+    },
+    {
+      "id": 2,
+      "indices": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "prove_seconds": [
+        1.072596066,
+        0.909225587,
+        1.014798709
+      ],
+      "verify_seconds": [
+        0.004774685,
+        0.006754515,
+        0.00608692
+      ],
+      "witness_seconds": 0.000549374,
+      "native_answer_seconds": 0.001208743,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0002.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6077388218675762743048461900316672",
+      "change_upper_scaled": "1136903653987460584012123008401408"
+    },
+    {
+      "id": 3,
+      "indices": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "prove_seconds": [
+        0.957568564,
+        0.907964882,
+        0.943695939
+      ],
+      "verify_seconds": [
+        0.004926056,
+        0.005139368,
+        0.00475516
+      ],
+      "witness_seconds": 0.000777482,
+      "native_answer_seconds": 0.00358164,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0003.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-3598218490155527020007721357279232",
+      "change_upper_scaled": "4014891692583309669840747082285056"
+    },
+    {
+      "id": 4,
+      "indices": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "prove_seconds": [
+        0.900573445,
+        0.873462356,
+        0.973853025
+      ],
+      "verify_seconds": [
+        0.004538787,
+        0.004414496,
+        0.00656143
+      ],
+      "witness_seconds": 0.000525264,
+      "native_answer_seconds": 0.001968657,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0004.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-2066063190635100919196476155887616",
+      "change_upper_scaled": "4925249640352544676266292457504768"
+    },
+    {
+      "id": 5,
+      "indices": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "prove_seconds": [
+        0.95283946,
+        0.979658573,
+        0.898734632
+      ],
+      "verify_seconds": [
+        0.010246007,
+        0.005301364,
+        0.004928641
+      ],
+      "witness_seconds": 0.000750209,
+      "native_answer_seconds": 0.003311261,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0005.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6820538718913417854721502182637568",
+      "change_upper_scaled": "-842076433947944475389540784144384"
+    },
+    {
+      "id": 6,
+      "indices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "prove_seconds": [
+        1.064709482,
+        0.84636684,
+        1.059764221
+      ],
+      "verify_seconds": [
+        0.004667701,
+        0.006003479,
+        0.006854328
+      ],
+      "witness_seconds": 0.000740297,
+      "native_answer_seconds": 0.00185671,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0006.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-2938715548903926993178687214452736",
+      "change_upper_scaled": "3483761677617373762782557131243520"
+    },
+    {
+      "id": 7,
+      "indices": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "prove_seconds": [
+        0.927701511,
+        1.028536711,
+        0.958948343
+      ],
+      "verify_seconds": [
+        0.006924066,
+        0.007833794,
+        0.005476301
+      ],
+      "witness_seconds": 0.000691821,
+      "native_answer_seconds": 0.002024845,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0007.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-5826094544828437541841398275244032",
+      "change_upper_scaled": "1368713371266207056912644806017024"
+    },
+    {
+      "id": 8,
+      "indices": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "prove_seconds": [
+        0.868465359,
+        0.941975491,
+        0.929939181
+      ],
+      "verify_seconds": [
+        0.004007672,
+        0.003724933,
+        0.00597512
+      ],
+      "witness_seconds": 0.000677434,
+      "native_answer_seconds": 0.00196592,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0008.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-4852933385154657606949700571758592",
+      "change_upper_scaled": "4349467841192582030208604051603456"
+    },
+    {
+      "id": 9,
+      "indices": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "prove_seconds": [
+        0.969702923,
+        1.055245693,
+        0.961478532
+      ],
+      "verify_seconds": [
+        0.008511806,
+        0.005617979,
+        0.00772282
+      ],
+      "witness_seconds": 0.000802873,
+      "native_answer_seconds": 0.002267552,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0009.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6257700593260758257854679284187136",
+      "change_upper_scaled": "814729080960474657062937904021504"
+    },
+    {
+      "id": 10,
+      "indices": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "prove_seconds": [
+        0.897373358,
+        0.920100011,
+        0.983693642
+      ],
+      "verify_seconds": [
+        0.004093425,
+        0.008241588,
+        0.00481141
+      ],
+      "witness_seconds": 0.000338478,
+      "native_answer_seconds": 0.000999748,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0010.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-7322542037680617584459885722992640",
+      "change_upper_scaled": "176393517418718233741907795640320"
+    },
+    {
+      "id": 11,
+      "indices": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "prove_seconds": [
+        1.051909722,
+        0.994676109,
+        1.003004404
+      ],
+      "verify_seconds": [
+        0.004939289,
+        0.009675614,
+        0.00478039
+      ],
+      "witness_seconds": 0.000406203,
+      "native_answer_seconds": 0.001191835,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0011.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6332704117088521392122263920181248",
+      "change_upper_scaled": "1455673983484279570768209838604288"
+    },
+    {
+      "id": 12,
+      "indices": [
+        48,
+        49,
+        50,
+        51
+      ],
+      "prove_seconds": [
+        0.972688839,
+        0.978979697,
+        0.877672376
+      ],
+      "verify_seconds": [
+        0.006553555,
+        0.008835776,
+        0.00317063
+      ],
+      "witness_seconds": 0.000897531,
+      "native_answer_seconds": 0.002073975,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0012.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-1956609300220672971820788501970944",
+      "change_upper_scaled": "5987578874032946622594668960940032"
+    },
+    {
+      "id": 13,
+      "indices": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "prove_seconds": [
+        0.983744428,
+        0.963399632,
+        1.000302323
+      ],
+      "verify_seconds": [
+        0.005715178,
+        0.005133868,
+        0.008654665
+      ],
+      "witness_seconds": 0.00058266,
+      "native_answer_seconds": 0.00095676,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0013.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-4338200842949097007541208838307840",
+      "change_upper_scaled": "5394958827141704195325857032568832"
+    },
+    {
+      "id": 14,
+      "indices": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "prove_seconds": [
+        1.043671207,
+        1.185397801,
+        1.037778106
+      ],
+      "verify_seconds": [
+        0.004930439,
+        0.007755941,
+        0.006721067
+      ],
+      "witness_seconds": 0.000658336,
+      "native_answer_seconds": 0.001842442,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0014.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-3764048032836980085529530221985792",
+      "change_upper_scaled": "4151122022115566193350787282763776"
+    },
+    {
+      "id": 15,
+      "indices": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "prove_seconds": [
+        0.99021123,
+        1.023355904,
+        0.897777233
+      ],
+      "verify_seconds": [
+        0.006719043,
+        0.005103207,
+        0.007305903
+      ],
+      "witness_seconds": 0.000289448,
+      "native_answer_seconds": 0.000849146,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0015.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-5822557033660322152456182986440704",
+      "change_upper_scaled": "2573018753844920282545707093590016"
+    },
+    {
+      "id": 16,
+      "indices": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "prove_seconds": [
+        0.998882478,
+        0.960546604,
+        0.893435611
+      ],
+      "verify_seconds": [
+        0.006069628,
+        0.005050836,
+        0.005683775
+      ],
+      "witness_seconds": 0.000715305,
+      "native_answer_seconds": 0.002635847,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0016.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-5398655649772380190819865245777920",
+      "change_upper_scaled": "2315103059175834066769160706195456"
+    },
+    {
+      "id": 17,
+      "indices": [
+        68,
+        69,
+        70,
+        71
+      ],
+      "prove_seconds": [
+        1.04808127,
+        1.036312351,
+        1.062089151
+      ],
+      "verify_seconds": [
+        0.006246611,
+        0.005057291,
+        0.006485076
+      ],
+      "witness_seconds": 0.000618597,
+      "native_answer_seconds": 0.001775487,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0017.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-5114204072055729686458024639594496",
+      "change_upper_scaled": "2621271496153673262792417596145664"
+    },
+    {
+      "id": 18,
+      "indices": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "prove_seconds": [
+        1.012651233,
+        0.968869141,
+        1.033715356
+      ],
+      "verify_seconds": [
+        0.005240649,
+        0.00625236,
+        0.006547844
+      ],
+      "witness_seconds": 0.000641472,
+      "native_answer_seconds": 0.001970346,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0018.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6834256089112256600757771477975040",
+      "change_upper_scaled": "441218156038358321467103287181312"
+    },
+    {
+      "id": 19,
+      "indices": [
+        76,
+        77,
+        78,
+        79
+      ],
+      "prove_seconds": [
+        1.063551517,
+        0.933506096,
+        1.105422684
+      ],
+      "verify_seconds": [
+        0.00777678,
+        0.006353731,
+        0.006674247
+      ],
+      "witness_seconds": 0.000511016,
+      "native_answer_seconds": 0.001703085,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0019.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-7830948441339974267569984566722560",
+      "change_upper_scaled": "437208397140455644217658967064576"
+    },
+    {
+      "id": 20,
+      "indices": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "prove_seconds": [
+        1.039704596,
+        0.919241936,
+        0.913862309
+      ],
+      "verify_seconds": [
+        0.008004165,
+        0.005318833,
+        0.004505186
+      ],
+      "witness_seconds": 0.00027291,
+      "native_answer_seconds": 0.001051331,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0020.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6841432190842196575065176755142656",
+      "change_upper_scaled": "2253946164213429686890144360038400"
+    },
+    {
+      "id": 21,
+      "indices": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "prove_seconds": [
+        0.976067472,
+        0.950053002,
+        0.967605439
+      ],
+      "verify_seconds": [
+        0.005256845,
+        0.004889133,
+        0.004565517
+      ],
+      "witness_seconds": 0.000547395,
+      "native_answer_seconds": 0.001836018,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0021.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-1085650667789153315419104634470400",
+      "change_upper_scaled": "6118042071885707672889887555584000"
+    },
+    {
+      "id": 22,
+      "indices": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "prove_seconds": [
+        0.930642738,
+        0.932348505,
+        0.911509031
+      ],
+      "verify_seconds": [
+        0.004830367,
+        0.00668618,
+        0.005090931
+      ],
+      "witness_seconds": 0.000539713,
+      "native_answer_seconds": 0.003257207,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0022.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-3511929265413386168911145633579008",
+      "change_upper_scaled": "3688199020920322426121146647707648"
+    },
+    {
+      "id": 23,
+      "indices": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "prove_seconds": [
+        1.008139572,
+        1.097694303,
+        1.028592026
+      ],
+      "verify_seconds": [
+        0.006369029,
+        0.009579887,
+        0.004978865
+      ],
+      "witness_seconds": 0.000455429,
+      "native_answer_seconds": 0.001337979,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0023.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-4370933562455369939235418102824960",
+      "change_upper_scaled": "4750531732332855135251988429668352"
+    },
+    {
+      "id": 24,
+      "indices": [
+        96,
+        97,
+        98,
+        99
+      ],
+      "prove_seconds": [
+        1.001505618,
+        0.999817194,
+        0.949413848
+      ],
+      "verify_seconds": [
+        0.004296211,
+        0.006424056,
+        0.005119635
+      ],
+      "witness_seconds": 0.000537916,
+      "native_answer_seconds": 0.001715321,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0024.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-7214993100694167250734686136172544",
+      "change_upper_scaled": "1756269892741355266451849902817280"
+    },
+    {
+      "id": 25,
+      "indices": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "prove_seconds": [
+        0.948582943,
+        1.01570482,
+        1.1005734249999999
+      ],
+      "verify_seconds": [
+        0.004707665,
+        0.00539738,
+        0.008017419
+      ],
+      "witness_seconds": 0.000709454,
+      "native_answer_seconds": 0.00181262,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0025.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-3251849606979841482948146089689088",
+      "change_upper_scaled": "3382000384004913291131756648333312"
+    },
+    {
+      "id": 26,
+      "indices": [
+        104,
+        105,
+        106,
+        107
+      ],
+      "prove_seconds": [
+        0.98468627,
+        0.857597751,
+        1.026370314
+      ],
+      "verify_seconds": [
+        0.004371796,
+        0.004887714,
+        0.007994597
+      ],
+      "witness_seconds": 0.00027449,
+      "native_answer_seconds": 0.001541899,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0026.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-4190756504158132616835329599471616",
+      "change_upper_scaled": "5874829570113213288604089093980160"
+    },
+    {
+      "id": 27,
+      "indices": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "prove_seconds": [
+        0.978132381,
+        0.90169017,
+        1.03587755
+      ],
+      "verify_seconds": [
+        0.005319102,
+        0.006616625,
+        0.004724342
+      ],
+      "witness_seconds": 0.000920472,
+      "native_answer_seconds": 0.002689094,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0027.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6444122921687561416966597202935808",
+      "change_upper_scaled": "899530663777122495185701029543936"
+    },
+    {
+      "id": 28,
+      "indices": [
+        112,
+        113,
+        114,
+        115
+      ],
+      "prove_seconds": [
+        0.929169169,
+        0.886130928,
+        0.852416037
+      ],
+      "verify_seconds": [
+        0.006531258,
+        0.006579362,
+        0.00500388
+      ],
+      "witness_seconds": 0.000520687,
+      "native_answer_seconds": 0.001914965,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0028.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-7069083340410553583626707412189184",
+      "change_upper_scaled": "-2395201985783113167073036774408192"
+    },
+    {
+      "id": 29,
+      "indices": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "prove_seconds": [
+        1.037218787,
+        1.033802492,
+        0.986998218
+      ],
+      "verify_seconds": [
+        0.005255354,
+        0.006958578,
+        0.004574868
+      ],
+      "witness_seconds": 0.000736542,
+      "native_answer_seconds": 0.001860279,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0029.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-7798682249842219299424652381650944",
+      "change_upper_scaled": "-2015740536060295319431785996091392"
+    },
+    {
+      "id": 30,
+      "indices": [
+        120,
+        121,
+        122,
+        123
+      ],
+      "prove_seconds": [
+        0.887519604,
+        0.84014752,
+        0.95068584
+      ],
+      "verify_seconds": [
+        0.006348511,
+        0.005250019,
+        0.006467716
+      ],
+      "witness_seconds": 0.000351659,
+      "native_answer_seconds": 0.001052887,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0030.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-5054757638913339446295824028401664",
+      "change_upper_scaled": "1770289495612778046934764750897152"
+    },
+    {
+      "id": 31,
+      "indices": [
+        124,
+        125,
+        126,
+        127
+      ],
+      "prove_seconds": [
+        0.927568114,
+        0.973038121,
+        0.809400055
+      ],
+      "verify_seconds": [
+        0.00787144,
+        0.003712276,
+        0.003647492
+      ],
+      "witness_seconds": 0.000437069,
+      "native_answer_seconds": 0.001949448,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s002_q4_0031.proof",
+      "centre_set": 2,
+      "change_lower_scaled": "-6973364302140115955810253366362112",
+      "change_upper_scaled": "-786438711138891033632406287417344"
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prove_seconds": [
+        1.017392677,
+        0.941152508,
+        0.861728309
+      ],
+      "verify_seconds": [
+        0.005398166,
+        0.004962086,
+        0.003791246
+      ],
+      "witness_seconds": 0.000607349,
+      "native_answer_seconds": 0.002049484,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0000.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-6273524507527589975216353752121344",
+      "change_upper_scaled": "1442693711599340549555146972987392"
+    },
+    {
+      "id": 1,
+      "indices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "prove_seconds": [
+        0.939770756,
+        0.991732849,
+        0.881430261
+      ],
+      "verify_seconds": [
+        0.005043482,
+        0.004345334,
+        0.003767267
+      ],
+      "witness_seconds": 0.000296962,
+      "native_answer_seconds": 0.000903302,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0001.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8193608321966722281625938221334528",
+      "change_upper_scaled": "1270110696294919422056928265633792"
+    },
+    {
+      "id": 2,
+      "indices": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "prove_seconds": [
+        0.997398518,
+        0.960979202,
+        0.884604949
+      ],
+      "verify_seconds": [
+        0.004870597,
+        0.005463761,
+        0.00586198
+      ],
+      "witness_seconds": 0.000608624,
+      "native_answer_seconds": 0.00178118,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0002.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-7416532218713910237430345138962432",
+      "change_upper_scaled": "1243299708126486991386511841165312"
+    },
+    {
+      "id": 3,
+      "indices": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "prove_seconds": [
+        1.026480661,
+        0.987983108,
+        0.985573986
+      ],
+      "verify_seconds": [
+        0.003732512,
+        0.004127091,
+        0.005870318
+      ],
+      "witness_seconds": 0.000281844,
+      "native_answer_seconds": 0.000949229,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0003.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-4735483879087431494112844498075648",
+      "change_upper_scaled": "4624380481435014636638705400414208"
+    },
+    {
+      "id": 4,
+      "indices": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "prove_seconds": [
+        0.988685914,
+        0.946913615,
+        0.991636563
+      ],
+      "verify_seconds": [
+        0.003802486,
+        0.006086011,
+        0.007737595
+      ],
+      "witness_seconds": 0.000603559,
+      "native_answer_seconds": 0.001775594,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0004.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-1627868670161915603565478437453824",
+      "change_upper_scaled": "6948570481629043343044015565045760"
+    },
+    {
+      "id": 5,
+      "indices": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "prove_seconds": [
+        0.986261827,
+        0.95511027,
+        0.889429758
+      ],
+      "verify_seconds": [
+        0.007359147,
+        0.00444429,
+        0.005506975
+      ],
+      "witness_seconds": 0.000487038,
+      "native_answer_seconds": 0.00181707,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0005.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-6569900152203531482339128687722496",
+      "change_upper_scaled": "1097121415162518570577407374262272"
+    },
+    {
+      "id": 6,
+      "indices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "prove_seconds": [
+        1.047668673,
+        0.994105837,
+        1.026983662
+      ],
+      "verify_seconds": [
+        0.009326786,
+        0.004151231,
+        0.003798709
+      ],
+      "witness_seconds": 0.000300906,
+      "native_answer_seconds": 0.000965094,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0006.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-2427466910315913974998431388663808",
+      "change_upper_scaled": "5643669900644883212643701096448000"
+    },
+    {
+      "id": 7,
+      "indices": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "prove_seconds": [
+        1.027625778,
+        1.078021008,
+        1.053978255
+      ],
+      "verify_seconds": [
+        0.008553448,
+        0.004623341,
+        0.008873018
+      ],
+      "witness_seconds": 0.000591046,
+      "native_answer_seconds": 0.002272027,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0007.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8502989364836220740314348686147584",
+      "change_upper_scaled": "212693654864165942428689680564224"
+    },
+    {
+      "id": 8,
+      "indices": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "prove_seconds": [
+        0.8785843,
+        0.928391634,
+        0.925405076
+      ],
+      "verify_seconds": [
+        0.006653959,
+        0.006064996,
+        0.006698928
+      ],
+      "witness_seconds": 0.000309422,
+      "native_answer_seconds": 0.000921726,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0008.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-4283088650879777680864474656931840",
+      "change_upper_scaled": "7243516939463657696135101389209600"
+    },
+    {
+      "id": 9,
+      "indices": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "prove_seconds": [
+        0.867939639,
+        0.948229532,
+        0.909829747
+      ],
+      "verify_seconds": [
+        0.004819867,
+        0.003838404,
+        0.007801583
+      ],
+      "witness_seconds": 0.000636916,
+      "native_answer_seconds": 0.001436067,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0009.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-5009316552921481510688663177003008",
+      "change_upper_scaled": "3436332797493647695469302557704192"
+    },
+    {
+      "id": 10,
+      "indices": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "prove_seconds": [
+        0.963002341,
+        0.914256408,
+        1.054480621
+      ],
+      "verify_seconds": [
+        0.004914021,
+        0.003856434,
+        0.00507601
+      ],
+      "witness_seconds": 0.001102871,
+      "native_answer_seconds": 0.002747348,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0010.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-7568847944447404903798110093836288",
+      "change_upper_scaled": "1986081984933221325121592429117440"
+    },
+    {
+      "id": 11,
+      "indices": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "prove_seconds": [
+        0.982639755,
+        0.945685553,
+        1.079357565
+      ],
+      "verify_seconds": [
+        0.005552127,
+        0.005652148,
+        0.004405731
+      ],
+      "witness_seconds": 0.00028582,
+      "native_answer_seconds": 0.001021887,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0011.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-9718895353658673145761173119959040",
+      "change_upper_scaled": "-1425087637513667888484437318434816"
+    },
+    {
+      "id": 12,
+      "indices": [
+        48,
+        49,
+        50,
+        51
+      ],
+      "prove_seconds": [
+        0.865961314,
+        0.990401291,
+        0.973805008
+      ],
+      "verify_seconds": [
+        0.004332357,
+        0.005264534,
+        0.00584328
+      ],
+      "witness_seconds": 0.000521224,
+      "native_answer_seconds": 0.001992452,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0012.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-4250369678933883686683959231512576",
+      "change_upper_scaled": "4467024198792384723957446061588480"
+    },
+    {
+      "id": 13,
+      "indices": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "prove_seconds": [
+        0.964608487,
+        0.895821282,
+        1.07403555
+      ],
+      "verify_seconds": [
+        0.003622865,
+        0.005941134,
+        0.004229845
+      ],
+      "witness_seconds": 0.000520544,
+      "native_answer_seconds": 0.002078563,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0013.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8023145584724027427817634347876352",
+      "change_upper_scaled": "1381650812761758946574751764578304"
+    },
+    {
+      "id": 14,
+      "indices": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "prove_seconds": [
+        0.873808663,
+        1.041518685,
+        1.008696971
+      ],
+      "verify_seconds": [
+        0.004916191,
+        0.006958585,
+        0.004305978
+      ],
+      "witness_seconds": 0.000383989,
+      "native_answer_seconds": 0.000840128,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0014.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-2953976876362471692427733179039744",
+      "change_upper_scaled": "7262588282632791752627256047960064"
+    },
+    {
+      "id": 15,
+      "indices": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "prove_seconds": [
+        1.011805998,
+        0.970778828,
+        1.01750797
+      ],
+      "verify_seconds": [
+        0.006396978,
+        0.003713816,
+        0.006637678
+      ],
+      "witness_seconds": 0.000340894,
+      "native_answer_seconds": 0.000954334,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0015.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-7791312743932265476708869636882432",
+      "change_upper_scaled": "1427965275172052095980347953512448"
+    },
+    {
+      "id": 16,
+      "indices": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "prove_seconds": [
+        0.96425628,
+        1.045602333,
+        1.027656405
+      ],
+      "verify_seconds": [
+        0.003504983,
+        0.004448006,
+        0.004496189
+      ],
+      "witness_seconds": 0.000542189,
+      "native_answer_seconds": 0.001718388,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0016.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-6735551602793024263869308747120640",
+      "change_upper_scaled": "1933811233445505999019976094121984"
+    },
+    {
+      "id": 17,
+      "indices": [
+        68,
+        69,
+        70,
+        71
+      ],
+      "prove_seconds": [
+        0.977399945,
+        1.028831475,
+        0.956103889
+      ],
+      "verify_seconds": [
+        0.007798537,
+        0.006747621,
+        0.006015585
+      ],
+      "witness_seconds": 0.000734029,
+      "native_answer_seconds": 0.002220701,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0017.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-4049867480131577099507192603607040",
+      "change_upper_scaled": "6424700539884893437828183340613632"
+    },
+    {
+      "id": 18,
+      "indices": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "prove_seconds": [
+        0.954443694,
+        1.016981595,
+        1.023026587
+      ],
+      "verify_seconds": [
+        0.004808335,
+        0.007288715,
+        0.005472909
+      ],
+      "witness_seconds": 0.000695435,
+      "native_answer_seconds": 0.002082372,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0018.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-6134676628587376113328006058999808",
+      "change_upper_scaled": "3563118336637544127379604659765248"
+    },
+    {
+      "id": 19,
+      "indices": [
+        76,
+        77,
+        78,
+        79
+      ],
+      "prove_seconds": [
+        1.038453774,
+        1.032518058,
+        1.019430643
+      ],
+      "verify_seconds": [
+        0.00783896,
+        0.006316407,
+        0.007397321
+      ],
+      "witness_seconds": 0.000370638,
+      "native_answer_seconds": 0.000846388,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0019.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-10517992461642995714885062743818240",
+      "change_upper_scaled": "332264422312511515994615827136512"
+    },
+    {
+      "id": 20,
+      "indices": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "prove_seconds": [
+        0.934526024,
+        1.056811666,
+        0.903228471
+      ],
+      "verify_seconds": [
+        0.005276734,
+        0.007111622,
+        0.004661317
+      ],
+      "witness_seconds": 0.000288046,
+      "native_answer_seconds": 0.001069953,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0020.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8663233108823072306785798328418304",
+      "change_upper_scaled": "3030504248418340246183225438765056"
+    },
+    {
+      "id": 21,
+      "indices": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "prove_seconds": [
+        0.937390065,
+        0.942520652,
+        0.961624613
+      ],
+      "verify_seconds": [
+        0.005926134,
+        0.006185444,
+        0.005644504
+      ],
+      "witness_seconds": 0.000266955,
+      "native_answer_seconds": 0.00105568,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0021.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-948063789920128898271888906649600",
+      "change_upper_scaled": "7381265345175588385945179618541568"
+    },
+    {
+      "id": 22,
+      "indices": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "prove_seconds": [
+        0.995383536,
+        0.987020441,
+        0.984489289
+      ],
+      "verify_seconds": [
+        0.008443063,
+        0.006445196,
+        0.003907007
+      ],
+      "witness_seconds": 0.000344703,
+      "native_answer_seconds": 0.000981256,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0022.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-4192911921186605996746126066188288",
+      "change_upper_scaled": "4204809148956565990741767681474560"
+    },
+    {
+      "id": 23,
+      "indices": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "prove_seconds": [
+        0.912506215,
+        0.966700655,
+        0.921786867
+      ],
+      "verify_seconds": [
+        0.003525783,
+        0.004889044,
+        0.003894559
+      ],
+      "witness_seconds": 0.000576185,
+      "native_answer_seconds": 0.002043817,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0023.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-3168586943953548222302396453224448",
+      "change_upper_scaled": "7978127732225781741564169233104896"
+    },
+    {
+      "id": 24,
+      "indices": [
+        96,
+        97,
+        98,
+        99
+      ],
+      "prove_seconds": [
+        0.908950111,
+        0.997684442,
+        1.063063962
+      ],
+      "verify_seconds": [
+        0.007391636,
+        0.005013456,
+        0.006999676
+      ],
+      "witness_seconds": 0.000411875,
+      "native_answer_seconds": 0.000956475,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0024.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8338594727419800139119572037926912",
+      "change_upper_scaled": "2038352929327961702220024361517056"
+    },
+    {
+      "id": 25,
+      "indices": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "prove_seconds": [
+        0.99440419,
+        0.947411607,
+        0.954433679
+      ],
+      "verify_seconds": [
+        0.004774161,
+        0.008043899,
+        0.006045463
+      ],
+      "witness_seconds": 0.000632209,
+      "native_answer_seconds": 0.001978619,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0025.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-3228283167153227629518950865305600",
+      "change_upper_scaled": "5827672436249836847073958045941760"
+    },
+    {
+      "id": 26,
+      "indices": [
+        104,
+        105,
+        106,
+        107
+      ],
+      "prove_seconds": [
+        0.879764574,
+        0.994741914,
+        1.002667074
+      ],
+      "verify_seconds": [
+        0.009661147,
+        0.006832373,
+        0.008243173
+      ],
+      "witness_seconds": 0.000284655,
+      "native_answer_seconds": 0.000927628,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0026.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-3931062866249465286447954384650240",
+      "change_upper_scaled": "6312505299354012843687304849522688"
+    },
+    {
+      "id": 27,
+      "indices": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "prove_seconds": [
+        0.916964182,
+        1.001596871,
+        1.055776361
+      ],
+      "verify_seconds": [
+        0.003650628,
+        0.005384301,
+        0.005077665
+      ],
+      "witness_seconds": 0.001081025,
+      "native_answer_seconds": 0.002239826,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0027.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8479840238507988428577755398930432",
+      "change_upper_scaled": "5088457979554151332248094244864"
+    },
+    {
+      "id": 28,
+      "indices": [
+        112,
+        113,
+        114,
+        115
+      ],
+      "prove_seconds": [
+        0.962448911,
+        1.040549128,
+        1.06578666
+      ],
+      "verify_seconds": [
+        0.00492673,
+        0.007869185,
+        0.007271472
+      ],
+      "witness_seconds": 0.00064455,
+      "native_answer_seconds": 0.002475983,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0028.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8694326398302383849023632996040704",
+      "change_upper_scaled": "-2754547895577456726245493574729728"
+    },
+    {
+      "id": 29,
+      "indices": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "prove_seconds": [
+        0.96875782,
+        0.997547167,
+        0.832481111
+      ],
+      "verify_seconds": [
+        0.004789331,
+        0.006163343,
+        0.006529277
+      ],
+      "witness_seconds": 0.000883507,
+      "native_answer_seconds": 0.001712436,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0029.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8793383723078262892244182518202368",
+      "change_upper_scaled": "-1157889325545025433584371972964352"
+    },
+    {
+      "id": 30,
+      "indices": [
+        120,
+        121,
+        122,
+        123
+      ],
+      "prove_seconds": [
+        0.975720181,
+        0.949049381,
+        1.040230829
+      ],
+      "verify_seconds": [
+        0.004892163,
+        0.005068889,
+        0.004033256
+      ],
+      "witness_seconds": 0.000366473,
+      "native_answer_seconds": 0.000921894,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0030.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-5588517195108039364749844902051840",
+      "change_upper_scaled": "2202433685822737131674525633609728"
+    },
+    {
+      "id": 31,
+      "indices": [
+        124,
+        125,
+        126,
+        127
+      ],
+      "prove_seconds": [
+        0.943191693,
+        1.055118268,
+        0.983698975
+      ],
+      "verify_seconds": [
+        0.006564858,
+        0.005336423,
+        0.006977768
+      ],
+      "witness_seconds": 0.000475048,
+      "native_answer_seconds": 0.001375056,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s003_q4_0031.proof",
+      "centre_set": 3,
+      "change_lower_scaled": "-8345535851989195364539069288677376",
+      "change_upper_scaled": "-115673304029994246702805477752832"
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prove_seconds": [
+        1.024180436,
+        0.998903387,
+        0.9937454
+      ],
+      "verify_seconds": [
+        0.007223745,
+        0.004433751,
+        0.009131701
+      ],
+      "witness_seconds": 0.000691541,
+      "native_answer_seconds": 0.002129082,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0000.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-7315541713317635979150085664538624",
+      "change_upper_scaled": "948912878294340172004526359838720"
+    },
+    {
+      "id": 1,
+      "indices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "prove_seconds": [
+        0.966807485,
+        1.024987956,
+        0.896066254
+      ],
+      "verify_seconds": [
+        0.00487537,
+        0.004822436,
+        0.006359817
+      ],
+      "witness_seconds": 0.000693737,
+      "native_answer_seconds": 0.001750496,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0001.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-9132637081831155032387773458808832",
+      "change_upper_scaled": "367664811438336195037246909317120"
+    },
+    {
+      "id": 2,
+      "indices": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "prove_seconds": [
+        0.858134229,
+        0.827257336,
+        0.87043267
+      ],
+      "verify_seconds": [
+        0.004840915,
+        0.00498476,
+        0.003959506
+      ],
+      "witness_seconds": 0.000573005,
+      "native_answer_seconds": 0.00196789,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0002.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-7706531980626913516842999353442304",
+      "change_upper_scaled": "1366789123561276946654198732161024"
+    },
+    {
+      "id": 3,
+      "indices": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "prove_seconds": [
+        0.95260361,
+        1.014009606,
+        0.89001071
+      ],
+      "verify_seconds": [
+        0.006568948,
+        0.00492299,
+        0.004983883
+      ],
+      "witness_seconds": 0.000305571,
+      "native_answer_seconds": 0.000904197,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0003.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-6854018817537656389214135518232576",
+      "change_upper_scaled": "2423418165200697610270832546807808"
+    },
+    {
+      "id": 4,
+      "indices": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "prove_seconds": [
+        0.848114518,
+        1.001089245,
+        1.042264138
+      ],
+      "verify_seconds": [
+        0.004695331,
+        0.005060791,
+        0.007272451
+      ],
+      "witness_seconds": 0.000537877,
+      "native_answer_seconds": 0.001737521,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0004.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-2253005853592152963363024979099648",
+      "change_upper_scaled": "6582043147642308743320186713538560"
+    },
+    {
+      "id": 5,
+      "indices": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "prove_seconds": [
+        0.945594087,
+        0.869198483,
+        1.060987987
+      ],
+      "verify_seconds": [
+        0.004115847,
+        0.006873591,
+        0.007267519
+      ],
+      "witness_seconds": 0.000847188,
+      "native_answer_seconds": 0.001938435,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0005.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-5191875207562893907473906333122560",
+      "change_upper_scaled": "2574285788355784080407025122541568"
+    },
+    {
+      "id": 6,
+      "indices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "prove_seconds": [
+        0.910330626,
+        0.865811935,
+        0.99519611
+      ],
+      "verify_seconds": [
+        0.006236886,
+        0.005387406,
+        0.005794371
+      ],
+      "witness_seconds": 0.000511792,
+      "native_answer_seconds": 0.000928881,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0006.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-2945232054430605382814436960501760",
+      "change_upper_scaled": "5547052736265376255530314909089792"
+    },
+    {
+      "id": 7,
+      "indices": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "prove_seconds": [
+        0.983619963,
+        0.961758783,
+        0.915857504
+      ],
+      "verify_seconds": [
+        0.006487573,
+        0.007036408,
+        0.004789127
+      ],
+      "witness_seconds": 0.000735979,
+      "native_answer_seconds": 0.00228636,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0007.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8817524532756750709330053116723200",
+      "change_upper_scaled": "9102465910068654590684580282368"
+    },
+    {
+      "id": 8,
+      "indices": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "prove_seconds": [
+        0.974426923,
+        0.952895054,
+        0.906511293
+      ],
+      "verify_seconds": [
+        0.00469451,
+        0.004836896,
+        0.004655984
+      ],
+      "witness_seconds": 0.000378133,
+      "native_answer_seconds": 0.000956301,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0008.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-3595982504994720580002408197783552",
+      "change_upper_scaled": "7913096034829726739662206970888192"
+    },
+    {
+      "id": 9,
+      "indices": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "prove_seconds": [
+        0.862003511,
+        0.834537929,
+        0.855102993
+      ],
+      "verify_seconds": [
+        0.004303314,
+        0.004194174,
+        0.006707934
+      ],
+      "witness_seconds": 0.000522563,
+      "native_answer_seconds": 0.002027074,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0009.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-4129672712184366612737541338562560",
+      "change_upper_scaled": "4758021571996048621318326840197120"
+    },
+    {
+      "id": 10,
+      "indices": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "prove_seconds": [
+        0.919343601,
+        0.914118755,
+        0.883291735
+      ],
+      "verify_seconds": [
+        0.004753631,
+        0.004696074,
+        0.004748419
+      ],
+      "witness_seconds": 0.000259185,
+      "native_answer_seconds": 0.000873677,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0010.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-5798910574340363484494303548407808",
+      "change_upper_scaled": "3950851185402741817352559735603200"
+    },
+    {
+      "id": 11,
+      "indices": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "prove_seconds": [
+        0.977038039,
+        0.945909328,
+        0.917602375
+      ],
+      "verify_seconds": [
+        0.005116896,
+        0.004982223,
+        0.004591909
+      ],
+      "witness_seconds": 0.000330622,
+      "native_answer_seconds": 0.000922099,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0011.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-10223815179165737675697478959104000",
+      "change_upper_scaled": "-1961927402585620199138206106517504"
+    },
+    {
+      "id": 12,
+      "indices": [
+        48,
+        49,
+        50,
+        51
+      ],
+      "prove_seconds": [
+        0.858681292,
+        1.043568614,
+        0.986618332
+      ],
+      "verify_seconds": [
+        0.005166288,
+        0.00670746,
+        0.004100225
+      ],
+      "witness_seconds": 0.000373195,
+      "native_answer_seconds": 0.000888953,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0012.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-6565849692336796929089378315141120",
+      "change_upper_scaled": "2214338715141799844452298565615616"
+    },
+    {
+      "id": 13,
+      "indices": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "prove_seconds": [
+        0.960210811,
+        0.858209027,
+        0.813196084
+      ],
+      "verify_seconds": [
+        0.005446108,
+        0.004748851,
+        0.004807402
+      ],
+      "witness_seconds": 0.000290823,
+      "native_answer_seconds": 0.00090363,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0013.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8728273538252534683921257336930304",
+      "change_upper_scaled": "625913292555567077425392367173632"
+    },
+    {
+      "id": 14,
+      "indices": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "prove_seconds": [
+        0.931176424,
+        0.956211301,
+        0.964944651
+      ],
+      "verify_seconds": [
+        0.006121901,
+        0.004138753,
+        0.005219586
+      ],
+      "witness_seconds": 0.000292695,
+      "native_answer_seconds": 0.000954418,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0014.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-4227607631578811495532208291053568",
+      "change_upper_scaled": "5821252113928012016456517541691392"
+    },
+    {
+      "id": 15,
+      "indices": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "prove_seconds": [
+        0.949716755,
+        0.922225154,
+        0.911596366
+      ],
+      "verify_seconds": [
+        0.003546409,
+        0.004632758,
+        0.005511176
+      ],
+      "witness_seconds": 0.000564477,
+      "native_answer_seconds": 0.001919613,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0015.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8882920372787096854244929946255360",
+      "change_upper_scaled": "426735105540668555910892270649344"
+    },
+    {
+      "id": 16,
+      "indices": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "prove_seconds": [
+        0.911226223,
+        0.916295756,
+        0.825512129
+      ],
+      "verify_seconds": [
+        0.005174046,
+        0.005821643,
+        0.00463307
+      ],
+      "witness_seconds": 0.000555684,
+      "native_answer_seconds": 0.001682401,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0016.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-7470927087378561148656759619977216",
+      "change_upper_scaled": "1280690669393432228257164754419712"
+    },
+    {
+      "id": 17,
+      "indices": [
+        68,
+        69,
+        70,
+        71
+      ],
+      "prove_seconds": [
+        0.941924469,
+        0.985900557,
+        0.875559265
+      ],
+      "verify_seconds": [
+        0.008965325,
+        0.009675118,
+        0.003287833
+      ],
+      "witness_seconds": 0.000280395,
+      "native_answer_seconds": 0.000909505,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0017.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-2890391871767603970484842197417984",
+      "change_upper_scaled": "7097057114107463635240579957260288"
+    },
+    {
+      "id": 18,
+      "indices": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "prove_seconds": [
+        0.942752841,
+        1.066966932,
+        0.954655438
+      ],
+      "verify_seconds": [
+        0.006301947,
+        0.005676924,
+        0.008388493
+      ],
+      "witness_seconds": 0.00027573,
+      "native_answer_seconds": 0.000912361,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0018.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-4973999235850947650835042420129792",
+      "change_upper_scaled": "4902520773169950640261767083589632"
+    },
+    {
+      "id": 19,
+      "indices": [
+        76,
+        77,
+        78,
+        79
+      ],
+      "prove_seconds": [
+        0.937815156,
+        1.009241426,
+        1.003934091
+      ],
+      "verify_seconds": [
+        0.005063181,
+        0.006591372,
+        0.006963
+      ],
+      "witness_seconds": 0.000622358,
+      "native_answer_seconds": 0.001943737,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0019.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-10163159535448255111257558087630848",
+      "change_upper_scaled": "557858528510231559407723469602816"
+    },
+    {
+      "id": 20,
+      "indices": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "prove_seconds": [
+        0.934498787,
+        0.975750141,
+        0.928984633
+      ],
+      "verify_seconds": [
+        0.004875774,
+        0.005632518,
+        0.006642891
+      ],
+      "witness_seconds": 0.000586996,
+      "native_answer_seconds": 0.001795534,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0020.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8031917962265054447975763363758080",
+      "change_upper_scaled": "3172812576959634976231055889006592"
+    },
+    {
+      "id": 21,
+      "indices": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "prove_seconds": [
+        1.03306193,
+        0.93945028,
+        0.999888101
+      ],
+      "verify_seconds": [
+        0.003940367,
+        0.005592992,
+        0.006668133
+      ],
+      "witness_seconds": 0.000588528,
+      "native_answer_seconds": 0.001762045,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0021.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-3073341078485102539685305067241472",
+      "change_upper_scaled": "5095786497543608739052486431604736"
+    },
+    {
+      "id": 22,
+      "indices": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "prove_seconds": [
+        1.025272056,
+        0.879132081,
+        0.875771696
+      ],
+      "verify_seconds": [
+        0.006825101,
+        0.006595299,
+        0.004768751
+      ],
+      "witness_seconds": 0.000643736,
+      "native_answer_seconds": 0.001918712,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0022.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-3909190058268874662328262501335040",
+      "change_upper_scaled": "4440237824924280496746613501329408"
+    },
+    {
+      "id": 23,
+      "indices": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "prove_seconds": [
+        0.988337593,
+        0.989091817,
+        0.988908396
+      ],
+      "verify_seconds": [
+        0.006055255,
+        0.00475956,
+        0.007434658
+      ],
+      "witness_seconds": 0.000370962,
+      "native_answer_seconds": 0.000900228,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0023.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-2731075421340516260466485916336128",
+      "change_upper_scaled": "8656328889115494609599610283360256"
+    },
+    {
+      "id": 24,
+      "indices": [
+        96,
+        97,
+        98,
+        99
+      ],
+      "prove_seconds": [
+        0.888590095,
+        1.031248709,
+        0.888660509
+      ],
+      "verify_seconds": [
+        0.00551712,
+        0.009560692,
+        0.006110024
+      ],
+      "witness_seconds": 0.000279005,
+      "native_answer_seconds": 0.000913725,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0024.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8751201463114413507025926642204672",
+      "change_upper_scaled": "842470427816518947459571841499136"
+    },
+    {
+      "id": 25,
+      "indices": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "prove_seconds": [
+        0.804623602,
+        0.854460362,
+        0.860727564
+      ],
+      "verify_seconds": [
+        0.003725223,
+        0.003510937,
+        0.003962028
+      ],
+      "witness_seconds": 0.000295327,
+      "native_answer_seconds": 0.000943646,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0025.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-2347292112650806156695908181344256",
+      "change_upper_scaled": "6838018704964814060219519519948800"
+    },
+    {
+      "id": 26,
+      "indices": [
+        104,
+        105,
+        106,
+        107
+      ],
+      "prove_seconds": [
+        0.840406268,
+        0.983731755,
+        0.903096206
+      ],
+      "verify_seconds": [
+        0.005007409,
+        0.007163611,
+        0.004124296
+      ],
+      "witness_seconds": 0.000294121,
+      "native_answer_seconds": 0.000880999,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0026.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-2263457133927011114363414294560768",
+      "change_upper_scaled": "7881903074884043709607346593333248"
+    },
+    {
+      "id": 27,
+      "indices": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "prove_seconds": [
+        0.982355795,
+        0.851108678,
+        1.091656782
+      ],
+      "verify_seconds": [
+        0.007690974,
+        0.004635103,
+        0.00975519
+      ],
+      "witness_seconds": 0.000540859,
+      "native_answer_seconds": 0.000946679,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0027.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8069791168237393809406694044729344",
+      "change_upper_scaled": "471703681345229331867480587501568"
+    },
+    {
+      "id": 28,
+      "indices": [
+        112,
+        113,
+        114,
+        115
+      ],
+      "prove_seconds": [
+        0.955500183,
+        1.015636222,
+        0.979011231
+      ],
+      "verify_seconds": [
+        0.005964553,
+        0.007005259,
+        0.004828341
+      ],
+      "witness_seconds": 0.000852627,
+      "native_answer_seconds": 0.001969485,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0028.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8427784834009000362467848802533376",
+      "change_upper_scaled": "-2093609707923650502296361483894784"
+    },
+    {
+      "id": 29,
+      "indices": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "prove_seconds": [
+        0.957068441,
+        1.088149045,
+        0.85987334
+      ],
+      "verify_seconds": [
+        0.005994676,
+        0.007627371,
+        0.003331676
+      ],
+      "witness_seconds": 0.000603253,
+      "native_answer_seconds": 0.001823176,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0029.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8394435621107549335382439271333888",
+      "change_upper_scaled": "-567995619642177435323761988468736"
+    },
+    {
+      "id": 30,
+      "indices": [
+        120,
+        121,
+        122,
+        123
+      ],
+      "prove_seconds": [
+        0.921863853,
+        1.035218478,
+        1.057565633
+      ],
+      "verify_seconds": [
+        0.00930467,
+        0.00652634,
+        0.006545851
+      ],
+      "witness_seconds": 0.000266461,
+      "native_answer_seconds": 0.000865804,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0030.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-6032598919451113822498432240058368",
+      "change_upper_scaled": "2164563244675018665546182526238720"
+    },
+    {
+      "id": 31,
+      "indices": [
+        124,
+        125,
+        126,
+        127
+      ],
+      "prove_seconds": [
+        0.975821288,
+        0.854472066,
+        0.904133094
+      ],
+      "verify_seconds": [
+        0.003924353,
+        0.004688686,
+        0.004239458
+      ],
+      "witness_seconds": 0.000652125,
+      "native_answer_seconds": 0.002433842,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s004_q4_0031.proof",
+      "centre_set": 4,
+      "change_lower_scaled": "-8017215462741338579528336910843904",
+      "change_upper_scaled": "332645345213348872383492056416256"
+    },
+    {
+      "id": 0,
+      "indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prove_seconds": [
+        0.9458637,
+        1.047157394,
+        0.971974291
+      ],
+      "verify_seconds": [
+        0.007022597,
+        0.009461515,
+        0.006955269
+      ],
+      "witness_seconds": 0.000604696,
+      "native_answer_seconds": 0.001900043,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0000.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1972501111037140116038571075305472",
+      "change_upper_scaled": "3201106492953013097693640222834688"
+    },
+    {
+      "id": 1,
+      "indices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "prove_seconds": [
+        1.048517713,
+        1.08478118,
+        0.931710626
+      ],
+      "verify_seconds": [
+        0.006915641,
+        0.006894306,
+        0.004574077
+      ],
+      "witness_seconds": 0.000449524,
+      "native_answer_seconds": 0.001600031,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0001.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-3234598451607712793276985504694272",
+      "change_upper_scaled": "3818011387530541676343112643903488"
+    },
+    {
+      "id": 2,
+      "indices": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "prove_seconds": [
+        1.010164585,
+        0.938622925,
+        1.066826988
+      ],
+      "verify_seconds": [
+        0.005228502,
+        0.005958666,
+        0.007361148
+      ],
+      "witness_seconds": 0.000373369,
+      "native_answer_seconds": 0.00112467,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0002.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2173313486244323867510520785403904",
+      "change_upper_scaled": "3509928515326861341770580576174080"
+    },
+    {
+      "id": 3,
+      "indices": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "prove_seconds": [
+        0.917089414,
+        0.985731721,
+        0.982035359
+      ],
+      "verify_seconds": [
+        0.004918429,
+        0.008463935,
+        0.005707333
+      ],
+      "witness_seconds": 0.000323575,
+      "native_answer_seconds": 0.001404453,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0003.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1627418476904673470480424785412096",
+      "change_upper_scaled": "3766399004633366401695613951410176"
+    },
+    {
+      "id": 4,
+      "indices": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "prove_seconds": [
+        0.920978431,
+        0.959172518,
+        0.864365649
+      ],
+      "verify_seconds": [
+        0.004434264,
+        0.00649315,
+        0.003589873
+      ],
+      "witness_seconds": 0.00113146,
+      "native_answer_seconds": 0.00227105,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0004.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1772453923829387675551420873965568",
+      "change_upper_scaled": "3000055767302921507917780763017216"
+    },
+    {
+      "id": 5,
+      "indices": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "prove_seconds": [
+        0.847461369,
+        0.919045096,
+        0.906164435
+      ],
+      "verify_seconds": [
+        0.003683426,
+        0.00625519,
+        0.005013721
+      ],
+      "witness_seconds": 0.000346185,
+      "native_answer_seconds": 0.000869894,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0005.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-630220575669273746827545386418176",
+      "change_upper_scaled": "3756100110217557047162753614086144"
+    },
+    {
+      "id": 6,
+      "indices": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "prove_seconds": [
+        0.872352443,
+        0.988242037,
+        1.083716693
+      ],
+      "verify_seconds": [
+        0.005492476,
+        0.005063974,
+        0.00650859
+      ],
+      "witness_seconds": 0.00029063,
+      "native_answer_seconds": 0.001051855,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0006.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1110722336898694690271650954346496",
+      "change_upper_scaled": "3142137914085026202083978792402944"
+    },
+    {
+      "id": 7,
+      "indices": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "prove_seconds": [
+        0.964288439,
+        0.964036541,
+        0.912582235
+      ],
+      "verify_seconds": [
+        0.003875352,
+        0.005728991,
+        0.005394318
+      ],
+      "witness_seconds": 0.000992453,
+      "native_answer_seconds": 0.003222501,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0007.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2740034486803315579637059431694336",
+      "change_upper_scaled": "4134103791577156613130629721096192"
+    },
+    {
+      "id": 8,
+      "indices": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "prove_seconds": [
+        0.916241565,
+        0.982121748,
+        0.975319932
+      ],
+      "verify_seconds": [
+        0.007132351,
+        0.006492386,
+        0.005148252
+      ],
+      "witness_seconds": 0.000305946,
+      "native_answer_seconds": 0.000881878,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0008.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2534295429323835770026553616891904",
+      "change_upper_scaled": "3963222089374017838039189325611008"
+    },
+    {
+      "id": 9,
+      "indices": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "prove_seconds": [
+        0.9784128,
+        0.989545902,
+        0.959023715
+      ],
+      "verify_seconds": [
+        0.00470957,
+        0.005150328,
+        0.008123949
+      ],
+      "witness_seconds": 0.000551415,
+      "native_answer_seconds": 0.001749814,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0009.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1847053585477312064963489130610688",
+      "change_upper_scaled": "4275181322715712449175690986651648"
+    },
+    {
+      "id": 10,
+      "indices": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "prove_seconds": [
+        0.879187673,
+        0.982377093,
+        1.083057396
+      ],
+      "verify_seconds": [
+        0.003997231,
+        0.004811557,
+        0.00628181
+      ],
+      "witness_seconds": 0.000569137,
+      "native_answer_seconds": 0.001712481,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0010.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "578967079533632408315044351180800",
+      "change_upper_scaled": "5153968538377355077998173434675200"
+    },
+    {
+      "id": 11,
+      "indices": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "prove_seconds": [
+        0.985780127,
+        0.885981328,
+        0.915953051
+      ],
+      "verify_seconds": [
+        0.003837544,
+        0.004914031,
+        0.006485379
+      ],
+      "witness_seconds": 0.000620942,
+      "native_answer_seconds": 0.001796951,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0011.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2190304698501003102089116169273344",
+      "change_upper_scaled": "2183617754309645249184110934491136"
+    },
+    {
+      "id": 12,
+      "indices": [
+        48,
+        49,
+        50,
+        51
+      ],
+      "prove_seconds": [
+        0.965968149,
+        0.941035868,
+        0.923095195
+      ],
+      "verify_seconds": [
+        0.00427435,
+        0.006806832,
+        0.005723847
+      ],
+      "witness_seconds": 0.000273176,
+      "native_answer_seconds": 0.000978352,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0012.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2255610907107953151710532609245184",
+      "change_upper_scaled": "2399312125334311316841673177169920"
+    },
+    {
+      "id": 13,
+      "indices": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "prove_seconds": [
+        0.975620465,
+        0.988412911,
+        0.996379915
+      ],
+      "verify_seconds": [
+        0.005571291,
+        0.006922868,
+        0.005110824
+      ],
+      "witness_seconds": 0.000610248,
+      "native_answer_seconds": 0.001931123,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0013.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-3858057149936034330743444458176512",
+      "change_upper_scaled": "2376579538495961227199013688705024"
+    },
+    {
+      "id": 14,
+      "indices": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "prove_seconds": [
+        0.944333105,
+        0.967374555,
+        0.90607551
+      ],
+      "verify_seconds": [
+        0.004063667,
+        0.005729365,
+        0.004841456
+      ],
+      "witness_seconds": 0.000326995,
+      "native_answer_seconds": 0.000918489,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0014.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1354132449354253200445917410361344",
+      "change_upper_scaled": "3930939767708122559119598253244416"
+    },
+    {
+      "id": 15,
+      "indices": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "prove_seconds": [
+        1.009671202,
+        1.101151744,
+        0.852469839
+      ],
+      "verify_seconds": [
+        0.005627324,
+        0.004792306,
+        0.00478927
+      ],
+      "witness_seconds": 0.000292457,
+      "native_answer_seconds": 0.000957949,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0015.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-3396598331581566100483977034858496",
+      "change_upper_scaled": "3178943485455330556659260545040384"
+    },
+    {
+      "id": 16,
+      "indices": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "prove_seconds": [
+        1.081673416,
+        0.933299221,
+        1.083988283
+      ],
+      "verify_seconds": [
+        0.005138094,
+        0.006329125,
+        0.004921621
+      ],
+      "witness_seconds": 0.00055306,
+      "native_answer_seconds": 0.001403469,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0016.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1675719060381490500192961048870912",
+      "change_upper_scaled": "3706050343852298823458476886327296"
+    },
+    {
+      "id": 17,
+      "indices": [
+        68,
+        69,
+        70,
+        71
+      ],
+      "prove_seconds": [
+        0.9880973,
+        0.936803413,
+        0.913265441
+      ],
+      "verify_seconds": [
+        0.004728934,
+        0.005820041,
+        0.006042433
+      ],
+      "witness_seconds": 0.000481697,
+      "native_answer_seconds": 0.00095128,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0017.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-284856180711240560528761974423552",
+      "change_upper_scaled": "4864809368202252284034322880528384"
+    },
+    {
+      "id": 18,
+      "indices": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "prove_seconds": [
+        0.994739227,
+        0.939774934,
+        0.975289389
+      ],
+      "verify_seconds": [
+        0.00435399,
+        0.007473935,
+        0.005144189
+      ],
+      "witness_seconds": 0.00029749,
+      "native_answer_seconds": 0.000960427,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0018.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1578443008740950112845905981865984",
+      "change_upper_scaled": "4941967381077068555826204134866944"
+    },
+    {
+      "id": 19,
+      "indices": [
+        76,
+        77,
+        78,
+        79
+      ],
+      "prove_seconds": [
+        1.031640253,
+        0.87395927,
+        0.945945348
+      ],
+      "verify_seconds": [
+        0.007090766,
+        0.004750157,
+        0.00683199
+      ],
+      "witness_seconds": 0.000606953,
+      "native_answer_seconds": 0.001943294,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0019.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1796197570445355448558695902871552",
+      "change_upper_scaled": "4516643012360999590636029128736768"
+    },
+    {
+      "id": 20,
+      "indices": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "prove_seconds": [
+        0.963298639,
+        1.081515586,
+        0.965753888
+      ],
+      "verify_seconds": [
+        0.004649021,
+        0.005299771,
+        0.004728455
+      ],
+      "witness_seconds": 0.000498412,
+      "native_answer_seconds": 0.002025157,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0020.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-4626650420985856451352096424329216",
+      "change_upper_scaled": "3614180453412729172981563510489088"
+    },
+    {
+      "id": 21,
+      "indices": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "prove_seconds": [
+        0.870035639,
+        1.005322414,
+        0.946634451
+      ],
+      "verify_seconds": [
+        0.00397856,
+        0.00649623,
+        0.006599533
+      ],
+      "witness_seconds": 0.000390645,
+      "native_answer_seconds": 0.001200247,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0021.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1949397639726097760493611549458432",
+      "change_upper_scaled": "1939578000045683720177258799824896"
+    },
+    {
+      "id": 22,
+      "indices": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "prove_seconds": [
+        0.963468929,
+        0.980943043,
+        1.024976012
+      ],
+      "verify_seconds": [
+        0.007225382,
+        0.006914838,
+        0.006045105
+      ],
+      "witness_seconds": 0.00050847,
+      "native_answer_seconds": 0.002040572,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0022.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2281040691761681817070730005708800",
+      "change_upper_scaled": "2662538851848601343809027609460736"
+    },
+    {
+      "id": 23,
+      "indices": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "prove_seconds": [
+        1.014455659,
+        0.85680342,
+        1.012983354
+      ],
+      "verify_seconds": [
+        0.004939783,
+        0.006637592,
+        0.005960163
+      ],
+      "witness_seconds": 0.000386445,
+      "native_answer_seconds": 0.000882002,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0023.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-3105393351554983107176259330768896",
+      "change_upper_scaled": "4741371740816424019801268253884416"
+    },
+    {
+      "id": 24,
+      "indices": [
+        96,
+        97,
+        98,
+        99
+      ],
+      "prove_seconds": [
+        1.060740806,
+        0.969713814,
+        1.059328099
+      ],
+      "verify_seconds": [
+        0.005077697,
+        0.005698871,
+        0.006610556
+      ],
+      "witness_seconds": 0.000293804,
+      "native_answer_seconds": 0.004202907,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0024.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2247127188030211693795960258822144",
+      "change_upper_scaled": "5026087997470066731056130368208896"
+    },
+    {
+      "id": 25,
+      "indices": [
+        100,
+        101,
+        102,
+        103
+      ],
+      "prove_seconds": [
+        1.025133551,
+        1.116241206,
+        0.999280459
+      ],
+      "verify_seconds": [
+        0.006383791,
+        0.005120408,
+        0.005025544
+      ],
+      "witness_seconds": 0.000379879,
+      "native_answer_seconds": 0.000909933,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0025.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-2785859954961866639221943166828544",
+      "change_upper_scaled": "2977872805711629444360692891123712"
+    },
+    {
+      "id": 26,
+      "indices": [
+        104,
+        105,
+        106,
+        107
+      ],
+      "prove_seconds": [
+        1.009194248,
+        0.911428641,
+        0.884927161
+      ],
+      "verify_seconds": [
+        0.006602783,
+        0.004328246,
+        0.00359239
+      ],
+      "witness_seconds": 0.000290463,
+      "native_answer_seconds": 0.000957129,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0026.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-4349748202581713301895055111356416",
+      "change_upper_scaled": "1658303536333468106029888624918528"
+    },
+    {
+      "id": 27,
+      "indices": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "prove_seconds": [
+        0.912358404,
+        0.984433057,
+        1.026579099
+      ],
+      "verify_seconds": [
+        0.00580394,
+        0.009629781,
+        0.006187988
+      ],
+      "witness_seconds": 0.000320158,
+      "native_answer_seconds": 0.001039341,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0027.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1744126116973746225685081542885376",
+      "change_upper_scaled": "3719866844966751495563359218040832"
+    },
+    {
+      "id": 28,
+      "indices": [
+        112,
+        113,
+        114,
+        115
+      ],
+      "prove_seconds": [
+        0.995811794,
+        0.956381805,
+        0.906428965
+      ],
+      "verify_seconds": [
+        0.006310153,
+        0.005285536,
+        0.003652416
+      ],
+      "witness_seconds": 0.000596367,
+      "native_answer_seconds": 0.001940203,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0028.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1996506818564429571246250811981824",
+      "change_upper_scaled": "3654415083471932382841218004942848"
+    },
+    {
+      "id": 29,
+      "indices": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "prove_seconds": [
+        0.990823759,
+        1.018349864,
+        0.950216833
+      ],
+      "verify_seconds": [
+        0.005359163,
+        0.004524823,
+        0.005969575
+      ],
+      "witness_seconds": 0.000520891,
+      "native_answer_seconds": 0.001723233,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0029.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "548893434719034464111866710851584",
+      "change_upper_scaled": "4808885840342016055936089352830976"
+    },
+    {
+      "id": 30,
+      "indices": [
+        120,
+        121,
+        122,
+        123
+      ],
+      "prove_seconds": [
+        0.946682076,
+        0.898650468,
+        1.004594837
+      ],
+      "verify_seconds": [
+        0.005355321,
+        0.006711658,
+        0.004884405
+      ],
+      "witness_seconds": 0.000414144,
+      "native_answer_seconds": 0.001540147,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0030.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-1589892155616203666442734545141760",
+      "change_upper_scaled": "3609494689032151278374735887466496"
+    },
+    {
+      "id": 31,
+      "indices": [
+        124,
+        125,
+        126,
+        127
+      ],
+      "prove_seconds": [
+        1.002922885,
+        0.986458108,
+        0.944008373
+      ],
+      "verify_seconds": [
+        0.004145736,
+        0.005100558,
+        0.00461062
+      ],
+      "witness_seconds": 0.000584381,
+      "native_answer_seconds": 0.001855865,
+      "proof_bytes": 196,
+      "public_witness_bytes": 5260,
+      "file": "paired_change/s005_q4_0031.proof",
+      "centre_set": 5,
+      "change_lower_scaled": "-501869209142450471021302555607040",
+      "change_upper_scaled": "4540310440550898929849550623473664"
+    }
+  ],
+  "verified": 192,
+  "wall_seconds": 575.485886618
+}

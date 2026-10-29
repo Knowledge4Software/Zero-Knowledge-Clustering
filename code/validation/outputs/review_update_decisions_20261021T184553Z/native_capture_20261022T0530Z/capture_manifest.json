@@ -1,0 +1,62 @@
+{
+  "remote": "/root/commitjl/results/review_update_decisions_20261021T184553Z",
+  "files": [
+    {
+      "path": "predeclared_protocol.json",
+      "sha256": "ae0afafd8c5871cfc1b7fba64735d6e47b151881ca12f73f356c31ccefba8d8f"
+    },
+    {
+      "path": "source_manifest.json",
+      "sha256": "a4adc017240562c740feab3f7b2605c60afeaf01a2890901153a5064fd000316"
+    },
+    {
+      "path": "queue.log",
+      "sha256": "8be5d87098af3ba7d457aa7bbf9516c72b1e8d56173a9985cd9976052723e05e"
+    },
+    {
+      "path": "proof_jobs.json",
+      "sha256": "0190c26b976dd18bf76ab2e8d3b820d3ea5962b9f8ae6104ce49d51eb2130dea"
+    },
+    {
+      "path": "native/cells.csv",
+      "sha256": "6a3c299728e8d782c51a686d9a03175b05f543a02207eadb453c03c475b11e2d"
+    },
+    {
+      "path": "native/fit_summary.csv",
+      "sha256": "82681f82e2f2d55c3cb7094ae7525cc0fbdc45c417742b3ac07b302f61bb2d17"
+    },
+    {
+      "path": "native/paired_fit_differences.csv",
+      "sha256": "7ea4ce96c807bfa51f57ecb5c628a9515aa1ccb38364380349f868d89f363426"
+    },
+    {
+      "path": "native/fit_records.json",
+      "sha256": "e0e1b407484b600bed7abad7433cd6567490074cdccaa1ce6b726d39b3e0d7c2"
+    },
+    {
+      "path": "native/protocol.json",
+      "sha256": "45a683ae317410232f8cd54698362a4a88925a79c8bd282fe5f687403ef9021b"
+    },
+    {
+      "path": "native/summary.json",
+      "sha256": "cc3a2d862522c1f031122f2de4c5a49572230de5a8cb953ce2b0623155da1877"
+    },
+    {
+      "path": "portability_paired/summary.json",
+      "sha256": "441fd272d828bac7da9bd28426b6d5279effb2f8a6b31722db322995ff092638"
+    },
+    {
+      "path": "portability_paired/protocol.json",
+      "sha256": "0a3078acc557ebc7ef2f6ccc486b36b897697bbb5623157d53bee98529d4674a"
+    },
+    {
+      "path": "portability_paired/decisions.csv",
+      "sha256": "f8550854ab07e85b4a7de5d5fad7bbe6941a607184a97ce4ae6a9a2486db0ca3"
+    },
+    {
+      "path": "portability_paired/verified_paired_change.json",
+      "sha256": "b739fe93ae6118a23c69d2e4bdcd69b28add05fc9fe493fa41cddeea9f6dd409"
+    }
+  ],
+  "scope": "Native complete; main proof campaign still running."
+}

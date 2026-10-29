@@ -1,3 +1,0 @@
-label,dataset,k,method,n,d,w,assign_dims,query,centers,constraints,compile_seconds,setup_seconds,prove_seconds,verify_seconds,proof_bytes,verify_ok,peak_rss_bytes,wall_seconds,agreement_with_exact,error,prove_error,opened_columns,cost_claim_rel_error
-gaussian_hard_k5_full_n1_cost_const,gaussian_hard,5,full,1,512,512,512,cost,const,688531.0,3.880947868,111.855315919,10.624466822,0.003814002,196.0,True,1101180.0,159.547517574043,1.0,,,512,-2.5248724787596544e-06
-gaussian_hard_k10_full_n1_cost_const,gaussian_hard,10,full,1,512,512,512,cost,const,689046.0,4.124801328,114.869670809,10.444938371,0.00366689,196.0,True,1086516.0,161.74162451503798,1.0,,,512,2.2084740105565714e-06

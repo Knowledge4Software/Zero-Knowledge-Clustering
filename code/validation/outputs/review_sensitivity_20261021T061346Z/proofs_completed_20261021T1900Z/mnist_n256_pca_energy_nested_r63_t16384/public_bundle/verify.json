@@ -1,0 +1,21 @@
+{
+  "phase": "independent_verify",
+  "status": "complete",
+  "complete": true,
+  "constraints": 0,
+  "compile_seconds": 0,
+  "setup_seconds": 0,
+  "load_seconds": 0,
+  "native_prepare_seconds": 0,
+  "warmup_seconds": 0,
+  "statement": {
+    "cx": "13545838002007715786332710622372328650711230816695693914604586797751209777458",
+    "ch": "9557255137324003942826265181908688054096802542245515836357226464618502945976",
+    "ce": "0",
+    "ct": "0",
+    "context": "12106462894541565618433805377278632116722003843267640041134244074496799842751"
+  },
+  "samples": null,
+  "verified": 608,
+  "wall_seconds": 163.464247069
+}

@@ -1,0 +1,7 @@
+{
+  "scope": "Native development screen only. Original prediction basis/outputs unchanged. Exact old distance gaps would require authenticated preprocessing and query proofs; neither implementation nor speed is claimed.",
+  "selection": "All6 head regressions unresolved by the existing exact-old numerical certificate. Development stress cohort, not independent validation.",
+  "minimum_only": false,
+  "posthoc_development": true,
+  "thread_limit": 1
+}

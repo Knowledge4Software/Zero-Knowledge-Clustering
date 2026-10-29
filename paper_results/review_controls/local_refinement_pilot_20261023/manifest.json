@@ -1,0 +1,62 @@
+[
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/bounds.csv",
+    "bytes": 13183,
+    "sha256": "8858b228b9ab7edae7be673326bb1abdf623c4ef9b4647f83945e23a9d6f116b"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/compact_results.csv",
+    "bytes": 427,
+    "sha256": "bc03d7ded916d2827d9804fc92b01525e757b07ac26344bf3b2f04da205efe7e"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/groups.csv",
+    "bytes": 427,
+    "sha256": "57fd75c80d0d7b5922250a4fcae3cf91ddf4aa2f0c71f3ded7f5a95a9d2b7175"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/pins.json",
+    "bytes": 3055,
+    "sha256": "ebd02308dae94443deb9d94d7986d2f00b348cbf571b838f230e67836d8a944d"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/protocol.json",
+    "bytes": 788,
+    "sha256": "cf9140afe11bd91d67d074d1c89a4506dbd08a4d3f3ef33d88da129fd8c003f4"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/refinement.csv",
+    "bytes": 190642,
+    "sha256": "9b957221d0497faed2852fae7969fd24ff3310920d72f05bf2ccf387d916438c"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/refinement_summary.csv",
+    "bytes": 2363,
+    "sha256": "dc809f4795b69c41126b4709d80bb128e972eaaac004d342acefff7099f59c4c"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/REPORT.md",
+    "bytes": 3118,
+    "sha256": "aff6b3e3385ac61b0111683001b81cdaedba386edb58ad89c68268a77bba240a"
+  },
+  {
+    "path": "paper_results/review_controls/local_refinement_pilot_20261023/summary.json",
+    "bytes": 4064,
+    "sha256": "8aef14ec52521574bc27ec548465dc21d30bdf994f0b1e5922f05e1721c49cb7"
+  },
+  {
+    "path": "code/commitjl/block_certificates.py",
+    "bytes": 2643,
+    "sha256": "10143981ce409bad0a84bbbc6b0141203bd79baf10ee72e757705ebd7cfb5426"
+  },
+  {
+    "path": "code/experiments/pilot_certificate_refinement.py",
+    "bytes": 9993,
+    "sha256": "3074a980fdce406bf16bee9825127a545e4cad5e1efb0b19a9b72b8b277c77ba"
+  },
+  {
+    "path": "code/tests/test_block_certificates.py",
+    "bytes": 1862,
+    "sha256": "0c2bf5ad2548a27ec4454e6b7645a534c8efab6a76cbaf71b9646f9913a63e86"
+  }
+]

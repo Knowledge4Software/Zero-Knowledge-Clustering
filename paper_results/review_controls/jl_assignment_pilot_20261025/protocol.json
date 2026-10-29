@@ -1,0 +1,27 @@
+{
+  "input_sha256": "dc250961addc3fb3bb8a81a0c3bccfee6608a73c193e31aedfde114dea829ccd",
+  "selection": "All19 original distinct nonidentical N128 updates. Fixed ranks39/63, four sketch sizes, five shrinkage coefficients and three fixed seeds. No outcome filtering.",
+  "ranks": [
+    39,
+    63
+  ],
+  "widths": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "alphas": [
+    0.0,
+    0.125,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "seeds": [
+    20261026,
+    20261027,
+    20261028
+  ],
+  "scope": "Exploratory prediction-only grid. Original production prediction model remains unchanged. Alpha0 is an exact-Gram corrected no-JL control; compare against it before attributing benefit to JL. Feature count is not measured proof cost. Passing candidates require >=99% agreement on every update for every seed and further confirmation."
+}

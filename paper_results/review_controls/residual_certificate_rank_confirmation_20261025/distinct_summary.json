@@ -1,0 +1,5458 @@
+{
+  "complete": true,
+  "source_results_sha256": "c192b16b16e4a217c61e05229c6fa7165146ea9aa067f73688d514f7807fd6d0",
+  "source_summary_sha256": "efa85f27bb7c17283c98e8cb2bfb4fcb4897c57c8e2d1cf3908f937d8d0bf1f4",
+  "source_archive_sha256": {
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k3_seed167_age1_learned.npz": "3514df38b855bee79ea000a36fbfb1dd6ab1b49702487a21f19103d24ef75e24",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k3_seed167_age8_learned.npz": "e33703102658beb54414c0da986d0c132642e46a1dbaa04a2251141841afe772",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k3_seed193_age1_learned.npz": "18d7ed37b0af2f03c1d8228911c62c6aa21c9db96a4803d075a83eb9f4fa9cea",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k3_seed193_age8_learned.npz": "45cccc996c6f30759dd07c309c4420f7802cace3957e9d51d724f0935c7a698e",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k5_seed167_age1_learned.npz": "9bba1937688a66851995bb8295ac0101912303f508cb3ad6ce1567c504aa265d",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k5_seed167_age8_learned.npz": "aaedfa5513c39e70806997ee85d1a96a5f858906254766c57b43f301cc33a982",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k5_seed193_age1_learned.npz": "69d994bded25777f05a37d6eb87911ee28231304d1658e36648205fe2237423c",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/fashion_mnist_k5_seed193_age8_learned.npz": "6463301e0e4cfe9c63793f17c09de0048eb17c4ad42d06d85dd4b9e0fac01cb4",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k3_seed167_age1_learned.npz": "5190f75913c302fd8b0ea26a016fd374bf05dd92366d8b055a324caad03d5501",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k3_seed167_age8_learned.npz": "190a28f7beadd19856413628d5bf6556f6ef59c34dbf3ca2f750362acae16c98",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k3_seed193_age1_learned.npz": "0c0e9da309961d352e0735646759101f4d2243769533f5535fa6e0462a9343f9",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k3_seed193_age8_learned.npz": "147cf6a250f1447308c72067ca40e1fe52e7a1eaf6268bd3bfaf81024f54c7bc",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k5_seed167_age1_learned.npz": "e11a5298a0080bd2e70bdf7b317a0536a7e67003b7920f6a26b3c22fdfd6378a",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k5_seed167_age8_learned.npz": "9d5be9e77d63abf03566405b0bf2eae0590eac6c6fa45cb856037d6352edd5b4",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k5_seed193_age1_learned.npz": "289033c512aa28333b397909eacf1ade9fe844fffbd4f3fe031a72014b90852f",
+    "paper_results/review_controls/group_change_confirmation_20261024/source/mnist_k5_seed193_age8_learned.npz": "bc55192ae463fe25ff90c3b89d384ce9136017a193b40121ec00a9f5a233454c",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed11_age1_learned.npz": "18220b984f7dc1e3175a5457a0f1ec6d2a641d9045243ea5f4082b55eef98d53",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed11_age8_learned.npz": "fc0753c07a77249762776c716c62c000e6bf4d8ca0d3aeec41024c30843ed52f",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed37_age1_learned.npz": "7c00d0c3cb8bc838d0bda28d4e5b86ee568cfb1527c7d837097fc5c4e65679b1",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed37_age8_learned.npz": "f495d351fc1dabe0ea9b9fb3020f4aa30951138c7a2a9fa8625d082f6eb9b74e",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed67_age1_learned.npz": "cfdfec9ad9fb6f570b9f42e72a4850e9179507b9ce1d1b36a636b1ccbd7507d0",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed67_age8_learned.npz": "a8324c3d9f6481be0f8193fb7388725b9e621e61ff845ee0f077a5a52a3f5c9e",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed79_age1_learned.npz": "0a0be154106b7b398e2015328c0cf28443800a33e57bac75f748d375b8ff3374",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k3_seed79_age8_learned.npz": "65b1dd984921f19942896954915f5996d8d35f48bcc9e62e5f2d6693ac1dccbb",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k5_seed11_age1_learned.npz": "1231830976108fbd294e8cc5116205d117ca123e2391aa72cf5561fa0df12cd2",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k5_seed11_age8_learned.npz": "ed5cbdff08572c9f662aa264b1e5bd6f93ba004d479b2aeeefba68dcecb65c7b",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k5_seed41_age1_learned.npz": "c76025743036249472aebe33f19c3d5641edd20adbef22fd8c28bd6a99e6f6eb",
+    "paper_results/review_controls/local_group_moments_extended_20261023/fashion_mnist_k5_seed41_age8_learned.npz": "1f7d73f9b0668e9a85494da590b45231fc8ade343f05f39cd9c6109611ec0020",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k10_seed37_age1_learned.npz": "ca58f05c49b8f8a6d7939070ef4dae34ed858ead2023a074c10cfe403aa55204",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k10_seed37_age8_learned.npz": "89783f5abe85073c08ac46ac21c4c177acf98f09732aa188042d3399d0c3aab8",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k10_seed41_age1_learned.npz": "9b6ee11eb5a60599e65530edd2340fb3f147e31306f024d0686c021b4a037b13",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k10_seed41_age8_learned.npz": "08c3c18cb3ca1f6c480a9a7eb171a8a9e77e6001d0e27dc6ee7f6a396d5f13e3",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed11_age1_learned.npz": "1462426c91d065073626ebccc1cf6ea7e8c55393c69dfaf2e2432d17c8a451a7",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed11_age8_learned.npz": "e7ce081dc903306644379a8467238ebfd4e3ceab9ab3b331d58546a57d554422",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed37_age1_learned.npz": "253b071a9a28fa5695a268edc678afaeea9edd4cec84286ff11d9f4ccabed047",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed37_age8_learned.npz": "8ee92cb65316286aae36e7a6369fa386fcf52a3842da6a707b8dc1038f6a0915",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed67_age1_learned.npz": "1de288f366233ed68c3cbf243c57d1ba802d2e2703bc152fa63c29dd54500da2",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed67_age8_learned.npz": "513a7ee4e20ed28ba849d790b084a5dc90fbc638f08365cf459c17dc5b372d0d",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed79_age1_learned.npz": "6993fef1f95ad439bbfc7d051e2d65b1204d4615867d4dea716fb184ab880ecb",
+    "paper_results/review_controls/local_group_moments_extended_20261023/mnist_k5_seed79_age8_learned.npz": "1d0df9be729046b92242f6a2eaad732c84933534084616089594889350d45fec"
+  },
+  "grouping": "cohort + deployed fit + SHA256 of the complete quantized proposed center array; public identity excluded from update counts. Different fits remain separate audit workloads, not independent draws per update.",
+  "native_only": true,
+  "new_proofs": 0,
+  "all_recorded_intervals_contain_truth": true,
+  "results_by_rank": {
+    "63": {
+      "original_proposal_requests": 160,
+      "distinct_center_sets_including_public_identity": 148,
+      "repeated_center_requests_removed": 12,
+      "distinct_public_identity_sets": 0,
+      "original_public_identity_requests": 0,
+      "distinct_nonidentity_updates": 148,
+      "conclusive_distinct_updates": 140,
+      "distinct_natural_regressions": 27,
+      "distinct_natural_regressions_detected": 22,
+      "combined_conclusive_distinct_updates": 140,
+      "combined_distinct_natural_regressions_detected": 22
+    },
+    "79": {
+      "original_proposal_requests": 160,
+      "distinct_center_sets_including_public_identity": 148,
+      "repeated_center_requests_removed": 12,
+      "distinct_public_identity_sets": 0,
+      "original_public_identity_requests": 0,
+      "distinct_nonidentity_updates": 148,
+      "conclusive_distinct_updates": 144,
+      "distinct_natural_regressions": 27,
+      "distinct_natural_regressions_detected": 25,
+      "combined_conclusive_distinct_updates": 144,
+      "combined_distinct_natural_regressions_detected": 25
+    },
+    "95": {
+      "original_proposal_requests": 160,
+      "distinct_center_sets_including_public_identity": 148,
+      "repeated_center_requests_removed": 12,
+      "distinct_public_identity_sets": 0,
+      "original_public_identity_requests": 0,
+      "distinct_nonidentity_updates": 148,
+      "conclusive_distinct_updates": 145,
+      "distinct_natural_regressions": 27,
+      "distinct_natural_regressions_detected": 26,
+      "combined_conclusive_distinct_updates": 145,
+      "combined_distinct_natural_regressions_detected": 26
+    }
+  },
+  "center_equivalence_groups": [
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "5c2d74437bbb45921f2491b05e2cb532774cc25b5e8bede1ddc93b7b5c7ca25e",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "5c2d74437bbb45921f2491b05e2cb532774cc25b5e8bede1ddc93b7b5c7ca25e",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "5c2d74437bbb45921f2491b05e2cb532774cc25b5e8bede1ddc93b7b5c7ca25e",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "3cf47ec2e926934d6b5c91470f4a1d80a4efd353d93ba71501bdef8174d8cfb8",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "3cf47ec2e926934d6b5c91470f4a1d80a4efd353d93ba71501bdef8174d8cfb8",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "3cf47ec2e926934d6b5c91470f4a1d80a4efd353d93ba71501bdef8174d8cfb8",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "bfe01c95a9261e83493b0ec504bd2b31a750e43f20aeaae047f48ede99aacb01",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "bfe01c95a9261e83493b0ec504bd2b31a750e43f20aeaae047f48ede99aacb01",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "bfe01c95a9261e83493b0ec504bd2b31a750e43f20aeaae047f48ede99aacb01",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "7b21bcb27f3bf8c92be9c8f076c30f6864732f84597f6678df6634a2f986a10a",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "7b21bcb27f3bf8c92be9c8f076c30f6864732f84597f6678df6634a2f986a10a",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age1_learned",
+      "center_sha256": "7b21bcb27f3bf8c92be9c8f076c30f6864732f84597f6678df6634a2f986a10a",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "aa56480e07b2082ce68b9e6e57773c21fbff1b5c6b72c2e360fdf37ccb721ce6",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "aa56480e07b2082ce68b9e6e57773c21fbff1b5c6b72c2e360fdf37ccb721ce6",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "aa56480e07b2082ce68b9e6e57773c21fbff1b5c6b72c2e360fdf37ccb721ce6",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "e5cb7b407fafd5deb9afe1c04583ad3a172c834c6f4b7a274b8ac2e5508e1365",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "e5cb7b407fafd5deb9afe1c04583ad3a172c834c6f4b7a274b8ac2e5508e1365",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "e5cb7b407fafd5deb9afe1c04583ad3a172c834c6f4b7a274b8ac2e5508e1365",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "7b21bcb27f3bf8c92be9c8f076c30f6864732f84597f6678df6634a2f986a10a",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "7b21bcb27f3bf8c92be9c8f076c30f6864732f84597f6678df6634a2f986a10a",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "7b21bcb27f3bf8c92be9c8f076c30f6864732f84597f6678df6634a2f986a10a",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "80d84563e46eebca4dce560945a794386c3473137bd7507d59816bb4ca2cc0f1",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "80d84563e46eebca4dce560945a794386c3473137bd7507d59816bb4ca2cc0f1",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed167_age8_learned",
+      "center_sha256": "80d84563e46eebca4dce560945a794386c3473137bd7507d59816bb4ca2cc0f1",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "23145d483fdd4108d18e357c302ab9a499c5aa9faa2b3a1cf3936a869439b4d6",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "23145d483fdd4108d18e357c302ab9a499c5aa9faa2b3a1cf3936a869439b4d6",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "23145d483fdd4108d18e357c302ab9a499c5aa9faa2b3a1cf3936a869439b4d6",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "348f7c6dd6c031f434137ac051cb5df687bab1269d6bf18dbe3bdcfa5de181b2",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "348f7c6dd6c031f434137ac051cb5df687bab1269d6bf18dbe3bdcfa5de181b2",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "348f7c6dd6c031f434137ac051cb5df687bab1269d6bf18dbe3bdcfa5de181b2",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "99c884960c0b412a8c3d54877da9aa81a366cb0f52bc1b2efd4e087bedc8d443",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "99c884960c0b412a8c3d54877da9aa81a366cb0f52bc1b2efd4e087bedc8d443",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "99c884960c0b412a8c3d54877da9aa81a366cb0f52bc1b2efd4e087bedc8d443",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "837cd4fda32166044f5a9d5ea761d6efa86520b0c9b6648aa0b89a85e9916df4",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "837cd4fda32166044f5a9d5ea761d6efa86520b0c9b6648aa0b89a85e9916df4",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age1_learned",
+      "center_sha256": "837cd4fda32166044f5a9d5ea761d6efa86520b0c9b6648aa0b89a85e9916df4",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age8_learned",
+      "center_sha256": "71409db8d8a23ceac9e4c18ccbc12738edbfd0cf223fa4811eb7983350c0fe68",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age8_learned",
+      "center_sha256": "71409db8d8a23ceac9e4c18ccbc12738edbfd0cf223fa4811eb7983350c0fe68",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age8_learned",
+      "center_sha256": "71409db8d8a23ceac9e4c18ccbc12738edbfd0cf223fa4811eb7983350c0fe68",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age8_learned",
+      "center_sha256": "837cd4fda32166044f5a9d5ea761d6efa86520b0c9b6648aa0b89a85e9916df4",
+      "rank": 63,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age8_learned",
+      "center_sha256": "837cd4fda32166044f5a9d5ea761d6efa86520b0c9b6648aa0b89a85e9916df4",
+      "rank": 79,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k3_seed193_age8_learned",
+      "center_sha256": "837cd4fda32166044f5a9d5ea761d6efa86520b0c9b6648aa0b89a85e9916df4",
+      "rank": 95,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "375702a09477994759ac33299948199ad6800e6c9f66a597cf98c7db655444cf",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "375702a09477994759ac33299948199ad6800e6c9f66a597cf98c7db655444cf",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "375702a09477994759ac33299948199ad6800e6c9f66a597cf98c7db655444cf",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "ff8dced7ed0bb65ae936d268e495be4241ac9b15a7655e99daafaa14aa81bc3e",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "ff8dced7ed0bb65ae936d268e495be4241ac9b15a7655e99daafaa14aa81bc3e",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "ff8dced7ed0bb65ae936d268e495be4241ac9b15a7655e99daafaa14aa81bc3e",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "db1ba38cb1734834401251ebcdc7affece5ba8cdb9de605c9f87b5b369071c37",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "db1ba38cb1734834401251ebcdc7affece5ba8cdb9de605c9f87b5b369071c37",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "db1ba38cb1734834401251ebcdc7affece5ba8cdb9de605c9f87b5b369071c37",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "cd0a4acf3390abf456600455fcd2c5fd6cc50d6c987ed7c669e5a45baf5398f5",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "cd0a4acf3390abf456600455fcd2c5fd6cc50d6c987ed7c669e5a45baf5398f5",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age1_learned",
+      "center_sha256": "cd0a4acf3390abf456600455fcd2c5fd6cc50d6c987ed7c669e5a45baf5398f5",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "1975747f3f2bb2dc7e28b4f4bae08555443b76174e9129fcf2aa8f01425faa23",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "1975747f3f2bb2dc7e28b4f4bae08555443b76174e9129fcf2aa8f01425faa23",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "1975747f3f2bb2dc7e28b4f4bae08555443b76174e9129fcf2aa8f01425faa23",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "bb52127053913a27e3d3a47ad247715a942cb8c65a2c41b5ddca7cd2b2dfae66",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "bb52127053913a27e3d3a47ad247715a942cb8c65a2c41b5ddca7cd2b2dfae66",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "bb52127053913a27e3d3a47ad247715a942cb8c65a2c41b5ddca7cd2b2dfae66",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "cd0a4acf3390abf456600455fcd2c5fd6cc50d6c987ed7c669e5a45baf5398f5",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "cd0a4acf3390abf456600455fcd2c5fd6cc50d6c987ed7c669e5a45baf5398f5",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "cd0a4acf3390abf456600455fcd2c5fd6cc50d6c987ed7c669e5a45baf5398f5",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "09a8635f3fc8a426cadee6192dde2c89d39186af5bc1323e28a70cec04abfcbf",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "09a8635f3fc8a426cadee6192dde2c89d39186af5bc1323e28a70cec04abfcbf",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed167_age8_learned",
+      "center_sha256": "09a8635f3fc8a426cadee6192dde2c89d39186af5bc1323e28a70cec04abfcbf",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "d1e00ec6cede9bb039857cf0e5a7e14a270467426ed0493a2230c449302adbf2",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "d1e00ec6cede9bb039857cf0e5a7e14a270467426ed0493a2230c449302adbf2",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "d1e00ec6cede9bb039857cf0e5a7e14a270467426ed0493a2230c449302adbf2",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "00f34adfd0c524cc9c49e877651354fed82ba6bfbdb865e1ee73fb2bec4aa476",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "00f34adfd0c524cc9c49e877651354fed82ba6bfbdb865e1ee73fb2bec4aa476",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "00f34adfd0c524cc9c49e877651354fed82ba6bfbdb865e1ee73fb2bec4aa476",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "0a8df2e89187bcdcb1062fcf29cc6929d461a6515c4c461d5461fcd919891f9c",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "0a8df2e89187bcdcb1062fcf29cc6929d461a6515c4c461d5461fcd919891f9c",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "0a8df2e89187bcdcb1062fcf29cc6929d461a6515c4c461d5461fcd919891f9c",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "1f6b8b4ed4af834c4e6642fecacedc05d0790f846676aad80ac7ace6154a41f6",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "1f6b8b4ed4af834c4e6642fecacedc05d0790f846676aad80ac7ace6154a41f6",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age1_learned",
+      "center_sha256": "1f6b8b4ed4af834c4e6642fecacedc05d0790f846676aad80ac7ace6154a41f6",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "621e151fc99e7297547b0ee4083bd992ebf22c185f1099e4fcdd65a107f45e66",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "621e151fc99e7297547b0ee4083bd992ebf22c185f1099e4fcdd65a107f45e66",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "621e151fc99e7297547b0ee4083bd992ebf22c185f1099e4fcdd65a107f45e66",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "afd202dfce115982b18a755ab0e4f57653e94435331ab2d855af9ec81d02ae90",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "afd202dfce115982b18a755ab0e4f57653e94435331ab2d855af9ec81d02ae90",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "afd202dfce115982b18a755ab0e4f57653e94435331ab2d855af9ec81d02ae90",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "1f6b8b4ed4af834c4e6642fecacedc05d0790f846676aad80ac7ace6154a41f6",
+      "rank": 63,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "1f6b8b4ed4af834c4e6642fecacedc05d0790f846676aad80ac7ace6154a41f6",
+      "rank": 79,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "fashion_mnist_k5_seed193_age8_learned",
+      "center_sha256": "1f6b8b4ed4af834c4e6642fecacedc05d0790f846676aad80ac7ace6154a41f6",
+      "rank": 95,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "307428058ff523f8d8885873d5729a0fcaa5aa670c64851a286bcb584b4aa1c6",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "307428058ff523f8d8885873d5729a0fcaa5aa670c64851a286bcb584b4aa1c6",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "307428058ff523f8d8885873d5729a0fcaa5aa670c64851a286bcb584b4aa1c6",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "787adda0fff6dc7b6d7f77bccb74dfd610d1a0c87d2bc6cb6f765c286ef1ea19",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "787adda0fff6dc7b6d7f77bccb74dfd610d1a0c87d2bc6cb6f765c286ef1ea19",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "787adda0fff6dc7b6d7f77bccb74dfd610d1a0c87d2bc6cb6f765c286ef1ea19",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "5de5b2a1532d56e3bf016c2abe45944d46466695190e7af7a3510710564bcc06",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "5de5b2a1532d56e3bf016c2abe45944d46466695190e7af7a3510710564bcc06",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "5de5b2a1532d56e3bf016c2abe45944d46466695190e7af7a3510710564bcc06",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "09c6a89971ad95c3abf21d9e46f9640abeeafa7a79868824d326e921d82b6765",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "09c6a89971ad95c3abf21d9e46f9640abeeafa7a79868824d326e921d82b6765",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age1_learned",
+      "center_sha256": "09c6a89971ad95c3abf21d9e46f9640abeeafa7a79868824d326e921d82b6765",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "8a21c25e63934b33f9d410c53032860afeb466e0e133da07883f0231299cbc69",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "8a21c25e63934b33f9d410c53032860afeb466e0e133da07883f0231299cbc69",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "8a21c25e63934b33f9d410c53032860afeb466e0e133da07883f0231299cbc69",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "e6f9728e304bb6eec9003cc6f281feb863aad7e3ee964b2c78cdb9fb9e447dec",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "e6f9728e304bb6eec9003cc6f281feb863aad7e3ee964b2c78cdb9fb9e447dec",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "e6f9728e304bb6eec9003cc6f281feb863aad7e3ee964b2c78cdb9fb9e447dec",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "09c6a89971ad95c3abf21d9e46f9640abeeafa7a79868824d326e921d82b6765",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "09c6a89971ad95c3abf21d9e46f9640abeeafa7a79868824d326e921d82b6765",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "09c6a89971ad95c3abf21d9e46f9640abeeafa7a79868824d326e921d82b6765",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "0d73c3f1b8c60ec63365fd7e455ac852137c271896342f0c0220b8bf81a0e837",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "0d73c3f1b8c60ec63365fd7e455ac852137c271896342f0c0220b8bf81a0e837",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed167_age8_learned",
+      "center_sha256": "0d73c3f1b8c60ec63365fd7e455ac852137c271896342f0c0220b8bf81a0e837",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "677d29ad265fb95d67f17fbef55952a080af9befa1eb7506a340b6330da4cd0f",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "677d29ad265fb95d67f17fbef55952a080af9befa1eb7506a340b6330da4cd0f",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "677d29ad265fb95d67f17fbef55952a080af9befa1eb7506a340b6330da4cd0f",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "0fdf73e9b442304773baee74d515108a4a2f93d1a303d81a86d487bab93b6551",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "0fdf73e9b442304773baee74d515108a4a2f93d1a303d81a86d487bab93b6551",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "0fdf73e9b442304773baee74d515108a4a2f93d1a303d81a86d487bab93b6551",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "e202ae41b0184ca44a959537b602e3299bbcca8a95fa4c3b46d18db8cad9cd76",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "e202ae41b0184ca44a959537b602e3299bbcca8a95fa4c3b46d18db8cad9cd76",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "e202ae41b0184ca44a959537b602e3299bbcca8a95fa4c3b46d18db8cad9cd76",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "86e4fd87277865026526dea4b2c2b1017bd126ff43bf651e3ccbd229beae6e2e",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "86e4fd87277865026526dea4b2c2b1017bd126ff43bf651e3ccbd229beae6e2e",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age1_learned",
+      "center_sha256": "86e4fd87277865026526dea4b2c2b1017bd126ff43bf651e3ccbd229beae6e2e",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age8_learned",
+      "center_sha256": "6bb9f4060da44be6092eb62c868359df28ce38820652e43e6f6d2b75beed3d37",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age8_learned",
+      "center_sha256": "6bb9f4060da44be6092eb62c868359df28ce38820652e43e6f6d2b75beed3d37",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age8_learned",
+      "center_sha256": "6bb9f4060da44be6092eb62c868359df28ce38820652e43e6f6d2b75beed3d37",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age8_learned",
+      "center_sha256": "86e4fd87277865026526dea4b2c2b1017bd126ff43bf651e3ccbd229beae6e2e",
+      "rank": 63,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age8_learned",
+      "center_sha256": "86e4fd87277865026526dea4b2c2b1017bd126ff43bf651e3ccbd229beae6e2e",
+      "rank": 79,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k3_seed193_age8_learned",
+      "center_sha256": "86e4fd87277865026526dea4b2c2b1017bd126ff43bf651e3ccbd229beae6e2e",
+      "rank": 95,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "e0db47cc31418e1b203c09c0dc14981cf6619df79f856a8ac44af33d6da60fbd",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "e0db47cc31418e1b203c09c0dc14981cf6619df79f856a8ac44af33d6da60fbd",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "e0db47cc31418e1b203c09c0dc14981cf6619df79f856a8ac44af33d6da60fbd",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "58b1c6967ab38f601bd1b07d7a7a489b79ff45d05011c7dc0c10e17e478b0ca7",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "58b1c6967ab38f601bd1b07d7a7a489b79ff45d05011c7dc0c10e17e478b0ca7",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "58b1c6967ab38f601bd1b07d7a7a489b79ff45d05011c7dc0c10e17e478b0ca7",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "3f65d0e031e97a3215a60c5064d6b1b741ee169f28f9663bc654894cc246a148",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "3f65d0e031e97a3215a60c5064d6b1b741ee169f28f9663bc654894cc246a148",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "3f65d0e031e97a3215a60c5064d6b1b741ee169f28f9663bc654894cc246a148",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "123145038aed39adcc9a73835efa7449a242ebd4b287f664f73367a883e38103",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "123145038aed39adcc9a73835efa7449a242ebd4b287f664f73367a883e38103",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age1_learned",
+      "center_sha256": "123145038aed39adcc9a73835efa7449a242ebd4b287f664f73367a883e38103",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "851509b128f45df94894142b04717af43ffd280a6f83d064740652c761c2cd23",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "851509b128f45df94894142b04717af43ffd280a6f83d064740652c761c2cd23",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "851509b128f45df94894142b04717af43ffd280a6f83d064740652c761c2cd23",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "f80f0a0a8692734aee7ab9693e0a2f6a6babc1f5f3940e5aaaf43f920bd4d11d",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "f80f0a0a8692734aee7ab9693e0a2f6a6babc1f5f3940e5aaaf43f920bd4d11d",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "f80f0a0a8692734aee7ab9693e0a2f6a6babc1f5f3940e5aaaf43f920bd4d11d",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "123145038aed39adcc9a73835efa7449a242ebd4b287f664f73367a883e38103",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "123145038aed39adcc9a73835efa7449a242ebd4b287f664f73367a883e38103",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "123145038aed39adcc9a73835efa7449a242ebd4b287f664f73367a883e38103",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "f86690b907962c09a5695ca4b70d12def9d7e7aca2ef258fc5e0a7ad767ad6a6",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "f86690b907962c09a5695ca4b70d12def9d7e7aca2ef258fc5e0a7ad767ad6a6",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed167_age8_learned",
+      "center_sha256": "f86690b907962c09a5695ca4b70d12def9d7e7aca2ef258fc5e0a7ad767ad6a6",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "7a7d06f843c8e086138f78009a9fdbd6fe7d27366e0add019b946557c0c579e1",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "7a7d06f843c8e086138f78009a9fdbd6fe7d27366e0add019b946557c0c579e1",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "7a7d06f843c8e086138f78009a9fdbd6fe7d27366e0add019b946557c0c579e1",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "8d9a3fbf148b1a52e9c8e6514ffb7483305d8edae3b286a44992ea14845ab646",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "8d9a3fbf148b1a52e9c8e6514ffb7483305d8edae3b286a44992ea14845ab646",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "8d9a3fbf148b1a52e9c8e6514ffb7483305d8edae3b286a44992ea14845ab646",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "b59d6eef5c97d27281645f7bc384c346b8f21f0d709d7db2db7d4b0dde3f5795",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "b59d6eef5c97d27281645f7bc384c346b8f21f0d709d7db2db7d4b0dde3f5795",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "b59d6eef5c97d27281645f7bc384c346b8f21f0d709d7db2db7d4b0dde3f5795",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "b0be11048e27e8e6e9ca5ec8f03671a863d7103dba7ca7ab48c646aa4437b06e",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "b0be11048e27e8e6e9ca5ec8f03671a863d7103dba7ca7ab48c646aa4437b06e",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age1_learned",
+      "center_sha256": "b0be11048e27e8e6e9ca5ec8f03671a863d7103dba7ca7ab48c646aa4437b06e",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "5a2f8ac288a739c1558a91b3ff546e0390f133122a134ec902d5427ac4cce07d",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "5a2f8ac288a739c1558a91b3ff546e0390f133122a134ec902d5427ac4cce07d",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "5a2f8ac288a739c1558a91b3ff546e0390f133122a134ec902d5427ac4cce07d",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "b27794819d81a2d4ea83e7670ec1b3c2adb312e3a5a6913130bd3b50c3b73e09",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "b27794819d81a2d4ea83e7670ec1b3c2adb312e3a5a6913130bd3b50c3b73e09",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "b27794819d81a2d4ea83e7670ec1b3c2adb312e3a5a6913130bd3b50c3b73e09",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "b0be11048e27e8e6e9ca5ec8f03671a863d7103dba7ca7ab48c646aa4437b06e",
+      "rank": 63,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "b0be11048e27e8e6e9ca5ec8f03671a863d7103dba7ca7ab48c646aa4437b06e",
+      "rank": 79,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "fresh",
+      "fit": "mnist_k5_seed193_age8_learned",
+      "center_sha256": "b0be11048e27e8e6e9ca5ec8f03671a863d7103dba7ca7ab48c646aa4437b06e",
+      "rank": 95,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "7c1532dd211a31383380bce142d41ce41398f0d09df16348b7fdda89849ffef8",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "7c1532dd211a31383380bce142d41ce41398f0d09df16348b7fdda89849ffef8",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "7c1532dd211a31383380bce142d41ce41398f0d09df16348b7fdda89849ffef8",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "7f51a5dcf9eab675c9f988828ba3f82e9583ff1b41dddd27c0c1efb05591c33a",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "7f51a5dcf9eab675c9f988828ba3f82e9583ff1b41dddd27c0c1efb05591c33a",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "7f51a5dcf9eab675c9f988828ba3f82e9583ff1b41dddd27c0c1efb05591c33a",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "198ba521f78947e908e4140e5d28d3a00d681425eb678eb1d269c9bfc55e8ba7",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "198ba521f78947e908e4140e5d28d3a00d681425eb678eb1d269c9bfc55e8ba7",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "198ba521f78947e908e4140e5d28d3a00d681425eb678eb1d269c9bfc55e8ba7",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "f2292441c7146cd1314c7077e7021c35a413b5fae7b100ae9f59255d82668f5b",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "f2292441c7146cd1314c7077e7021c35a413b5fae7b100ae9f59255d82668f5b",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age1_learned",
+      "center_sha256": "f2292441c7146cd1314c7077e7021c35a413b5fae7b100ae9f59255d82668f5b",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age8_learned",
+      "center_sha256": "489c57972623a1481172ede614efde11590ccfab15d1e1dd44716e84608c9579",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age8_learned",
+      "center_sha256": "489c57972623a1481172ede614efde11590ccfab15d1e1dd44716e84608c9579",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age8_learned",
+      "center_sha256": "489c57972623a1481172ede614efde11590ccfab15d1e1dd44716e84608c9579",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age8_learned",
+      "center_sha256": "f2292441c7146cd1314c7077e7021c35a413b5fae7b100ae9f59255d82668f5b",
+      "rank": 63,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age8_learned",
+      "center_sha256": "f2292441c7146cd1314c7077e7021c35a413b5fae7b100ae9f59255d82668f5b",
+      "rank": 79,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed11_age8_learned",
+      "center_sha256": "f2292441c7146cd1314c7077e7021c35a413b5fae7b100ae9f59255d82668f5b",
+      "rank": 95,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "b036068d40f3bdfa7d6e6374b78c71cdca5562d640448447c4c7dade38cc3227",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "b036068d40f3bdfa7d6e6374b78c71cdca5562d640448447c4c7dade38cc3227",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "b036068d40f3bdfa7d6e6374b78c71cdca5562d640448447c4c7dade38cc3227",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "f81ee3b4d5ed853935e37db968c3c3e310bf8a2172007b6b0ed2566626222993",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "f81ee3b4d5ed853935e37db968c3c3e310bf8a2172007b6b0ed2566626222993",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "f81ee3b4d5ed853935e37db968c3c3e310bf8a2172007b6b0ed2566626222993",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "30bc0242b4cb7c242c461ea35d9dd252b01f6e5631c23a0eb065ee38442e7b13",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "30bc0242b4cb7c242c461ea35d9dd252b01f6e5631c23a0eb065ee38442e7b13",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "30bc0242b4cb7c242c461ea35d9dd252b01f6e5631c23a0eb065ee38442e7b13",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "049e8e97857050127264d8fd2f3aa2d8f063404eac32aa33cacb3b7202f6dfe4",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "049e8e97857050127264d8fd2f3aa2d8f063404eac32aa33cacb3b7202f6dfe4",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age1_learned",
+      "center_sha256": "049e8e97857050127264d8fd2f3aa2d8f063404eac32aa33cacb3b7202f6dfe4",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "53d4d79c1a86986d6641289f12b8396fee3d2b785e3de7d9685b7255a3867f0c",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "53d4d79c1a86986d6641289f12b8396fee3d2b785e3de7d9685b7255a3867f0c",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "53d4d79c1a86986d6641289f12b8396fee3d2b785e3de7d9685b7255a3867f0c",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "a4839869d42fa9e8692a6ab3f46c30b2b197fef22dd6e07cc38d9e8f6ee04a40",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "a4839869d42fa9e8692a6ab3f46c30b2b197fef22dd6e07cc38d9e8f6ee04a40",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "a4839869d42fa9e8692a6ab3f46c30b2b197fef22dd6e07cc38d9e8f6ee04a40",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "049e8e97857050127264d8fd2f3aa2d8f063404eac32aa33cacb3b7202f6dfe4",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "049e8e97857050127264d8fd2f3aa2d8f063404eac32aa33cacb3b7202f6dfe4",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "049e8e97857050127264d8fd2f3aa2d8f063404eac32aa33cacb3b7202f6dfe4",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "e0ea265f2f9a55a28dfdb410d1c73670781459cb177bcd346702f9693261a93a",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "e0ea265f2f9a55a28dfdb410d1c73670781459cb177bcd346702f9693261a93a",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed37_age8_learned",
+      "center_sha256": "e0ea265f2f9a55a28dfdb410d1c73670781459cb177bcd346702f9693261a93a",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "de54629fbcf11dc7053203555fa4ab730be8444c68276429fed367580a5d4f28",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "de54629fbcf11dc7053203555fa4ab730be8444c68276429fed367580a5d4f28",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "de54629fbcf11dc7053203555fa4ab730be8444c68276429fed367580a5d4f28",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "faf5a7c73600a4540a36a399f867c954824439bc30491f86ada8a50c6f11745e",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "faf5a7c73600a4540a36a399f867c954824439bc30491f86ada8a50c6f11745e",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "faf5a7c73600a4540a36a399f867c954824439bc30491f86ada8a50c6f11745e",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "e3c08f5eaa839e1e4f003ad2621d8ceee7c538a6296aa2c75da22f80d0e0b9cb",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "e3c08f5eaa839e1e4f003ad2621d8ceee7c538a6296aa2c75da22f80d0e0b9cb",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "e3c08f5eaa839e1e4f003ad2621d8ceee7c538a6296aa2c75da22f80d0e0b9cb",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "fe2ffb04d6dd28b15b77748a09b04dd37caf015e1c2bbbaad796e38dd98ac679",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "fe2ffb04d6dd28b15b77748a09b04dd37caf015e1c2bbbaad796e38dd98ac679",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age1_learned",
+      "center_sha256": "fe2ffb04d6dd28b15b77748a09b04dd37caf015e1c2bbbaad796e38dd98ac679",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "048d8803e474f2d9b354511e5bbb1a58074ec7f44f5a639149b5db01f82855d9",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "048d8803e474f2d9b354511e5bbb1a58074ec7f44f5a639149b5db01f82855d9",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "048d8803e474f2d9b354511e5bbb1a58074ec7f44f5a639149b5db01f82855d9",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "3ea147dfce8d7a300eae8d75779f1827f5bd156fa34e36c7fdcea344e61b54ae",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "3ea147dfce8d7a300eae8d75779f1827f5bd156fa34e36c7fdcea344e61b54ae",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "3ea147dfce8d7a300eae8d75779f1827f5bd156fa34e36c7fdcea344e61b54ae",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "fe2ffb04d6dd28b15b77748a09b04dd37caf015e1c2bbbaad796e38dd98ac679",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "fe2ffb04d6dd28b15b77748a09b04dd37caf015e1c2bbbaad796e38dd98ac679",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "fe2ffb04d6dd28b15b77748a09b04dd37caf015e1c2bbbaad796e38dd98ac679",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "9e4e383e848cb808c792818e35af78050267171cde5038ea342de8ba349c4ca5",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "9e4e383e848cb808c792818e35af78050267171cde5038ea342de8ba349c4ca5",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed67_age8_learned",
+      "center_sha256": "9e4e383e848cb808c792818e35af78050267171cde5038ea342de8ba349c4ca5",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "7c624616881cbc354978a71ac74f1032af05551cde979138523139995b20ac07",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "7c624616881cbc354978a71ac74f1032af05551cde979138523139995b20ac07",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "7c624616881cbc354978a71ac74f1032af05551cde979138523139995b20ac07",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "7214877df606405d97789f080f61fa27085ad7b65310c633a31679c3f835b2f8",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "7214877df606405d97789f080f61fa27085ad7b65310c633a31679c3f835b2f8",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "7214877df606405d97789f080f61fa27085ad7b65310c633a31679c3f835b2f8",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "5d2f37d6936b05e659a0abe79a7c7b4277d7aca94c84d62e8c3860225ff071cb",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "5d2f37d6936b05e659a0abe79a7c7b4277d7aca94c84d62e8c3860225ff071cb",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "5d2f37d6936b05e659a0abe79a7c7b4277d7aca94c84d62e8c3860225ff071cb",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "915f26d7e5fe46160e1b253788d0de81328d1688f1e99e4408e266b321aba49a",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "915f26d7e5fe46160e1b253788d0de81328d1688f1e99e4408e266b321aba49a",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age1_learned",
+      "center_sha256": "915f26d7e5fe46160e1b253788d0de81328d1688f1e99e4408e266b321aba49a",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "85085e1a9bbc54bab8a3568d27486658ce6cb122c2e55155dda5db770a2a9bb8",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "85085e1a9bbc54bab8a3568d27486658ce6cb122c2e55155dda5db770a2a9bb8",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "85085e1a9bbc54bab8a3568d27486658ce6cb122c2e55155dda5db770a2a9bb8",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "32ec99ca133633b4fbfe0e173193d5fb3bf35b9005d59fe2519ff43ae01f38a4",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "32ec99ca133633b4fbfe0e173193d5fb3bf35b9005d59fe2519ff43ae01f38a4",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "32ec99ca133633b4fbfe0e173193d5fb3bf35b9005d59fe2519ff43ae01f38a4",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "915f26d7e5fe46160e1b253788d0de81328d1688f1e99e4408e266b321aba49a",
+      "rank": 63,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "915f26d7e5fe46160e1b253788d0de81328d1688f1e99e4408e266b321aba49a",
+      "rank": 79,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k3_seed79_age8_learned",
+      "center_sha256": "915f26d7e5fe46160e1b253788d0de81328d1688f1e99e4408e266b321aba49a",
+      "rank": 95,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "dd2f6b8bbf2a364429873a6b078aaacfc4b55e6ef7cfa08d742272090625f0e6",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "dd2f6b8bbf2a364429873a6b078aaacfc4b55e6ef7cfa08d742272090625f0e6",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "dd2f6b8bbf2a364429873a6b078aaacfc4b55e6ef7cfa08d742272090625f0e6",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "0883268037d856aaabcc4ec170c1c00111d8d2d8b39b641696299e7a32668b40",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "0883268037d856aaabcc4ec170c1c00111d8d2d8b39b641696299e7a32668b40",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "0883268037d856aaabcc4ec170c1c00111d8d2d8b39b641696299e7a32668b40",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "269ae357c4e618f8bf66dcde06f50d0a5a2faec892cb91b5fb8f2758e32619db",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "269ae357c4e618f8bf66dcde06f50d0a5a2faec892cb91b5fb8f2758e32619db",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "269ae357c4e618f8bf66dcde06f50d0a5a2faec892cb91b5fb8f2758e32619db",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "9801a3936f7c722827fbca1e3285ed67ccf56833cb9a30b08c13c9a26a3ed433",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "9801a3936f7c722827fbca1e3285ed67ccf56833cb9a30b08c13c9a26a3ed433",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age1_learned",
+      "center_sha256": "9801a3936f7c722827fbca1e3285ed67ccf56833cb9a30b08c13c9a26a3ed433",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age8_learned",
+      "center_sha256": "3e2763d63aaa6ba12b4db2524a9a64b53ba4a9618d1c6f0ae33259b324af9926",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age8_learned",
+      "center_sha256": "3e2763d63aaa6ba12b4db2524a9a64b53ba4a9618d1c6f0ae33259b324af9926",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age8_learned",
+      "center_sha256": "3e2763d63aaa6ba12b4db2524a9a64b53ba4a9618d1c6f0ae33259b324af9926",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age8_learned",
+      "center_sha256": "9801a3936f7c722827fbca1e3285ed67ccf56833cb9a30b08c13c9a26a3ed433",
+      "rank": 63,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age8_learned",
+      "center_sha256": "9801a3936f7c722827fbca1e3285ed67ccf56833cb9a30b08c13c9a26a3ed433",
+      "rank": 79,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed11_age8_learned",
+      "center_sha256": "9801a3936f7c722827fbca1e3285ed67ccf56833cb9a30b08c13c9a26a3ed433",
+      "rank": 95,
+      "source_sets": [
+        2,
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "5d1531dc4dea442ecebc7b46bffc050d3ca1b5517a9eb7a4143f7c2609d68de3",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "5d1531dc4dea442ecebc7b46bffc050d3ca1b5517a9eb7a4143f7c2609d68de3",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "5d1531dc4dea442ecebc7b46bffc050d3ca1b5517a9eb7a4143f7c2609d68de3",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "32d4e804ac99546a5cf7e99fbe3729c5ef38358553b790ca10126ac76b46448e",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "32d4e804ac99546a5cf7e99fbe3729c5ef38358553b790ca10126ac76b46448e",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "32d4e804ac99546a5cf7e99fbe3729c5ef38358553b790ca10126ac76b46448e",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "f768b04d006f81e56ab0843317103e73e1c6855dd7f2812039d7b630f5c47374",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "f768b04d006f81e56ab0843317103e73e1c6855dd7f2812039d7b630f5c47374",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "f768b04d006f81e56ab0843317103e73e1c6855dd7f2812039d7b630f5c47374",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "976507dba7c85f28cb52b677a386d5ecd5482a57d018a6e64f726e35eaa6ff33",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "976507dba7c85f28cb52b677a386d5ecd5482a57d018a6e64f726e35eaa6ff33",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age1_learned",
+      "center_sha256": "976507dba7c85f28cb52b677a386d5ecd5482a57d018a6e64f726e35eaa6ff33",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "aaa26d4f78b4ff61973012a7dff9b792dee3459170fcc637b4b5f14c586da7ff",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "aaa26d4f78b4ff61973012a7dff9b792dee3459170fcc637b4b5f14c586da7ff",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "aaa26d4f78b4ff61973012a7dff9b792dee3459170fcc637b4b5f14c586da7ff",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "4285702b101e75406be11b28ae7d00baa0d904ff0f3974a38d7a987c866d5850",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "4285702b101e75406be11b28ae7d00baa0d904ff0f3974a38d7a987c866d5850",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "4285702b101e75406be11b28ae7d00baa0d904ff0f3974a38d7a987c866d5850",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "976507dba7c85f28cb52b677a386d5ecd5482a57d018a6e64f726e35eaa6ff33",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "976507dba7c85f28cb52b677a386d5ecd5482a57d018a6e64f726e35eaa6ff33",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "976507dba7c85f28cb52b677a386d5ecd5482a57d018a6e64f726e35eaa6ff33",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "01d20968ed6f5f86953808bf7c9244610aae7ecf2f067591ce367e8663cb512b",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "01d20968ed6f5f86953808bf7c9244610aae7ecf2f067591ce367e8663cb512b",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "fashion_mnist_k5_seed41_age8_learned",
+      "center_sha256": "01d20968ed6f5f86953808bf7c9244610aae7ecf2f067591ce367e8663cb512b",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "5e77432e5500127f8de5faa2aedd270f060cbfab6f8d58e211ca3a8b0c91fa8e",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "5e77432e5500127f8de5faa2aedd270f060cbfab6f8d58e211ca3a8b0c91fa8e",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "5e77432e5500127f8de5faa2aedd270f060cbfab6f8d58e211ca3a8b0c91fa8e",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "04d82eaaccf82583ec97e3334f0f9d171f0faeae4df915b087f04451522eaa74",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "04d82eaaccf82583ec97e3334f0f9d171f0faeae4df915b087f04451522eaa74",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "04d82eaaccf82583ec97e3334f0f9d171f0faeae4df915b087f04451522eaa74",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "7655fb0d41b259d7fee2044dc9dafd15a040ca58a090e6a4c71691a4a63e3a96",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "7655fb0d41b259d7fee2044dc9dafd15a040ca58a090e6a4c71691a4a63e3a96",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "7655fb0d41b259d7fee2044dc9dafd15a040ca58a090e6a4c71691a4a63e3a96",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "080a463055ecc201691e345fc45055f0472af40d880b3d4120cfde24e5b3ef52",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "080a463055ecc201691e345fc45055f0472af40d880b3d4120cfde24e5b3ef52",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age1_learned",
+      "center_sha256": "080a463055ecc201691e345fc45055f0472af40d880b3d4120cfde24e5b3ef52",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "ce25f7d7072d9357c0ef2c5a66a559d9409f3edded6ac3a520133d1fb47c8a41",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "ce25f7d7072d9357c0ef2c5a66a559d9409f3edded6ac3a520133d1fb47c8a41",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "ce25f7d7072d9357c0ef2c5a66a559d9409f3edded6ac3a520133d1fb47c8a41",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "e199ce2bf6f384613255b8ce7e47aa4ff6a6e41a7f9ee01c5c57f66859a4bfff",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "e199ce2bf6f384613255b8ce7e47aa4ff6a6e41a7f9ee01c5c57f66859a4bfff",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "e199ce2bf6f384613255b8ce7e47aa4ff6a6e41a7f9ee01c5c57f66859a4bfff",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "080a463055ecc201691e345fc45055f0472af40d880b3d4120cfde24e5b3ef52",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "080a463055ecc201691e345fc45055f0472af40d880b3d4120cfde24e5b3ef52",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "080a463055ecc201691e345fc45055f0472af40d880b3d4120cfde24e5b3ef52",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "41ef8ff114d57e805ce039d18e8647c94c95fd5f298c662890d14bc9be6088a0",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "41ef8ff114d57e805ce039d18e8647c94c95fd5f298c662890d14bc9be6088a0",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed37_age8_learned",
+      "center_sha256": "41ef8ff114d57e805ce039d18e8647c94c95fd5f298c662890d14bc9be6088a0",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "0733229d48889f27bd33e82364eb20eab384a59767a8237ec294131c6779a5bc",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "0733229d48889f27bd33e82364eb20eab384a59767a8237ec294131c6779a5bc",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "0733229d48889f27bd33e82364eb20eab384a59767a8237ec294131c6779a5bc",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "f3fce587d1989b86154e93ec469c4cc388ff6a72a0e8fe1c1089112e97ec7e2f",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "f3fce587d1989b86154e93ec469c4cc388ff6a72a0e8fe1c1089112e97ec7e2f",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "f3fce587d1989b86154e93ec469c4cc388ff6a72a0e8fe1c1089112e97ec7e2f",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "c521f6c7ab5c0ef11c2d5dee78f403276e31ed903d3c755e7378051d037a64e1",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "c521f6c7ab5c0ef11c2d5dee78f403276e31ed903d3c755e7378051d037a64e1",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "c521f6c7ab5c0ef11c2d5dee78f403276e31ed903d3c755e7378051d037a64e1",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "16cdedaf6326881dde034f5bdf729cae3a1148f3a8a4730028164a21000c7993",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "16cdedaf6326881dde034f5bdf729cae3a1148f3a8a4730028164a21000c7993",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age1_learned",
+      "center_sha256": "16cdedaf6326881dde034f5bdf729cae3a1148f3a8a4730028164a21000c7993",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "470b8e8c2e067430ab4ec7ebdd7c0444ba43635bbbde4a7f845e264b327ce681",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "470b8e8c2e067430ab4ec7ebdd7c0444ba43635bbbde4a7f845e264b327ce681",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "470b8e8c2e067430ab4ec7ebdd7c0444ba43635bbbde4a7f845e264b327ce681",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "6818cf11c435315b9762316d470175291f4281666bcae186a07657af095fa9d6",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "6818cf11c435315b9762316d470175291f4281666bcae186a07657af095fa9d6",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "6818cf11c435315b9762316d470175291f4281666bcae186a07657af095fa9d6",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "16cdedaf6326881dde034f5bdf729cae3a1148f3a8a4730028164a21000c7993",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "16cdedaf6326881dde034f5bdf729cae3a1148f3a8a4730028164a21000c7993",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "16cdedaf6326881dde034f5bdf729cae3a1148f3a8a4730028164a21000c7993",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "24c448066183b288dee63e51ea3c8370ed7e99604fc76f7e48c2050b0eec9342",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "24c448066183b288dee63e51ea3c8370ed7e99604fc76f7e48c2050b0eec9342",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k10_seed41_age8_learned",
+      "center_sha256": "24c448066183b288dee63e51ea3c8370ed7e99604fc76f7e48c2050b0eec9342",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "bb8934fbfeae89ec53512ff4b771d70d8d6ec7f55ca646666d1bea4814116ea8",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "bb8934fbfeae89ec53512ff4b771d70d8d6ec7f55ca646666d1bea4814116ea8",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "bb8934fbfeae89ec53512ff4b771d70d8d6ec7f55ca646666d1bea4814116ea8",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "db3b6e63fea5e8ebe58718ed79f56c16f19a36e8afeb8df9c0cd2800efb51979",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "db3b6e63fea5e8ebe58718ed79f56c16f19a36e8afeb8df9c0cd2800efb51979",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "db3b6e63fea5e8ebe58718ed79f56c16f19a36e8afeb8df9c0cd2800efb51979",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "d19a52614167bfebb9c3597a7663a6a8d1f8835649a35147dc40dc9d9aa41236",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "d19a52614167bfebb9c3597a7663a6a8d1f8835649a35147dc40dc9d9aa41236",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "d19a52614167bfebb9c3597a7663a6a8d1f8835649a35147dc40dc9d9aa41236",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "c32c4fd24927d6b5ce5494b5127d4f390c5e7b648d4cb8770b7a92cbdd9d0192",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "c32c4fd24927d6b5ce5494b5127d4f390c5e7b648d4cb8770b7a92cbdd9d0192",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age1_learned",
+      "center_sha256": "c32c4fd24927d6b5ce5494b5127d4f390c5e7b648d4cb8770b7a92cbdd9d0192",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "652e83bfc938930a3de327d7b9678884da9dd39750f614bb6f14cddbdf969c81",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "652e83bfc938930a3de327d7b9678884da9dd39750f614bb6f14cddbdf969c81",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "652e83bfc938930a3de327d7b9678884da9dd39750f614bb6f14cddbdf969c81",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "87e61a78c4211020629fdb592d4277db5e91c8640a82cd22172c4ad7af84256c",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "87e61a78c4211020629fdb592d4277db5e91c8640a82cd22172c4ad7af84256c",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "87e61a78c4211020629fdb592d4277db5e91c8640a82cd22172c4ad7af84256c",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "c32c4fd24927d6b5ce5494b5127d4f390c5e7b648d4cb8770b7a92cbdd9d0192",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "c32c4fd24927d6b5ce5494b5127d4f390c5e7b648d4cb8770b7a92cbdd9d0192",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "c32c4fd24927d6b5ce5494b5127d4f390c5e7b648d4cb8770b7a92cbdd9d0192",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "acfa688d952c1c1719f019dcad76f40e31874cd68077260cf06aa9392b19f5fa",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "acfa688d952c1c1719f019dcad76f40e31874cd68077260cf06aa9392b19f5fa",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed11_age8_learned",
+      "center_sha256": "acfa688d952c1c1719f019dcad76f40e31874cd68077260cf06aa9392b19f5fa",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "cb5746f37ead9779fbf4c0af8cd81c3b08e8e6754beaa4fefcdbac5ed7c690fd",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "cb5746f37ead9779fbf4c0af8cd81c3b08e8e6754beaa4fefcdbac5ed7c690fd",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "cb5746f37ead9779fbf4c0af8cd81c3b08e8e6754beaa4fefcdbac5ed7c690fd",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "15d7cfe2d2035cf036d971205bf267170519da3c8af08edcc95ec285037d0cf5",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "15d7cfe2d2035cf036d971205bf267170519da3c8af08edcc95ec285037d0cf5",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "15d7cfe2d2035cf036d971205bf267170519da3c8af08edcc95ec285037d0cf5",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "f6338c3cef4c7481c7e9ef01ce3b7f9f438a6fe805a9027f5f172cc3d31f9db0",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "f6338c3cef4c7481c7e9ef01ce3b7f9f438a6fe805a9027f5f172cc3d31f9db0",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "f6338c3cef4c7481c7e9ef01ce3b7f9f438a6fe805a9027f5f172cc3d31f9db0",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "be8bdb3d3e02b773cfd0ebac41f4082289bbf2685b4b2387a088a3330c4a7351",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "be8bdb3d3e02b773cfd0ebac41f4082289bbf2685b4b2387a088a3330c4a7351",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age1_learned",
+      "center_sha256": "be8bdb3d3e02b773cfd0ebac41f4082289bbf2685b4b2387a088a3330c4a7351",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "9242afc58abd6d5ef3c811047928094c3fbde7c376c2748379d92c013226d735",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "9242afc58abd6d5ef3c811047928094c3fbde7c376c2748379d92c013226d735",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "9242afc58abd6d5ef3c811047928094c3fbde7c376c2748379d92c013226d735",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "0b46529ba9b47d07f7435f70dbb977544f1ee0ec69dcb2631baa7c3969131f2a",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "0b46529ba9b47d07f7435f70dbb977544f1ee0ec69dcb2631baa7c3969131f2a",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "0b46529ba9b47d07f7435f70dbb977544f1ee0ec69dcb2631baa7c3969131f2a",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "be8bdb3d3e02b773cfd0ebac41f4082289bbf2685b4b2387a088a3330c4a7351",
+      "rank": 63,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "inconclusive"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "be8bdb3d3e02b773cfd0ebac41f4082289bbf2685b4b2387a088a3330c4a7351",
+      "rank": 79,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed37_age8_learned",
+      "center_sha256": "be8bdb3d3e02b773cfd0ebac41f4082289bbf2685b4b2387a088a3330c4a7351",
+      "rank": 95,
+      "source_sets": [
+        3,
+        4
+      ],
+      "public_identity": false,
+      "truth": "worsens",
+      "decision": "worsens"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "a85bf1ee60c5a802b8e9f26dd8787cb0f28d02d7c3bf5227ae6c03de3d115813",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "a85bf1ee60c5a802b8e9f26dd8787cb0f28d02d7c3bf5227ae6c03de3d115813",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "a85bf1ee60c5a802b8e9f26dd8787cb0f28d02d7c3bf5227ae6c03de3d115813",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "372c2e31fe84ef23c31f521d8bb6c0cfe185427b31cd9a4d7bf6fbd36597b35d",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "372c2e31fe84ef23c31f521d8bb6c0cfe185427b31cd9a4d7bf6fbd36597b35d",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "372c2e31fe84ef23c31f521d8bb6c0cfe185427b31cd9a4d7bf6fbd36597b35d",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "248917e4a531bf72839d0a8c2c0d26537b3353805e32188e0e09ceb8072df8b1",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "248917e4a531bf72839d0a8c2c0d26537b3353805e32188e0e09ceb8072df8b1",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "248917e4a531bf72839d0a8c2c0d26537b3353805e32188e0e09ceb8072df8b1",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "cb9f00a44469ac27d1419967b996d0cd2d08da6dfbf96b07659e04257111e5e6",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "cb9f00a44469ac27d1419967b996d0cd2d08da6dfbf96b07659e04257111e5e6",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age1_learned",
+      "center_sha256": "cb9f00a44469ac27d1419967b996d0cd2d08da6dfbf96b07659e04257111e5e6",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "4b3a9b587a3461047e8ea33fd66f6f3683109b73df3cda9612dba73f0059d25e",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "4b3a9b587a3461047e8ea33fd66f6f3683109b73df3cda9612dba73f0059d25e",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "4b3a9b587a3461047e8ea33fd66f6f3683109b73df3cda9612dba73f0059d25e",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "600f2cd5faabf7ddb0148bf4fddf2ee675fe9f9408dce4ef9602219232a72d5b",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "600f2cd5faabf7ddb0148bf4fddf2ee675fe9f9408dce4ef9602219232a72d5b",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "600f2cd5faabf7ddb0148bf4fddf2ee675fe9f9408dce4ef9602219232a72d5b",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "cb9f00a44469ac27d1419967b996d0cd2d08da6dfbf96b07659e04257111e5e6",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "cb9f00a44469ac27d1419967b996d0cd2d08da6dfbf96b07659e04257111e5e6",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "cb9f00a44469ac27d1419967b996d0cd2d08da6dfbf96b07659e04257111e5e6",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "e969a3759c445d76cb301369e5784c2af181cc4bfbfe08d1e6d84de245eb6d14",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "e969a3759c445d76cb301369e5784c2af181cc4bfbfe08d1e6d84de245eb6d14",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed67_age8_learned",
+      "center_sha256": "e969a3759c445d76cb301369e5784c2af181cc4bfbfe08d1e6d84de245eb6d14",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "90e63a2bf481b389cb0fed29c2e1e80b84189d24d5c1d744b4889bba4fc7b8bc",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "90e63a2bf481b389cb0fed29c2e1e80b84189d24d5c1d744b4889bba4fc7b8bc",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "90e63a2bf481b389cb0fed29c2e1e80b84189d24d5c1d744b4889bba4fc7b8bc",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "d349c399a751c6857dfdf96ec5878c8f2d33a6a15c109b3856c8f247e1e9a2b6",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "d349c399a751c6857dfdf96ec5878c8f2d33a6a15c109b3856c8f247e1e9a2b6",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "d349c399a751c6857dfdf96ec5878c8f2d33a6a15c109b3856c8f247e1e9a2b6",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "dad08fc998b18738e4b73762ed4ecd741b7bd6a0a7ec1d72509748896df101f8",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "dad08fc998b18738e4b73762ed4ecd741b7bd6a0a7ec1d72509748896df101f8",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "dad08fc998b18738e4b73762ed4ecd741b7bd6a0a7ec1d72509748896df101f8",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "c3e67104a43db1f75b98bce024182d966d9a42328f8d5586f9eec6482fb3b22b",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "c3e67104a43db1f75b98bce024182d966d9a42328f8d5586f9eec6482fb3b22b",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age1_learned",
+      "center_sha256": "c3e67104a43db1f75b98bce024182d966d9a42328f8d5586f9eec6482fb3b22b",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "bffdbeeea97bef16265c9b99a7ff6c95fbb883e7419b0846bd8f05258a408cb2",
+      "rank": 63,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "bffdbeeea97bef16265c9b99a7ff6c95fbb883e7419b0846bd8f05258a408cb2",
+      "rank": 79,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "bffdbeeea97bef16265c9b99a7ff6c95fbb883e7419b0846bd8f05258a408cb2",
+      "rank": 95,
+      "source_sets": [
+        1
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "9c6e0bfefa6d5912757a792354aaa9cb0a8023d0971c29489169954ca7b28a41",
+      "rank": 63,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "9c6e0bfefa6d5912757a792354aaa9cb0a8023d0971c29489169954ca7b28a41",
+      "rank": 79,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "9c6e0bfefa6d5912757a792354aaa9cb0a8023d0971c29489169954ca7b28a41",
+      "rank": 95,
+      "source_sets": [
+        2
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "c3e67104a43db1f75b98bce024182d966d9a42328f8d5586f9eec6482fb3b22b",
+      "rank": 63,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "c3e67104a43db1f75b98bce024182d966d9a42328f8d5586f9eec6482fb3b22b",
+      "rank": 79,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "c3e67104a43db1f75b98bce024182d966d9a42328f8d5586f9eec6482fb3b22b",
+      "rank": 95,
+      "source_sets": [
+        3
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "f2e412fcf30ed4807718e400faf2e3ca84c793653e215672723840717440ccc7",
+      "rank": 63,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "f2e412fcf30ed4807718e400faf2e3ca84c793653e215672723840717440ccc7",
+      "rank": 79,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    },
+    {
+      "cohort": "historical",
+      "fit": "mnist_k5_seed79_age8_learned",
+      "center_sha256": "f2e412fcf30ed4807718e400faf2e3ca84c793653e215672723840717440ccc7",
+      "rank": 95,
+      "source_sets": [
+        4
+      ],
+      "public_identity": false,
+      "truth": "improves",
+      "decision": "improves"
+    }
+  ]
+}

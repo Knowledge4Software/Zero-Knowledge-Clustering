@@ -1,0 +1,10 @@
+{
+  "recorded_unix": 1793043622.4003034,
+  "before_extended_proof_cases": true,
+  "scientific_profile_unchanged": true,
+  "selection_unchanged": true,
+  "short_case_phase_limit_hours": 12,
+  "large_case_phase_limit_hours": 72,
+  "large_case_minimum_records": 4096,
+  "reason": "A16384-row exactFull control needs10240 batch proofs across reference plus4 proposals. Prior measured per-proof costs imply multi-day work, so a12hour whole-command timeout would terminate healthy work. Preserve the RAM/RSS/disk/user-stop guards and charge all actual work. The larger declared runtime limit applies equally to every method and paid fallback."
+}

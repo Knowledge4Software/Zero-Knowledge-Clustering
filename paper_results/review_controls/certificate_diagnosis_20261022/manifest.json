@@ -1,0 +1,8 @@
+{
+  "source": "code/validation/outputs/review_update_decisions_20261021T184553Z/native_capture_20261022T0530Z/native/cells.csv",
+  "source_sha256": "6a3c299728e8d782c51a686d9a03175b05f543a02207eadb453c03c475b11e2d",
+  "scope": "Completed numerical grid only; not proof timing, not new experiments. Means across dependent update requests; do not interpret request counts as independent trials.",
+  "comparison": "All three datasets, both ages, both methods and both ranks retained. Agreement is with exact quantized nearest-center assignments, not ground-truth class labels.",
+  "original_workload": "Higher coverage in these refitted workloads does not demonstrate that the original 61.63% coverage workload has been repaired.",
+  "timing": "Do not combine the original 5.08x result or the standalone N128 2.07x result with these grid accuracies as though they were measured together."
+}

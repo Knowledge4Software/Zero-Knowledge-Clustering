@@ -1,0 +1,25 @@
+\begin{table*}[tbp]
+\centering
+\caption{Quality in matched unknown-future-center controls. Percentage columns concern different quantities: agreement, assignment-certified fraction, native cost error and proved change-interval width. Width is a percentage of old exact cost, before fallback. Moments-only has no label predictor or comparable two-sided width. A dash in the regression column means no regression was present.}
+\label{tab:matched-quality}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{llrrrrrr}
+\toprule
+Cohort & Method & Agr. & Worst & Label cert. & Cost error & Width & Regr.\\
+\midrule
+MNIST mature & Full & 100.000 & 100.000 & 100.000 & 0.0000 & 0.0000 & exact\\
+MNIST mature & Centroid & 100.000 & 100.000 & 96.680 & 0.0014 & 0.0756 & 4/4\\
+MNIST mature & PCA & 99.805 & 99.219 & 95.312 & 0.0568 & 0.0860 & 4/4\\
+MNIST mature & Moments-only & -- & -- & -- & -- & -- & 0/4\\
+Fashion early & Full & 100.000 & 100.000 & 100.000 & 0.0000 & 0.0000 & exact\\
+Fashion early & Centroid & 100.000 & 100.000 & 99.805 & 0.0073 & 0.1209 & --\\
+Fashion early & PCA & 100.000 & 100.000 & 99.805 & 0.0174 & 0.0930 & --\\
+Fashion early & Moments-only & -- & -- & -- & -- & -- & --\\
+MNIST scale & Full & 100.000 & 100.000 & 100.000 & 0.0000 & 0.0000 & exact\\
+MNIST scale & Centroid & 99.854 & 99.805 & 94.507 & 0.0258 & 0.6867 & --\\
+MNIST scale & PCA & 99.902 & 99.805 & 95.239 & 0.3179 & 0.5658 & --\\
+MNIST scale & Moments-only & -- & -- & -- & -- & -- & --\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

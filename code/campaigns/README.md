@@ -1,35 +1,33 @@
-# Campaign launchers
+# Local experiment orchestration
 
-The current review-control campaign finished all 14 cases on 20 October 2026. The [completed guide](../docs/review_controls_20261020.md) records both remote roots, checked evidence and reproduction commands. Launchers are retained for new, explicitly named campaigns; do not relaunch a completed campaign to inspect its status.
+The active review campaign uses `referee_two_reviews_local.py`, followed
+serially by `referee_review_followups.py`. State is under
+`code/validation/outputs/referee_two_reviews_20261027/`. A separate completed-
+evidence finalizer builds an unreviewed PDF candidate after the queue ends.
 
-Earlier new-center and per-RQ workflows below target separate historical raw runs. Their local outputs are excluded from Git, and their measurements must not be pooled with the current matched proof cohort.
+Inspect current execution using `python -m analysis.two_review_campaign_status`
+from the repository root with `PYTHONPATH=code`. Do not start a duplicate
+coordinator while the recorded live supervisor owns the queue.
 
-Run the PowerShell launchers from any working directory. They resolve the code
-and results folders relative to their own location. Python module commands must
-be run from `code/`.
+The shared campaign budget is 24 hours. Proof catalogs are at most 1024
+records, with memory, RSS, disk and explicit-stop guards. All attempts,
+resource exclusions, fallback costs and negative outcomes remain recorded.
+The current policy is `validation/outputs/referee_round2_20261026/execution_policy.json`.
 
-| Entry point | Purpose |
-| --- | --- |
-| `bash campaigns/paper_server.sh rq1\|pilot\|native\|selected\|proof` | Current balanced Ubuntu campaign; see the [server guide](../docs/rq2345_complete.md). |
-| `python -m campaigns.tiny_all_rq_check` | Tiny real check of every stage and proof ablations; engineering evidence only. |
-| `stages.ps1` | Pilot, precision, full native, selected proofs, ablation, final report. |
-| `native.ps1` | Sequential native campaign with preflight checks. |
-| `native_parallel.ps1` | Parallel RQ3 orchestration and remaining native studies. |
-| `supplements.ps1` | Supplemental studies and report generation. |
-| `python -m campaigns.rq3_parallel` | Process-based RQ3 overhead measurements. |
-| `python -m campaigns.supplements` | Supplemental measurements with per-RQ outputs. |
+Older orchestration modules remain source for existing proof receipts and
+controlled reruns. Their old output directories and interim launch reports
+are not prerequisites for the current queue. Mobin is permanently retired;
+there is no remote target and no server work should be launched.
 
-The [experiment runbook](../docs/experiments.md) gives exact stage commands.
-The PowerShell entries below the current Ubuntu commands retain the earlier
-campaign designs; do not mix their rows into the balanced campaign.
-The old loose `run_*.ps1` launchers have been moved here. Use `stages.ps1 -Stage
-AccuracyPilot` instead of the redundant standalone pilot launcher.
+Cost-aware laptop control: `run_cost_aware_control.py` selects compact or Full
+before query proving and checks whether a batch amortizes key loading. See
+`code/docs/cost_aware_control_20261029.md` for commands and timing scope.
+`cost_aware_pilot.py` is the paired warm control; completed receipts are kept in
+`validation/outputs/cost_aware_20261029` and its final text follow-up. These
+engineering tests do not modify the paper or establish wins over every baseline.
 
-`supplements/engine.py` retains the original measured implementation byte for
-byte: its SHA-256 is part of existing checkpoint contexts. `supplements/__main__.py`
-provides the current folder routing without changing measured algorithms or
-invalidating those checkpoints. Resume with the original worker count.
-
-## 20 October reviewer controls
-
-`launch_review_full.py` and `launch_review_certified.py` create fresh timestamped Mobin releases with frozen sources, inputs and binaries. The certified queue waits for the exact queue so numerical benchmarks do not contend. Both queues completed successfully; inspect their preserved manifests and final statuses instead of relaunching them. The [review-control guide](../docs/review_controls_20261020.md) records the exact roots and completed measurements.
+The 29 October published-baseline gate adds random-sign projections, sparse
+random projections and lightweight coresets, with raw numerical comparisons
+and separately identified proof adapters. Its immutable inputs and guarded
+attempts are under `validation/outputs/published_baseline_gate_20261029/`.
+See [scope and commands](../docs/published_baseline_gate_20261029.md).

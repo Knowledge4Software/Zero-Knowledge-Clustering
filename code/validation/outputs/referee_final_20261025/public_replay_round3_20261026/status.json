@@ -1,0 +1,186 @@
+{
+  "complete": true,
+  "status": "complete",
+  "pid": 33212,
+  "started_unix": 1793026744.6761348,
+  "results": [
+    {
+      "label": "mnist_switching_mature_n128_full",
+      "verified": 80,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_switching_mature_n128\\ordered_head\\full\\public_bundle",
+      "source_manifest_sha256": "6a461cf114f66ce2082f542692c41b3807f9a5f2b3fb96d67300edae4f962205",
+      "replay_receipt_sha256": "676feab204f2cddc3947b0d9fd10aceb6e17d519d0daefb41f3146131fbf7624",
+      "wall_seconds": 2.390999999945052
+    },
+    {
+      "label": "mnist_switching_mature_n128_head79",
+      "verified": 166,
+      "binary_sha256": "6d138f6f321877f110253928ed1c0c3270a1fb5ae36dbb6f77ab2ed22e7afa7d",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_refinement_20261025\\mnist_switching_mature_n128\\head79\\public",
+      "source_manifest_sha256": "bcecb51b1b1c222f7975d24ffb2cddda753bb7ec5d0eb9edb8c4eac7a2b1423e",
+      "replay_receipt_sha256": "6deb7fffe31fbfc83a0974f396a43fb442ac028a51565667c97d76e15e98f9f5",
+      "wall_seconds": 9.766000000061467
+    },
+    {
+      "label": "mnist_switching_mature_n128_pca79",
+      "verified": 167,
+      "binary_sha256": "6d138f6f321877f110253928ed1c0c3270a1fb5ae36dbb6f77ab2ed22e7afa7d",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_refinement_20261025\\mnist_switching_mature_n128\\pca79\\public",
+      "source_manifest_sha256": "b9c9fde2e4bf0d1d01e3b10a383713e5edd8c82535dba691cc9aab48ebc0119b",
+      "replay_receipt_sha256": "6f0bfe47017850e7c09e884cfd79c1fa1540abf32865454c1e5866391e7f54a7",
+      "wall_seconds": 9.452999999979511
+    },
+    {
+      "label": "mnist_switching_mature_n128_moments",
+      "verified": 132,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_switching_mature_n128\\moments_only\\public",
+      "source_manifest_sha256": "191bbe150de87ce8051ef00f9bb1068475e8f69701c7e008bd8dc19619449348",
+      "replay_receipt_sha256": "083aaf53a2b77f984453d0405f1c31ce652e63ff04349d1caeee5bdfdbc8c062",
+      "wall_seconds": 1.0939999999245629
+    },
+    {
+      "label": "mnist_switching_mature_n128_moments_fallback",
+      "verified": 80,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_switching_mature_n128\\moments_only\\fallback\\full\\public_bundle",
+      "source_manifest_sha256": "8aac204d355cf4b674dddcf58484d36c285ef6df01e8e2a8f6025d79ce4a745d",
+      "replay_receipt_sha256": "7915fd983e0958845a3e6c2b2558f37ed7dfe797fd3ae2f650227244e5ca4393",
+      "wall_seconds": 1.140999999945052
+    },
+    {
+      "label": "mnist_switching_mature_n128_affine",
+      "verified": 168,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_switching_mature_n128\\known_family_affine\\family_affine\\public_bundle",
+      "source_manifest_sha256": "a749a05d6ce403f6b5c5494525f0113856d4059f32a15fb01556857240473802",
+      "replay_receipt_sha256": "d204139a3caaa77d95eb21cd4d7f3a30e4851b2a5ebe302818390f248e0384dd",
+      "wall_seconds": 1.047000000020489
+    },
+    {
+      "label": "fashion_early_n128_full",
+      "verified": 80,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\fashion_early_n128\\ordered_head\\full\\public_bundle",
+      "source_manifest_sha256": "c271a6c7e411c25e9a8e7ff5b017e22f731faab7b43bf2b4e08cc594fadd377b",
+      "replay_receipt_sha256": "32f4fd91326c1f8df78badd23b857733a17dfd6e7fabb33c5efcd138dde8a647",
+      "wall_seconds": 1.202999999979511
+    },
+    {
+      "label": "fashion_early_n128_head79",
+      "verified": 164,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\fashion_early_n128\\head79\\public",
+      "source_manifest_sha256": "381a39d82bfe391579e3bb4134488431b585dad607961c651222dc292cae3f9d",
+      "replay_receipt_sha256": "643c5120324de87875cfbc862095f102ae4c8558e8ebad854cfd3c834683414f",
+      "wall_seconds": 7.609000000054948
+    },
+    {
+      "label": "fashion_early_n128_pca79",
+      "verified": 164,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\fashion_early_n128\\pca79\\public",
+      "source_manifest_sha256": "3448616fe83390000aacbf8bcdc5ac16a8d88bc0a6ee4de08ead3f71a607640a",
+      "replay_receipt_sha256": "d274761f361673e8a5f9ea285a323b1c5042378f2010d7cc4b90a2f4ee262ea1",
+      "wall_seconds": 7.5
+    },
+    {
+      "label": "fashion_early_n128_moments",
+      "verified": 132,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\fashion_early_n128\\moments_only\\public",
+      "source_manifest_sha256": "9e4792b077be82bc11081473b5e89a8a6aeb2d612c6e9a4301e0db2fa7af62d0",
+      "replay_receipt_sha256": "dd96e5c844e467b4a2c2f651358e4752d310d541bc50cfe8e9f97c614c4d7fd0",
+      "wall_seconds": 0.9220000000204891
+    },
+    {
+      "label": "fashion_early_n128_moments_fallback",
+      "verified": 48,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\fashion_early_n128\\moments_only\\fallback\\full\\public_bundle",
+      "source_manifest_sha256": "acaa2945fada54ffe954eee7fc2fe080e94338788c082898e28ab641a24ba6ae",
+      "replay_receipt_sha256": "a855467ebda8ddb6c7fb0accaeb3b4a980da3a7dfa7cb38dbb086105a2e7509d",
+      "wall_seconds": 0.8120000000344589
+    },
+    {
+      "label": "fashion_early_n128_affine",
+      "verified": 168,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\fashion_early_n128\\known_family_affine\\family_affine\\public_bundle",
+      "source_manifest_sha256": "667af2be61f8d633bc697853540e3f5d533f234887c4003735d273491a922630",
+      "replay_receipt_sha256": "57977a0f747bec00254a1b65d18b5702757af5f13234a04860069ca588809a40",
+      "wall_seconds": 1.1099999999860302
+    },
+    {
+      "label": "mnist_early_n1024_full",
+      "verified": 640,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\inputs\\mnist_early_n1024\\ordered_head\\full\\public_bundle",
+      "source_manifest_sha256": "2f79fbba5cf513e7ba5280241edb15e87fcdcf3ab5e97d61af185b75f16213d8",
+      "replay_receipt_sha256": "27913a15fbd9333e0f5f2d4db2edc2b47f2a2fa7343fc272fb43c9a8795b7146",
+      "wall_seconds": 9.765999999945052
+    },
+    {
+      "label": "mnist_early_n1024_head79",
+      "verified": 1284,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_early_n1024\\head79\\public",
+      "source_manifest_sha256": "93e1f493b30969c020d2158f7b0063e8d9592c705f7701900cf69014409e4002",
+      "replay_receipt_sha256": "b97a74a9d8a25cc0be23b507cd522c5d3012c3222aae252b183b7706f8680cbe",
+      "wall_seconds": 35.625
+    },
+    {
+      "label": "mnist_early_n1024_pca79",
+      "verified": 1284,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_early_n1024\\pca79\\public",
+      "source_manifest_sha256": "016983c41074e895a1d80f20b9dba3b46fa8923a00c27b1e1586c3a7f080a75c",
+      "replay_receipt_sha256": "f743350e9951ca8faecc641e2c1bd99a105dd6b16f11e255e617648f58b50ea3",
+      "wall_seconds": 40.59299999999348
+    },
+    {
+      "label": "mnist_early_n1024_moments",
+      "verified": 1028,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_early_n1024\\moments_only\\public",
+      "source_manifest_sha256": "51aebd2e957a8daab487212eb0098f11fb0a9bca1e572c03e8d5f16d857eb6fb",
+      "replay_receipt_sha256": "a88997269697e4a2b1d601304bff5b0c382ef3dee16d9b6d753b1e59d2bb1d08",
+      "wall_seconds": 6.60999999998603
+    },
+    {
+      "label": "mnist_early_n1024_moments_fallback",
+      "verified": 384,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_early_n1024\\moments_only\\fallback\\full\\public_bundle",
+      "source_manifest_sha256": "d9e1372a3cd1795ebc56b25c845200fccb6ef6822cfde276f542a79437e8a06a",
+      "replay_receipt_sha256": "5afa5b942d410df8a0386fbaf733e60d545fecb5d3c0bed318976b75a0242f7f",
+      "wall_seconds": 5.75
+    },
+    {
+      "label": "mnist_early_n1024_affine",
+      "verified": 1344,
+      "binary_sha256": "67d40e423bbb98ec4d6dbcd9db196e447ddbedcad2f5f4c4b720026dedd70190",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\mnist_early_n1024\\known_family_affine\\family_affine\\public_bundle",
+      "source_manifest_sha256": "d09291d74f64d47b50e301a9522be1269445e1ed125de5b6fe817b9bb5c40cf7",
+      "replay_receipt_sha256": "ad1db144c5cabaf22972fc280ee84de2b778f1b9c17575b5d1f8d96b09aa0362",
+      "wall_seconds": 8.297000000020489
+    },
+    {
+      "label": "mnist_mature_timing_repeat_head",
+      "verified": 166,
+      "binary_sha256": "6d138f6f321877f110253928ed1c0c3270a1fb5ae36dbb6f77ab2ed22e7afa7d",
+      "source": "C:\\PyProjects\\zero-knowledge\\code\\validation\\outputs\\referee_final_20261025\\timing_repeat\\refined\\public",
+      "source_manifest_sha256": "45044408731c6da8d3ab64082ce0de7cfa58b3410f17f90ad38ee391be253220",
+      "replay_receipt_sha256": "42bb359ae244ec34c21dd14addb3a697488649e4bf8e72bf65f193a10b71322a",
+      "wall_seconds": 8.812999999965541
+    }
+  ],
+  "verification_only": true,
+  "workers": 1,
+  "go_soft_memory_mib": 256,
+  "active_phase": "mnist_mature_timing_repeat_head",
+  "verified_total": 7679,
+  "finished_unix": 1793027086.9947052,
+  "scope": "Fresh public-only replay after the serial matched campaign completes.\n\nThis is an additional artifact audit using the same frozen verifier\nimplementations in new processes, not an independent security implementation.\nCopies preserve the original timing/replay receipts. Audit time is separate\nfrom measured deployment components.\n"
+}

@@ -1,0 +1,18 @@
+{
+  "PublicSHA": "ba867dffa615a44bf166bb6fb0756a150fecfa50658ffcba81add0d07f9fb265",
+  "KeySHA": "ce17ddf3470e7074357da3ad544a3f02762b58a08a0ff03054e956d9bd73cc6b",
+  "Measured": {
+    "id": 0,
+    "prove_seconds": [
+      40.7234981
+    ],
+    "verify_seconds": [
+      0.0262953
+    ],
+    "witness_seconds": 0.0172727,
+    "native_answer_seconds": 0,
+    "proof_bytes": 196,
+    "public_witness_bytes": 75724,
+    "file": "full_reuse/s001_q8_0005.proof"
+  }
+}

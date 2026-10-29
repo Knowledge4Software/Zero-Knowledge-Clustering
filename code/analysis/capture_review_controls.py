@@ -18,6 +18,7 @@ def main():
     p.add_argument('--remote', required=True)
     p.add_argument('--out', required=True, type=Path)
     p.add_argument('--include-public', action='store_true', help='also transfer public verification keys and proofs')
+    p.add_argument('--cases',nargs='+',help='optional explicit completed case names')
     a = p.parse_args()
     if not a.remote.startswith('/root/commitjl/results/review_'):
         raise ValueError('unexpected evidence root')
@@ -25,12 +26,16 @@ def main():
 import base64,hashlib,json,sys
 from pathlib import Path
 root=Path(sys.argv[1]); records=[]; cases=[]
+selected=set(json.loads(sys.argv[3])) if len(sys.argv)>3 else set()
 for summary in sorted(root.glob('*/summary.json')):
  case=summary.parent
+ if selected and case.name not in selected:continue
+ if not (case/'status.json').is_file():continue  # e.g. a native-only sensitivity grid
  status=json.loads((case/'status.json').read_text())
  if not status.get('complete'):continue
  cases.append(case.name)
  paths=[case/x for x in ['summary.json','status.json','protocol.json','workload.csv','approved_public_task.json','owner_setup_pin.json']]
+ paths += [case/'decisions.csv']+list(case.glob('owner_pin_*.json'))+list(case.glob('verified_*.json'))
  paths+=list((case/'bundle').glob('*.json'))
  paths+=[case/'public_bundle'/'verify.json']
  if len(sys.argv)>2 and sys.argv[2]=='public':
@@ -43,7 +48,7 @@ for summary in sorted(root.glob('*/summary.json')):
   records.append(dict(path=path.relative_to(root).as_posix(),sha256=hashlib.sha256(data).hexdigest(),data=base64.b64encode(data).decode()))
 print(json.dumps(dict(remote=str(root),completed_cases=cases,files=records)))
 '''
-    command = 'python3 -c ' + shlex.quote(script) + ' ' + shlex.quote(a.remote) + (' public' if a.include_public else '')
+    command = 'python3 -c ' + shlex.quote(script) + ' ' + shlex.quote(a.remote) + (' public' if a.include_public else ' metadata')+' '+shlex.quote(json.dumps(a.cases or []))
     for attempt in range(3):
         result = subprocess.run(['wsl','-d','Ubuntu','--','ssh','-C','-o','BatchMode=yes',
                                  '-o','ConnectTimeout=15','cloudfpsmobin',command], capture_output=True)

@@ -1,0 +1,229 @@
+\section{Experimental Design}
+\label{sec:experimental-design}
+The objective of the evaluation is to determine when the authenticated
+cost-change mechanism reduces proof-service work while retaining a verified
+decision about the original quantized objective. We examine the contribution
+of its components, the cost of reuse, and the workloads for which the compact
+interval remains useful. This version reports completed local measurements.
+The additional server study is prospective and contributes no result to
+the tables below.
+
+\subsection{Research Questions}
+\label{sec:ccd-research-questions}
+We organize the evaluation around four research questions:
+\begin{itemize}[leftmargin=*]
+\item \textbf{RQ1: Component contribution.}
+How do exact old groups, switching information, the fitted basis and bounded
+row refinement affect decision resolution and representation quality?
+\item \textbf{RQ2: Reuse and total cost.}
+What are the separate preparation and request costs, and when does sharing
+authenticated state reduce measured work relative to the implemented controls?
+\item \textbf{RQ3: Computational scale.}
+How do catalog size, authentication, proof generation, public verification
+and proof material affect the observed computational cost?
+\item \textbf{RQ4: Operating limits.}
+How do difficult candidates and reference changes affect reuse, and can
+cost-aware scheduling avoid unsuccessful certificate work?
+\end{itemize}
+
+\subsection{Datasets}
+\label{sec:ccd-datasets}
+The earlier seed-521 pilots use Fashion-MNIST images~\cite{fashion2017} and frozen
+384-dimensional neural text features from 20 Newsgroups
+\cite{news20data,minilmcard2026}. Images have $d=784$ and both workloads use
+$k=5$ centers. The text extractor is the archived
+\texttt{all-MiniLM-L6-v2} model, with attention-mask mean pooling and
+normalization. Its weights, selected document indices and embedding files
+are pinned. The proof statement starts from the resulting integer features;
+it does not prove encoder inference.
+
+Each pilot fits the reference and representation on a 512-record past-training
+partition. A separate 512-record incoming-training partition produces candidate
+banks, and a held-out feature pool supplies the audited rows. The deployed
+reference is the eighth training Lloyd iterate. The fitted configuration uses
+seed 521. We retain catalog prefixes of $n=32$ and $n=128$ for real proofs;
+native checks also use the retained larger pools. These sources and fitted
+workloads have been inspected during development and are therefore treated
+as exploratory evidence, not independent test-set confirmation.
+
+The later published-baseline gate independently refits each of Fashion,
+text and UCI HAR ($d=561$) with seeds 557, 563 and 569. Each fit uses
+512 past-training and 512 incoming-training records, with catalog prefixes
+of 32 and 128 held-out rows. All first eight proposals from the first two
+incoming minibatches and the four fixed update rates are retained. Native
+quality therefore contains 24 requests per source/catalog size across
+three fits. Real proofs retain all first four requests from seed 557 on
+Fashion and text with $n=32$. These additional fits measure configuration
+variation on inspected sources, not untouched external confirmation.
+
+The manuscript also retains completed earlier controls: a 1,024-record
+Fashion workload, repeated MNIST timing controls~\cite{lecun1998}, and native
+checks on UCI HAR sensor features~\cite{ucihar2012}. They support the
+previously stated mechanism and application observations. Their fitted
+configurations and execution cohorts are identified separately; they are
+not pooled with the new pilots as additional independent repetitions.
+
+\subsection{Baselines}
+\label{sec:ccd-baselines}
+\paragraph{Exact Full}
+The internal control proves exact original-space nearest-center costs using
+Groth16 over BN254~\cite{groth2016}. It receives the same catalog integers,
+reference and candidate banks. Its public-center circuit and proved reference
+cost can be reused. Since an exact public cost reveals more than an interval
+or a sign, this control does not establish optimality against every possible
+exact sign-only implementation.
+
+\paragraph{PCA certificate}
+PCA replaces the centroid-informed fitted basis while retaining the same
+authentication, switching relation, correction cap and exact fallback.
+The comparison isolates the representation within our certificate framework.
+The wrapper is not presented as a separate published PCA proof system.
+Policy comparisons require the same scheduling optimization on both bases.
+
+\paragraph{ZKML primitive adapter}
+The external-backend control adapts the exact dot-product, adder and Poseidon
+primitives from ZKML~\cite{chen2024zkml}, pinned at upstream commit
+\texttt{50d0cf30e2bbcb8b1f31839b775c1d018b720527}. The adapter implements
+the same integer nearest-center objective with Halo2--KZG and an
+owner-approved commitment to the same rows. It is not the unmodified
+optimizing compiler. Its commitment and public exact-cost output differ
+from our Groth16 interval interface, so backend comparisons concern the
+implemented systems rather than an isolated projection benefit.
+
+\paragraph{Paper-derived numerical controls}
+We implement the random-sign embedding of Boutsidis et
+al.~\cite{boutsidis2010random} and the sparse three-point embedding of
+Achlioptas~\cite{achlioptas2003database}, each at empirical prediction rank
+63. Their supplied-bank costs use raw projected distances, without refitting
+clusters. The lightweight coreset of Bachem et
+al.~\cite{bachem2018scalable} uses 16 or 32 draws with replacement and
+inverse-probability weights; uniform sampling is an additional control.
+These budgets do not assert particular theorem-level approximation
+parameters or supply an authenticated full-catalog sign certificate.
+
+A separate follow-up implements the one-bit RaBitQ estimator of Gao and
+Long~\cite{gao2024rabitq}, with exact old groups as IVF anchors and an
+exhaustive scan of all row/center pairs. It is a float64 reference, without
+the published ANN engine's SIMD or query-quantization optimizations. A
+spherical-coordinate quantile envelope assigns a union-bound failure
+budget of 0.01 to the predeclared finite pair family per fit/catalog case.
+The rotation is independent of the fixed candidates. This is an
+ideal-arithmetic statistical interval, without outward-rounding proof or
+cryptographic authentication. Exact old cost is supplied by numerical
+old-group preprocessing.
+
+Separate sign/sparse projection certificate arms attach our existing
+integer relation and correction policy. Their residual-aware predictor
+differs from raw projected-distance prediction. They are adaptations,
+not published proof systems; weak coverage of this particular envelope
+does not refute the original randomized approximation results.
+
+\paragraph{Component controls}
+Authenticated moments-only and advance-bank affine controls are retained
+where complete measurements already exist. The former omits row-level
+switching information. The latter knows the union of future centers before
+preprocessing and therefore has a different information contract. Numerical
+rank and correction-budget studies are explicitly distinguished from
+proof-generation measurements.
+
+\subsection{Experimental Protocol}
+\label{sec:ccd-protocol}
+The catalog $X$, deployed bank $C^0$, basis and quantizer remain fixed within
+one reference episode. Candidates $C^1,C^2,\ldots$ can change every center.
+Sixteen chronological incoming minibatches of 32 records, combined with
+update rates $0.125$, $0.25$, $0.5$ and $1$, define 64 proposals in batch-major
+order. The eight-request pilot keeps the first eight; the text follow-up
+keeps the first sixteen. Candidate construction does not use audit outcomes.
+Exact public duplicates may share work only under the same rule for every
+method, and total and distinct request counts remain recorded.
+
+Every conclusive interval is checked against an independently recomputed
+integer cost change. A valid interval spanning zero remains inconclusive;
+after at most 16 proved row corrections, unresolved requests generate and
+verify new Full proofs. Failed certificate work is retained in the total.
+The auditor replays public-only bundles against separately retained model,
+root, challenge, task and verification-key pins.
+
+We distinguish two execution settings. A \emph{cold campaign} total
+includes the recorded preparation, key construction, initial evidence,
+request proofs, replay and fallback. Recorded fitting is retained where
+charged by the source campaign; the text16 extension supplies frozen fitted
+representations. A \emph{warm} trial reuses the applicable setup, authenticated
+rows and reference-cost evidence for both arms, but creates new request
+proofs. Copying/export and independent numerical validation are outside the
+warm phase-wall sums. These phase totals are not independently timed RPC
+latencies.
+
+\subsection{Experimental Settings}
+\label{sec:ccd-settings}
+The new measured comparisons run serially in Linux/WSL on the same laptop,
+with eight proof workers and CPU affinity fixed to eight logical processors.
+The process-tree RSS cap is 3.5~GiB. A separate Windows host-memory guard
+can stop a run when the operating system signals pressure; such a stop is
+retained as an incomplete measurement. Native BLAS is restricted to one
+thread during these campaigns. No GPU is used for the audited proof workload.
+
+The default prediction rank is $m=63$, certificate rank is $s=79$, and basis
+scale is $T=2^{14}$. Coordinates use the admitted 12-bit integer profile.
+Compact switching batches contain 16 rows, while Full query batches contain
+eight. The correction cap is also 16, independently of the switching batch
+size. The new pilots have one timing execution per fitted configuration;
+the repeated historical MNIST controls belong to their own archived cohorts.
+
+The cost-aware follow-up estimates proof work from the earlier eight-request
+pilot. It plans width-ordered corrections using the prover's private rows
+before producing query proofs. A batch activates compact proofs only when
+the predicted saving also covers key loading and a ten-percent margin.
+These native values select witness work; they do not certify the answer.
+The public verifier still requires disjoint, complete request coverage and
+valid selected proofs. This scheduler is an engineering variant of the
+method in Section~\ref{sec:methodology}, not a new certificate relation.
+
+In the later gate, every representation receives the same final routing
+policy and the same seed-521 calibration, frozen before its own warm
+measurements. The four-request batch pays its full native preflight.
+All changing-request proofs are fresh, and one newly timed Full arm is
+shared per dataset. The study has one proof timing execution per cell;
+three within-fit native timing passes are not three independent fits.
+The main gate was frozen before its outcomes. RaBitQ and the warm-routing
+follow-up were registered after the first native outcomes and before
+their respective outcomes, so the combined study remains exploratory.
+
+\subsection{Evaluation Metrics}
+\label{sec:ccd-metrics}
+We report three separate quality measures. \emph{Decision coverage} is the
+fraction of requests with a conclusive base or refined interval before Full.
+\emph{Assignment agreement} compares approximate nearest-center assignments
+with exact assignments on the same quantized rows. \emph{Label-certificate
+coverage} counts individual assignments justified by their pairwise bounds.
+None of these is ground-truth class-label accuracy. Final service decisions
+must agree with the exact cost ordering after all required verified work.
+
+For numerical cost estimators, estimated-sign agreement compares the
+estimated and exact changes. Balanced sign agreement averages recall over
+the observed true sign classes and is reported descriptively to expose
+class imbalance. It was added after inspecting the frozen outcomes.
+Coresets have no label output for unsampled rows, so their label agreement
+and deterministic certificate coverage are not applicable. Statistical
+interval resolution is reported separately from deterministic coverage.
+
+For efficiency, we report phase-wall and enclosing totals according to their
+recorded scope, the number of corrections and Full requests, peak RSS, and
+proof bytes. Fresh request proof bytes are separated from complete exported
+proof bytes containing reusable row evidence. Keys, parameters and public
+metadata are not silently counted as zero storage.
+
+To expose amortization, we further separate the preparation term in
+Eq.~\eqref{eq:methodology-cost}. Let $K_{\mathrm{setup}}$ denote circuit/key
+construction, $P_{\mathrm{epoch}}$ the remaining epoch preparation,
+$L(Q)$ recurring process/key loading, and $R_t$
+the complete request work, including any corrections and exact evaluation:
+\begin{equation}
+ T(Q)=K_{\mathrm{setup}}+P_{\mathrm{epoch}}+L(Q)+\sum_{t=1}^{Q}R_t.
+ \label{eq:ccd-accounting}
+\end{equation}
+The per-request moment-link proof is charged in $R_t$ in the current
+implementation. The empirical crossing with baseline $b$ is the first
+measured prefix satisfying $T_{\mathrm{cert}}(Q)<T_b(Q)$. A crossing derived
+from constant mean costs is a model estimate, not a measured threshold.
+

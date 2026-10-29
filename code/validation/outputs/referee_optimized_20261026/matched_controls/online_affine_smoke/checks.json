@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "exact_costs_match_full": true,
+  "future_centers_unavailable": true,
+  "binary_sha256": "80b82bfde2af0276b31106f2d658cffc71024f39b0d410c24f8890c6274768c5",
+  "requests": 2,
+  "affine_proofs": 51
+}

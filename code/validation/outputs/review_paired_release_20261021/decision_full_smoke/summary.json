@@ -1,0 +1,35 @@
+{
+  "complete": true,
+  "n": 4,
+  "sets": 3,
+  "alternatives": [
+    {
+      "phase": "full_reuse",
+      "shared_preparation_seconds": 0.0011299,
+      "query_compile_setup_seconds": 0.5850858999999999,
+      "query_components_seconds": 0.35555529999999996,
+      "total_components_seconds": 0.9417711,
+      "public_center_parameter_seconds": 0,
+      "public_only_replay_wall_seconds": 0.23399999999674037,
+      "components_plus_public_replay_seconds": 1.1757710999967403,
+      "proves": 6,
+      "proof_bytes": 1176,
+      "verifying_key_bytes": 1008,
+      "proving_key_bytes": 991659,
+      "public_witness_serialized_bytes": 3144,
+      "model_json_bytes": 244,
+      "approved_task_bytes": 694,
+      "stored_head_energy_scalars": 0,
+      "genuine_requests": 2,
+      "conclusive_genuine_requests": 2,
+      "lloyd_requests": 0,
+      "conclusive_lloyd_requests": 0
+    }
+  ],
+  "original_root": "425542638895534898356681418213863802137510373408151524969348754251021487735",
+  "workflow_wall_seconds": 2.0320000000065193,
+  "actual_single_repetition_deployment": true,
+  "private_reference_validation_excluded_from_workflow_wall": true,
+  "numerical_false_decisions": 0,
+  "metadata": null
+}

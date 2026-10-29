@@ -1,0 +1,290 @@
+[
+  {
+    "name": "deployment_paired",
+    "input": "owner_inputs/mnist_k3_seed11_age1_learned_r63.json",
+    "full": false,
+    "also_absolute": false,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "deployment_full",
+    "input": "owner_inputs/mnist_k3_seed11_age1_learned_r63.json",
+    "full": true,
+    "also_absolute": false,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "mnist_k3_seed11_learned_r63",
+    "input": "owner_inputs/mnist_k3_seed11_age1_learned_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 3,
+    "warmup": 1
+  },
+  {
+    "name": "mnist_k3_seed11_pca_r63",
+    "input": "owner_inputs/mnist_k3_seed11_age1_pca_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 3,
+    "warmup": 1
+  },
+  {
+    "name": "mnist_k3_seed11_full_r0",
+    "input": "owner_inputs/mnist_k3_seed11_age1_learned_r15.json",
+    "full": true,
+    "also_absolute": false,
+    "batch": 4,
+    "reps": 3,
+    "warmup": 1
+  },
+  {
+    "name": "mnist_k3_seed11_learned_r15",
+    "input": "owner_inputs/mnist_k3_seed11_age1_learned_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 3,
+    "warmup": 1
+  },
+  {
+    "name": "mnist_k3_seed11_pca_r15",
+    "input": "owner_inputs/mnist_k3_seed11_age1_pca_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 3,
+    "warmup": 1
+  },
+  {
+    "name": "fashion_mnist_k5_seed11_learned_r63",
+    "input": "owner_inputs/fashion_mnist_k5_seed11_age1_learned_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k5_seed11_pca_r63",
+    "input": "owner_inputs/fashion_mnist_k5_seed11_age1_pca_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k5_seed11_full_r0",
+    "input": "owner_inputs/fashion_mnist_k5_seed11_age1_learned_r15.json",
+    "full": true,
+    "also_absolute": false,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k5_seed11_learned_r15",
+    "input": "owner_inputs/fashion_mnist_k5_seed11_age1_learned_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k5_seed11_pca_r15",
+    "input": "owner_inputs/fashion_mnist_k5_seed11_age1_pca_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k10_seed11_learned_r63",
+    "input": "owner_inputs/20ng_tfidf_k10_seed11_age1_learned_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 1,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k10_seed11_pca_r63",
+    "input": "owner_inputs/20ng_tfidf_k10_seed11_age1_pca_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 1,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k10_seed11_full_r0",
+    "input": "owner_inputs/20ng_tfidf_k10_seed11_age1_learned_r15.json",
+    "full": true,
+    "also_absolute": false,
+    "batch": 1,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k10_seed11_learned_r15",
+    "input": "owner_inputs/20ng_tfidf_k10_seed11_age1_learned_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 1,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k10_seed11_pca_r15",
+    "input": "owner_inputs/20ng_tfidf_k10_seed11_age1_pca_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 1,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "mnist_k10_seed23_learned_r63",
+    "input": "owner_inputs/mnist_k10_seed23_age1_learned_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "mnist_k10_seed23_pca_r63",
+    "input": "owner_inputs/mnist_k10_seed23_age1_pca_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "mnist_k10_seed23_full_r0",
+    "input": "owner_inputs/mnist_k10_seed23_age1_learned_r15.json",
+    "full": true,
+    "also_absolute": false,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "mnist_k10_seed23_learned_r15",
+    "input": "owner_inputs/mnist_k10_seed23_age1_learned_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "mnist_k10_seed23_pca_r15",
+    "input": "owner_inputs/mnist_k10_seed23_age1_pca_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k3_seed23_learned_r63",
+    "input": "owner_inputs/fashion_mnist_k3_seed23_age1_learned_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k3_seed23_pca_r63",
+    "input": "owner_inputs/fashion_mnist_k3_seed23_age1_pca_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k3_seed23_full_r0",
+    "input": "owner_inputs/fashion_mnist_k3_seed23_age1_learned_r15.json",
+    "full": true,
+    "also_absolute": false,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k3_seed23_learned_r15",
+    "input": "owner_inputs/fashion_mnist_k3_seed23_age1_learned_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "fashion_mnist_k3_seed23_pca_r15",
+    "input": "owner_inputs/fashion_mnist_k3_seed23_age1_pca_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 4,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k5_seed23_learned_r63",
+    "input": "owner_inputs/20ng_tfidf_k5_seed23_age1_learned_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 2,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k5_seed23_pca_r63",
+    "input": "owner_inputs/20ng_tfidf_k5_seed23_age1_pca_r63.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 2,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k5_seed23_full_r0",
+    "input": "owner_inputs/20ng_tfidf_k5_seed23_age1_learned_r15.json",
+    "full": true,
+    "also_absolute": false,
+    "batch": 2,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k5_seed23_learned_r15",
+    "input": "owner_inputs/20ng_tfidf_k5_seed23_age1_learned_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 2,
+    "reps": 1,
+    "warmup": 0
+  },
+  {
+    "name": "20ng_tfidf_k5_seed23_pca_r15",
+    "input": "owner_inputs/20ng_tfidf_k5_seed23_age1_pca_r15.json",
+    "full": false,
+    "also_absolute": true,
+    "batch": 2,
+    "reps": 1,
+    "warmup": 0
+  }
+]

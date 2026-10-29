@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "native_unique_updates": 96,
+  "native_method_checks": 192,
+  "historical_regressions": 24,
+  "historical_improvements": 40,
+  "independent_updates": 32,
+  "independent_regressions": 0,
+  "independent_improvements": 32,
+  "all_native_changes_exact": true,
+  "native_false_changes": 0,
+  "regression_statistics": [
+    {
+      "method": "learned",
+      "regressions": 24,
+      "correct_changes": 24,
+      "median_exact_percent": 2.44140625,
+      "min_exact_percent": 0.5859375,
+      "max_exact_percent": 12.6953125
+    },
+    {
+      "method": "pca",
+      "regressions": 24,
+      "correct_changes": 24,
+      "median_exact_percent": 5.46875,
+      "min_exact_percent": 0.9765625,
+      "max_exact_percent": 17.578125
+    }
+  ],
+  "fresh_public_proofs_verified": 20,
+  "proof_costs": [
+    {
+      "case": "smoke",
+      "group_seconds": 12.594954,
+      "full_seconds": 4.755632100000001,
+      "full_over_group": 0.37758233178144207,
+      "public_proofs_verified": 10
+    },
+    {
+      "case": "fashion_n4",
+      "group_seconds": 733.8372889,
+      "full_seconds": 299.3888793,
+      "full_over_group": 0.40797719580150377,
+      "public_proofs_verified": 10
+    }
+  ],
+  "python_targeted_tests": 19,
+  "go_check": "go test ./... -p 1",
+  "scientific_conclusion": "Exact-change feasibility passes all existing regressions. Bounded authenticated prototype works but costs more than Full; no efficient full-scale fix established.",
+  "privacy_contract": "Prototype publishes correction indices/active slots. Moments, group membership, head rows and original rows remain witness data; output exact aggregate cost change is public.",
+  "limitation": "Numerical N1024 and cryptographic N4 full-feature proof pilot are separate evidence. Head is locally refitted; historical PCA bases match. Independent fits contain zero regressions."
+}

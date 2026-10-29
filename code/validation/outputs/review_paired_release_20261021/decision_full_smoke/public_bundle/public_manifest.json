@@ -1,0 +1,27 @@
+{
+  "files": [
+    "trusted.json",
+    "prepare.json",
+    "full_reuse_2.json",
+    "keys/full_reuse_2_k2.vk",
+    "full_reuse/s000_q2_0000.proof",
+    "full_reuse/s000_q2_0001.proof",
+    "full_reuse/s001_q2_0000.proof",
+    "full_reuse/s001_q2_0001.proof",
+    "full_reuse/s002_q2_0000.proof",
+    "full_reuse/s002_q2_0001.proof"
+  ],
+  "private_witness_files_included": false,
+  "sha256": {
+    "trusted.json": "7237537280d6786898645244582bff0ece95b96ac843b925749eee8d0acd72a9",
+    "prepare.json": "bf9e86260159733415b3022f8c346385040d7782e3b20094785930c8d9aeb8cc",
+    "full_reuse_2.json": "a91cdc3b8112a45c3c3ff1dd6aec11cf01d8c2624d7903c34ec0c40c5ca18d26",
+    "keys/full_reuse_2_k2.vk": "2fd338d7199e74fb19e1bfafc1b3ea07990fb33b170288389de519c56ba121c1",
+    "full_reuse/s000_q2_0000.proof": "664932cd2bb04f0bd9e62807e07f002ff402c418bc4f271a4664a00c0e64eb34",
+    "full_reuse/s000_q2_0001.proof": "2caf079740fe94cd9fc2272bf7c5b58c2057ece86eb713cf7cfa76fe23c88db1",
+    "full_reuse/s001_q2_0000.proof": "d3b7391166a5ee72e04472f4387ca02882e37833e7039470ad1025fe35cc59bb",
+    "full_reuse/s001_q2_0001.proof": "ca37aba974678e6fb4077ff5ce18b4dfe0a5ca4583dc5154e7fc6dcf3b988d1e",
+    "full_reuse/s002_q2_0000.proof": "d06d74e53be5eb13c25c1a6a4117a1c05aaf85e388d67c4a45c7a14196ab5724",
+    "full_reuse/s002_q2_0001.proof": "617e2abe35324d386e23232ed1ff5e287ccef7776ef9a2726ca4369cfa139454"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "total_hours": 32,
+  "initial_campaign_hard_cap_hours": 36,
+  "rental_hours": 72,
+  "minimum_uncommitted_reserve_hours": 36,
+  "extension_assumed": false,
+  "primary_target_runs": 48,
+  "primary_n": 128,
+  "primary_q": 4,
+  "long_case_q": 32,
+  "new_proofs_or_remote_jobs": 0,
+  "validation_scope": "Structural plan checks, not an executable campaign readiness certificate.",
+  "plan_status": "proposed_not_executed",
+  "ready_to_start_billing": false
+}

@@ -1,0 +1,25 @@
+\begin{table*}[tp]
+\centering
+\small
+\caption{Completed N=128 proof alternatives at the snapshot cutoff. Cost includes phase-specific public replay.}\label{tab:paired-costs}
+\begin{tabular}{lrrrrrr}
+\toprule
+Workload & $k$ & Method & Rank & Batch & Cost (min) & Decisions \\
+\midrule
+MNIST & 3 & Full & -- & 4 & 33.81 & 4/4 \\
+MNIST & 3 & Head & 63 & 4 & 17.04 & 4/4 \\
+MNIST & 3 & Head & 15 & 4 & 10.38 & 0/4 \\
+MNIST & 3 & PCA & 63 & 4 & 16.74 & 4/4 \\
+MNIST & 3 & PCA & 15 & 4 & 10.44 & 0/4 \\
+Fashion-MNIST & 5 & Full & -- & 4 & 34.62 & 4/4 \\
+Fashion-MNIST & 5 & Head & 63 & 4 & 17.28 & 4/4 \\
+Fashion-MNIST & 5 & Head & 15 & 4 & 12.27 & 0/4 \\
+Fashion-MNIST & 5 & PCA & 63 & 4 & 17.48 & 4/4 \\
+Fashion-MNIST & 5 & PCA & 15 & 4 & 12.34 & 0/4 \\
+20NG TF--IDF & 10 & Full & -- & 1 & 118.40 & 4/4 \\
+20NG TF--IDF & 10 & Head & 63 & 1 & 108.60 & 0/4 \\
+20NG TF--IDF & 10 & PCA & 63 & 1 & 106.33 & 0/4 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.98\linewidth}\footnotesize Six sets comprise one null control, four actual Lloyd updates and one reverse-step diagnostic; all six are charged, but the last column counts only the four actual updates. Shared row binding is charged once to each reuse alternative. Query medians use three repetitions on the first MNIST fit and one elsewhere; Stage 1 uses one timing per row. All use $T=16384$ and matched batches within each fit. Reconstructed costs exclude fitting, benchmark warmups and process/I/O overhead; they include verifier replay and paired public-parameter preparation. A cheaper inconclusive service is not equivalent to exact Full.\end{minipage}
+\end{table*}

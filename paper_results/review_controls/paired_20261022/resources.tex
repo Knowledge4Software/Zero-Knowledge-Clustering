@@ -1,0 +1,17 @@
+\begin{table*}[tp]
+\centering
+\small
+\caption{Serialized resources for the completed MNIST N=128/k=3 alternatives.}\label{tab:paired-resources}
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & Rank & PK (MiB) & VK (KiB) & Proofs (KiB) & Public witnesses (MiB) & Head/energy scalars \\
+\midrule
+Full & -- & 135.01 & 74.30 & 36.75 & 13.84 & 0 \\
+Head & 63 & 64.05 & 19.78 & 61.25 & 3.52 & 8192 \\
+Head & 15 & 43.04 & 6.28 & 61.25 & 0.99 & 2048 \\
+PCA & 63 & 64.05 & 19.78 & 61.25 & 3.52 & 8192 \\
+PCA & 15 & 43.04 & 6.28 & 61.25 & 0.99 & 2048 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.98\linewidth}\footnotesize Reported resources include the Stage 1 and chosen query relation where applicable. PK/VK are proving/verification keys. Full needs no compressed catalog; original rows remain required by its prover. Public-witness bytes are serialized input volume, not automatically network traffic. Model/task JSON and fitting times are retained in the CSV export.\end{minipage}
+\end{table*}

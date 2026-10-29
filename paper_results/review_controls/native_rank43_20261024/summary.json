@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "rank": 43,
+  "elapsed_seconds": 51.29700000002049,
+  "scope": "Native numerical screen; no measured proof time for this rank.",
+  "source_input_sha256": "dc250961addc3fb3bb8a81a0c3bccfee6608a73c193e31aedfde114dea829ccd",
+  "archive_sha256": "a3175ab11c2fe1a823d720c58d69b80741e8873098dafd073e863510d7b9ff10",
+  "all_center_sets_retained": true,
+  "original_ordered_basis_prefix": true,
+  "false_certified_labels": 0,
+  "all_absolute_intervals_contain_full_cost": true,
+  "groups": [
+    {
+      "scope": "native1024",
+      "sets": 20,
+      "agreement_mean": 99.609375,
+      "agreement_min": 99.21875,
+      "relative_coverage_mean": 92.2509765625,
+      "relative_coverage_min": 91.2109375,
+      "old_coverage_mean": 90.1953125,
+      "cost_error_max": 0.06447546511068047,
+      "width_max": 4.317040588375347,
+      "passes_user_99_on_every_set": true
+    },
+    {
+      "scope": "proof_catalog",
+      "sets": 20,
+      "agreement_mean": 99.4921875,
+      "agreement_min": 98.4375,
+      "relative_coverage_mean": 90.46875,
+      "relative_coverage_min": 87.5,
+      "old_coverage_mean": 88.90625,
+      "cost_error_max": 0.07146464251253093,
+      "width_max": 4.545431444760353,
+      "passes_user_99_on_every_set": false
+    }
+  ]
+}

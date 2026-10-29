@@ -12,7 +12,7 @@ from .protected_jl import centroid_basis
 
 
 def enrich_centroid_basis(training, centers, extra=12, *, random_state=1701,
-                          iterated_power=2, n_oversamples=10):
+                          iterated_power=2, n_oversamples=10, preserve_pca_order=False):
     """Return [U_centers, U_extra], preserving the complete centroid span.
 
     PCA sees only training residuals, centered by sklearn. Its orthonormal
@@ -55,9 +55,18 @@ def enrich_centroid_basis(training, centers, extra=12, *, random_state=1701,
         directions -= u@(u.T@directions)
     if not directions.shape[1]:
         return u, metadata
-    extra_u, singular, _ = np.linalg.svd(directions, full_matrices=False)
-    keep = singular > np.finfo(float).eps*max(directions.shape)*singular[0]
-    extra_u = extra_u[:, keep]
+    if preserve_pca_order:
+        # Nonpivoted QR preserves each leading PCA subspace. SVD of nearly
+        # orthonormal columns can rotate their order within tied singular values.
+        extra_u, triangular = np.linalg.qr(directions, mode='reduced')
+        if np.any(np.abs(np.diag(triangular)) < 1e-10):
+            raise ValueError('Ordered residual PCA has dependent directions')
+        metadata['basis_order'] = 'PCA order with nonpivoted QR'
+    else:
+        # Preserve historical full-basis results byte for byte by default.
+        extra_u, singular, _ = np.linalg.svd(directions, full_matrices=False)
+        keep = singular > np.finfo(float).eps*max(directions.shape)*singular[0]
+        extra_u = extra_u[:, keep]
     for j in range(extra_u.shape[1]):
         pivot = np.argmax(np.abs(extra_u[:, j]))
         if extra_u[pivot, j] < 0:

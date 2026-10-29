@@ -1,0 +1,18 @@
+\begin{table*}[tp]
+\centering
+\small
+\caption{Independent-fit numerical grid at rank 63: update decisions, assignment coverage and agreement (percent).}\label{tab:paired-native}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Dataset & Age & Decision L & Decision P & Coverage L & Coverage P & Agreement L & Agreement P \\
+\midrule
+MNIST & Early & 100.00 & 100.00 & 92.65 & 87.91 & 99.74 & 99.82 \\
+MNIST & Mature & 18.33 & 13.33 & 96.57 & 91.52 & 99.92 & 99.79 \\
+Fashion-MNIST & Early & 80.00 & 80.00 & 97.51 & 94.99 & 99.94 & 99.93 \\
+Fashion-MNIST & Mature & 10.00 & 10.00 & 98.93 & 96.93 & 99.98 & 99.95 \\
+20NG TF--IDF & Early & 0.00 & 0.00 & 0.32 & 0.13 & 93.66 & 93.54 \\
+20NG TF--IDF & Mature & 0.00 & 0.00 & 10.16 & 0.80 & 97.78 & 95.71 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.98\linewidth}\footnotesize L: centroid-informed head plus residual PCA; P: PCA plus energy. Each row summarizes 60 dependent update requests from 15 fitted $k$/seed configurations. Both methods use the same held-out rows, updates, rank and precision. Decision rate is the fraction with a certified strict cost-change sign; assignment agreement is against quantized Full. These are numerical results, not proof timings.\end{minipage}
+\end{table*}

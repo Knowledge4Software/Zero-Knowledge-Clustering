@@ -72,6 +72,12 @@ func NewBoundPreprocess(m BoundModel) *BoundPreprocess {
 	return c
 }
 func (c *BoundPreprocess) Define(api frontend.API) error {
+	return c.defineWithHeadSuffix(api, nil)
+}
+
+// A separately keyed compact group profile binds its private group in the
+// same head/energy leaf. Legacy profiles retain exactly their original leaf.
+func (c *BoundPreprocess) defineWithHeadSuffix(api frontend.API, suffix []frontend.Variable) error {
 	m := c.M
 	if err := m.Validate(); err != nil {
 		return err
@@ -167,6 +173,7 @@ func (c *BoundPreprocess) Define(api frontend.API) error {
 		rangeCheckUnsigned(api, rc, c.E, l.E, false)
 		values = append(values, c.E)
 	}
+	values = append(values, suffix...)
 	boundOpen(api, m, boundH, c.Index, c.SaltZ, values, c.PH, c.CH)
 	if m.TailWidth > 0 {
 		for _, v := range c.T {

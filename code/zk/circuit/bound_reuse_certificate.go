@@ -37,6 +37,22 @@ func ceilSqrt(v *big.Int) *big.Int {
 }
 
 func (m BoundModel) GramDefect() *big.Int {
+	if matrix, ok := boundedGram64(m); ok {
+		maximum := int64(0)
+		for _, row := range matrix {
+			sum := int64(0)
+			for _, v := range row {
+				if v < 0 {
+					v = -v
+				}
+				sum += v
+			}
+			if sum > maximum {
+				maximum = sum
+			}
+		}
+		return bi(maximum)
+	}
 	g := bi(0)
 	t2 := square(bi(m.BasisScale))
 	for i, row := range m.Basis {
@@ -144,6 +160,11 @@ type NativeCertificate struct {
 }
 
 func (p *BoundPrepared) ReuseCertificate(heads [][]*big.Int, offs []*big.Int, indices []int) (*NativeCertificate, error) {
+	return p.reuseCertificateWithGram(heads, offs, indices, nil)
+}
+
+// A cached Gram defect is only supplied by model-pinned parameter builders.
+func (p *BoundPrepared) reuseCertificateWithGram(heads [][]*big.Int, offs []*big.Int, indices []int, gram *big.Int) (*NativeCertificate, error) {
 	if err := p.M.Validate(); err != nil {
 		return nil, err
 	}
@@ -161,7 +182,10 @@ func (p *BoundPrepared) ReuseCertificate(heads [][]*big.Int, offs []*big.Int, in
 		return nil, err
 	}
 	r := &NativeCertificate{Labels: labels, Flags: make([]bool, len(indices)), Psi: psi, Margin: margin, Lower: bi(0), Upper: bi(0), Radii: make([]*big.Int, len(indices))}
-	g := p.M.GramDefect()
+	g := gram
+	if g == nil {
+		g = p.M.GramDefect()
+	}
 	t2 := square(bi(p.M.BasisScale))
 	cr := make([]*big.Int, len(offs))
 	for j, e := range offs {
@@ -210,7 +234,11 @@ func (p *BoundPrepared) ReuseCertificate(heads [][]*big.Int, offs []*big.Int, in
 }
 
 func FillBoundCertifiedReuseQuery(p *BoundPrepared, heads [][]*big.Int, offs []*big.Int, indices []int) (*BoundCertifiedReuseQuery, *NativeCertificate, error) {
-	r, err := p.ReuseCertificate(heads, offs, indices)
+	return fillBoundCertifiedReuseWithGram(p, heads, offs, indices, nil)
+}
+
+func fillBoundCertifiedReuseWithGram(p *BoundPrepared, heads [][]*big.Int, offs []*big.Int, indices []int, gram *big.Int) (*BoundCertifiedReuseQuery, *NativeCertificate, error) {
+	r, err := p.reuseCertificateWithGram(heads, offs, indices, gram)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -235,6 +263,12 @@ func BoundCertifiedReusePublic(m BoundModel, s BoundStatement, centers [][]int64
 	if err != nil {
 		return nil, err
 	}
+	_, _, limit := certificateBounds(m)
+	return certifiedReusePublicFromQuery(q, count, lower, upper, limit)
+}
+
+func certifiedReusePublicFromQuery(q *BoundReuseQuery, count int, lower, upper string, limit *big.Int) (*BoundCertifiedReuseQuery, error) {
+	m, indices := q.M, q.Indices
 	if count < 0 || count > len(indices) {
 		return nil, fmt.Errorf("invalid certified count")
 	}
@@ -246,11 +280,10 @@ func BoundCertifiedReusePublic(m BoundModel, s BoundStatement, centers [][]int64
 	if err != nil {
 		return nil, err
 	}
-	_, _, limit := certificateBounds(m)
 	if lo.Cmp(hi) > 0 || hi.Cmp(mul(limit, bi(int64(len(indices))))) > 0 {
 		return nil, fmt.Errorf("invalid certified cost interval")
 	}
-	c := NewBoundCertifiedReuseQuery(m, len(indices), len(centers))
+	c := NewBoundCertifiedReuseQuery(m, len(indices), len(q.CHead))
 	c.Query = *q
 	c.CertifiedCount, c.CostLower, c.CostUpper = count, lo, hi
 	for j, v := range q.COff {

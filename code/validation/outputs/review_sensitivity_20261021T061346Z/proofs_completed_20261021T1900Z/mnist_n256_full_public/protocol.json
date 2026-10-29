@@ -1,0 +1,19 @@
+{
+  "source_input": "/root/commitjl/results/review_sensitivity_20261021T061346Z/prepared/owner_inputs/mnist_n256_learned_energy_nested_r15_t16384.json",
+  "source_sha256": "4a53ed89591ebf9a9cad1fcc1b885ebb8654c4423d90a2661f7a646d2d565fa1",
+  "binary_sha256": "cfadafc3b3629b26897207ea527107927951183ed56fe5d20b6f410a3054f607",
+  "n": 256,
+  "d": 784,
+  "k": 5,
+  "center_sets": 11,
+  "batch": 8,
+  "reps": 3,
+  "warmup": 1,
+  "all_catalog_rows_proved": true,
+  "full_catalog_extrapolated": false,
+  "setup_reused_across_centers": true,
+  "input_scale": "16.062745098039215",
+  "basis_scale": 16384,
+  "label": "mnist_n256_full_public",
+  "cost_policy": "native prepare + compile + setup + native answer construction + witness + median measured prove; verify, warmup, fitting, I/O and public center preparation separate"
+}

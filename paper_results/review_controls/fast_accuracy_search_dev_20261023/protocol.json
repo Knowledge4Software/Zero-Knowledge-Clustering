@@ -1,0 +1,47 @@
+{
+  "datasets": [
+    "mnist",
+    "fashion_mnist"
+  ],
+  "k": [
+    3,
+    5
+  ],
+  "seeds": [
+    11
+  ],
+  "ages": [
+    1,
+    8
+  ],
+  "n": 1024,
+  "ranks": [
+    7,
+    15,
+    31,
+    63
+  ],
+  "jl_head_ranks": [
+    7,
+    15
+  ],
+  "jl_widths": [
+    8,
+    16
+  ],
+  "jl_seeds": [
+    211,
+    307,
+    401
+  ],
+  "jl_weights": [
+    "1/4",
+    "1/2",
+    "1"
+  ],
+  "threshold": "Working target minimum agreement99.5% per actual update, not a universal rule.",
+  "scope": "Exploratory native screen; no proof speed, deterministic JL accuracy guarantee or exact-decision claim.",
+  "map": "Dense fixed Rademacher signs on the integer residual; dot/m estimates the omitted residual cross term.",
+  "basis": "Training-only rank63 fit, order-preserving QR for head; PCA has strongest directions first.",
+  "threads": 2
+}

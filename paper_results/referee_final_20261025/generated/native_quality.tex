@@ -1,0 +1,17 @@
+\begin{table*}[tbp]
+\centering
+\caption{Centroid and PCA denote the two bases of the same certificate. Native development grid: fixed prediction rank 63 and certificate rank 79, before/after bounded refinement. Agreement and label certificates are percentages. Refined regression coverage and total exact rows count distinct updates within each deployed fit. Cap16 was selected on this previously observed grid; these are not confirmatory proof timings.}
+\label{tab:native-quality}
+\begin{adjustbox}{max width=.98\textwidth,center=\textwidth}
+\begin{tabular}{rlrrrrrrr}
+\toprule
+$N$ & Basis & Agr. & Worst & Label cert. & Base & Refined & Regr. & Rows\\
+\midrule
+128 & Centroid & 99.938 & 99.219 & 97.438 & 23/25 & 25/25 & 7/7 & 16\\
+128 & PCA & 99.906 & 99.219 & 97.062 & 23/25 & 25/25 & 7/7 & 18\\
+1024 & Centroid & 99.898 & 99.512 & 97.578 & 25/25 & 25/25 & 1/1 & 0\\
+1024 & PCA & 99.906 & 99.707 & 97.359 & 24/25 & 25/25 & 1/1 & 5\\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

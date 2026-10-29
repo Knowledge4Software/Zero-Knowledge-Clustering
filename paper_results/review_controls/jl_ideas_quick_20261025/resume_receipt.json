@@ -1,0 +1,16 @@
+{
+  "previous_runner_sha256": "75f3ecf99df1c4a4a0117989c88a2c2158f39dec88f3da244b35a396254d4bdd",
+  "current_runner_sha256": "f630ad15917cae8727da6fa8d73df1f9e811e9af6455c75ab05d9e83ba6224fa",
+  "previous_status": {
+    "complete": false,
+    "pid": 7000,
+    "suite": "quick",
+    "requests_complete": 1,
+    "expected_requests": 6,
+    "active_fit": "mnist_k10_seed37_age8_learned",
+    "active_set": 2,
+    "records": 29,
+    "elapsed_seconds": 39.04700000002049
+  },
+  "reason": "Continue after RAM reserve stop. Stream identical canonical samples instead of materializing all70000 records; hashes pin exact data. Chunked Full checks; numerical helpers and fixed seeds unchanged. All completed case records retained."
+}
