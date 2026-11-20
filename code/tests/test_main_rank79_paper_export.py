@@ -7,9 +7,28 @@ from campaigns import main_rank79 as campaign
 from commitjl.pilot_io import save
 
 
+# This historical exporter reads additional campaign evidence before the
+# synthetic gate assertions below. Those optional archives are deliberately
+# absent from a clean November checkout; never substitute fabricated results.
+_ARCHIVED_INPUTS = (
+    'code/validation/outputs/group_compact_control_n128_20261025/checked_comparison.json',
+    'code/validation/outputs/group_compact_auxiliary_r79_n128_20261025/control/checked_comparison.json',
+    'paper_results/review_controls/compact_optimization_20261025/summary.json',
+    'paper_results/review_controls/compact_auxiliary_rank79_20261025/summary.json',
+    'paper_results/review_controls/rank79_independent_replication_20261025/distinct_summary.json',
+    'paper_results/review_controls/residual_certificate_rank_confirmation_20261025/distinct_summary.json',
+)
+pytestmark = pytest.mark.skipif(
+    not all((paper.REPO / name).is_file() for name in _ARCHIVED_INPUTS),
+    reason='Optional retired October paper-export evidence is absent; current exports use analysis.export_current_results',
+)
+
+
 @pytest.fixture
 def workspace_fixture():
-    owner=(paper.REPO/'tmp').resolve();path=Path(tempfile.mkdtemp(prefix='paper_export_test_',dir=owner)).resolve()
+    owner=(paper.REPO/'tmp').resolve()
+    owner.mkdir(parents=True, exist_ok=True)
+    path=Path(tempfile.mkdtemp(prefix='paper_export_test_',dir=owner)).resolve()
     assert path.is_relative_to(owner)
     try:yield path
     finally:

@@ -1,7 +1,0 @@
-{
-  "benchmark_only_unsafe_srs": true,
-  "complete": true,
-  "private_rows_loaded": false,
-  "verified": 4,
-  "wall_seconds": 0.0173901
-}

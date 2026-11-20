@@ -1,33 +1,21 @@
-# Local experiment orchestration
+# Campaign implementations
 
-The active review campaign uses `referee_two_reviews_local.py`, followed
-serially by `referee_review_followups.py`. State is under
-`code/validation/outputs/referee_two_reviews_20261027/`. A separate completed-
-evidence finalizer builds an unreviewed PDF candidate after the queue ends.
+The final server campaigns completed before rental expiry. No experiment
+is running or automatically queued, and retired hosts must not be contacted.
 
-Inspect current execution using `python -m analysis.two_review_campaign_status`
-from the repository root with `PYTHONPATH=code`. Do not start a duplicate
-coordinator while the recorded live supervisor owns the queue.
+Current-method source is retained for reproducibility:
 
-The shared campaign budget is 24 hours. Proof catalogs are at most 1024
-records, with memory, RSS, disk and explicit-stop guards. All attempts,
-resource exclusions, fallback costs and negative outcomes remain recorded.
-The current policy is `validation/outputs/referee_round2_20261026/execution_policy.json`.
+- server_final_method_20261102.py: matched final-method/baseline tasks.
+- paper_completion_20261102.py: component and operating-limit controls.
+- paper_gap_checks_20261103.py: fixed-task paired timing measurements.
+- review_completion_20261103.py: measured moments-first/Full service.
+- review_fit_replications_20261103.py: additional numerical fits.
+- extended_revision_20261103.py: larger proof cells and release checkpoints.
+- proof_runtime.py: resource limits and execution accounting.
 
-Older orchestration modules remain source for existing proof receipts and
-controlled reruns. Their old output directories and interim launch reports
-are not prerequisites for the current queue. Mobin is permanently retired;
-there is no remote target and no server work should be launched.
+These encode Linux/WSL scheduling and historical frozen plans. They are not
+a ready-made laptop queue. A new campaign needs isolated outputs, frozen
+inputs, matched local baselines and appropriate memory/disk guards.
 
-Cost-aware laptop control: `run_cost_aware_control.py` selects compact or Full
-before query proving and checks whether a batch amortizes key loading. See
-`code/docs/cost_aware_control_20261029.md` for commands and timing scope.
-`cost_aware_pilot.py` is the paired warm control; completed receipts are kept in
-`validation/outputs/cost_aware_20261029` and its final text follow-up. These
-engineering tests do not modify the paper or establish wins over every baseline.
-
-The 29 October published-baseline gate adds random-sign projections, sparse
-random projections and lightweight coresets, with raw numerical comparisons
-and separately identified proof adapters. Its immutable inputs and guarded
-attempts are under `validation/outputs/published_baseline_gate_20261029/`.
-See [scope and commands](../docs/published_baseline_gate_20261029.md).
+For the submitted results, see [Submitted evidence](../../output/README.md).
+The packaged checks and public replay run locally.

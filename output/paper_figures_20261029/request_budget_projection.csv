@@ -1,4 +1,0 @@
-method,calibration_q,seconds_per_request,projected_hours_for_1000,measured_1000,scope
-Centroid warm64,64,21.566828012046884,5.990785558901912,False,Rough laptop-rate planning projection only; not server runtime or measured crossover. Different calibration executions.
-Full Groth16 warm8,8,67.95566382937497,18.876573285937493,False,Rough laptop-rate planning projection only; not server runtime or measured crossover. Different calibration executions.
-ZKML adapter warm64,64,41.14176954351548,11.42826931764319,False,Rough laptop-rate planning projection only; not server runtime or measured crossover. Different calibration executions.

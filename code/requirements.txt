@@ -10,3 +10,4 @@ psutil
 pytest
 pycryptodome
 tqdm
+threadpoolctl

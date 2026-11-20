@@ -1,8 +1,0 @@
-{
-  "source": "paper_results/review_controls/generated_completed_20261020/matched_methods.csv",
-  "source_sha256": "ea313ad2c847d0bfeafedab7909b872c296f3fe0cdb12e28deabb1429572321e",
-  "output": "matched_quality.tex",
-  "output_sha256": "577fac328401489018f82178888ee11466e309751ff74594f23e289e5e4c66fd",
-  "rows": 8,
-  "change": "Presentation only: omit illustrative acceptance rule; preserve all agreement, coverage and cost-width measurements. Original policy fields remain in frozen evidence."
-}

@@ -1,11 +1,14 @@
-% Focused referee revision, 25 October 2026; selected method and baselines.
-% Only completed verified comparisons are included; new experiments are recorded separately.
+% Style and review Issues6--8 revision,17November2026.
+% The supplied Introduction/Related Work and bibliography are preserved exactly.
+% Certificate algorithm unchanged; primary evaluation updated from completed proof archives.
+% MAIN DOCUMENT: manuscript.tex; compiler: pdfLaTeX.
 \documentclass[5p,times,twocolumn]{elsarticle}
 \usepackage[T1]{fontenc}
 \input{glyphtounicode}
 \pdfgentounicode=1
 \usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,enumitem,url}
 \usepackage{xcolor,textcomp,tabularx,array,adjustbox,placeins,dblfloatfix}
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta}
 \usepackage[hidelinks]{hyperref}
@@ -17,52 +20,2584 @@
 \raggedbottom
 \newtheorem{proposition}{Proposition}
 \newtheorem{definition}{Definition}
-\journal{Neurocomputing}
+\journal{Intelligent Systems with Applications}
 \begin{document}
 \begin{frontmatter}
 \title{Reusable Zero-Knowledge Certificates for Prototype Updates}
-\author{Author information pending supervisor confirmation}
-\input{paper_results/referee_final_20261025/abstract.tex}
+\author[aff1]{Mohsen Hesamolhokama\corref{cor1}}
+\ead{hokama@ce.sharif.edu}
+% \ead{author1@example.org}% TODO: replace with the real e-mail address [Supplied example address; replace and uncomment after confirmation.]
+\author[aff2]{Kousha Moeini}
+% \ead{author2@example.org}% TODO: replace with the real e-mail address [Supplied example address; replace and uncomment after confirmation.]
+\author[aff3]{Moslem Habibi}
+% \ead{author1@example.org}% TODO: replace with the real e-mail address [Supplied example address; replace and uncomment after confirmation.]
+\author[aff1]{Jafar Habibi}
+% \ead{author1@example.org}% TODO: replace with the real e-mail address [Supplied example address; replace and uncomment after confirmation.]
+\cortext[cor1]{Corresponding author}
+
+\affiliation[aff1]{organization={Department of Computer Engineering, Sharif University of Technology},
+            city={Tehran},
+            country={Iran}}
+\affiliation[aff2]{organization={Department of Mathematical Sciences, Sharif University of Technology},
+            city={Tehran},
+            country={Iran}}
+
+\affiliation[aff3]{organization={Department of Industrial Engineering, Sharif University of Technology},
+            city={Tehran},
+            country={Iran}}
+% BEGIN EDITABLE SECTION: abstract.tex
+\begin{abstract}
+Clustering, vector-quantization and retrieval systems regularly replace their codebooks with updated versions. When the evaluation data are private, the operator needs proof that a proposed codebook improves, worsens or leaves unchanged the nearest-center distortion. Proving every distance again for each proposal is expensive. We propose reusable zero-knowledge certificates that avoid most of this work. First, the record assignments and group statistics of the deployed codebook are proved once. For records that keep their center, these statistics give the exact cost change. For records that may move to another center, a rounded low-rank basis gives proven upper and lower bounds. A few exact row proofs then narrow the bounds. If the result is still undecided, an exact proof completes it, so every proposal receives a verified answer. We tested the method on 400 proposals from five datasets. All decisions were verified, and 282 needed no exact fallback. On four image and activity datasets, the method was 1.58 to 3.56 times faster than reusable exact proofs. With eight fits per dataset, it was faster in all 32 comparisons (exploratory Holm-adjusted p = 0.039). On MiniLM text embeddings, every request needed the exact proof, because 45\% of the data lies outside the basis. The bounds decided 92 of 96 matched requests, compared with 10 for a distance-based bound. The method works best when the deployed codebook stays fixed for many proposals. Certified distortion changes matched changes in accuracy or recall in 57\% of cases, and repeated queries can reveal group statistics.
+\end{abstract}
+
+
+% END EDITABLE SECTION: abstract.tex
+
 \begin{keyword}
 zero-knowledge proofs \sep prototype-update audits \sep authenticated statistics
-\sep integer cost-change certificates \sep reusable computation
+\sep vector quantization \sep retrieval systems \sep authenticated computation
 \end{keyword}
 \end{frontmatter}
-\input{paper_results/referee_final_20261025/introduction.tex}
-% Completed methodology text is preserved verbatim in the integrated copy.
-\makeatletter
-\def\input@path{{paper_results/ccd_pilot_20261029/}}
-\makeatother
-\input{paper_results/ccd_pilot_20261029/methodology.tex}
-\input{paper_results/ccd_pilot_20261029/methodology_figures.tex}
-\input{paper_results/ccd_pilot_20261029/experimental_design.tex}
-\input{paper_results/ccd_pilot_20261029/experimental_results.tex}
-\input{paper_results/ccd_pilot_20261029/discussion.tex}
-\input{paper_results/ccd_pilot_20261029/threats_to_validity.tex}
-\input{paper_results/ccd_pilot_20261029/conclusions.tex}
+
+% BEGIN EDITABLE SECTION: introduction.tex (rewritten Introduction and Related Work, 7 November 2026)
+% Introduction and Related Work for
+% "Reusable Zero-Knowledge Certificates for Prototype Updates"
+% Target: Cluster Computing (Springer). Replaces manuscript lines 90-252
+% (the current Introduction, including "Relationship to Prior Work").
+% Citation keys reuse the manuscript's embedded keys where the work is
+% already cited; new keys are descriptive. Matching entries are in
+% intro_related_work.bib. Entries marked "% STATUS: VERIFY" in the .bib
+% file need a metadata check before submission.
+% Requires: amsmath, amssymb, enumitem, booktabs, tabularx (already loaded).
+% Labels referenced: sec:methodology, sec:experimental-design,
+% sec:server-results (existing in the manuscript).
+
+\section{Introduction}
+\label{sec:introduction}
+
+
+Prototype banks summarize collections of feature vectors. They serve as
+the codebooks of $k$-means clustering and vector quantization
+\cite{lloyd1982least,gray1984vector,ikotun2023kmeans}, the class
+representatives of prototype-based and few-shot classifiers
+\cite{biehl2016prototype,snell2017prototypical}, the memories of
+class-incremental learners \cite{rebuffi2017icarl,gomezvilla2024ldc},
+the pseudo-label generators of deep clustering
+\cite{caron2018deep}, and the coarse quantizers of large vector-search
+indexes \cite{jegou2011product,johnson2021billion}. They are regularly
+updated as new data arrive, for example through successive minibatches
+\cite{sculley2010web}. Online clustering systems adapt their prototypes as data distributions
+drift \cite{corradini2025online}, and robust hard $c$-means variants keep
+the same nearest-center objective on noisy, multi-view data
+\cite{liu2025robust}. Before replacing a deployed bank, an evaluator
+may need to determine whether a candidate increases or decreases the
+nearest-center distortion on a fixed evaluation catalog, without
+accessing its records. Algorithmic auditing frameworks motivate such
+independent checks \cite{raji2020closing}, while zero-knowledge proofs
+allow claims about committed data to be verified without disclosing
+the data \cite{goldwasser1989knowledge,waiwitlikhit2024zkaudit,south2024verifiable}.
+The required guarantee depends on the audit: an install-only gate
+needs proof of improvement and can retain the deployed bank otherwise,
+whereas a complete outcome audit must certify every candidate,
+including those that worsen the objective.
+
+A direct solution proves the complete objective for each candidate by
+comparing every record with every candidate center in the original
+feature space. Generic proof systems and zkML compilers can encode this
+computation \cite{zkcnn2021,chen2024zkml,sun2024zkllm}, but repeat its
+full cost for every candidate, even when the catalog and deployed bank
+remain unchanged. The deployed bank already provides information that
+can be authenticated once: each record's assigned center and the
+count and coordinate sum of each group. These statistics give the
+exact objective change if no record changes its assignment. However, when a candidate splits an old group across new centers,
+the candidate's objective value depends on the nearest new center
+of each individual record, which group totals cannot recover. Bounds based only on the old statistics
+can establish some improvements but cannot certify a worsening.
+Reusing the reference computation while preserving exactness therefore
+requires verifiable bounds on records whose assignments may change,
+without repeating the full computation for the entire catalog.
+
+Existing approaches address parts of this problem. Audit and
+vector-search systems reuse dataset commitments across queries but
+prove each query's complete computation
+\cite{waiwitlikhit2024zkaudit,v3db2026,zhang2026verif}. Verifiable
+databases reuse authenticated counts and sums
+\cite{li2010authenticated,zhang2015integridb,backes2013verifiable},
+and FairZK derives model bounds from authenticated aggregates
+\cite{zhang2025fairzk}. These aggregates recover the cost change for
+records that retain their centers, but not the nearest-center cost of
+records that move. Folding and dynamic proof systems reduce the cost
+of chaining or updating proofs when the witness changes little
+\cite{kothapalli2024hypernova,zhang2026dynark}; changing the candidate
+bank, however, changes distance comparisons for every record.
+Accelerated $k$-means algorithms use bounds to identify points that
+may change centers \cite{elkan2003using,hamerly2010making}, but trust
+the executor rather than prove the resulting cost change. Coresets and
+random projections preserve clustering costs approximately
+\cite{feldman2020tiny,makarychev2019performance}, which is insufficient
+to determine the sign of a small cost difference. To our knowledge,
+none of these approaches reuses authenticated reference information
+to certify the exact direction of the change for both improving and
+worsening candidates.
+
+We introduce reusable certificates for the exact sign of the
+quantized nearest-center cost change between a deployed bank and a
+candidate. First, authenticated assignments and group statistics give
+the cost change assuming no record moves. The method then uses compact
+authenticated features to bound the possible gain from reassignment
+for every record. The verifier accepts these bounds only if every
+catalog record is covered exactly once. If the resulting interval does
+not determine the sign, exact proofs for selected records tighten the
+bounds; a complete exact proof provides the answer if the result
+remains undecided. The certificates apply only to the quantized
+objective: they do not verify feature extraction, training,
+predictive accuracy, or candidate optimality. Since aggregate outputs
+are disclosed, they also do not provide adaptive record privacy.
+
+We evaluate the proposed service on five sources: Fashion-MNIST, MNIST, UCI HAR, USPS, and MiniLM embeddings of 20 Newsgroups. The main evaluation covers 25 fits and 400 candidate decisions, all of which are verified against the exact integer objective. Both centroid and PCA reference configurations resolve 282 decisions (70.5\%) before invoking the exact fallback. The observed warm-time ratios of the centroid service relative to reusable exact proofs range from 1.58× to 3.56× on four sources, while MiniLM embeddings show almost no difference. However, these timing ratios should be interpreted descriptively: the five-fit comparisons do not establish statistically significant improvements after Holm correction. Additional experiments examine reference-replacement costs, lazy activation under fixed references, and the effect of switching bounds relative to a matched distance-based baseline.
+
+This paper makes three contributions:
+
+\begin{enumerate}
+    \item We present a reusable certificate for the exact sign of the
+    quantized nearest-center objective change between two specified
+    prototype banks, with a conditional correctness guarantee and a
+    sufficient condition for deciding without fallback.
+
+    \item We develop a verification service combining authenticated
+    reference information, verified switching bounds, exact
+    record-level corrections, and a complete fallback. We report
+    preparation, per-request, and reference-change costs for both
+    complete outcome audits and the improvement-or-retain gate.
+
+\item We evaluate the service on 400 matched proposals from five sources. Fifteen supplemental fits bring the total to eight fits per source. We compare the service with reusable Full proofs, a moments-first service, ordinary PCA, and a matched distance-based bound. We also measure proof costs for catalogs of up to 4096 rows and 50 centers. Finally, we examine certificate failures on MiniLM through residual energy analysis, compare certified distortion changes with downstream accuracy and recall, and evaluate lazy activation, reference replacement, and a held-out codebook-release workflow.
+
+\end{enumerate}
+
+\section{Related Work}
+\label{sec:related-work}
+
+\subsection{Verifiable computation and zero-knowledge machine learning}
+\label{sec:rw-zkml}
+
+Most zero-knowledge machine-learning systems prove that a committed
+model produced a given output. ZKML compiles neural networks into
+Halo2 circuits with model-specific proving keys
+\cite{chen2024zkml}, while zkLLM extends inference proofs to large
+language models \cite{sun2024zkllm}. Earlier systems target
+convolutional networks and other architectures
+\cite{zkcnn2021,feng2021zen,weng2021mystique}. A recent survey
+classifies this work across verifiable training, testing, and
+inference \cite{peng2025zkmlsurvey}. These systems establish the
+correctness of model computations, but do not reuse the
+record-level results of a previously deployed model when evaluating
+a new one.
+
+Proofs for training and auditing on committed datasets are closer to
+our setting. Kaizen proves individual gradient steps and composes
+them recursively \cite{abbaszadeh2024kaizen}, while Garg et al.\
+separate dataset-dependent preprocessing from model-dependent
+proving \cite{garg2023zkpot}. ZkAudit reuses commitments to data
+and weights across audit functions \cite{waiwitlikhit2024zkaudit},
+and South et al.\ attest model metrics on public inputs, noting
+that successive attestations can be used to track improvement
+\cite{south2024verifiable}. These approaches verify training steps
+or evaluate audit functions on committed data, but do not reuse
+the deployed model's authenticated per-record assignments and
+group statistics to evaluate a candidate. FairZK uses authenticated
+aggregates to bound model fairness
+\cite{zhang2025fairzk}, whereas SMDP certifies that changes between
+model versions belong to a norm-bounded, low-rank, or sparse class
+\cite{shang2026smdp}. The former focuses on aggregate fairness
+measures; the latter concerns model parameters rather than
+data-dependent objective changes. Verifiable vector-search systems
+prove queries against committed snapshots, including exact
+squared-distance scoring \cite{v3db2026,zhang2026verif}. In
+contrast, our task is to certify the exact change in the sum of
+nearest-center costs over an entire catalog, using both aggregate
+information and verified record-level corrections.
+
+\subsection{Incremental and reusable verification}
+\label{sec:rw-reuse}
+
+Reuse in verifiable computation takes several forms: commitments
+can support multiple proofs, authenticated aggregates can answer
+multiple queries, and existing proofs can be updated or composed.
+Commit-and-prove systems link one commitment to multiple proofs
+\cite{campanelli2019legosnark,artemis2024}, but each proof still
+covers the computation in its statement. Authenticated index
+structures and verifiable databases support repeated sum, count,
+and average queries after a single setup
+\cite{li2010authenticated,zhang2015integridb,zhang2017vsql}.
+Backes et al.\ verify quadratic functions of outsourced datasets
+with costs independent of dataset size
+\cite{backes2013verifiable}, while Reckle+ maintains Map/Reduce
+aggregates over changing committed memory
+\cite{papamanthou2024reckle}. These methods are effective when
+the answer is an aggregate or a low-degree function of one.
+For our objective, group counts and sums determine the exact
+contribution of records that retain their centers, but cannot
+recover the nearest-center minima of records that move. We
+therefore use the aggregates for this exact part and certify the
+remaining contribution separately. Linking the aggregates to
+the underlying records relies on a random-evaluation fingerprint,
+as in memory checking and permutation arguments
+\cite{blum1994checking,gabizon2019plonk}. Our cost analysis
+also follows the amortized-preprocessing model of verifiable
+computation \cite{gennaro2010noninteractive}.
+
+Incrementally verifiable computation and folding schemes reduce
+the overhead of proving sequences of uniform steps
+\cite{kothapalli2022nova,kothapalli2024hypernova,bunz2023protostar}.
+Proof aggregation compresses multiple proofs into one
+\cite{gailly2022snarkpack}, while dynamic SNARKs update proofs
+according to changes in the witness
+\cite{wang2024dynamic,zhang2026dynark}. These techniques reduce
+the cost of proof composition or update, but do not eliminate
+candidate-specific distance computations when the prototype
+bank changes: every record must still be compared with the new
+centers. Folding would therefore retain these per-record
+relations, while aggregation primarily reduces verification
+overhead. Such techniques could complement our method in
+settings with catalog edits under a fixed reference, which are
+outside the audit episodes considered here.
+
+\subsection{Verifiable clustering and assignment changes}
+\label{sec:rw-clustering}
+
+Prior work on verifiable clustering addresses different
+guarantees. Liu et al.\ check whether an untrusted provider
+returns a valid Lloyd output \cite{liu2013integrity}, and
+Zhang et al.\ study verifiable outsourced clustering
+\cite{zhang2021verifiable}. VeriML provides probabilistic
+assurance by checking sampled training iterations
+\cite{zhao2019veriml}. Private clustering protocols instead
+protect inputs during computation: Patel et al.\ use
+zero-knowledge proofs to enforce honest distributed $k$-means
+\cite{patel2013clustering}, while FastLloyd combines cluster
+sums and counts with differential-privacy noise
+\cite{diaa2025fastlloyd}. Clustering-based anonymization protects streaming data before analysis
+\cite{sadeghinasab2023flink}, and private contribution evaluation in
+federated learning must assess model updates while secure aggregation
+hides individual contributions \cite{jaramillovelez2026beyond}. Other work certifies the optimality
+of a clustering relative to the unknown optimum
+\cite{iguchi2016certifiably,mixon2017certificates,clum2024sketch}.
+These methods do not certify the exact change in objective
+between two specified banks on a hidden catalog.
+
+The closest algorithmic precedent is accelerated Lloyd
+clustering. Elkan and Hamerly maintain per-point distance
+bounds to identify records that cannot change centers
+\cite{elkan2003using,hamerly2010making}; later methods refine
+this strategy \cite{hamerly2015accelerating,ding2015yinyang,
+newling2016fast,xia2020ball}. Our switching bounds target the
+same event, but the verification setting is different. These
+algorithms trust the executor, which can recompute flagged
+records in plaintext. Our verifier instead requires proofs that
+the bounds hold and cover every record exactly once. It uses
+the bounds to form an interval for the objective change, rather
+than merely to skip distance computations; resolving an
+individual record exactly requires an additional proof. Our
+bounds are also integer-exact and compare one fixed reference
+bank with multiple candidates, rather than successive Lloyd
+iterations. Bounds based on authenticated old distances and
+center displacements provide another possible approach, which
+we leave for future evaluation.
+
+Coresets and dimensionality reduction preserve clustering costs
+approximately. Projection with residual information produces
+compact summaries \cite{feldman2013tiny,feldman2020tiny}, while
+random projections preserve clustering costs within a
+$1+\varepsilon$ factor, often with high probability
+\cite{cohen2015dimensionality,makarychev2019performance}.
+Such guarantees do not determine the sign of a cost difference
+that is small relative to the costs themselves. In our main
+study, no improving candidate changes the objective by more
+than 1\%. We therefore use projection only to construct
+deterministic integer bounds on the switching contribution;
+the final objective change remains exact. Prototype-update
+methods such as mini-batch $k$-means and drift compensation
+in continual learning determine how prototypes move
+\cite{sculley2010web,gomezvilla2024ldc}, but do not certify
+the resulting cost change on a fixed catalog.
+
+In summary, prior work provides reusable commitments,
+authenticated aggregates, incremental proofs, or bounds on
+assignment changes, but does not combine them to certify the
+exact objective change between two prototype banks. Our method
+uses authenticated reference assignments and group statistics
+for the contribution that can be computed exactly, verified
+per-record intervals for possible assignment changes, and
+exact corrections when those intervals are inconclusive.
+A complete proof handles the remaining cases, allowing both
+improving and worsening candidates to receive certified
+outcomes.
+
+% BEGIN EDITABLE SECTION: methodology.tex
+\section{Methodology}
+\label{sec:methodology}
+We audit candidate codebooks against one committed catalog by first authenticating exact assignments and group moments for the deployed reference. For each candidate, a rounded basis and residual radii bound the gain from reassignment, while proved exact-row corrections tighten the interval monotonically and reusable Full completes unresolved or uneconomic requests. Centroid and PCA serve as two basis choices under this same proof relation.
+
+The proof certifies the ordering of quantized distortion and is zero knowledge relative to its public statement. Public outputs—including results from repeated queries—can disclose catalog information (Section~\ref{sec:security-contract}).
+
+\subsection{Problem Formulation}
+\label{sec:methodology-problem}
+Let $X=(x_1,\ldots,x_n)$ be the committed quantized catalog with $x_i\in\mathbb Z^d$, and let the deployed bank be $C^0=(c^0_0,\ldots,c^0_{k-1})$. For an approved candidate $C^1$ sharing the same center count and indexing, define
+\begin{equation}
+ \begin{aligned}
+ \Phi_X(C)&=\sum_{i=1}^{n}\min_{0\leq j<k}\|x_i-c_j\|_2^2,\\
+ \Delta&=\Phi_X(C^1)-\Phi_X(C^0).
+ \end{aligned}
+ \label{eq:methodology-objective}
+\end{equation}
+The authenticated interval contains a positive integer multiple of $\Delta$.
+Its upper endpoint certifies improvement when negative, and its lower
+endpoint certifies worsening when positive. The interval $[0,0]$ certifies
+equality. If any other interval containing zero remains after refinement,
+Full computes the exact change. An episode fixes the catalog, quantizer,
+and reference. Changing the reference requires fresh group authentication.
+The proof covers the entire committed catalog. Feature extraction and
+training are outside its scope.
+
+\paragraph{Example}
+Take four rows at $(0,2)$ with reference $((0,0),(10,0))$ and
+candidate $((0,-2),(0,1))$. Keeping the old assignments adds 48 to
+distortion, and reassignment subtracts 60, giving $\Delta=-12$.
+With $T=1$ and $B=(1,0)$, the bound is $[-12,48]$. The first exact-row
+proof lowers the upper endpoint by 15, and four corrections tighten
+the interval to $[-12,-12]$. The 128-row version illustrates why
+a fixed correction cap can fail (\ref{app:informativeness}).
+
+\subsubsection{Relationship to the Continuous Objective}
+Let $\widetilde X,\widetilde C$ denote the data and centers before quantization, and set $\widehat X=X/\alpha,\widehat C=C/\alpha$ for quantizer scale $\alpha>0$. Because quantization can alter the ordering near zero, define
+\begin{align}
+ \eta_{ij}(C)&=\|\widetilde x_i-\widehat x_i\|_2
+                 +\|\widetilde c_j-\widehat c_j\|_2,\nonumber\\
+ \mathcal E(C)&=\sum_i\max_j\left[
+ 2\|\widehat x_i-\widehat c_j\|_2\eta_{ij}(C)+\eta_{ij}(C)^2\right].
+ \label{eq:style-quant-error}
+\end{align}
+Since the squared-distance perturbation bound still holds after taking the minimum over centers, $\mathcal E(C)$ bounds the objective error. Whenever these error bounds hold, a verified integer interval $[L,U]$ implies
+\begin{equation}
+ \Delta_{\mathrm{raw}}\in
+ \left[\frac{L}{T^6\alpha^2}-\mathcal E_{01},\quad
+       \frac{U}{T^6\alpha^2}+\mathcal E_{01}\right].
+ \label{eq:style-sign-transfer}
+\end{equation}
+Here $\mathcal E_{01}=\mathcal E(C^0)+\mathcal E(C^1)$. The signs agree if the enlarged interval excludes zero, and if the quantizer clips a value, the bound must include the clipping error alongside the half-grid rounding error. Equation~\eqref{eq:style-sign-transfer} states an analytical implication rather than an authenticated continuous-data bound in the deployed proof, with observed agreement reported in RQ4.
+
+\subsection{Reusable Prototype-Update Certificates}
+\label{sec:methodology-pipeline}
+Candidate audits reuse the state shown in Figure~\ref{fig:methodology-pipeline}, while a new reference or authenticated representation requires fresh preparation.
+
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=\textwidth]{figures/ai_revision_20261107/methodology_overview.pdf}
+\caption{Reusable state and candidate proof paths. Commitments precede the
+independent challenge. The compact path combines assigned change, switching
+bounds and exact-row corrections. Full completes unresolved or uneconomic
+requests. Each accepted ordering comes from a pinned, verified path.}
+\label{fig:methodology-pipeline}
+\end{figure*}
+
+\paragraph{Audit procedure}
+\emph{Reference preparation.} Bind the catalog, model, old assignments, derived rows, and moments before the auditor samples the challenge, then verify the row and moment links across all batches.
+
+\emph{Candidate audit.} Pin the candidate, rebuild its public constants, compute the assigned change and switching interval, and—if needed—prove selected rows exactly under the correction cap. After checking coverage and summing the endpoints, return the verified compact decision or complete the request with Full.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Notation used in the audit.}
+\label{tab:concise-notation}
+\begin{tabularx}{\columnwidth}{@{}lX@{}}\toprule
+Symbol & Meaning\\\midrule
+$n,d,k,s$ & Catalog size, dimension, centers, and basis rank\\
+$B,T,\alpha$ & Rounded basis, basis scale, and quantizer scale\\
+$g_i,n_g,S_g$ & Old group, group count, and coordinate sum\\
+$\mathcal A,b_i,\Delta$ & Assigned change, row switching gain, and total change\\
+$[L,U],J,\pi_i$ & Scaled interval, corrected rows, and endpoint gain\\
+\bottomrule\end{tabularx}
+\end{table}
+
+\subsubsection{Stage 1: Compact Representation and Residual Energy}
+\label{sec:methodology-representation}
+Let $B\in\mathbb Z^{s\times d}$ be the public integer basis, $T>0$ its scale, and $a=c^0_0$ the anchor. Define
+\begin{align}
+ H_B(v)&=TB(v-a),\nonumber\\
+ R_B(v)&=(T^2I_d-B^\top B)(v-a),\nonumber\\
+ E_B(v)&=\|R_B(v)\|_2^2,
+ \label{eq:methodology-statistics}
+\end{align}
+and store the projected coordinates $H_i=H_B(x_i)$ and residual energy $E_i=E_B(x_i)$~\cite{feldman2020tiny}.
+
+\paragraph{Basis construction}
+The centroid-informed basis includes the span of the differences $c^0_j-c^0_0$ for $j>0$. We subtract $a$ from the training rows, project out that span, mean-center the residuals, and take PCA on those residuals for the remaining directions, whereas ordinary PCA fits all directions to the same training rows.
+
+Both methods fit 79 ordered directions using the fit seed and four randomized solver iterations, performing reprojection and orthonormalization before rounding at $T=2^{14}$. Rank 16 uses the first 16 directions, and both methods fit the bases on training rows alone, before seeing the final candidate codebooks (see \ref{app:methodology-proofs} for the saved basis construction).
+
+\paragraph{Validation-based rank selection}
+We use rank 16 only if all eight validation updates resolve within
+16 corrections and a compatible measured circuit profile exists. Its
+predicted service cost must also be below 90\% of the estimate for
+rank 79, counting authentication, conditional refinement setup, Full
+initialization, and recurring work. Otherwise, we use rank 79. Both
+methods share this rule and router. We fix the rank before constructing
+the final candidate codebooks.
+
+The verifier binds the selected rounded basis, while basis training remains outside the proof statement and the bounds account for the integer matrix's loss of orthonormality after rounding.
+
+\subsubsection{Stage 2: Authenticated Groups and Exact Group Moments}
+\label{sec:methodology-groups}
+For each row, define its reference group and the group aggregates
+\begin{equation}
+ \begin{aligned}
+ g_i&\in\mathop{\arg\min}_{0\leq j<k}\|x_i-c^0_j\|_2^2,\\
+ n_g&=\sum_i\mathbf1[g_i=g],\qquad S_g=\sum_{i:g_i=g}x_i.
+ \end{aligned}
+ \label{eq:methodology-groups}
+\end{equation}
+The relation accepts any minimizer, and the implementation chooses the first. To prove membership, we compare $\|c^0_j\|_2^2-2\langle x_i,c^0_j\rangle$ across centers, since the row norm is constant across these comparisons.
+
+Salted Poseidon2 Merkle commitments bind the ordered rows, derived leaves $(H_i,E_i,g_i)$, and group moments to one model context~\cite{poseidon22023}. Row proofs check same-index openings, compact statistics, coordinate ranges, and exact reference membership, requiring each catalog index to appear once.
+
+Once commitments are fixed, an independent auditor samples $\xi\in\mathbb F_p^*$ uniformly. With coordinates indexed by $t=0,\ldots,d-1$, the fingerprint is
+\begin{align}
+ P_i(\xi)&=1+\sum_{t=0}^{d-1}x_{it}\xi^{t+1},\nonumber\\
+ z_{ig}&=\mathbf1[g_i=g]P_i(\xi)+\mu_{i+1,g}-\mu_{ig}.
+ \label{eq:methodology-fingerprint}
+\end{align}
+Indexed hashes of adjacent mask vectors link the private $\mu_{ig}$ so that complete ordered coverage makes the masks telescope, and the query checks
+\begin{equation}
+ \sum_i z_{ig}=n_g+\sum_{t=0}^{d-1}S_{gt}\xi^{t+1}
+                    +\mu_{n+1,g}-\mu_{1g}\pmod p.
+ \label{eq:methodology-moment-link}
+\end{equation}
+The circuit checks integer ranges for counts and sums, while the auditor keeps the roots, challenge receipt, and approved key hashes separate from the proof bundle.
+
+The linked moments give the cost change under the old assignments,
+\begin{equation}
+ \mathcal A=
+ \sum_{g=0}^{k-1}\left[
+ 2\langle S_g,c^0_g-c^1_g\rangle
+ +n_g(\|c^1_g\|_2^2-\|c^0_g\|_2^2)\right],
+ \label{eq:methodology-assigned}
+\end{equation}
+and each row's switching gain $b_i$ completes the decomposition
+\begin{equation}
+ b_i=\min_j\|x_i-c^1_j\|_2^2-\|x_i-c^1_{g_i}\|_2^2\leq0,
+ \qquad \Delta=\mathcal A+\sum_i b_i.
+ \label{eq:methodology-decomposition}
+\end{equation}
+Because $b_i\leq0$, $\mathcal A<0$ certifies improvement, whereas certifying worsening requires a positive lower bound, which Stage 3 derives via a two-sided interval.
+
+Consider $C^0=(0,9)$ alongside catalogs $(-3,1,2,6)$ and $(-2,-1,3,6)$, which share the same group counts, sums, squared sums, and reference cost of 23. The candidate $(-5,3)$ costs 18 on the first catalog and 34 on the second, so reassignment yields opposite decisions despite identical reference moments. Moments can still certify improvement through a one-sided bound.
+
+
+\subsubsection{Stage 3: Integer-Safe Switching Bounds}
+\label{sec:methodology-switching}
+For the rounded basis, $BB^\top$ can differ from $T^2I_s$. Define
+\begin{equation}
+ \begin{aligned}
+ G&=BB^\top-T^2I_s,\\
+ \mathcal D_B(x,c)&=\|H_B(x)-H_B(c)\|_2^2+E_B(x)+E_B(c).
+ \end{aligned}
+ \label{eq:methodology-gram}
+\end{equation}
+Writing $\delta H_{xc}=H_B(x)-H_B(c)$ gives the identity
+\begin{equation}
+ \begin{aligned}
+ &T^2\mathcal D_B(x,c)-T^6\|x-c\|_2^2\\
+ &\qquad=2T^2\langle R_B(x),R_B(c)\rangle
+       +\delta H_{xc}^\top G\delta H_{xc}.
+ \end{aligned}
+ \label{eq:methodology-rounded-identity}
+\end{equation}
+Subtracting the distance expressions for two candidate centers on the same row cancels the private quadratic term. Writing $h_j=H_B(c^1_j)$, $e_j=E_B(c^1_j)$, and $\delta h_{jg}=h_j-h_g$, we define the affine term
+\begin{align}
+ q_{jg}(h)={}&2h^\top(G-T^2I_s)\delta h_{jg}\nonumber\\
+ &+T^2(\|h_j\|_2^2-\|h_g\|_2^2+e_j-e_g)\nonumber\\
+ &-(h_j^\top Gh_j-h_g^\top Gh_g).
+ \label{eq:methodology-affine}
+\end{align}
+The scaled pair difference $F_{ijg}=T^6(\|x_i-c^1_j\|_2^2-\|x_i-c^1_g\|_2^2)$ then satisfies
+\begin{equation}
+ \begin{aligned}
+ F_{ijg}={}&q_{jg}(H_B(x_i))\\
+ &-2T^2\langle R_B(x_i),R_B(c^1_j)-R_B(c^1_g)\rangle.
+ \end{aligned}
+ \label{eq:methodology-pair-difference}
+\end{equation}
+Using the integer radii $\rho_i=\lceil\sqrt{E_B(x_i)}\rceil$ and $\tau_{jg}=\lceil\|R_B(c^1_j)-R_B(c^1_g)\|_2\rceil$, Cauchy--Schwarz bounds the absolute value of the residual term by $\varepsilon_{ijg}=2T^2\rho_i\tau_{jg}$, while the verifier derives the center statistics, affine coefficients, and pair radii from the approved centers and stored basis.
+
+For each row, we compare every candidate center against $c^1_{g_i}$—the candidate center indexed by the authenticated reference group $g_i$—including the zero comparison $j=g_i$ in the minima:
+\begin{align}
+ \ell_i&=\min_j\{q_{jg_i}(H_B(x_i))-\varepsilon_{ijg_i}\},\nonumber\\
+ u_i&=\min_j\{q_{jg_i}(H_B(x_i))+\varepsilon_{ijg_i}\}.
+ \label{eq:methodology-row-bounds}
+\end{align}
+These row bounds satisfy $\ell_i\leq T^6b_i\leq u_i\leq0$, and summing them yields the catalog interval
+\begin{equation}
+ L=T^6\mathcal A+\sum_i\ell_i
+ \ \leq\ T^6\Delta\ \leq\
+ U=T^6\mathcal A+\sum_i u_i.
+ \label{eq:methodology-interval}
+\end{equation}
+Query proofs expose endpoint sums over authenticated leaves, and the verifier requires coverage of every catalog index once. The aggregate interval can determine the ordering even when individual candidate assignments remain unresolved.
+
+\subsubsection{Stage 4: Authenticated Refinement and Exact Fallback}
+\label{sec:methodology-refinement}
+If the canonical interval from Eq.~\eqref{eq:methodology-interval} is inconclusive, private preflight computes $t_i=T^6b_i$ from the original rows and $\Theta=T^6\mathcal A+\sum_i t_i$, where bars mark endpoints computed with minimal ceiling radii. For $\Theta\ne0$, preflight ranks uncertain rows by decreasing gain toward the relevant endpoint,
+\begin{equation}
+ \pi_i=\begin{cases}
+ t_i-\bar\ell_i,&\Theta>0,\\
+ \bar u_i-t_i,&\Theta<0,
+ \end{cases}
+ \label{eq:methodology-endpoint-gain}
+\end{equation}
+with ties broken by row index. For a fixed sign and equal correction
+costs, the first prefix to cross the required endpoint uses the fewest
+corrections. For equality, preflight ranks rows by interval width and
+stops once it determines the ordering or reaches $b_{\max}=16$.
+Timings include this work on the original rows. The auditor relies on
+the verified proof.
+
+Each correction opens the same index in the original and derived commitments, checks the minimal radius and canonical endpoints, and proves $b_i$ exactly while exposing
+\begin{equation}
+ d_i^-=T^6b_i-\bar\ell_i\geq0,
+ \qquad d_i^+=T^6b_i-\bar u_i\leq0.
+ \label{eq:methodology-corrections}
+\end{equation}
+For distinct indices $J$, the verified interval becomes
+\begin{equation}
+ [L',U']=\left[L+\sum_{i\in J}d_i^-,\quad
+                    U+\sum_{i\in J}d_i^+\right],
+ \label{eq:methodology-refined}
+\end{equation}
+which still contains the scaled exact change when the base proof uses larger valid radii. The verifier checks the complete base transcript, roots, centers, index uniqueness, and cap. With $w_i=\bar u_i-\bar\ell_i$, the remaining width is
+\begin{equation}
+ U'-L'=(U-L)-\sum_{i\in J}w_i,
+ \label{eq:methodology-width}
+\end{equation}
+so at fixed cardinality the widest rows yield the narrowest interval, and determining a sign depends on how far the relevant endpoint moves.
+
+If preflight reaches the cap without resolving the ordering, the service selects Full before generating candidate certificates; Full can reuse a proved reference cost and requires verified evidence for each candidate.
+
+\paragraph{Batch routing and lazy preparation}
+For preflight-conclusive requests $S$ with predicted correction counts $r_j\leq16$, the fitted recurring-cost model is
+\begin{align}
+ \widehat C(S)={}&c_C|S|+c_R\sum_{j\in S}r_j+c_F(Q-|S|)\nonumber\\
+ &+b_C\mathbf1[S\ne\varnothing]
+  +b_R\mathbf1[\textstyle\sum_{j\in S}r_j>0]\nonumber\\
+ &+b_F\mathbf1[|S|<Q].
+ \label{eq:methodology-routing}
+\end{align}
+The $b$ terms cover loading and replay. Considering marginal-cost prefixes—including prefixes without corrections—the router selects certificates only when the predicted batch cost falls below 90\% of the all-Full estimate, noting that actual savings can differ from this prediction.
+
+The service can defer branch authentication and key setup until branch selection, whereas component sums and sequential controls charge eager preparation as described in Section~\ref{sec:experimental-design}.
+
+\subsection{Verification, Guarantees and Computational Cost}
+\label{sec:methodology-guarantees}
+\subsubsection{Threat Model and Security Contract}
+\label{sec:security-contract}
+The owner approves the catalog/reference commitment, integer profile, basis, candidate banks, and required responses, while the honest auditor obtains these inputs and key hashes independently. A malicious prover can alter aggregates, omit or duplicate batches, choose corrections, or submit inconsistent proofs; the owner and prover may be the same party, and the guarantee binds the owner-chosen catalog while leaving catalog provenance outside its scope.
+
+The prover commits to the rows, derived values, and moments before the
+auditor issues a uniform nonzero challenge. The audit has an integrity
+failure if an approved transcript passes the pinned relations and coverage
+checks yet certifies the wrong ordering. Withholding a response instead
+causes an availability failure. The implementation uses Groth16 over BN254~\cite{groth2016}, signed-integer range checks, and public-only replay, while the verifier independently reconstructs center parameters and sums endpoints with arbitrary-precision integers.
+
+\begin{table*}[tbp]
+\centering\small
+\caption{Security assumptions and scope for an approved audit episode.}
+\label{tab:security-assumptions}
+\begin{tabularx}{\textwidth}{@{}p{.21\textwidth}*{3}{>{\raggedright\arraybackslash}X}@{}}\toprule
+Component & Assumptions & Adversarial action & Guarantee and boundary\\\midrule
+Approved task & Binding commitments, authenticated owner approval, pinned circuits, and verification keys. & Substitute the catalog, reference, candidate, or key. & Verification binds the approved task. Catalog provenance is outside its scope.\\
+\addlinespace[2pt]
+Reference fingerprint & Rows, derived states, and moments fixed before an independent uniform nonzero challenge. & Commit to inconsistent assignments or moments. & Accepted links imply the stated aggregates, subject to the collision bound, commitment binding, and proof soundness.\\
+\addlinespace[2pt]
+Decision and coverage & Knowledge soundness, checked integer ranges, complete batches, and verified distinct corrections. & Omit or duplicate rows, forge corrections, or exploit modular wraparound. & An accepted interval contains the scaled exact change. Complete service verifies the sign or equality. The prover may withhold a response.\\
+\addlinespace[2pt]
+Setup and disclosure & Correct circuit-specific Groth16 setup with a protected trapdoor. & Inspect proofs, public outputs, and repeated queries. & Proof-message zero knowledge protects the witness relative to the public statement. Published aggregates and timing can disclose information.\\
+\bottomrule\end{tabularx}
+\end{table*}
+
+\begin{proposition}[Conditional interval correctness]
+\label{prop:methodology-correctness}
+Assume binding commitments, knowledge-sound proofs for the stated relations, canonical range-checked integer arithmetic, complete catalog coverage, and an independent uniform nonzero fingerprint challenge issued after commitment. Conditioned on no false-moment fingerprint collision, an accepted base or refined interval contains $T^6\Delta$. For a fixed preprocessing session, the fingerprint collision probability is at most $kd/(p-1)$.
+\end{proposition}
+\ref{app:methodology-proofs} gives the derivation. The bound requires the challenge to remain unknown until the commitments are fixed and independent of the prover's choice. The prototype generates keys locally and simulates the independent auditor; production challenge delivery and an independent implementation audit are outside this evaluation.
+
+\paragraph{Statement, witness and setup}
+The public statement binds the approved catalog, model, candidate, key identities, equality rule, and batch coverage, while the witness contains row openings, assignments, group statistics, projections, and intermediate arithmetic, with the verifier deriving candidate constants from the approved inputs. We assume correct circuit-specific setup, protection of the setup trapdoor, and extractable committed openings.
+
+A deployment must authenticate and pin the verification key for each circuit, since public replay uses that key and the approved input and recreating the original keys from the circuit would require the unavailable setup randomness. A fresh setup provides keys for new proofs, while the auditor obtains authenticated commitments and issues an independent challenge; a transcript-hash challenge would require a separate soundness analysis accounting for attempts to choose commitments, and universal setup is another option with unmeasured cost. \ref{app:security-leakage} details the integrity and privacy models.
+
+\paragraph{Disclosure boundary}
+The public transcript includes the model, roots, keys, challenge, linking values, $\mathcal A$, batch endpoints, selected indices and corrections, routes, and any Full costs, alongside observable proofs and timing. Zero knowledge protects the witness relative to the public statement. For example, moving only center $g$ by $te_a$ gives
+\begin{equation}
+ \mathcal A(t)=2t(n_gc^0_{ga}-S_{ga})+n_gt^2.
+ \label{eq:methodology-leakage}
+\end{equation}
+Queries at $+t$ and $-t$ can recover $n_g,S_{ga}$, revealing the record if the group contains a single member. The interface requires owner-authorized disclosure and leaves adaptive record privacy outside its guarantee; a deployment can restrict queries to owner-approved updates, log approvals, and limit repeated queries, though these controls lie outside the measured protocol. The verified statement covers approved audits, while feature extraction, training, unlisted proposals, setup governance, and denial-of-service protection are outside its scope.
+
+\paragraph{Reuse and baseline accounting}
+Audit costs start from quantized inputs and exclude common encoding and reference/proposal training, with each cohort specifying whether timings include basis fitting and validation. Preprocessing takes $O(nds+ndk)$ arithmetic work, switching uses $O(ks+k^2)$ per row alongside authentication and range checks, the group term takes $O(kd)$ per candidate, and proving time also depends on the proof backend. For $M$ candidates, preparation $P$, query work $Q_j$, and newly generated fallback work $F_j$, the service cost is
+\begin{equation}
+ C(M)=P+\sum_{j=1}^{M}Q_j+\sum_{j\in\mathcal U_M}F_j,
+ \label{eq:methodology-cost}
+\end{equation}
+where $\mathcal U_M$ includes direct and post-certificate Full requests, and $Q_j$ includes candidate-center projection, Gram coefficients, and residual radii. The ledger includes failed work, a reference change requires new group authentication, and Full can retain its applicable circuit setup.
+
+PCA uses the same relations and correction cap, whereas the projection-free moments comparator assigns each reference group to a single candidate center:
+\begin{equation}
+ \begin{aligned}
+ U_{\mathrm{mom}}=\sum_g\min_j\bigl[&2\langle S_g,c^0_g-c^1_j\rangle\\
+ &+n_g(\|c^1_j\|_2^2-\|c^0_g\|_2^2)\bigr].
+ \end{aligned}
+ \label{eq:methodology-moments-baseline}
+\end{equation}
+The bound satisfies $\Delta\leq U_{\mathrm{mom}}\leq\mathcal A$, where a negative value certifies improvement; we report native coverage and the measured moments-first/Full service separately.
+
+
+
+% END EDITABLE SECTION: methodology.tex
+
+% BEGIN EDITABLE SECTION: experimental_design.tex
+\section{Experimental Design}
+\label{sec:experimental-design}
+The primary study measures audit cost on five sources. Table~\ref{tab:revision-cohorts} lists the primary study, controls and
+historical cohort.
+
+\subsection{Research Questions}
+\begin{itemize}[leftmargin=*]
+\item \textbf{RQ 1: Certificate components.} How do group moments, switching
+bounds, row corrections and basis choice affect coverage and service time?
+\item \textbf{RQ 2: Reference reuse.} How much work does the service save
+relative to reusable Full? What does reusing the old-cost proof save on its own?
+\item \textbf{RQ 3: Scalability.} How do catalog size and cryptographic
+preparation affect proving, verification and storage costs?
+\item \textbf{RQ 4: Operating conditions.} How do quantization, objective
+margin and the pattern and magnitude of prototype movement affect decisions?
+\end{itemize}
+
+\subsection{Datasets and Update Construction}
+Fashion-MNIST and MNIST use 784 features and five centers. UCI HAR uses
+561 features and six centers. MiniLM embeddings of 20 Newsgroups use
+384 features and five centers
+\cite{fashion2017,lecun1998,ucihar2012,news20data,minilmcard2026}.
+These four sources have 128 audit rows each. USPS uses 256 features,
+eight centers, 256 audit rows and the official LIBSVM training/test
+files.\footnote{\url{https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html\#usps}}
+We inspected these public benchmarks during development. The separate
+ISOLET pilot uses 617-feature spoken-letter recordings, eight centers,
+256 audit rows and 16 proposals per fit. Its audit rows come from the
+official speaker-disjoint ISOLET5 split \cite{isolet1991}.
+
+The primary seeds are 3001, 3011, 3019, 3023 and 3037. Each fit uses 1792
+training records, including 512 past records,
+256 validation-proposal records, 512 validation-catalog records and
+512 final proposal-source records. Image training and audit rows are disjoint within the frozen
+5000-record cache. Other
+sources use their official audit splits, with disjoint HAR subjects.
+
+The eighth retained Lloyd iterate serves as the reference. Batches of 32
+incoming records define targets under the reference assignments.
+Update rates $1/8,1/4,1/2,1$ yield sixteen candidates without filtering
+on audit cost. The maximum past-record magnitude fixes the quantizer.
+We round and clip to $[-4095,4095]$, use $T=2^{14}$ and break distance
+ties by lowest index. We select the rank on training-only validation
+before generating final candidates.
+
+\subsection{Baselines and Measurement}
+Reusable Full, routed centroid and PCA share the catalog, candidates
+and Groth16/BN254 backend \cite{groth2016}. Full retains the old-cost proof
+and applicable keys. Both interval services share rank selection, routing,
+a sixteen-row correction cap and verified fallback. The USPS ablation
+adds moments-first and switching with zero or sixteen corrections. Its timings include failed attempts and fallback. A second USPS
+control varies only old-proof reuse, with fresh proofs at the same
+per-request granularity. The historical adapter uses a different
+backend and reports exact costs (\ref{app:historical}).
+
+We run on Ubuntu 24.04 with sixteen vCPUs (AMD EPYC 7763) and
+31.34 GiB usable RAM. Two eight-vCPU workers run independent cases
+with one BLAS thread each. Within a fit, resources match and the
+benchmark rotates service order. We use Go 1.27.1, gnark 0.16.3 and
+gnark-crypto 0.21.0 with instrumentation for the original proof relations.
+
+Warm time includes native planning, fresh proofs and full public
+replay. We time activation and lazy correction-key setup separately.
+Data preparation, training, oracle checking and artifact cloning
+are outside warm time. The activation table sums its listed components.
+Complete cold-start latency includes additional work.
+
+The fit is the statistical unit. We pair service times within each
+fit. The 400 primary proposals come from 25 fits, with five fits per
+source and 16 dependent proposals per fit. Fits use independent seeds
+and can share source records, so inference is conditional on the
+benchmark source. We compute Student-$t$ 95\% intervals on paired log
+ratios and use two-sided exact sign-flip tests. We apply Holm adjustment
+across five sources separately for Full and PCA. Five pairs give a
+minimum $p=0.0625$. The eight-fit follow-up is exploratory and is
+reported separately in Table~\ref{tab:exploratory-five-sources}.
+
+\subsection{Sequential Reference-Change Control}
+The two prespecified streams use HAR and Fashion-MNIST with seed 7103,
+$n=128$ and eight incoming training minibatches of 32 rows. An initial
+512-record partition supplies the data for k-means++ initialization
+and one center update. Cumulative online counts generate the shared
+candidates independently of audit outcomes. Each policy installs only
+a verified strict improvement. Complete and Full follow the same
+reference trajectory. After an inconclusive decision, the moments
+gate retains its current reference and may later take a different path.
+
+The compact representation fixes rank at 79 and refits on training
+data after reference changes. Lifecycle time includes preparation,
+fresh reference authentication, proofs, replay and local artifact
+handling. The complete controller prepares both Full and compact
+state at every reference, even when a branch is unused. It regenerates
+reference-specific setups. These controls measure eager activation with no cross-reference key reuse. Each source uses one seed and runs
+Complete, Full and then the gate. The fixed order and single seed
+per source make these descriptive controls.
+
+In the first two streams, Full and the gate also fit a basis they
+never use. Raw totals include that overhead. Adjusted totals subtract
+all recorded native preparation from Full and the gate, favoring
+those two comparators. The Complete service retains all its measured
+native work. The supplementary CSV provides both totals.
+
+\subsection{Scale, Quantization and Controlled Drift}
+The scale control uses one USPS fit with seed 5003, $k=8$, rank 79 and
+four shared candidates. Catalogs of 128, 512, 1024, 2048 and 4096 rows
+are nested. Training, proposal-source and audit roles are disjoint
+within the training corpus. We disable adaptive rank and cost routing
+and measure one configuration per size. The 4096-row centroid timing
+comes from an uninterrupted repeat on the original inputs.
+
+To isolate catalog rounding on the 400 primary candidates, we
+dequantize the deployed integer centers and hold them fixed. We also
+fit continuous centers independently and evaluate 32 natural updates
+and eight small-margin perturbations per fit. For each candidate, we
+record the exhaustive floating cost change, exact quantized integer
+change, both decision signs and whether they agree. Linux long-double
+arithmetic provides a numerical reference for the floating computation.
+We mark changes within $64\epsilon\max(\Phi,1)$ as ambiguous. The signed
+diagnostics at 8, 10, 12, 16 and 20 bits clip at $2^{b-1}-1$. The main
+study uses a clip magnitude of 4095. Relative floating margin is
+$|\Delta_{\mathrm{fp}}|/\max(\Phi_{\mathrm{fp}}(C^0),1)$.
+
+The drift study fixes $n=64$, rank 79 and a cap of sixteen. We fit
+each source separately at its baseline center count and at $k=20,50$.
+Five patterns move one center, two centers, all centers together,
+all centers independently, or centers unequally. Unequal movement
+reduces every displacement except the first by a factor of 100.
+We prescribe magnitudes of $10^{-4},10^{-2},10^{-1}$ times $4095\sqrt d$
+and then clip. The design yields 225 paired geometric cases, or 450
+basis-specific observations. We retain all outcomes, including
+equality and clipping. These controls measure native coverage at
+twenty or fifty centers. Separate USPS proof pilots report
+cryptographic timings at those center counts.
+
+% END EDITABLE SECTION: experimental_design.tex
+
+% BEGIN EDITABLE SECTION: experimental_results.tex
+\section{Results}
+\label{sec:results}
+\label{sec:server-results}
+All 400 primary decisions pass public verification and match the
+exhaustive integer oracle for quantized distortion. Downstream accuracy
+and retrieval metrics are reported separately in
+Section~\ref{sec:downstream-utility}.
+
+\subsection{RQ 1: Contribution of Certificate Components}
+\begin{table*}[tbp]
+\centering\small
+\caption{Primary cohort with five fits and 80 candidates per source.
+Times are mean warm seconds per 16-candidate fit, including native routing
+and public replay. Full reuses its old-cost proof. The coverage columns
+count decisions resolved before fallback. The Full/Centroid ratio uses
+the sums of matched warm times.}
+\label{tab:final-main}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Source & Full (s) & Centroid (s) & PCA (s) & Full/Centroid & Centroid/80 & PCA/80\\
+\midrule
+Fashion-MNIST & 3337.9 & 936.9 & 972.4 & 3.56 & 73 & 72\\
+UCI HAR & 2076.2 & 746.7 & 806.3 & 2.78 & 76 & 73\\
+MNIST & 3300.6 & 1427.9 & 1467.7 & 2.31 & 58 & 57\\
+USPS & 2145.6 & 1362.1 & 1428.2 & 1.58 & 75 & 80\\
+MiniLM text & 1671.8 & 1659.7 & 1660.1 & 1.01 & 0 & 0\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Centroid and PCA each resolve 282 of 400 requests before falling back to
+Full (Table~\ref{tab:final-main}). Coverage varies by source. Circuit size
+and the work spent on corrections also affect warm time.
+
+\begin{table*}[tbp]
+\centering\small
+\caption{Same-backend USPS ablation with five 16-candidate fits ($n=256,k=8$).
+The cap-0 and cap-16 switching rows use Centroid with routing disabled.
+Timings charge inconclusive attempts and Full fallback.
+Reusable Full certifies all 80 decisions directly.}
+\label{tab:final-ablation}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Service & Compact/80 & Fallback/80 & Mean warm (s)\\
+\midrule
+Reusable Full & 0 & 0 & 2145.6\\
+Moments-first + Full & 7 & 73 & 2073.2\\
+Switching, cap 0 + Full & 75 & 5 & 1388.1\\
+Switching, cap 16 + Full & 79 & 1 & 1302.0\\
+Routed Centroid + Full & 75 & 5 & 1362.1\\
+Routed PCA + Full & 80 & 0 & 1428.2\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+On USPS, the one-sided moments bound resolves 7/80 proposals. Switching
+raises coverage to 75/80 before corrections. With a correction cap of
+16, coverage reaches 79/80 and mean warm time is lowest among the tested
+services (Table~\ref{tab:final-ablation}). Routing uses the batch cost
+rule in Eq.~\eqref{eq:methodology-routing}. On this workload, Routed
+Centroid is slower than always trying switching with cap 16. The
+aggregate coverage tie in Table~\ref{tab:final-main} limits claims about
+the basis choice.
+
+\subsubsection{Matched Distance-Bound Comparison}
+The old-distance baseline bounds reassignment using authenticated
+reference distances, center displacements and exact group moments.
+The preliminary pilot used unequal correction caps
+(Table~\ref{tab:revision-distance}). The matched comparison disables
+corrections for both services while keeping the backend and Full
+fallback fixed. It evaluates two existing fits per source. Each service proves its conclusive
+requests. Activation times are listed in \path{matched_cap_baselines.csv}.
+Switching resolves 92/96 proposals, compared with 10/96 for the distance
+baseline, and takes less warm time on all six fits
+(Table~\ref{tab:matched-cap-distance}). This comparison covers the base
+bounds and their Full completion costs. Distance-specific refinement
+remains open.
+
+\begin{table*}[tbp]
+\centering\small
+\caption{Matched zero-correction services on 16 proposals per fit.
+Warm time includes routing, proving, fallback and replay.}
+\label{tab:matched-cap-distance}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Source & Seed & Switching/16 & Distance/16 & Full (s) & Switching (s) & Distance (s)\\\midrule
+Fashion-MNIST & 3011 & 15 & 1 & 3371.2 & 895.8 & 3243.4\\
+Fashion-MNIST & 3019 & 14 & 4 & 3375.1 & 644.7 & 1598.2\\
+UCI HAR & 3011 & 15 & 2 & 2129.9 & 798.0 & 2053.6\\
+UCI HAR & 3019 & 16 & 1 & 2121.8 & 672.6 & 2116.3\\
+USPS & 3011 & 16 & 0 & 2156.2 & 1470.8 & 2190.8\\
+USPS & 3019 & 16 & 2 & 2149.5 & 1459.0 & 2154.5\\
+\bottomrule\end{tabular}
+\end{table*}
+
+
+\subsection{RQ 2: Savings from Reusable State}
+Centroid is faster than Full in all 20 primary image and activity fits, with warm Full/Centroid ratios ranging from 1.58 to 3.56 on those sources and equal to 1.01 on MiniLM (Table~\ref{tab:final-main}). With five pairs per source, the smallest two-sided exact $p$ is 0.0625, and the four image and activity comparisons have Holm-adjusted $p=0.3125$ (Table~\ref{tab:final-stats}); accordingly, we report the primary timings descriptively. Against PCA, Centroid's time-sum reductions are 3.65\%, 7.39\%, 2.72\%, 4.63\%, and 0.02\% in table order, while all paired PCA intervals include parity (Figure~\ref{fig:final-paired}).
+
+All 240 decisions from the 15 supplemental fits pass verification, with 170 resolving before Full. Across eight MiniLM fits, all 128 proposals use Full, yielding warm Full/Centroid ratios between 0.99 and 1.02.
+
+\paragraph{Secondary fit-level analysis}
+We fix the follow-up seeds 4001, 4013, and 4021 prior to timing and add them to the original five pairs per source. Because the sources and primary results were already known, this analysis is exploratory. Each fit contributes one paired log ratio over 16 proposals that share a single reference, evaluated using a two-sided sign-flip test under sign symmetry and Student-$t$ intervals.
+
+\begin{table*}[!t]
+\centering
+\begin{minipage}[t]{.49\textwidth}
+\vspace{0pt}
+\centering\small
+\caption{Exploratory timing analysis on eight paired fits per source.
+Ratios are geometric means of warm Full/Centroid times, with pointwise
+95\% intervals computed from paired log ratios. Holm adjustment
+includes all five sources.}
+\label{tab:exploratory-five-sources}
+\setlength{\tabcolsep}{1.45pt}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Source & \shortstack{Centroid\\faster} & \shortstack{Full/\\Centroid} & 95\% interval & \shortstack{Exact\\$p$} & \shortstack{Holm\\$p$}\\\midrule
+Fashion-MNIST & 8/8 & 3.55 & [3.03, 4.17] & 0.0078 & 0.0391\\
+UCI HAR & 8/8 & 2.65 & [2.31, 3.05] & 0.0078 & 0.0391\\
+MNIST & 8/8 & 2.48 & [2.20, 2.79] & 0.0078 & 0.0391\\
+USPS & 8/8 & 1.52 & [1.38, 1.68] & 0.0078 & 0.0391\\
+MiniLM & 7/8 & 1.00607 & [0.99997, 1.01220] & 0.0625 & 0.0625\\
+\bottomrule\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{.49\textwidth}
+\vspace{0pt}
+\centering\small
+\caption{Matched USPS control on 16 requests, executed individually with the same
+keys and inputs. Each arm produces 512 fresh candidate proofs, and
+recomputing old costs adds 512 proofs.}
+\label{tab:final-reuse}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Full service & Old proofs & New proofs & Warm (s)\\
+\midrule
+Old-cost reuse & 0 & 512 & 2388.6\\
+Old-cost recomputation & 512 & 512 & 4469.1\\
+\bottomrule
+\end{tabular}
+\par\smallskip\normalsize\raggedright
+Old-cost proof reuse saves 2,080.5 seconds in this USPS control, corresponding to a 1.87-fold speedup (Table~\ref{tab:final-reuse}). The batched Full baseline in Table~\ref{tab:final-main} already reuses those proofs.\par
+\end{minipage}
+\end{table*}
+
+Centroid is faster in all 32 image and activity pairs, and MiniLM's
+interval includes parity (Table~\ref{tab:exploratory-five-sources}).
+With Holm adjustment across all five sources, the adjusted $p$-value
+is $0.0391$ for each of the four image and activity sources. This
+follow-up analysis is exploratory. The prespecified five-fit analysis
+follows Section~\ref{sec:experimental-design}.
+
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=.98\textwidth]{figures/final_20261117/paired_speedups.pdf}
+\caption{Fit-level warm-time ratios (dots), geometric means (diamonds),
+and 95\% intervals. Ratios above one favor the Centroid service.
+Every PCA interval includes equal time. Each source has five fits.}
+\label{fig:final-paired}
+\end{figure*}
+
+\begin{table}[!b]
+\centering\small
+\caption{Mean seconds per 16-proposal fit over the five primary fits.
+Warm times charge routing, proofs, failed attempts, fallback, and public
+replay. The right-hand columns add recorded Full initialization,
+compact activation, basis fits, and lazy correction-key setup as
+applicable. These component sums exclude calibration, validation,
+raw-data preparation, and artifact cloning.}
+\label{tab:final-activation}
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+& \multicolumn{3}{c}{Warm} & \multicolumn{3}{c}{\shortstack{Warm plus recorded\\activation}}\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Source & Full & Centroid & PCA & Full & Centroid & PCA\\\midrule
+Fashion-MNIST & 3337.9 & 936.9 & 972.4 & 3712.2 & 1728.8 & 1762.4\\
+UCI HAR & 2076.2 & 746.7 & 806.3 & 2324.2 & 1347.3 & 1409.3\\
+MNIST & 3300.6 & 1427.9 & 1467.7 & 3672.0 & 2211.2 & 2247.0\\
+USPS & 2145.6 & 1362.1 & 1428.2 & 2341.5 & 1898.4 & 1971.8\\
+MiniLM & 1671.8 & 1659.7 & 1660.1 & 1866.0 & 2095.4 & 2093.0\\
+\bottomrule\end{tabular}
+\end{table}
+
+With recorded activation charged, Centroid remains faster than Full on four sources and is slower on MiniLM (Table~\ref{tab:final-activation}).
+
+\subsubsection{Episode Length and Cost Recovery}
+Each reference defines one episode. In episode $r$, service $S$ pays preparation $P_r^S$ and answers $m_r$ proposals, where query cost $q_{rj}^S$ includes attempted certificates, corrections, fallback, and replay. The lifecycle cost is
+\begin{equation}
+ C_S=\sum_{r=1}^{R}\left(P_r^S+\sum_{j=1}^{m_r}q_{rj}^S\right).
+ \label{eq:revision-episode-cost}
+\end{equation}
+We charge eager setup even if unused, and charge lazy setup to the episode that invokes it. Under constant mean query costs, the interval service recovers its extra preparation only if
+\begin{equation}
+ m(\bar q_F-\bar q_I)>P_I-P_F,
+ \qquad \bar q_F>\bar q_I.
+ \label{eq:revision-breakeven}
+\end{equation}
+A reference change incurs a new preparation cost. Within each episode, query savings must cover the extra preparation cost.
+
+\begin{table}[!b]
+\centering\small
+\caption{Modeled break-even counts using five primary fits per source.
+Extra preparation includes compact activation, both basis fits, and
+lazy correction-key setup; common Full activation cancels. We divide
+the matched 16-proposal warm-time difference by sixteen to estimate
+response savings. Calibration and data preparation are excluded.}
+\label{tab:revision-breakeven}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Source & \shortstack{Extra preparation\\(s)} & \shortstack{Saving/request\\(s)} & \shortstack{Model requests\\to repay}\\\midrule
+Fashion-MNIST & 417.6 & 150.1 & 3\\
+UCI HAR & 352.7 & 83.1 & 5\\
+MNIST & 411.9 & 117.0 & 4\\
+USPS & 340.4 & 49.0 & 7\\
+MiniLM & 241.4 & 0.8 & --\\
+\bottomrule\end{tabular}
+\end{table}
+
+Table~\ref{tab:revision-breakeven} reports these modeled estimates. Batching, proposal geometry, and invocation overhead can shift costs at short horizons, and MiniLM's near-equal response times yield no useful threshold. The measured controls below examine fixed-reference prefixes and frequent replacements under the tested controllers.
+
+\subsubsection{Sequential Costs with Reference Replacement}
+\begin{table*}[!t]
+\centering
+\begin{minipage}[t]{.49\textwidth}
+\vspace{0pt}
+\centering\small
+\caption{Five sequential streams with eight updates each. Parentheses give the
+additional seeds. Refs counts authenticated activations, response time
+covers proofs and replay, and total time adds activation, data preparation,
+and other service work. The moments gate retains the old bank when
+a proposal remains unresolved.}
+\label{tab:checked-workflows}
+\setlength{\tabcolsep}{1pt}
+\begin{tabular}{@{}llrrrrr@{}}\toprule
+Source & Policy & Refs & Installs & \shortstack{Unre-\\solved} & \shortstack{Response\\(s)} & \shortstack{Total\\(s)}\\\midrule
+UCI HAR & Complete & 8 & 7/8 & 0 & 602.3 & 5500.1\\
+UCI HAR & Full & 8 & 7/8 & 0 & 1303.7 & 3312.7\\
+UCI HAR & Moments gate & 8 & 7/8 & 1 & 268.1 & 2494.2\\
+\addlinespace[2pt]
+Fashion-MNIST & Complete & 8 & 7/8 & 0 & 945.8 & 7290.6\\
+Fashion-MNIST & Full & 8 & 7/8 & 0 & 2001.8 & 5034.9\\
+Fashion-MNIST & Moments gate & 7 & 6/8 & 2 & 297.1 & 2903.1\\
+\addlinespace[2pt]
+UCI HAR (7121) & Complete & 7 & 7/8 & 0 & 656.3 & 4872.6\\
+UCI HAR (7121) & Full & 7 & 7/8 & 0 & 1275.3 & 3016.3\\
+UCI HAR (7121) & Moments gate & 7 & 7/8 & 1 & 251.8 & 2126.3\\
+\addlinespace[2pt]
+USPS (7103) & Complete & 8 & 8/8 & 0 & 928.9 & 5285.2\\
+USPS (7103) & Full & 8 & 8/8 & 0 & 1218.4 & 2777.8\\
+USPS (7103) & Moments gate & 8 & 8/8 & 0 & 194.2 & 2256.8\\
+\addlinespace[2pt]
+USPS (7121) & Complete & 8 & 8/8 & 0 & 916.8 & 5280.4\\
+USPS (7121) & Full & 8 & 8/8 & 0 & 1165.0 & 2649.4\\
+USPS (7121) & Moments gate & 8 & 8/8 & 0 & 191.5 & 2146.6\\
+\bottomrule\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{.49\textwidth}
+\vspace{0pt}
+\centering\small
+\caption{Measured service seconds from a ready quantized task. Each source
+uses one fit and nested proposal prefixes. The last column counts
+cascade decisions by moments, interval, and Full.}
+\label{tab:lazy-horizon-pilot}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}lrrrrrr@{}}\toprule
+Source & Proposals & \shortstack{Full\\(s)} & \shortstack{Interval\\(s)} & \shortstack{Cascade\\(s)} & \shortstack{Interval\\resolved} & \shortstack{Cascade\\decisions}\\\midrule
+UCI HAR & 1 & 407.2 & 431.8 & 740.1 & 1 & 0/1/0\\
+UCI HAR & 4 & 791.0 & 554.1 & 857.1 & 4 & 0/4/0\\
+UCI HAR & 16 & 2352.9 & 1022.0 & 1431.5 & 16 & 0/16/0\\
+\addlinespace[2pt]
+USPS & 1 & 341.0 & 462.9 & 279.8 & 1 & 1/0/0\\
+USPS & 4 & 743.9 & 737.3 & 857.3 & 4 & 2/2/0\\
+USPS & 16 & 2328.4 & 1803.7 & 2009.2 & 16 & 2/14/0\\
+\addlinespace[2pt]
+MiniLM & 1 & 319.0 & 317.8 & 529.1 & 0 & 0/0/1\\
+MiniLM & 4 & 351.1 & 330.1 & 452.9 & 0 & 0/0/4\\
+MiniLM & 16 & 1836.2 & 1889.3 & 2124.0 & 0 & 0/0/16\\
+\bottomrule\end{tabular}
+\par\smallskip\normalsize\raggedright
+MiniLM uses Full for every request. On MiniLM, Full activation takes 193.9, 123.2, and 187.4 s at 1, 4, and 16 proposals with warm times of 124.8, 227.5, and 1648.3 s, where lower activation at four proposals offsets part of the warm increase. Exhaustive integer costs agree with all 189 decisions, and the 1-, 4-, and 16-proposal prefixes use seed 3001, the first primary seed for each source.\par
+\end{minipage}
+\end{table*}
+
+Full and eager Complete install the same banks (Table~\ref{tab:checked-workflows}). In the first UCI HAR and Fashion-MNIST streams, both install seven proposals and reject the last, whereas the moments gate defers one improving Fashion-MNIST proposal and reaches the same final bank on the next update. In the second USPS stream, all three policies install all eight proposals and reach the same distortion.
+
+Eager Complete spends less on proofs and replay but takes 1.45--1.99 times as long as Full overall. Excluding Full and gate native preparation gives Full/gate totals of 3311.1/2493.0 s on the first UCI HAR stream and 5032.5/2900.7 s on Fashion-MNIST, while unused Full activation costs 1989.2 s and 2251.6 s on these streams, respectively, and unused compact activation adds 832.2 s on Fashion-MNIST.
+
+\paragraph{Held-out accuracy on the recorded UCI HAR trajectories}
+Both UCI HAR streams install seven banks and reject one proposal. After the proof runs, we selected 128 official audit-partition examples outside both audit catalogs and labeled each bank using majority labels from its past training rows. Full and eager Complete yield the same accuracy: 81/128 initially and finally on seed 7103, and 83/128 rising to 84/128 on seed 7121, while eager Complete takes 1.66 and 1.62 times as long as Full. The proofs verify quantized distortion, whereas accuracy is a separate measurement. Section~\ref{sec:digits-lifecycle} tests lazy activation on the all-improving Digits streams.
+
+\subsubsection{Lazy Activation with a Fixed Reference}
+\label{sec:lazy-horizon-pilot}
+
+We compare reusable Full, a routed interval service that uses switching bounds and row corrections with Full fallback, and a cascade that tries moments first, then the interval path, then Full. Each service activates its branches on demand. Wall time includes setup, authentication, routing, proofs, public replay, and local artifact copies, while data and basis preparation and calibration precede timing. The cascade pays for separate moment and switching contexts.
+
+Full is faster on one proposal for UCI HAR and USPS. At four proposals, the interval service is 1.43 times as fast on UCI HAR and within 1\% of Full on USPS, reaching 2.30 and 1.29 times as fast at sixteen proposals, respectively. The cascade is fastest on the single USPS proposal resolved by moments, but costs more than the interval service on all three sources at sixteen proposals. 
+
+
+
+\subsection{RQ 3: Catalog and Cryptographic Costs}
+\begin{table}[!t]
+\centering\small
+\caption{USPS scale test with eight centers, rank 79, four proposals and cap 16.
+All decisions verify. The 4,096-row Centroid time comes from an
+uninterrupted repeat on the same inputs.}
+\label{tab:final-scale}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}rrrrrr@{}}\toprule
+$n$ & Compact O/P & Full (s) & Centroid (s) & PCA (s) & Full/Centroid\\
+\midrule
+128 & 4/4 & 287.9 & 214.3 & 220.5 & 1.34\\
+512 & 4/4 & 1094.0 & 405.9 & 386.7 & 2.70\\
+1024 & 4/4 & 2184.8 & 1422.2 & 1425.9 & 1.54\\
+2048 & 4/4 & 4496.7 & 2724.9 & 2714.9 & 1.65\\
+4096 & 4/4 & 8897.1 & 5693.8 & 5670.1 & 1.56\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both compact services resolve all four proposals at every USPS
+catalog size (Table~\ref{tab:final-scale}). At 4,096 rows, Centroid
+takes 5,693.8 s and PCA takes 5,670.1 s. Full takes 1.56 times as
+long as Centroid. The warm-time ratios vary across sizes of this
+single fit. A scaling law would require more configurations.
+
+The Fashion-MNIST numerical check uses nested catalogs of 4,096
+and 16,384 rows. We reuse the reference and rank-79 basis from
+seed 3001 and take its first four proposals. Sampling seed 1908
+draws rows outside the original 5,000-record cache. With cap 16,
+all four intervals at each size contain the exact integer change
+and determine its ordering.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=.94\textwidth]{figures/final_20261117/scaling.pdf}
+\caption{Warm service time for four candidates from one fixed-rank USPS fit.
+Both axes are logarithmic. The 4,096-row Centroid point comes from
+the uninterrupted repeat. The legend label \emph{Ours} denotes Centroid.}
+\label{fig:final-scaling}
+\end{figure*}
+Figure~\ref{fig:final-scaling} plots measured proof-service times up to
+4,096 rows on USPS. For the representative USPS fit with seed 3001,
+Tables~\ref{tab:final-circuits} and~\ref{tab:final-proof-phases} report
+circuit constraints, public and secret inputs, setup, key and witness
+sizes, proving and verification times, and proof bytes. Service time
+includes complete public replay. Per-proof verification times measure
+individual proofs. For phases that mix circuit shapes, the tables
+report costs per sample and list the shapes separately.
+
+\subsubsection{New Source and Center-Count Pilots}
+\begin{table*}[!t]
+\centering\small
+\caption{Proof pilots with 256 rows, rank 79 and cap 16.
+USPS uses $k=20$ and $k=50$, and ISOLET uses $k=8$.
+Arms within each fit share a batch size. Times are warm service seconds.
+Coverage is reported as Centroid/PCA.}
+\label{tab:new-fit-pilots}
+\begin{tabular}{@{}lrrrrrrr@{}}\toprule
+Source & $k$ & Batch rows & Proposals & Full (s) & Centroid (s) & PCA (s) & Coverage\\\midrule
+USPS, seed 6101 & 20 & 4 & 4 & 785.1 & 663.3 & 661.7 & 4/4\\
+USPS, seed 6113 & 20 & 4 & 4 & 785.7 & 637.5 & 661.3 & 4/4\\
+ISOLET, seed 8101 & 8 & 8 & 16 & 5752.9 & 1701.9 & 1748.6 & 16/16\\
+ISOLET, seed 8111 & 8 & 8 & 16 & 5796.1 & 1675.6 & 1655.3 & 16/16\\
+ISOLET, seed 8123 & 8 & 8 & 16 & 5566.6 & 1630.9 & 1665.8 & 16/16\\
+USPS, seed 6101 & 50 & 4 & 4 & 1147.2 & 1188.0 & 1178.2 & 4/4\\
+USPS, seed 6113 & 50 & 4 & 4 & 1179.2 & 1245.9 & 1277.4 & 4/4\\
+\bottomrule\end{tabular}
+\end{table*}
+
+Both compact arms resolve every proposal
+(Table~\ref{tab:new-fit-pilots}). At 20 USPS centers, Full takes
+1.18 and 1.23 times as long as Centroid. At 50 centers, Full is
+1.04 and 1.06 times as fast as Centroid. All USPS arms use
+four-row proof batches. The three ISOLET Full/Centroid ratios
+are 3.38, 3.46 and 3.41. The two USPS center counts illustrate
+how the comparison can change with $k$ in these pilots.
+
+
+
+\subsection{RQ 4: Quantization and Update Geometry}
+\begin{table}[!t]
+\centering\small
+\caption{Joint quantization of data and centers. Each depth uses 800 natural
+and 200 small-margin cases from 25 continuous fits. Flips count
+opposite signs. Disagreements also count ties paired with a nonzero
+change. The diagnostic clips at $2^{b-1}-1$. The deployed profile
+clips at magnitude 4095.}
+\label{tab:final-quantization}
+\begin{tabular}{@{}rrrrr@{}}\toprule
+$b$ & Natural flips & Natural disagree & Stress flips & Stress disagree\\
+\midrule
+8 & 4 & 4 & 45 & 138\\
+10 & 0 & 0 & 37 & 115\\
+12 & 0 & 0 & 36 & 98\\
+16 & 0 & 0 & 34 & 72\\
+20 & 0 & 0 & 40 & 45\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Catalog rounding preserves the decision sign across all 400 deployed-center comparisons. In the continuous-center diagnostic, 8-bit quantization reverses 4/800 natural decisions (0.5\%), with no natural reversals at higher tested depths, whereas small-margin cases remain sensitive even at 20 bits (Table~\ref{tab:final-quantization}).
+
+\begin{table*}[!t]
+\centering\small
+\caption{Decision sensitivity at 16 bits by relative floating margin.
+Each cell gives the affected count, total, and percentage within its
+stratum. There are 0/800 natural flips and 34/200 stress flips.
+Disagreements include zero/nonzero mismatches. Dashes mark empty
+strata. The supplementary CSVs cover all bit depths and both workloads.}
+\label{tab:style-quant-margin}
+\begin{tabular}{@{}llll@{}}\toprule
+Margin & Natural flips & Stress flips & Stress disagreements\\
+\midrule
+$[0,10^{-10})$ & \textemdash & 5/34 (14.7\%) & 32/34 (94.1\%)\\
+$[10^{-10},10^{-8})$ & \textemdash & 16/50 (32.0\%) & 27/50 (54.0\%)\\
+$[10^{-8},10^{-6})$ & \textemdash & 13/50 (26.0\%) & 13/50 (26.0\%)\\
+$[10^{-6},10^{-4})$ & 0/10 (0.0\%) & 0/33 (0.0\%) & 0/33 (0.0\%)\\
+$[10^{-4},10^{-2})$ & 0/343 (0.0\%) & 0/33 (0.0\%) & 0/33 (0.0\%)\\
+$[10^{-2},\infty)$ & 0/447 (0.0\%) & \textemdash & \textemdash\\
+\bottomrule\end{tabular}
+\end{table*}
+
+At 16 bits, all 34 stress reversals occur below relative margin $10^{-6}$, with none among the 66 stress cases at or above that threshold (Table~\ref{tab:style-quant-margin} and Figure~\ref{fig:style-quantization}). This boundary describes the sampled updates; the strata count dependent proposals, and the proof guarantee applies to the quantized objective.
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=.98\textwidth]{figures/style_20261117/quantization_margins.pdf}
+\caption{Quantization sensitivity by relative floating margin and bit depth.
+Color shows percentages and annotations give affected/total.
+M1--M6 follow Table~\ref{tab:style-quant-margin} and the CSV in order.
+Natural and stress panels are separate. Dashes mark empty strata.
+The proposals come from 25 fits.}
+\label{fig:style-quantization}
+\end{figure*}
+
+\begin{table}[tbp]
+\centering\small
+\caption{Native drift coverage with cap 16. Each cell gives Centroid/PCA
+resolutions out of 15 configurations: five sources at three fitted
+center counts. The controls retain equality and clipped cases,
+measuring numerical coverage.}
+\label{tab:style-drift-pattern}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Movement & $10^{-4}$ & $10^{-2}$ & $10^{-1}$\\
+\midrule
+One center & 15/12 & 15/9 & 12/9\\
+Two centers & 15/11 & 14/9 & 12/9\\
+Global, shared & 15/12 & 15/9 & 15/15\\
+Global, independent & 15/12 & 12/9 & 9/10\\
+Unequal & 15/12 & 15/10 & 12/10\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both movement pattern and magnitude affect native coverage (Table~\ref{tab:style-drift-pattern}), while Proposition~\ref{prop:informativeness} relates the decision margin to residual uncertainty. At $k=50$, Centroid/PCA counts are 14/1 on Fashion-MNIST, 14/7 on UCI HAR, and 14/4 on MNIST, whereas on MiniLM they are 10/1, 9/5, and 10/5 at $k=5,20,50$ (Table~\ref{tab:final-drift}). These constructed movements differ from the primary MiniLM proposals, where both variants resolve 0/80, and provide neither a diagnosis of that failure nor proof timings at larger $k$. Table~\ref{tab:final-margins} groups the primary proof requests by sign and margin, and the CSVs retain per-proposal results alongside all drift configurations.
+
+\subsubsection{MiniLM and Interval Width}
+\begin{table}[tbp]
+\centering\small
+\caption{Median residual energy (\%) across fits, and relative
+objective margin (\%) and interval width divided by absolute margin
+across proposals. Width is measured before and after native preflight
+with the 16-row cap.}
+\label{tab:minilm-width}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Source & Residual & Margin & Initial & Refined\\\midrule
+Fashion-MNIST & 8.83 & 1.66 & 0.51 & 0.48\\
+UCI HAR & 3.53 & 2.17 & 0.46 & 0.46\\
+MNIST & 11.55 & 0.87 & 1.06 & 0.98\\
+USPS & 0.49 & 1.84 & 0.06 & 0.06\\
+MiniLM & 45.32 & 1.53 & 7.43 & 5.21\\
+\bottomrule\end{tabular}
+\end{table}
+
+For the deployed centroid bases, residual energy is $\sum_i E_B(x_i)/(T^4\sum_i\|x_i-a\|^2)$ with $a=c_0^0$. MiniLM's median is 45.32\%, compared with 0.49--11.55\% on the other sources (Table~\ref{tab:minilm-width}), while its median relative margin is 1.53\%. The interval spans 7.43 times the absolute margin before correction and 5.21 times after preflight; after refinement, the other sources range from 0.06 to 0.98. Both row residuals and center separation affect the width (Proposition~\ref{prop:informativeness}).
+
+\subsubsection{Near Ties and Fallback}
+The primary cohort has 54 improvements, 346 worsenings, and no ties (Table~\ref{tab:final-margins}). Of 118 Centroid fallbacks, 78 exhaust the 16-row cap without a decision, while the router sends the other 40 to Full on cost grounds despite conclusive preflight. MiniLM accounts for 75 cap cases and five cost cases (\texttt{primary\_fallback\_reasons.csv}).
+
+An eight-row fixture has reference cost 8200 and candidate changes $0,-4,+4$, with nonzero relative margins below 0.05\%. Fresh Groth16 Full proofs verify on approved public inputs and match exhaustive integer distances, testing Full at equality and on both sides of it without measuring compact coverage at equality.
+
+\subsubsection{Distortion and Downstream Utility}
+\label{sec:downstream-utility}
+For the 320 labelled image and activity proposals, we assign 512 past rows to each bank and use majority labels for its centers, assigning the training majority to empty groups and breaking class and distance ties by lowest index. We then measure nearest-prototype accuracy on disjoint audit rows, and for the 80 MiniLM proposals we measure two-probe recall@10 on held-out queries.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Downstream changes for the 400 primary proposals. Agrees counts
+equal signs of utility change and negative distortion change. Ties
+count zero utility changes. Spearman $\rho$ is computed within each
+fit and summarized by the median of five fits per source.}
+\label{tab:downstream-utility}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Source & Utility & Agrees & Ties & $\rho$\\\midrule
+Fashion-MNIST & Accuracy & 26/80 & 30 & 0.44\\
+UCI HAR & Accuracy & 51/80 & 11 & 0.35\\
+MNIST & Accuracy & 32/80 & 23 & 0.21\\
+USPS & Accuracy & 47/80 & 12 & 0.67\\
+MiniLM & Two-probe recall@10 & 30/80 & 0 & -0.23\\
+\bottomrule\end{tabular}
+\end{table}
+
+The signs of distortion reduction and utility change agree in 186/400 proposals, and among proposals with changed utility they agree in 186/324 (57.4\%): 26/50 on Fashion-MNIST, 51/69 on UCI HAR, 32/57 on MNIST, 47/68 on USPS, and 30/80 on MiniLM. Median within-fit Spearman correlations range from $-0.23$ on MiniLM to $0.67$ on USPS. This tally combines two utility metrics, and proposals within a fit share a reference. For a release decision, the auditor can check the relevant utility metric alongside the distortion proof.
+
+\subsubsection{Codebook Release and Retrieval Recall}
+\label{sec:ivf-release}
+We replay the archived MiniLM decisions, installing the first verified improvement per fit and retaining the remaining decisions in the audit log. We draw 128 queries with seed 9118 from cached audit rows outside the audit catalogs of the five primary MiniLM fits. For each bank, we partition the catalog by nearest center, probe one or two lists, and rerank by integer squared distance. We compare the top ten with exact catalog search and break ties by row order. The shared queries play no role in release decisions.
+
+\begin{table}[tbp]
+\centering\small
+\caption{MiniLM release replay. Recall@10 is averaged across five fits
+in percent. Sign agreement compares recall change with the negative
+distortion change for all 80 proposals. Recall declines count installed
+banks only.}
+\label{tab:ivf-release}
+\begin{tabular}{@{}rrrrr@{}}\toprule
+Probes & Reference & Released & Agrees & Declines\\\midrule
+1 & 61.61 & 61.81 & 34/80 & 1/4\\
+2 & 82.73 & 82.95 & 30/80 & 1/4\\
+\bottomrule\end{tabular}
+\end{table}
+
+Full verifies five improvements and 75 worsenings. The policy installs four banks and retains one reference. At each probe count, one installed bank lowers recall despite improving distortion. At two probes, mean recall rises by 0.22 percentage points (Table~\ref{tab:ivf-release}). This replay uses the original MiniLM fits and measured Full completion paths (Table~\ref{tab:final-main}), making one release choice per fit while leaving repeated replacement costs outside its scope.
+
+\subsubsection{Held-Out Codebook Updates with Reference Replacement}
+\label{sec:digits-lifecycle}
+We use two disjoint streams of 64-feature Optical Recognition of Handwritten Digits~\cite{optdigits1998} via scikit-learn's \texttt{load\_digits}. Each stream has 144 initial training rows, three 32-row minibatches, 512 audit rows, and 128 held-out queries. It starts from an eight-center codebook initialized by training-only $D^2$ seeding. Each round uses the online means as targets, with four candidates interpolating from the deployed reference at rates $1,1/2,1/4,1/8$. Both services verify every proposal and install the first proved improvement in order.
+
+Lazy Complete fits a rank-48 centroid basis on past training rows, using the interval path with cap 16 for conclusive requests and Full for the rest, with arm order reversed across streams. Total time charges training, task preparation, routing, activation, authentication, proofs, and public replay, while on held-out queries we measure nearest-center accuracy using training-majority labels and two-probe recall@10 against exhaustive search.
+
+\begin{table}[!t]
+\centering\small
+\caption{Matched Digits release streams. Times are end-to-end seconds for
+three rounds of four proposals. Both services install the same three
+codebooks per stream. Accuracy and two-probe recall@10 are percentages
+before the first and after the last replacement.}
+\label{tab:digits-lifecycle}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Seed & Compact & Full (s) & Lazy Complete (s) & Lazy/Full\\\midrule
+9203 & 12/12 & 1630.1 & 2122.9 & 1.30\\
+9217 & 12/12 & 1624.6 & 2130.9 & 1.31\\
+\bottomrule\end{tabular}\par\vspace{4pt}
+\begin{tabular}{@{}lcc@{}}\toprule
+Seed & Accuracy & Recall@10\\\midrule
+9203 & $48.4\rightarrow 57.0$ & $82.7\rightarrow 91.7$\\
+9217 & $40.6\rightarrow 47.7$ & $84.6\rightarrow 90.2$\\
+\bottomrule\end{tabular}
+\end{table}
+
+Lazy Complete verifies all 24 proposals before fallback across the two streams, which contain only improvements and therefore provide no rejection cases. Accuracy and recall rise from the initial to the final banks, while Lazy Complete takes 1.30--1.31 times as long as Full (Table~\ref{tab:digits-lifecycle}). Activation costs 849--853 s against Full's 372--377 s. Warm times are close (1269--1281 s versus 1247--1257 s). With four proposals per reference, full compact coverage does not offset the added preparation cost.
+
+
+
+% END EDITABLE SECTION: experimental_results.tex
+
+% BEGIN EDITABLE SECTION: discussion.tex
 \FloatBarrier
-\appendix
-\input{paper_results/ccd_pilot_20261029/methodology_appendix.tex}
-\input{paper_results/ccd_pilot_20261029/evidence_appendix.tex}
+\section{Discussion}
+\subsection{Relationship to Existing Verification Tasks}
+Authenticated aggregation verifies summaries of committed groups. In a prototype update, those summaries give the cost change under the old assignments, whereas the gain from switching centers depends on individual rows (Section~\ref{sec:methodology-groups}). While incremental verification proves a computation sequence or updates a proof as inputs change, our service holds the certified reference fixed across separate candidate audits. Specifically, it reuses authenticated assignments and moments, bounds the switching gain on both sides, and tightens the interval with exact-row proofs, relying on the Full path to complete unresolved requests under Groth16 (Table~\ref{tab:style-position-features}).
+
+\begin{table*}[!t]
+\centering\small
+\caption{Features of the proposed audit and the cited systems. The
+comparison describes demonstrated tasks, although general-purpose systems
+can implement other relations.}
+\label{tab:style-position-features}
+\begin{tabularx}{\textwidth}{@{}p{.21\textwidth}*{2}{>{\raggedright\arraybackslash}X}@{}}\toprule
+Feature & Demonstrated scope of existing methods & Proposed service\\\midrule
+Reusable reference commitment & V3DB and VERIF bind retrieval to a committed snapshot. IntegriDB authenticates a database~\cite{v3db2026,zhang2026verif,zhang2015integridb}. & Reuses the approved catalog and reference within an episode.\\
+\addlinespace[2pt]
+Reusable old assignments & IVF partitions in V3DB and VERIF support retrieval. & Authenticates exact reference assignments once and reuses them to audit changed banks.\\
+\addlinespace[2pt]
+Authenticated group moments & IntegriDB supports SUM, COUNT, and other aggregates~\cite{zhang2015integridb}. & Links counts and sums to exact reference membership and switching evidence.\\
+\addlinespace[2pt]
+Exact objective ordering & VERIF checks exact full-vector scores over routed candidates. ZKML proves encoded inference~\cite{zhang2026verif,chen2024zkml}. & Verifies the exact ordering for the full-catalog integer objective, while the compact branch proves bounds on the change.\\
+\addlinespace[2pt]
+Worsening certification & General-purpose IVC and dynamic SNARKs can encode an ordering predicate~\cite{kothapalli2022nova,wang2024dynamic,zhang2026dynark}. & A positive lower endpoint or verified Full completion certifies worsening.\\
+\addlinespace[2pt]
+Exact-row refinement & Record authentication and general proof relations can verify rows. & Proved row corrections tighten the switching interval.\\
+\addlinespace[2pt]
+Complete fallback & Each system defines its own execution semantics. & Exact completion serves as a policy for unresolved or uneconomic requests, with its cost charged.\\
+\addlinespace[2pt]
+Fixed-reference multi-candidate audit & Nova verifies a computation sequence. Dynamic SNARKs update proofs under changed statements or witnesses. Zhang et al.\ verify outsourced clustering~\cite{kothapalli2022nova,wang2024dynamic,zhang2026dynark,zhang2021verifiable}. & Verifies multiple candidate banks against one approved reference and catalog, with completion costs included.\\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+The core distinction lies in the audit relation and how its proofs are reused (Table~\ref{tab:style-literature-tasks}), and our ablation and old-cost reuse controls measure the effects of individual components (Tables~\ref{tab:final-ablation} and~\ref{tab:final-reuse}).
+
+\subsection{When a Complete Audit Is Required}
+\label{sec:discussion-obligation}
+Consider a client that requires a verified outcome for every outsourced codebook proposal. The client approves the catalog root, quantizer, reference and candidate IDs, keys, and coverage policy, while the auditor verifies and archives the task, result, and proof. A proved worsening decision enables the client to distinguish a rejected proposal from an unanswered request, whereas registration and digital signatures remain separate concerns. The MiniLM replay applies this release rule and measures retrieval on held-out queries (Section~\ref{sec:ivf-release}). A release policy can also evaluate utility alongside the distortion proof, though other objectives would require extending the proof relation.
+
+Conversely, a service that only needs to approve improvements can retain the current bank whenever the moments gate is inconclusive. In the historical cohort, the gate proves 20/25 improvements, compared with 23/25 before Full for each interval service (Table~\ref{tab:retain-gate}), while the measured moments-first service explicitly charges exact completion (Table~\ref{tab:final-ablation}). In the Fashion-MNIST stream, the moments gate defers one improving proposal and reaches the same final bank on the subsequent update (Table~\ref{tab:checked-workflows}).
+
+\paragraph{Audit trust and disclosure}
+A client can delegate the calculation to a trusted auditor or rely on remote attestation~\cite{rfc9334rats}, placing trust in the auditor or the attestation chain and its policy. Alternatively, secure multiparty computation serves participants holding separate inputs who must compute jointly~\cite{nistpecmpc}. With a committed catalog, any party that holds the independently pinned inputs can verify the proof. The proof relation and published transcript determine costs and disclosure. The experiments benchmark the audit service described here.
+
+On the 25 archived fits, minimum group sizes of 2, 4, 8, and 16 would admit 25, 25, 24, and 9 fits, respectively, under the exact reference assignments. Setting a threshold of eight excludes one fit and blocks singleton groups, though permitted queries can still expose group aggregates (Section~\ref{sec:security-contract}). Accordingly, the protocol leaves admission rules and episode query budgets to the deployment policy.
+
+\subsection{Deployment Guidelines}
+\begin{table}[H]
+\centering\small
+\caption{Operating regimes measured in the experiments. The break-even
+counts in Table~\ref{tab:revision-breakeven} are modeled separately.}
+\label{tab:deployment-summary}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X@{}}\toprule
+Workloads, coverage, and costs\\\midrule
+\textbf{Primary 16-proposal fits.} Centroid and PCA each resolve 282/400. Warm Full/Centroid ratios range from 1.58 to 3.56 on image and activity sources, and activation-inclusive totals also favor Centroid on those sources (Tables~\ref{tab:final-main} and~\ref{tab:final-activation}).\\
+\addlinespace[2pt]
+\textbf{Fixed-reference UCI HAR and USPS pilots.} The interval service resolves all proposals at all tested horizons. Full is faster at one proposal, whereas at sixteen proposals Full/interval total-time ratios reach 2.30 and 1.29 (Table~\ref{tab:lazy-horizon-pilot}).\\
+\addlinespace[2pt]
+\textbf{Reference replacement.} Digits resolves all 24 proposals before fallback, while the UCI HAR archive includes rejected proposals. On Digits, Lazy Complete takes 1.30--1.31 times as long as Full, whereas eager UCI HAR runs charge repeated authentication (Tables~\ref{tab:digits-lifecycle} and~\ref{tab:checked-workflows}).\\
+\addlinespace[2pt]
+\textbf{MiniLM and 50-center USPS.} MiniLM resolves 0/128, while both compact arms resolve all proposals in the two 50-center pilots. MiniLM yields near-equal warm times and higher activation-inclusive costs, and Full is faster in both 50-center pilots (Tables~\ref{tab:final-activation} and~\ref{tab:new-fit-pilots}).\\
+\addlinespace[2pt]
+\textbf{Catalog scale.} One proof-service sweep reaches 4,096 rows with four proposals per size (Table~\ref{tab:final-scale}). The 16,384-row Fashion-MNIST check measures numerical coverage, leaving cryptographic timing at that scale open.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+For a complete audit, group proposals by catalog and reference IDs, then compare preparation, proving, and replay costs at the expected episode length. Full suits short episodes or workloads with low compact coverage. An approval-only policy can keep the current bank whenever the moments gate is inconclusive. A complete audit also requires a verified outcome for those proposals.
+
+Table~\ref{tab:deployment-summary} summarizes the measured operating regimes. Private preflight can inspect original rows. Each reference change requires fresh authentication, so total costs depend on how long the reference stays in use. Cross-reference key reuse and reference lifetimes in live deployments remain open questions.
+
+\FloatBarrier
+
+% END EDITABLE SECTION: discussion.tex
+
+% BEGIN EDITABLE SECTION: threats_to_validity.tex
+\section{Threats to Validity}
+
+\paragraph{Internal validity}
+All experimental arms use the same inputs, backend, and CPU allocation. We rotate the execution order across fits to reduce order effects. However, small timing differences may still result from VM load, caching, and invocation overhead. We exclude interrupted runs and repeat the 4096-row centroid experiment. Reported component sums do not represent cold-start latency. The two original sequential streams also follow a fixed policy order.
+
+\paragraph{Statistical conclusion validity}
+We treat fits, rather than individual proposals, as the unit of statistical inference. Proposals within a fit are dependent, and different fits may share records. With the prespecified five-fit experiments, statistical tests cannot reach $p<0.05$. We added fifteen supplemental fits after obtaining the primary results. The secondary Holm correction covers four sources. Therefore, we consider these additional results exploratory.
+
+\paragraph{Construct validity}
+Our proofs certify the ordering of quantized distortion changes. They do not certify continuous distortion, training outcomes, or downstream model quality. The direction of distortion change agrees with changes in accuracy or recall in 57\% of proposals where downstream utility changes. Equation~(3) transfers this guarantee to the continuous objective only when separate quantization-error bounds are available.
+
+\paragraph{External validity}
+Our primary experiments use catalogs with 128--256 rows and 5--8 centers. We also conduct single-configuration pilots with up to 4096 rows and 50 centers. At 50 centers on USPS, Full matches the proposed service. The 16{,}384-row experiment evaluates intervals only. All experiments run on a single 16-vCPU host and use Groth16 over BN254. The evaluated sources were also inspected during development, which may limit generalization. High-residual catalogs, such as MiniLM, fall back to Full. The Digits replacement streams contain only improving proposals.
+
+\paragraph{Security and deployment}
+Our guarantees rely on correct setup, binding commitments, knowledge soundness, and an independent post-commitment challenge. We generate the proving keys locally, simulate the auditor, and do not independently audit the circuits. Repeated queries may reveal information about group aggregates. Side-channel risks, access-control policies, and challenge delivery require separate validation.
+% END EDITABLE SECTION: threats_to_validity.tex
+
+% BEGIN EDITABLE SECTION: conclusions.tex
+\section{Conclusions}
+This work presents a reusable framework for verifying changes in prototype-bank distortion. It reuses authenticated record assignments and group moments to compute exact cost changes for records that retain their assigned centers. Switching intervals and selected row proofs resolve 282 of 400 requests without exact fallback. The remaining requests are resolved through exact proofs, ensuring a verified outcome for every request.
+The experiments show measurable speedups over reusable exact proofs on four datasets. However, these savings depend on the update workload. Frequent reference replacement can make reusable Full proofs or a moments-based gate more efficient. Quantization and drift controls also help identify cases where certification is sensitive to small margins and residual geometry.
+Future work should evaluate the full lifecycle cost of reference preparation and replacement. It should also examine larger workloads with more independent fits and proof instances. Finally, the proposed audit framework should be evaluated in a real deployment.
+% END EDITABLE SECTION: conclusions.tex
+
+
 \FloatBarrier
 \section*{Declarations}
-\paragraph{Authors, funding and competing interests}
-Author metadata, contribution roles, funding, competing interests, ethics and
-acknowledgements remain subject to the supervisor's final review.
+\paragraph{CRediT authorship contribution statement}
+\textbf{Mohsen Hesamolhokama:} Conceptualization, Methodology, Software,
+Investigation, Data curation, Visualization,
+Writing -- original draft.
+\textbf{Kousha Moeini:} Conceptualization , Methodology, Validation, Writing -- original draft,
+Writing -- review \& editing.
+\textbf{Moslem Habibi:} Supervision, Validation,
+Writing -- review \& editing.
+\textbf{Jafar Habibi:} Supervision, Project administration.
+% Insert the author-approved CRediT, funding and competing-interest
+% statements before submitting. See AUTHOR_CONFIRMATION.md.
 \paragraph{Data and code availability}
-The study uses public MNIST, Fashion-MNIST, UCI HAR and 20 Newsgroups sources,
-with the archived MiniLM model specified in the experiments
-\cite{lecun1998,fashion2017,ucihar2012,minilmcard2026}.
-The private review package retains numerical records, source/model hashes,
-sample selections, verification receipts, resource ledgers and reproduction
-commands. Code and evidence remain under supervisor review in the authors'
-private repository. No public download or archival artifact identifier is
-claimed; public release remains an author decision.
-\paragraph{Generative AI assistance}
-OpenAI Codex assisted with implementation, aggregation, manuscript organization
-and language revision. Claims derive from retained numerical and proof exports.
-The human authors are responsible for checking sources, code and interpretation
-and approving the final manuscript. AI tools are not authors.
-\bibliographystyle{elsarticle-num}
-\bibliography{references}
+The primary evaluation uses five public benchmark sources and archived
+MiniLM features. Historical results are indexed at
+\url{https://huggingface.co/datasets/Parsagh1383/zk-audit-results},
+revision \texttt{b244a3549bccb27fdcdbc1c0320458c4eada3284}.
+The reviewer evidence index maps the results to two versioned
+attachments. \texttt{zk-audit-evidence-20261118-v2.zip} contains the
+42 primary archives, SHA-256 checks and public verifier examples.
+{\def\UrlBreaks{\do\-}\path{zk-audit-supplementary-evidence-final-20261119.zip}} contains the
+follow-up proof archives, scale diagnostic, lifecycle and utility data,
+and scripts to regenerate the numerical results.
+
+Public replay covers one HAR compact/Full pair and a distance-bound
+smoke case (\ref{app:revision-replay}). It requires approved inputs,
+public proofs and pinned verification keys. Generating fresh proofs
+requires the corresponding witness, circuit and proving key. The
+benchmark arrays support numerical checks, while retired proving keys
+and the original setup randomness are unavailable.
+
+\paragraph{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this work the authors used Anthropic Claude and
+OpenAI ChatGPT to improve the language, structure and readability of the
+manuscript. After using these tools, the authors reviewed and edited the
+content as needed and take full responsibility for the content of the
+published article.
+\paragraph{Declaration of competing interest}
+The authors declare no competing interests.
+
+\paragraph{Funding}
+This research received no external funding.
+\setlength{\bibsep}{0 pt}
+% Permit breaks inside long reference URLs without changing reference text.
+\def\UrlBreaks{\do\/\do-\do\_\do\.\do\?\do\&\do\=\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9}
+% References are embedded to preserve the supplied .bib unchanged.
+
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+
+\bibitem{lloyd1982least}
+S.~P. Lloyd, Least squares quantization in {PCM}, IEEE Transactions on
+  Information Theory 28~(2) (1982) 129--137.
+\newblock \href {https://doi.org/10.1109/TIT.1982.1056489}
+  {\path{doi:10.1109/TIT.1982.1056489}}.
+
+\bibitem{gray1984vector}
+R.~M. Gray, Vector quantization, IEEE ASSP Magazine 1~(2) (1984) 4--29.
+\newblock \href {https://doi.org/10.1109/MASSP.1984.1162229}
+  {\path{doi:10.1109/MASSP.1984.1162229}}.
+
+\bibitem{ikotun2023kmeans}
+A.~M. Ikotun, A.~E. Ezugwu, L.~Abualigah, B.~Abuhaija, J.~Heming, K-means
+  clustering algorithms: A comprehensive review, variants analysis, and
+  advances in the era of big data, Information Sciences 622 (2023) 178--210.
+\newblock \href {https://doi.org/10.1016/j.ins.2022.11.139}
+  {\path{doi:10.1016/j.ins.2022.11.139}}.
+
+\bibitem{biehl2016prototype}
+M.~Biehl, B.~Hammer, T.~Villmann, Prototype-based models in machine learning,
+  Wiley Interdisciplinary Reviews: Cognitive Science 7~(2) (2016) 92--111.
+\newblock \href {https://doi.org/10.1002/wcs.1378}
+  {\path{doi:10.1002/wcs.1378}}.
+
+\bibitem{snell2017prototypical}
+J.~Snell, K.~Swersky, R.~Zemel,
+  \href{https://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning}{Prototypical
+  networks for few-shot learning}, in: Advances in Neural Information
+  Processing Systems, Vol.~30, 2017, pp. 4077--4087.
+\newline\urlprefix\url{https://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning}
+
+\bibitem{rebuffi2017icarl}
+S.-A. Rebuffi, A.~Kolesnikov, G.~Sperl, C.~H. Lampert, {iCaRL}: Incremental classifier and representation learning, in: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017, pp. 5533--5542. \newblock \href {https://doi.org/10.1109/CVPR.2017.587} {\path{doi:10.1109/CVPR.2017.587}}.
+
+\bibitem{gomezvilla2024ldc}
+A.~Gomez-Villa, D.~Goswami, K.~Wang, A.~D. Bagdanov, B.~Twardowski, J.~van~de Weijer, Exemplar-free continual representation learning via learnable drift compensation, in: European Conference on Computer Vision (ECCV), Lecture Notes in Computer Science, Springer, 2024, pp. 473--490.
+
+\bibitem{caron2018deep}
+M.~Caron, P.~Bojanowski, A.~Joulin, M.~Douze, Deep clustering for unsupervised learning of visual features, in: Proceedings of the European Conference on Computer Vision (ECCV), 2018, pp. 139--156. \newblock \href {https://doi.org/10.1007/978-3-030-01264-9_9} {\path{doi:10.1007/978-3-030-01264-9_9}}.
+
+\bibitem{jegou2011product}
+H.~J{\'e}gou, M.~Douze, C.~Schmid, Product quantization for nearest neighbor
+  search, IEEE Transactions on Pattern Analysis and Machine Intelligence 33~(1)
+  (2011) 117--128.
+\newblock \href {https://doi.org/10.1109/TPAMI.2010.57}
+  {\path{doi:10.1109/TPAMI.2010.57}}.
+
+\bibitem{johnson2021billion}
+J.~Johnson, M.~Douze, H.~J{\'e}gou, Billion-scale similarity search with
+  {GPUs}, IEEE Transactions on Big Data 7~(3) (2021) 535--547.
+\newblock \href {https://doi.org/10.1109/TBDATA.2019.2921572}
+  {\path{doi:10.1109/TBDATA.2019.2921572}}.
+
+\bibitem{sculley2010web}
+D.~Sculley, Web-scale $k$-means clustering, in: Proceedings of the 19th
+  International Conference on World Wide Web (WWW), 2010, pp. 1177--1178.
+\newblock \href {https://doi.org/10.1145/1772690.1772862}
+  {\path{doi:10.1145/1772690.1772862}}.
+\bibitem{corradini2025online}
+F.~Corradini, V.~Nucci, M.~Piangerelli, B.~Re, Online clustering with interpretable drift adaptation to mixed features, Intelligent Systems with Applications 26 (2025) 200510. \newblock \href {https://doi.org/10.1016/j.iswa.2025.200510} {\path{doi:10.1016/j.iswa.2025.200510}}.
+
+\bibitem{liu2025robust}
+Z.~Liu, S.~Aljohani, S.~Zhu, T.~Senapati, G.~Ulutagay, S.~Haque, N.~M. Mlaiki, Robust vector-weighted and matrix-weighted multi-view hard $c$-means clustering, Intelligent Systems with Applications 25 (2025) 200470. \newblock \href {https://doi.org/10.1016/j.iswa.2024.200470} {\path{doi:10.1016/j.iswa.2024.200470}}.
+\bibitem{raji2020closing}
+I.~D. Raji, A.~Smart, R.~N. White, M.~Mitchell, T.~Gebru, B.~Hutchinson,
+  J.~Smith-Loud, D.~Theron, P.~Barnes, Closing the {AI} accountability gap:
+  Defining an end-to-end framework for internal algorithmic auditing, in:
+  Proceedings of the Conference on Fairness, Accountability, and Transparency
+  (FAT* '20), 2020, pp. 33--44.
+\newblock \href {https://doi.org/10.1145/3351095.3372873}
+  {\path{doi:10.1145/3351095.3372873}}.
+
+\bibitem{goldwasser1989knowledge}
+S.~Goldwasser, S.~Micali, C.~Rackoff, The knowledge complexity of interactive
+  proof systems, SIAM Journal on Computing 18~(1) (1989) 186--208.
+\newblock \href {https://doi.org/10.1137/0218012} {\path{doi:10.1137/0218012}}.
+
+\bibitem{waiwitlikhit2024zkaudit}
+S.~Waiwitlikhit, I.~Stoica, Y.~Sun, T.~Hashimoto, D.~Kang, Trustless audits without revealing data or models, in: Proceedings of the 41st International Conference on Machine Learning (ICML), Vol.~235 of Proceedings of Machine Learning Research, 2024, pp. 49808--49821.
+
+\bibitem{south2024verifiable}
+T.~South, A.~Camuto, S.~Jain, S.~Nguyen, R.~Mahari, C.~Paquin, J.~Morton,
+  A.~Pentland, Verifiable evaluations of machine learning models using
+  {zkSNARKs}, preprint (2024).
+\newblock \href {http://arxiv.org/abs/2402.02675} {\path{arXiv:2402.02675}}.
+
+% Preprint.
+
+\bibitem{zkcnn2021}
+T.~Liu, X.~Xie, Y.~Zhang, {zkCNN}: Zero knowledge proofs for convolutional neural network predictions and accuracy, in: Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2021, pp. 2968--2985. \newblock \href {https://doi.org/10.1145/3460120.3485379} {\path{doi:10.1145/3460120.3485379}}.
+
+\bibitem{chen2024zkml}
+B.-J. Chen, S.~Waiwitlikhit, I.~Stoica, D.~Kang, {ZKML}: An optimizing system
+  for {ML} inference in zero-knowledge proofs, in: Proceedings of the
+  Nineteenth European Conference on Computer Systems, 2024, pp. 560--574.
+\newblock \href {https://doi.org/10.1145/3627703.3650088}
+  {\path{doi:10.1145/3627703.3650088}}.
+
+\bibitem{sun2024zkllm}
+H.~Sun, J.~Li, H.~Zhang, {zkLLM}: Zero knowledge proofs for large language models, in: Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2024, pp. 4405--4419. \newblock \href {https://doi.org/10.1145/3658644.3670334} {\path{doi:10.1145/3658644.3670334}}.
+
+\bibitem{v3db2026}
+Z.~Qiu, W.~Qu, J.~Zhang, B.~Yuan,
+  \href{https://arxiv.org/abs/2603.03065v2}{{V3DB}: Audit-on-demand
+  zero-knowledge proofs for verifiable vector search over committed snapshots},
+  version 2, 5 March 2026; archived preprint (2026).
+\newblock \href {http://arxiv.org/abs/2603.03065} {\path{arXiv:2603.03065}},
+  \href {https://doi.org/10.48550/arXiv.2603.03065}
+  {\path{doi:10.48550/arXiv.2603.03065}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2603.03065v2}
+
+% Preprint.
+
+\bibitem{zhang2026verif}
+Z.~Zhang, Y.~Zhou, G.~Chang, C.~Li, Y.~Fang, Q.~Shen,
+  \href{https://eprint.iacr.org/2026/1802}{{VERIF}: An efficient zero-knowledge
+  proof system for verifying {IVF-Flat} retrieval in {RAG} services},
+  Cryptology ePrint Archive, Paper 2026/1802, preprint (2026).
+\newline\urlprefix\url{https://eprint.iacr.org/2026/1802}
+
+\bibitem{li2010authenticated}
+F.~Li, M.~Hadjieleftheriou, G.~Kollios, L.~Reyzin, Authenticated index structures for aggregation queries, ACM Transactions on Information and System Security 13~(4) (2010) 32:1--32:35. \newblock \href {https://doi.org/10.1145/1880022.1880026} {\path{doi:10.1145/1880022.1880026}}.
+
+\bibitem{zhang2015integridb}
+Y.~Zhang, J.~Katz, C.~Papamanthou, {IntegriDB}: Verifiable {SQL} for outsourced databases, in: Proceedings of the 22nd ACM SIGSAC Conference on Computer and Communications Security (CCS), 2015, pp. 1480--1491.
+
+\bibitem{backes2013verifiable}
+M.~Backes, D.~Fiore, R.~M. Reischuk, Verifiable delegation of computation on outsourced data, in: Proceedings of the 2013 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2013, pp. 863--874. \newblock \href {https://doi.org/10.1145/2508859.2516681} {\path{doi:10.1145/2508859.2516681}}.
+
+\bibitem{zhang2025fairzk}
+T.~Zhang, S.~Dong, O.~D. Kose, Y.~Shen, Y.~Zhang, {FairZK}: A scalable system to prove machine learning fairness in zero-knowledge, in: IEEE Symposium on Security and Privacy (S\&P), 2025, pp. 3460--3478.
+
+\bibitem{kothapalli2024hypernova}
+A.~Kothapalli, S.~T.~V. Setty, {HyperNova}: Recursive arguments for customizable constraint systems, in: Advances in Cryptology -- CRYPTO 2024, Lecture Notes in Computer Science, Springer, 2024, pp. 345--379.
+
+\bibitem{zhang2026dynark}
+T.~Zhang, Y.~Ouyang, Y.~Zhang, {Dynark}: Making {Groth16} dynamic, in: Advances in Cryptology -- EUROCRYPT 2026, Lecture Notes in Computer Science, Springer, 2026, pp. 178--208.
+
+\bibitem{elkan2003using}
+C.~Elkan, Using the triangle inequality to accelerate $k$-means, in: Proceedings of the 20th International Conference on Machine Learning (ICML), AAAI Press, 2003, pp. 147--153.
+
+\bibitem{hamerly2010making}
+G.~Hamerly, Making $k$-means even faster, in: Proceedings of the 2010 SIAM International Conference on Data Mining (SDM), 2010, pp. 130--140. \newblock \href {https://doi.org/10.1137/1.9781611972801.12} {\path{doi:10.1137/1.9781611972801.12}}.
+
+\bibitem{feldman2020tiny}
+D.~Feldman, M.~Schmidt, C.~Sohler,
+  \href{https://arxiv.org/abs/1807.04518}{Turning big data into tiny data:
+  Constant-size coresets for $k$-means, {PCA}, and projective clustering}, SIAM
+  Journal on Computing 49~(3) (2020) 601--657.
+\newblock \href {https://doi.org/10.1137/18M1209854}
+  {\path{doi:10.1137/18M1209854}}.
+\newline\urlprefix\url{https://arxiv.org/abs/1807.04518}
+
+\bibitem{makarychev2019performance}
+K.~Makarychev, Y.~Makarychev, I.~Razenshteyn, Performance of {Johnson--Lindenstrauss} transform for $k$-means and $k$-medians clustering, in: Proceedings of the 51st Annual ACM SIGACT Symposium on Theory of Computing (STOC), 2019, pp. 1027--1038. \newblock \href {https://doi.org/10.1145/3313276.3316350} {\path{doi:10.1145/3313276.3316350}}.
+
+
+\bibitem{feng2021zen}
+B.~Feng, L.~Qin, Z.~Zhang, Y.~Ding, S.~Chu,
+  \href{https://eprint.iacr.org/2021/087}{{ZEN}: An optimizing compiler for
+  verifiable, zero-knowledge neural network inferences}, Cryptology ePrint
+  Archive, Report 2021/087 (2021).
+\newline\urlprefix\url{https://eprint.iacr.org/2021/087}
+
+\bibitem{weng2021mystique}
+C.~Weng, K.~Yang, X.~Xie, J.~Katz, X.~Wang, {Mystique}: Efficient conversions for zero-knowledge proofs with applications to machine learning, in: 30th USENIX Security Symposium, 2021, pp. 501--518.
+
+\bibitem{peng2025zkmlsurvey}
+Z.~Peng, C.~Zhao, T.~Wang, G.~Liao, Z.~Lin, Y.~Liu, B.~Cao, L.~Shi, Q.~Yang, S.~Zhang, A survey of zero-knowledge proof based verifiable machine learning, Artificial Intelligence Review 59~(7) (2026) 157.
+
+
+\bibitem{abbaszadeh2024kaizen}
+K.~Abbaszadeh, C.~Pappas, J.~Katz, D.~Papadopoulos, Zero-knowledge proofs of training for deep neural networks, in: Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2024, pp. 4316--4330.
+
+\bibitem{garg2023zkpot}
+S.~Garg, A.~Goel, S.~Jha, S.~Mahloujifar, M.~Mahmoody, G.-V. Policharla, M.~Wang, Experimenting with zero-knowledge proofs of training, in: Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2023, pp. 1880--1894.
+
+\bibitem{shang2026smdp}
+Z.~Shang, K.~Chen, Fine-tuning integrity for modern neural networks: Structured
+  drift proofs via norm, rank, and sparsity certificates, preprint (2026).
+\newblock \href {http://arxiv.org/abs/2604.04738} {\path{arXiv:2604.04738}}.
+
+% Preprint.
+
+\bibitem{campanelli2019legosnark}
+M.~Campanelli, D.~Fiore, A.~Querol, {LegoSNARK}: Modular design and composition of succinct zero-knowledge proofs, in: Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2019, pp. 2075--2092.
+
+\bibitem{artemis2024}
+H.~Lycklama, A.~Viand, N.~Avramov, N.~K\"uchler, A.~Hithnawi, {Artemis}:
+  Efficient commit-and-prove {SNARKs} for {zkML} (2024).
+\newblock \href {http://arxiv.org/abs/2409.12055} {\path{arXiv:2409.12055}}.
+
+\bibitem{zhang2017vsql}
+Y.~Zhang, D.~Genkin, J.~Katz, D.~Papadopoulos, C.~Papamanthou, {vSQL}: Verifying arbitrary {SQL} queries over dynamic outsourced databases, in: IEEE Symposium on Security and Privacy (S\&P), 2017, pp. 863--880.
+
+\bibitem{papamanthou2024reckle}
+C.~Papamanthou, S.~Srinivasan, N.~Gailly, I.~Hishon-Rezaizadeh, A.~Salumets, S.~Golemac, Reckle trees: Updatable {Merkle} batch proofs with applications, in: Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security (CCS), 2024, pp. 1538--1551. \newblock \href {https://doi.org/10.1145/3658644.3670354} {\path{doi:10.1145/3658644.3670354}}.
+
+\bibitem{blum1994checking}
+M.~Blum, W.~S. Evans, P.~Gemmell, S.~Kannan, M.~Naor, Checking the correctness of memories, Algorithmica 12~(2--3) (1994) 225--244. \newblock \href {https://doi.org/10.1007/BF01185212} {\path{doi:10.1007/BF01185212}}.
+
+\bibitem{gabizon2019plonk}
+A.~Gabizon, Z.~J. Williamson, O.~Ciobotaru, {PLONK}: Permutations over {Lagrange}-bases for oecumenical noninteractive arguments of knowledge, Cryptology ePrint Archive, Paper 2019/953 (2019). \newline\urlprefix\url{https://eprint.iacr.org/2019/953}
+
+\bibitem{gennaro2010noninteractive}
+R.~Gennaro, C.~Gentry, B.~Parno, Non-interactive verifiable computing: Outsourcing computation to untrusted workers, in: Advances in Cryptology -- CRYPTO 2010, Lecture Notes in Computer Science, Springer, 2010, pp. 465--482. \newblock \href {https://doi.org/10.1007/978-3-642-14623-7_25} {\path{doi:10.1007/978-3-642-14623-7_25}}.
+
+
+\bibitem{kothapalli2022nova}
+A.~Kothapalli, S.~T.~V. Setty, I.~Tzialla, {Nova}: Recursive zero-knowledge arguments from folding schemes, in: Advances in Cryptology -- CRYPTO 2022, Lecture Notes in Computer Science, Springer, 2022, pp. 359--388.
+
+
+\bibitem{bunz2023protostar}
+B.~B{\"u}nz, B.~Chen, {ProtoStar}: Generic efficient accumulation/folding for special-sound protocols, in: Advances in Cryptology -- ASIACRYPT 2023, Lecture Notes in Computer Science, Springer, 2023, pp. 77--110.
+
+\bibitem{gailly2022snarkpack}
+N.~Gailly, M.~Maller, A.~Nitulescu, {SnarkPack}: Practical {SNARK} aggregation, in: Financial Cryptography and Data Security (FC 2022), Lecture Notes in Computer Science, Springer, 2022, pp. 203--229.
+
+\bibitem{wang2024dynamic}
+W.~Wang, C.~Papamanthou, S.~Srinivasan, D.~Papadopoulos, Dynamic {zk-SNARKs} (with applications to sparse {zk-SNARKs} and {IVC}), in: Advances in Cryptology -- EUROCRYPT 2026, Lecture Notes in Computer Science, Springer, 2026, pp. 329--358.
+
+\bibitem{liu2013integrity}
+R.~Liu, H.~W. Wang, P.~Mordohai, H.~Xiong, Integrity verification of {K}-means clustering outsourced to infrastructure as a service ({IaaS}) providers, in: Proceedings of the 2013 SIAM International Conference on Data Mining (SDM), 2013, pp. 632--640. \newblock \href {https://doi.org/10.1137/1.9781611972832.70} {\path{doi:10.1137/1.9781611972832.70}}.
+
+\bibitem{zhang2021verifiable}
+E.~Zhang, H.~Li, J.~Chang,
+  \href{https://www.joca.cn/EN/10.11772/j.issn.1001-9081.2020060766}{Verifiable
+  $k$-means clustering scheme with privacy-preserving}, Journal of Computer
+  Applications 41~(2) (2021) 413--421.
+\newblock \href {https://doi.org/10.11772/j.issn.1001-9081.2020060766}
+  {\path{doi:10.11772/j.issn.1001-9081.2020060766}}.
+\newline\urlprefix\url{https://www.joca.cn/EN/10.11772/j.issn.1001-9081.2020060766}
+
+\bibitem{zhao2019veriml}
+L.~Zhao, Q.~Wang, C.~Wang, Q.~Li, C.~Shen, B.~Feng, {VeriML}: Enabling integrity assurances and fair payments for machine learning as a service, IEEE Transactions on Parallel and Distributed Systems 32~(10) (2021) 2524--2540. \newblock \href {https://doi.org/10.1109/TPDS.2021.3068195} {\path{doi:10.1109/TPDS.2021.3068195}}.
+
+
+\bibitem{patel2013clustering}
+S.~Patel, V.~Patel, D.~Jinwala, Privacy preserving distributed {K}-means
+  clustering in malicious model using zero knowledge proof, in: Distributed
+  Computing and Internet Technology, Vol. 7753 of Lecture Notes in Computer
+  Science, Springer, Berlin, Heidelberg, 2013, pp. 420--431.
+\newblock \href {https://doi.org/10.1007/978-3-642-36071-8_33}
+  {\path{doi:10.1007/978-3-642-36071-8_33}}.
+
+\bibitem{diaa2025fastlloyd}
+A.~Diaa, T.~Humphries, F.~Kerschbaum, {FastLloyd}: Federated, accurate, secure, and tunable $k$-means clustering with differential privacy, in: 34th USENIX Security Symposium, 2025, pp. 2733--2752.
+
+\bibitem{sadeghinasab2023flink}
+A.~Sadeghi-Nasab, H.~Ghaffarian, M.~Rahmani, Apache {Flink} and clustering-based framework for fast anonymization of {IoT} stream data, Intelligent Systems with Applications 20 (2023) 200267. \newblock \href {https://doi.org/10.1016/j.iswa.2023.200267} {\path{doi:10.1016/j.iswa.2023.200267}}.
+
+\bibitem{jaramillovelez2026beyond}
+D.~Jaramillo-Velez, G.~Bicz{\'o}k, A.~Graell~i~Amat, B.~Pej{\'o}, Beyond leave-one-out: Private and robust contribution evaluation in federated learning, Intelligent Systems with Applications 32 (2026) 200725. \newblock \href {https://doi.org/10.1016/j.iswa.2026.200725} {\path{doi:10.1016/j.iswa.2026.200725}}.
+\bibitem{iguchi2016certifiably}
+T.~Iguchi, D.~G. Mixon, J.~Peterson, S.~Villar, Probably certifiably correct $k$-means clustering, Mathematical Programming 165~(2) (2017) 605--642.
+
+\bibitem{mixon2017certificates}
+D.~G. Mixon, S.~Villar, \href{https://arxiv.org/abs/1710.00956}{Monte carlo
+  approximation certificates for $k$-means clustering}, arXiv:1710.00956
+  (2017).
+\newline\urlprefix\url{https://arxiv.org/abs/1710.00956}
+
+\bibitem{clum2024sketch}
+C.~Clum, D.~G. Mixon, K.~O'Hare, S.~Villar, Sketch-and-solve approaches to $k$-means clustering by semidefinite programming, Information and Inference: A Journal of the IMA 13~(3) (2024) iaae016. \newblock \href {https://doi.org/10.1093/imaiai/iaae016} {\path{doi:10.1093/imaiai/iaae016}}.
+
+
+\bibitem{hamerly2015accelerating}
+G.~Hamerly, J.~Drake, Accelerating {Lloyd's} algorithm for $k$-means clustering, in: M.~E. Celebi (Ed.), Partitional Clustering Algorithms, Springer, 2015, pp. 41--78. \newblock \href {https://doi.org/10.1007/978-3-319-09259-1_2} {\path{doi:10.1007/978-3-319-09259-1_2}}.
+
+\bibitem{ding2015yinyang}
+Y.~Ding, Y.~Zhao, X.~Shen, M.~Musuvathi, T.~Mytkowicz, Yinyang {K}-means: A drop-in replacement of the classic {K}-means with consistent speedup, in: Proceedings of the 32nd International Conference on Machine Learning (ICML), Vol.~37 of Proceedings of Machine Learning Research, 2015, pp. 579--587.
+
+\bibitem{newling2016fast}
+J.~Newling, F.~Fleuret, Fast {K}-means with accurate bounds, in: Proceedings of the 33rd International Conference on Machine Learning (ICML), Vol.~48 of Proceedings of Machine Learning Research, 2016, pp. 936--944.
+
+\bibitem{xia2020ball}
+S.~Xia, D.~Peng, D.~Meng, C.~Zhang, G.~Wang, E.~Giem, W.~Wei, Z.~Chen, Ball $k$-means: Fast adaptive clustering with no bounds, IEEE Transactions on Pattern Analysis and Machine Intelligence 44~(1) (2022) 87--99.
+
+\bibitem{feldman2013tiny}
+D.~Feldman, M.~Schmidt, C.~Sohler, Turning big data into tiny data:
+  Constant-size coresets for $k$-means, {PCA} and projective clustering, in:
+  Proceedings of the Twenty-Fourth Annual ACM-SIAM Symposium on Discrete
+  Algorithms, 2013, pp. 1434--1453.
+\newblock \href {https://doi.org/10.1137/1.9781611973105.103}
+  {\path{doi:10.1137/1.9781611973105.103}}.
+
+\bibitem{cohen2015dimensionality}
+M.~B. Cohen, S.~Elder, C.~Musco, C.~Musco, M.~Persu,
+  \href{https://arxiv.org/abs/1410.6801}{Dimensionality reduction for $k$-means
+  clustering and low rank approximation}, in: Proceedings of the 47th Annual
+  ACM Symposium on Theory of Computing, 2015, pp. 163--172.
+\newblock \href {https://doi.org/10.1145/2746539.2746569}
+  {\path{doi:10.1145/2746539.2746569}}.
+\newline\urlprefix\url{https://arxiv.org/abs/1410.6801}
+
+\bibitem{poseidon22023}
+L.~Grassi, D.~Khovratovich, M.~Schofnegger, {Poseidon2}: A faster version of the {Poseidon} hash function, in: Progress in Cryptology -- AFRICACRYPT 2023, Lecture Notes in Computer Science, Springer, 2023, pp. 177--203. \newblock \href {https://doi.org/10.1007/978-3-031-37679-5_8} {\path{doi:10.1007/978-3-031-37679-5_8}}.
+
+
+\bibitem{groth2016}
+J.~Groth, On the size of pairing-based non-interactive arguments, in: Advances in Cryptology -- EUROCRYPT 2016, Lecture Notes in Computer Science, Springer, 2016, pp. 305--326. \newblock \href {https://doi.org/10.1007/978-3-662-49896-5_11} {\path{doi:10.1007/978-3-662-49896-5_11}}.
+
+
+\bibitem{fashion2017}
+H.~Xiao, K.~Rasul, R.~Vollgraf,
+  \href{https://arxiv.org/abs/1708.07747}{{Fashion-MNIST}: A novel image
+  dataset for benchmarking machine learning algorithms} (2017).
+\newblock \href {http://arxiv.org/abs/1708.07747} {\path{arXiv:1708.07747}}.
+\newline\urlprefix\url{https://arxiv.org/abs/1708.07747}
+
+\bibitem{lecun1998}
+Y.~LeCun, L.~Bottou, Y.~Bengio, P.~Haffner, Gradient-based learning applied to
+  document recognition, Proceedings of the IEEE 86~(11) (1998) 2278--2324.
+\newblock \href {https://doi.org/10.1109/5.726791}
+  {\path{doi:10.1109/5.726791}}.
+
+\bibitem{ucihar2012}
+D.~Anguita, A.~Ghio, L.~Oneto, X.~Parra, J.~L. Reyes-Ortiz,
+  \href{https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones}{Human
+  activity recognition using smartphones}, UCI Machine Learning Repository
+  (2012).
+\newline\urlprefix\url{https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones}
+
+\bibitem{news20data}
+{Carnegie Mellon University},
+  \href{https://www.cs.cmu.edu/afs/cs.cmu.edu/project/theo-20/www/data/news20.html}{20
+  newsgroups data set}, The CMU Text Learning Group dataset archive, accessed
+  18 October 2026.
+\newline\urlprefix\url{https://www.cs.cmu.edu/afs/cs.cmu.edu/project/theo-20/www/data/news20.html}
+
+\bibitem{minilmcard2026}
+{Sentence Transformers contributors},
+  \href{https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/tree/1110a243fdf4706b3f48f1d95db1a4f5529b4d41}{{all-MiniLM-L6-v2}:
+  model card and archived model revision}, revision
+  1110a243fdf4706b3f48f1d95db1a4f5529b4d41; accessed 27 October 2026 (2026).
+\newline\urlprefix\url{https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/tree/1110a243fdf4706b3f48f1d95db1a4f5529b4d41}
+
+\bibitem{isolet1991}
+R.~Cole, M.~Fanty, ISOLET [dataset], UCI Machine Learning Repository
+(1991). \newblock \url{https://doi.org/10.24432/C51G69}.
+
+\bibitem{rfc9334rats}
+H.~Birkholz, D.~Thaler, M.~Richardson, N.~Smith, W.~Pan,
+Remote ATtestation procedureS (RATS) architecture, RFC 9334, 2023.
+\newblock \url{https://www.rfc-editor.org/rfc/rfc9334.html}.
+
+\bibitem{nistpecmpc}
+National Institute of Standards and Technology,
+Privacy-Enhancing Cryptography: tools, secure multiparty computation.
+\newblock \url{https://csrc.nist.gov/Projects/pec/pec-tools}.
+
+\bibitem{optdigits1998}
+E.~Alpaydin, C.~Kaynak, Optical Recognition of Handwritten Digits
+[Dataset], UCI Machine Learning Repository (1998).
+\newblock \url{https://doi.org/10.24432/C50P49}.
+
+\end{thebibliography}
+
+
+
+\clearpage
+
+\FloatBarrier
+\appendix
+% BEGIN EDITABLE SECTION: methodology_appendix.tex
+\section{Technical Details and Derivations}
+\label{app:methodology-proofs}
+\subsection{Exact Decomposition of the Update Cost}
+For the authenticated deployed groups, define the assigned objective
+$\Psi(C)=\sum_i\|x_i-c_{g_i}\|_2^2$. Expanding its difference gives
+\begin{align}
+ \Psi(C^1)-\Psi(C^0)
+ &=\sum_i\bigl[2\langle x_i,c^0_{g_i}-c^1_{g_i}\rangle\nonumber\\
+ &\hspace{15mm}+\|c^1_{g_i}\|_2^2-\|c^0_{g_i}\|_2^2\bigr]
+ =\mathcal A.
+\end{align}
+Exact old membership implies $\Psi(C^0)=\Phi_X(C^0)$, whereas
+$\Phi_X(C^1)=\Psi(C^1)+\sum_i b_i$. Substitution proves
+Eq.~\eqref{eq:methodology-decomposition}. The derivation allows old ties,
+empty groups and centers outside the represented span.
+
+\subsection{Rounded-Basis Pairwise Bounds}
+Write $v=x-a$, $w=c-a$ and $P=B^\top B$. Then
+$H_B(x)=TBv$ and $R_B(x)=(T^2I-P)v$. Expanding
+\begin{align}
+ \mathcal D_B(x,c)
+ ={}&T^2(v-w)^\top P(v-w)\nonumber\\
+ &+v^\top(T^2I-P)^2v+w^\top(T^2I-P)^2w
+\end{align}
+and substituting $G=BB^\top-T^2I$ yields
+Eq.~\eqref{eq:methodology-rounded-identity}. Subtract its instances for
+$c^1_j$ and $c^1_g$. The private quadratic term $H_B(x)^\top GH_B(x)$
+cancels, leaving Eq.~\eqref{eq:methodology-affine} and the residual inner
+product in Eq.~\eqref{eq:methodology-pair-difference}.
+
+Since $\|R_B(x_i)\|_2\leq\rho_i$ and
+$\|R_B(c^1_j)-R_B(c^1_g)\|_2\leq\tau_{jg}$, Cauchy--Schwarz gives
+\begin{align}
+ q_{jg}(H_B(x_i))-2T^2\rho_i\tau_{jg}
+ &\leq T^6(\|x_i-c^1_j\|_2^2-\|x_i-c^1_g\|_2^2)\nonumber\\
+ &\leq q_{jg}(H_B(x_i))+2T^2\rho_i\tau_{jg}.
+\end{align}
+Taking the minimum over $j$ preserves both inequalities. The $j=g$
+comparison is exactly zero, so both endpoint minima are nonpositive.
+Summing and applying the exact decomposition proves
+Eq.~\eqref{eq:methodology-interval}. The argument requires no orthogonality
+assumption on the rounded basis and no probabilistic embedding event.
+
+\subsection{Monotone Exact-Row Refinement}
+The base circuit permits any bounded radius satisfying $E_i\leq\rho_i^2$.
+Its lower endpoint decreases and upper endpoint increases with the radius.
+For the canonical radius $\bar\rho_i=\lceil\sqrt{E_i}\rceil$,
+\begin{equation}
+ \ell_i\leq\bar\ell_i\leq T^6b_i\leq\bar u_i\leq u_i.
+\end{equation}
+For $E_i=0$, refinement forces $\bar\rho_i=0$. Otherwise it checks
+$(\bar\rho_i-1)^2<E_i\leq\bar\rho_i^2$. These constraints enforce the
+canonical endpoints used in Eq.~\eqref{eq:methodology-corrections}.
+For a refined row,
+\begin{equation}
+ \ell_i+d_i^-\leq T^6b_i,
+ \qquad u_i+d_i^+\geq T^6b_i.
+\end{equation}
+Summing the unchanged and corrected rows proves Eq.~\eqref{eq:methodology-refined}.
+Since $d_i^+-d_i^-=-w_i$, Eq.~\eqref{eq:methodology-width} follows.
+Largest widths maximize removed uncertainty at fixed cardinality.
+For a fixed nonzero sign and unit row cost, largest endpoint gains instead
+maximize movement toward the strict sign test; the first crossing prefix
+therefore has minimum cardinality. This planning result does not minimize
+authentication, setup, loading or total service cost.
+
+\subsection{Fingerprint Linking and Conditional Soundness}
+Condition on binding commitments and valid proofs. The original rows,
+derived values, group memberships and proposed moments are fixed before
+$\xi$ is sampled. Summing Eq.~\eqref{eq:methodology-fingerprint} over the
+complete ordered catalog telescopes the linked masks. Comparing the result
+with Eq.~\eqref{eq:methodology-moment-link} leaves, for each group,
+\begin{equation}
+ f_g(\xi)=\delta n_g+\sum_{t=0}^{d-1}\delta S_{gt}\xi^{t+1}=0,
+\end{equation}
+where the deltas are the differences between committed moments and their
+true row aggregates. Integer ranges ensure that a nonzero difference is
+nonzero in $\mathbb F_p$. Thus a false group's $f_g$ is a nonzero polynomial
+of degree at most $d$, with at most $d$ roots. An independent uniform
+$\xi\in\mathbb F_p^*$ gives a collision probability at most $d/(p-1)$.
+The union bound over groups is $kd/(p-1)$ for one preprocessing session.
+The probability conditions on the committed transcript and, across
+sessions, on prior history. A prover that can select the challenge or
+change commitments after seeing it is outside this argument.
+
+Outside this event, the moment-link relation makes
+Eq.~\eqref{eq:methodology-assigned} exact. The preceding pairwise and
+refinement arguments then establish
+Proposition~\ref{prop:methodology-correctness}. Altering roots, models, keys,
+centers or row coverage instead violates a separately checked condition or
+a binding/soundness assumption. This is a conditional argument for the
+specified bounded session, not a composable-security theorem.
+
+For BN254, $p\simeq2.1888\times10^{76}$. With $k=5,d=784$, the
+fingerprint bound is $1.8\times10^{-73}$ per session, or
+$1.8\times10^{-67}$ over $10^6$ independent sessions. Commitment, hash
+and proof-system failure terms are additional.
+
+\subsection{Integer Semantics and Field-Safety Guards}
+The implementation uses power-of-two catalog sizes for its Merkle layout
+and admits only models passing its dimensional and arithmetic guards.
+Let $X_{\max}=2^b$ bound every input and center coordinate and put
+$W_0=2X_{\max}$. Assume $|B_{jt}|\leq T$ and define
+$\beta_j=\sum_t|B_{jt}|$. Conservative bounds are
+\begin{align}
+ H_{\max}&=TW_0\max_j\beta_j,\nonumber\\
+ R_{\max}&=W_0\max_t\left(T^2+\sum_j|B_{jt}|\beta_j\right),\nonumber\\
+ E_{\max}&=dR_{\max}^2,\qquad
+ \rho_{\max}=\lceil\sqrt{E_{\max}}\rceil.
+\end{align}
+They apply to rows and candidate centers relative to the bounded anchor.
+Pairwise center residual radii are at most $2\rho_{\max}$. With
+$\gamma=\max_a\sum_b|G_{ab}|$, affine coefficients and constants obey
+\begin{align}
+ C_{\max}&=4H_{\max}(\gamma+T^2),\nonumber\\
+ K_{\max}&=T^2(2sH_{\max}^2+2E_{\max})
+                    +2\gamma sH_{\max}^2,\nonumber\\
+ \Lambda&=sH_{\max}C_{\max}+K_{\max}
+                      +4T^2\rho_{\max}^2+1.
+\end{align}
+For a switching batch of $b_q$ rows, the implementation takes
+$L_G=16\Lambda$, bounds signed batch endpoints by $2b_qL_G$, and requires
+$64(n+b_q+k)L_G<p$ before compilation. The historical switching batch size is $b_q=16$; the new five-source
+cohort uses $b_q=8$. Both are separate from the per-candidate correction
+cap $b_{\max}=16$. The model also checks its head, energy, score and distance
+limits, multiplied by $16n$, against $p$.
+
+Counts satisfy $0\leq n_g\leq n$ and $\sum_g n_g=n$;
+coordinate sums satisfy $|S_{gt}|\leq nX_{\max}$. Assigned change is bounded
+by $|\mathcal A|\leq4ndX_{\max}^2$. Exact center linear scores and their
+differences have magnitude at most $3dX_{\max}^2$ and $6dX_{\max}^2$,
+respectively. Signed range checks use explicit nonnegative shifts and
+bounded comparisons, so negative integers are not interpreted from bare
+field residues. Roots, challenges and mask contributions use canonical
+field encodings. Public endpoint aggregation uses arbitrary-precision
+integers outside the circuit. Models outside the guards are rejected.
+
+\subsection{Persisted Basis Recipe}
+SVD obtains the deployed-center span. Residual PCA directions undergo two
+reprojections and a nonpivoted QR preserving order, followed by sign
+canonicalization. Both families fit 79 directions with four randomized
+iterations and the fit seed, round at $2^{14}$, and use a prefix for rank 16.
+The construction has no auxiliary prediction extension or oblivious JL
+guarantee. The checked Gram correction retains numerical and rounding error.
+
+% END EDITABLE SECTION: methodology_appendix.tex
+
+
+% BEGIN EDITABLE SECTION: informativeness_appendix.tex
+\section{When the Existing Interval Is Informative}
+\label{app:informativeness}
+We analyze the canonical minimal-ceiling interval in
+Section~\ref{sec:methodology}, retaining the admitted integer profile and
+basis rounding.
+
+Let $K_B=T^2I_d-B^\top B$, let
+$\delta_j=c^1_j-c^0_j$, and define the nonnegative integers
+\begin{align}
+ \lambda_{jg}&=\left\lceil\|K_B(c^0_j-c^0_g)\|_2\right\rceil,\nonumber\\
+ \nu_{jg}&=\left\lceil\|K_B(\delta_j-\delta_g)\|_2\right\rceil.
+ \label{eq:inform-drift}
+\end{align}
+Here $\lambda_{jg}$ measures old center separation left by the rounded
+basis, and $\nu_{jg}$ measures additional relative candidate drift.
+The anchor cancels in residual differences.
+
+\begin{proposition}[Width and a sufficient decision margin]
+\label{prop:informativeness}
+Use the canonical row endpoints of
+Eq.~\eqref{eq:methodology-row-bounds}, with minimal ceiling radii, and
+replace the switching terms of distinct rows $J$ by their proved exact
+values. The resulting interval $[L_J,U_J]$ has width $W_J$ satisfying
+\begin{align}
+ W_J&=\sum_{i\notin J}(u_i-\ell_i)\nonumber\\
+ &\leq 4T^2\sum_{i\notin J}\rho_i\max_j\tau_{jg_i}\nonumber\\
+ &\leq 4T^2\sum_{i\notin J}\rho_i
+                 \max_j(\lambda_{jg_i}+\nu_{jg_i})
+       =: M_J.
+ \label{eq:inform-width}
+\end{align}
+If $|\Delta|>M_J/T^6$, the interval gives the correct strict sign of
+$\Delta$ without Full. The weaker condition $|\Delta|>W_J/T^6$ also suffices.
+\end{proposition}
+
+\begin{proof}
+Write $a_{ij}=q_{jg_i}(H_B(x_i))$ and
+$e_{ij}=2T^2\rho_i\tau_{jg_i}$. Choose $j_*$ minimizing
+$a_{ij}-e_{ij}$. Since $u_i=\min_j(a_{ij}+e_{ij})$, we have
+\[
+ 0\leq u_i-\ell_i
+ \leq (a_{ij_*}+e_{ij_*})-(a_{ij_*}-e_{ij_*})
+ \leq 4T^2\rho_i\max_j\tau_{jg_i}.
+\]
+Exact replacement removes the full canonical width of each row in $J$;
+the assigned aggregate has zero uncertainty. This proves the first
+inequality. Linearity gives
+\[
+ R_B(c^1_j)-R_B(c^1_g)
+ =K_B(c^0_j-c^0_g)+K_B(\delta_j-\delta_g).
+\]
+The triangle inequality and
+$\lceil a+b\rceil\leq\lceil a\rceil+\lceil b\rceil$ for nonnegative
+$a,b$ give $\tau_{jg}\leq\lambda_{jg}+\nu_{jg}$, proving the second
+inequality. Finally $T^6\Delta\in[L_J,U_J]$. If an interval of width
+less than $|T^6\Delta|$ also contained zero, the distance between these
+two contained points would exceed its width, a contradiction.
+\end{proof}
+
+The true margin explains coverage; the auditor still uses the endpoint
+test, equivalently $|L_J+U_J|>U_J-L_J$ for a strict decision. The condition
+is sufficient, not necessary: an assigned-change upper bound can resolve
+an update even with large $M_J$. Larger admitted base radii can retain
+width after canonical corrections.
+
+\paragraph{Favorable limiting case}
+If $K_B(c^0_j-c^0_g)=0$ and $K_B(\delta_j-\delta_g)=0$ for all pairs,
+then every $\tau_{jg}$ vanishes and the interval is exact, regardless of
+row residual size. For an ideal scaled orthonormal basis these conditions
+mean that center separations are represented. A common translation of
+all centers has $\delta_j-\delta_g=0$ even if the translation lies outside
+the basis. With a rounded basis, $\lambda_{jg}$ and $\nu_{jg}$ retain the actual
+defect; exact vanishing is not assumed.
+
+For a concrete integer example, take $T=1$, $B=(1,0)$,
+$C^0=((0,0),(10,0))$ and 128 identical rows $x_i=(0,2)$.
+The translated bank $C^1=((0,1),(10,1))$ gives $\Delta=-384$ and the
+exact interval $[-384,-384]$ with no refinements, despite nonzero row
+residuals and an out-of-basis translation.
+
+\paragraph{Failure under a small correction cap}
+Keep those rows, reference and basis, but take
+$C^1=((0,-2),(0,1))$. Every row belongs to old group zero; its old cost
+is 4 and new cost is 1. Thus $\Delta=-384$, while the assigned change is
+$\mathcal A=1536$. The nonzero comparison has
+$q=-3$, $\rho_i=2$, $\tau_{10}=3$ and error 12, giving
+$[\ell_i,u_i]=[-15,0]$. The initial aggregate interval is
+$[-384,1536]$. Every exact row correction lowers only its upper endpoint
+by 15, so after the evaluated cap of 16 the interval is still
+$[-384,1296]$. At least 103 such corrections would be needed for a strict
+negative upper endpoint. This is a failure of this interval and cap, not
+an impossibility result for all protocols or for a verifier with additional
+authorized information. Both examples give their integer quantities
+explicitly. They illustrate the algebraic operating conditions and do not
+supply additional timing data.
+
+% END EDITABLE SECTION: informativeness_appendix.tex
+\clearpage
+\onecolumn
+\setcounter{page}{1}
+\renewcommand{\thepage}{S\arabic{page}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theHtable}{supp.\arabic{table}}
+\begin{center}{\Large\bfseries Supplementary material}\end{center}
+\section{Relation-to-Implementation Map and Public Replay}
+\label{app:revision-replay}
+\begin{table}[H]
+\centering\small
+\caption{Security obligations and implementation entry points. Paths are
+relative to the supplied verifier source. A named implementation is an
+inspection target, not an independent proof that its circuit is correct.}
+\label{tab:revision-circuit-map}
+\begin{tabularx}{\textwidth}{@{}p{.24\textwidth}X@{}}\toprule
+Obligation & Code and review target\\\midrule
+Reference rows, assignments and moment linking &
+\path{circuit/bound_group_fingerprint.go}, \texttt{BoundGroupFingerprintRow.Define} and \texttt{BoundGroupFingerprintLink.Define}: commitments, exact old assignments and challenge-dependent links.\\
+Assigned change and switching interval &
+\path{circuit/bound_group_compact.go}, \texttt{BoundGroupLinkedChange.Define}; \path{circuit/bound_group_switch.go}: rounded-basis arithmetic and interval endpoints.\\
+Exact-row correction &
+\path{circuit/bound_group_refinement.go}, \texttt{BoundGroupRefinement.Define}; \path{cmd/commitjl-bound/group_refinement.go}: selected-row binding, uniqueness and correction aggregation.\\
+Exact completion and old-cost reuse &
+\path{circuit/bound_full_reuse.go}, \texttt{BoundFullReuseQuery.Define}; \path{cmd/commitjl-bound/full_reuse.go}: per-row nearest-center minima, authenticated old cost and fresh candidate costs.\\
+Integer ranges and field safety &
+\path{circuit/bound_model.go}, \texttt{BoundModel.Validate/Limits}; \path{circuit/bound_circuit.go}: signed encodings, bounded products and no-wrap admission.\\
+Task pins and complete coverage &
+\path{cmd/commitjl-bound/group_fast.go}, \texttt{groupTask}; \path{cmd/commitjl-bound/group_compact.go}, \texttt{verifyCompactGroup}: approved banks, ordered batches, key identities and total coverage.\\
+Post-commitment challenge and setup &
+The experiment's \path{validation/check_group_fast_proofs.py}, \texttt{issue\_challenge}, samples after the commitment receipt. Circuit-specific setup occurs locally. Independent challenge delivery and secure setup governance remain deployment assumptions.\\\bottomrule
+\end{tabularx}
+\end{table}
+
+The supplementary public-replay artifact supplies pinned Go modules,
+source hashes, approved tasks, owner/key pins and public proofs for a
+completed HAR compact/Full pair and the distance-bound smoke. Its
+verification script checks file hashes and replays only public verifier
+phases, without catalog rows, secret witnesses or proving keys. Isolated
+negative checks substitute a candidate, corrupt a proof and withhold a
+batch proof. The accompanying report records which checks accepted or
+rejected. Successful checks cover these examples, not every admitted
+witness or possible adversary.
+
+Replay assumes trusted owner pins. An auditor must obtain those pins
+and approvals independently for a deployment. Table~\ref{tab:revision-circuit-map}
+maps the checks for an external review. The disclosure analysis appears
+in \ref{app:security-leakage}.
+
+The companion script \texttt{fresh\_near\_tie.py} generates the public
+synthetic fixture, runs a fresh setup and exact proof, and compares the
+verified objectives with a separate integer calculation. It uses the
+same pinned Go source as the archived verifier examples.
+
+\section{Evidence and Reproduction Scope}
+\label{app:server-evidence}
+The primary campaign contains 25 matched fits, five scale cells and a
+reference-proof reuse control, for 107 service arms. Table~\ref{tab:final-perfit} lists every
+new main fit. Immutable input/source/binary pins, exact oracle comparisons,
+public proof records and replay receipts are retained. The manuscript
+builder checked each archive against its SHA 256 receipt and recomputed
+all 400 main objective changes from archived integer arrays. It did not
+independently audit the circuits or repeat the expensive proving campaign.
+
+Clean timing comparisons exclude interrupted warm arms. In particular,
+the original 4096-row centroid attempts remain in the receipt ledger.
+Table~\ref{tab:final-scale} uses the uninterrupted repeat, paired with the
+previous uninterrupted Full and PCA timings on the same task. A HAR old-reference activation
+also resumed; this does not alter its clean warm query comparison.
+R1CS/proving-key caches were retired after verification with hash/size
+ledgers retained. They must be rebuilt for a fresh trusted-setup run.
+Public benchmark arrays in the archive are not private production exports.
+
+\begin{table}[H]
+\centering\small
+\caption{Every fit of the new cohort, with 16 candidates per row. Rank and compact counts are ours/PCA; times are warm seconds. All final decisions verify.}
+\label{tab:final-perfit}
+\begin{tabular}{@{}lrlrrrr@{}}\toprule
+Source & Seed & Rank & Compact/16 & Full (s) & Ours (s) & PCA (s)\\
+\midrule
+Fashion-MNIST & 3001 & 79/79 & 15/15 & 3373.3 & 876.1 & 856.2\\
+Fashion-MNIST & 3011 & 79/79 & 15/14 & 3308.4 & 897.9 & 1047.1\\
+Fashion-MNIST & 3019 & 79/79 & 14/14 & 3370.4 & 1046.5 & 1066.5\\
+Fashion-MNIST & 3023 & 79/79 & 13/13 & 3329.4 & 1206.7 & 1238.1\\
+Fashion-MNIST & 3037 & 79/79 & 16/16 & 3308.0 & 657.3 & 653.9\\
+UCI HAR & 3001 & 79/79 & 16/14 & 2050.9 & 641.3 & 848.2\\
+UCI HAR & 3011 & 79/79 & 15/15 & 2125.3 & 790.9 & 791.9\\
+UCI HAR & 3019 & 79/79 & 16/16 & 2062.9 & 647.3 & 651.8\\
+UCI HAR & 3023 & 79/79 & 16/15 & 2099.4 & 679.1 & 796.2\\
+UCI HAR & 3037 & 79/79 & 13/13 & 2042.6 & 974.9 & 943.3\\
+MNIST & 3001 & 79/79 & 13/12 & 3334.4 & 1199.3 & 1380.2\\
+MNIST & 3011 & 79/79 & 10/10 & 3330.3 & 1707.9 & 1710.7\\
+MNIST & 3019 & 79/79 & 11/11 & 3229.9 & 1482.7 & 1503.7\\
+MNIST & 3023 & 79/79 & 12/12 & 3280.3 & 1372.3 & 1373.8\\
+MNIST & 3037 & 79/79 & 12/12 & 3327.9 & 1377.1 & 1370.2\\
+USPS & 3001 & 79/79 & 16/16 & 2152.2 & 1465.1 & 1415.0\\
+USPS & 3011 & 79/79 & 16/16 & 2132.3 & 1423.0 & 1394.5\\
+USPS & 3019 & 79/79 & 16/16 & 2139.4 & 1427.7 & 1453.1\\
+USPS & 3023 & 16/79 & 11/16 & 2144.4 & 1057.7 & 1451.6\\
+USPS & 3037 & 79/79 & 16/16 & 2159.7 & 1436.8 & 1426.9\\
+MiniLM text & 3001 & 79/79 & 0/0 & 1680.1 & 1675.4 & 1654.0\\
+MiniLM text & 3011 & 79/79 & 0/0 & 1669.3 & 1663.8 & 1666.4\\
+MiniLM text & 3019 & 79/79 & 0/0 & 1655.4 & 1641.0 & 1658.5\\
+MiniLM text & 3023 & 79/79 & 0/0 & 1675.3 & 1658.5 & 1651.9\\
+MiniLM text & 3037 & 79/79 & 0/0 & 1678.7 & 1659.9 & 1669.8\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Fit-level inference on warm baseline/ours ratios ($n=5$ per source). The 95\% intervals use Student-$t$ on paired log ratios; $p$ is the exact two-sided sign-flip value. $p_H$ is Holm-adjusted across the five sources, separately for each baseline.}
+\label{tab:final-stats}
+\begin{tabular}{@{}llrrrr@{}}\toprule
+Source & Baseline & Geometric ratio & 95\% interval & $p$ & $p_H$\\
+\midrule
+Fashion-MNIST & Full & 3.635 & [2.754, 4.798] & 0.0625 & 0.3125\\
+Fashion-MNIST & PCA & 1.035 & [0.949, 1.128] & 0.4375 & 1.0000\\
+UCI HAR & Full & 2.817 & [2.252, 3.523] & 0.0625 & 0.3125\\
+UCI HAR & PCA & 1.086 & [0.921, 1.281] & 0.3125 & 1.0000\\
+MNIST & Full & 2.327 & [1.976, 2.740] & 0.0625 & 0.3125\\
+MNIST & PCA & 1.031 & [0.955, 1.113] & 0.3125 & 1.0000\\
+USPS & Full & 1.587 & [1.338, 1.882] & 0.0625 & 0.3125\\
+USPS & PCA & 1.056 & [0.879, 1.269] & 0.8750 & 1.0000\\
+MiniLM text & Full & 1.007 & [1.002, 1.012] & 0.0625 & 0.3125\\
+MiniLM text & PCA & 1.000 & [0.989, 1.012] & 1.0000 & 1.0000\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Circuit, Witness and Proof Accounting}
+\begin{table}[H]
+\centering\small
+\caption{Representative USPS seed 3001 R1CS key shapes ($n=256,k=8$); compact rank is 79. Counts refer to each named circuit, not sums over batches. Public inputs exclude the constant wire. Key sizes and original compile/setup times are actual cache metadata; repeated copies are omitted.}
+\label{tab:final-circuits}
+\begin{tabular}{@{}lrrrrrrr@{}}\toprule
+Key shape & Constraints & Public & Secret & PK (MiB) & VK (KiB) & Compile (s) & Setup (s)\\
+\midrule
+full\_reuse\_8\_k8 & 508258 & 2062 & 2121 & 88.92 & 64.92 & 2.30 & 53.91\\
+moments\_row & 65388 & 15 & 291 & 11.49 & 0.95 & 0.31 & 6.69\\
+moments\_upper & 542250 & 2064 & 2081 & 110.89 & 64.98 & 2.71 & 63.97\\
+group\_switch\_compact\_8 & 269417 & 720 & 722 & 56.15 & 22.98 & 2.27 & 36.95\\
+group\_row\_compact & 86058 & 19 & 451 & 16.51 & 1.08 & 0.53 & 4.38\\
+group\_linked\_change & 493034 & 2064 & 2073 & 87.85 & 64.98 & 2.19 & 49.75\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Representative USPS seed 3001 proof costs. Proving and verification times are per-sample means. RSS is peak process-tree memory for the corresponding entire query invocation. Compact queries mix two circuit shapes. Serialized witness sizes include headers; the full witness size counts values without exporting them. Public replay and invocation overhead are additional warm-service work.}
+\label{tab:final-proof-phases}
+\begin{tabular}{@{}lrrrrrrll@{}}\toprule
+Phase & Samples & Constraints & Prove (s) & Verify (s) & RSS (GiB) & Proof (B) & Witness (B) & Public (B)\\
+\midrule
+Full batches & 512 & 508258 & 4.1317 & 0.0081 & 1.03 & 196 & 133868 & 65996\\
+Compact query & 528 & 269417--493034 & 2.6490 & 0.0065 & 0.99 & 196 & 46156--132396 & 23052--66060\\
+Moments query & 16 & 542250 & 5.1556 & 0.0044 & 1.17 & 196 & 132652 & 66060\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The mixed compact query phase includes linked/group and switching proof
+shapes; its sample mean cannot be assigned to one R1CS. The circuit table
+instead identifies distinct cache shapes. Duplicate key copies are not
+summed as independent circuits. Restored compile/setup metadata records
+the original activation and is not charged anew as warm setup. Full's
+reused old proof samples are excluded from fresh candidate proof totals.
+
+
+\subsection{Native Geometry and Margin Controls}
+\begin{table}[H]
+\centering\small
+\caption{Native-only controlled drift: $n=64,s=79$, cap 16, five movement patterns and three magnitudes. Each entry counts conclusive intervals out of 15; each $k$ is a separate fitted episode. No cryptographic latency is measured in this panel.}
+\label{tab:final-drift}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Source & $k$ & Ours/15 & PCA/15\\
+\midrule
+Fashion-MNIST & 5 & 15 & 15\\
+Fashion-MNIST & 20 & 15 & 15\\
+Fashion-MNIST & 50 & 14 & 1\\
+UCI HAR & 6 & 15 & 15\\
+UCI HAR & 20 & 15 & 15\\
+UCI HAR & 50 & 14 & 7\\
+MNIST & 5 & 15 & 15\\
+MNIST & 20 & 15 & 15\\
+MNIST & 50 & 14 & 4\\
+USPS & 8 & 15 & 15\\
+USPS & 20 & 15 & 15\\
+USPS & 50 & 15 & 15\\
+MiniLM text & 5 & 10 & 1\\
+MiniLM text & 20 & 9 & 5\\
+MiniLM text & 50 & 10 & 5\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{All 400 new-cohort requests stratified after evaluation by exact sign and relative integer-objective margin. Ours/PCA count pre-Full service decisions, including direct exact retained-reference equality when applicable. Every unresolved request is completed by Full. These strata did not select fits or proposals.}
+\label{tab:final-margins}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Sign & Margin & Requests & Ours & PCA\\
+\midrule
+Improvement & $\leq 0.1\%$ & 20 & 9 & 9\\
+Improvement & $(0.1\%,1\%]$ & 34 & 34 & 34\\
+Worsening & $\leq 0.1\%$ & 18 & 4 & 5\\
+Worsening & $(0.1\%,1\%]$ & 109 & 66 & 64\\
+Worsening & $>1\%$ & 219 & 169 & 170\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The drift study has 450 basis-specific observations and only one prescribed
+fit per source/center-count episode. It is deliberately separate from
+the 400 main requests and the proof scale study. Zero/sign ties introduced
+by rounding are retained. Natural and small-margin quantization cases
+are also separate; the latter are controlled perturbations, not extra
+independent fits or a measured learning workflow.
+
+
+\begin{table}[H]
+\centering\small
+\caption{Source-specific literature assessment. Entries describe the representative publication, not every system in its category. Preprint/current-version sources were checked on 17 November 2026. The clustering row uses the publisher abstract; unreported audit-specific features are not treated as impossible.}
+\label{tab:style-literature-tasks}
+\begin{tabularx}{\textwidth}{@{}p{.21\textwidth}XX@{}}\toprule
+Family/system & Demonstrated task & Comparison boundary\\\midrule
+Vector search: V3DB~\cite{v3db2026} & Fixed-shape IVF-PQ retrieval over a committed snapshot, including index/PQ scoring and selection. & Verified configured search output; no claim of exact global full-vector nearest-neighbor retrieval.\\
+Vector search: VERIF~\cite{zhang2026verif} & IVF-Flat centroid selection, authenticated routing, full-vector scoring of routed vectors, final selection and context binding. & Exact routed-vector scoring is credited; it does not imply evaluating the entire audit catalog against two banks.\\
+Aggregation: IntegriDB~\cite{zhang2015integridb} & Verifiable SQL including SUM/COUNT, range queries, joins and supported database updates. & Reusable authenticated aggregation is prior functionality; nearest-center switching is an additional relation.\\
+IVC: Nova~\cite{kothapalli2022nova} & Folding relation instances to verify repeated computation with small recursion overhead. & Generic computation can include this audit; no implementation or speed comparison with Nova is measured.\\
+Dynamic SNARKs~\cite{wang2024dynamic} & Proof updates exploiting small Hamming changes in valid statement/witness pairs; sparse and bounded-IVC applications. & Small geometric center movement need not create a sparse assignment witness change.\\
+DYNARK~\cite{zhang2026dynark} & Semi-/fully-dynamic Groth16 proof updates with reusable witness preprocessing and constant-size proofs. & Existing Groth16-compatible proof-update capability is credited; no comparative runtime is inferred.\\
+Verifiable ML: ZKML~\cite{chen2024zkml} & Compiler/gadget optimization for proving encoded ML inference with Halo2. & The implemented historical adapter uses selected primitives and is not a complete performance evaluation of ZKML.\\
+Clustering: Zhang et al.~\cite{zhang2021verifiable} & Privacy-preserving outsourced k-means with secure distances, minimum selection and result verification. & Outsourced clustering correctness differs from auditing two already specified prototype banks.\\
+\bottomrule\end{tabularx}\end{table}
+
+\subsection{Evidence Cohorts and Initial Distance Comparisons}
+\begin{table}[H]
+\centering\small
+\caption{Evidence cohorts and their interpretation. Supplementary controls are
+not added to the 400 primary requests or treated as independent replications.}
+\label{tab:revision-cohorts}
+\begin{tabularx}{\textwidth}{@{}p{.20\textwidth}p{.27\textwidth}X@{}}\toprule
+Cohort & Completed evidence & Unit and comparison boundary\\\midrule
+Historical feasibility & Four sources, 96 requests; centroid/PCA 71/69 & Original host and protocol; retained in \ref{app:historical}.\\
+Primary matched study & Five sources, 25 fits, 400 requests; 282/282 & Five paired fits per source; fit-level inference.\\
+Sequential control & Five eight-update streams across HAR, Fashion-MNIST and USPS & 15 policy executions, 120 dependent steps; eager activation charged.\\
+Fixed-reference lazy control & Three seed-3001 fits; 1, 4 and 16 proposals & Nested prefixes of existing tasks.\\
+Matched distance bounds & Six fits; 96 proposals & Both correction caps are zero.\\
+Proof-scale control & USPS, five nested sizes, four candidates each & One fixed fit; clean three-way times through 4096 rows.\\
+Held-out release streams & Digits, two disjoint streams, 24 proposals & Matched lifecycle timing with three replacements per stream and held-out utility.\\
+Distance-bound pilots & HAR/Fashion seed 3001, 32 matched requests & Reuses two primary tasks; new service comparisons, not new fits.\\
+Native diagnostics & Quantization and controlled drift & Numerical coverage/precision evidence; no proving-time claim.\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Initial Distance-Bound Pilots}
+
+This experiment addresses the distance-bound comparison identified in
+Related Work. The comparator authenticates private reference distances and
+exact group moments, then applies center-displacement/Cauchy bounds with
+verified Full completion. Table~\ref{tab:revision-distance} reports its
+first two completed matched panels. All 96 service decisions agree with the
+integer oracle and have verified proof paths. None of the distance
+intervals resolves on HAR, whereas all sixteen centroid intervals resolve.
+Fashion-MNIST contains two improvements and fourteen worsening proposals;
+the distance service resolves two requests and centroid resolves fifteen.
+The distance totals mainly measure Full fallback and planning overhead;
+they do not imply an intrinsically slower distance-proof kernel. The
+current distance service attempts each natively conclusive interval and
+otherwise uses Full; the centroid service also uses its calibrated cost router.
+
+The comparison addresses one simple displacement-bound alternative. Its
+zero correction cap differs from the proposed service's cap sixteen;
+it does not represent every accelerated k-means bound or a fully tuned
+Elkan/Hamerly implementation. One already inspected fit per source cannot
+establish general superiority. The primary 400-request results and their
+inference remain unchanged.
+
+
+\begin{table}[H]
+\centering\small
+\caption{Distance-bound pilots: 16 candidates per source, seed 3001,
+$n=128$, $k=6$ for HAR and $k=5$ for Fashion-MNIST. All three services use the same inputs, backend and eight-vCPU
+allocation. Warm time includes routing, paid fallback and public replay;
+activation is excluded. This panel is descriptive, not a replicated advantage.}
+\label{tab:revision-distance}
+\begin{tabular}{@{}llrrr@{}}\toprule
+Source & Service & Pre-Full decisions/16 & Full completions/16 & Warm (s)\\\midrule
+HAR & Reusable Full & -- & 16 & 2132.1\\
+HAR & Routed centroid, cap 16 & 16 & 0 & 653.8\\
+HAR & Routed distance/moments, cap 0 & 0 & 16 & 2161.2\\
+Fashion-MNIST & Reusable Full & -- & 16 & 3349.9\\
+Fashion-MNIST & Routed centroid, cap 16 & 15 & 1 & 874.5\\
+Fashion-MNIST & Routed distance/moments, cap 0 & 2 & 14 & 3163.7\\\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Historical Evidence}
+\label{app:historical}
+The following tables retain selected earlier results. Their hardware,
+candidate counts and backend must not be pooled with the new timing
+cohort. The original study uses three fits per source, eight candidates
+per fit and 128 audit rows, with five centers (six for HAR). A twelve-worker
+EPYC VM with about 126 GiB RAM executes those proof services serially.
+The same four image/activity/text sources are used; basis fitting and
+eight-candidate selection precede the audit. All 96 final decisions verify,
+with 71/69 compact resolutions for centroid/PCA. The later 160 numerical
+updates resolve 122 for either basis and add no new proving-time evidence.
+The archived historical source and corpus are identified in the data
+availability statement.
+
+\begin{table}[H]
+\centering\small
+\caption{Historical twelve-worker cohort: mean warm seconds per eight-candidate fit over three fits. The adapter has a different backend and exact-cost output. These observations are not new-host measurements.}
+\label{tab:server-warm}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Source & Ours & PCA cert. & Full & Adapter & Full/ours & Adapter/ours\\
+\midrule
+Fashion-MNIST & 148.1 & 152.4 & 1142.5 & 691.7 & 7.71 & 4.67\\
+UCI HAR & 285.9 & 328.1 & 738.2 & 695.0 & 2.58 & 2.43\\
+MNIST & 304.0 & 306.8 & 1138.6 & 689.0 & 3.75 & 2.27\\
+MiniLM text & 550.5 & 551.7 & 576.8 & 356.5 & 1.05 & 0.65\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Historical technical repetitions, averaged within each original fit and then across three fits. Times are seconds per eight candidates; reductions are descriptive.}
+\label{tab:revision-timing}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Source & Ours & PCA & Reduction (\%)\\
+\midrule
+Fashion-MNIST & 147.9 & 153.8 & 3.8\\
+UCI HAR & 284.3 & 326.2 & 12.8\\
+MNIST & 305.9 & 310.5 & 1.5\\
+MiniLM text & 567.2 & 562.8 & -0.8\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Historical moments-or-retain improvement gate. Its measured stages exclude Full. Interval/PCA columns count verified pre-Full improvement opportunities, not a separately timed acceptance-only service.}
+\label{tab:retain-gate}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Source & Improve & Moments & Missed & Interval & PCA & Warm (s) & Setup-inc. (s)\\
+\midrule
+Fashion-MNIST & 5 & 4 & 1 & 5 & 5 & 60.6 & 311.3\\
+UCI HAR & 7 & 7 & 0 & 7 & 7 & 55.0 & 245.3\\
+MNIST & 9 & 6 & 3 & 9 & 9 & 62.1 & 314.6\\
+MiniLM text & 4 & 3 & 1 & 2 & 2 & 32.0 & 160.6\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Historical dependent release checkpoints, four candidates each. Each episode charges fresh authentication separately; the listed times are warm. The Fashion event log was unavailable and the sequence was reconstructed.}
+\label{tab:revision-proof-workflow}
+\begin{tabular}{@{}lrrlrrrr@{}}
+\toprule
+Source & Step & Improve/4 & Install & Ours (s) & PCA (s) & Full (s) & Adapter (s)\\
+\midrule
+UCI HAR & 1 & 1 & Yes & 148.7 & 152.3 & 397.7 & 354.7\\
+UCI HAR & 2 & 1 & Yes & 131.5 & 143.3 & 389.5 & 348.1\\
+Fashion-MNIST & 1 & 2 & Yes & 117.8 & 125.6 & 580.9 & 346.8\\
+Fashion-MNIST & 2 & 0 & No & 111.9 & 146.2 & 589.6 & 345.4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The historical adapter implements published ZKML primitives with
+Halo 2--KZG and exact-cost outputs; its backend and disclosure contract
+differ. The repeated timing table uses three technical repeats for each
+original fit and is not added to the five-fit sample in
+Table~\ref{tab:final-stats}. The retain gate omits Full; its upper-bound
+certificates establish only improvements. The two-checkpoint release
+episodes are small dependent examples, not an independently validated
+learning workflow. The Fashion event log was unavailable and its
+sequence was reconstructed from sealed inputs.
+
+\FloatBarrier
+\section{Security Properties and Cumulative Leakage}
+\label{app:security-leakage}
+An admitted episode fixes an owner-approved catalog commitment, reference,
+quantizer, basis and circuit/key identities. For an approved candidate,
+the accepted output is a conservative interval with a strict ordering,
+or Full evidence for the exact integer costs. An unresolved interval is
+a valid intermediate response, not a complete ordering. Completeness
+means an honest prover can satisfy the encoded relations on admitted
+inputs and use Full for completion; it does not promise a finite service
+budget for every possible input.
+
+\paragraph{Statement and witness}
+The public statement consists of these approved parameters, coverage and
+batch identities, the post-commitment challenge, linking values, the
+claimed assigned contribution, endpoints, branch and any correction/Full
+outputs. The implementation also publishes GroupRoot/StatsRoot in the
+commit receipt and indexed Previous/Next linking fields and Masked
+vectors in the public-row export. Query records disclose per-batch
+sample fields; refinements identify selected rows and correction claims.
+Full publishes per-bank/per-batch cost values while its public export
+omits assignment vectors. These public fields are part of the privacy
+contract even when they are not the final decision.
+
+The witness includes committed integer rows and openings, authenticated
+reference assignments/group moments, rounded projections and residual
+data, range-check/intermediate arithmetic and any exact distance work
+used for corrections or Full. Values intentionally public elsewhere
+cannot also be claimed hidden merely because a witness contains them.
+Benchmark evidence packages additionally contain raw experimental inputs;
+they are not private-deployment transcripts.
+
+\paragraph{Integrity assumptions and accounting}
+Assume correctly generated circuit-specific Groth 16 parameters, authentic
+independently retained task/key/root pins, computational commitment
+binding, and knowledge soundness sufficient to extract accepted openings.
+Extracted openings bind the row/moment relations to the approved catalog.
+Together with range correctness, complete indexed coverage and the
+noncollision event, the decomposition and refinement arguments imply
+interval containment and hence the claimed sign. For preprocessing
+sessions indexed by $s$, a schematic reduction bound is
+\begin{equation}
+ \epsilon_{\mathrm{int}}\leq
+ \epsilon_{\mathrm{KS}}+\epsilon_{\mathrm{bind}}
+ +\sum_s\frac{k_s d_s}{p-1}.
+\end{equation}
+The extraction/binding terms require a consistent instantiation and are
+not numerical bounds measured by the experiments. Repeated candidates
+sharing one challenged session do not create a fresh independent
+fingerprint event per request. Separate sessions require union accounting.
+The prototype generates keys locally; pinning them is not evidence of a
+production setup ceremony, and pinning maliciously generated keys would
+not satisfy the assumption.
+
+\paragraph{Conditional proof-message privacy}
+Let $L_0(w)$ contain the non-proof preprocessing transcript, including
+actual public commitments, and $L_j(w,q_j)$ contain the non-proof messages
+and proof-issuance/reuse labels for request $q_j$. Allowed leakage is
+\begin{equation}
+ L(w,Q)=(L_0(w),L_1(w,q_1),\ldots,L_m(w,q_m)).
+\end{equation}
+Proof strings are excluded from $L$. Binding alone supplies no hiding
+claim for the commitments, and cross-request aggregate correlations are
+included in the cumulative leakage.
+
+For a fixed polynomial-length approved request sequence, suppose the
+employed SNARK provides multi-proof zero knowledge for the indexed
+relations under honest setup~\cite{groth2016}. In the ideal experiment,
+simulated setup supplies public parameters and a simulation trapdoor;
+the approved key identities and leakage are consistent with that setup.
+Given the non-proof leakage messages, a simulator reconstructs the public
+inputs, simulates each fresh proof, and caches/copies simulated proofs
+according to the real reuse schedule. A hybrid replacing fresh proofs
+gives message-transcript indistinguishability under that assumption;
+deterministic aggregation and repeated copies preserve it. This compares
+honest and simulated setup distributions, not simulation under arbitrary
+externally fixed keys without a trapdoor. It is a conditional composition
+argument, not a new SNARK security theorem or implementation audit.
+
+An adaptive extension requires suitable adaptive composition assumptions
+and a stateful leakage oracle, and is not asserted here. Even this stronger
+proof-message property would not hide the allowed aggregates. Subject to
+authorized, unclipped $\pm t$ queries, Eq.~\eqref{eq:methodology-leakage}
+recovers group counts and coordinate sums; singleton groups can reveal a
+record. Owner authorization alone does not remove this cumulative leakage.
+Adaptive record confidentiality would require a different query/disclosure
+policy. Fine-grained timing, memory access and operating-system channels
+are outside this message-transcript argument; the prototype is not claimed
+constant-time or data-oblivious.
+
 \end{document}

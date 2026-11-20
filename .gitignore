@@ -1,8 +1,9 @@
-# Python
+# Python and development caches
 __pycache__/
 *.py[cod]
-.venv/
 *.egg-info/
+.venv/
+venv/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -11,8 +12,9 @@ __pycache__/
 htmlcov/
 .DS_Store
 Thumbs.db
+.vscode/
 
-# Local credentials and machine configuration (examples may be committed).
+# Local credentials; examples may be versioned
 .env
 .env.*
 !.env.example
@@ -22,17 +24,28 @@ Thumbs.db
 id_rsa
 id_ed25519
 
-# Supplied reference/source archives stay local; active extracted sources live
-# under paper_results/. Includes Sparse_JL_for_ZK_Clustering.zip and Spectral_CCD.zip.
+# Supplied templates, downloaded data/models and raw experiments
 /*.zip
+/code/.cache/
+/code/results/
+!/code/results/README.md
+/code/validation/outputs/
+/output/server_run_20261101/
 
-# Dataset cache (large, re-downloadable; manifest records SHA256)
-code/.cache/
+# Rebuildable binaries, constraints and private proving state
+/bin/
+/code/zk/bin/
+**/target/
+**/.resume/
+*.pk
+*.gob
+*.r1cs
+*.parquet.lock
+**/.campaign.lock
 
-# Local Overleaf paper copy (reference only; do not commit)
-Sparse_JL_for_ZK_Clustering/
-
-# LaTeX build artifacts
+# Temporary builds and cleanup staging
+/tmp/
+/.cleanup_work_*/
 *.aux
 *.log
 *.out
@@ -46,81 +59,10 @@ Sparse_JL_for_ZK_Clustering/
 *.run.xml
 *.xdv
 *.dvi
-
-# Locally compiled Windows proof runner
-code/zk/bin/
-code/zk/golden
-code/zk/err.log
-
-# Resumable experiment lock files
-*.parquet.lock
-
-# Preserve benchmark/audit logs while ignoring build logs.
-!code/results/**/logs/*.log
-!code/validation/**/*.log
-!code/results/complete_rq2345/**/run.log
-**/.campaign.lock
-
-# Reproducible local manuscript builds and delivery bundles.
-/tmp/
-/output/pdf/*
-/output/*.zip
-
-# Local editor preferences and large raw research/recovery stores.
-.vscode/
-/code/results/**
-!/code/results/README.md
-
-# Publish selected evidence once; intermediate captures and duplicate views stay local.
-/code/validation/outputs/*
-!/code/validation/outputs/cleanup_20261018.json
-!/code/validation/outputs/cleanup_publication_20261020.json
-!/code/validation/outputs/publication_checks_20261020.json
-!/code/validation/outputs/layout_verification.json
-!/code/validation/outputs/completed_reuse_20261020/
-!/code/validation/outputs/review_final_capture_20261020_1907Z/
-!/code/validation/outputs/review_full_capture_followup_20261020/
-!/code/validation/outputs/review_owner_inputs_20261020/
-!/code/validation/outputs/review_certificate_preflight_20261020/
-!/code/validation/outputs/review_certificate_budget_20261020/
-!/code/validation/outputs/review_full_public_capture_20261020_0345/
-!/code/validation/outputs/review_verifier_v3_checks_20261020/
-!/code/validation/outputs/review_verifier_release_20261020/
-!/code/validation/outputs/review_certified_smoke_20261020/
-!/code/validation/outputs/review_full_smoke_20261020/
-!/code/validation/outputs/review_driver_smoke_20261020/
-!/code/validation/outputs/review_policy_strict_v3_20261020/
-!/code/validation/outputs/review_policy_relaxed_v3_20261020/
-!/code/validation/outputs/review_full_controls_20261019T224939Z.json
-!/code/validation/outputs/review_certified_controls_20261019T234210Z.json
-!/code/validation/outputs/review_live_final_20261020_1908Z.json
-!/code/validation/outputs/review_sensitivity_20261021*.json
-!/code/validation/outputs/review_sensitivity_20261021T061346Z/
-!/code/validation/outputs/neurocomputing_tradeoff_20261021_checks.json
-!/code/validation/outputs/neurocomputing_paired_20261022_checks.json
-!/code/validation/outputs/review_update_decisions_20261021T184553Z.json
-!/code/validation/outputs/review_update_decisions_20261021T184553Z/
-!/code/validation/outputs/review_paired_release_20261021/
-!/code/validation/outputs/review_portability_local_20261021/
-/output/review_public_artifact_20261022/
-
-# Portable source snapshots preserve the three earlier paper versions.
-/paper_history/*
-!/paper_history/README.md
-!/paper_history/supervisor_draft.tex
-
-# Current supervisor-review paper and sources.
-# Generated proving caches stay on disk, outside source-history snapshots.
-**/.resume/
-*.pk
-*.gob
-!/code/validation/outputs/cleanup_review_20261023.json
-
-
-# Additional rebuildable LaTeX and constraint caches.
 *.fls
 *.fdb_latexmk
-*.r1cs
+*.spl
 
-# Rebuildable Rust/compiler output; retain source and dependency lockfiles.
-**/target/
+# Generated local deliveries
+/output/pdf/
+/output/*.zip

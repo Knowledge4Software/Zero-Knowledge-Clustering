@@ -5,7 +5,28 @@ an explicit new experiment configuration, never a change to a paused campaign.
 The existing 1200 MiB Go soft limit and external RAM/RSS guards are retained.
 """
 import os
+import json
+import platform
+from pathlib import Path
+from functools import lru_cache
 import psutil
+
+
+@lru_cache(maxsize=4)
+def _read_server_profile(path):
+    profile = json.loads(Path(path).read_text())
+    if platform.system() != 'Linux' or platform.node() != profile['hostname']:
+        raise ValueError('Server resource profile is restricted to its authorized Linux host')
+    if not 1 <= profile['workers'] <= len(os.sched_getaffinity(0)):
+        raise ValueError('Server worker count exceeds available CPU affinity')
+    if not 1 <= profile['rss_cap_gib'] <= 108 or profile['reserve_ram_gib'] < 12:
+        raise ValueError('Invalid server RAM allocation')
+    return profile
+
+
+def server_profile():
+    path = os.environ.get('COMMITJL_SERVER_PROFILE')
+    return _read_server_profile(path) if path else None
 
 
 def phase_limit(protocol,default=4*3600):
@@ -30,6 +51,15 @@ def proof_workers(protocol):
 
 
 def proof_environment(protocol):
+    profile = server_profile()
+    if profile:
+        if proof_workers(protocol) != profile['workers']:
+            raise ValueError('New server protocol and resource-profile workers differ')
+        return dict(os.environ, COMMITJL_RESUME_PROOFS='1',
+                    GOMAXPROCS=str(profile['workers']),
+                    RAYON_NUM_THREADS=str(profile['workers']),
+                    GOMEMLIMIT=f"{profile['go_soft_memory_gib']}GiB",
+                    OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', MKL_NUM_THREADS='1')
     return dict(os.environ, COMMITJL_RESUME_PROOFS='1',
                 GOMAXPROCS=str(proof_workers(protocol)), GOMEMLIMIT='1200MiB',
                 OMP_NUM_THREADS='2', OPENBLAS_NUM_THREADS='2')
@@ -47,6 +77,9 @@ def launch_headroom(previous):
     set normally. After a memory-guard stop revert to the conservative observed
     peak, avoiding a repeated launch/kill loop on a busy laptop.
     """
+    profile = server_profile()
+    if profile:
+        return max(2*2**30, previous.get('peak_rss_bytes', 0) + profile['reserve_ram_gib']*2**30)
     if os.environ.get('COMMITJL_MEMORY_PRESSURE_POLICY') == 'windows_os':
         if os.name != 'nt':raise ValueError('windows_os memory policy requires Windows')
         # A low-memory kill frees the child's own allocation. That transient
@@ -103,6 +136,13 @@ def memory_stop(peak_rss):
     low-memory event, <1GiB commit headroom, or the unchanged 3.5GiB RSS cap.
     The historical default remains the conservative 650MiB physical reserve.
     """
+    profile = server_profile()
+    if profile:
+        if peak_rss > profile['rss_cap_gib']*2**30:
+            return 'server process RSS guard'
+        if psutil.virtual_memory().available < profile['reserve_ram_gib']*2**30:
+            return 'server RAM reserve'
+        return None
     if peak_rss>3.5*2**30:return 'process RSS guard'
     if os.environ.get('COMMITJL_MEMORY_PRESSURE_POLICY')=='windows_os':
         try:low,headroom=_windows_memory_pressure()

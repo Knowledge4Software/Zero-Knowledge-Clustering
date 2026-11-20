@@ -1,68 +1,42 @@
-# Reusable zero-knowledge prototype-update audits
+# Reusable Zero-Knowledge Certificates for Prototype Updates
 
-The current method combines authenticated deployed groups and moments,
-rounded-basis switching bounds, and up to 16 exact-row corrections before
-paid exact Full fallback. The evaluated profile uses prediction rank 63,
-certificate rank 79 and precision 14. It uses no JL projection tail.
+This project audits whether a proposed prototype bank improves, worsens, or
+preserves quantized nearest-center distortion on a committed catalog. The
+proof service reuses authenticated reference assignments and group moments,
+then applies switching bounds, exact-row corrections, and exact fallback.
 
-## Current paper and supervisor handoff
+## Submitted manuscript
 
-- [Full paper sources](manuscript.tex) and [bibliography](references.bib).
-- [Current paper with the latest baseline results, 20 pages](output/pdf/prototype_audit_latest_baselines_20261029.pdf).
-- [Editable paper package](output/prototype_audit_latest_baselines_20261029_sources.zip).
-- [Current-method consistency audit](output/current_method_audit_20261029.md).
-- [32-hour initial campaign and recovery reserve](output/server_initial_32h_20261029_fa.md).
-- [Current paper scope and SVG figures](paper_results/ccd_pilot_20261029/README.md).
-- [New methodology excerpt](output/pdf/prototype_update_methodology_20261027.pdf).
-- [Editable methodology and integration notes](paper_results/supervisor_methodology_20261027/README.md).
-- [Two-referee response and measured results](output/two_review_response_20261027.md).
-- [Deliverables](output/README.md).
+[manuscript.tex](manuscript.tex) is the LaTeX source corresponding to the
+submitted 29-page PDF. The four PDF figures it includes are in
+[figures/](figures/). The bibliography is embedded in the source.
 
-The completed four-stage methodology is now integrated without changes to its
-prose or equations. The existing main abstract and introduction are preserved;
-the supplied source ZIPs remain archived unchanged. New evaluation sections
-report completed local pilots and keep the proposed server campaign prospective.
+Compile from the repository root with pdfLaTeX or latexmk:
 
-## Code and evidence
+    latexmk -pdf -halt-on-error manuscript.tex
 
-The [local comparison against paper-derived baselines](output/published_baseline_gate_20261029.md)
-adds random projections, lightweight coresets and RaBitQ, with separate native
-quality and real-proof adapter measurements. It preserves the paper methodology
-and reports PCA ties and negative text results alongside useful operating regions.
+## Reproduce the results
 
-Python source is in `code/`; Go/gnark circuits and commands are in `code/zk/`.
-Current numerical records, public proofs, verification keys, source receipts
-and guarded execution state are in `code/validation/outputs/`. The current
-paper's new generated tables are in `paper_results/ccd_pilot_20261029/`, alongside
-retained earlier tables in `paper_results/referee_final_20261025/`.
-See [evidence documentation](code/validation/README.md) and
-[current execution handoff](code/docs/two_review_revision_20261027.md).
+The submission uses two versioned evidence packages. Their names and checking
+instructions are in [output/README.md](output/README.md). Keep the packages
+beside that README when working locally. The primary archive check validates
+42 archive hashes and recomputes 400 objective changes. Public proof replay
+covers the supplied verifier examples.
 
-The serial laptop campaign remains authorized and resource guarded. Future
-proof catalogs are capped at 1024 records; larger completed native checks
-are not described as proof timings. Mobin is permanently retired. Author
-declarations and journal submission remain with the supervisor.
+The [historical public evidence](https://huggingface.co/datasets/Parsagh1383/zk-audit-results)
+is pinned in the paper to revision b244a3549bccb27fdcdbc1c0320458c4eada3284.
 
-From the repository root in PowerShell:
+## Implementation
 
-```powershell
-$env:PYTHONPATH = Join-Path $PWD 'code'
-python -m analysis.two_review_campaign_status
-python -m pytest code/tests/test_two_review_evidence.py code/tests/test_referee_learning_workflows.py code/tests/test_optimized_evidence_export.py code/tests/test_online_affine_control.py -q
-```
+- [code/commitjl/](code/commitjl/) contains numerical bounds and planning.
+- [code/zk/](code/zk/) contains Go circuits and public verification.
+- [code/experiments/](code/experiments/) and [code/campaigns/](code/campaigns/)
+  contain experimental implementations.
+- [code/tests/](code/tests/) contains automated regression tests.
 
-The cleanup requested on 27 October actually deletes retired outputs,
-old deliveries and inactive proving/build caches. It does not create another
-archive. [Deletion receipt](output/project_cleanup_20261027.json).
+From the repository root in PowerShell, install the Python dependencies and
+run the tests:
 
-## Repository contents
-
-Git retains the current manuscript sources, required vector figures, experiment
-and verifier code, tests, selected result exports and provenance receipts.
-Root reference ZIPs, generated PDF/source deliveries, temporary builds, local
-environments, dataset caches and proving caches stay local under `.gitignore`.
-The PDF and ZIP links above refer to local generated deliveries. Build the
-paper from `manuscript.tex`; the received ZIPs are not needed for compilation.
-Large proof/data stores in `code/validation/outputs/` remain local unless an
-individual evidence record was deliberately tracked. A source checkout is not
-the complete private cryptographic reproduction archive.
+    python -m pip install -r code/requirements.txt
+    $env:PYTHONPATH = Join-Path $PWD 'code'
+    python -m pytest code/tests -q

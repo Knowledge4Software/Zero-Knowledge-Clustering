@@ -1,8 +1,0 @@
-{
-  "source": "paper_results\\review_controls\\generated_completed_20261020\\matched_quality_by_set.csv",
-  "updated_sets": 9,
-  "updated_pairs": 36,
-  "separated_updated_pairs": 0,
-  "separated_from_deployed": 0,
-  "conclusion": "Reproduces reviewer overlap criticism. Absolute-interval overlap does not imply paired difference bounds are invalid, but does prevent ordering by interval separation alone."
-}

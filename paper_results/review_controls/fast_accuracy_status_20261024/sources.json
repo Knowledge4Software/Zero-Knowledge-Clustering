@@ -1,7 +1,0 @@
-{
-  "campaign": "validation\\outputs\\local_fast_tradeoff_n128_20261024",
-  "protocol_sha256": "1db9c9dee3f3f39a7294c0dd80b352b1b0afe2b1617bd46ec43197fcc42385b1",
-  "quality_sha256": "bbd5472240cf4aca7e99803166619712af4ad886dc7aea278aa3a7397066c802",
-  "smoke_checks_sha256": "45ab6b8f7d94e0300dc0558cb028a9978a03a65dc3f59c0adeac92e059c7c08b",
-  "timing_status": "running; no final speed ratio"
-}

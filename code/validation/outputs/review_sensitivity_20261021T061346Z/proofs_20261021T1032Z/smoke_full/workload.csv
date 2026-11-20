@@ -1,3 +1,0 @@
-method,set,n,batch,proofs,agreement_quantized,witness_prove_seconds,one_time_seconds,total_seconds,query_constraints,quantized_reference_cost,claimed_integer_cost,cost_scale,independent_public_verified
-smoke_full,0,4,2,2,1.0,0.48592933399999994,1.334346056,1.82027539,4947,22,22,1,True
-smoke_full,1,4,2,2,1.0,0.357261194,0.0,0.357261194,4947,22,22,1,True

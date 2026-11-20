@@ -1,22 +1,15 @@
 # Implementation
 
-Python modules implement fixed-point representations, independent integer
-references, data preparation, experiments, orchestration and evidence exports.
-`zk/` contains the Go/gnark circuits and public verifiers.
+The selected method is the authenticated prototype-update cost-ordering
+framework with integer-safe switching bounds and paid exact fallback.
+The commitjl Python package name is retained for compatibility.
 
-The current prototype-update certificate uses a centroid-informed or PCA
-basis, residual energy, authenticated exact deployed groups and moments,
-rounded-basis switching intervals and bounded exact-row correction. It uses
-no JL projection tail.
+- [Submitted manuscript](../manuscript.tex)
+- [Evidence and reproduction](../output/README.md)
+- [Numerical analysis](analysis/README.md)
+- [Campaign implementations](campaigns/README.md)
+- [Method implementation notes](docs/final_method_20261102.md)
 
-- [Current analysis commands](analysis/README.md).
-- [Active serial campaign](campaigns/README.md).
-- [Retained evidence and verification](validation/README.md).
-- [Execution handoff](docs/two_review_revision_20261027.md).
-- [Project paper and methodology](../output/README.md).
-
-The user-requested cleanup deletes superseded outputs instead of archiving
-them. Current result records, public proof artifacts, model/input pins and
-active/queued proving caches remain. Legacy modules remain source for
-controlled reproduction; their old output directories are not prerequisites
-for the selected method. Mobin is retired and must not be contacted.
+Set PYTHONPATH to this directory for module commands from the repository root.
+Install requirements.txt for numerical experiments and Python tests. The
+submitted evidence packages contain the frozen inputs and public replay.

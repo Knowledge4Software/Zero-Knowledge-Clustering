@@ -1,4 +1,0 @@
-phase,set,n,true_change,update_kind,change_lower_scaled,change_upper_scaled,cost_denominator,decision,unchanged_centers,change_width_over_baseline,query_native_witness_prove_seconds,query_verify_seconds
-full_reuse,0,4,0,smoke,0,0,1,inconclusive,True,0.0,0.1169479,0.0071097999999999995
-full_reuse,1,4,3,smoke,3,3,1,worsens,False,0.0,0.12384319999999999,0.006543
-full_reuse,2,4,-4,smoke,-4,-4,1,improves,False,0.0,0.1147642,0.0046783

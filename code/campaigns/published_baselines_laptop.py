@@ -10,8 +10,8 @@ import argparse,copy,hashlib,json,os,shutil,subprocess,sys,time
 REPO=Path(__file__).resolve().parents[2]
 CODE=REPO/'code'
 DEFAULT=CODE/'validation/outputs/published_baselines_20261027'
-RUST=Path('/home/koush/.cache/commitjl-external/zkml-target/release/prototype_audit')
-GO=REPO/'tmp/external_baselines_20261027/commitjl-bound-linux'
+RUST=Path(os.environ.get('COMMITJL_ZKML_BINARY', '/home/koush/.cache/commitjl-external/zkml-target/release/prototype_audit'))
+GO=Path(os.environ.get('COMMITJL_GO_BINARY', str(REPO/'tmp/external_baselines_20261027/commitjl-bound-linux')))
 
 
 def read(p):return json.loads(Path(p).read_text())

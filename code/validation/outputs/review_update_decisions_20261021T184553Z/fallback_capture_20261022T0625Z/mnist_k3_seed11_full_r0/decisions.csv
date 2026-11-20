@@ -1,7 +1,0 @@
-phase,set,n,true_change,update_kind,change_lower_scaled,change_upper_scaled,cost_denominator,decision,unchanged_centers,change_width_over_baseline,query_native_witness_prove_seconds,query_verify_seconds
-full_reuse,0,128,0,deployed,0,0,1,inconclusive,True,0.0,324.912265335,0.222074633
-full_reuse,1,128,-976804079,lloyd_update,-976804079,-976804079,1,improves,False,0.0,318.830467054,0.223835235
-full_reuse,2,128,-2362753134,lloyd_update,-2362753134,-2362753134,1,improves,False,0.0,317.494381229,0.225501037
-full_reuse,3,128,-2557051682,lloyd_update,-2557051682,-2557051682,1,improves,False,0.0,316.509750452,0.225543498
-full_reuse,4,128,-2629864547,lloyd_update,-2629864547,-2629864547,1,improves,False,0.0,315.479179944,0.217516899
-full_reuse,5,128,1440702848,reverse_step_diagnostic,1440702848,1440702848,1,worsens,False,0.0,316.409404662,0.220518236

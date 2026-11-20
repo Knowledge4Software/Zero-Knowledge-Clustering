@@ -1,7 +1,0 @@
-phase,set,n,true_change,update_kind,change_lower_scaled,change_upper_scaled,cost_denominator,decision,unchanged_centers,change_width_over_baseline,query_native_witness_prove_seconds,query_verify_seconds
-reuse_certified,0,4,0,smoke,0,0,262144,inconclusive,True,0.0,0.43792864099999995,0.012175767
-paired_change,0,4,0,smoke,0,0,262144,inconclusive,True,0.0,0.388772338,0.014127807
-reuse_certified,1,4,3,smoke,786432,786432,262144,worsens,False,0.0,0.461009731,0.010550568
-paired_change,1,4,3,smoke,786432,786432,262144,worsens,False,0.0,0.384823953,0.009788046
-reuse_certified,2,4,-4,smoke,-1048576,3145728,262144,inconclusive,False,0.8421052631578947,0.382980526,0.009702473999999999
-paired_change,2,4,-4,smoke,-1048576,3145728,262144,inconclusive,False,0.8421052631578947,0.405018657,0.008324459999999999

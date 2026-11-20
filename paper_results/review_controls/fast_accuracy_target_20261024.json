@@ -1,6 +1,0 @@
-{
-  "user_minimum_agreement_percent": 99,
-  "other_requirements": "Low error and good certificate; report certified coverage, cost interval widths and decision conclusive rates separately. No universal thresholds supplied.",
-  "speed_target": "About5x measured full-pipeline speedup relative to equally reusable exact Full; no guarantee the target is attainable.",
-  "jl": "Tested as empirical residual correction; not assumed to improve accuracy or deterministic certificates."
-}

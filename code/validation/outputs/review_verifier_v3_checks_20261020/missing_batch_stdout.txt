@@ -1,1 +1,0 @@
-{"constraints":0,"error":"approved batch lacks pinned query key: reuse_1_k3","phase":"independent_verify","status":"failed","verified":4,"wall_seconds":0.0301966}

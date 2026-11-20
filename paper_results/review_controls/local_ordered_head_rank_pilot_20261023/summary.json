@@ -1,9 +1,0 @@
-{
-  "complete": true,
-  "elapsed_seconds": 226.10899999999674,
-  "unique_requests": 16,
-  "method_variant_checks": 64,
-  "false_certified_assignments": 0,
-  "false_decisions": 0,
-  "proof_timings_measured": false
-}

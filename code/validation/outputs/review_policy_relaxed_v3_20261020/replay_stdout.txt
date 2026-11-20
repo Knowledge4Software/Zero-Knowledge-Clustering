@@ -1,1 +1,0 @@
-{"constraints":0,"error":"","phase":"independent_verify","status":"complete","verified":12,"wall_seconds":0.0500408}

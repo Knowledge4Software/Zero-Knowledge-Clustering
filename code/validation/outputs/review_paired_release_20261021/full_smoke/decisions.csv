@@ -1,3 +1,0 @@
-phase,set,n,true_change,update_kind,change_lower_scaled,change_upper_scaled,cost_denominator,decision,unchanged_centers,change_width_over_baseline,query_native_witness_prove_seconds,query_verify_seconds
-full_reuse,0,4,3,smoke,3,3,1,worsens,False,0.0,0.1848035,0.0062428
-full_reuse,1,4,3,smoke,3,3,1,worsens,False,0.0,0.1941492,0.0052455

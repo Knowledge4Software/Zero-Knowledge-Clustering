@@ -18,11 +18,11 @@ code/campaigns/supplements/engine.py -text whitespace=cr-at-eol
 # Evidence digests and frozen paper sources describe bytes, not normalized text.
 code/validation/outputs/** -text whitespace=cr-at-eol
 paper_results/** -text whitespace=cr-at-eol,-blank-at-eof
-paper_history/supervisor_draft.tex -text whitespace=cr-at-eol
-paper_versions/** -text whitespace=cr-at-eol
 manuscript.tex -text whitespace=cr-at-eol
 references.bib -text whitespace=cr-at-eol
+figures/**/*.pdf binary
 output/** -text whitespace=cr-at-eol
+reviewer_artifact/** -text whitespace=cr-at-eol
 
 # Generated SVG path formatting is byte-pinned by figure manifests.
 *.svg -text whitespace=cr-at-eol,-blank-at-eol

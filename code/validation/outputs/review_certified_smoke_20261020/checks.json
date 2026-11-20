@@ -1,7 +1,0 @@
-{
-  "legacy_reuse_and_new_certificate_public_replay": true,
-  "independent_python_reference_matches": true,
-  "altered_certificate_rejected": true,
-  "tampered_in_range_count_rejected_cryptographically": true,
-  "tampered_in_range_cost_interval_rejected_cryptographically": true
-}

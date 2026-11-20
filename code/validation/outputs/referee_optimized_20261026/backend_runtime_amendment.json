@@ -1,8 +1,0 @@
-{
-  "recorded_unix": 1793038768.0217795,
-  "before_backend_timing": true,
-  "scientific_profile_unchanged": true,
-  "plonk_binary": "code/zk/bin/full-plonk-control-local-buffered-20261026.exe",
-  "plonk_binary_sha256": "0c7c67805e46165002b48622029b4ced015b28a0d6d70ff2fc248d749325089d",
-  "reason": "Apply the same 256KiB checked binary I/O buffering to the exact PLONK backend, and record constraint preflight exclusions without trying an oversized setup. Supersedes the unexecuted backend binary only."
-}

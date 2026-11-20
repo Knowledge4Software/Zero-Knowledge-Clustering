@@ -232,7 +232,7 @@ def prove_case(campaign, root, case, source=None, run_baseline=True):
             old = source/'ordered_head/full/bundle/full_reuse'/p.name
             if old.exists(): assert sha(p) != sha(old)
     if run_baseline:
-        assert len(new_proofs) == count*4
+        assert len(new_proofs) == count*len(read(source/'ordered_head/full/input.json')['queries'])
     save(out/'checked.json', dict(complete=True, requests=count, certificate_requests=len(plan['certificate']),
          direct_full_requests=len(plan['full']), selected_correction_proofs=sum(len(r['refinement_indices']) for r in plan['records']),
          measured_warm_routed_seconds=routed_seconds, measured_warm_full_seconds=baseline_seconds,
