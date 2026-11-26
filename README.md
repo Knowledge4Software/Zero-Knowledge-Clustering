@@ -40,3 +40,7 @@ run the tests:
     python -m pip install -r code/requirements.txt
     $env:PYTHONPATH = Join-Path $PWD 'code'
     python -m pytest code/tests -q
+
+## Paper evidence
+
+Download the primary and supplementary evidence archives from the [evidence folder](evidence). For a local clone with Git LFS installed, run `git lfs pull --include="evidence/*.zip"` to download the archives.
